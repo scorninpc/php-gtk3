@@ -1,0 +1,10 @@
+gtk.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c -o gtk.lo 
+gtkwindow.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c -o gtkwindow.lo 
+$(phplibdir)/gtk.la: ./gtk.la
+	$(LIBTOOL) --mode=install cp ./gtk.la $(phplibdir)
+
+./gtk.la: $(shared_objects_gtk) $(GTK_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_gtk) $(GTK_SHARED_LIBADD)
+
