@@ -13,9 +13,9 @@ dnl [  --with-gtk             Include gtk support])
 
 dnl Otherwise use enable:
 
- PHP_ARG_ENABLE(gtk, whether to enable gtk support,
- Make sure that the comment is aligned:
- [  --enable-gtk           Enable gtk support])
+PHP_ARG_ENABLE(gtk, whether to enable gtk support,
+dnl Make sure that the comment is aligned:
+[  --enable-gtk           Enable gtk support])
 
 if test "$PHP_GTK" != "no"; then
   dnl Write more examples of tests here...
@@ -58,6 +58,9 @@ if test "$PHP_GTK" != "no"; then
   dnl ])
   dnl
   dnl PHP_SUBST(GTK_SHARED_LIBADD)
+  
+  CFLAGS="$CFLAGS `pkg-config --cflags gtk+-2.0`"
+  INCLUDES="$INCLUDES `pkg-config --libs gtk+-2.0`"
 
-  PHP_NEW_EXTENSION(gtk, gtk.c gtkwindow.c, $ext_shared)
+  PHP_NEW_EXTENSION(gtk, gtk.c gtk/gtkwindow.c, $ext_shared)
 fi
