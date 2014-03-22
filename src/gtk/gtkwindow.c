@@ -9,28 +9,73 @@
 #include <gtk/gtk.h>
 
 #include "gtkwindow.h"
- 
-zend_class_entry *gtk_ce_gtkwindow;
 
-GtkWidget* obj_window;
+zend_object_handlers gtkwindow_object_handlers;
+zend_class_entry *gtkwindow_ce;
 
-static zend_function_entry gtkwindow_methods[] = {
-  PHP_ME(GtkWindow, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, set_title, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, set_resizable, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, set_default_size, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, set_size_request, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, show_all, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, set_position, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  PHP_ME(GtkWindow, connect, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-  {NULL, NULL, NULL}
+struct gtk_widget_object {
+	zend_object std;
+	GtkWidget *widget;
 };
- 
+
+// PHP GtkWindow methods
+static zend_function_entry gtkwindow_methods[] = {
+	PHP_ME(GtkWindow, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, set_title, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, set_resizable, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, set_default_size, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, set_size_request, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, show_all, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, set_position, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, connect, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	PHP_ME(GtkWindow, add, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+	{NULL, NULL, NULL}
+};
+
+// Initialize class
 void gtk_init_gtkwindow(TSRMLS_D) {
-  zend_class_entry ce;
- 
-  INIT_CLASS_ENTRY(ce, "GtkWindow", gtkwindow_methods);
-  gtk_ce_gtkwindow = zend_register_internal_class(&ce TSRMLS_CC);
+	zend_class_entry ce;
+
+	// Registry class
+	INIT_CLASS_ENTRY(ce, "GtkWindow", gtkwindow_methods);
+	gtkwindow_ce = zend_register_internal_class(&ce TSRMLS_CC);
+
+	// Handle to clone objects
+	gtkwindow_ce->create_object = gtkwindow_create_handler;
+	memcpy(&gtkwindow_object_handlers, zend_get_std_object_handlers(), sizeof(zend_object_handlers));
+	gtkwindow_object_handlers.clone_obj = NULL;
+}
+
+// Destroy a object
+void gtkwindow_free_storage(void *object TSRMLS_DC)
+{
+    struct gtk_widget_object *obj = (struct gtk_widget_object *)object;
+    efree(obj->widget); 
+
+    zend_hash_destroy(obj->std.properties);
+    FREE_HASHTABLE(obj->std.properties);
+
+    efree(obj);
+}
+
+// Create a handler of object
+zend_object_value gtkwindow_create_handler(zend_class_entry *type TSRMLS_DC)
+{
+    zval *tmp;
+    zend_object_value retval;
+
+    struct gtk_widget_object *obj = (struct gtk_widget_object *)emalloc(sizeof(struct gtk_widget_object));
+    memset(obj, 0, sizeof(struct gtk_widget_object));
+    obj->std.ce = type;
+
+    ALLOC_HASHTABLE(obj->std.properties);
+    zend_hash_init(obj->std.properties, 0, NULL, ZVAL_PTR_DTOR, 0);
+    zend_hash_copy(obj->std.properties, &type->default_properties, (copy_ctor_func_t)zval_add_ref, (void *)&tmp, sizeof(zval *));
+
+    retval.handle = zend_objects_store_put(obj, NULL, gtkwindow_free_storage, NULL TSRMLS_CC);
+    retval.handlers = &gtkwindow_object_handlers;
+
+    return retval;
 }
  
 /**
@@ -39,8 +84,11 @@ void gtk_init_gtkwindow(TSRMLS_D) {
  * @see https://developer.gnome.org/gtk3/stable/GtkWindow.html#GtkWindow-struct
  */
 PHP_METHOD(GtkWindow, __construct) {
-	obj_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_position(GTK_WINDOW(obj_window), GTK_WIN_POS_CENTER_ALWAYS);
+	GtkWidget *widget = NULL;
+    zval *object = getThis();
+    struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(object TSRMLS_CC);
+    
+	obj->widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 }
 
 /**
@@ -49,6 +97,9 @@ PHP_METHOD(GtkWindow, __construct) {
  * @see https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-title
  */
 PHP_METHOD(GtkWindow, set_title) {
+    struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	char *title;
 	int title_len;
 	
@@ -60,7 +111,7 @@ PHP_METHOD(GtkWindow, set_title) {
 		return;
 	}
 	
-	gtk_window_set_title(GTK_WINDOW(obj_window), title);
+	gtk_window_set_title(GTK_WINDOW(widget), title);
 }
 
 /**
@@ -69,6 +120,9 @@ PHP_METHOD(GtkWindow, set_title) {
  * @see https://developer.gnome.org/gtk3/3.4/GtkWindow.html#gtk-window-set-resizable
  */
 PHP_METHOD(GtkWindow, set_resizable) {
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	int *resizable;
 	
 	int result;
@@ -79,7 +133,7 @@ PHP_METHOD(GtkWindow, set_resizable) {
 		return;
 	}
 	
-	gtk_window_set_resizable(GTK_WINDOW(obj_window), (gboolean)resizable);
+	gtk_window_set_resizable(GTK_WINDOW(widget), (gboolean)resizable);
 }
 
 /**
@@ -88,7 +142,10 @@ PHP_METHOD(GtkWindow, set_resizable) {
  * @see https://developer.gnome.org/gtk3/3.4/GtkWidget.html#gtk-widget-show-all
  */
 PHP_METHOD(GtkWindow, show_all) {
-	gtk_widget_show_all(obj_window);
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
+	gtk_widget_show_all(widget);
 }
 
 /**
@@ -97,6 +154,9 @@ PHP_METHOD(GtkWindow, show_all) {
  * @see https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-default-size
  */
 PHP_METHOD(GtkWindow, set_default_size) {
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	int *width;
 	int *height;
 	
@@ -108,7 +168,7 @@ PHP_METHOD(GtkWindow, set_default_size) {
 		return;
 	}
 	
-	gtk_window_set_default_size(GTK_WINDOW(obj_window), (int)width, (int)height);
+	gtk_window_set_default_size(GTK_WINDOW(widget), (int)width, (int)height);
 }
 
 /**
@@ -117,6 +177,9 @@ PHP_METHOD(GtkWindow, set_default_size) {
  * @see https://developer.gnome.org/gtk3/3.4/GtkWidget.html#gtk-widget-set-size-request
  */
 PHP_METHOD(GtkWindow, set_size_request) {
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	int *width;
 	int *height;
 	
@@ -128,7 +191,7 @@ PHP_METHOD(GtkWindow, set_size_request) {
 		return;
 	}
 	
-	gtk_widget_set_size_request(GTK_WINDOW(obj_window), (int)width, (int)height);
+	gtk_widget_set_size_request(GTK_WINDOW(widget), (int)width, (int)height);
 }
 
 /**
@@ -137,6 +200,9 @@ PHP_METHOD(GtkWindow, set_size_request) {
  * @see https://developer.gnome.org/gtk3/3.4/GtkWindow.html#gtk-window-set-position
  */
 PHP_METHOD(GtkWindow, set_position) {
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	int *position;
 	
 	int result;
@@ -147,7 +213,7 @@ PHP_METHOD(GtkWindow, set_position) {
 		return;
 	}
 	
-	gtk_window_set_position(GTK_WINDOW(obj_window), (int)position);
+	gtk_window_set_position(GTK_WINDOW(widget), (int)position);
 }
 
 /**
@@ -156,7 +222,9 @@ PHP_METHOD(GtkWindow, set_position) {
  * @see https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-title
  */
 PHP_METHOD(GtkWindow, connect) {
-	
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
 	char *signal;
 	char *signal_string;
 	char *function_check;
@@ -174,7 +242,7 @@ PHP_METHOD(GtkWindow, connect) {
 		zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), -1 TSRMLS_CC, "Callback function not found");
 	}
 	
-	gtk_signal_connect(GTK_OBJECT(obj_window), signal, GTK_SIGNAL_FUNC(quit_window), (gpointer)function_callback);
+	gtk_signal_connect(GTK_OBJECT(widget), signal, GTK_SIGNAL_FUNC(quit_window), (gpointer)function_callback);
 }
 
 void quit_window(GtkWidget *widget, gpointer data) {
@@ -204,3 +272,24 @@ void quit_window(GtkWidget *widget, gpointer data) {
 	//~ printf("3\n");
 }
 
+/**
+ * add
+ * 
+ * @see https://developer.gnome.org/gtk3/stable/GtkContainer.html#gtk-container-add
+ */
+PHP_METHOD(GtkWindow, add)
+{
+	zval *resource;
+	int res_type = -1; 
+	int result;
+	
+	result = zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "o", &resource);
+	if (result == FAILURE) {
+		return;
+	}
+	
+	convert_to_object_ex(&resource);
+	GtkWidget *widget = (GtkWidget *)resource;
+	
+	//gtk_container_add(GTK_CONTAINER(obj_window), widget);
+}
