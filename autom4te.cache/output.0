@@ -1461,8 +1461,7 @@ Optional Features:
   --disable-option-checking  ignore unrecognized --enable/--with options
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
-Make sure that the comment is aligned:
-   --enable-gtk           Enable gtk support
+  --enable-gtk           Enable gtk support
   --enable-shared@<:@=PKGS@:>@  build shared libraries @<:@default=yes@:>@
   --enable-static@<:@=PKGS@:>@  build static libraries @<:@default=yes@:>@
   --enable-fast-install@<:@=PKGS@:>@ 
@@ -3956,7 +3955,7 @@ $as_echo "no" >&6; }
 
 
 
- 
+
 php_enable_gtk=no
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to enable gtk support" >&5
@@ -4012,7 +4011,10 @@ if test "$PHP_GTK" != "no"; then
                                       
     
       
-                      
+                        
+  CFLAGS="$CFLAGS `pkg-config --cflags gtk+-2.0`"
+  INCLUDES="$INCLUDES `pkg-config --libs gtk+-2.0`"
+
   
   ext_builddir=.
   ext_srcdir=$abs_srcdir
@@ -4041,7 +4043,7 @@ if test "$PHP_GTK" != "no"; then
 
 
   old_IFS=$IFS
-  for ac_src in gtk.c gtkwindow.c; do
+  for ac_src in gtk.c gtk/gtkwindow.c; do
   
       IFS=.
       set $ac_src
@@ -4090,7 +4092,7 @@ EOF
 
 
   old_IFS=$IFS
-  for ac_src in gtk.c gtkwindow.c; do
+  for ac_src in gtk.c gtk/gtkwindow.c; do
   
       IFS=.
       set $ac_src
@@ -4220,7 +4222,7 @@ _ACEOF
 
 
   old_IFS=$IFS
-  for ac_src in gtk.c gtkwindow.c; do
+  for ac_src in gtk.c gtk/gtkwindow.c; do
   
       IFS=.
       set $ac_src
@@ -4266,7 +4268,7 @@ EOF
 
 
   old_IFS=$IFS
-  for ac_src in gtk.c gtkwindow.c; do
+  for ac_src in gtk.c gtk/gtkwindow.c; do
   
       IFS=.
       set $ac_src

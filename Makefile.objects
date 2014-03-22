@@ -1,7 +1,7 @@
 gtk.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c -o gtk.lo 
-gtkwindow.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c -o gtkwindow.lo 
+gtk/gtkwindow.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk/gtkwindow.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk/gtkwindow.c -o gtk/gtkwindow.lo 
 $(phplibdir)/gtk.la: ./gtk.la
 	$(LIBTOOL) --mode=install cp ./gtk.la $(phplibdir)
 

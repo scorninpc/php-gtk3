@@ -4,14 +4,14 @@ top_srcdir = /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk
 top_builddir = /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk
 EGREP = /bin/grep -E
 SED = /bin/sed
-CONFIGURE_COMMAND = './configure'
-CONFIGURE_OPTIONS =
+CONFIGURE_COMMAND = './configure' '--enable-gtk'
+CONFIGURE_OPTIONS = '--enable-gtk'
 SHLIB_SUFFIX_NAME = so
 SHLIB_DL_SUFFIX_NAME = so
 ZEND_EXT_TYPE = zend_extension
 RE2C = exit 0;
 AWK = gawk
-shared_objects_gtk = gtk.lo gtkwindow.lo
+shared_objects_gtk = gtk.lo gtk/gtkwindow.lo
 PHP_PECL_EXTENSION = gtk
 PHP_MODULES = $(phplibdir)/gtk.la
 PHP_ZEND_EX =
@@ -24,7 +24,7 @@ prefix = /usr
 phplibdir = /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/modules
 phpincludedir = /usr/include/php5
 CC = cc
-CFLAGS = -g -O2 `pkg-config --cflags --libs gtk+-2.0`
+CFLAGS = -g -O2 -pthread -D_REENTRANT -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12
 CFLAGS_CLEAN = $(CFLAGS)
 CPP = cc -E
 CPPFLAGS = -DHAVE_CONFIG_H
@@ -35,7 +35,7 @@ EXTENSION_DIR = /usr/lib/php5/20090626
 PHP_EXECUTABLE = /usr/bin/php
 EXTRA_LDFLAGS =
 EXTRA_LIBS =
-INCLUDES = -I/usr/include/php5 -I/usr/include/php5/main -I/usr/include/php5/TSRM -I/usr/include/php5/Zend -I/usr/include/php5/ext -I/usr/include/php5/ext/date/lib
+INCLUDES = -I/usr/include/php5 -I/usr/include/php5/main -I/usr/include/php5/TSRM -I/usr/include/php5/Zend -I/usr/include/php5/ext -I/usr/include/php5/ext/date/lib -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0
 LFLAGS =
 LDFLAGS =
 SHARED_LIBTOOL =
@@ -162,8 +162,8 @@ distclean: clean
 .NOEXPORT:
 gtk.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk.c -o gtk.lo 
-gtkwindow.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtkwindow.c -o gtkwindow.lo 
+gtk/gtkwindow.lo: /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk/gtkwindow.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/scorninpc/Desktop/extensions/php-5.5.7/ext/gtk/gtk/gtkwindow.c -o gtk/gtkwindow.lo 
 $(phplibdir)/gtk.la: ./gtk.la
 	$(LIBTOOL) --mode=install cp ./gtk.la $(phplibdir)
 
