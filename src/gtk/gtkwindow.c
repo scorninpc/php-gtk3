@@ -5,9 +5,10 @@
  */
 
 #include <php.h>
-#include "gtkwindow.h"
 
 #include <gtk/gtk.h>
+
+#include "gtkwindow.h"
  
 zend_class_entry *gtk_ce_gtkwindow;
 
