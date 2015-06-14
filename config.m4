@@ -59,8 +59,8 @@ if test "$PHP_GTK" != "no"; then
   dnl
   dnl PHP_SUBST(GTK_SHARED_LIBADD)
   
-  CFLAGS="$CFLAGS `pkg-config --cflags gtk+-2.0`"
-  INCLUDES="$INCLUDES `pkg-config --libs gtk+-2.0`"
+  CFLAGS="$CFLAGS `pkg-config --cflags gtk+-3.0`"
+  INCLUDES="$INCLUDES `pkg-config --libs gtk+-3.0`"
 
-  PHP_NEW_EXTENSION(gtk, gtk.c gtk/gtkwindow.c, $ext_shared)
+  PHP_NEW_EXTENSION(gtk, gtk.c src/gtk/gtkwindow.c, $ext_shared)
 fi

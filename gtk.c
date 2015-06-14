@@ -10,7 +10,7 @@
 #include "php_gtk.h"
 #include "gtk/gtk.h"
 
-#include "gtkwindow.h"
+#include "src/gtk/gtkwindow.h"
 
 /* extension control */
 PHP_MINIT_FUNCTION(gtk)

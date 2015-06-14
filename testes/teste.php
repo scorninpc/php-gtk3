@@ -8,7 +8,7 @@ class test {
 }
 
 function aquit() {
-	echo "\naqui function\n";
+	echo "\naqui function\n\n";
 	Gtk::main_quit();
 }
 

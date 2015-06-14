@@ -70,8 +70,13 @@ zend_object_value gtkwindow_create_handler(zend_class_entry *type TSRMLS_DC)
 
     ALLOC_HASHTABLE(obj->std.properties);
     zend_hash_init(obj->std.properties, 0, NULL, ZVAL_PTR_DTOR, 0);
-    zend_hash_copy(obj->std.properties, &type->default_properties, (copy_ctor_func_t)zval_add_ref, (void *)&tmp, sizeof(zval *));
-
+    
+    #if PHP_VERSION_ID < 50399
+		zend_hash_copy(obj->std.properties, &type->default_properties, (copy_ctor_func_t)zval_add_ref, (void *)&tmp, sizeof(zval *));
+	#else
+		object_properties_init((zend_object*) &(obj->std), type);
+	#endif
+    
     retval.handle = zend_objects_store_put(obj, NULL, gtkwindow_free_storage, NULL TSRMLS_CC);
     retval.handlers = &gtkwindow_object_handlers;
 
@@ -242,13 +247,48 @@ PHP_METHOD(GtkWindow, connect) {
 		zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), -1 TSRMLS_CC, "Callback function not found");
 	}
 	
-	gtk_signal_connect(GTK_OBJECT(widget), signal, GTK_SIGNAL_FUNC(quit_window), (gpointer)function_callback);
+	//call_user_function_ex(CG(function_table), NULL, function_callback, &retval, 0, NULL, 1, NULL TSRMLS_CC);
+
+	//~ g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(aconnect), NULL);
+	g_signal_connect (G_OBJECT (widget), "destroy", G_CALLBACK (aconnect),  (gpointer)function_callback);
+	
+	
+	/*
+	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
+    GtkWidget *widget = obj->widget;
+    
+	char *signal;
+	char *signal_string;
+	char *function_check;
+	
+	int signal_len;
+	zval *function_callback;
+	
+	// Busca os parametros
+	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz", &signal, &signal_len, &function_callback) == FAILURE) {
+		return;
+	} 
+	
+	// Verifica se o callback existe
+	if(!zend_is_callable(function_callback, 0, &function_check)) {
+		zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), -1 TSRMLS_CC, "Callback function not found");
+	}
+	
+	g_signal_connect(G_OBJECT(widget), signal, G_CALLBACK(quit_window), (gpointer)function_callback);
+	*/
 }
 
-void quit_window(GtkWidget *widget, gpointer data) {
-	zval retval;
-	zval *function_callback = (zval *)data;
+
+static void aconnect(GtkWidget *widget, gpointer data) {
 	
+	zval *retval;
+	zval *function_name = (zval *)data;
+	zval *arglist[3];
+	
+	call_user_function(EG(function_table), NULL, function_name, &retval, 0, arglist TSRMLS_CC);
+	//~ call_user_function(CG(function_table), NULL, function_name, &retval, 0, arglist TSRMLS_CC);
+	
+	/*
 	char *cstr;
 	if (Z_TYPE_P(function_callback) != IS_STRING) {
 		convert_to_string(function_callback);
@@ -257,7 +297,7 @@ void quit_window(GtkWidget *widget, gpointer data) {
 	cstr = Z_STRVAL_P(function_callback);
 	printf("OK");
 	printf("\n->%s<--\n", cstr);
-	
+	*/
 
 	//~ printf("1\n");
 	//~ INIT_ZVAL(retval);
