@@ -82,5 +82,6 @@ PHP_METHOD(Gtk, main) {
 }
 
 PHP_METHOD(Gtk, main_quit) {
+	printf("OK\n");
 	gtk_main_quit();
 }

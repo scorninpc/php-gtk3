@@ -283,11 +283,12 @@ static void aconnect(GtkWidget *widget, gpointer data) {
 	
 	zval *retval;
 	zval *function_name = (zval *)data;
-	zval *arglist[3];
+	zval **params[1];
 	
-	call_user_function(EG(function_table), NULL, function_name, &retval, 0, arglist TSRMLS_CC);
+	call_user_function_ex(EG(function_table), NULL, function_name, &retval, 0, params, 1, NULL TSRMLS_CC);
 	//~ call_user_function(CG(function_table), NULL, function_name, &retval, 0, arglist TSRMLS_CC);
 	
+	gtk_main_quit();
 	/*
 	char *cstr;
 	if (Z_TYPE_P(function_callback) != IS_STRING) {
