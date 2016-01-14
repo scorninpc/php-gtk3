@@ -75,6 +75,7 @@ void gtk_init_gtk(TSRMLS_D) {
 	zend_declare_class_constant_long(gtk_ce_gtk, ZEND_STRS("WIN_POS_MOUSE")-1, GTK_WIN_POS_MOUSE TSRMLS_CC);
 	zend_declare_class_constant_long(gtk_ce_gtk, ZEND_STRS("WIN_POS_CENTER_ALWAYS")-1, GTK_WIN_POS_CENTER_ALWAYS TSRMLS_CC);
 	zend_declare_class_constant_long(gtk_ce_gtk, ZEND_STRS("WIN_POS_CENTER_ON_PARENT")-1, GTK_WIN_POS_CENTER_ON_PARENT TSRMLS_CC);
+	
 }
 
 PHP_METHOD(Gtk, main) {
@@ -82,6 +83,6 @@ PHP_METHOD(Gtk, main) {
 }
 
 PHP_METHOD(Gtk, main_quit) {
-	printf("OK\n");
+	printf("QUIT\n");
 	gtk_main_quit();
 }

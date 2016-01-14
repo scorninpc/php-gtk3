@@ -30,3 +30,4 @@ catch(Exception $e) {
 
 $window->show_all();
 Gtk::main();
+echo "SAIU\n";

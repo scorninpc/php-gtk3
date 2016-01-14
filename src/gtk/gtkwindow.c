@@ -247,70 +247,20 @@ PHP_METHOD(GtkWindow, connect) {
 		zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), -1 TSRMLS_CC, "Callback function not found");
 	}
 	
-	//call_user_function_ex(CG(function_table), NULL, function_callback, &retval, 0, NULL, 1, NULL TSRMLS_CC);
-
-	//~ g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(aconnect), NULL);
-	g_signal_connect (G_OBJECT (widget), "destroy", G_CALLBACK (aconnect),  (gpointer)function_callback);
+	printf("PODE CHAMAR\n");
 	
-	
-	/*
-	struct gtk_widget_object *obj = (struct gtk_widget_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
-    GtkWidget *widget = obj->widget;
-    
-	char *signal;
-	char *signal_string;
-	char *function_check;
-	
-	int signal_len;
-	zval *function_callback;
-	
-	// Busca os parametros
-	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sz", &signal, &signal_len, &function_callback) == FAILURE) {
-		return;
-	} 
-	
-	// Verifica se o callback existe
-	if(!zend_is_callable(function_callback, 0, &function_check)) {
-		zend_throw_exception_ex(zend_exception_get_default(TSRMLS_C), -1 TSRMLS_CC, "Callback function not found");
-	}
-	
-	g_signal_connect(G_OBJECT(widget), signal, G_CALLBACK(quit_window), (gpointer)function_callback);
-	*/
+	printf("CONFIGUROU\n");
+	g_signal_connect(G_OBJECT(widget), "destroy", GTK_SIGNAL_FUNC(aconnect), (gpointer)function_callback);
 }
 
 
 static void aconnect(GtkWidget *widget, gpointer data) {
-	
-	zval *retval;
-	zval *function_name = (zval *)data;
-	zval **params[1];
-	
-	call_user_function_ex(EG(function_table), NULL, function_name, &retval, 0, params, 1, NULL TSRMLS_CC);
-	//~ call_user_function(CG(function_table), NULL, function_name, &retval, 0, arglist TSRMLS_CC);
+	printf("VAI CHAMAR\n");
 	
 	gtk_main_quit();
-	/*
-	char *cstr;
-	if (Z_TYPE_P(function_callback) != IS_STRING) {
-		convert_to_string(function_callback);
-	}
-	printf("OK");
-	cstr = Z_STRVAL_P(function_callback);
-	printf("OK");
-	printf("\n->%s<--\n", cstr);
-	*/
-
-	//~ printf("1\n");
-	//~ INIT_ZVAL(retval);
-	//~ printf("2\n");
-	//~ 
-	//~ // Chama o callback
-	//~ if(call_user_function_ex(EG(function_table), NULL, function_callback, &retval, 0, NULL TSRMLS_CC, NULL, NULL) != SUCCESS) {
-		//~ printf("ERR\n");
-		//~ zend_error(E_ERROR, "Function call failed");
-	//~ }
-	//~ 
-	//~ printf("3\n");
+	
+	printf("CHAMOU\n");
+	 
 }
 
 /**
