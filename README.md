@@ -7,20 +7,21 @@ Repositório para alguns testes com bind php-gtk3
 
 Compile
 ==============
-Primeiro de tudo, é necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
-> You will need compile [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP) first
-
-```sh
-:$ git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
-:$ make
-:$ make install
-```
 
 Você precisará das libs para desenvolvimento php-dev e tambem libgtk-3-dev, ou em algumas distribuições linux gnome-devel. No debian e ubuntu:
 > You will need php-dev and libgtk-3-dev, or in some cases gnome-devel. On Debian and ubuntu:
 
 ```sh
 :$ sudo apt-get install build-essential gnome-devel
+```
+
+Será necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
+> You will need compile [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP) first
+
+```sh
+:$ git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
+:$ make
+:$ make install
 ```
 
 Depois isso é só começar a testar e começar a ajudar no desenvolvimento do bind:
