@@ -1,0 +1,23 @@
+
+// https://developer.gnome.org/gtk3/stable/GtkWindow.html#GtkWindowType
+
+#include <phpcpp.h>
+#include <iostream>
+
+#include <gtk/gtk.h>
+
+/**
+ *  
+ */
+class GtkWindowType_ : public Php::Base, public GtkWindowType
+{
+	
+	public:
+		/**
+		 *  C++ constructor and destructor
+		 */
+		GtkWindowType_() : GtkWindowType()
+		{
+			
+		}
+};
