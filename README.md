@@ -38,7 +38,7 @@ Why PHP-CPP
 
 Alem de tornar o trabalho mais rapido, a sintax e a forma de programar se assemelha muito ao PHP. Assim, mais pessoas podem contribuir com o projeto. Outro ponto forte, talvez o mais importante, do motivo do uso do PHP-CPP, são as atualizações do Zend.h. Na migração do PHP5 para o PHP7 por exemplo, todo bind foi perdido
 
-> Alem de tornar o trabalho mais rapido, a sintax e a forma de programar se assemelha muito ao PHP, assim, mais pessoas podem contribuir com o projeto. Outro ponto forte, talvez o mais importante são as atualizações do Zend.h. Na migração do PHP5 para o PHP7 por exemplo, todo bind foi perdido
+> In addition to making work faster, syntax and how to program closely resemble PHP, so more people can contribute to the project. Another strong point, perhaps the most important are the updates of Zend.h. In the migration from PHP5 to PHP7 for example, every bind was lost
 
 Where to find me
 ==============
