@@ -1,11 +1,14 @@
 php-gtk3-tests
 ==============
 
-Repositório para exibição dos testes com php-gtk3
+Repositório para alguns testes com bind php-gtk3
+Repositoty to do some tests with php-gtk3 bind
 
 
 Compile
 ==============
+Primeiro de tudo, é necessário copilar o PHP-CPP
+
 :$ phpize
 :$ ./configure
 

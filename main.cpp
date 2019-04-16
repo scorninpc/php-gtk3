@@ -52,7 +52,7 @@ extern "C"
 
         // GdkEvent
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
-            gdkevent.method<&GdkEvent_::__construct>("__construct");
+            // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
             
 

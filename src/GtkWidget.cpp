@@ -78,19 +78,14 @@ class GtkWidget_ : public Php::Base
             st_callback *callback_object = (st_callback *) user_data;
 
             // Create event from callback
-            Php::Value gdkevent = Php::Object("GdkEvent", new GdkEvent_());
-            gdkevent["type"] = event.type;
+            GdkEvent_ *aa = new GdkEvent_();
+            Php::Value gdkevent = Php::Object("GdkEvent", aa);
+            aa->populate(&event);
 
             // Create PHP params return
             Php::Value php_callback_param;
-            // php_callback_param[0] = "apple";
             php_callback_param[0] = callback_object->self_widget;
-            // php_callback_param[1] = Php::Object("GdkEvent", gdkevent);
             php_callback_param[1] = gdkevent;
-
-            Php::out << "-- GtkWidget::connect_callback 1" << std::endl;
-            Php::call("var_dump", callback_object->callback_params);
-
 
             // Call php function with parameters
             Php::call("call_user_func_array", callback_object->callback_name, php_callback_param);
