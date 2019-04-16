@@ -51,36 +51,47 @@ class GtkWidget_ : public Php::Base
          */
         Php::Value connect(Php::Parameters &parameters)
         {
-            Php::Value callback_event = parameters[0];
-            Php::Value callback_name = parameters[1];
             Php::Array callback_params = parameters;
+            Php::Value callback_event = callback_params[0];
+            Php::Value callback_name = callback_params[1];
 
             // Create gpoint param
-            st_callback *callback_object = (st_callback *)malloc(sizeof(st_callback));
-            memset(callback_object, 0, sizeof(st_callback));
+            struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
+            memset(callback_object, 0, sizeof(struct st_callback));
             
             callback_object->callback_name = callback_name;
             callback_object->callback_params = callback_params;
             callback_object->self_widget = Php::Object("GtkWidget", this);
 
-            // Create the CPP callback
-            int ret = g_signal_connect(widget, callback_event, G_CALLBACK (&connect_callback), (gpointer) callback_object);
+            Php::out << "-- GtkWidget::connect 1" << std::endl;
+            Php::call("var_dump", callback_object->callback_name);
+            Php::call("var_dump", callback_object->callback_params);
+            Php::call("var_dump", callback_object->self_widget);
 
+            // Create the CPP callback
+            int ret = g_signal_connect(widget, callback_event, G_CALLBACK (&connect_callback), callback_object);
+
+            // Return handler id
             return ret;
         }
 
         /**
          * Class to abstract php callback for connect method, to call PHP function
          */
-        static void connect_callback(GtkWidget * widget, GdkEvent event, gpointer user_data)
+        static void connect_callback(GtkWidget * widget, GdkEvent user_event, gpointer user_data)
         {
             // Return to st_callback
-            st_callback *callback_object = (st_callback *) user_data;
+            struct st_callback *callback_object = (struct st_callback *) user_data;
+
+            Php::out << "-- GtkWidget::connect_callback 1" << std::endl;
+            Php::call("var_dump", callback_object->callback_name);
+            Php::call("var_dump", callback_object->callback_params);
+            Php::call("var_dump", callback_object->self_widget);
 
             // Create event from callback
-            GdkEvent_ *aa = new GdkEvent_();
-            Php::Value gdkevent = Php::Object("GdkEvent", aa);
-            aa->populate(&event);
+            GdkEvent_ *event_ = new GdkEvent_();
+            Php::Value gdkevent = Php::Object("GdkEvent", event_);
+            event_->populate(&user_event);
 
             // Create PHP params return
             Php::Value php_callback_param;

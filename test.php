@@ -14,11 +14,21 @@ function funTest($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=
 	Gtk::main_quit();
 }
 
+
+function GtkWindowButtonPressed($widget, $event)
+{
+	echo "\n-- GtkWindow::button-press-event::params ------\n\n";
+	var_dump($widget);
+	var_dump($event);
+}
+
+
 echo "\n-- GtkWindow ------\n\n";
 $win = new GtkWindow();
 var_dump($win);
 
 echo "\n-- GtkWindow::connect ------\n\n";
+// $id = $win->connect("button-press-event", "GtkWindowButtonPressed", "parametro 1");
 $id = $win->connect("destroy", "funTest", "parametro 1", "parametro 2", "parametro 3", "parametro 4");
 var_dump($id);
 

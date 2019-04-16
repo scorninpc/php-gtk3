@@ -6,7 +6,7 @@
 #include "GdkEventAny.cpp"
 
 /**
- * @todo Add all properties
+ * @todo Implement all properties types
  *
  * https://developer.gnome.org/gdk3/stable/gdk3-Event-Structures.html
  */
@@ -37,7 +37,6 @@ public:
 
         // initialize a public property
         self["type"] = event->type;
-
         // self["any"] = Php::Object("GdkEventAny", &event->any);
         // self["expose"] = event->expose;
         // self["visibility"] = event->visibility;
