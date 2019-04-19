@@ -7,15 +7,7 @@
  * 
  */
 
-
-#include <phpcpp.h>
-#include <iostream>
-
-#include <gtk/gtk.h>
-
-#include "src/Gtk.h"
-#include "src/GtkWidget.h"
-#include "src/GtkWindow.h"
+#include "main.h"
 
 // https://www.sitepoint.com/developing-php-extensions-c-php-cpp-advanced/
 
