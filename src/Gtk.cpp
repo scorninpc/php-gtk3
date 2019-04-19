@@ -1,37 +1,24 @@
-#include <phpcpp.h>
-#include <iostream>
 
-#include <gtk/gtk.h>
+#include "Gtk.h"
 
 /**
  *  
  */
-class Gtk_ : public Php::Base
+Gtk_::Gtk_() = default;
+
+
+/**
+ *
+ */
+void Gtk_::main()
 {
-	private:
-		GtkWidget *widget;
+	gtk_main();
+}
 
-	public:
-		/**
-		 *  C++ constructor
-		 */
-		Gtk_() = default;
-
-		/**
-		 * Gtk loop
-		 *		https://developer.gnome.org/gtk3/stable/gtk3-General.html#gtk-main
-		 */
-		static void main()
-		{
-			gtk_main();
-		}
-
-		/**
-		 * Gtk main quit
-		 *		https://developer.gnome.org/gtk3/stable/gtk3-General.html#gtk-main-quit
-		 */
-		static void main_quit()
-		{
-			gtk_main_quit();
-		}
-};
+/**
+ *
+ */
+void Gtk_::main_quit()
+{
+	gtk_main_quit();
+}

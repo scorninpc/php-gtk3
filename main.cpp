@@ -13,11 +13,9 @@
 
 #include <gtk/gtk.h>
 
-// #include "src/GdkEvent.cpp"
-#include "src/Gtk.cpp"
-#include "src/GtkApplication.cpp"
-// #include "src/GtkWidget.cpp"
-#include "src/GtkWindow.cpp"
+#include "src/Gtk.h"
+#include "src/GtkWidget.h"
+#include "src/GtkWindow.h"
 
 // https://www.sitepoint.com/developing-php-extensions-c-php-cpp-advanced/
 
@@ -69,17 +67,9 @@ extern "C"
             gtkwindow.extends(gtkwidget);
             
 
-        // GtkApplication
-        Php::Class<GtkApplication_> gtkapplication("GtkApplication");
-            gtkapplication.method<&GtkApplication_::new_>("new", {
-                Php::ByRef("instance", "GtkApplication_", true) 
-            });
-            
-
         // Add
         extension.add(std::move(gtk));
         extension.add(std::move(gdkevent));
-        extension.add(std::move(gtkapplication));
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkwindow));
 

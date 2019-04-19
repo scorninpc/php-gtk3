@@ -1,17 +1,29 @@
-#include <phpcpp.h>
 
-/**
- * @todo Add all properties
- */
-class GdkEvent_ : public Php::Base
-{
-public:
-    void GdkEvent_()
+#ifndef _PHPGTK_GDKEVENT_H_
+#define _PHPGTK_GDKEVENT_H_
+
+    #include <phpcpp.h>
+    #include <gtk/gtk.h>
+
+    /**
+     * @todo Add all properties
+     */
+    class GdkEvent_ : public Php::Base
     {
-        // get self reference as Php::Value object
-        Php::Value self(this);
+        /**
+         * Publics
+         */
+        public:
 
-        // initialize a public property
-        self["type"] = "s";
-    }
-};
+            /**
+             *  C++ constructor and destructor
+             */
+            GdkEvent_();
+
+            /**
+             * Populate GdkEvent to PHPGTK::GDKEVENT
+             */
+            void populate(GdkEvent *event);
+    };
+
+#endif
