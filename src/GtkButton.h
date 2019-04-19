@@ -22,6 +22,18 @@
              */
             GtkButton_();
             virtual ~GtkButton_();
+
+            /**
+             * Set button label
+             *      https://developer.gnome.org/gtk3/stable/GtkButton.html#gtk-button-set-label
+             */
+            void set_label(Php::Parameters &parameters);
+
+            /**
+             * new_with_label
+             *      https://developer.gnome.org/gtk3/stable/GtkButton.html#gtk-button-new-with-label
+             */
+            static Php::Value new_with_label(Php::Parameters &parameters);
     };
 
 #endif

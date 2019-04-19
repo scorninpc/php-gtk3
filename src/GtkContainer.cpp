@@ -18,6 +18,10 @@ void GtkContainer_::add(Php::Parameters &parameters)
 
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
 
-
     gtk_container_add(GTK_CONTAINER(widget), passedWidget->get_widget());
 };
+
+void GtkContainer_::test2()
+{
+    Php::out << "-- GtkContainer_::test 1" << std::endl;
+}

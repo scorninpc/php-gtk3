@@ -60,6 +60,8 @@
              * Disconnect signal by handle
              */
             void handler_disconnect(Php::Parameters &parameters);
+
+            void test1();
     };
 
 #endif

@@ -22,6 +22,8 @@
              */
             GtkBin_();
             virtual ~GtkBin_();
+
+            void test3();
     };
 
 #endif

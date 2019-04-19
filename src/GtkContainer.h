@@ -28,6 +28,8 @@
              *      https://developer.gnome.org/gtk3/stable/GtkContainer.html#gtk-container-add
              */
             void add(Php::Parameters &parameters);
+
+            void test2();
     };
 
 #endif

@@ -50,19 +50,22 @@ extern "C"
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
             gtkwidget.method<&GtkWidget_::show_all>("show_all");
             gtkwidget.method<&GtkWidget_::connect>("connect");
+            gtkwidget.method<&GtkWidget_::test1>("test1");
             gtkwidget.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
             // gtkwidget.method<&GtkWidget_::test>("test");
         
 
         // GtkContainer
         Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
-            gtkcontainer.method<&GtkContainer_::add>("add");
             gtkcontainer.extends(gtkwidget);
+            gtkcontainer.method<&GtkContainer_::add>("add");
+            gtkcontainer.method<&GtkContainer_::test2>("test2");
 
 
         // GtkBin
         Php::Class<GtkBin_> gtkbin("GtkBin");
-            gtkbin.extends(gtkcontainer).extends(gtkwidget);
+            gtkbin.extends(gtkcontainer);
+            gtkbin.method<&GtkBin_::test3>("test3");
 
 
         // GtkWindow
@@ -73,6 +76,8 @@ extern "C"
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
             gtkbutton.extends(gtkbin);
+            gtkbutton.method<&GtkButton_::new_with_label>("new_with_label");
+            gtkbutton.method<&GtkButton_::set_label>("set_label");
             
 
         // Add
