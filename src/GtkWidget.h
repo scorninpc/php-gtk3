@@ -27,9 +27,15 @@
             GtkWidget *widget;
 
             /**
+             * Return original GtkWidget
+             */
+            GtkWidget *get_widget();
+
+            /**
              *  C++ constructor and destructor
              */
             GtkWidget_();
+            virtual ~GtkWidget_();
 
             /**
              * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-show-all

@@ -6,12 +6,12 @@
 	#include <iostream>
 	#include <gtk/gtk.h>
 
-	#include "GtkWidget.h"
+	#include "GtkBin.h"
 
 	/**
 	 *  
 	 */
-	class GtkWindow_ : public GtkWidget_
+	class GtkWindow_ : public GtkBin_
 	{
 		
 		/**
@@ -23,6 +23,7 @@
 			 * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-new
 			 */
 			GtkWindow_();
+			virtual ~GtkWindow_();
 	};
 
 #endif

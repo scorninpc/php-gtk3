@@ -11,3 +11,5 @@ GtkWindow_::GtkWindow_()
     widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     // Php::out << "GtkWindow: 2" << std::endl;
 }
+
+GtkWindow_::~GtkWindow_() = default;

@@ -13,9 +13,18 @@ struct GtkWidget_::st_callback {
 /**
  *  C++ constructor and destructor
  */
-GtkWidget_::GtkWidget_() 
+GtkWidget_::GtkWidget_()
 {
-    
+    Php::out << "GtkWidget: 1" << std::endl;
+}
+GtkWidget_::~GtkWidget_() = default;
+
+/**
+ * Return original GtkWidget
+ */
+GtkWidget *GtkWidget_::get_widget()
+{
+    return widget;
 }
 
 /**

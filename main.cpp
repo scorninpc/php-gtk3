@@ -44,7 +44,7 @@ extern "C"
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
-            
+        
 
         // GtkWidget
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
@@ -52,18 +52,37 @@ extern "C"
             gtkwidget.method<&GtkWidget_::connect>("connect");
             gtkwidget.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
             // gtkwidget.method<&GtkWidget_::test>("test");
-            
+        
+
+        // GtkContainer
+        Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
+            gtkcontainer.method<&GtkContainer_::add>("add");
+            gtkcontainer.extends(gtkwidget);
+
+
+        // GtkBin
+        Php::Class<GtkBin_> gtkbin("GtkBin");
+            gtkbin.extends(gtkcontainer).extends(gtkwidget);
+
 
         // GtkWindow
         Php::Class<GtkWindow_> gtkwindow("GtkWindow");
-            gtkwindow.extends(gtkwidget);
+            gtkwindow.extends(gtkbin);
+
+
+        // GtkButton
+        Php::Class<GtkButton_> gtkbutton("GtkButton");
+            gtkbutton.extends(gtkbin);
             
 
         // Add
         extension.add(std::move(gtk));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gtkwidget));
+        extension.add(std::move(gtkcontainer));
+        extension.add(std::move(gtkbin));
         extension.add(std::move(gtkwindow));
+        extension.add(std::move(gtkbutton));
 
 
         // return the extension

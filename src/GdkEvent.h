@@ -6,7 +6,7 @@
     #include <gtk/gtk.h>
 
     /**
-     * @todo Add all properties
+     * 
      */
     class GdkEvent_ : public Php::Base
     {

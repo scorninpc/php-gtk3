@@ -27,6 +27,12 @@ echo "\n-- GtkWindow ------\n\n";
 $win = new GtkWindow();
 var_dump($win);
 
+echo "\n-- GtkButton ------\n\n";
+$btn = new GtkButton();
+var_dump($btn);
+
+$win->add($btn);
+
 echo "\n-- GtkWindow::connect ------\n\n";
 // $id = $win->connect("button-press-event", "GtkWindowButtonPressed", "parametro 1");
 $id = $win->connect("destroy", "funTest", "parametro 1", "parametro 2", "parametro 3", "parametro 4");
