@@ -38,7 +38,9 @@ extern "C"
         Php::Class<Gtk_> gtk("Gtk");
             gtk.method<&Gtk_::main>("main");
             gtk.method<&Gtk_::main_quit>("main_quit");
-            
+            gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
+            gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
+
 
         // GdkEvent
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
@@ -61,6 +63,24 @@ extern "C"
             gtkcontainer.method<&GtkContainer_::add>("add");
             gtkcontainer.method<&GtkContainer_::test2>("test2");
 
+        // GtkBox
+        Php::Class<GtkBox_> gtkbox("GtkBox");
+            gtkbox.extends(gtkcontainer);
+            gtkbox.method<&GtkBox_::__construct>("__construct");
+            gtkbox.method<&GtkBox_::pack_start>("pack_start");
+            gtkbox.method<&GtkBox_::pack_end>("pack_end");
+            gtkbox.method<&GtkBox_::set_homogeneous>("set_homogeneous");
+            gtkbox.method<&GtkBox_::set_spacing>("set_spacing");
+
+        // GtkHBox
+        Php::Class<GtkHBox_> gtkhbox("GtkHBox");
+            gtkhbox.extends(gtkbox);
+            gtkhbox.method<&GtkHBox_::__construct>("__construct");
+
+        // GtkVBox
+        Php::Class<GtkVBox_> gtkvbox("GtkVBox");
+            gtkvbox.extends(gtkbox);
+            gtkvbox.method<&GtkVBox_::__construct>("__construct");
 
         // GtkBin
         Php::Class<GtkBin_> gtkbin("GtkBin");
@@ -85,6 +105,9 @@ extern "C"
         extension.add(std::move(gdkevent));
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkcontainer));
+        extension.add(std::move(gtkbox));
+        extension.add(std::move(gtkhbox));
+        extension.add(std::move(gtkvbox));
         extension.add(std::move(gtkbin));
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkbutton));
