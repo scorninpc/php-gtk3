@@ -52,9 +52,29 @@ extern "C"
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
             gtkwidget.method<&GtkWidget_::show_all>("show_all");
             gtkwidget.method<&GtkWidget_::connect>("connect");
-            gtkwidget.method<&GtkWidget_::test1>("test1");
+            gtkwidget.method<&GtkWidget_::destroy>("destroy");
             gtkwidget.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
-            // gtkwidget.method<&GtkWidget_::test>("test");
+            gtkwidget.method<&GtkWidget_::in_destruction>("in_destruction");
+            gtkwidget.method<&GtkWidget_::destroyed>("destroyed");
+            gtkwidget.method<&GtkWidget_::unparent>("unparent");
+            gtkwidget.method<&GtkWidget_::show>("show");
+            gtkwidget.method<&GtkWidget_::show_now>("show_now");
+            gtkwidget.method<&GtkWidget_::hide>("hide");
+            gtkwidget.method<&GtkWidget_::map>("map");
+            gtkwidget.method<&GtkWidget_::unmap>("unmap");
+            gtkwidget.method<&GtkWidget_::realize>("realize");
+            gtkwidget.method<&GtkWidget_::unrealize>("unrealize");
+            gtkwidget.method<&GtkWidget_::draw>("draw");
+            gtkwidget.method<&GtkWidget_::queue_draw>("queue_draw");
+            gtkwidget.method<&GtkWidget_::queue_resize>("queue_resize");
+            gtkwidget.method<&GtkWidget_::queue_resize_no_redraw>("queue_resize_no_redraw");
+            gtkwidget.method<&GtkWidget_::queue_allocate>("queue_allocate");
+            gtkwidget.method<&GtkWidget_::get_frame_clock>("get_frame_clock");
+            gtkwidget.method<&GtkWidget_::get_scale_factor>("get_scale_factor");
+            gtkwidget.method<&GtkWidget_::GtkTickCallback>("GtkTickCallback");
+            gtkwidget.method<&GtkWidget_::add_tick_callback>("add_tick_callback");
+            gtkwidget.method<&GtkWidget_::remove_tick_callback>("remove_tick_callback");
+            gtkwidget.method<&GtkWidget_::size_request>("size_request");
         
 
         // GtkContainer
@@ -62,6 +82,7 @@ extern "C"
             gtkcontainer.extends(gtkwidget);
             gtkcontainer.method<&GtkContainer_::add>("add");
             gtkcontainer.method<&GtkContainer_::test2>("test2");
+
 
         // GtkBox
         Php::Class<GtkBox_> gtkbox("GtkBox");
@@ -72,15 +93,18 @@ extern "C"
             gtkbox.method<&GtkBox_::set_homogeneous>("set_homogeneous");
             gtkbox.method<&GtkBox_::set_spacing>("set_spacing");
 
+
         // GtkHBox
         Php::Class<GtkHBox_> gtkhbox("GtkHBox");
             gtkhbox.extends(gtkbox);
             gtkhbox.method<&GtkHBox_::__construct>("__construct");
 
+
         // GtkVBox
         Php::Class<GtkVBox_> gtkvbox("GtkVBox");
             gtkvbox.extends(gtkbox);
             gtkvbox.method<&GtkVBox_::__construct>("__construct");
+
 
         // GtkBin
         Php::Class<GtkBin_> gtkbin("GtkBin");
@@ -103,6 +127,13 @@ extern "C"
             gtkbutton.extends(gtkbin);
             gtkbutton.method<&GtkButton_::new_with_label>("new_with_label");
             gtkbutton.method<&GtkButton_::set_label>("set_label");
+
+
+        // GtkRequisition
+        // Php::Class<GtkRequisition_> gtkrequisition("GtkRequisition");
+        //     gtkrequisition.method<&GtkRequisition_::__construct>("__construct");
+        //     gtkrequisition.property("width", 0);
+        //     gtkrequisition.property("height", 0);
             
 
         // Add

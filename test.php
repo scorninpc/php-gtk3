@@ -15,6 +15,22 @@ function GtkWindowButtonReleased($widget, $event, $param1=NULL, $param2=NULL, $p
 	$widget->set_label($param1);
 }
 
+function GtkWindowButtonClicked($widget, $event)
+{
+	$widget->destroy();
+}
+
+function button3_clicked($widget, $event)
+{
+	$widget->hide();
+}
+
+function button4_clicked($widget, $event)
+{
+	global $btn3;
+	$btn3->show();
+}
+
 // ----------------------
 // Horizontal box 1
 $hbox1 = new GtkHBox(TRUE, 5);
@@ -57,6 +73,9 @@ $win->set_title("PHP-GTK3 @ 7.3");
 $ida = $btn1->connect("pressed", "GtkWindowButtonPressed", "Pressed");
 $idb = $btn1->connect("released", "GtkWindowButtonReleased", "Released");
 $idc = $win->connect("destroy", "funTest", "param 1", "param 2", "param 3", "param 4");
+$idd = $btn2->connect("clicked", "GtkWindowButtonClicked");
+$idd = $btn3->connect("clicked", "button3_clicked");
+$idd = $btn4->connect("clicked", "button4_clicked");
 
 $win->show_all();
 
