@@ -1,11 +1,9 @@
 <?php
 
-
 function funTest($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
 	Gtk::main_quit();
 }
-
 
 function GtkWindowButtonPressed($widget, $event, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
@@ -29,7 +27,6 @@ $hbox1->pack_start($btn1, TRUE, TRUE, 5);
 $btn2 = GtkButton::new_with_label("TEST 2");
 $hbox1->pack_end($btn2, TRUE, TRUE, 5);
 
-
 // ----------------------
 // Horizontal box 2
 $hbox2 = new GtkHBox(TRUE, 5);
@@ -50,8 +47,11 @@ $vbox->pack_start($hbox2, TRUE, TRUE, 5);
 
 // ----------------------
 // Window
-$win = new GtkWindow();
+//$win = new GtkWindow(GtkWindow::POPUP);
+$win = new GtkWindow(GtkWindow::TOPLEVEL);
 $win->add($vbox);
+$win->set_default_size(300, 200);
+$win->set_title("PHP-GTK3 @ 7.3");
 
 // Connects
 $ida = $btn1->connect("pressed", "GtkWindowButtonPressed", "Pressed");

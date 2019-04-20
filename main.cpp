@@ -91,6 +91,11 @@ extern "C"
         // GtkWindow
         Php::Class<GtkWindow_> gtkwindow("GtkWindow");
             gtkwindow.extends(gtkbin);
+            gtkwindow.method<&GtkWindow_::__construct>("__construct");
+            gtkwindow.method<&GtkWindow_::set_title>("set_title");
+            gtkwindow.method<&GtkWindow_::set_default_size>("set_default_size");
+            gtkwindow.constant("TOPLEVEL", GTK_WINDOW_TOPLEVEL);
+            gtkwindow.constant("POPUP", GTK_WINDOW_POPUP);
 
 
         // GtkButton
