@@ -28,3 +28,6 @@ http://qaru.site/questions/10714729/convert-a-phpobject-back-to-a-c-object-in-ph
 
 -- Enums value
 https://lazka.github.io/pgi-docs/Gtk-3.0/enums.html#Gtk.Orientation
+
+-- GObject reference
+https://developer.gnome.org/gobject/stable/gobject-The-Base-Object-Type.html

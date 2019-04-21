@@ -40,6 +40,11 @@ extern "C"
             gtk.method<&Gtk_::main_quit>("main_quit");
             gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
+            gtk.constant("ALIGN_FILL", GTK_ALIGN_FILL);
+            gtk.constant("ALIGN_START", GTK_ALIGN_START);
+            gtk.constant("ALIGN_END", GTK_ALIGN_END);
+            gtk.constant("ALIGN_CENTER", GTK_ALIGN_CENTER);
+            gtk.constant("ALIGN_BASELINE", GTK_ALIGN_BASELINE);
 
 
         // GdkEvent
@@ -69,12 +74,40 @@ extern "C"
             gtkwidget.method<&GtkWidget_::queue_resize>("queue_resize");
             gtkwidget.method<&GtkWidget_::queue_resize_no_redraw>("queue_resize_no_redraw");
             gtkwidget.method<&GtkWidget_::queue_allocate>("queue_allocate");
-            gtkwidget.method<&GtkWidget_::get_frame_clock>("get_frame_clock");
             gtkwidget.method<&GtkWidget_::get_scale_factor>("get_scale_factor");
-            gtkwidget.method<&GtkWidget_::GtkTickCallback>("GtkTickCallback");
-            gtkwidget.method<&GtkWidget_::add_tick_callback>("add_tick_callback");
-            gtkwidget.method<&GtkWidget_::remove_tick_callback>("remove_tick_callback");
-            gtkwidget.method<&GtkWidget_::size_request>("size_request");
+            gtkwidget.method<&GtkWidget_::activate>("activate");
+            gtkwidget.method<&GtkWidget_::is_focus>("is_focus");
+            gtkwidget.method<&GtkWidget_::grab_focus>("grab_focus");
+            gtkwidget.method<&GtkWidget_::has_focus>("has_focus");
+            gtkwidget.method<&GtkWidget_::grab_default>("grab_default");
+            gtkwidget.method<&GtkWidget_::set_name>("set_name");
+            gtkwidget.method<&GtkWidget_::get_name>("get_name");
+            gtkwidget.method<&GtkWidget_::set_sensitive>("set_sensitive");
+            gtkwidget.method<&GtkWidget_::get_sensitive>("get_sensitive");
+            gtkwidget.method<&GtkWidget_::is_sensitive>("is_sensitive");
+            gtkwidget.method<&GtkWidget_::mnemonic_activate>("mnemonic_activate");
+            gtkwidget.method<&GtkWidget_::get_parent>("get_parent");
+            gtkwidget.method<&GtkWidget_::set_tooltip_text>("set_tooltip_text");
+            gtkwidget.method<&GtkWidget_::get_tooltip_text>("get_tooltip_text");
+            gtkwidget.method<&GtkWidget_::get_allocated_width>("get_allocated_width");
+            gtkwidget.method<&GtkWidget_::get_allocated_height>("get_allocated_height");
+            gtkwidget.method<&GtkWidget_::set_focus_on_click>("set_focus_on_click");
+            gtkwidget.method<&GtkWidget_::set_visible>("set_visible");
+            gtkwidget.method<&GtkWidget_::get_visible>("get_visible");
+            gtkwidget.method<&GtkWidget_::set_opacity>("set_opacity");
+            gtkwidget.method<&GtkWidget_::get_opacity>("get_opacity");
+            gtkwidget.method<&GtkWidget_::set_valign>("set_valign");
+            gtkwidget.method<&GtkWidget_::get_valign>("get_valign");
+            gtkwidget.method<&GtkWidget_::set_halign>("set_halign");
+            gtkwidget.method<&GtkWidget_::get_halign>("get_halign");
+            gtkwidget.method<&GtkWidget_::set_margin_start>("set_margin_start");
+            gtkwidget.method<&GtkWidget_::get_margin_start>("get_margin_start");
+            gtkwidget.method<&GtkWidget_::set_margin_end>("set_margin_end");
+            gtkwidget.method<&GtkWidget_::get_margin_end>("get_margin_end");
+            gtkwidget.method<&GtkWidget_::set_margin_top>("set_margin_top");
+            gtkwidget.method<&GtkWidget_::get_margin_top>("get_margin_top");
+            gtkwidget.method<&GtkWidget_::set_margin_bottom>("set_margin_bottom");
+            gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
         
 
         // GtkContainer

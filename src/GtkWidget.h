@@ -9,7 +9,7 @@
     #include "GdkEvent.h"
 
     /**
-     *  
+     *  @todo Create a method to verify if widget exists, and implement on all methods, if not exists, throw a exception
      */
     class GtkWidget_ : public Php::Base
     {
@@ -30,6 +30,11 @@
              * Return original GtkWidget
              */
             GtkWidget *get_widget();
+
+            /**
+             * Set the original GtkWidget
+             */
+            void set_widget(GtkWidget *pased_widget);
 
             /**
              *  C++ constructor and destructor
@@ -172,13 +177,6 @@
             void queue_allocate();
 
             /**
-             * Obtains the frame clock for a widget
-             *
-             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-frame-clock
-             */
-            void get_frame_clock();
-
-            /**
              * Retrieves the internal scale factor that maps from window coordinates to the actual device pixels.
              *
              * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-scale-factor
@@ -186,33 +184,242 @@
             Php::Value get_scale_factor();
 
             /**
-             * Callback type for adding a function to update animations
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-activate
              *
-             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#GtkTickCallback
+             * @todo not tested
              */
-            Php::Value GtkTickCallback();
+            Php::Value activate();
 
             /**
-             * Queues an animation frame update and adds a callback to be called before each frame.
+             * Determines if the widget is the focus widget within its toplevel.
              *
-             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-add-tick-callback
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-is-focus
              */
-            Php::Value add_tick_callback();
+            Php::Value is_focus();
 
             /**
-             * Removes a tick callback previously registered with add_tick_callback()
+             * Causes widget to have the keyboard focus for the GtkWindow it's inside
              *
-             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-remove-tick-callback
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-grab-focus
              */
-            void remove_tick_callback();
+            void grab_focus();
 
             /**
-             * Obtains the preferred size of a widget. 
+             * Determines if the widget has the global input focus.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-has-focus
+             */
+            Php::Value has_focus();
+
+            /**
+             * Causes widget to become the default widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-grab-default
+             */
+            void grab_default();
+
+            /**
+             * Widgets can be named, which allows you to refer to them from a CSS file.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-name
+             */
+            void set_name(Php::Parameters &parameters);
+
+            /**
+             * Retrieves the name of a widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-name
+             */
+            Php::Value get_name();
+
+            /**
+             * Sets the sensitivity of a widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-sensitive
+             */
+            void set_sensitive(Php::Parameters &parameters);
+
+            /**
+             * Gets the sensitivity of a widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-sensitive
+             */
+            Php::Value get_sensitive();
+
+            /**
+             * If widget are sensitivity, include if parent is sensitive
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-is-sensitive
+             */
+            Php::Value is_sensitive();
+
+            /**
+             * Sets the sensitivity of a widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-mnemonic-activate
+             */
+            Php::Value mnemonic_activate(Php::Parameters &parameters);
+
+            /**
+             * Returns the parent container of widget.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-parent
+             */
+            Php::Value get_parent();
+
+            /**
+             * Sets text as the contents of the tooltip
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-tooltip-text
+             */
+            void set_tooltip_text(Php::Parameters &parameters);
+
+            /**
+             * Gets text as the contents of the tooltip
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-tooltip-text
+             */
+            Php::Value get_tooltip_text();
+
+            /**
+             * Returns the current value of the has-tooltip property
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-has-tooltip
+             */
+            Php::Value get_has_tooltip();
+
+            /**
+             * Returns the width that has currently been allocated to widget
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-allocated-width
+             */
+            Php::Value get_allocated_width();
+
+            /**
+             * Returns the height that has currently been allocated to widget
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-allocated-height
+             */
+            Php::Value get_allocated_height();
+
+            /**
+             * Sets whether the widget should grab focus when it is clicked with the mouse.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-focus-on-click
+             */
+            void set_focus_on_click(Php::Parameters &parameters);
+
+            /**
+             * Sets the visibility state of widget
              * 
-             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-size-request
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-visible
              */
-            void size_request();
-            
-    };
+            void set_visible(Php::Parameters &parameters);
+
+            /**
+             * Gets the visibility state of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-visible
+             */
+            Php::Value get_visible();
+
+            /**
+             * Sets the opacity of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-opacity
+             */
+            void set_opacity(Php::Parameters &parameters);
+
+            /**
+             * Gets the opacity of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-opacity
+             */
+            Php::Value get_opacity();
+
+            /**
+             * Sets the vertical align of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-valign
+             */
+            void set_valign(Php::Parameters &parameters);
+
+            /**
+             * Gets the vertical align of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-valign
+             */
+            Php::Value get_valign();
+
+            /**
+             * Sets the horizontal align of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-halign
+             */
+            void set_halign(Php::Parameters &parameters);
+
+            /**
+             * Gets the horizontal align of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-halign
+             */
+            Php::Value get_halign();
+
+            /**
+             * Sets the start margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-margin_start
+             */
+            void set_margin_start(Php::Parameters &parameters);
+
+            /**
+             * Gets the start margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-margin_start
+             */
+            Php::Value get_margin_start();
+
+            /**
+             * Sets the end margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-margin_end
+             */
+            void set_margin_end(Php::Parameters &parameters);
+
+            /**
+             * Gets the end margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-margin_end
+             */
+            Php::Value get_margin_end();
+
+            /**
+             * Sets the top margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-margin_top
+             */
+            void set_margin_top(Php::Parameters &parameters);
+
+            /**
+             * Gets the top margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-margin_top
+             */
+            Php::Value get_margin_top();
+
+            /**
+             * Sets the bottom margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-set-margin_bottom
+             */
+            void set_margin_bottom(Php::Parameters &parameters);
+
+            /**
+             * Gets the bottom margin of widget
+             * 
+             * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-margin_bottom
+             */
+            Php::Value get_margin_bottom();
+        };
 
 #endif
