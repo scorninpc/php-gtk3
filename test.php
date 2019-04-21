@@ -78,6 +78,13 @@ $vbox->pack_start($hbox1, TRUE, TRUE, 5);
 $vbox->pack_start($hbox2, TRUE, TRUE, 5);
 
 // ----------------------
+// Entry 1
+$txt1 = new GtkEntry();
+$txt1->set_margin_start(5);
+$txt1->set_margin_end(5);
+$vbox->pack_start($txt1, TRUE, FALSE, 5);
+
+// ----------------------
 // Window
 //$win = new GtkWindow(GtkWindow::POPUP);
 $win = new GtkWindow(GtkWindow::TOPLEVEL);

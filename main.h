@@ -8,6 +8,7 @@
 	#include "src/Gtk.h"
 	#include "src/GdkEvent.h"
 	#include "src/GtkWidget.h"
+	#include "src/GtkEntry.h"
 	#include "src/GtkContainer.h"
 	#include "src/GtkBox.h"
 	#include "src/GtkHBox.h"

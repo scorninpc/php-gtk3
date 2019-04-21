@@ -110,6 +110,12 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
         
 
+        // GtkEntry
+        Php::Class<GtkEntry_> gtkentry("GtkEntry");
+            gtkentry.extends(gtkwidget);
+            gtkentry.method<&GtkEntry_::__construct>("__construct");
+
+
         // GtkContainer
         Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
             gtkcontainer.extends(gtkwidget);
@@ -173,6 +179,7 @@ extern "C"
         extension.add(std::move(gtk));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gtkwidget));
+        extension.add(std::move(gtkentry));
         extension.add(std::move(gtkcontainer));
         extension.add(std::move(gtkbox));
         extension.add(std::move(gtkhbox));
