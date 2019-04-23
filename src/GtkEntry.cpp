@@ -88,6 +88,14 @@ void GtkEntry_::set_visibility(Php::Parameters &parameters)
 }
 
 /**
+ * Get whether the contents of the entry are visible or not
+ */
+Php::Value GtkEntry_::get_visibility()
+{
+	return gtk_entry_get_visibility(GTK_ENTRY(widget));
+}
+
+/**
  * Sets the character to use in place of the actual text when gtk_entry_set_visibility()
  */
 void GtkEntry_::set_invisible_char(Php::Parameters &parameters)
@@ -99,6 +107,20 @@ void GtkEntry_::set_invisible_char(Php::Parameters &parameters)
 	
 
 	gtk_entry_set_invisible_char(GTK_ENTRY(widget), ch);
+}
+
+/**
+ * Retrieves the character displayed in place of the real characters for entries with visibility set to false
+ */
+Php::Value GtkEntry_::get_invisible_char()
+{
+	gunichar ch = gtk_entry_get_invisible_char(GTK_ENTRY(widget));
+	char a;
+
+	g_unichar_to_utf8(ch, &a);
+
+
+	return a;
 }
 
 /**
@@ -117,6 +139,14 @@ void GtkEntry_::unset_invisible_char()
 void GtkEntry_::set_max_length(Php::Parameters &parameters)
 {
 	gtk_entry_set_max_length(GTK_ENTRY(widget), parameters[0]);
+}
+
+/**
+ * Retrieves the maximum allowed length of the text in entry 
+ */
+Php::Value GtkEntry_::get_max_length()
+{
+	return gtk_entry_get_max_length(GTK_ENTRY(widget));
 }
 
 /**
@@ -149,4 +179,130 @@ void GtkEntry_::set_has_frame(Php::Parameters &parameters)
 Php::Value GtkEntry_::get_has_frame()
 {
 	return gtk_entry_get_has_frame(GTK_ENTRY(widget));
+}
+
+/**
+ * Changes the size request of the entry to be about the right size for n_chars characters.
+ */
+void GtkEntry_::set_width_chars(Php::Parameters &parameters)
+{
+	gtk_entry_set_width_chars(GTK_ENTRY(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_entry_set_width_chars().
+ */
+Php::Value GtkEntry_::get_width_chars()
+{
+	return gtk_entry_get_width_chars(GTK_ENTRY(widget));
+}
+
+/**
+ * Changes the max size request of the entry to be about the right size for n_chars characters.
+ */
+void GtkEntry_::set_max_width_chars(Php::Parameters &parameters)
+{
+	gtk_entry_set_max_width_chars(GTK_ENTRY(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_entry_set_max_width_chars().
+ */
+Php::Value GtkEntry_::get_max_width_chars()
+{
+	return gtk_entry_get_max_width_chars(GTK_ENTRY(widget));
+}
+
+/**
+ * Sets the alignment for the contents of the entry. This controls the horizontal positioning of the contents when the displayed text is shorter than the width of the entry.
+ */
+void GtkEntry_::set_alignment(Php::Parameters &parameters)
+{
+	double xalign = parameters[0];
+
+	gtk_entry_set_alignment(GTK_ENTRY(widget), (float)xalign);
+}
+
+/**
+ * Gets the value set by gtk_entry_set_alignment().
+ */
+Php::Value GtkEntry_::get_alignment()
+{
+	return gtk_entry_get_alignment(GTK_ENTRY(widget));
+}
+
+/**
+ * Sets text to be displayed in entry when it is empty and unfocused.
+ */
+void GtkEntry_::set_placeholder_text(Php::Parameters &parameters)
+{
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), parameters[0]);
+}
+
+/**
+ * Retrieves the text that will be displayed when entry is empty and unfocused
+ */
+Php::Value GtkEntry_::get_placeholder_text()
+{
+	return gtk_entry_get_placeholder_text(GTK_ENTRY(widget));
+}
+
+/**
+ * Sets whether the text is overwritten when typing in the GtkEntry.
+ */
+void GtkEntry_::set_overwrite_mode(Php::Parameters &parameters)
+{
+	return gtk_entry_set_overwrite_mode(GTK_ENTRY(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_entry_set_overwrite_mode().
+ */
+Php::Value GtkEntry_::get_overwrite_mode()
+{
+	return gtk_entry_get_overwrite_mode(GTK_ENTRY(widget));
+}
+
+/**
+ * Causes the entry’s progress indicator to “fill in” the given fraction of the bar. The fraction should be between 0.0 and 1.0, inclusive.
+ */
+void GtkEntry_::set_progress_fraction(Php::Parameters &parameters)
+{
+	double fraction = parameters[0];
+
+	gtk_entry_set_progress_fraction(GTK_ENTRY(widget), (float)fraction);
+}
+
+/**
+ * Returns the current fraction of the task that’s been completed. See gtk_entry_set_progress_fraction().
+ */
+Php::Value GtkEntry_::get_progress_fraction()
+{
+	return gtk_entry_get_progress_fraction(GTK_ENTRY(widget));
+}
+
+/**
+ * Sets the fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse().
+ */
+void GtkEntry_::set_progress_pulse_step(Php::Parameters &parameters)
+{
+	double fraction = parameters[0];
+
+	gtk_entry_set_progress_pulse_step(GTK_ENTRY(widget), (float)fraction);
+}
+
+/**
+ * Retrieves the pulse step set with gtk_entry_set_progress_pulse_step().
+ */
+Php::Value GtkEntry_::get_progress_pulse_step()
+{
+	return gtk_entry_get_progress_pulse_step(GTK_ENTRY(widget));
+}
+
+/**
+ * https://developer.gnome.org/gtk3/stable/GtkEntry.html#gtk-entry-progress-pulse
+ */
+void GtkEntry_::progress_pulse()
+{
+	return gtk_entry_progress_pulse(GTK_ENTRY(widget));
 }

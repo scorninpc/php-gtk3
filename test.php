@@ -1,5 +1,7 @@
 <?php
 
+$fra = 0;
+
 function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
 	Gtk::main_quit();
@@ -7,13 +9,21 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 
 function GtkWindowButtonPressed($widget, $event, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	global $txt1;
+	global $txt1, $fra;
 
 	$widget->set_label($param1);
 
-	$buffer = $txt1->get_buffer();
-	$buffer->delete_text(4, 3);
-	$txt1->set_buffer($buffer);
+	$fra += 0.1;
+	$txt1->set_progress_fraction($fra);
+	$txt1->set_progress_pulse_step($fra);
+	$txt1->progress_pulse();
+
+
+	// $txt1->set_alignment(0.5);
+
+	// $buffer = $txt1->get_buffer();
+	// $buffer->delete_text(4, 3);
+	// $txt1->set_buffer($buffer);
 	
 	//echo $txt1->get_text() . "\n";
 	//$txt1->set_text("TESTE 2");
@@ -44,6 +54,7 @@ function button3_clicked($widget, $event)
 	$btn4->grab_focus();
 
 	$btn5->set_visible(TRUE);
+
 }
 
 function button4_clicked($widget, $event)
@@ -94,9 +105,11 @@ $vbox->pack_start($hbox2, TRUE, TRUE, 5);
 $buffer = new GtkEntryBuffer("TESTE");
 
 $txt1 = GtkEntry::new_with_buffer($buffer);
-$txt1->set_visibility(FALSE);
-$txt1->set_invisible_char("#");
-$txt1->set_max_length(4);
+
+// $txt1->set_placeholder_text("Test field");
+// $txt1->set_visibility(FALSE);
+// $txt1->set_invisible_char("-");
+// $txt1->set_max_length(4);
 
 $txt1->set_margin_start(5);
 $txt1->set_margin_end(5);

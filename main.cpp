@@ -191,13 +191,31 @@ extern "C"
             gtkentry.method<&GtkEntry_::set_text>("set_text");
             gtkentry.method<&GtkEntry_::get_text_length>("get_text_length");
             gtkentry.method<&GtkEntry_::set_visibility>("set_visibility");
+            gtkentry.method<&GtkEntry_::get_visibility>("get_visibility");
             gtkentry.method<&GtkEntry_::set_invisible_char>("set_invisible_char");
+            gtkentry.method<&GtkEntry_::get_invisible_char>("get_invisible_char");
             gtkentry.method<&GtkEntry_::unset_invisible_char>("unset_invisible_char");
             gtkentry.method<&GtkEntry_::set_max_length>("set_max_length");
+            gtkentry.method<&GtkEntry_::get_max_length>("get_max_length");
             gtkentry.method<&GtkEntry_::set_activates_default>("set_activates_default");
             gtkentry.method<&GtkEntry_::get_activates_default>("get_activates_default");
             gtkentry.method<&GtkEntry_::set_has_frame>("set_has_frame");
             gtkentry.method<&GtkEntry_::get_has_frame>("get_has_frame");
+            gtkentry.method<&GtkEntry_::set_width_chars>("set_width_chars");
+            gtkentry.method<&GtkEntry_::get_width_chars>("get_width_chars");
+            gtkentry.method<&GtkEntry_::set_max_width_chars>("set_max_width_chars");
+            gtkentry.method<&GtkEntry_::get_max_width_chars>("get_max_width_chars");
+            gtkentry.method<&GtkEntry_::set_alignment>("set_alignment");
+            gtkentry.method<&GtkEntry_::get_alignment>("get_alignment");
+            gtkentry.method<&GtkEntry_::set_placeholder_text>("set_placeholder_text");
+            gtkentry.method<&GtkEntry_::get_placeholder_text>("get_placeholder_text");
+            gtkentry.method<&GtkEntry_::set_overwrite_mode>("set_overwrite_mode");
+            gtkentry.method<&GtkEntry_::get_overwrite_mode>("get_overwrite_mode");
+            gtkentry.method<&GtkEntry_::set_progress_fraction>("set_progress_fraction");
+            gtkentry.method<&GtkEntry_::get_progress_fraction>("get_progress_fraction");
+            gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
+            gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
+            gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
 
 
         // Add
