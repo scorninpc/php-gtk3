@@ -1,0 +1,20 @@
+
+#include "GtkEntryBuffer.h"
+
+/**
+ * Constructor
+ */
+GtkEntryBuffer_::GtkEntryBuffer_() = default;
+
+/**
+ * Destructor
+ */
+GtkEntryBuffer_::~GtkEntryBuffer_() = default;
+
+/**
+ *  PHP Constructor
+ */
+void GtkEntryBuffer_::__construct(Php::Parameters &parameters)
+{
+	
+}

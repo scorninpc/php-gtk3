@@ -17,4 +17,6 @@
 	#include "src/GtkWindow.h"
 	#include "src/GtkButton.h"
 
+	#include "src/GtkEntryBuffer.h"
+
 #endif

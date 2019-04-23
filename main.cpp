@@ -110,12 +110,6 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
         
 
-        // GtkEntry
-        Php::Class<GtkEntry_> gtkentry("GtkEntry");
-            gtkentry.extends(gtkwidget);
-            gtkentry.method<&GtkEntry_::__construct>("__construct");
-
-
         // GtkContainer
         Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
             gtkcontainer.extends(gtkwidget);
@@ -174,6 +168,37 @@ extern "C"
         //     gtkrequisition.property("width", 0);
         //     gtkrequisition.property("height", 0);
             
+        // GtkEntryBuffer
+        Php::Class<GtkEntryBuffer_> gtkentrybuffer("GtkEntryBuffer");
+            gtkentrybuffer.method<&GtkEntryBuffer_::__construct>("__construct");
+            gtkentrybuffer.method<&GtkEntryBuffer_::get_text>("get_text");
+            gtkentrybuffer.method<&GtkEntryBuffer_::set_text>("set_text");
+            gtkentrybuffer.method<&GtkEntryBuffer_::get_bytes>("get_bytes");
+            gtkentrybuffer.method<&GtkEntryBuffer_::get_length>("get_length");
+            gtkentrybuffer.method<&GtkEntryBuffer_::get_max_length>("get_max_length");
+            gtkentrybuffer.method<&GtkEntryBuffer_::insert_text>("insert_text");
+            gtkentrybuffer.method<&GtkEntryBuffer_::delete_text>("delete_text");
+
+
+        // GtkEntry
+        Php::Class<GtkEntry_> gtkentry("GtkEntry");
+            gtkentry.extends(gtkwidget);
+            gtkentry.method<&GtkEntry_::__construct>("__construct");
+            gtkentry.method<&GtkEntry_::new_with_buffer>("new_with_buffer");
+            gtkentry.method<&GtkEntry_::get_buffer>("get_buffer");
+            gtkentry.method<&GtkEntry_::set_buffer>("set_buffer");
+            gtkentry.method<&GtkEntry_::get_text>("get_text");
+            gtkentry.method<&GtkEntry_::set_text>("set_text");
+            gtkentry.method<&GtkEntry_::get_text_length>("get_text_length");
+            gtkentry.method<&GtkEntry_::set_visibility>("set_visibility");
+            gtkentry.method<&GtkEntry_::set_invisible_char>("set_invisible_char");
+            gtkentry.method<&GtkEntry_::unset_invisible_char>("unset_invisible_char");
+            gtkentry.method<&GtkEntry_::set_max_length>("set_max_length");
+            gtkentry.method<&GtkEntry_::set_activates_default>("set_activates_default");
+            gtkentry.method<&GtkEntry_::get_activates_default>("get_activates_default");
+            gtkentry.method<&GtkEntry_::set_has_frame>("set_has_frame");
+            gtkentry.method<&GtkEntry_::get_has_frame>("get_has_frame");
+
 
         // Add
         extension.add(std::move(gtk));
@@ -187,6 +212,7 @@ extern "C"
         extension.add(std::move(gtkbin));
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkbutton));
+        extension.add(std::move(gtkentrybuffer));
 
 
         // return the extension
