@@ -5,8 +5,10 @@
 	#include <iostream>
 	#include <gtk/gtk.h>
 
-	#include "src/Gtk.h"
 	#include "src/GdkEvent.h"
+	#include "src/GdkPixbuf.h"
+
+	#include "src/Gtk.h"
 	#include "src/GtkWidget.h"
 	#include "src/GtkEntry.h"
 	#include "src/GtkContainer.h"

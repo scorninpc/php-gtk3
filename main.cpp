@@ -38,13 +38,28 @@ extern "C"
         Php::Class<Gtk_> gtk("Gtk");
             gtk.method<&Gtk_::main>("main");
             gtk.method<&Gtk_::main_quit>("main_quit");
+            
+            // gtk.constant("a", a);
+            
             gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
+            
             gtk.constant("ALIGN_FILL", GTK_ALIGN_FILL);
             gtk.constant("ALIGN_START", GTK_ALIGN_START);
             gtk.constant("ALIGN_END", GTK_ALIGN_END);
             gtk.constant("ALIGN_CENTER", GTK_ALIGN_CENTER);
             gtk.constant("ALIGN_BASELINE", GTK_ALIGN_BASELINE);
+            
+            gtk.constant("WINDOW_TOPLEVEL", GTK_WINDOW_TOPLEVEL);
+            gtk.constant("WINDOW_POPUP", GTK_WINDOW_POPUP);
+
+            gtk.constant("WIN_POS_NONE", GTK_WIN_POS_NONE);
+            gtk.constant("WIN_POS_CENTER", GTK_WIN_POS_CENTER);
+            gtk.constant("WIN_POS_MOUSE", GTK_WIN_POS_MOUSE);
+            gtk.constant("WIN_POS_CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
+            gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
+            
+            
 
 
         // GdkEvent
@@ -150,7 +165,17 @@ extern "C"
             gtkwindow.extends(gtkbin);
             gtkwindow.method<&GtkWindow_::__construct>("__construct");
             gtkwindow.method<&GtkWindow_::set_title>("set_title");
+            gtkwindow.method<&GtkWindow_::get_title>("get_title");
             gtkwindow.method<&GtkWindow_::set_default_size>("set_default_size");
+            gtkwindow.method<&GtkWindow_::get_default_size>("get_default_size");
+            gtkwindow.method<&GtkWindow_::set_resizable>("set_resizable");
+            gtkwindow.method<&GtkWindow_::get_resizable>("get_resizable");
+            gtkwindow.method<&GtkWindow_::activate_focus>("activate_focus");
+            gtkwindow.method<&GtkWindow_::activate_default>("activate_default");
+            gtkwindow.method<&GtkWindow_::set_modal>("set_modal");
+            gtkwindow.method<&GtkWindow_::get_modal>("get_modal");
+            gtkwindow.method<&GtkWindow_::set_position>("set_position");
+            gtkwindow.method<&GtkWindow_::get_position>("get_position");
             gtkwindow.constant("TOPLEVEL", GTK_WINDOW_TOPLEVEL);
             gtkwindow.constant("POPUP", GTK_WINDOW_POPUP);
 

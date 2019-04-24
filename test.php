@@ -7,7 +7,9 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 
 function GtkWindowButton1Clicked($widget, $event)
 {
+	global $win;
 
+	var_dump($win->get_position());
 }
 
 function GtkWindowButton2Clicked($widget, $event)
@@ -44,10 +46,11 @@ $vbox->pack_start($txt1, TRUE, FALSE, 5);
 
 // ----------------------
 // Window
-$win = new GtkWindow(GtkWindow::TOPLEVEL);
+$win = new GtkWindow(Gtk::WINDOW_TOPLEVEL);
 $win->add($vbox);
 $win->set_default_size(300, 200);
 $win->set_title("PHP-GTK3 @ 7.3");
+$win->set_position(GTK::WIN_POS_MOUSE);
 
 // Connects
 $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
