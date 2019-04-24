@@ -158,8 +158,14 @@ extern "C"
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
             gtkbutton.extends(gtkbin);
+            gtkbutton.method<&GtkButton_::__construct>("__construct");
             gtkbutton.method<&GtkButton_::new_with_label>("new_with_label");
+            gtkbutton.method<&GtkButton_::new_with_mnemonic>("new_with_mnemonic");
             gtkbutton.method<&GtkButton_::set_label>("set_label");
+            gtkbutton.method<&GtkButton_::get_label>("get_label");
+            gtkbutton.method<&GtkButton_::clicked>("clicked");
+            gtkbutton.method<&GtkButton_::set_use_underline>("set_use_underline");
+            gtkbutton.method<&GtkButton_::get_use_underline>("get_use_underline");
 
 
         // GtkRequisition
@@ -167,7 +173,8 @@ extern "C"
         //     gtkrequisition.method<&GtkRequisition_::__construct>("__construct");
         //     gtkrequisition.property("width", 0);
         //     gtkrequisition.property("height", 0);
-            
+        
+
         // GtkEntryBuffer
         Php::Class<GtkEntryBuffer_> gtkentrybuffer("GtkEntryBuffer");
             gtkentrybuffer.method<&GtkEntryBuffer_::__construct>("__construct");
