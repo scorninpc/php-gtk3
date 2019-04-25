@@ -34,6 +34,62 @@ extern "C"
         // Initialize GTK
         gtk_init (0, NULL);
 
+        // Gdk
+        Php::Class<Gdk_> gdk("Gdk");
+            gdk.constant("SHIFT_MASK", GDK_SHIFT_MASK);
+            gdk.constant("LOCK_MASK", GDK_LOCK_MASK);
+            gdk.constant("CONTROL_MASK", GDK_CONTROL_MASK);
+            gdk.constant("MOD1_MASK", GDK_MOD1_MASK);
+            gdk.constant("MOD2_MASK", GDK_MOD2_MASK);
+            gdk.constant("MOD3_MASK", GDK_MOD3_MASK);
+            gdk.constant("MOD4_MASK", GDK_MOD4_MASK);
+            gdk.constant("MOD5_MASK", GDK_MOD5_MASK);
+            gdk.constant("BUTTON1_MASK", GDK_BUTTON1_MASK);
+            gdk.constant("BUTTON2_MASK", GDK_BUTTON2_MASK);
+            gdk.constant("BUTTON3_MASK", GDK_BUTTON3_MASK);
+            gdk.constant("BUTTON4_MASK", GDK_BUTTON4_MASK);
+            gdk.constant("BUTTON5_MASK", GDK_BUTTON5_MASK);
+            gdk.constant("MODIFIER_RESERVED_13_MASK", GDK_MODIFIER_RESERVED_13_MASK);
+            gdk.constant("MODIFIER_RESERVED_14_MASK", GDK_MODIFIER_RESERVED_14_MASK);
+            gdk.constant("MODIFIER_RESERVED_15_MASK", GDK_MODIFIER_RESERVED_15_MASK);
+            gdk.constant("MODIFIER_RESERVED_16_MASK", GDK_MODIFIER_RESERVED_16_MASK);
+            gdk.constant("MODIFIER_RESERVED_17_MASK", GDK_MODIFIER_RESERVED_17_MASK);
+            gdk.constant("MODIFIER_RESERVED_18_MASK", GDK_MODIFIER_RESERVED_18_MASK);
+            gdk.constant("MODIFIER_RESERVED_19_MASK", GDK_MODIFIER_RESERVED_19_MASK);
+            gdk.constant("MODIFIER_RESERVED_20_MASK", GDK_MODIFIER_RESERVED_20_MASK);
+            gdk.constant("MODIFIER_RESERVED_21_MASK", GDK_MODIFIER_RESERVED_21_MASK);
+            gdk.constant("MODIFIER_RESERVED_22_MASK", GDK_MODIFIER_RESERVED_22_MASK);
+            gdk.constant("MODIFIER_RESERVED_23_MASK", GDK_MODIFIER_RESERVED_23_MASK);
+            gdk.constant("MODIFIER_RESERVED_24_MASK", GDK_MODIFIER_RESERVED_24_MASK);
+            gdk.constant("MODIFIER_RESERVED_25_MASK", GDK_MODIFIER_RESERVED_25_MASK);
+            gdk.constant("SUPER_MASK", GDK_SUPER_MASK);
+            gdk.constant("HYPER_MASK", GDK_HYPER_MASK);
+            gdk.constant("META_MASK", GDK_META_MASK);
+            gdk.constant("MODIFIER_RESERVED_29_MASK", GDK_MODIFIER_RESERVED_29_MASK);
+            gdk.constant("RELEASE_MASK", GDK_RELEASE_MASK);
+            gdk.constant("MODIFIER_MASK", GDK_MODIFIER_MASK);
+            gdk.constant("WINDOW_TYPE_HINT_NORMAL", GDK_WINDOW_TYPE_HINT_NORMAL);
+            gdk.constant("WINDOW_TYPE_HINT_DIALOG", GDK_WINDOW_TYPE_HINT_DIALOG);
+            gdk.constant("WINDOW_TYPE_HINT_MENU", GDK_WINDOW_TYPE_HINT_MENU);
+            gdk.constant("WINDOW_TYPE_HINT_TOOLBAR", GDK_WINDOW_TYPE_HINT_TOOLBAR);
+            gdk.constant("WINDOW_TYPE_HINT_SPLASHSCREEN", GDK_WINDOW_TYPE_HINT_SPLASHSCREEN);
+            gdk.constant("WINDOW_TYPE_HINT_UTILITY", GDK_WINDOW_TYPE_HINT_UTILITY);
+            gdk.constant("WINDOW_TYPE_HINT_DOCK", GDK_WINDOW_TYPE_HINT_DOCK);
+            gdk.constant("WINDOW_TYPE_HINT_DESKTOP", GDK_WINDOW_TYPE_HINT_DESKTOP);
+            gdk.constant("WINDOW_TYPE_HINT_DROPDOWN_MENU", GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
+            gdk.constant("WINDOW_TYPE_HINT_POPUP_MENU", GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+            gdk.constant("WINDOW_TYPE_HINT_TOOLTIP", GDK_WINDOW_TYPE_HINT_TOOLTIP);
+            gdk.constant("WINDOW_TYPE_HINT_NOTIFICATION", GDK_WINDOW_TYPE_HINT_NOTIFICATION);
+            gdk.constant("WINDOW_TYPE_HINT_COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
+            gdk.constant("WINDOW_TYPE_HINT_DND", GDK_WINDOW_TYPE_HINT_DND);
+
+
+        // GdkEvent
+        Php::Class<GdkEvent_> gdkevent("GdkEvent");
+            // gdkevent.method<&GdkEvent_::__construct>("__construct");
+            // gdkevent.property("type", 0);
+
+
         // Gtk
         Php::Class<Gtk_> gtk("Gtk");
             gtk.method<&Gtk_::main>("main");
@@ -58,14 +114,6 @@ extern "C"
             gtk.constant("WIN_POS_MOUSE", GTK_WIN_POS_MOUSE);
             gtk.constant("WIN_POS_CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
             gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
-            
-            
-
-
-        // GdkEvent
-        Php::Class<GdkEvent_> gdkevent("GdkEvent");
-            // gdkevent.method<&GdkEvent_::__construct>("__construct");
-            // gdkevent.property("type", 0);
         
 
         // GtkWidget
@@ -176,8 +224,37 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_modal>("get_modal");
             gtkwindow.method<&GtkWindow_::set_position>("set_position");
             gtkwindow.method<&GtkWindow_::get_position>("get_position");
-            gtkwindow.constant("TOPLEVEL", GTK_WINDOW_TOPLEVEL);
-            gtkwindow.constant("POPUP", GTK_WINDOW_POPUP);
+            gtkwindow.method<&GtkWindow_::set_transient_for>("set_transient_for");
+            gtkwindow.method<&GtkWindow_::get_transient_for>("get_transient_for");
+            gtkwindow.method<&GtkWindow_::set_destroy_with_parent>("set_destroy_with_parent");
+            gtkwindow.method<&GtkWindow_::get_destroy_with_parent>("get_destroy_with_parent");
+            gtkwindow.method<&GtkWindow_::set_hide_titlebar_when_maximized>("set_hide_titlebar_when_maximized");
+            gtkwindow.method<&GtkWindow_::get_hide_titlebar_when_maximized>("get_hide_titlebar_when_maximized");
+            gtkwindow.method<&GtkWindow_::is_active>("is_active");
+            gtkwindow.method<&GtkWindow_::is_maximized>("is_maximized");
+            gtkwindow.method<&GtkWindow_::has_toplevel_focus>("has_toplevel_focus");
+            gtkwindow.method<&GtkWindow_::add_mnemonic>("add_mnemonic");
+            gtkwindow.method<&GtkWindow_::remove_mnemonic>("remove_mnemonic");
+            gtkwindow.method<&GtkWindow_::mnemonic_activate>("mnemonic_activate");
+            gtkwindow.method<&GtkWindow_::set_focus>("set_focus");
+            gtkwindow.method<&GtkWindow_::get_focus>("get_focus");
+            gtkwindow.method<&GtkWindow_::close>("close");
+            gtkwindow.method<&GtkWindow_::iconify>("iconify");
+            gtkwindow.method<&GtkWindow_::deiconify>("deiconify");
+            gtkwindow.method<&GtkWindow_::stick>("stick");
+            gtkwindow.method<&GtkWindow_::unstick>("unstick");
+            gtkwindow.method<&GtkWindow_::maximize>("maximize");
+            gtkwindow.method<&GtkWindow_::unmaximize>("unmaximize");
+            gtkwindow.method<&GtkWindow_::fullscreen>("fullscreen");
+            gtkwindow.method<&GtkWindow_::unfullscreen>("unfullscreen");
+            gtkwindow.method<&GtkWindow_::set_keep_above>("set_keep_above");
+            gtkwindow.method<&GtkWindow_::set_keep_below>("set_keep_below");
+            gtkwindow.method<&GtkWindow_::set_decorated>("set_decorated");
+            gtkwindow.method<&GtkWindow_::get_decorated>("get_decorated");
+            gtkwindow.method<&GtkWindow_::set_deletable>("set_deletable");
+            gtkwindow.method<&GtkWindow_::get_deletable>("get_deletable");
+            gtkwindow.method<&GtkWindow_::set_mnemonic_modifier>("set_mnemonic_modifier");
+            gtkwindow.method<&GtkWindow_::set_type_hint>("set_type_hint");
 
 
         // GtkButton
@@ -251,8 +328,10 @@ extern "C"
 
 
         // Add
-        extension.add(std::move(gtk));
+        extension.add(std::move(gdk));
         extension.add(std::move(gdkevent));
+
+        extension.add(std::move(gtk));
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkentry));
         extension.add(std::move(gtkcontainer));

@@ -163,3 +163,383 @@ Php::Value GtkWindow_::get_position()
 
     return arr;
 }
+
+/**
+ * Dialog windows should be set transient for the main application window they were spawned from
+ *
+ */
+void GtkWindow_::set_transient_for(Php::Parameters &parameters)
+{
+    // Get the window to set transient
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GtkWindow")) throw Php::Exception("parameter expect GtkWindow instance");
+    GtkWindow_ *passedWindow = (GtkWindow_ *)object.implementation();
+
+    gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(passedWindow->get_widget()));
+}
+
+/**
+ * Fetches the transient parent for this window
+ */
+Php::Value GtkWindow_::get_transient_for()
+{
+    GtkWindow *returnedWindow = gtk_window_get_transient_for(GTK_WINDOW(widget));
+
+    GtkWindow_ *returnWindow = new GtkWindow_();
+    returnWindow->set_widget(GTK_WIDGET(returnedWindow));
+
+    return Php::Object("GtkWindow", returnWindow);
+}
+
+/**
+ * If setting is TRUE, then destroying the transient parent of window will also destroy window itself
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_destroy_with_parent(Php::Parameters &parameters)
+{
+    gtk_window_set_destroy_with_parent(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Returns whether the window will be destroyed with its transient parent
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_destroy_with_parent()
+{
+    return gtk_window_get_destroy_with_parent(GTK_WINDOW(widget));
+}
+
+/**
+ * If setting is TRUE, then window will request that it’s titlebar should be hidden when maximized
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_hide_titlebar_when_maximized(Php::Parameters &parameters)
+{
+    gtk_window_set_hide_titlebar_when_maximized(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Returns whether the window has requested to have its titlebar hidden when maximized
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_hide_titlebar_when_maximized()
+{
+    return gtk_window_get_hide_titlebar_when_maximized(GTK_WINDOW(widget));
+}
+
+/**
+ * Returns whether the window is part of the current active toplevel.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::is_active()
+{
+    return gtk_window_is_active(GTK_WINDOW(widget));
+}
+
+/**
+ * Retrieves the current maximized state of window .
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::is_maximized()
+{
+    return gtk_window_is_maximized(GTK_WINDOW(widget));
+}
+
+/**
+ * Returns whether the input focus is within this GtkWindow.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::has_toplevel_focus()
+{
+    return gtk_window_has_toplevel_focus(GTK_WINDOW(widget));
+}
+
+/**
+ * Adds a mnemonic to this window.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::add_mnemonic(Php::Parameters &parameters)
+{
+    // Get keyval
+    int keyval = parameters[0];
+
+    // Convert object to PHP-GTK 
+    Php::Value object = parameters[1];
+    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    GtkWidget_ *passedWindow = (GtkWidget_ *)object.implementation();
+
+    gtk_window_add_mnemonic(GTK_WINDOW(widget), keyval, passedWindow->get_widget());
+}
+
+/**
+ * Removes a mnemonic to this window.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::remove_mnemonic(Php::Parameters &parameters)
+{
+    // Get keyval
+    int keyval = parameters[0];
+
+    // Convert object to PHP-GTK 
+    Php::Value object = parameters[1];
+    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    GtkWidget_ *passedWindow = (GtkWidget_ *)object.implementation();
+
+    gtk_window_remove_mnemonic(GTK_WINDOW(widget), keyval, passedWindow->get_widget());
+}
+
+/**
+ * Activates the targets associated with the mnemonic.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::mnemonic_activate(Php::Parameters &parameters)
+{
+    // Get keyval
+    int keyval = parameters[0];
+
+    // Cast GdkModifierType param
+    int a = parameters[1];
+    GdkModifierType passedCasted = (GdkModifierType)a;
+
+    return gtk_window_mnemonic_activate(GTK_WINDOW(widget), keyval, passedCasted);
+}
+
+/**
+ * Sets the mnemonic modifier for this window.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_mnemonic_modifier(Php::Parameters &parameters)
+{
+    // Cast GtkAlign param
+    int a = parameters[0];
+    GdkModifierType passedCasted = (GdkModifierType)a;
+
+    return gtk_window_set_mnemonic_modifier(GTK_WINDOW(widget), passedCasted);
+}
+
+/**
+ * If focus is not the current focus widget, and is focusable, sets it as the focus widget for the window
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_focus(Php::Parameters &parameters)
+{
+    // Convert object to PHP-GTK 
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
+
+    gtk_window_set_focus(GTK_WINDOW(widget), passedWidget->get_widget());
+}
+
+/**
+ * Retrieves the current focused widget within the window
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_focus()
+{
+    GtkWidget *returnedWidget = gtk_window_get_focus(GTK_WINDOW(widget));
+
+    GtkWidget_ *returnWidget = new GtkWidget_();
+    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+
+    return Php::Object("GtkWidget", returnWidget);
+}
+
+/**
+ * If focus is not the current focus widget, and is focusable, sets it as the focus widget for the window
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_default(Php::Parameters &parameters)
+{
+    // Convert object to PHP-GTK 
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
+
+    gtk_window_set_default(GTK_WINDOW(widget), passedWidget->get_widget());
+}
+
+/**
+ * Retrieves the current focused widget within the window
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_default_widget()
+{
+    GtkWidget *returnedWidget = gtk_window_get_default_widget(GTK_WINDOW(widget));
+
+    GtkWidget_ *returnWidget = new GtkWidget_();
+    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+
+    return Php::Object("GtkWidget", returnWidget);
+}
+
+/**
+ * Requests that the window is closed, similar to what happens when a window manager close button is clicked.
+ */
+void GtkWindow_::close()
+{
+    gtk_window_close(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to iconify (i.e. minimize) the specified window
+ */
+void GtkWindow_::iconify()
+{
+    gtk_window_iconify(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to deiconify (i.e. unminimize) the specified window
+ */
+void GtkWindow_::deiconify()
+{
+    gtk_window_deiconify(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to stick window , which means that it will appear on all user desktops
+ */
+void GtkWindow_::stick()
+{
+    gtk_window_stick(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to unstick window , which means that it will appear on only one of the user’s desktops.
+ */
+void GtkWindow_::unstick()
+{
+    gtk_window_unstick(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to maximize window , so that it becomes full-screen.
+ */
+void GtkWindow_::maximize()
+{
+    gtk_window_maximize(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to unmaximize window
+ */
+void GtkWindow_::unmaximize()
+{
+    gtk_window_unmaximize(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to place window in the fullscreen state.
+ */
+void GtkWindow_::fullscreen()
+{
+    gtk_window_fullscreen(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to toggle off the fullscreen state for window.
+ */
+void GtkWindow_::unfullscreen()
+{
+    gtk_window_unfullscreen(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks to keep window above, so that it stays on top.
+ */
+void GtkWindow_::set_keep_above(Php::Parameters &parameters)
+{
+    // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+
+    gtk_window_set_keep_above(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Asks to keep window below, so that it stays in bottom.
+ */
+void GtkWindow_::set_keep_below(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+
+    gtk_window_set_keep_below(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * By default, windows are decorated with a title bar, resize controls, etc. 
+ */
+void GtkWindow_::set_decorated(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+
+    gtk_window_set_decorated(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Returns whether the window has been set to have decorations such as a title bar via gtk_window_set_decorated().
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_decorated()
+{
+    return gtk_window_get_decorated(GTK_WINDOW(widget));
+}
+
+/**
+ * By default, windows have a close button in the window frame. 
+ */
+void GtkWindow_::set_deletable(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_deletable(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Returns whether the window has been set to have a close button via gtk_window_set_deletable().
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_deletable()
+{
+    return gtk_window_get_deletable(GTK_WINDOW(widget));
+}
+
+/**
+ * By setting the type hint for the window, you allow the window manager to decorate and handle the window in a way which is suitable to the function of the window in your application.
+ */
+void GtkWindow_::set_type_hint(Php::Parameters &parameters)
+{
+    // Cast GtkAlign param
+    int a = parameters[0];
+    GdkWindowTypeHint passedCasted = (GdkWindowTypeHint)a;
+
+    return gtk_window_set_type_hint(GTK_WINDOW(widget), passedCasted);
+}
