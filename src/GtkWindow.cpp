@@ -543,3 +543,135 @@ void GtkWindow_::set_type_hint(Php::Parameters &parameters)
 
     return gtk_window_set_type_hint(GTK_WINDOW(widget), passedCasted);
 }
+
+/**
+ * Gets the type hint for this window. See gtk_window_set_type_hint().
+ */
+Php::Value GtkWindow_::get_type_hint()
+{
+    // 
+    return gtk_window_get_type_hint(GTK_WINDOW(widget));
+}
+
+/**
+ * Windows may set a hint asking the desktop environment not to display the window in the task bar. This function sets this hint.
+ */
+void GtkWindow_::set_skip_taskbar_hint(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_skip_taskbar_hint(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_window_set_skip_taskbar_hint()
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_skip_taskbar_hint()
+{
+    return gtk_window_get_skip_taskbar_hint(GTK_WINDOW(widget));
+}
+
+/**
+ * Windows may set a hint asking the desktop environment not to display the window in the pager. 
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_skip_pager_hint(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_skip_pager_hint(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_window_set_skip_pager_hint()
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_skip_pager_hint()
+{
+    return gtk_window_get_skip_pager_hint(GTK_WINDOW(widget));
+}
+
+/**
+ * Windows may set a hint asking the desktop environment to draw the users attention to the window. 
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_urgency_hint(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_urgency_hint(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_window_set_urgency_hint()
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_urgency_hint()
+{
+    return gtk_window_get_urgency_hint(GTK_WINDOW(widget));
+}
+
+/**
+ * Windows may set a hint asking the desktop environment not to receive the input focus. 
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_accept_focus(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_accept_focus(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_window_set_accept_focus()
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_accept_focus()
+{
+    return gtk_window_get_accept_focus(GTK_WINDOW(widget));
+}
+
+/**
+ * Windows may set a hint asking the desktop environment not to receive the input focus when the window is mapped. 
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
+{
+     // Verify parameter
+    if(parameters.size() == 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_focus_on_map(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the value set by gtk_window_set_focus_on_map()
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_focus_on_map()
+{
+    return gtk_window_get_focus_on_map(GTK_WINDOW(widget));
+}

@@ -255,6 +255,15 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_deletable>("get_deletable");
             gtkwindow.method<&GtkWindow_::set_mnemonic_modifier>("set_mnemonic_modifier");
             gtkwindow.method<&GtkWindow_::set_type_hint>("set_type_hint");
+            gtkwindow.method<&GtkWindow_::get_type_hint>("get_type_hint");
+            gtkwindow.method<&GtkWindow_::set_skip_taskbar_hint>("set_skip_taskbar_hint");
+            gtkwindow.method<&GtkWindow_::get_skip_taskbar_hint>("get_skip_taskbar_hint");
+            gtkwindow.method<&GtkWindow_::set_urgency_hint>("set_urgency_hint");
+            gtkwindow.method<&GtkWindow_::get_urgency_hint>("get_urgency_hint");
+            gtkwindow.method<&GtkWindow_::set_accept_focus>("set_accept_focus");
+            gtkwindow.method<&GtkWindow_::get_accept_focus>("get_accept_focus");
+            gtkwindow.method<&GtkWindow_::set_focus_on_map>("set_focus_on_map");
+            gtkwindow.method<&GtkWindow_::get_focus_on_map>("get_focus_on_map");
 
 
         // GtkButton

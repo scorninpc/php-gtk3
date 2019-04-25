@@ -344,6 +344,83 @@
              * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-type-hint
              */
             void set_type_hint(Php::Parameters &parameters);
+
+            /**
+             * Gets the type hint for this window. See gtk_window_set_type_hint().
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-type-hint
+             */
+            Php::Value get_type_hint();
+
+            /**
+             * Windows may set a hint asking the desktop environment not to display the window in the task bar. This function sets this hint.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-skip-taskbar-hint
+             */
+            void set_skip_taskbar_hint(Php::Parameters &parameters);
+
+            /**
+             * Gets the value set by gtk_window_set_skip_taskbar_hint()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-skip-taskbar-hint
+             */
+            Php::Value get_skip_taskbar_hint();
+
+            /**
+             * Windows may set a hint asking the desktop environment not to display the window in the pager. 
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-skip-pager-hint
+             */
+            void set_skip_pager_hint(Php::Parameters &parameters);
+
+            /**
+             * Gets the value set by gtk_window_set_skip_pager_hint()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-skip-pager-hint
+             */
+            Php::Value get_skip_pager_hint();
+
+            /**
+             * Windows may set a hint asking the desktop environment to draw the users attention to the window. 
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-urgency-hint
+             */
+            void set_urgency_hint(Php::Parameters &parameters);
+
+            /**
+             * Gets the value set by gtk_window_set_urgency_hint()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-urgency-hint
+             */
+            Php::Value get_urgency_hint();
+
+            /**
+             * Windows may set a hint asking the desktop environment not to receive the input focus. 
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-accept-focus
+             */
+            void set_accept_focus(Php::Parameters &parameters);
+
+            /**
+             * Gets the value set by gtk_window_set_accept_focus()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-accept-focus
+             */
+            Php::Value get_accept_focus();
+
+            /**
+             * Windows may set a hint asking the desktop environment not to receive the input focus when the window is mapped. 
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-focus-on-map
+             */
+            void set_focus_on_map(Php::Parameters &parameters);
+
+            /**
+             * Gets the value set by gtk_window_set_focus_on_map()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-focus-on-map
+             */
+            Php::Value get_focus_on_map();
     };
 
 #endif
