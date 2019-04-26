@@ -89,6 +89,11 @@ extern "C"
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
 
+        // GdkPixbuf
+        Php::Class<GdkPixbuf_> gdkpixbuf("GdkPixbuf");
+            gdkpixbuf.method<&GdkPixbuf_::__construct>("__construct");
+            gdkpixbuf.method<&GdkPixbuf_::new_from_file>("new_from_file");
+
 
         // Gtk
         Php::Class<Gtk_> gtk("Gtk");
@@ -264,6 +269,9 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_accept_focus>("get_accept_focus");
             gtkwindow.method<&GtkWindow_::set_focus_on_map>("set_focus_on_map");
             gtkwindow.method<&GtkWindow_::get_focus_on_map>("get_focus_on_map");
+            gtkwindow.method<&GtkWindow_::set_icon>("set_icon");
+            gtkwindow.method<&GtkWindow_::get_icon>("get_icon");
+            gtkwindow.method<&GtkWindow_::set_icon_from_file>("set_icon_from_file");
 
 
         // GtkButton
@@ -339,6 +347,7 @@ extern "C"
         // Add
         extension.add(std::move(gdk));
         extension.add(std::move(gdkevent));
+        extension.add(std::move(gdkpixbuf));
 
         extension.add(std::move(gtk));
         extension.add(std::move(gtkwidget));

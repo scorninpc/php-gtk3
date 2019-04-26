@@ -6,6 +6,7 @@
     #include <iostream>
     #include <gtk/gtk.h>
 
+    #include "GdkPixbuf.h"
     #include "GtkBin.h"
 
     /**
@@ -421,6 +422,27 @@
              * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-focus-on-map
              */
             Php::Value get_focus_on_map();
+
+            /**
+             * Sets up the icon representing a GtkWindow.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-icon
+             */
+            void set_icon(Php::Parameters &parameters);
+
+            /**
+             * Gets up the icon representing a GtkWindow.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-icon
+             */
+            Php::Value get_icon();
+
+            /*
+             * Sets the icon for window from file
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-icon-from-file
+             */
+            Php::Value set_icon_from_file(Php::Parameters &parameters);
     };
 
 #endif

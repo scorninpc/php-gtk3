@@ -658,7 +658,7 @@ Php::Value GtkWindow_::get_accept_focus()
  */
 void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
 {
-     // Verify parameter
+    // Verify parameter
     if(parameters.size() == 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
@@ -674,4 +674,44 @@ void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
 Php::Value GtkWindow_::get_focus_on_map()
 {
     return gtk_window_get_focus_on_map(GTK_WINDOW(widget));
+}
+
+/**
+ * Sets up the icon representing a GtkWindow.
+ */
+void GtkWindow_::set_icon(Php::Parameters &parameters)
+{
+    // Get the window to set transient
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GdkPixbuf")) throw Php::Exception("parameter expect GdkPixbuf instance");
+    GdkPixbuf_ *passedPixbuf = (GdkPixbuf_ *)object.implementation();
+
+    gtk_window_set_icon(GTK_WINDOW(widget), passedPixbuf->get_pixbuf());
+}
+
+/**
+ * Gets up the icon representing a GtkWindow.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_icon()
+{
+    GdkPixbuf *returnedPixbuf = gtk_window_get_icon(GTK_WINDOW(widget));
+
+    GdkPixbuf_ *returnPixbuf = new GdkPixbuf_();
+    returnPixbuf->set_pixbuf(returnedPixbuf);
+
+    return Php::Object("GdkPixbuf", returnPixbuf);
+}
+
+/*
+ * Sets the icon for window from file
+ */
+Php::Value GtkWindow_::set_icon_from_file(Php::Parameters &parameters)
+{
+   
+
+    std::string filename = parameters[0];
+
+    return gtk_window_set_icon_from_file(GTK_WINDOW(widget), filename.c_str(), NULL);
 }
