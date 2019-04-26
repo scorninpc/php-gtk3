@@ -709,8 +709,6 @@ Php::Value GtkWindow_::get_icon()
  */
 Php::Value GtkWindow_::set_icon_from_file(Php::Parameters &parameters)
 {
-   
-
     std::string filename = parameters[0];
 
     return gtk_window_set_icon_from_file(GTK_WINDOW(widget), filename.c_str(), NULL);

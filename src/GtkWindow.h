@@ -438,7 +438,7 @@
             Php::Value get_icon();
 
             /*
-             * Sets the icon for window from file
+             * Sets the icon for window from file. Does't work in some Window Manager. Use set_default_icon for application icon
              *
              * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-icon-from-file
              */

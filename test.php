@@ -52,7 +52,9 @@ $win->set_position(GTK::WIN_POS_CENTER);
 $win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
 
 // Icon
-$win->set_icon_from_file("/media/backup/Bruno/php-gtk3-tests/logo.png");
+// $win->set_icon_from_file("./logo.png");
+$pixbuf = GdkPixbuf::new_from_file("./logo.png");
+$win->set_icon($pixbuf);
 
 
 // Connects
