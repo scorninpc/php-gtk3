@@ -8,6 +8,9 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 function GtkWindowButton1Clicked($widget, $event)
 {
 	global $win;
+
+	// Move
+	$win->move(10, 10);
 }
 
 function GtkWindowButton2Clicked($widget, $event)
@@ -51,10 +54,17 @@ $win->set_title("PHP-GTK3 @ 7.3");
 $win->set_position(GTK::WIN_POS_CENTER);
 $win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
 
-// Icon
+// Icon from file
 // $win->set_icon_from_file("./logo.png");
-$pixbuf = GdkPixbuf::new_from_file("./logo.png");
-$win->set_icon($pixbuf);
+
+// Icon from pixbuf
+// $pixbuf = GdkPixbuf::new_from_file("./logo.png");
+// $win->set_icon($pixbuf);
+
+// From theme name
+$win->set_icon_name("application-exit");
+
+$win->set_interactive_debugging(TRUE);
 
 
 // Connects

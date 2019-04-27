@@ -443,6 +443,133 @@
              * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-icon-from-file
              */
             Php::Value set_icon_from_file(Php::Parameters &parameters);
+
+            /**
+             * Sets the icon for the window from a named themed icon
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-icon-name
+             */
+            void set_icon_name(Php::Parameters &parameters);
+
+            /**
+             * Returns the name of the themed icon for the window, see gtk_window_set_icon_name().
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-icon-name
+             */
+            Php::Value get_icon_name();
+
+            /**
+             * Presents a window to the user
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-present
+             */
+            void present();
+
+            /**
+             * Presents a window to the user
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-present-with-time
+             */
+            void present_with_time(Php::Parameters &parameters);
+
+            /**
+             * Gets the type of the window. See GtkWindowType.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-window-type
+             */
+            Php::Value get_window_type();
+
+            /**
+             * Asks the window manager to move window to the given position
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-move
+             */
+            void move(Php::Parameters &parameters);
+
+            /**
+             * Resizes the window as if the user had done so, obeying geometry constraints.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-resize
+             */
+            void resize(Php::Parameters &parameters);
+
+            /**
+             * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_icon() called on them from a pixbuf.
+             */
+            void set_default_icon(Php::Parameters &parameters);
+
+            /*
+             * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a file on disk
+             */
+            Php::Value set_default_icon_from_file(Php::Parameters &parameters);
+
+            /**
+             * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a named themed icon, see gtk_window_set_default_icon_name().
+             */
+            void set_default_icon_name(Php::Parameters &parameters);
+
+            /**
+             * By default, after showing the first GtkWindow, GTK+ calls gdk_notify_startup_complete()
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-auto-startup-notification
+             */
+            void set_auto_startup_notification(Php::Parameters &parameters);
+
+            /**
+             * Sets the “mnemonics-visible” property.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-mnemonics-visible
+             */
+            void set_mnemonics_visible(Php::Parameters &parameters);
+
+            /**
+             * Gets the “mnemonics-visible” property.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-mnemonics-visible
+             */
+            Php::Value get_mnemonics_visible();
+
+            /**
+             * Sets the “focus-visible” property.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-focus-visible
+             */
+            void set_focus_visible(Php::Parameters &parameters);
+
+            /**
+             * Gets the “focus-visible” property.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-focus-visible
+             */
+            Php::Value get_focus_visible();
+
+            /**
+             * Tells GTK+ whether to drop its extra reference to the window when gtk_widget_destroy() is called.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-has-user-ref-count
+             */
+            void set_has_user_ref_count(Php::Parameters &parameters);
+
+            /**
+             * Sets a custom titlebar for window.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-titlebar
+             */
+            void set_titlebar(Php::Parameters &parameters);
+
+            /**
+             * Returns the custom titlebar that has been set with gtk_window_set_titlebar().
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-titlebar
+             */
+            Php::Value get_titlebar();
+
+            /**
+             * Opens or closes the interactive debugger, which offers access to the widget hierarchy of the application and to useful debugging tools.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-interactive-debugging
+             */
+            void set_interactive_debugging(Php::Parameters &parameters);
     };
 
 #endif

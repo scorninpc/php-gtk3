@@ -272,6 +272,24 @@ extern "C"
             gtkwindow.method<&GtkWindow_::set_icon>("set_icon");
             gtkwindow.method<&GtkWindow_::get_icon>("get_icon");
             gtkwindow.method<&GtkWindow_::set_icon_from_file>("set_icon_from_file");
+            gtkwindow.method<&GtkWindow_::set_icon_name>("set_icon_name");
+            gtkwindow.method<&GtkWindow_::get_icon_name>("get_icon_name");
+            gtkwindow.method<&GtkWindow_::present>("present");
+            gtkwindow.method<&GtkWindow_::present_with_time>("present_with_time");
+            gtkwindow.method<&GtkWindow_::get_window_type>("get_window_type");
+            gtkwindow.method<&GtkWindow_::move>("move");
+            gtkwindow.method<&GtkWindow_::resize>("resize");
+            gtkwindow.method<&GtkWindow_::set_default_icon>("set_default_icon");
+            gtkwindow.method<&GtkWindow_::set_default_icon_from_file>("set_default_icon_from_file");
+            gtkwindow.method<&GtkWindow_::set_default_icon_name>("set_default_icon_name");
+            gtkwindow.method<&GtkWindow_::set_auto_startup_notification>("set_auto_startup_notification");
+            gtkwindow.method<&GtkWindow_::set_mnemonics_visible>("set_mnemonics_visible");
+            gtkwindow.method<&GtkWindow_::get_mnemonics_visible>("get_mnemonics_visible");
+            gtkwindow.method<&GtkWindow_::set_focus_visible>("set_focus_visible");
+            gtkwindow.method<&GtkWindow_::get_focus_visible>("get_focus_visible");
+            gtkwindow.method<&GtkWindow_::set_titlebar>("set_titlebar");
+            gtkwindow.method<&GtkWindow_::get_titlebar>("get_titlebar");
+            gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
 
 
         // GtkButton

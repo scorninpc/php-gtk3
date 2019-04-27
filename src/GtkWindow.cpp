@@ -659,7 +659,7 @@ Php::Value GtkWindow_::get_accept_focus()
 void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
 {
     // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
@@ -712,4 +712,220 @@ Php::Value GtkWindow_::set_icon_from_file(Php::Parameters &parameters)
     std::string filename = parameters[0];
 
     return gtk_window_set_icon_from_file(GTK_WINDOW(widget), filename.c_str(), NULL);
+}
+
+/**
+ * Sets the icon for the window from a named themed icon
+ */
+void GtkWindow_::set_icon_name(Php::Parameters &parameters)
+{
+    std::string filename = parameters[0];
+
+    return gtk_window_set_icon_name(GTK_WINDOW(widget), filename.c_str());
+}
+
+/**
+ * Returns the name of the themed icon for the window, see gtk_window_set_icon_name().
+ */
+Php::Value GtkWindow_::get_icon_name()
+{
+    return gtk_window_get_icon_name(GTK_WINDOW(widget));
+}
+
+/**
+ * Presents a window to the user
+ */
+void GtkWindow_::present()
+{
+    gtk_window_present(GTK_WINDOW(widget));
+}
+
+/**
+ * Presents a window to the user
+ */
+void GtkWindow_::present_with_time(Php::Parameters &parameters)
+{
+    gint32 a = parameters[0];
+    gtk_window_present_with_time(GTK_WINDOW(widget), a);
+}
+
+/**
+ * Gets the type of the window. See GtkWindowType.
+ */
+Php::Value GtkWindow_::get_window_type()
+{
+    return gtk_window_get_window_type(GTK_WINDOW(widget));
+}
+
+/**
+ * Asks the window manager to move window to the given position
+ */
+void GtkWindow_::move(Php::Parameters &parameters)
+{
+    // Verify parameter
+    if(parameters.size() != 2) {
+        throw Php::Exception("parameter 1 and 2 must be a integer of position");
+    }
+    
+    gtk_window_move(GTK_WINDOW(widget), parameters[0], parameters[1]);
+}
+
+/**
+ * Resizes the window as if the user had done so, obeying geometry constraints.
+ */
+void GtkWindow_::resize(Php::Parameters &parameters)
+{
+    // Verify parameter
+    if(parameters.size() != 2) {
+        throw Php::Exception("parameter 1 and 2 must be a integer of size");
+    }
+    
+    gtk_window_resize(GTK_WINDOW(widget), parameters[0], parameters[1]);
+}
+
+/**
+ * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_icon() called on them from a pixbuf.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_default_icon(Php::Parameters &parameters)
+{
+    // Get the window to set transient
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GdkPixbuf")) throw Php::Exception("parameter expect GdkPixbuf instance");
+    GdkPixbuf_ *passedPixbuf = (GdkPixbuf_ *)object.implementation();
+
+    gtk_window_set_default_icon(passedPixbuf->get_pixbuf());
+}
+
+/*
+ * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a file on disk
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::set_default_icon_from_file(Php::Parameters &parameters)
+{
+    std::string filename = parameters[0];
+
+    return gtk_window_set_default_icon_from_file(filename.c_str(), NULL);
+}
+
+/**
+ * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a named themed icon, see gtk_window_set_default_icon_name().
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_default_icon_name(Php::Parameters &parameters)
+{
+    std::string filename = parameters[0];
+
+    return gtk_window_set_default_icon_name(filename.c_str());
+}
+
+/**
+ * By default, after showing the first GtkWindow, GTK+ calls gdk_notify_startup_complete()
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_auto_startup_notification(Php::Parameters &parameters)
+{
+    gtk_window_set_auto_startup_notification(parameters[0]);
+}
+
+/**
+ * Sets the “mnemonics-visible” property.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_mnemonics_visible(Php::Parameters &parameters)
+{
+    // Verify parameter
+    if(parameters.size() != 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_mnemonics_visible(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the “mnemonics-visible” property.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_mnemonics_visible()
+{
+    return gtk_window_get_mnemonics_visible(GTK_WINDOW(widget));
+}
+
+/**
+ * Sets the “focus-visible” property.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_focus_visible(Php::Parameters &parameters)
+{
+    // Verify parameter
+    if(parameters.size() != 1) {
+        throw Php::Exception("parameter 1 must be a boolean");
+    }
+    
+    gtk_window_set_focus_visible(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Gets the “focus-visible” property.
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_focus_visible()
+{
+    return gtk_window_get_focus_visible(GTK_WINDOW(widget));
+}
+
+/**
+ * Tells GTK+ whether to drop its extra reference to the window when gtk_widget_destroy() is called.
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_has_user_ref_count(Php::Parameters &parameters)
+{
+    gtk_window_set_has_user_ref_count(GTK_WINDOW(widget), parameters[0]);
+}
+
+/**
+ * Sets a custom titlebar for window .
+ *
+ * @todo not tested
+ */
+void GtkWindow_::set_titlebar(Php::Parameters &parameters)
+{
+    // Get the widget
+    Php::Value object = parameters[0];
+    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
+
+    gtk_window_set_titlebar(GTK_WINDOW(widget), passedWidget->get_widget());
+}
+
+/**
+ * Returns the custom titlebar that has been set with gtk_window_set_titlebar().
+ *
+ * @todo not tested
+ */
+Php::Value GtkWindow_::get_titlebar()
+{
+    GtkWidget *returnedWidget = gtk_window_get_titlebar(GTK_WINDOW(widget));
+
+    GtkWidget_ *returnWidget = new GtkWidget_();
+    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+
+    return Php::Object("GtkWidget", returnWidget);
+}
+
+/**
+ * Opens or closes the interactive debugger, which offers access to the widget hierarchy of the application and to useful debugging tools.
+ */
+void GtkWindow_::set_interactive_debugging(Php::Parameters &parameters)
+{
+    gtk_window_set_interactive_debugging(parameters[0]);
 }
