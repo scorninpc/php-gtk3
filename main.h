@@ -5,6 +5,8 @@
 	#include <iostream>
 	#include <gtk/gtk.h>
 
+	#include "src/GObject.h"
+
 	#include "src/Gdk.h"
 	#include "src/GdkEvent.h"
 	#include "src/GdkPixbuf.h"
@@ -20,6 +22,8 @@
 	#include "src/GtkBin.h"
 	#include "src/GtkWindow.h"
 	#include "src/GtkButton.h"
+
+	#include "src/GtkListStore.h"
 
 	#include "src/GtkEntryBuffer.h"
 

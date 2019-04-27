@@ -34,6 +34,10 @@ extern "C"
         // Initialize GTK
         gtk_init (0, NULL);
 
+        // GObject
+        Php::Class<GObject_> gobject("GObject");
+            gobject.constant("SHIFT_MASK", GDK_SHIFT_MASK);
+
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
             gdk.constant("SHIFT_MASK", GDK_SHIFT_MASK);
@@ -363,6 +367,8 @@ extern "C"
 
 
         // Add
+        extension.add(std::move(gobject));
+        
         extension.add(std::move(gdk));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkpixbuf));
