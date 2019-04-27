@@ -34,6 +34,13 @@ Depois disso é só começar a testar e começar a ajudar no desenvolvimento do 
 :$ php -dextension=./php-gtk3.so test.php
 ```
 
+Some images of progress
+==============
+![GTK interactive debugger](https://i.imgur.com/P50OpKF.jpg)
+![GTK interactive debugger](https://i.imgur.com/NZkie9R.jpg)
+![Widgets](https://i.imgur.com/UpBIYQB.jpg)
+![Tooltips](https://i.imgur.com/cGECrWu.jpg)
+
 
 Why PHP-CPP
 ==============
