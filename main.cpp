@@ -36,7 +36,30 @@ extern "C"
 
         // GObject
         Php::Class<GObject_> gobject("GObject");
-            gobject.constant("SHIFT_MASK", GDK_SHIFT_MASK);
+            gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
+            gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
+            gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
+            gobject.constant("TYPE_CHAR", (int)G_TYPE_CHAR);
+            gobject.constant("TYPE_UCHAR", (int)G_TYPE_UCHAR);
+            gobject.constant("TYPE_BOOLEAN", (int)G_TYPE_BOOLEAN);
+            gobject.constant("TYPE_INT", (int)G_TYPE_INT);
+            gobject.constant("TYPE_UINT", (int)G_TYPE_UINT);
+            gobject.constant("TYPE_LONG", (int)G_TYPE_LONG);
+            gobject.constant("TYPE_ULONG", (int)G_TYPE_ULONG);
+            gobject.constant("TYPE_INT64", (int)G_TYPE_INT64);
+            gobject.constant("TYPE_UINT64", (int)G_TYPE_UINT64);
+            gobject.constant("TYPE_ENUM", (int)G_TYPE_ENUM);
+            gobject.constant("TYPE_FLAGS", (int)G_TYPE_FLAGS);
+            gobject.constant("TYPE_FLOAT", (int)G_TYPE_FLOAT);
+            gobject.constant("TYPE_DOUBLE", (int)G_TYPE_DOUBLE);
+            gobject.constant("TYPE_STRING", (int)G_TYPE_STRING);
+            gobject.constant("TYPE_POINTER", (int)G_TYPE_POINTER);
+            gobject.constant("TYPE_BOXED", (int)G_TYPE_BOXED);
+            gobject.constant("TYPE_PARAM", (int)G_TYPE_PARAM);
+            gobject.constant("TYPE_OBJECT", (int)G_TYPE_OBJECT);
+            gobject.constant("TYPE_GTYPE", (int)G_TYPE_GTYPE);
+            gobject.constant("TYPE_VARIANT", (int)G_TYPE_VARIANT);
+            gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
 
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
@@ -86,6 +109,7 @@ extern "C"
             gdk.constant("WINDOW_TYPE_HINT_NOTIFICATION", GDK_WINDOW_TYPE_HINT_NOTIFICATION);
             gdk.constant("WINDOW_TYPE_HINT_COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
             gdk.constant("WINDOW_TYPE_HINT_DND", GDK_WINDOW_TYPE_HINT_DND);
+            gdk.constant("TYPE_PIXBUF",(int) GDK_TYPE_PIXBUF);
 
 
         // GdkEvent
@@ -363,12 +387,52 @@ extern "C"
             gtkentry.method<&GtkEntry_::get_progress_fraction>("get_progress_fraction");
             gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
             gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
-            gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
+            // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
 
+
+        // GtkTreeView
+        Php::Class<GtkTreeView_> gtktreeview("GtkTreeView");
+            gtktreeview.extends(gtkcontainer);
+            gtktreeview.method<&GtkTreeView_::__construct>("__construct");
+            gtktreeview.method<&GtkTreeView_::append_column>("append_column");
+            gtktreeview.method<&GtkTreeView_::set_model>("set_model");
+
+
+        // GtkTreeViewColumn
+        Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::__construct>("__construct");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_title>("set_title");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_title>("get_title");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::pack_start>("pack_start");
+
+        // GtkCellRenderer
+        Php::Class<GtkCellRenderer_> gtkcellrenderer("GtkCellRenderer");
+            gtkcellrenderer.method<&GtkCellRenderer_::__construct>("__construct");
+
+
+        // GtkCellRendererText
+        Php::Class<GtkCellRendererText_> gtkcellrenderertext("GtkCellRendererText");
+            gtkcellrenderertext.extends(gtkcellrenderer);
+            gtkcellrenderertext.method<&GtkCellRendererText_::__construct>("__construct");
+
+
+        Php::Class<GtkListStore_> gtkliststore("GtkListStore");
+            gtkliststore.method<&GtkListStore_::__construct>("__construct");
+            gtkliststore.method<&GtkListStore_::set_value>("set_value");
+            gtkliststore.method<&GtkListStore_::append>("append");
+
+
+
+        Php::Class<GtkTreeModelFlags_> gtktreemodelflags("GtkTreeModelFlags");
+            gtktreemodelflags.constant("TREE_MODEL_ITERS_PERSIST", (int)GTK_TREE_MODEL_ITERS_PERSIST);
+            gtktreemodelflags.constant("TREE_MODEL_LIST_ONLY", (int)GTK_TREE_MODEL_LIST_ONLY);
+
+
+        Php::Class<GtkTreeIter_> gtktreeiter("GtkTreeIter");
 
         // Add
         extension.add(std::move(gobject));
-        
+
         extension.add(std::move(gdk));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkpixbuf));
@@ -384,6 +448,15 @@ extern "C"
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtkentrybuffer));
+
+        extension.add(std::move(gtktreeview));
+        extension.add(std::move(gtktreeviewcolumn));
+        extension.add(std::move(gtkliststore));
+        extension.add(std::move(gtktreemodelflags));
+        extension.add(std::move(gtktreeiter));
+
+        extension.add(std::move(gtkcellrenderer));
+        extension.add(std::move(gtkcellrenderertext));
 
 
         // return the extension

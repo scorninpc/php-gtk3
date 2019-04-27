@@ -35,8 +35,6 @@ void GtkWindow_::set_title(Php::Parameters &parameters)
 
 /**
  * Retrieves the title of the window
- *
- * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-title
  */
 Php::Value GtkWindow_::get_title()
 {

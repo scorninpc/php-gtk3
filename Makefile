@@ -109,7 +109,7 @@ MKDIR               =   mkdir -p
 #   file, with the .cpp extension being replaced by .o.
 #
 
-SOURCES             =   $(wildcard *.cpp) $(wildcard src/*.cpp)
+SOURCES             =   $(wildcard src/*.cpp *.cpp)
 OBJECTS             =   $(SOURCES:%.cpp=%.o)
 
 #

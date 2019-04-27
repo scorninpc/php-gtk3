@@ -23,7 +23,16 @@
 	#include "src/GtkWindow.h"
 	#include "src/GtkButton.h"
 
+	#include "src/GtkTreeView.h"
+	#include "src/GtkTreeViewColumn.h"
+	
+	#include "src/GtkCellRenderer.h"
+	#include "src/GtkCellRendererText.h"
+
+	#include "src/GtkTreeModel.h"
 	#include "src/GtkListStore.h"
+	#include "src/GtkTreeModelFlags.h"
+	#include "src/GtkTreeIter.h"
 
 	#include "src/GtkEntryBuffer.h"
 
