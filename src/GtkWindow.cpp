@@ -20,7 +20,7 @@ void GtkWindow_::__construct(Php::Parameters &parameters)
     }
 
     // Create the box
-    widget = gtk_window_new((GtkWindowType)int_window_type);
+    instance = (gpointer *)gtk_window_new((GtkWindowType)int_window_type);
 }
 
 /**
@@ -30,7 +30,7 @@ void GtkWindow_::set_title(Php::Parameters &parameters)
 {
     std::string title = parameters[0];
 
-    gtk_window_set_title(GTK_WINDOW(widget), title.c_str());
+    gtk_window_set_title(GTK_WINDOW(instance), title.c_str());
 }
 
 /**
@@ -39,7 +39,7 @@ void GtkWindow_::set_title(Php::Parameters &parameters)
 Php::Value GtkWindow_::get_title()
 {
     // 
-    return gtk_window_get_title(GTK_WINDOW(widget));
+    return gtk_window_get_title(GTK_WINDOW(instance));
 }
 
 /**
@@ -52,7 +52,7 @@ void GtkWindow_::set_default_size(Php::Parameters &parameters)
     int height = parameters[1];
 
     // Set default size
-    gtk_window_set_default_size(GTK_WINDOW(widget), width, height);
+    gtk_window_set_default_size(GTK_WINDOW(instance), width, height);
 }
 
 /**
@@ -65,7 +65,7 @@ Php::Value GtkWindow_::get_default_size()
     int height = -1;
 
     // Set default size
-    gtk_window_get_default_size(GTK_WINDOW(widget), &width, &height);
+    gtk_window_get_default_size(GTK_WINDOW(instance), &width, &height);
 
     // Cria o retorno
     Php::Value arr;
@@ -81,7 +81,7 @@ Php::Value GtkWindow_::get_default_size()
 void GtkWindow_::set_resizable(Php::Parameters &parameters)
 {
     //
-    gtk_window_set_resizable(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_resizable(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -90,7 +90,7 @@ void GtkWindow_::set_resizable(Php::Parameters &parameters)
 Php::Value GtkWindow_::get_resizable()
 {
     // 
-    return gtk_window_get_resizable(GTK_WINDOW(widget));
+    return gtk_window_get_resizable(GTK_WINDOW(instance));
 }
 
 /**
@@ -99,7 +99,7 @@ Php::Value GtkWindow_::get_resizable()
 Php::Value GtkWindow_::activate_focus()
 {
     // 
-    return gtk_window_activate_focus(GTK_WINDOW(widget));
+    return gtk_window_activate_focus(GTK_WINDOW(instance));
 }
 
 /**
@@ -108,7 +108,7 @@ Php::Value GtkWindow_::activate_focus()
 Php::Value GtkWindow_::activate_default()
 {
     // 
-    return gtk_window_activate_default(GTK_WINDOW(widget));
+    return gtk_window_activate_default(GTK_WINDOW(instance));
 }
 
 /**
@@ -117,7 +117,7 @@ Php::Value GtkWindow_::activate_default()
 void GtkWindow_::set_modal(Php::Parameters &parameters)
 {
     //
-    gtk_window_set_modal(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_modal(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -126,7 +126,7 @@ void GtkWindow_::set_modal(Php::Parameters &parameters)
 Php::Value GtkWindow_::get_modal()
 {
     // 
-    return gtk_window_get_modal(GTK_WINDOW(widget));
+    return gtk_window_get_modal(GTK_WINDOW(instance));
 }
 
 /**
@@ -139,7 +139,7 @@ void GtkWindow_::set_position(Php::Parameters &parameters)
     GtkWindowPosition passedCasted = (GtkWindowPosition)a;
 
     //
-    gtk_window_set_position(GTK_WINDOW(widget), passedCasted);
+    gtk_window_set_position(GTK_WINDOW(instance), passedCasted);
 }
 
 /**
@@ -152,7 +152,7 @@ Php::Value GtkWindow_::get_position()
     int y = -1;
 
     // Set default size
-    gtk_window_get_position(GTK_WINDOW(widget), &x, &y);
+    gtk_window_get_position(GTK_WINDOW(instance), &x, &y);
 
     // Cria o retorno
     Php::Value arr;
@@ -173,7 +173,7 @@ void GtkWindow_::set_transient_for(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWindow")) throw Php::Exception("parameter expect GtkWindow instance");
     GtkWindow_ *passedWindow = (GtkWindow_ *)object.implementation();
 
-    gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(passedWindow->get_widget()));
+    gtk_window_set_transient_for(GTK_WINDOW(instance), GTK_WINDOW(passedWindow->get_instance()));
 }
 
 /**
@@ -181,10 +181,10 @@ void GtkWindow_::set_transient_for(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_transient_for()
 {
-    GtkWindow *returnedWindow = gtk_window_get_transient_for(GTK_WINDOW(widget));
+    GtkWindow *returnedWindow = gtk_window_get_transient_for(GTK_WINDOW(instance));
 
     GtkWindow_ *returnWindow = new GtkWindow_();
-    returnWindow->set_widget(GTK_WIDGET(returnedWindow));
+    returnWindow->set_instance((gpointer *)returnedWindow);
 
     return Php::Object("GtkWindow", returnWindow);
 }
@@ -196,7 +196,7 @@ Php::Value GtkWindow_::get_transient_for()
  */
 void GtkWindow_::set_destroy_with_parent(Php::Parameters &parameters)
 {
-    gtk_window_set_destroy_with_parent(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_destroy_with_parent(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -206,7 +206,7 @@ void GtkWindow_::set_destroy_with_parent(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_destroy_with_parent()
 {
-    return gtk_window_get_destroy_with_parent(GTK_WINDOW(widget));
+    return gtk_window_get_destroy_with_parent(GTK_WINDOW(instance));
 }
 
 /**
@@ -216,7 +216,7 @@ Php::Value GtkWindow_::get_destroy_with_parent()
  */
 void GtkWindow_::set_hide_titlebar_when_maximized(Php::Parameters &parameters)
 {
-    gtk_window_set_hide_titlebar_when_maximized(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_hide_titlebar_when_maximized(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -226,7 +226,7 @@ void GtkWindow_::set_hide_titlebar_when_maximized(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_hide_titlebar_when_maximized()
 {
-    return gtk_window_get_hide_titlebar_when_maximized(GTK_WINDOW(widget));
+    return gtk_window_get_hide_titlebar_when_maximized(GTK_WINDOW(instance));
 }
 
 /**
@@ -236,7 +236,7 @@ Php::Value GtkWindow_::get_hide_titlebar_when_maximized()
  */
 Php::Value GtkWindow_::is_active()
 {
-    return gtk_window_is_active(GTK_WINDOW(widget));
+    return gtk_window_is_active(GTK_WINDOW(instance));
 }
 
 /**
@@ -246,7 +246,7 @@ Php::Value GtkWindow_::is_active()
  */
 Php::Value GtkWindow_::is_maximized()
 {
-    return gtk_window_is_maximized(GTK_WINDOW(widget));
+    return gtk_window_is_maximized(GTK_WINDOW(instance));
 }
 
 /**
@@ -256,7 +256,7 @@ Php::Value GtkWindow_::is_maximized()
  */
 Php::Value GtkWindow_::has_toplevel_focus()
 {
-    return gtk_window_has_toplevel_focus(GTK_WINDOW(widget));
+    return gtk_window_has_toplevel_focus(GTK_WINDOW(instance));
 }
 
 /**
@@ -274,7 +274,7 @@ void GtkWindow_::add_mnemonic(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
     GtkWidget_ *passedWindow = (GtkWidget_ *)object.implementation();
 
-    gtk_window_add_mnemonic(GTK_WINDOW(widget), keyval, passedWindow->get_widget());
+    gtk_window_add_mnemonic(GTK_WINDOW(instance), keyval, GTK_WIDGET(passedWindow->get_instance()));
 }
 
 /**
@@ -292,7 +292,7 @@ void GtkWindow_::remove_mnemonic(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
     GtkWidget_ *passedWindow = (GtkWidget_ *)object.implementation();
 
-    gtk_window_remove_mnemonic(GTK_WINDOW(widget), keyval, passedWindow->get_widget());
+    gtk_window_remove_mnemonic(GTK_WINDOW(instance), keyval, GTK_WIDGET(passedWindow->get_instance()));
 }
 
 /**
@@ -309,7 +309,7 @@ Php::Value GtkWindow_::mnemonic_activate(Php::Parameters &parameters)
     int a = parameters[1];
     GdkModifierType passedCasted = (GdkModifierType)a;
 
-    return gtk_window_mnemonic_activate(GTK_WINDOW(widget), keyval, passedCasted);
+    return gtk_window_mnemonic_activate(GTK_WINDOW(instance), keyval, passedCasted);
 }
 
 /**
@@ -323,7 +323,7 @@ void GtkWindow_::set_mnemonic_modifier(Php::Parameters &parameters)
     int a = parameters[0];
     GdkModifierType passedCasted = (GdkModifierType)a;
 
-    return gtk_window_set_mnemonic_modifier(GTK_WINDOW(widget), passedCasted);
+    return gtk_window_set_mnemonic_modifier(GTK_WINDOW(instance), passedCasted);
 }
 
 /**
@@ -338,7 +338,7 @@ void GtkWindow_::set_focus(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
 
-    gtk_window_set_focus(GTK_WINDOW(widget), passedWidget->get_widget());
+    gtk_window_set_focus(GTK_WINDOW(instance), GTK_WIDGET(passedWidget->get_instance()));
 }
 
 /**
@@ -348,10 +348,10 @@ void GtkWindow_::set_focus(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_focus()
 {
-    GtkWidget *returnedWidget = gtk_window_get_focus(GTK_WINDOW(widget));
+    GtkWidget *returnedWidget = gtk_window_get_focus(GTK_WINDOW(instance));
 
     GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+    returnWidget->set_instance((gpointer *)returnedWidget);
 
     return Php::Object("GtkWidget", returnWidget);
 }
@@ -368,7 +368,7 @@ void GtkWindow_::set_default(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
 
-    gtk_window_set_default(GTK_WINDOW(widget), passedWidget->get_widget());
+    gtk_window_set_default(GTK_WINDOW(instance), GTK_WIDGET(passedWidget->get_instance()));
 }
 
 /**
@@ -378,10 +378,10 @@ void GtkWindow_::set_default(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_default_widget()
 {
-    GtkWidget *returnedWidget = gtk_window_get_default_widget(GTK_WINDOW(widget));
+    GtkWidget *returnedWidget = gtk_window_get_default_widget(GTK_WINDOW(instance));
 
     GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+    returnWidget->set_instance((gpointer *)returnedWidget);
 
     return Php::Object("GtkWidget", returnWidget);
 }
@@ -391,7 +391,7 @@ Php::Value GtkWindow_::get_default_widget()
  */
 void GtkWindow_::close()
 {
-    gtk_window_close(GTK_WINDOW(widget));
+    gtk_window_close(GTK_WINDOW(instance));
 }
 
 /**
@@ -399,7 +399,7 @@ void GtkWindow_::close()
  */
 void GtkWindow_::iconify()
 {
-    gtk_window_iconify(GTK_WINDOW(widget));
+    gtk_window_iconify(GTK_WINDOW(instance));
 }
 
 /**
@@ -407,7 +407,7 @@ void GtkWindow_::iconify()
  */
 void GtkWindow_::deiconify()
 {
-    gtk_window_deiconify(GTK_WINDOW(widget));
+    gtk_window_deiconify(GTK_WINDOW(instance));
 }
 
 /**
@@ -415,7 +415,7 @@ void GtkWindow_::deiconify()
  */
 void GtkWindow_::stick()
 {
-    gtk_window_stick(GTK_WINDOW(widget));
+    gtk_window_stick(GTK_WINDOW(instance));
 }
 
 /**
@@ -423,7 +423,7 @@ void GtkWindow_::stick()
  */
 void GtkWindow_::unstick()
 {
-    gtk_window_unstick(GTK_WINDOW(widget));
+    gtk_window_unstick(GTK_WINDOW(instance));
 }
 
 /**
@@ -431,7 +431,7 @@ void GtkWindow_::unstick()
  */
 void GtkWindow_::maximize()
 {
-    gtk_window_maximize(GTK_WINDOW(widget));
+    gtk_window_maximize(GTK_WINDOW(instance));
 }
 
 /**
@@ -439,7 +439,7 @@ void GtkWindow_::maximize()
  */
 void GtkWindow_::unmaximize()
 {
-    gtk_window_unmaximize(GTK_WINDOW(widget));
+    gtk_window_unmaximize(GTK_WINDOW(instance));
 }
 
 /**
@@ -447,7 +447,7 @@ void GtkWindow_::unmaximize()
  */
 void GtkWindow_::fullscreen()
 {
-    gtk_window_fullscreen(GTK_WINDOW(widget));
+    gtk_window_fullscreen(GTK_WINDOW(instance));
 }
 
 /**
@@ -455,7 +455,7 @@ void GtkWindow_::fullscreen()
  */
 void GtkWindow_::unfullscreen()
 {
-    gtk_window_unfullscreen(GTK_WINDOW(widget));
+    gtk_window_unfullscreen(GTK_WINDOW(instance));
 }
 
 /**
@@ -468,7 +468,7 @@ void GtkWindow_::set_keep_above(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
-    gtk_window_set_keep_above(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_keep_above(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -481,7 +481,7 @@ void GtkWindow_::set_keep_below(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
-    gtk_window_set_keep_below(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_keep_below(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -494,7 +494,7 @@ void GtkWindow_::set_decorated(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
-    gtk_window_set_decorated(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_decorated(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -504,7 +504,7 @@ void GtkWindow_::set_decorated(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_decorated()
 {
-    return gtk_window_get_decorated(GTK_WINDOW(widget));
+    return gtk_window_get_decorated(GTK_WINDOW(instance));
 }
 
 /**
@@ -517,7 +517,7 @@ void GtkWindow_::set_deletable(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_deletable(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_deletable(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -527,7 +527,7 @@ void GtkWindow_::set_deletable(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_deletable()
 {
-    return gtk_window_get_deletable(GTK_WINDOW(widget));
+    return gtk_window_get_deletable(GTK_WINDOW(instance));
 }
 
 /**
@@ -539,7 +539,7 @@ void GtkWindow_::set_type_hint(Php::Parameters &parameters)
     int a = parameters[0];
     GdkWindowTypeHint passedCasted = (GdkWindowTypeHint)a;
 
-    return gtk_window_set_type_hint(GTK_WINDOW(widget), passedCasted);
+    return gtk_window_set_type_hint(GTK_WINDOW(instance), passedCasted);
 }
 
 /**
@@ -548,7 +548,7 @@ void GtkWindow_::set_type_hint(Php::Parameters &parameters)
 Php::Value GtkWindow_::get_type_hint()
 {
     // 
-    return gtk_window_get_type_hint(GTK_WINDOW(widget));
+    return gtk_window_get_type_hint(GTK_WINDOW(instance));
 }
 
 /**
@@ -561,7 +561,7 @@ void GtkWindow_::set_skip_taskbar_hint(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_skip_taskbar_hint(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_skip_taskbar_hint(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -571,7 +571,7 @@ void GtkWindow_::set_skip_taskbar_hint(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_skip_taskbar_hint()
 {
-    return gtk_window_get_skip_taskbar_hint(GTK_WINDOW(widget));
+    return gtk_window_get_skip_taskbar_hint(GTK_WINDOW(instance));
 }
 
 /**
@@ -586,7 +586,7 @@ void GtkWindow_::set_skip_pager_hint(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_skip_pager_hint(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_skip_pager_hint(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -596,7 +596,7 @@ void GtkWindow_::set_skip_pager_hint(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_skip_pager_hint()
 {
-    return gtk_window_get_skip_pager_hint(GTK_WINDOW(widget));
+    return gtk_window_get_skip_pager_hint(GTK_WINDOW(instance));
 }
 
 /**
@@ -611,7 +611,7 @@ void GtkWindow_::set_urgency_hint(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_urgency_hint(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_urgency_hint(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -621,7 +621,7 @@ void GtkWindow_::set_urgency_hint(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_urgency_hint()
 {
-    return gtk_window_get_urgency_hint(GTK_WINDOW(widget));
+    return gtk_window_get_urgency_hint(GTK_WINDOW(instance));
 }
 
 /**
@@ -636,7 +636,7 @@ void GtkWindow_::set_accept_focus(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_accept_focus(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_accept_focus(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -646,7 +646,7 @@ void GtkWindow_::set_accept_focus(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_accept_focus()
 {
-    return gtk_window_get_accept_focus(GTK_WINDOW(widget));
+    return gtk_window_get_accept_focus(GTK_WINDOW(instance));
 }
 
 /**
@@ -661,7 +661,7 @@ void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_focus_on_map(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_focus_on_map(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -671,7 +671,7 @@ void GtkWindow_::set_focus_on_map(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_focus_on_map()
 {
-    return gtk_window_get_focus_on_map(GTK_WINDOW(widget));
+    return gtk_window_get_focus_on_map(GTK_WINDOW(instance));
 }
 
 /**
@@ -684,7 +684,7 @@ void GtkWindow_::set_icon(Php::Parameters &parameters)
     if (!object.instanceOf("GdkPixbuf")) throw Php::Exception("parameter expect GdkPixbuf instance");
     GdkPixbuf_ *passedPixbuf = (GdkPixbuf_ *)object.implementation();
 
-    gtk_window_set_icon(GTK_WINDOW(widget), passedPixbuf->get_pixbuf());
+    gtk_window_set_icon(GTK_WINDOW(instance), passedPixbuf->get_pixbuf());
 }
 
 /**
@@ -694,7 +694,7 @@ void GtkWindow_::set_icon(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_icon()
 {
-    GdkPixbuf *returnedPixbuf = gtk_window_get_icon(GTK_WINDOW(widget));
+    GdkPixbuf *returnedPixbuf = gtk_window_get_icon(GTK_WINDOW(instance));
 
     GdkPixbuf_ *returnPixbuf = new GdkPixbuf_();
     returnPixbuf->set_pixbuf(returnedPixbuf);
@@ -709,7 +709,7 @@ Php::Value GtkWindow_::set_icon_from_file(Php::Parameters &parameters)
 {
     std::string filename = parameters[0];
 
-    return gtk_window_set_icon_from_file(GTK_WINDOW(widget), filename.c_str(), NULL);
+    return gtk_window_set_icon_from_file(GTK_WINDOW(instance), filename.c_str(), NULL);
 }
 
 /**
@@ -719,7 +719,7 @@ void GtkWindow_::set_icon_name(Php::Parameters &parameters)
 {
     std::string filename = parameters[0];
 
-    return gtk_window_set_icon_name(GTK_WINDOW(widget), filename.c_str());
+    return gtk_window_set_icon_name(GTK_WINDOW(instance), filename.c_str());
 }
 
 /**
@@ -727,7 +727,7 @@ void GtkWindow_::set_icon_name(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_icon_name()
 {
-    return gtk_window_get_icon_name(GTK_WINDOW(widget));
+    return gtk_window_get_icon_name(GTK_WINDOW(instance));
 }
 
 /**
@@ -735,7 +735,7 @@ Php::Value GtkWindow_::get_icon_name()
  */
 void GtkWindow_::present()
 {
-    gtk_window_present(GTK_WINDOW(widget));
+    gtk_window_present(GTK_WINDOW(instance));
 }
 
 /**
@@ -744,7 +744,7 @@ void GtkWindow_::present()
 void GtkWindow_::present_with_time(Php::Parameters &parameters)
 {
     gint32 a = parameters[0];
-    gtk_window_present_with_time(GTK_WINDOW(widget), a);
+    gtk_window_present_with_time(GTK_WINDOW(instance), a);
 }
 
 /**
@@ -752,7 +752,7 @@ void GtkWindow_::present_with_time(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_window_type()
 {
-    return gtk_window_get_window_type(GTK_WINDOW(widget));
+    return gtk_window_get_window_type(GTK_WINDOW(instance));
 }
 
 /**
@@ -765,7 +765,7 @@ void GtkWindow_::move(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 and 2 must be a integer of position");
     }
     
-    gtk_window_move(GTK_WINDOW(widget), parameters[0], parameters[1]);
+    gtk_window_move(GTK_WINDOW(instance), parameters[0], parameters[1]);
 }
 
 /**
@@ -778,7 +778,7 @@ void GtkWindow_::resize(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 and 2 must be a integer of size");
     }
     
-    gtk_window_resize(GTK_WINDOW(widget), parameters[0], parameters[1]);
+    gtk_window_resize(GTK_WINDOW(instance), parameters[0], parameters[1]);
 }
 
 /**
@@ -842,7 +842,7 @@ void GtkWindow_::set_mnemonics_visible(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_mnemonics_visible(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_mnemonics_visible(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -852,7 +852,7 @@ void GtkWindow_::set_mnemonics_visible(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_mnemonics_visible()
 {
-    return gtk_window_get_mnemonics_visible(GTK_WINDOW(widget));
+    return gtk_window_get_mnemonics_visible(GTK_WINDOW(instance));
 }
 
 /**
@@ -867,7 +867,7 @@ void GtkWindow_::set_focus_visible(Php::Parameters &parameters)
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
-    gtk_window_set_focus_visible(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_focus_visible(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -877,7 +877,7 @@ void GtkWindow_::set_focus_visible(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_focus_visible()
 {
-    return gtk_window_get_focus_visible(GTK_WINDOW(widget));
+    return gtk_window_get_focus_visible(GTK_WINDOW(instance));
 }
 
 /**
@@ -887,7 +887,7 @@ Php::Value GtkWindow_::get_focus_visible()
  */
 void GtkWindow_::set_has_user_ref_count(Php::Parameters &parameters)
 {
-    gtk_window_set_has_user_ref_count(GTK_WINDOW(widget), parameters[0]);
+    gtk_window_set_has_user_ref_count(GTK_WINDOW(instance), parameters[0]);
 }
 
 /**
@@ -902,7 +902,7 @@ void GtkWindow_::set_titlebar(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
 
-    gtk_window_set_titlebar(GTK_WINDOW(widget), passedWidget->get_widget());
+    gtk_window_set_titlebar(GTK_WINDOW(instance), GTK_WIDGET(passedWidget->get_instance()));
 }
 
 /**
@@ -912,10 +912,10 @@ void GtkWindow_::set_titlebar(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_titlebar()
 {
-    GtkWidget *returnedWidget = gtk_window_get_titlebar(GTK_WINDOW(widget));
+    GtkWidget *returnedWidget = gtk_window_get_titlebar(GTK_WINDOW(instance));
 
     GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_widget(GTK_WIDGET(returnedWidget));
+    returnWidget->set_instance((gpointer *)returnedWidget);
 
     return Php::Object("GtkWidget", returnWidget);
 }

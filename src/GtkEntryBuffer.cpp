@@ -37,7 +37,7 @@ void GtkEntryBuffer_::__construct(Php::Parameters &parameters)
 	gchar *text = (gchar *)passed_text.c_str();
 
 	// Create the buffer
-	buffer = gtk_entry_buffer_new(text, -1);
+	instance = (gpointer *)gtk_entry_buffer_new(text, -1);
 }
 
 /**
@@ -45,7 +45,7 @@ void GtkEntryBuffer_::__construct(Php::Parameters &parameters)
  */
 Php::Value GtkEntryBuffer_::get_text()
 {
-	return gtk_entry_buffer_get_text(buffer);
+	return gtk_entry_buffer_get_text(GTK_ENTRY_BUFFER(instance));
 }
 
 /**
@@ -58,7 +58,7 @@ void GtkEntryBuffer_::set_text(Php::Parameters &parameters)
 	gchar *text = (gchar *)passed_text.c_str();
 
 	// Create the buffer
-	buffer = gtk_entry_buffer_new(text, -1);
+	instance = (gpointer *)gtk_entry_buffer_new(text, -1);
 }
 
 /**
@@ -66,7 +66,7 @@ void GtkEntryBuffer_::set_text(Php::Parameters &parameters)
  */
 Php::Value GtkEntryBuffer_::get_bytes()
 {
-	long int bytes = (long int)gtk_entry_buffer_get_bytes(buffer);
+	long int bytes = (long int)gtk_entry_buffer_get_bytes(GTK_ENTRY_BUFFER(instance));
 	return bytes;
 }
 
@@ -75,7 +75,7 @@ Php::Value GtkEntryBuffer_::get_bytes()
  */
 Php::Value GtkEntryBuffer_::get_length()
 {
-	long int length = (long int)gtk_entry_buffer_get_length(buffer);
+	long int length = (long int)gtk_entry_buffer_get_length(GTK_ENTRY_BUFFER(instance));
 	return length;
 }
 
@@ -84,7 +84,7 @@ Php::Value GtkEntryBuffer_::get_length()
  */
 Php::Value GtkEntryBuffer_::get_max_length()
 {
-	int length = (long int)gtk_entry_buffer_get_max_length(buffer);
+	int length = (long int)gtk_entry_buffer_get_max_length(GTK_ENTRY_BUFFER(instance));
 	return length;
 }
 
@@ -95,7 +95,7 @@ Php::Value GtkEntryBuffer_::insert_text(Php::Parameters &parameters)
 {
 	long int position = (long int) parameters[0];
 
-	long int length = (long int) gtk_entry_buffer_insert_text (buffer, position, parameters[1], -1);
+	long int length = (long int) gtk_entry_buffer_insert_text (GTK_ENTRY_BUFFER(instance), position, parameters[1], -1);
 	return length;
 }
 
@@ -107,5 +107,5 @@ void GtkEntryBuffer_::delete_text(Php::Parameters &parameters)
 	long int position = (long int) parameters[0];
 	long int n_chars = (long int) parameters[1];
 
-	gtk_entry_buffer_delete_text (buffer, position, n_chars);
+	gtk_entry_buffer_delete_text (GTK_ENTRY_BUFFER(instance), position, n_chars);
 }

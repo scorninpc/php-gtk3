@@ -5,12 +5,14 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
+    #include "GObject.h"
+
     /**
      * GtkEntryBuffer_
      * 
      * https://developer.gnome.org/gtk3/stable/GtkEntryBuffer.html
      */
-    class GtkEntryBuffer_ : public Php::Base
+    class GtkEntryBuffer_ : public GObject_
     {
         /**
          * Publics

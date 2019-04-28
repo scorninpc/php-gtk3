@@ -16,7 +16,7 @@ GtkTreeView_::~GtkTreeView_() = default;
  */
 void GtkTreeView_::__construct(Php::Parameters &parameters)
 {
-    widget = gtk_tree_view_new();
+    instance = (gpointer *)gtk_tree_view_new();
 
     // if(parameters.size() >= 1) {
 
@@ -42,7 +42,7 @@ Php::Value GtkTreeView_::append_column(Php::Parameters &parameters)
     GtkTreeViewColumn_ *passedColumn = (GtkTreeViewColumn_ *)object.implementation();
 
     // 
-    return gtk_tree_view_append_column(GTK_TREE_VIEW(widget), passedColumn->get_column());
+    return gtk_tree_view_append_column(GTK_TREE_VIEW(instance), GTK_TREE_VIEW_COLUMN(passedColumn->get_instance()));
 }
 
 /**
@@ -56,5 +56,5 @@ void GtkTreeView_::set_model(Php::Parameters &parameters)
     GtkTreeModel_ *passedModel = (GtkTreeModel_ *)object.implementation();
 
     // 
-    gtk_tree_view_set_model(GTK_TREE_VIEW(widget), passedModel->get_model());
+    gtk_tree_view_set_model(GTK_TREE_VIEW(instance), passedModel->get_model());
 }

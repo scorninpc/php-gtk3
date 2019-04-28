@@ -7,19 +7,15 @@
     #include <gtk/gtk.h>
 
     #include "GdkEvent.h"
+    #include "GObject.h"
+
 
     /**
      *  @todo Create a method to verify if widget exists, and implement on all methods, if not exists, throw a exception
      */
-    class GtkWidget_ : public Php::Base
+    class GtkWidget_ : public GObject_
     {
         
-        /**
-         * Privates
-         */
-        private:
-            struct st_callback;
-
         /**
          * Publics
          */
@@ -29,12 +25,12 @@
             /**
              * Return original GtkWidget
              */
-            GtkWidget *get_widget();
+            gpointer *get_widget();
 
             /**
-             * Set the original GtkWidget
+             * Set the original gpointer
              */
-            void set_widget(GtkWidget *pased_widget);
+            void set_widget(gpointer *pased_widget);
 
             /**
              *  C++ constructor and destructor
@@ -46,23 +42,6 @@
              * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-show-all
              */
             void show_all();
-
-            /**
-             * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
-             */
-            Php::Value connect(Php::Parameters &parameters);
-
-            /**
-             * Class to abstract php callback for connect method, to call PHP function
-             */
-            static void connect_callback(GtkWidget * widget, GdkEvent user_event, gpointer user_data);
-
-            /**
-             * Disconnect signal by handle
-             *
-             * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
-             */
-            void handler_disconnect(Php::Parameters &parameters);
 
             /**
              * Destroys a widget

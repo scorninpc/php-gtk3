@@ -2,14 +2,7 @@
 #include "GtkWidget.h"
 #include "GtkBox.h"
 
-/**
- * Struct for callback gpointer
- */
-struct GtkWidget_::st_callback {
-    Php::Value callback_name;
-    Php::Array callback_params;
-    Php::Object self_widget;
-};
+
 
 /**
  *  C++ constructor and destructor
@@ -20,17 +13,17 @@ GtkWidget_::~GtkWidget_() = default;
 /**
  * Return original GtkWidget
  */
-GtkWidget *GtkWidget_::get_widget()
+gpointer *GtkWidget_::get_widget()
 {
-    return widget;
+    return instance;
 }
 
 /**
  * Set the original GtkWidget
  */
-void GtkWidget_::set_widget(GtkWidget *pased_widget)
+void GtkWidget_::set_widget(gpointer *pased_widget)
 {
-    widget = pased_widget;
+    instance = pased_widget;
 }
 
 /**
@@ -38,73 +31,7 @@ void GtkWidget_::set_widget(GtkWidget *pased_widget)
  */
 void GtkWidget_::show_all()
 {
-    gtk_widget_show_all(widget);
-}
-
-/**
- * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
- *
- * @todo Verify if callback are callable with Php::Callable::Callable
- * @todo Some events like the delete-event, dont pass gpointer param correctly
- */
-Php::Value GtkWidget_::connect(Php::Parameters &parameters)
-{
-    Php::Array callback_params = parameters;
-    Php::Value callback_event = callback_params[0];
-    Php::Value callback_name = callback_params[1];
-
-    // Create gpoint param
-    struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
-    memset(callback_object, 0, sizeof(struct st_callback));
-    
-    callback_object->callback_name = callback_name;
-    callback_object->callback_params = callback_params;
-    callback_object->self_widget = Php::Object("GtkWidget", this);
-
-    // Create the CPP callback
-    int ret = g_signal_connect(widget, callback_event, G_CALLBACK (&connect_callback), callback_object);
-
-    // Return handler id
-    return ret;
-}
-
-/**
- * Class to abstract php callback for connect method, to call PHP function
- */
-void GtkWidget_::connect_callback(GtkWidget * widget, GdkEvent user_event, gpointer user_data)
-{
-    // Return to st_callback
-    struct st_callback *callback_object = (struct st_callback *) user_data;
-
-    // Create event from callback
-    GdkEvent_ *event_ = new GdkEvent_();
-    Php::Value gdkevent = Php::Object("GdkEvent", event_);
-    event_->populate(&user_event);
-
-    // Create internal params, GtkWidget + GdkEvent
-    Php::Value internal_parameters;
-    internal_parameters[0] = callback_object->self_widget;
-    internal_parameters[1] = gdkevent;
-
-    // Merge internal parameters with custom parameters
-    Php::Value callback_params = callback_object->callback_params;
-    Php::Value custom_parameters = Php::call("array_slice", callback_params, 2, callback_params.size());
-    Php::Value php_callback_param = Php::call("array_merge", internal_parameters, custom_parameters);
-
-    // Call php function with parameters
-    Php::call("call_user_func_array", callback_object->callback_name, php_callback_param);
-}
-
-/**
- * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
- *
- * Disconnect signal by handle
- */
-void GtkWidget_::handler_disconnect(Php::Parameters &parameters)
-{
-    Php::Value callback_handle = parameters[0];
-
-    g_signal_handler_disconnect(widget, (int)callback_handle);
+    gtk_widget_show_all(GTK_WIDGET(instance));
 }
 
 /**
@@ -112,7 +39,7 @@ void GtkWidget_::handler_disconnect(Php::Parameters &parameters)
  */
 void GtkWidget_::destroy()
 {
-   gtk_widget_destroy(widget);
+   gtk_widget_destroy(GTK_WIDGET(instance));
 }
 
 /**
@@ -120,7 +47,7 @@ void GtkWidget_::destroy()
  */
 Php::Value GtkWidget_::in_destruction()
 {
-   return gtk_widget_in_destruction(widget);
+   return gtk_widget_in_destruction(GTK_WIDGET(instance));
 }
 
 /**
@@ -135,9 +62,9 @@ void GtkWidget_::destroyed(Php::Parameters &parameters)
     if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
 
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
-    GtkWidget *pointer_to = passedWidget->get_widget();
+    GtkWidget *pointer_to = GTK_WIDGET(passedWidget->get_instance());
 
-    gtk_widget_destroyed(widget, &pointer_to);
+    gtk_widget_destroyed(GTK_WIDGET(instance), &pointer_to);
 }
 
 /**
@@ -147,7 +74,7 @@ void GtkWidget_::destroyed(Php::Parameters &parameters)
  */
 void GtkWidget_::unparent()
 {
-     gtk_widget_destroy(widget);
+     gtk_widget_destroy(GTK_WIDGET(instance));
 }
 
 /**
@@ -155,7 +82,7 @@ void GtkWidget_::unparent()
  */
 void GtkWidget_::show()
 {
-     gtk_widget_show(widget);
+     gtk_widget_show(GTK_WIDGET(instance));
 }
 
 /**
@@ -163,7 +90,7 @@ void GtkWidget_::show()
  */
 void GtkWidget_::show_now()
 {
-     gtk_widget_show_now(widget);
+     gtk_widget_show_now(GTK_WIDGET(instance));
 }
 
 /**
@@ -171,7 +98,7 @@ void GtkWidget_::show_now()
  */
 void GtkWidget_::hide()
 {
-     gtk_widget_hide(widget);
+     gtk_widget_hide(GTK_WIDGET(instance));
 }
 
 /**
@@ -181,7 +108,7 @@ void GtkWidget_::hide()
  */
 void GtkWidget_::map()
 {
-    gtk_widget_map(widget);
+    gtk_widget_map(GTK_WIDGET(instance));
 }
 
 /**
@@ -191,7 +118,7 @@ void GtkWidget_::map()
  */
 void GtkWidget_::unmap()
 {
-    gtk_widget_unmap(widget);
+    gtk_widget_unmap(GTK_WIDGET(instance));
 }
 
 
@@ -202,7 +129,7 @@ void GtkWidget_::unmap()
  */
 void GtkWidget_::realize()
 {
-    gtk_widget_realize(widget);
+    gtk_widget_realize(GTK_WIDGET(instance));
 }
 
 /**
@@ -212,7 +139,7 @@ void GtkWidget_::realize()
  */
 void GtkWidget_::unrealize()
 {
-    gtk_widget_unrealize(widget);
+    gtk_widget_unrealize(GTK_WIDGET(instance));
 }
 
 /**
@@ -232,7 +159,7 @@ void GtkWidget_::draw()
  */
 void GtkWidget_::queue_draw()
 {
-    gtk_widget_queue_draw(widget);
+    gtk_widget_queue_draw(GTK_WIDGET(instance));
 }
 
 /**
@@ -242,7 +169,7 @@ void GtkWidget_::queue_draw()
  */
 void GtkWidget_::queue_resize()
 {
-    gtk_widget_queue_resize(widget);
+    gtk_widget_queue_resize(GTK_WIDGET(instance));
 }
 
 /**
@@ -252,7 +179,7 @@ void GtkWidget_::queue_resize()
  */
 void GtkWidget_::queue_resize_no_redraw()
 {
-    gtk_widget_queue_resize_no_redraw(widget);
+    gtk_widget_queue_resize_no_redraw(GTK_WIDGET(instance));
 }
 
 /**
@@ -262,7 +189,7 @@ void GtkWidget_::queue_resize_no_redraw()
  */
 void GtkWidget_::queue_allocate()
 {
-    gtk_widget_queue_allocate(widget);
+    gtk_widget_queue_allocate(GTK_WIDGET(instance));
 }
 
 /**
@@ -272,7 +199,7 @@ void GtkWidget_::queue_allocate()
  */
 Php::Value GtkWidget_::get_scale_factor()
 {
-    return gtk_widget_get_scale_factor(widget);
+    return gtk_widget_get_scale_factor(GTK_WIDGET(instance));
 }
 
 /**
@@ -282,7 +209,7 @@ Php::Value GtkWidget_::get_scale_factor()
  */
 Php::Value GtkWidget_::activate()
 {
-    return gtk_widget_activate(widget);
+    return gtk_widget_activate(GTK_WIDGET(instance));
 }
 
 /**
@@ -290,7 +217,7 @@ Php::Value GtkWidget_::activate()
  */
 Php::Value GtkWidget_::is_focus()
 {
-   return gtk_widget_is_focus(widget);
+   return gtk_widget_is_focus(GTK_WIDGET(instance));
 }
 
 /**
@@ -298,7 +225,7 @@ Php::Value GtkWidget_::is_focus()
  */
 void GtkWidget_::grab_focus()
 {
-    gtk_widget_grab_focus(widget);
+    gtk_widget_grab_focus(GTK_WIDGET(instance));
 }
 
 /**
@@ -308,7 +235,7 @@ void GtkWidget_::grab_focus()
  */
 Php::Value GtkWidget_::has_focus()
 {
-    return gtk_widget_has_focus(widget);
+    return gtk_widget_has_focus(GTK_WIDGET(instance));
 }
 
 /**
@@ -318,8 +245,8 @@ Php::Value GtkWidget_::has_focus()
  */
 void GtkWidget_::grab_default()
 {
-    gtk_widget_set_can_default(widget, true);
-    gtk_widget_grab_default(widget);
+    gtk_widget_set_can_default(GTK_WIDGET(instance), true);
+    gtk_widget_grab_default(GTK_WIDGET(instance));
 }
 
 /**
@@ -329,7 +256,7 @@ void GtkWidget_::grab_default()
  */
 void GtkWidget_::set_name(Php::Parameters &parameters)
 {
-    gtk_widget_set_name(widget, parameters[0]);
+    gtk_widget_set_name(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -339,7 +266,7 @@ void GtkWidget_::set_name(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_name()
 {
-    return (widget);
+    return gtk_widget_get_name(GTK_WIDGET(instance));
 }
 
 /**
@@ -347,7 +274,7 @@ Php::Value GtkWidget_::get_name()
  */
 void GtkWidget_::set_sensitive(Php::Parameters &parameters)
 {
-    gtk_widget_set_sensitive(widget, parameters[0]);
+    gtk_widget_set_sensitive(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -355,7 +282,7 @@ void GtkWidget_::set_sensitive(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_sensitive()
 {
-    return gtk_widget_get_sensitive(widget);
+    return gtk_widget_get_sensitive(GTK_WIDGET(instance));
 }
 
 /**
@@ -363,7 +290,7 @@ Php::Value GtkWidget_::get_sensitive()
  */
 Php::Value GtkWidget_::is_sensitive()
 {
-    return (bool)gtk_widget_is_sensitive(widget);
+    return (bool)gtk_widget_is_sensitive(GTK_WIDGET(instance));
 }
 
 /**
@@ -373,7 +300,7 @@ Php::Value GtkWidget_::is_sensitive()
  */
 Php::Value GtkWidget_::mnemonic_activate(Php::Parameters &parameters)
 {
-    return gtk_widget_mnemonic_activate(widget, parameters[0]);
+    return gtk_widget_mnemonic_activate(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -383,14 +310,14 @@ Php::Value GtkWidget_::mnemonic_activate(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_parent()
 {
-    GtkWidget *parent_widget = gtk_widget_get_parent(widget);
+    GtkWidget *parent_widget = gtk_widget_get_parent(GTK_WIDGET(instance));
     std::string widget_type = gtk_widget_get_name(parent_widget);
 
     if(widget_type == "GtkBox")
     {
         // Create the object
         GtkBox_ *return_widget = new GtkBox_();
-        return_widget->set_widget(parent_widget);
+        return_widget->set_instance((gpointer *)parent_widget);
 
         // Return the object
         return Php::Object("GtkBox", return_widget);
@@ -407,7 +334,7 @@ void GtkWidget_::set_tooltip_text(Php::Parameters &parameters)
     std::string tooltip = parameters[0];
 
     // Set the tooltip text
-    gtk_widget_set_tooltip_text(widget, tooltip.c_str());
+    gtk_widget_set_tooltip_text(GTK_WIDGET(instance), tooltip.c_str());
 }
 
 /**
@@ -416,7 +343,7 @@ void GtkWidget_::set_tooltip_text(Php::Parameters &parameters)
 Php::Value GtkWidget_::get_tooltip_text()
 {
     // Get the tooltip text
-    return gtk_widget_get_tooltip_text(widget);
+    return gtk_widget_get_tooltip_text(GTK_WIDGET(instance));
 }
 
 /**
@@ -425,7 +352,7 @@ Php::Value GtkWidget_::get_tooltip_text()
 Php::Value GtkWidget_::get_has_tooltip()
 {
     // Get if has tooltip
-    return gtk_widget_get_has_tooltip(widget);
+    return gtk_widget_get_has_tooltip(GTK_WIDGET(instance));
 }
 
 /**
@@ -433,7 +360,7 @@ Php::Value GtkWidget_::get_has_tooltip()
  */
 Php::Value GtkWidget_::get_allocated_width()
 {
-    return gtk_widget_get_allocated_width(widget);
+    return gtk_widget_get_allocated_width(GTK_WIDGET(instance));
 }
 
 /**
@@ -441,7 +368,7 @@ Php::Value GtkWidget_::get_allocated_width()
  */
 Php::Value GtkWidget_::get_allocated_height()
 {
-    return gtk_widget_get_allocated_height(widget);
+    return gtk_widget_get_allocated_height(GTK_WIDGET(instance));
 }
 
 /**
@@ -449,7 +376,7 @@ Php::Value GtkWidget_::get_allocated_height()
  */
 void GtkWidget_::set_focus_on_click(Php::Parameters &parameters)
 {
-   gtk_widget_set_focus_on_click(widget, parameters[0]);
+   gtk_widget_set_focus_on_click(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -457,7 +384,7 @@ void GtkWidget_::set_focus_on_click(Php::Parameters &parameters)
  */
 void GtkWidget_::set_visible(Php::Parameters &parameters)
 {
-    gtk_widget_set_visible(widget, parameters[0]);
+    gtk_widget_set_visible(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -465,7 +392,7 @@ void GtkWidget_::set_visible(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_visible()
 {
-    return gtk_widget_get_visible(widget);
+    return gtk_widget_get_visible(GTK_WIDGET(instance));
 }
 
 /**
@@ -473,7 +400,7 @@ Php::Value GtkWidget_::get_visible()
  */
 void GtkWidget_::set_opacity(Php::Parameters &parameters)
 {
-    gtk_widget_set_opacity(widget, parameters[0]);
+    gtk_widget_set_opacity(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -481,7 +408,7 @@ void GtkWidget_::set_opacity(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_opacity()
 {
-    return gtk_widget_get_opacity(widget);
+    return gtk_widget_get_opacity(GTK_WIDGET(instance));
 }
 
 /**
@@ -493,7 +420,7 @@ void GtkWidget_::set_valign(Php::Parameters &parameters)
     int a = parameters[0];
     GtkAlign passedAlign = (GtkAlign)a;
 
-    gtk_widget_set_valign(widget, passedAlign);
+    gtk_widget_set_valign(GTK_WIDGET(instance), passedAlign);
 }
 
 /**
@@ -501,7 +428,7 @@ void GtkWidget_::set_valign(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_valign()
 {
-    return gtk_widget_get_valign(widget);
+    return gtk_widget_get_valign(GTK_WIDGET(instance));
 }
 
 /**
@@ -513,7 +440,7 @@ void GtkWidget_::set_halign(Php::Parameters &parameters)
     int a = parameters[0];
     GtkAlign passedAlign = (GtkAlign)a;
 
-    gtk_widget_set_halign(widget, passedAlign);
+    gtk_widget_set_halign(GTK_WIDGET(instance), passedAlign);
 }
 
 /**
@@ -521,7 +448,7 @@ void GtkWidget_::set_halign(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_halign()
 {
-    return gtk_widget_get_halign(widget);
+    return gtk_widget_get_halign(GTK_WIDGET(instance));
 }
 
 /**
@@ -529,7 +456,7 @@ Php::Value GtkWidget_::get_halign()
  */
 void GtkWidget_::set_margin_start(Php::Parameters &parameters)
 {
-    gtk_widget_set_margin_start(widget, parameters[0]);
+    gtk_widget_set_margin_start(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -537,7 +464,7 @@ void GtkWidget_::set_margin_start(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_margin_start()
 {
-    return gtk_widget_get_margin_start(widget);
+    return gtk_widget_get_margin_start(GTK_WIDGET(instance));
 }
 
 /**
@@ -545,7 +472,7 @@ Php::Value GtkWidget_::get_margin_start()
  */
 void GtkWidget_::set_margin_end(Php::Parameters &parameters)
 {
-    gtk_widget_set_margin_end(widget, parameters[0]);
+    gtk_widget_set_margin_end(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -553,7 +480,7 @@ void GtkWidget_::set_margin_end(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_margin_end()
 {
-    return gtk_widget_get_margin_end(widget);
+    return gtk_widget_get_margin_end(GTK_WIDGET(instance));
 }
 
 /**
@@ -561,7 +488,7 @@ Php::Value GtkWidget_::get_margin_end()
  */
 void GtkWidget_::set_margin_top(Php::Parameters &parameters)
 {
-    gtk_widget_set_margin_top(widget, parameters[0]);
+    gtk_widget_set_margin_top(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -569,7 +496,7 @@ void GtkWidget_::set_margin_top(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_margin_top()
 {
-    return gtk_widget_get_margin_top(widget);
+    return gtk_widget_get_margin_top(GTK_WIDGET(instance));
 }
 
 /**
@@ -577,7 +504,7 @@ Php::Value GtkWidget_::get_margin_top()
  */
 void GtkWidget_::set_margin_bottom(Php::Parameters &parameters)
 {
-    gtk_widget_set_margin_bottom(widget, parameters[0]);
+    gtk_widget_set_margin_bottom(GTK_WIDGET(instance), parameters[0]);
 }
 
 /**
@@ -585,5 +512,5 @@ void GtkWidget_::set_margin_bottom(Php::Parameters &parameters)
  */
 Php::Value GtkWidget_::get_margin_bottom()
 {
-    return gtk_widget_get_margin_bottom(widget);
+    return gtk_widget_get_margin_bottom(GTK_WIDGET(instance));
 }

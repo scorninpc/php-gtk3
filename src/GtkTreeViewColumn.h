@@ -6,31 +6,19 @@
     #include <gtk/gtk.h>
 
     #include "GtkCellRenderer.h"
+    #include "GObject.h"
 
     /**
      * GtkTreeViewColumn_
      * 
      * https://developer.gnome.org/gtk3/stable/GtkTreeViewColumn.html
      */
-    class GtkTreeViewColumn_ : public Php::Base
+    class GtkTreeViewColumn_ : public GObject_
     {
         /**
          * Publics
          */
         public:
-
-            GtkTreeViewColumn *column;
-
-            /**
-             * Return original GtkTreeViewColumn
-             */
-            GtkTreeViewColumn *get_column();
-
-            /**
-             * Set the original GtkTreeViewColumn
-             */
-            void set_column(GtkTreeViewColumn *pased_column);
-
 
             /**
              *  C++ constructor and destructor

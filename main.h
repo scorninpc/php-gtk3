@@ -28,6 +28,7 @@
 	
 	#include "src/GtkCellRenderer.h"
 	#include "src/GtkCellRendererText.h"
+	#include "src/GtkCellRendererToggle.h"
 
 	#include "src/GtkTreeModel.h"
 	#include "src/GtkListStore.h"

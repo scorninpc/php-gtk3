@@ -61,13 +61,53 @@ void GtkListStore_::append(Php::Parameters &parameters)
     // Get param
     Php::Value arr = parameters[0];
 
+
+
+    // GValue a = {0};
+    // g_value_init(&a, G_TYPE_INT);
+    // g_value_set_int(&a, 42);
+    // gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, 0, &a);
+
+    // GValue b = {0};
+    // g_value_init(&b, G_TYPE_STRING);
+    // g_value_set_string(&b, "OK");
+    // gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, 1, &b);
+
     // Loop columns of param
     for(int index=0; index < (int)arr.size(); index++) {
 
-        // Cast
-        std::string a = arr[index];
+        // Get column type
+        GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
+
+        // Populate the column var with correct type
+        GValue a = {0};
+        if(type_column == G_TYPE_STRING) {
+            // Cast
+            std::string b = arr[index];
+
+            g_value_init(&a, G_TYPE_STRING);
+            g_value_set_string(&a, b.c_str());
+
+        }
+        else if(type_column == G_TYPE_INT) {
+            // Cast
+            int b = (int)arr[index];
+
+            g_value_init(&a, G_TYPE_INT);
+            g_value_set_int(&a, b);
+
+        }
+        else if(type_column == G_TYPE_BOOLEAN) {
+            // Cast
+            bool b = (bool)arr[index];
+
+            g_value_init(&a, G_TYPE_BOOLEAN);
+            g_value_set_boolean(&a, b);
+
+        }
 
         // Set the value
-        gtk_list_store_set(GTK_LIST_STORE(model), &localIter, index, a.c_str(), -1);
+        // gtk_list_store_set(GTK_LIST_STORE(model), &localIter, index, &a, -1);
+        gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
     }
 }

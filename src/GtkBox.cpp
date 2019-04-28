@@ -27,7 +27,7 @@ void GtkBox_::__construct(Php::Parameters &parameters)
     }
 
     // Create the box
-    widget = gtk_box_new(passedWidget, padding);
+    instance = (gpointer *)gtk_box_new(passedWidget, padding);
 }
 
 /**
@@ -59,7 +59,7 @@ void GtkBox_::pack_start(Php::Parameters &parameters)
     }
 
     // Pack the widget
-    gtk_box_pack_start(GTK_BOX(widget), passedWidget->get_widget(), expand, fill, padding);
+    gtk_box_pack_start(GTK_BOX(instance), GTK_WIDGET(passedWidget->get_instance()), expand, fill, padding);
 }
 
 /**
@@ -91,7 +91,7 @@ void GtkBox_::pack_end(Php::Parameters &parameters)
     }
 
     // Pack the widget
-    gtk_box_pack_end(GTK_BOX(widget), passedWidget->get_widget(), expand, fill, padding);
+    gtk_box_pack_end(GTK_BOX(instance), GTK_WIDGET(passedWidget->get_instance()), expand, fill, padding);
 }
 
 /**
@@ -105,7 +105,7 @@ void GtkBox_::set_homogeneous(Php::Parameters &parameters)
         homogeneous = parameters[0];
     }
 
-    gtk_box_set_homogeneous(GTK_BOX(widget), homogeneous);
+    gtk_box_set_homogeneous(GTK_BOX(instance), homogeneous);
 }
 
 /**
@@ -119,5 +119,5 @@ void GtkBox_::set_spacing(Php::Parameters &parameters)
         spacing = parameters[0];
     }
 
-    gtk_box_set_spacing(GTK_BOX(widget), spacing);
+    gtk_box_set_spacing(GTK_BOX(instance), spacing);
 }

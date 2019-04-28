@@ -36,6 +36,8 @@ extern "C"
 
         // GObject
         Php::Class<GObject_> gobject("GObject");
+            gobject.method<&GtkWidget_::connect>("connect");
+            gobject.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
             gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
             gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
@@ -151,10 +153,9 @@ extern "C"
 
         // GtkWidget
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
+            gtkwidget.extends(gobject);
             gtkwidget.method<&GtkWidget_::show_all>("show_all");
-            gtkwidget.method<&GtkWidget_::connect>("connect");
             gtkwidget.method<&GtkWidget_::destroy>("destroy");
-            gtkwidget.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
             gtkwidget.method<&GtkWidget_::in_destruction>("in_destruction");
             gtkwidget.method<&GtkWidget_::destroyed>("destroyed");
             gtkwidget.method<&GtkWidget_::unparent>("unparent");
@@ -342,6 +343,7 @@ extern "C"
 
         // GtkEntryBuffer
         Php::Class<GtkEntryBuffer_> gtkentrybuffer("GtkEntryBuffer");
+            gtkentrybuffer.extends(gobject);
             gtkentrybuffer.method<&GtkEntryBuffer_::__construct>("__construct");
             gtkentrybuffer.method<&GtkEntryBuffer_::get_text>("get_text");
             gtkentrybuffer.method<&GtkEntryBuffer_::set_text>("set_text");
@@ -415,6 +417,11 @@ extern "C"
             gtkcellrenderertext.extends(gtkcellrenderer);
             gtkcellrenderertext.method<&GtkCellRendererText_::__construct>("__construct");
 
+        // GtkCellRendererToggle
+        Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
+            gtkcellrenderertoggle.extends(gtkcellrenderer);
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::__construct>("__construct");
+
 
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");
             gtkliststore.method<&GtkListStore_::__construct>("__construct");
@@ -457,6 +464,7 @@ extern "C"
 
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
+        extension.add(std::move(gtkcellrenderertoggle));
 
 
         // return the extension

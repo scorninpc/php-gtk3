@@ -7,19 +7,26 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 
 function GtkWindowButton1Clicked($widget, $event)
 {
-	global $win;
+	// global $win;
 
-	// Move
-	$win->move(10, 10);
+	// // Move
+	// $win->move(10, 10);
+
+	var_dump($widget);
 }
 
 function GtkWindowButton2Clicked($widget, $event)
 {
 	global $model, $tree;
 
-	$model->append(["param 1", "param 2"]);
+	$model->append([2, "param 2"]);
 
 	//$tree->set_model($model);
+}
+
+function GtkCellRendererToggled($renderer, $row)
+{
+	echo "ok\n";
 }
 
 // ----------------------
@@ -76,18 +83,25 @@ $tree = new GtkTreeView();
 $vbox->pack_start($tree, TRUE, TRUE, 5);
 
 	// Column 1
-	$renderer1 = new GtkCellRendererText();
-	$column1 = new GtkTreeViewColumn("Column 1", $renderer1, "text", 0);
+	$renderer1 = new GtkCellRendererToggle();
+	$column1 = new GtkTreeViewColumn("Col Boolean", $renderer1, "active", 0);
 	$tree->append_column($column1);
+	// $renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
-	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 1);
+	$column2 = new GtkTreeViewColumn("Col Int", $renderer2, "text", 1);
 	$tree->append_column($column2);
 
+	// Column 3
+	$renderer3 = new GtkCellRendererText();
+	$column3 = new GtkTreeViewColumn("Col String", $renderer3, "text", 2);
+	$tree->append_column($column3, TRUE);
 
-$model = new GtkListStore(GObject::TYPE_STRING, GObject::TYPE_STRING);
-$model->append(["param 1", "param 2"]);
+
+$model = new GtkListStore(GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_STRING);
+$model->append([TRUE, 1, "line 1"]);
+$model->append([FALSE, 2, "line 2"]);
 
 
 $tree->set_model($model);

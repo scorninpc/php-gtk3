@@ -2,22 +2,6 @@
 #include "GtkTreeViewColumn.h"
 
 /**
- * Return original GtkTreeViewColumn
- */
-GtkTreeViewColumn *GtkTreeViewColumn_::get_column()
-{
-    return column;
-}
-
-/**
- * Set the original GtkTreeViewColumn
- */
-void GtkTreeViewColumn_::set_column(GtkTreeViewColumn *column)
-{
-    column = column;
-}
-
-/**
  * Constructor
  */
 GtkTreeViewColumn_::GtkTreeViewColumn_() = default;
@@ -43,7 +27,7 @@ void GtkTreeViewColumn_::__construct(Php::Parameters &parameters)
     std::string t_column = parameters[2];
     int n_column = parameters[3];
 
-    column =  gtk_tree_view_column_new_with_attributes(title.c_str(), passedRenderer->get_renderer(), t_column.c_str(), n_column, NULL);
+    instance = (gpointer *)gtk_tree_view_column_new_with_attributes(title.c_str(), passedRenderer->get_renderer(), t_column.c_str(), n_column, NULL);
 }
 
 /**
@@ -53,7 +37,7 @@ void GtkTreeViewColumn_::set_title(Php::Parameters &parameters)
 {
     std::string title = parameters[0];
 
-    gtk_tree_view_column_set_title(column, title.c_str());
+    gtk_tree_view_column_set_title(GTK_TREE_VIEW_COLUMN(instance), title.c_str());
 }
 
 /**
@@ -62,7 +46,7 @@ void GtkTreeViewColumn_::set_title(Php::Parameters &parameters)
 Php::Value GtkTreeViewColumn_::get_title()
 {
     // 
-    return gtk_tree_view_column_get_title(column);
+    return gtk_tree_view_column_get_title(GTK_TREE_VIEW_COLUMN(instance));
 }
 
 /**
@@ -76,5 +60,5 @@ void GtkTreeViewColumn_::pack_start(Php::Parameters &parameters)
     GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
 
-    gtk_tree_view_column_pack_start(column, passedRenderer->get_renderer(), parameters[1]);
+    gtk_tree_view_column_pack_start(GTK_TREE_VIEW_COLUMN(instance), passedRenderer->get_renderer(), parameters[1]);
 }

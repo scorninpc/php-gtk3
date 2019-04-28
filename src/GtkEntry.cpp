@@ -13,7 +13,7 @@ GtkEntry_::~GtkEntry_() = default;
 void GtkEntry_::__construct()
 {
 	// Create the GtkEntry
-	widget = gtk_entry_new();
+	instance = (gpointer *)gtk_entry_new();
 }
 
 /**
@@ -34,7 +34,7 @@ Php::Value GtkEntry_::new_with_buffer(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_buffer()
 {
-	GtkEntryBuffer *buffer = gtk_entry_get_buffer(GTK_ENTRY(widget));
+	GtkEntryBuffer *buffer = gtk_entry_get_buffer(GTK_ENTRY(instance));
 
 	GtkEntryBuffer_ *returnedBuffer = new GtkEntryBuffer_();
 	returnedBuffer->set_buffer(buffer);
@@ -52,7 +52,7 @@ void GtkEntry_::set_buffer(Php::Parameters &parameters)
     if (!object.instanceOf("GtkEntryBuffer")) throw Php::Exception("parameter expect GtkEntryBuffer instance");
     GtkEntryBuffer_ *passedBuffer = (GtkEntryBuffer_ *)object.implementation();
 
-    gtk_entry_set_buffer(GTK_ENTRY(widget), passedBuffer->get_buffer());
+    gtk_entry_set_buffer(GTK_ENTRY(instance), passedBuffer->get_buffer());
 }
 
 /**
@@ -60,7 +60,7 @@ void GtkEntry_::set_buffer(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_text()
 {
-	return gtk_entry_get_text(GTK_ENTRY(widget));
+	return gtk_entry_get_text(GTK_ENTRY(instance));
 }
 
 /**
@@ -68,7 +68,7 @@ Php::Value GtkEntry_::get_text()
  */
 void GtkEntry_::set_text(Php::Parameters &parameters)
 {
-	gtk_entry_set_text(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_text(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -76,7 +76,7 @@ void GtkEntry_::set_text(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_text_length()
 {
-	return gtk_entry_get_text_length(GTK_ENTRY(widget));
+	return gtk_entry_get_text_length(GTK_ENTRY(instance));
 }
 
 /**
@@ -84,7 +84,7 @@ Php::Value GtkEntry_::get_text_length()
  */
 void GtkEntry_::set_visibility(Php::Parameters &parameters)
 {
-	gtk_entry_set_visibility(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_visibility(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -92,7 +92,7 @@ void GtkEntry_::set_visibility(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_visibility()
 {
-	return gtk_entry_get_visibility(GTK_ENTRY(widget));
+	return gtk_entry_get_visibility(GTK_ENTRY(instance));
 }
 
 /**
@@ -106,7 +106,7 @@ void GtkEntry_::set_invisible_char(Php::Parameters &parameters)
 	gunichar ch = g_utf8_get_char(a);
 	
 
-	gtk_entry_set_invisible_char(GTK_ENTRY(widget), ch);
+	gtk_entry_set_invisible_char(GTK_ENTRY(instance), ch);
 }
 
 /**
@@ -114,7 +114,7 @@ void GtkEntry_::set_invisible_char(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_invisible_char()
 {
-	gunichar ch = gtk_entry_get_invisible_char(GTK_ENTRY(widget));
+	gunichar ch = gtk_entry_get_invisible_char(GTK_ENTRY(instance));
 	char a;
 
 	g_unichar_to_utf8(ch, &a);
@@ -130,7 +130,7 @@ Php::Value GtkEntry_::get_invisible_char()
  */
 void GtkEntry_::unset_invisible_char()
 {
-	gtk_entry_unset_invisible_char(GTK_ENTRY(widget));
+	gtk_entry_unset_invisible_char(GTK_ENTRY(instance));
 }
 
 /**
@@ -138,7 +138,7 @@ void GtkEntry_::unset_invisible_char()
  */
 void GtkEntry_::set_max_length(Php::Parameters &parameters)
 {
-	gtk_entry_set_max_length(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_max_length(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -146,7 +146,7 @@ void GtkEntry_::set_max_length(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_max_length()
 {
-	return gtk_entry_get_max_length(GTK_ENTRY(widget));
+	return gtk_entry_get_max_length(GTK_ENTRY(instance));
 }
 
 /**
@@ -154,7 +154,7 @@ Php::Value GtkEntry_::get_max_length()
  */
 void GtkEntry_::set_activates_default(Php::Parameters &parameters)
 {
-	gtk_entry_set_activates_default(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_activates_default(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -162,7 +162,7 @@ void GtkEntry_::set_activates_default(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_activates_default()
 {
-	return gtk_entry_get_activates_default(GTK_ENTRY(widget));
+	return gtk_entry_get_activates_default(GTK_ENTRY(instance));
 }
 
 /**
@@ -170,7 +170,7 @@ Php::Value GtkEntry_::get_activates_default()
  */
 void GtkEntry_::set_has_frame(Php::Parameters &parameters)
 {
-	gtk_entry_set_has_frame(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_has_frame(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -178,7 +178,7 @@ void GtkEntry_::set_has_frame(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_has_frame()
 {
-	return gtk_entry_get_has_frame(GTK_ENTRY(widget));
+	return gtk_entry_get_has_frame(GTK_ENTRY(instance));
 }
 
 /**
@@ -186,7 +186,7 @@ Php::Value GtkEntry_::get_has_frame()
  */
 void GtkEntry_::set_width_chars(Php::Parameters &parameters)
 {
-	gtk_entry_set_width_chars(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_width_chars(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -194,7 +194,7 @@ void GtkEntry_::set_width_chars(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_width_chars()
 {
-	return gtk_entry_get_width_chars(GTK_ENTRY(widget));
+	return gtk_entry_get_width_chars(GTK_ENTRY(instance));
 }
 
 /**
@@ -202,7 +202,7 @@ Php::Value GtkEntry_::get_width_chars()
  */
 void GtkEntry_::set_max_width_chars(Php::Parameters &parameters)
 {
-	gtk_entry_set_max_width_chars(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_max_width_chars(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -210,7 +210,7 @@ void GtkEntry_::set_max_width_chars(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_max_width_chars()
 {
-	return gtk_entry_get_max_width_chars(GTK_ENTRY(widget));
+	return gtk_entry_get_max_width_chars(GTK_ENTRY(instance));
 }
 
 /**
@@ -220,7 +220,7 @@ void GtkEntry_::set_alignment(Php::Parameters &parameters)
 {
 	double xalign = parameters[0];
 
-	gtk_entry_set_alignment(GTK_ENTRY(widget), (float)xalign);
+	gtk_entry_set_alignment(GTK_ENTRY(instance), (float)xalign);
 }
 
 /**
@@ -228,7 +228,7 @@ void GtkEntry_::set_alignment(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_alignment()
 {
-	return gtk_entry_get_alignment(GTK_ENTRY(widget));
+	return gtk_entry_get_alignment(GTK_ENTRY(instance));
 }
 
 /**
@@ -236,7 +236,7 @@ Php::Value GtkEntry_::get_alignment()
  */
 void GtkEntry_::set_placeholder_text(Php::Parameters &parameters)
 {
-	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), parameters[0]);
+	gtk_entry_set_placeholder_text(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -244,7 +244,7 @@ void GtkEntry_::set_placeholder_text(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_placeholder_text()
 {
-	return gtk_entry_get_placeholder_text(GTK_ENTRY(widget));
+	return gtk_entry_get_placeholder_text(GTK_ENTRY(instance));
 }
 
 /**
@@ -252,7 +252,7 @@ Php::Value GtkEntry_::get_placeholder_text()
  */
 void GtkEntry_::set_overwrite_mode(Php::Parameters &parameters)
 {
-	return gtk_entry_set_overwrite_mode(GTK_ENTRY(widget), parameters[0]);
+	return gtk_entry_set_overwrite_mode(GTK_ENTRY(instance), parameters[0]);
 }
 
 /**
@@ -260,7 +260,7 @@ void GtkEntry_::set_overwrite_mode(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_overwrite_mode()
 {
-	return gtk_entry_get_overwrite_mode(GTK_ENTRY(widget));
+	return gtk_entry_get_overwrite_mode(GTK_ENTRY(instance));
 }
 
 /**
@@ -270,7 +270,7 @@ void GtkEntry_::set_progress_fraction(Php::Parameters &parameters)
 {
 	double fraction = parameters[0];
 
-	gtk_entry_set_progress_fraction(GTK_ENTRY(widget), (float)fraction);
+	gtk_entry_set_progress_fraction(GTK_ENTRY(instance), (float)fraction);
 }
 
 /**
@@ -278,7 +278,7 @@ void GtkEntry_::set_progress_fraction(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_progress_fraction()
 {
-	return gtk_entry_get_progress_fraction(GTK_ENTRY(widget));
+	return gtk_entry_get_progress_fraction(GTK_ENTRY(instance));
 }
 
 /**
@@ -288,7 +288,7 @@ void GtkEntry_::set_progress_pulse_step(Php::Parameters &parameters)
 {
 	double fraction = parameters[0];
 
-	gtk_entry_set_progress_pulse_step(GTK_ENTRY(widget), (float)fraction);
+	gtk_entry_set_progress_pulse_step(GTK_ENTRY(instance), (float)fraction);
 }
 
 /**
@@ -296,7 +296,7 @@ void GtkEntry_::set_progress_pulse_step(Php::Parameters &parameters)
  */
 Php::Value GtkEntry_::get_progress_pulse_step()
 {
-	return gtk_entry_get_progress_pulse_step(GTK_ENTRY(widget));
+	return gtk_entry_get_progress_pulse_step(GTK_ENTRY(instance));
 }
 
 /**
@@ -304,5 +304,5 @@ Php::Value GtkEntry_::get_progress_pulse_step()
  */
 void GtkEntry_::progress_pulse()
 {
-	return gtk_entry_progress_pulse(GTK_ENTRY(widget));
+	return gtk_entry_progress_pulse(GTK_ENTRY(instance));
 }

@@ -9,7 +9,7 @@ GtkButton_::~GtkButton_() = default;
  */
 void GtkButton_::__construct()
 {
-    widget = gtk_button_new();
+    instance = (gpointer *)gtk_button_new();
 }
 
 /**
@@ -19,7 +19,7 @@ void GtkButton_::set_label(Php::Parameters &parameters)
 {
 	std::string label = parameters[0];
 
-	gtk_button_set_label(GTK_BUTTON(widget), label.c_str());
+	gtk_button_set_label(GTK_BUTTON(instance), label.c_str());
 }
 
 /**
@@ -27,7 +27,7 @@ void GtkButton_::set_label(Php::Parameters &parameters)
  */
 Php::Value GtkButton_::get_label()
 {
-	return gtk_button_get_label(GTK_BUTTON(widget));
+	return gtk_button_get_label(GTK_BUTTON(instance));
 }
 
 /**
@@ -53,7 +53,7 @@ Php::Value GtkButton_::new_with_mnemonic(Php::Parameters &parameters)
 	
 	// Create the PHP-GTK object and set GTK object
 	GtkButton_ *button_ = new GtkButton_();
-	button_->set_widget(button);
+	button_->set_instance((gpointer *)button);
 
 	// Return PHP-GTK object
 	return Php::Object("GtkButton", button_);
@@ -64,7 +64,7 @@ Php::Value GtkButton_::new_with_mnemonic(Php::Parameters &parameters)
  */
 void GtkButton_::clicked()
 {
-	gtk_button_clicked(GTK_BUTTON(widget));
+	gtk_button_clicked(GTK_BUTTON(instance));
 }
 
 
@@ -73,7 +73,7 @@ void GtkButton_::clicked()
  */
 void GtkButton_::set_use_underline(Php::Parameters &parameters)
 {
-	gtk_button_set_use_underline(GTK_BUTTON(widget), parameters[0]);
+	gtk_button_set_use_underline(GTK_BUTTON(instance), parameters[0]);
 }
 
 /**
@@ -81,5 +81,5 @@ void GtkButton_::set_use_underline(Php::Parameters &parameters)
  */
 Php::Value GtkButton_::get_use_underline()
 {
-	return gtk_button_get_use_underline(GTK_BUTTON(widget));
+	return gtk_button_get_use_underline(GTK_BUTTON(instance));
 }
