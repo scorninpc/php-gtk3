@@ -409,6 +409,7 @@ extern "C"
 
         // GtkCellRenderer
         Php::Class<GtkCellRenderer_> gtkcellrenderer("GtkCellRenderer");
+            gtkcellrenderer.extends(gobject);
             gtkcellrenderer.method<&GtkCellRenderer_::__construct>("__construct");
 
 

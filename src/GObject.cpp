@@ -64,7 +64,7 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
 /**
  * Class to abstract php callback for connect method, to call PHP function
  */
-void GObject_::connect_callback(GtkWidget * widget, GdkEvent user_event, gpointer user_data)
+void GObject_::connect_callback(GtkWidget *passedInstance, GdkEvent user_event, gpointer user_data)
 {
     // Return to st_callback
     struct st_callback *callback_object = (struct st_callback *) user_data;

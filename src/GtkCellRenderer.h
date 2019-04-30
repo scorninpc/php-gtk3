@@ -5,12 +5,14 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
+    #include "GObject.h"
+
     /**
      * GtkCellRenderer_
      * 
      * https://developer.gnome.org/gtk3/stable/GtkCellRenderer.html
      */
-    class GtkCellRenderer_ : public Php::Base
+    class GtkCellRenderer_ : public GObject_
     {
         /**
          * Publics

@@ -5,7 +5,12 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 	Gtk::main_quit();
 }
 
-function GtkWindowButton1Clicked($widget, $event)
+function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+{
+	var_dump("OK");
+}
+
+function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
 	// global $win;
 
@@ -13,9 +18,10 @@ function GtkWindowButton1Clicked($widget, $event)
 	// $win->move(10, 10);
 
 	var_dump($widget);
+	var_dump($event);
 }
 
-function GtkWindowButton2Clicked($widget, $event)
+function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 {
 	global $model, $tree;
 
@@ -24,7 +30,7 @@ function GtkWindowButton2Clicked($widget, $event)
 	//$tree->set_model($model);
 }
 
-function GtkCellRendererToggled($renderer, $row)
+function GtkCellRendererToggled($renderer=NULL, $row=NULL)
 {
 	echo "ok\n";
 }
@@ -109,6 +115,7 @@ $tree->set_model($model);
 
 // Connects
 $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
+// $win->connect("activate-focus", "GtkWindowFocus", "param 1", "param 2", "param 3", "param 4");
 $btn1->connect("clicked", "GtkWindowButton1Clicked");
 $btn2->connect("clicked", "GtkWindowButton2Clicked");
 
