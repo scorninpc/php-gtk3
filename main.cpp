@@ -422,6 +422,7 @@ extern "C"
         Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
             gtkcellrenderertoggle.extends(gtkcellrenderer);
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::__construct>("__construct");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_activatable>("set_activatable");
 
 
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");

@@ -8,6 +8,7 @@
  * Struct for callback gpointer
  */
 struct GObject_::st_callback {
+    int type = 29;
     Php::Value callback_name;
     Php::Array callback_params;
     Php::Object self_widget;
@@ -53,9 +54,10 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
     callback_object->callback_name = callback_name;
     callback_object->callback_params = callback_params;
     callback_object->self_widget = Php::Object("GtkWidget", this);
+    callback_object->type = 99;
 
     // Create the CPP callback
-    int ret = g_signal_connect(instance, callback_event, G_CALLBACK (&connect_callback), callback_object);
+    int ret = g_signal_connect(instance, callback_event, G_CALLBACK (connect_callback), callback_object);
 
     // Return handler id
     return ret;
@@ -85,8 +87,9 @@ void GObject_::connect_callback(GtkWidget *passedInstance, GdkEvent user_event, 
     Php::Value php_callback_param = Php::call("array_merge", internal_parameters, custom_parameters);
 
     // Call php function with parameters
-    Php::call("call_user_func_array", callback_object->callback_name, php_callback_param);
+    Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
 }
+
 
 /**
  * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect

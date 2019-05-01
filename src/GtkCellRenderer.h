@@ -19,18 +19,6 @@
          */
         public:
 
-            GtkCellRenderer *renderer;
-
-            /**
-             * Return original GtkCellRenderer
-             */
-            GtkCellRenderer *get_renderer();
-
-            /**
-             * Set the original GtkCellRenderer
-             */
-            void set_renderer(GtkCellRenderer *renderer);
-
             /**
              *  C++ constructor and destructor
              */

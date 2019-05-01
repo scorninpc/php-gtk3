@@ -7,9 +7,13 @@ function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL,
 
 function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	var_dump("OK");
+	// var_dump("OK");
 }
 
+function GtkWindowReleased($widget=NULL, $event=NULL)
+{
+	// var_dump("OK");
+}
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
 	// global $win;
@@ -17,8 +21,8 @@ function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 	// // Move
 	// $win->move(10, 10);
 
-	var_dump($widget);
-	var_dump($event);
+	// var_dump($widget);
+	// var_dump($event);
 }
 
 function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
@@ -32,7 +36,7 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 
 function GtkCellRendererToggled($renderer=NULL, $row=NULL)
 {
-	echo "ok\n";
+	// echo "ok\n";
 }
 
 // ----------------------
@@ -91,8 +95,9 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	// Column 1
 	$renderer1 = new GtkCellRendererToggle();
 	$column1 = new GtkTreeViewColumn("Col Boolean", $renderer1, "active", 0);
+	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
-	// $renderer1->connect('toggled', "GtkCellRendererToggled");
+	$renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
@@ -115,8 +120,8 @@ $tree->set_model($model);
 
 // Connects
 $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
-// $win->connect("activate-focus", "GtkWindowFocus", "param 1", "param 2", "param 3", "param 4");
 $btn1->connect("clicked", "GtkWindowButton1Clicked");
+$btn2->connect("button-release-event", "GtkWindowReleased");
 $btn2->connect("clicked", "GtkWindowButton2Clicked");
 
 // Show all

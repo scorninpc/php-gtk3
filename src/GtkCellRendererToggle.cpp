@@ -16,5 +16,13 @@ GtkCellRendererToggle_::~GtkCellRendererToggle_() = default;
  */
 void GtkCellRendererToggle_::__construct(Php::Parameters &parameters)
 {
-	renderer = gtk_cell_renderer_toggle_new();
+	instance = (gpointer *)gtk_cell_renderer_toggle_new();
+}
+
+/**
+ *  PHP Constructor
+ */
+void GtkCellRendererToggle_::set_activatable(Php::Parameters &parameters)
+{
+	gtk_cell_renderer_toggle_set_activatable(GTK_CELL_RENDERER_TOGGLE(instance), parameters[0]);
 }

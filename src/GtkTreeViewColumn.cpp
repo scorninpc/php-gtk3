@@ -27,7 +27,7 @@ void GtkTreeViewColumn_::__construct(Php::Parameters &parameters)
     std::string t_column = parameters[2];
     int n_column = parameters[3];
 
-    instance = (gpointer *)gtk_tree_view_column_new_with_attributes(title.c_str(), passedRenderer->get_renderer(), t_column.c_str(), n_column, NULL);
+    instance = (gpointer *)gtk_tree_view_column_new_with_attributes(title.c_str(), GTK_CELL_RENDERER(passedRenderer->get_instance()), t_column.c_str(), n_column, NULL);
 }
 
 /**
@@ -60,5 +60,5 @@ void GtkTreeViewColumn_::pack_start(Php::Parameters &parameters)
     GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
 
-    gtk_tree_view_column_pack_start(GTK_TREE_VIEW_COLUMN(instance), passedRenderer->get_renderer(), parameters[1]);
+    gtk_tree_view_column_pack_start(GTK_TREE_VIEW_COLUMN(instance), GTK_CELL_RENDERER(passedRenderer->get_instance()), parameters[1]);
 }

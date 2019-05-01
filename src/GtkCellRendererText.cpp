@@ -16,5 +16,5 @@ GtkCellRendererText_::~GtkCellRendererText_() = default;
  */
 void GtkCellRendererText_::__construct(Php::Parameters &parameters)
 {
-	renderer = gtk_cell_renderer_text_new();
+	instance = (gpointer *)gtk_cell_renderer_text_new();
 }

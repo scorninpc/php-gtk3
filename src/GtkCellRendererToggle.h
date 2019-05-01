@@ -29,6 +29,8 @@
              * PHP Construct
              */
             void __construct(Php::Parameters &parameters);
+
+            void set_activatable(Php::Parameters &parameters);
     };
 
 #endif
