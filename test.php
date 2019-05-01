@@ -97,7 +97,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$column1 = new GtkTreeViewColumn("Col Boolean", $renderer1, "active", 0);
 	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
-	$renderer1->connect('toggled', "GtkCellRendererToggled");
+	// $renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
@@ -121,7 +121,8 @@ $tree->set_model($model);
 // Connects
 $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
 $btn1->connect("clicked", "GtkWindowButton1Clicked");
-$btn2->connect("button-release-event", "GtkWindowReleased");
+// $btn2->connect("button-release-event", "GtkWindowReleased");
+$btn2->connect("clicked", "GtkWindowReleased");
 $btn2->connect("clicked", "GtkWindowButton2Clicked");
 
 // Show all
