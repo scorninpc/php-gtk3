@@ -417,12 +417,18 @@ extern "C"
         Php::Class<GtkCellRendererText_> gtkcellrenderertext("GtkCellRendererText");
             gtkcellrenderertext.extends(gtkcellrenderer);
             gtkcellrenderertext.method<&GtkCellRendererText_::__construct>("__construct");
+            gtkcellrenderertext.method<&GtkCellRendererText_::set_fixed_height_from_font>("set_fixed_height_from_font");
 
         // GtkCellRendererToggle
         Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
             gtkcellrenderertoggle.extends(gtkcellrenderer);
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::__construct>("__construct");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_activatable>("set_activatable");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_activatable>("get_activatable");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_radio>("set_radio");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_radio>("get_radio");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_active>("set_active");
+            gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_active>("get_active");
 
 
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");
