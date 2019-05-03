@@ -29,6 +29,20 @@
              * PHP Construct
              */
             void __construct(Php::Parameters &parameters);
+
+            /**
+             * Sets the renderer’s alignment within its available space.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkCellRenderer.html#gtk-cell-renderer-set-alignment
+             */
+            void set_alignment(Php::Parameters &parameters);
+
+            /**
+             * Fills in xalign and yalign with the appropriate values of cell.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkCellRenderer.html#gtk-cell-renderer-get-alignment
+             */
+            Php::Value get_alignment();
     };
 
 #endif

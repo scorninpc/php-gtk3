@@ -392,6 +392,12 @@ extern "C"
             // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
 
 
+        // GtkSortType
+        Php::Class<GtkSortType_> gtksorttype("GtkSortType");
+            gtksorttype.constant("ASCENDING", (int)GTK_SORT_ASCENDING);
+            gtksorttype.constant("DESCENDING", (int)GTK_SORT_DESCENDING);
+
+
         // GtkTreeView
         Php::Class<GtkTreeView_> gtktreeview("GtkTreeView");
             gtktreeview.extends(gtkcontainer);
@@ -406,11 +412,32 @@ extern "C"
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_title>("set_title");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_title>("get_title");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::pack_start>("pack_start");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_resizable>("set_resizable");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_resizable>("get_resizable");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_width>("get_width");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_fixed_width>("get_fixed_width");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_fixed_width>("set_fixed_width");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_button>("get_button");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_alignment>("set_alignment");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_alignment>("get_alignment");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_reorderable>("set_reorderable");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_reorderable>("get_reorderable");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_widget>("set_widget");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_widget>("get_widget");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_column_id>("set_sort_column_id");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_column_id>("get_sort_column_id");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_indicator>("set_sort_indicator");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_indicator>("get_sort_indicator");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_order>("set_sort_order");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_order>("get_sort_order");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_tree_view>("get_tree_view");
 
         // GtkCellRenderer
         Php::Class<GtkCellRenderer_> gtkcellrenderer("GtkCellRenderer");
             gtkcellrenderer.extends(gobject);
             gtkcellrenderer.method<&GtkCellRenderer_::__construct>("__construct");
+            gtkcellrenderer.method<&GtkCellRenderer_::set_alignment>("set_alignment");
+            gtkcellrenderer.method<&GtkCellRenderer_::get_alignment>("get_alignment");
 
 
         // GtkCellRendererText
@@ -464,6 +491,7 @@ extern "C"
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtkentrybuffer));
 
+        extension.add(std::move(gtksorttype));
         extension.add(std::move(gtktreeview));
         extension.add(std::move(gtktreeviewcolumn));
         extension.add(std::move(gtkliststore));

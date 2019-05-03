@@ -11,7 +11,6 @@
 	#include "src/GdkEvent.h"
 	#include "src/GdkPixbuf.h"
 
-	
 	#include "src/Gtk.h"
 	#include "src/GtkWidget.h"
 	#include "src/GtkEntry.h"
@@ -30,6 +29,7 @@
 	#include "src/GtkCellRendererText.h"
 	#include "src/GtkCellRendererToggle.h"
 
+	#include "src/GtkSortType.h"
 	#include "src/GtkTreeModel.h"
 	#include "src/GtkListStore.h"
 	#include "src/GtkTreeModelFlags.h"

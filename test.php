@@ -16,6 +16,7 @@ function GtkWindowReleased($widget=NULL, $event=NULL)
 }
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
+	
 	// global $win;
 
 	// // Move
@@ -29,9 +30,14 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 {
 	global $model, $tree;
 
-	$model->append([2, "param 2"]);
+	$model->append([FALSE, 3, "param 2"]);
 
 	//$tree->set_model($model);
+}
+
+function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
+{
+	
 }
 
 function GtkCellRendererToggled($renderer=NULL, $row=NULL)
@@ -94,19 +100,23 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 
 	// Column 1
 	$renderer1 = new GtkCellRendererToggle();
-	$column1 = new GtkTreeViewColumn("Col Boolean", $renderer1, "active", 0);
+	$column1 = new GtkTreeViewColumn("", $renderer1, "active", 0);
 	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
+	$column1->set_fixed_width(20);
 	// $renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
-	$column2 = new GtkTreeViewColumn("Col Int", $renderer2, "text", 1);
+	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 1);
 	$tree->append_column($column2);
+	$renderer2->set_alignment(0.5, 0.5);
+	$column2->set_alignment(0.5, 0.5);
+	$column2->set_resizable(TRUE);
 
 	// Column 3
 	$renderer3 = new GtkCellRendererText();
-	$column3 = new GtkTreeViewColumn("Col String", $renderer3, "text", 2);
+	$column3 = new GtkTreeViewColumn("Column 3", $renderer3, "text", 2);
 	$tree->append_column($column3, TRUE);
 
 
@@ -124,6 +134,7 @@ $btn1->connect("clicked", "GtkWindowButton1Clicked");
 // $btn2->connect("button-release-event", "GtkWindowReleased");
 $btn2->connect("clicked", "GtkWindowReleased");
 $btn2->connect("clicked", "GtkWindowButton2Clicked");
+$btn3->connect("clicked", "GtkWindowButton3Clicked");
 
 // Show all
 $win->show_all();
