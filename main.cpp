@@ -242,6 +242,7 @@ extern "C"
             gtkbin.extends(gtkcontainer);
             gtkbin.method<&GtkBin_::test3>("test3");
 
+
         // GtkPaned
         Php::Class<GtkPaned_> gtkpaned("GtkPaned");
             gtkpaned.extends(gtkcontainer);
@@ -347,6 +348,18 @@ extern "C"
             gtkbutton.method<&GtkButton_::set_use_underline>("set_use_underline");
             gtkbutton.method<&GtkButton_::get_use_underline>("get_use_underline");
 
+
+        // GtkAdjustment
+        Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
+            gtkadjustment.extends(gobject);
+            gtkadjustment.method<&GtkAdjustment_::__construct>("__construct");
+
+
+        // GtkScrolledWindow
+        Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
+            gtkscrolledwindow.extends(gtkcontainer);
+            gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
+            
 
         // GtkRequisition
         // Php::Class<GtkRequisition_> gtkrequisition("GtkRequisition");
@@ -506,6 +519,10 @@ extern "C"
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtkentrybuffer));
 
+        extension.add(std::move(gtkscrolledwindow));
+
+        extension.add(std::move(gtkadjustment));
+        
         extension.add(std::move(gtkpaned));
 
         extension.add(std::move(gtksorttype));

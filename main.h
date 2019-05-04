@@ -22,6 +22,9 @@
     #include "src/GtkWindow.h"
     #include "src/GtkButton.h"
 
+    #include "src/GtkAdjustment.h"
+    #include "src/GtkScrolledWindow.h"
+
     #include "src/GtkOrientation.h"
     #include "src/GtkPaned.h"
 
