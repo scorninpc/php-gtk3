@@ -29,6 +29,13 @@
              * PHP Construct
              */
             void __construct(Php::Parameters &parameters);
+
+            /**
+             * Sets the scrollbar policy for the horizontal and vertical scrollbars.
+             *
+             * https://developer.gnome.org/gtk3/stable/GtkScrolledWindow.html#gtk-scrolled-window-set-policy
+             */
+            void set_policy(Php::Parameters &parameters);
     };
 
 #endif

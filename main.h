@@ -24,6 +24,7 @@
 
     #include "src/GtkAdjustment.h"
     #include "src/GtkScrolledWindow.h"
+    #include "src/GtkPolicyType.h"
 
     #include "src/GtkOrientation.h"
     #include "src/GtkPaned.h"

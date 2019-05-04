@@ -31,7 +31,8 @@ class Application
 		$tree->set_model($model);
 
 		$scroll = new GtkScrolledWindow();
-		$scroll->add($tree);
+		$scroll->add($tree); // add_with_viewport is deprecated
+		$scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 		$paned->add1($scroll);
 
 		// Create window

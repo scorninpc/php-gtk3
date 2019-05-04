@@ -152,6 +152,14 @@ extern "C"
             gtkorientation.constant("HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtkorientation.constant("VERTICAL", GTK_ORIENTATION_VERTICAL);
 
+
+        // GtkPolicyType
+        Php::Class<GtkPolicyType_> gtkpolicytype("GtkPolicyType");
+            gtkpolicytype.constant("ALWAYS", GTK_POLICY_ALWAYS);
+            gtkpolicytype.constant("AUTOMATIC", GTK_POLICY_AUTOMATIC);
+            gtkpolicytype.constant("NEVER", GTK_POLICY_NEVER);
+            gtkpolicytype.constant("EXTERNAL", GTK_POLICY_EXTERNAL);
+
         // GtkWidget
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
             gtkwidget.extends(gobject);
@@ -359,6 +367,7 @@ extern "C"
         Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
             gtkscrolledwindow.extends(gtkcontainer);
             gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
+            gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
             
 
         // GtkRequisition
@@ -508,6 +517,7 @@ extern "C"
 
         extension.add(std::move(gtk));
         extension.add(std::move(gtkorientation));
+        extension.add(std::move(gtkpolicytype));
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkentry));
         extension.add(std::move(gtkcontainer));
@@ -522,7 +532,7 @@ extern "C"
         extension.add(std::move(gtkscrolledwindow));
 
         extension.add(std::move(gtkadjustment));
-        
+
         extension.add(std::move(gtkpaned));
 
         extension.add(std::move(gtksorttype));
