@@ -37,7 +37,7 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 
 function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 {
-	
+
 }
 
 function GtkCellRendererToggled($renderer=NULL, $row=NULL)
@@ -104,6 +104,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
 	$column1->set_fixed_width(20);
+
 	// $renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
@@ -113,6 +114,8 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$renderer2->set_alignment(0.5, 0.5);
 	$column2->set_alignment(0.5, 0.5);
 	$column2->set_resizable(TRUE);
+
+	$column2->set_sort_column_id(1);
 
 	// Column 3
 	$renderer3 = new GtkCellRendererText();

@@ -129,12 +129,9 @@ extern "C"
         Php::Class<Gtk_> gtk("Gtk");
             gtk.method<&Gtk_::main>("main");
             gtk.method<&Gtk_::main_quit>("main_quit");
-            
-            // gtk.constant("a", a);
-            
             gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
-            
+    
             gtk.constant("ALIGN_FILL", GTK_ALIGN_FILL);
             gtk.constant("ALIGN_START", GTK_ALIGN_START);
             gtk.constant("ALIGN_END", GTK_ALIGN_END);
@@ -150,6 +147,10 @@ extern "C"
             gtk.constant("WIN_POS_CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
             gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
         
+        // GtkOrientation
+        Php::Class<GtkOrientation_> gtkorientation("GtkOrientation");
+            gtkorientation.constant("HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
+            gtkorientation.constant("VERTICAL", GTK_ORIENTATION_VERTICAL);
 
         // GtkWidget
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
@@ -240,6 +241,19 @@ extern "C"
         Php::Class<GtkBin_> gtkbin("GtkBin");
             gtkbin.extends(gtkcontainer);
             gtkbin.method<&GtkBin_::test3>("test3");
+
+        // GtkPaned
+        Php::Class<GtkPaned_> gtkpaned("GtkPaned");
+            gtkpaned.extends(gtkcontainer);
+            gtkpaned.method<&GtkPaned_::__construct>("__construct");
+            gtkpaned.method<&GtkPaned_::add1>("add1");
+            gtkpaned.method<&GtkPaned_::add2>("add2");
+            gtkpaned.method<&GtkPaned_::pack1>("pack1");
+            gtkpaned.method<&GtkPaned_::pack2>("pack2");
+            gtkpaned.method<&GtkPaned_::get_child1>("get_child1");
+            gtkpaned.method<&GtkPaned_::get_child2>("get_child2");
+            gtkpaned.method<&GtkPaned_::set_position>("set_position");
+            gtkpaned.method<&GtkPaned_::get_position>("get_position");
 
 
         // GtkWindow
@@ -480,6 +494,7 @@ extern "C"
         extension.add(std::move(gdkpixbuf));
 
         extension.add(std::move(gtk));
+        extension.add(std::move(gtkorientation));
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkentry));
         extension.add(std::move(gtkcontainer));
@@ -490,6 +505,8 @@ extern "C"
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtkentrybuffer));
+
+        extension.add(std::move(gtkpaned));
 
         extension.add(std::move(gtksorttype));
         extension.add(std::move(gtktreeview));
