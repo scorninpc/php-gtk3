@@ -508,6 +508,55 @@ extern "C"
 
         Php::Class<GtkTreeIter_> gtktreeiter("GtkTreeIter");
 
+
+        // GtkNotebook
+        Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
+            gtknotebook.extends(gtkcontainer);
+            gtknotebook.method<&GtkNotebook_::__construct>("__construct");
+            gtknotebook.method<&GtkNotebook_::append_page>("append_page");
+            gtknotebook.method<&GtkNotebook_::insert_page>("insert_page");
+            gtknotebook.method<&GtkNotebook_::remove_page>("remove_page");
+            gtknotebook.method<&GtkNotebook_::detach_tab>("detach_tab");
+            gtknotebook.method<&GtkNotebook_::page_num>("page_num");
+            gtknotebook.method<&GtkNotebook_::next_page>("next_page");
+            gtknotebook.method<&GtkNotebook_::prev_page>("prev_page");
+            gtknotebook.method<&GtkNotebook_::reorder_child>("reorder_child");
+            gtknotebook.method<&GtkNotebook_::set_tab_pos>("set_tab_pos");
+            gtknotebook.method<&GtkNotebook_::get_menu_label>("get_menu_label");
+            gtknotebook.method<&GtkNotebook_::set_show_tabs>("set_show_tabs");
+            gtknotebook.method<&GtkNotebook_::set_show_border>("set_show_border");
+            gtknotebook.method<&GtkNotebook_::set_scrollable>("set_scrollable");
+            gtknotebook.method<&GtkNotebook_::popup_enable>("popup_enable");
+            gtknotebook.method<&GtkNotebook_::popup_disable>("popup_disable");
+            gtknotebook.method<&GtkNotebook_::get_current_page>("get_current_page");
+            gtknotebook.method<&GtkNotebook_::get_nth_page>("get_nth_page");
+            gtknotebook.method<&GtkNotebook_::get_n_pages>("get_n_pages");
+            gtknotebook.method<&GtkNotebook_::get_tab_label>("get_tab_label");
+            gtknotebook.method<&GtkNotebook_::set_menu_label>("set_menu_label");
+            gtknotebook.method<&GtkNotebook_::set_menu_label_text>("set_menu_label_text");
+            gtknotebook.method<&GtkNotebook_::set_tab_label>("set_tab_label");
+            gtknotebook.method<&GtkNotebook_::set_tab_label_text>("set_tab_label_text");
+            gtknotebook.method<&GtkNotebook_::set_tab_reorderable>("set_tab_reorderable");
+            gtknotebook.method<&GtkNotebook_::set_tab_detachable>("set_tab_detachable");
+            gtknotebook.method<&GtkNotebook_::get_menu_label_text>("get_menu_label_text");
+            gtknotebook.method<&GtkNotebook_::get_scrollable>("get_scrollable");
+            gtknotebook.method<&GtkNotebook_::get_show_border>("get_show_border");
+            gtknotebook.method<&GtkNotebook_::get_show_tabs>("get_show_tabs");
+            gtknotebook.method<&GtkNotebook_::get_tab_label_text>("get_tab_label_text");
+
+        // GtkPositionType
+        Php::Class<GtkPositionType_> gtkpositiontype("GtkPositionType");
+            gtkpositiontype.constant("LEFT", (int)GTK_POS_LEFT);
+            gtkpositiontype.constant("RIGHT", (int)GTK_POS_RIGHT);
+            gtkpositiontype.constant("TOP", (int)GTK_POS_TOP);
+            gtkpositiontype.constant("BOTTOM", (int)GTK_POS_BOTTOM);
+
+        // GtkPackType
+        Php::Class<GtkPackType_> gtkpacktype("GtkPackType");
+            gtkpacktype.constant("STARTY", (int)GTK_PACK_START);
+            gtkpacktype.constant("END", (int)GTK_PACK_END);
+
+
         // Add
         extension.add(std::move(gobject));
 
@@ -545,6 +594,10 @@ extern "C"
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
         extension.add(std::move(gtkcellrenderertoggle));
+
+        extension.add(std::move(gtknotebook));
+        extension.add(std::move(gtkpositiontype));
+        extension.add(std::move(gtkpacktype));
 
 
         // return the extension

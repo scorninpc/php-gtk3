@@ -31,6 +31,8 @@
 
     #include "src/GtkTreeView.h"
     #include "src/GtkTreeViewColumn.h"
+
+    #include "src/GtkNotebook.h"
     
     #include "src/GtkCellRenderer.h"
     #include "src/GtkCellRendererText.h"
@@ -43,5 +45,8 @@
     #include "src/GtkTreeIter.h"
 
     #include "src/GtkEntryBuffer.h"
+    
+    #include "src/GtkPositionType.h"
+    #include "src/GtkPackType.h"
 
 #endif

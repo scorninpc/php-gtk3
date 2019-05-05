@@ -12,8 +12,6 @@ class Application
 	{
 		// Paned
 		$paned = new GtkPaned(GtkOrientation::HORIZONTAL); // GtkHPaned and GtkVPaned is deprecated
-		
-		$paned->pack2(new GtkButton(), FALSE, FALSE);
 		$paned->set_position(120);
 
 		// Treeview
@@ -35,9 +33,23 @@ class Application
 		$scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 		$paned->add1($scroll);
 
+		// Create notebook
+		$this->ntb = new GtkNotebook();
+		$this->ntb->set_tab_pos(GtkPositionType::RIGHT);
+		$paned->add2($this->ntb);
+
+		
+		$this->ntb->append_page($this->b = GtkButton::new_with_label("BRUNO"));
+		$this->ntb->append_page(GtkButton::new_with_label("OK 1"));
+		$this->ntb->insert_page(GtkButton::new_with_label("___"), GtkButton::new_with_label("X"), 0);
+		// $this->ntb->append_page(GtkButton::new_with_label("OK 2"));
+
+
+		$this->b->connect("clicked", [$this, "b_clicked"]);
+
 		// Create window
 		$win = new GtkWindow();
-		$win->set_default_size(300, 200);
+		$win->set_default_size(800, 600);
 		$win->add($paned);
 
 		// Connects
@@ -45,6 +57,16 @@ class Application
 
 		// Show all
 		$win->show_all();
+	}
+
+	public function b_clicked ($widget)
+	{
+		$child = $this->ntb->get_nth_page(1);
+		
+		var_dump($this->ntb->get_tab_label_text($child));
+
+		// $num = $this->ntb->get_current_page();
+		// $this->ntb->remove_page($num);
 	}
 
 	/**
