@@ -508,6 +508,11 @@ extern "C"
 
         Php::Class<GtkTreeIter_> gtktreeiter("GtkTreeIter");
 
+        // GtkLabel
+        Php::Class<GtkLabel_> gtklabel("GtkLabel");
+            gtklabel.extends(gtkwidget);
+            gtklabel.method<&GtkLabel_::__construct>("__construct");
+            // gtklabel.method<&GtkLabel_::append_page>("append_page");
 
         // GtkNotebook
         Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
@@ -598,6 +603,8 @@ extern "C"
         extension.add(std::move(gtknotebook));
         extension.add(std::move(gtkpositiontype));
         extension.add(std::move(gtkpacktype));
+        
+        extension.add(std::move(gtklabel));
 
 
         // return the extension

@@ -35,17 +35,16 @@ class Application
 
 		// Create notebook
 		$this->ntb = new GtkNotebook();
-		$this->ntb->set_tab_pos(GtkPositionType::RIGHT);
+		$this->ntb->set_tab_pos(GtkPositionType::TOP);
 		$paned->add2($this->ntb);
 
 		
-		$this->ntb->append_page($this->b = GtkButton::new_with_label("BRUNO"));
-		$this->ntb->append_page(GtkButton::new_with_label("OK 1"));
-		$this->ntb->insert_page(GtkButton::new_with_label("___"), GtkButton::new_with_label("X"), 0);
-		// $this->ntb->append_page(GtkButton::new_with_label("OK 2"));
-
-
-		$this->b->connect("clicked", [$this, "b_clicked"]);
+		$this->create_new_tab("GtkLabel.cpp");
+		$this->create_new_tab("GtkLabel.h");
+		$this->create_new_tab("main.cpp");
+		$this->create_new_tab("main.h");
+		
+		// $this->b->connect("clicked", [$this, "b_clicked"]);
 
 		// Create window
 		$win = new GtkWindow();
@@ -55,15 +54,31 @@ class Application
 		// Connects
 		$win->connect("destroy", [$this, "GtkWindowDestroy"]);
 
+		// $win->set_interactive_debugging(TRUE);
+
 		// Show all
 		$win->show_all();
 	}
 
-	public function b_clicked ($widget)
+	public function create_new_tab($label)
 	{
-		$child = $this->ntb->get_nth_page(1);
-		
-		var_dump($this->ntb->get_tab_label_text($child));
+		$hbox = new GtkHBox();
+		$button_close = GtkButton::new_with_label("x");
+		$label = new GtkLabel($label);
+		$hbox->pack_start($label, TRUE, TRUE);
+		$hbox->pack_start($button_close, FALSE, FALSE);
+
+		$this->ntb->insert_page(new GtkLabel(""), $hbox);
+
+		$button_close->connect("clicked", [$this, "close_tab"], $hbox);
+
+
+		$hbox->show_all();
+	}
+
+	public function close_tab($widget=NULL, $event=NULL, $child=NULL)
+	{
+		// $this->ntb->remove_page($page_num);
 
 		// $num = $this->ntb->get_current_page();
 		// $this->ntb->remove_page($num);

@@ -49,4 +49,6 @@
     #include "src/GtkPositionType.h"
     #include "src/GtkPackType.h"
 
+    #include "src/GtkLabel.h"
+
 #endif
