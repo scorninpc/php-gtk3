@@ -64,4 +64,8 @@
     #include "src/GtkResponseType.h"
     #include "src/GtkDialog.h"
 
+    #include "src/GtkFileChooser.h"
+    #include "src/GtkFileChooserDialog.h"
+    #include "src/GtkFileChooserAction.h"
+
 #endif

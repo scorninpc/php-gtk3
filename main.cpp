@@ -344,8 +344,7 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_titlebar>("get_titlebar");
             gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
 
-
-         // GtkDialog
+        // GtkDialog
         Php::Class<GtkDialog_> gtkdialog("GtkDialog");
             gtkdialog.extends(gtkwindow);
             gtkdialog.method<&GtkDialog_::__construct>("__construct");
@@ -361,7 +360,18 @@ extern "C"
             gtkdialog.method<&GtkDialog_::get_widget_for_response>("get_widget_for_response");
             gtkdialog.method<&GtkDialog_::get_content_area>("get_content_area");
             gtkdialog.method<&GtkDialog_::get_header_bar>("get_header_bar");
-        
+
+        // GtkFileChooser
+        Php::Class<GtkFileChooser_> gtkfilechooser("GtkFileChooser");
+            gtkfilechooser.extends(gobject);
+            gtkfilechooser.method<&GtkFileChooser_::get_filename>("get_filename");        
+
+        // GtkFileChooserDialog
+        Php::Class<GtkFileChooserDialog_> gtkfilechooserdialog("GtkFileChooserDialog");
+            gtkfilechooserdialog.extends(gtkdialog);
+            gtkfilechooserdialog.extends(gtkfilechooser);
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::__construct>("__construct");
+
 
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
@@ -624,6 +634,15 @@ extern "C"
             gtkjustification.constant("RIGHT", (int)GTK_JUSTIFY_RIGHT);
             gtkjustification.constant("CENTER", (int)GTK_JUSTIFY_CENTER);
             gtkjustification.constant("FILL", (int)GTK_JUSTIFY_FILL);
+        
+
+        // GtkFileChooserAction
+        Php::Class<GtkFileChooserAction_> gtkfilechooseraction("GtkFileChooserAction");
+            gtkfilechooseraction.constant("ACTION_OPEN", (int)GTK_FILE_CHOOSER_ACTION_OPEN);
+            gtkfilechooseraction.constant("ACTION_SAVE", (int)GTK_FILE_CHOOSER_ACTION_SAVE);
+            gtkfilechooseraction.constant("SELECT_FOLDER", (int)GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
+            gtkfilechooseraction.constant("CREATE_FOLDER", (int)GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER);
+        extension.add(std::move(gtkfilechooseraction));
 
 
         // Add
@@ -672,6 +691,10 @@ extern "C"
         extension.add(std::move(gtklabel));
 
         extension.add(std::move(gtkdialog));
+
+        extension.add(std::move(gtkfilechooser));
+
+        extension.add(std::move(gtkfilechooserdialog));
 
         // GtkTextView
         Php::Class<GtkTextView_> gtktextview("GtkTextView");

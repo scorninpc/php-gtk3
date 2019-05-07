@@ -78,27 +78,35 @@ class Application
 
 		$button_close->connect("clicked", function() {
 
-			$dialog = GtkDialog::new_with_buttons("Titulo", $this->win, GtkDialogFlags::MODAL);
-			// $dialog = new GtkDialog();
-			$dialog->set_transient_for($this->win);
-			
+			// $dialog = GtkDialog::new_with_buttons("Titulo", $this->win, GtkDialogFlags::MODAL);
+			// $dialog->set_transient_for($this->win);
+			// $box = $dialog->get_content_area();
+			// var_dump($box);
+			// $h = new GtkHBox(30);
+			// $h->set_margin_start(20);
+			// $h->set_margin_end(20);
+			// $h->set_margin_top(20);
+			// $h->set_margin_bottom(20);
+			// $h->pack_start(new GtkLabel("My dialog message, taokay?"), TRUE, TRUE, 30);
+			// $box->pack_end($h, TRUE, TRUE, 30);
+			// $box->show_all();
 
-			$box = $dialog->get_content_area();
-			var_dump($box);
-			$box->pack_end(new GtkLabel("Mensagem de alerta, taokay?"), TRUE, TRUE);
-			$box->show_all();
+			// $a = $dialog->run();
+
+			// if($a == GtkResponseType::OK) {
+			// 	var_dump("OK");
+			// }
+			// else {
+			// 	var_dump("ERRO");
+			// }
+
+			// $dialog->destroy();
 
 
-			$a = $dialog->run();
-
-			if($a == GtkResponseType::OK) {
-				var_dump("OK");
-			}
-			else {
-				var_dump("ERRO");
-			}
-
-			$dialog->destroy();
+			/**** TEST NOT WORKING YET ***/
+			$dialog = new GtkFileChooserDialog("OK", $this->win, GtkFileChooserAction::ACTION_OPEN);
+			$dialog->run();
+			var_dump($dialog->get_filename());
 
 		});
 
