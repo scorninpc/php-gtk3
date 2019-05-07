@@ -512,8 +512,45 @@ extern "C"
         Php::Class<GtkLabel_> gtklabel("GtkLabel");
             gtklabel.extends(gtkwidget);
             gtklabel.method<&GtkLabel_::__construct>("__construct");
-            // gtklabel.method<&GtkLabel_::append_page>("append_page");
-
+            gtklabel.method<&GtkLabel_::set_text>("set_text");
+            gtklabel.method<&GtkLabel_::set_markup>("set_markup");
+            gtklabel.method<&GtkLabel_::set_markup_with_mnemonic>("set_markup_with_mnemonic");
+            gtklabel.method<&GtkLabel_::set_pattern>("set_pattern");
+            gtklabel.method<&GtkLabel_::set_justify>("set_justify");
+            gtklabel.method<&GtkLabel_::set_xalign>("set_xalign");
+            gtklabel.method<&GtkLabel_::set_yalign>("set_yalign");
+            gtklabel.method<&GtkLabel_::set_width_chars>("set_width_chars");
+            gtklabel.method<&GtkLabel_::set_max_width_chars>("set_max_width_chars");
+            gtklabel.method<&GtkLabel_::set_line_wrap>("set_line_wrap");
+            gtklabel.method<&GtkLabel_::set_lines>("set_lines");
+            gtklabel.method<&GtkLabel_::get_mnemonic_keyval>("get_mnemonic_keyval");
+            gtklabel.method<&GtkLabel_::get_selectable>("get_selectable");
+            gtklabel.method<&GtkLabel_::get_text>("get_text");
+            gtklabel.method<&GtkLabel_::set_mnemonic_widget>("set_mnemonic_widget");
+            gtklabel.method<&GtkLabel_::set_selectable>("set_selectable");
+            gtklabel.method<&GtkLabel_::set_text_with_mnemonic>("set_text_with_mnemonic");
+            gtklabel.method<&GtkLabel_::get_justify>("get_justify");
+            gtklabel.method<&GtkLabel_::get_xalign>("get_xalign");
+            gtklabel.method<&GtkLabel_::get_yalign>("get_yalign");
+            gtklabel.method<&GtkLabel_::get_width_chars>("get_width_chars");
+            gtklabel.method<&GtkLabel_::get_max_width_chars>("get_max_width_chars");
+            gtklabel.method<&GtkLabel_::get_label>("get_label");
+            gtklabel.method<&GtkLabel_::get_line_wrap>("get_line_wrap");
+            gtklabel.method<&GtkLabel_::get_lines>("get_lines");
+            gtklabel.method<&GtkLabel_::get_mnemonic_widget>("get_mnemonic_widget");
+            gtklabel.method<&GtkLabel_::get_use_markup>("get_use_markup");
+            gtklabel.method<&GtkLabel_::get_use_underline>("get_use_underline");
+            gtklabel.method<&GtkLabel_::get_single_line_mode>("get_single_line_mode");
+            gtklabel.method<&GtkLabel_::get_angle>("get_angle");
+            gtklabel.method<&GtkLabel_::set_label>("set_label");
+            gtklabel.method<&GtkLabel_::set_use_markup>("set_use_markup");
+            gtklabel.method<&GtkLabel_::set_use_underline>("set_use_underline");
+            gtklabel.method<&GtkLabel_::set_single_line_mode>("set_single_line_mode");
+            gtklabel.method<&GtkLabel_::set_angle>("set_angle");
+            gtklabel.method<&GtkLabel_::get_current_uri>("get_current_uri");
+            gtklabel.method<&GtkLabel_::set_track_visited_links>("set_track_visited_links");
+            gtklabel.method<&GtkLabel_::get_track_visited_links>("get_track_visited_links");
+        
         // GtkNotebook
         Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
             gtknotebook.extends(gtkcontainer);
@@ -562,6 +599,14 @@ extern "C"
             gtkpacktype.constant("END", (int)GTK_PACK_END);
 
 
+        // GtkJustification
+        Php::Class<GtkJustification_> gtkjustification("GtkJustification");
+            gtkjustification.constant("LEFT", (int)GTK_JUSTIFY_LEFT);
+            gtkjustification.constant("RIGHT", (int)GTK_JUSTIFY_RIGHT);
+            gtkjustification.constant("CENTER", (int)GTK_JUSTIFY_CENTER);
+            gtkjustification.constant("FILL", (int)GTK_JUSTIFY_FILL);
+
+
         // Add
         extension.add(std::move(gobject));
 
@@ -604,7 +649,31 @@ extern "C"
         extension.add(std::move(gtkpositiontype));
         extension.add(std::move(gtkpacktype));
         
+        extension.add(std::move(gtkjustification));
         extension.add(std::move(gtklabel));
+
+        // GtkTextView
+        Php::Class<GtkTextView_> gtktextview("GtkTextView");
+            gtktextview.extends(gtkcontainer);
+            gtktextview.method<&GtkTextView_::__construct>("__construct");
+        extension.add(std::move(gtktextview));
+
+        // GtkTextIter
+        Php::Class<GtkTextIter_> gtktextiter("GtkTextIter");
+        extension.add(std::move(gtktextiter));
+
+        // GtkTextBuffer
+        Php::Class<GtkTextBuffer_> gtktextbuffer("GtkTextBuffer");
+            gtktextbuffer.extends(gobject);
+            gtktextbuffer.method<&GtkTextBuffer_::__construct>("__construct");
+            gtktextbuffer.method<&GtkTextBuffer_::get_line_count>("get_line_count");
+            gtktextbuffer.method<&GtkTextBuffer_::get_char_count>("get_char_count");
+            gtktextbuffer.method<&GtkTextBuffer_::insert>("insert");
+        extension.add(std::move(gtktextbuffer));
+
+        // GtkTextTag
+        Php::Class<GtkTextTag_> gtktexttag("GtkTextTag");
+        extension.add(std::move(gtktexttag));
 
 
         // return the extension

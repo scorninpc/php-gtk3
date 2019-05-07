@@ -48,7 +48,15 @@
     
     #include "src/GtkPositionType.h"
     #include "src/GtkPackType.h"
+    #include "src/GtkJustification.h"
 
     #include "src/GtkLabel.h"
+
+    #include "src/GtkTextIter.h"
+    #include "src/GtkTextBuffer.h"
+
+    #include "src/GtkTextView.h"
+
+    #include "src/GtkTextTag.h"
 
 #endif

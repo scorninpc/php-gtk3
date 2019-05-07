@@ -68,7 +68,9 @@ class Application
 		$hbox->pack_start($label, TRUE, TRUE);
 		$hbox->pack_start($button_close, FALSE, FALSE);
 
-		$this->ntb->insert_page(new GtkLabel(""), $hbox);
+		$text = new GtkTextView();
+
+		$this->ntb->insert_page($text, $hbox);
 
 		$button_close->connect("clicked", [$this, "close_tab"], $hbox);
 
