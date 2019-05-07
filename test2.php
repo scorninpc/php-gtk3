@@ -47,17 +47,17 @@ class Application
 		// $this->b->connect("clicked", [$this, "b_clicked"]);
 
 		// Create window
-		$win = new GtkWindow();
-		$win->set_default_size(800, 600);
-		$win->add($paned);
+		$this->win = new GtkWindow();
+		$this->win->set_default_size(800, 600);
+		$this->win->add($paned);
 
 		// Connects
-		$win->connect("destroy", [$this, "GtkWindowDestroy"]);
+		$this->win->connect("destroy", [$this, "GtkWindowDestroy"]);
 
-		// $win->set_interactive_debugging(TRUE);
+		// $this->win->set_interactive_debugging(TRUE);
 
 		// Show all
-		$win->show_all();
+		$this->win->show_all();
 	}
 
 	public function create_new_tab($label)
@@ -76,8 +76,33 @@ class Application
 
 		$this->ntb->insert_page($scroll, $hbox);
 
-		$button_close->connect("clicked", [$this, "close_tab"], $hbox);
+		$button_close->connect("clicked", function() {
 
+			$dialog = GtkDialog::new_with_buttons("Titulo", $this->win, GtkDialogFlags::MODAL);
+			// $dialog = new GtkDialog();
+			$dialog->set_transient_for($this->win);
+			
+
+			$box = $dialog->get_content_area();
+			var_dump($box);
+			$box->pack_end(new GtkLabel("Mensagem de alerta, taokay?"), TRUE, TRUE);
+			$box->show_all();
+
+
+			$a = $dialog->run();
+
+			if($a == GtkResponseType::OK) {
+				var_dump("OK");
+			}
+			else {
+				var_dump("ERRO");
+			}
+
+			$dialog->destroy();
+
+		});
+
+		$button_close->connect("clicked", [$this, "close_tab"], $hbox);
 
 		$hbox->show_all();
 	}

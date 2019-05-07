@@ -345,6 +345,24 @@ extern "C"
             gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
 
 
+         // GtkDialog
+        Php::Class<GtkDialog_> gtkdialog("GtkDialog");
+            gtkdialog.extends(gtkwindow);
+            gtkdialog.method<&GtkDialog_::__construct>("__construct");
+            gtkdialog.method<&GtkDialog_::new_with_buttons>("new_with_buttons");
+            gtkdialog.method<&GtkDialog_::run>("run");
+            gtkdialog.method<&GtkDialog_::response>("response");
+            gtkdialog.method<&GtkDialog_::add_button>("add_button");
+            gtkdialog.method<&GtkDialog_::add_buttons>("add_buttons");
+            gtkdialog.method<&GtkDialog_::add_action_widget>("add_action_widget");
+            gtkdialog.method<&GtkDialog_::set_default_response>("set_default_response");
+            gtkdialog.method<&GtkDialog_::set_response_sensitive>("set_response_sensitive");
+            gtkdialog.method<&GtkDialog_::get_response_for_widget>("get_response_for_widget");
+            gtkdialog.method<&GtkDialog_::get_widget_for_response>("get_widget_for_response");
+            gtkdialog.method<&GtkDialog_::get_content_area>("get_content_area");
+            gtkdialog.method<&GtkDialog_::get_header_bar>("get_header_bar");
+        
+
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
             gtkbutton.extends(gtkbin);
@@ -653,6 +671,8 @@ extern "C"
         extension.add(std::move(gtkjustification));
         extension.add(std::move(gtklabel));
 
+        extension.add(std::move(gtkdialog));
+
         // GtkTextView
         Php::Class<GtkTextView_> gtktextview("GtkTextView");
             gtktextview.extends(gtkcontainer);
@@ -676,6 +696,28 @@ extern "C"
         Php::Class<GtkTextTag_> gtktexttag("GtkTextTag");
         extension.add(std::move(gtktexttag));
 
+        // GtkDialogFlags
+        Php::Class<GtkDialogFlags_> gtkdialogflags("GtkDialogFlags");
+            gtkdialogflags.constant("MODAL", (int)GTK_DIALOG_MODAL);
+            gtkdialogflags.constant("DESTROY_WITH_PARENT", (int)GTK_DIALOG_DESTROY_WITH_PARENT);
+            gtkdialogflags.constant("USE_HEADER_BAR", (int)GTK_DIALOG_USE_HEADER_BAR);
+        extension.add(std::move(gtkdialogflags));
+
+        // GtkResponseType
+        Php::Class<GtkResponseType_> gtkresponsetype("GtkResponseType");
+            gtkresponsetype.constant("REJECT", (int)GTK_RESPONSE_REJECT);
+            gtkresponsetype.constant("ACCEPT", (int)GTK_RESPONSE_ACCEPT);
+            gtkresponsetype.constant("DELETE_EVENT", (int)GTK_RESPONSE_DELETE_EVENT);
+            gtkresponsetype.constant("OK", (int)GTK_RESPONSE_OK);
+            gtkresponsetype.constant("CANCEL", (int)GTK_RESPONSE_CANCEL);
+            gtkresponsetype.constant("CLOSE", (int)GTK_RESPONSE_CLOSE);
+            gtkresponsetype.constant("YES", (int)GTK_RESPONSE_YES);
+            gtkresponsetype.constant("NO", (int)GTK_RESPONSE_NO);
+            gtkresponsetype.constant("APPLY", (int)GTK_RESPONSE_APPLY);
+            gtkresponsetype.constant("HELP", (int)GTK_RESPONSE_HELP);
+        extension.add(std::move(gtkresponsetype));
+
+       
 
         // return the extension
         return extension;

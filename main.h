@@ -59,4 +59,9 @@
 
     #include "src/GtkTextTag.h"
 
+    #include "src/GtkDialogFlags.h"
+
+    #include "src/GtkResponseType.h"
+    #include "src/GtkDialog.h"
+
 #endif
