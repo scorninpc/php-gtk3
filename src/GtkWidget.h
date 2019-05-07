@@ -399,6 +399,8 @@
              * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-margin_bottom
              */
             Php::Value get_margin_bottom();
+
+            void set_size_request(Php::Parameters &parameters);
         };
 
 #endif

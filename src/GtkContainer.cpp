@@ -14,7 +14,7 @@ void GtkContainer_::add(Php::Parameters &parameters)
 {
     Php::Value object = parameters[0];
 
-    if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
+    // if (!object.instanceOf("GtkWidget")) throw Php::Exception("parameter expect GtkWidget instance");
 
     GtkWidget_ *passedWidget = (GtkWidget_ *)object.implementation();
 

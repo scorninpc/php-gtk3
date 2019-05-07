@@ -514,3 +514,17 @@ Php::Value GtkWidget_::get_margin_bottom()
 {
     return gtk_widget_get_margin_bottom(GTK_WIDGET(instance));
 }
+
+
+/**
+ * Sets the default size of a window
+ */
+void GtkWidget_::set_size_request(Php::Parameters &parameters)
+{
+    // Verify sizes
+    int width = parameters[0];
+    int height = parameters[1];
+
+    // Set default size
+    gtk_widget_set_size_request(GTK_WIDGET(instance), width, height);
+}

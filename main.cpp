@@ -36,8 +36,8 @@ extern "C"
 
         // GObject
         Php::Class<GObject_> gobject("GObject");
-            gobject.method<&GtkWidget_::connect>("connect");
-            gobject.method<&GtkWidget_::handler_disconnect>("handler_disconnect");
+            gobject.method<&GObject_::connect>("connect");
+            gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
             gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
             gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
@@ -214,6 +214,7 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_margin_top>("get_margin_top");
             gtkwidget.method<&GtkWidget_::set_margin_bottom>("set_margin_bottom");
             gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
+            gtkwidget.method<&GtkWidget_::set_size_request>("set_size_request");
         
 
         // GtkContainer

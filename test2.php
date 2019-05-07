@@ -64,13 +64,17 @@ class Application
 	{
 		$hbox = new GtkHBox();
 		$button_close = GtkButton::new_with_label("x");
+		$button_close->set_size_request(5, 5);
 		$label = new GtkLabel($label);
-		$hbox->pack_start($label, TRUE, TRUE);
+		$hbox->pack_start($label, TRUE, TRUE, 10);
 		$hbox->pack_start($button_close, FALSE, FALSE);
 
 		$text = new GtkTextView();
+		$scroll = new GtkScrolledWindow();
+		$scroll->add($text);
+		$scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 
-		$this->ntb->insert_page($text, $hbox);
+		$this->ntb->insert_page($scroll, $hbox);
 
 		$button_close->connect("clicked", [$this, "close_tab"], $hbox);
 
