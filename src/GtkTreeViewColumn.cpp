@@ -20,7 +20,7 @@ void GtkTreeViewColumn_::__construct(Php::Parameters &parameters)
 
     // Get the renderer
     Php::Value object = parameters[1];
-    if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
+    // if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
     GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
     // Get type and column
@@ -56,7 +56,7 @@ void GtkTreeViewColumn_::pack_start(Php::Parameters &parameters)
 {
     // Get the renderer
     Php::Value object = parameters[0];
-    if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
+    // if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
     GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
 
@@ -70,7 +70,7 @@ void GtkTreeViewColumn_::pack_end(Php::Parameters &parameters)
 {
     // Get the renderer
     Php::Value object = parameters[0];
-    if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
+    // if (!object.instanceOf("GtkCellRenderer")) throw Php::Exception("parameter expect GtkCellRenderer instance");
     GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
 

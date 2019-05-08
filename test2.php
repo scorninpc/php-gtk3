@@ -92,21 +92,25 @@ class Application
 			// $box->show_all();
 
 			// $a = $dialog->run();
-
 			// if($a == GtkResponseType::OK) {
 			// 	var_dump("OK");
 			// }
 			// else {
 			// 	var_dump("ERRO");
 			// }
-
 			// $dialog->destroy();
 
 
 			/**** TEST NOT WORKING YET ***/
-			$dialog = new GtkFileChooserDialog("OK", $this->win, GtkFileChooserAction::ACTION_OPEN);
+			$dialog = new GtkFileChooserDialog("Open file", $this->win, GtkFileChooserAction::OPEN, [
+				"Cancel", GtkResponseType::CANCEL,
+				"Ok", GtkResponseType::OK,
+			]);
+			$dialog->set_select_multiple(TRUE);
 			$dialog->run();
+
 			var_dump($dialog->get_filename());
+			$dialog->destroy();
 
 		});
 

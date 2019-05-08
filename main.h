@@ -67,5 +67,8 @@
     #include "src/GtkFileChooser.h"
     #include "src/GtkFileChooserDialog.h"
     #include "src/GtkFileChooserAction.h"
+    #include "src/GtkFileFilterFlags.h"
+    #include "src/GtkFileFilter.h"
+    #include "src/GtkFileFilterInfo.h"
 
 #endif

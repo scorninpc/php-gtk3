@@ -62,6 +62,7 @@ extern "C"
             gobject.constant("TYPE_GTYPE", (int)G_TYPE_GTYPE);
             gobject.constant("TYPE_VARIANT", (int)G_TYPE_VARIANT);
             gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
+        
 
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
@@ -112,17 +113,21 @@ extern "C"
             gdk.constant("WINDOW_TYPE_HINT_COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
             gdk.constant("WINDOW_TYPE_HINT_DND", GDK_WINDOW_TYPE_HINT_DND);
             gdk.constant("TYPE_PIXBUF",(int) GDK_TYPE_PIXBUF);
+        
 
 
         // GdkEvent
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
+        
+
 
         // GdkPixbuf
         Php::Class<GdkPixbuf_> gdkpixbuf("GdkPixbuf");
             gdkpixbuf.method<&GdkPixbuf_::__construct>("__construct");
             gdkpixbuf.method<&GdkPixbuf_::new_from_file>("new_from_file");
+        
 
 
         // Gtk
@@ -147,10 +152,12 @@ extern "C"
             gtk.constant("WIN_POS_CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
             gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
         
+        
         // GtkOrientation
         Php::Class<GtkOrientation_> gtkorientation("GtkOrientation");
             gtkorientation.constant("HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtkorientation.constant("VERTICAL", GTK_ORIENTATION_VERTICAL);
+        
 
 
         // GtkPolicyType
@@ -159,6 +166,7 @@ extern "C"
             gtkpolicytype.constant("AUTOMATIC", GTK_POLICY_AUTOMATIC);
             gtkpolicytype.constant("NEVER", GTK_POLICY_NEVER);
             gtkpolicytype.constant("EXTERNAL", GTK_POLICY_EXTERNAL);
+        
 
         // GtkWidget
         Php::Class<GtkWidget_> gtkwidget("GtkWidget");
@@ -217,11 +225,13 @@ extern "C"
             gtkwidget.method<&GtkWidget_::set_size_request>("set_size_request");
         
 
+
         // GtkContainer
         Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
             gtkcontainer.extends(gtkwidget);
             gtkcontainer.method<&GtkContainer_::add>("add");
             gtkcontainer.method<&GtkContainer_::test2>("test2");
+        
 
 
         // GtkBox
@@ -232,24 +242,28 @@ extern "C"
             gtkbox.method<&GtkBox_::pack_end>("pack_end");
             gtkbox.method<&GtkBox_::set_homogeneous>("set_homogeneous");
             gtkbox.method<&GtkBox_::set_spacing>("set_spacing");
+        
 
 
         // GtkHBox
         Php::Class<GtkHBox_> gtkhbox("GtkHBox");
             gtkhbox.extends(gtkbox);
             gtkhbox.method<&GtkHBox_::__construct>("__construct");
+        
 
 
         // GtkVBox
         Php::Class<GtkVBox_> gtkvbox("GtkVBox");
             gtkvbox.extends(gtkbox);
             gtkvbox.method<&GtkVBox_::__construct>("__construct");
+        
 
 
         // GtkBin
         Php::Class<GtkBin_> gtkbin("GtkBin");
             gtkbin.extends(gtkcontainer);
             gtkbin.method<&GtkBin_::test3>("test3");
+        
 
 
         // GtkPaned
@@ -264,6 +278,7 @@ extern "C"
             gtkpaned.method<&GtkPaned_::get_child2>("get_child2");
             gtkpaned.method<&GtkPaned_::set_position>("set_position");
             gtkpaned.method<&GtkPaned_::get_position>("get_position");
+        
 
 
         // GtkWindow
@@ -343,6 +358,7 @@ extern "C"
             gtkwindow.method<&GtkWindow_::set_titlebar>("set_titlebar");
             gtkwindow.method<&GtkWindow_::get_titlebar>("get_titlebar");
             gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
+        
 
         // GtkDialog
         Php::Class<GtkDialog_> gtkdialog("GtkDialog");
@@ -360,17 +376,19 @@ extern "C"
             gtkdialog.method<&GtkDialog_::get_widget_for_response>("get_widget_for_response");
             gtkdialog.method<&GtkDialog_::get_content_area>("get_content_area");
             gtkdialog.method<&GtkDialog_::get_header_bar>("get_header_bar");
+        
 
         // GtkFileChooser
-        Php::Class<GtkFileChooser_> gtkfilechooser("GtkFileChooser");
-            gtkfilechooser.extends(gobject);
-            gtkfilechooser.method<&GtkFileChooser_::get_filename>("get_filename");        
+        // Php::Interface gtkfilechooser("GtkFileChooser");
+            // gtkfilechooser.extends(gobject);
+            // gtkfilechooser.method("get_filename");
+        // extension.add(std::move(gtkfilechooser));
 
-        // GtkFileChooserDialog
-        Php::Class<GtkFileChooserDialog_> gtkfilechooserdialog("GtkFileChooserDialog");
-            gtkfilechooserdialog.extends(gtkdialog);
-            gtkfilechooserdialog.extends(gtkfilechooser);
-            gtkfilechooserdialog.method<&GtkFileChooserDialog_::__construct>("__construct");
+        // Php::Class<GtkFileChooser_> gtkfilechooser("GtkFileChooser");
+        //     gtkfilechooser.extends(gobject);
+        //     gtkfilechooser.method<&GtkFileChooser_::get_filename>("get_filename");
+
+        
 
 
         // GtkButton
@@ -384,12 +402,14 @@ extern "C"
             gtkbutton.method<&GtkButton_::clicked>("clicked");
             gtkbutton.method<&GtkButton_::set_use_underline>("set_use_underline");
             gtkbutton.method<&GtkButton_::get_use_underline>("get_use_underline");
+        
 
 
         // GtkAdjustment
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
             gtkadjustment.extends(gobject);
             gtkadjustment.method<&GtkAdjustment_::__construct>("__construct");
+        
 
 
         // GtkScrolledWindow
@@ -397,6 +417,7 @@ extern "C"
             gtkscrolledwindow.extends(gtkcontainer);
             gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
             gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
+        
             
 
         // GtkRequisition
@@ -417,6 +438,7 @@ extern "C"
             gtkentrybuffer.method<&GtkEntryBuffer_::get_max_length>("get_max_length");
             gtkentrybuffer.method<&GtkEntryBuffer_::insert_text>("insert_text");
             gtkentrybuffer.method<&GtkEntryBuffer_::delete_text>("delete_text");
+        
 
 
         // GtkEntry
@@ -455,12 +477,14 @@ extern "C"
             gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
             gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
             // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
+        
 
 
         // GtkSortType
         Php::Class<GtkSortType_> gtksorttype("GtkSortType");
             gtksorttype.constant("ASCENDING", (int)GTK_SORT_ASCENDING);
             gtksorttype.constant("DESCENDING", (int)GTK_SORT_DESCENDING);
+        
 
 
         // GtkTreeView
@@ -469,6 +493,7 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::__construct>("__construct");
             gtktreeview.method<&GtkTreeView_::append_column>("append_column");
             gtktreeview.method<&GtkTreeView_::set_model>("set_model");
+        
 
 
         // GtkTreeViewColumn
@@ -496,6 +521,7 @@ extern "C"
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_order>("set_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_order>("get_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_tree_view>("get_tree_view");
+        
 
         // GtkCellRenderer
         Php::Class<GtkCellRenderer_> gtkcellrenderer("GtkCellRenderer");
@@ -503,6 +529,7 @@ extern "C"
             gtkcellrenderer.method<&GtkCellRenderer_::__construct>("__construct");
             gtkcellrenderer.method<&GtkCellRenderer_::set_alignment>("set_alignment");
             gtkcellrenderer.method<&GtkCellRenderer_::get_alignment>("get_alignment");
+        
 
 
         // GtkCellRendererText
@@ -510,6 +537,8 @@ extern "C"
             gtkcellrenderertext.extends(gtkcellrenderer);
             gtkcellrenderertext.method<&GtkCellRendererText_::__construct>("__construct");
             gtkcellrenderertext.method<&GtkCellRendererText_::set_fixed_height_from_font>("set_fixed_height_from_font");
+        
+
 
         // GtkCellRendererToggle
         Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
@@ -521,21 +550,24 @@ extern "C"
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_radio>("get_radio");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_active>("set_active");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_active>("get_active");
+        
 
-
+        // GtkListStore
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");
             gtkliststore.method<&GtkListStore_::__construct>("__construct");
             gtkliststore.method<&GtkListStore_::set_value>("set_value");
             gtkliststore.method<&GtkListStore_::append>("append");
+        
 
-
-
+        // GtkTreeModelFlags
         Php::Class<GtkTreeModelFlags_> gtktreemodelflags("GtkTreeModelFlags");
             gtktreemodelflags.constant("TREE_MODEL_ITERS_PERSIST", (int)GTK_TREE_MODEL_ITERS_PERSIST);
             gtktreemodelflags.constant("TREE_MODEL_LIST_ONLY", (int)GTK_TREE_MODEL_LIST_ONLY);
+        
 
-
+        // GtkTreeIter
         Php::Class<GtkTreeIter_> gtktreeiter("GtkTreeIter");
+        
 
         // GtkLabel
         Php::Class<GtkLabel_> gtklabel("GtkLabel");
@@ -580,6 +612,7 @@ extern "C"
             gtklabel.method<&GtkLabel_::set_track_visited_links>("set_track_visited_links");
             gtklabel.method<&GtkLabel_::get_track_visited_links>("get_track_visited_links");
         
+        
         // GtkNotebook
         Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
             gtknotebook.extends(gtkcontainer);
@@ -614,6 +647,7 @@ extern "C"
             gtknotebook.method<&GtkNotebook_::get_show_border>("get_show_border");
             gtknotebook.method<&GtkNotebook_::get_show_tabs>("get_show_tabs");
             gtknotebook.method<&GtkNotebook_::get_tab_label_text>("get_tab_label_text");
+        
 
         // GtkPositionType
         Php::Class<GtkPositionType_> gtkpositiontype("GtkPositionType");
@@ -621,11 +655,13 @@ extern "C"
             gtkpositiontype.constant("RIGHT", (int)GTK_POS_RIGHT);
             gtkpositiontype.constant("TOP", (int)GTK_POS_TOP);
             gtkpositiontype.constant("BOTTOM", (int)GTK_POS_BOTTOM);
+        
 
         // GtkPackType
         Php::Class<GtkPackType_> gtkpacktype("GtkPackType");
             gtkpacktype.constant("STARTY", (int)GTK_PACK_START);
             gtkpacktype.constant("END", (int)GTK_PACK_END);
+        
 
 
         // GtkJustification
@@ -635,76 +671,25 @@ extern "C"
             gtkjustification.constant("CENTER", (int)GTK_JUSTIFY_CENTER);
             gtkjustification.constant("FILL", (int)GTK_JUSTIFY_FILL);
         
+        
 
         // GtkFileChooserAction
         Php::Class<GtkFileChooserAction_> gtkfilechooseraction("GtkFileChooserAction");
-            gtkfilechooseraction.constant("ACTION_OPEN", (int)GTK_FILE_CHOOSER_ACTION_OPEN);
-            gtkfilechooseraction.constant("ACTION_SAVE", (int)GTK_FILE_CHOOSER_ACTION_SAVE);
+            gtkfilechooseraction.constant("OPEN", (int)GTK_FILE_CHOOSER_ACTION_OPEN);
+            gtkfilechooseraction.constant("SAVE", (int)GTK_FILE_CHOOSER_ACTION_SAVE);
             gtkfilechooseraction.constant("SELECT_FOLDER", (int)GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
             gtkfilechooseraction.constant("CREATE_FOLDER", (int)GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER);
-        extension.add(std::move(gtkfilechooseraction));
-
-
-        // Add
-        extension.add(std::move(gobject));
-
-        extension.add(std::move(gdk));
-        extension.add(std::move(gdkevent));
-        extension.add(std::move(gdkpixbuf));
-
-        extension.add(std::move(gtk));
-        extension.add(std::move(gtkorientation));
-        extension.add(std::move(gtkpolicytype));
-        extension.add(std::move(gtkwidget));
-        extension.add(std::move(gtkentry));
-        extension.add(std::move(gtkcontainer));
-        extension.add(std::move(gtkbox));
-        extension.add(std::move(gtkhbox));
-        extension.add(std::move(gtkvbox));
-        extension.add(std::move(gtkbin));
-        extension.add(std::move(gtkwindow));
-        extension.add(std::move(gtkbutton));
-        extension.add(std::move(gtkentrybuffer));
-
-        extension.add(std::move(gtkscrolledwindow));
-
-        extension.add(std::move(gtkadjustment));
-
-        extension.add(std::move(gtkpaned));
-
-        extension.add(std::move(gtksorttype));
-        extension.add(std::move(gtktreeview));
-        extension.add(std::move(gtktreeviewcolumn));
-        extension.add(std::move(gtkliststore));
-        extension.add(std::move(gtktreemodelflags));
-        extension.add(std::move(gtktreeiter));
-
-        extension.add(std::move(gtkcellrenderer));
-        extension.add(std::move(gtkcellrenderertext));
-        extension.add(std::move(gtkcellrenderertoggle));
-
-        extension.add(std::move(gtknotebook));
-        extension.add(std::move(gtkpositiontype));
-        extension.add(std::move(gtkpacktype));
         
-        extension.add(std::move(gtkjustification));
-        extension.add(std::move(gtklabel));
-
-        extension.add(std::move(gtkdialog));
-
-        extension.add(std::move(gtkfilechooser));
-
-        extension.add(std::move(gtkfilechooserdialog));
 
         // GtkTextView
         Php::Class<GtkTextView_> gtktextview("GtkTextView");
             gtktextview.extends(gtkcontainer);
             gtktextview.method<&GtkTextView_::__construct>("__construct");
-        extension.add(std::move(gtktextview));
+        
 
         // GtkTextIter
         Php::Class<GtkTextIter_> gtktextiter("GtkTextIter");
-        extension.add(std::move(gtktextiter));
+        
 
         // GtkTextBuffer
         Php::Class<GtkTextBuffer_> gtktextbuffer("GtkTextBuffer");
@@ -713,18 +698,18 @@ extern "C"
             gtktextbuffer.method<&GtkTextBuffer_::get_line_count>("get_line_count");
             gtktextbuffer.method<&GtkTextBuffer_::get_char_count>("get_char_count");
             gtktextbuffer.method<&GtkTextBuffer_::insert>("insert");
-        extension.add(std::move(gtktextbuffer));
+        
 
         // GtkTextTag
         Php::Class<GtkTextTag_> gtktexttag("GtkTextTag");
-        extension.add(std::move(gtktexttag));
+        
 
         // GtkDialogFlags
         Php::Class<GtkDialogFlags_> gtkdialogflags("GtkDialogFlags");
             gtkdialogflags.constant("MODAL", (int)GTK_DIALOG_MODAL);
             gtkdialogflags.constant("DESTROY_WITH_PARENT", (int)GTK_DIALOG_DESTROY_WITH_PARENT);
             gtkdialogflags.constant("USE_HEADER_BAR", (int)GTK_DIALOG_USE_HEADER_BAR);
-        extension.add(std::move(gtkdialogflags));
+        
 
         // GtkResponseType
         Php::Class<GtkResponseType_> gtkresponsetype("GtkResponseType");
@@ -738,8 +723,129 @@ extern "C"
             gtkresponsetype.constant("NO", (int)GTK_RESPONSE_NO);
             gtkresponsetype.constant("APPLY", (int)GTK_RESPONSE_APPLY);
             gtkresponsetype.constant("HELP", (int)GTK_RESPONSE_HELP);
-        extension.add(std::move(gtkresponsetype));
+        
 
+        // GtkFileFilterFlags
+        Php::Class<GtkFileFilterFlags_> gtkfilefilterflags("GtkFileFilterFlags");
+            gtkresponsetype.constant("FILENAME", (int)GTK_FILE_FILTER_FILENAME);
+            gtkresponsetype.constant("URI", (int)GTK_FILE_FILTER_URI);
+            gtkresponsetype.constant("DIPLAY_NAME", (int)GTK_FILE_FILTER_DISPLAY_NAME);
+            gtkresponsetype.constant("MIME_TYPE", (int)GTK_FILE_FILTER_MIME_TYPE);
+        
+
+        // GtkFileFilter
+        Php::Class<GtkFileFilter_> gtkfilefilter("GtkFileFilter");
+            gtkfilefilter.extends(gobject);
+            gtkfilefilter.method<&GtkFileFilter_::__construct>("__construct");
+            gtkfilefilter.method<&GtkFileFilter_::set_name>("set_name");
+            gtkfilefilter.method<&GtkFileFilter_::get_name>("get_name");
+            gtkfilefilter.method<&GtkFileFilter_::add_mime_type>("add_mime_type");
+            gtkfilefilter.method<&GtkFileFilter_::add_pattern>("add_pattern");
+            gtkfilefilter.method<&GtkFileFilter_::add_pixbuf_formats>("add_pixbuf_formats");
+            gtkfilefilter.method<&GtkFileFilter_::get_needed>("get_needed");
+            gtkfilefilter.method<&GtkFileFilter_::filter>("filter");
+
+
+        // GtkFileChooserDialog
+        // gtkfilechooserdialog.implements(gtkfilechooser);
+        Php::Class<GtkFileChooserDialog_> gtkfilechooserdialog("GtkFileChooserDialog");
+            gtkfilechooserdialog.extends(gtkdialog);
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::__construct>("__construct");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_action>("set_action");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_action>("get_action");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_local_only>("set_local_only");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_local_only>("get_local_only");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_select_multiple>("set_select_multiple");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_select_multiple>("get_select_multiple");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_show_hidden>("set_show_hidden");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_show_hidden>("get_show_hidden");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_do_overwrite_confirmation>("set_do_overwrite_confirmation");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_do_overwrite_confirmation>("get_do_overwrite_confirmation");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_create_folders>("set_create_folders");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_create_folders>("get_create_folders");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_current_name>("set_current_name");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_current_name>("get_current_name");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_filename>("set_filename");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_filename>("get_filename");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::select_filename>("select_filename");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::unselect_filename>("unselect_filename");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::select_all>("select_all");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::unselect_all>("unselect_all");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_filenames>("get_filenames");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_current_folder>("set_current_folder");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_current_folder>("get_current_folder");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_uri>("get_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_uri>("set_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::select_uri>("select_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::unselect_uri>("unselect_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_uris>("get_uris");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_current_folder_uri>("set_current_folder_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_preview_widget>("set_preview_widget");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_preview_widget>("get_preview_widget");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_preview_widget_active>("set_preview_widget_active");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_preview_widget_active>("get_preview_widget_active");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_use_preview_label>("set_use_preview_label");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_use_preview_label>("get_use_preview_label");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_preview_uri>("get_preview_uri");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_extra_widget>("set_extra_widget");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_extra_widget>("get_extra_widget");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::add_filter>("add_filter");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::remove_filter>("remove_filter");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::list_filters>("list_filters");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_filter>("set_filter");
+            gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_filter>("get_filter");
+
+        // GtkFileFilterInfo
+        Php::Class<GtkFileFilterInfo_> gtkfilefilterinfo("GtkFileFilterInfo");
+        
+
+
+        extension.add(std::move(gobject));
+        extension.add(std::move(gdk));
+        extension.add(std::move(gdkevent));
+        extension.add(std::move(gdkpixbuf));
+        extension.add(std::move(gtk));
+        extension.add(std::move(gtkorientation));
+        extension.add(std::move(gtkpolicytype));
+        extension.add(std::move(gtkwidget));
+        extension.add(std::move(gtkcontainer));
+        extension.add(std::move(gtkbox));
+        extension.add(std::move(gtkhbox));
+        extension.add(std::move(gtkvbox));
+        extension.add(std::move(gtkbin));
+        extension.add(std::move(gtkpaned));
+        extension.add(std::move(gtkwindow));
+        extension.add(std::move(gtkdialog));
+        extension.add(std::move(gtkfilechooserdialog));
+        extension.add(std::move(gtkbutton));
+        extension.add(std::move(gtkadjustment));
+        extension.add(std::move(gtkscrolledwindow));
+        extension.add(std::move(gtkentrybuffer));
+        extension.add(std::move(gtkentry));
+        extension.add(std::move(gtksorttype));
+        extension.add(std::move(gtktreeview));
+        extension.add(std::move(gtktreeviewcolumn));
+        extension.add(std::move(gtkcellrenderer));
+        extension.add(std::move(gtkcellrenderertext));
+        extension.add(std::move(gtkcellrenderertoggle));
+        extension.add(std::move(gtkliststore));
+        extension.add(std::move(gtktreemodelflags));
+        extension.add(std::move(gtktreeiter));
+        extension.add(std::move(gtklabel));
+        extension.add(std::move(gtknotebook));
+        extension.add(std::move(gtkpositiontype));
+        extension.add(std::move(gtkpacktype));
+        extension.add(std::move(gtkjustification));
+        extension.add(std::move(gtkfilechooseraction));
+        extension.add(std::move(gtktextview));
+        extension.add(std::move(gtktextiter));
+        extension.add(std::move(gtktextbuffer));
+        extension.add(std::move(gtktexttag));
+        extension.add(std::move(gtkdialogflags));
+        extension.add(std::move(gtkresponsetype));
+        extension.add(std::move(gtkfilefilterflags));
+        extension.add(std::move(gtkfilefilterinfo));
+        extension.add(std::move(gtkfilefilter));
        
 
         // return the extension
