@@ -100,16 +100,33 @@ class Application
 			// }
 			// $dialog->destroy();
 
+			$filter = new GtkFileFilter();
+			$filter->set_name("PHP Files");
+			$filter->add_pattern("*.php");
 
-			/**** TEST NOT WORKING YET ***/
+			// File chooser
 			$dialog = new GtkFileChooserDialog("Open file", $this->win, GtkFileChooserAction::OPEN, [
 				"Cancel", GtkResponseType::CANCEL,
 				"Ok", GtkResponseType::OK,
 			]);
-			$dialog->set_select_multiple(TRUE);
-			$dialog->run();
 
-			var_dump($dialog->get_filename());
+			$filter = new GtkFileFilter();
+			$filter->set_name("PHP Files");
+			$filter->add_pattern("*.php");
+			$dialog->add_filter($filter);
+
+			$filter = new GtkFileFilter();
+			$filter->set_name("HTML Files");
+			$filter->add_pattern("*.html");
+			$filter->add_pattern("*.tpl");
+			$dialog->add_filter($filter);
+
+
+			$dialog->set_select_multiple(FALSE);
+			$a = $dialog->run();
+			if($a == GtkResponseType::OK) {
+				var_dump($dialog->get_filename());
+			}
 			$dialog->destroy();
 
 		});
