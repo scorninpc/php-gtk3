@@ -59,6 +59,22 @@ Php::Value GtkButton_::new_with_mnemonic(Php::Parameters &parameters)
 	return Php::Object("GtkButton", button_);
 }
 
+
+Php::Value GtkButton_::new_from_icon_name(Php::Parameters &parameters)
+{
+	GtkButton_ *button = new GtkButton_();
+	
+	std::string icon_name = parameters[0];
+
+	int int_size = (int)parameters[1];
+	GtkIconSize size = (GtkIconSize)int_size;
+
+	gpointer *l_instance = (gpointer *)gtk_button_new_from_icon_name(icon_name.c_str(), size);
+	button->set_instance(l_instance);
+
+	return Php::Object("GtkButton", button);
+}
+
 /**
  * Emits a “clicked” signal to the given GtkButton.
  */

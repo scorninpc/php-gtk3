@@ -56,6 +56,8 @@
              */
             static Php::Value new_with_mnemonic(Php::Parameters &parameters);
 
+            static Php::Value new_from_icon_name(Php::Parameters &parameters);
+
             /**
              * Emits a "clicked" signal to the given GtkButton.
              */

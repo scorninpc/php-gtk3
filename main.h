@@ -76,4 +76,6 @@
 
     #include "src/GtkMessageDialog.h"
 
+    #include "src/GtkIconSize.h"
+
 #endif

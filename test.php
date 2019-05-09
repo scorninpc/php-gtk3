@@ -50,8 +50,9 @@ function GtkCellRendererToggled($renderer=NULL, $row=NULL)
 $hbox = new GtkHBox(TRUE, 5);
 
 // Button 1
-$btn1 = new GtkButton();
-$btn1->set_label("Button 1");
+// $btn1 = new GtkButton();
+// $btn1->set_label("Button 1");
+$btn1 = GtkButton::new_from_icon_name("help-faq", GtkIconSize::BUTTON);
 $hbox->pack_start($btn1, TRUE, TRUE, 5);
 
 // Button 2
