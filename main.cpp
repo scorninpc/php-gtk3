@@ -823,6 +823,108 @@ extern "C"
             gtkiconsize.constant("DIALOG", (int)GTK_ICON_SIZE_DIALOG);
         
 
+        // GtkSizeGroupMode
+        Php::Class<GtkSizeGroupMode_> gtksizegroupmode("GtkSizeGroupMode");
+            gtksizegroupmode.constant("NONE", (int)GTK_SIZE_GROUP_NONE);
+            gtksizegroupmode.constant("HORIZONTAL", (int)GTK_SIZE_GROUP_HORIZONTAL);
+            gtksizegroupmode.constant("VERTICAL", (int)GTK_SIZE_GROUP_VERTICAL);
+            gtksizegroupmode.constant("BOTH", (int)GTK_SIZE_GROUP_BOTH);
+
+        // GtkToolbarStyle
+        Php::Class<GtkToolbarStyle_> gtktoolbarstyle("GtkToolbarStyle");
+            gtktoolbarstyle.constant("ICONS", (int)GTK_TOOLBAR_ICONS);
+            gtktoolbarstyle.constant("TEXT", (int)GTK_TOOLBAR_TEXT);
+            gtktoolbarstyle.constant("BOTH", (int)GTK_TOOLBAR_BOTH);
+            gtktoolbarstyle.constant("BOTH_HORIZ", (int)GTK_TOOLBAR_BOTH_HORIZ);
+
+
+        // GtkReliefStyle
+        Php::Class<GtkReliefStyle_> gtkreliefstyle("GtkReliefStyle");
+            gtktoolbarstyle.constant("NORMAL", (int)GTK_RELIEF_NORMAL);
+            gtktoolbarstyle.constant("HALF", (int)GTK_RELIEF_HALF);
+            gtktoolbarstyle.constant("NONE", (int)GTK_RELIEF_NONE);
+
+
+        // GtkSizeGroup
+        Php::Class<GtkSizeGroup_> gtksizegroup("GtkSizeGroup");
+            gtksizegroup.extends(gobject);
+            gtksizegroup.method<&GtkSizeGroup_::__construct>("__construct");
+            gtksizegroup.method<&GtkSizeGroup_::set_mode>("set_mode");
+            gtksizegroup.method<&GtkSizeGroup_::get_mode>("get_mode");
+            gtksizegroup.method<&GtkSizeGroup_::add_widget>("add_widget");
+            gtksizegroup.method<&GtkSizeGroup_::remove_widget>("remove_widget");
+            gtksizegroup.method<&GtkSizeGroup_::get_widgets>("get_widgets");
+
+
+        // GtkToolItem
+        Php::Class<GtkToolItem_> gtktoolitem("GtkToolItem");
+            gtktoolitem.extends(gtkbin);
+            gtktoolitem.method<&GtkToolItem_::__construct>("__construct");
+            gtktoolitem.method<&GtkToolItem_::set_homogeneous>("set_homogeneous");
+            gtktoolitem.method<&GtkToolItem_::get_homogeneous>("get_homogeneous");
+            gtktoolitem.method<&GtkToolItem_::set_expand>("set_expand");
+            gtktoolitem.method<&GtkToolItem_::get_expand>("get_expand");
+            gtktoolitem.method<&GtkToolItem_::set_tooltip_text>("set_tooltip_text");
+            gtktoolitem.method<&GtkToolItem_::set_tooltip_markup>("set_tooltip_markup");
+            gtktoolitem.method<&GtkToolItem_::set_use_drag_window>("set_use_drag_window");
+            gtktoolitem.method<&GtkToolItem_::get_use_drag_window>("get_use_drag_window");
+            gtktoolitem.method<&GtkToolItem_::set_visible_horizontal>("set_visible_horizontal");
+            gtktoolitem.method<&GtkToolItem_::get_visible_horizontal>("get_visible_horizontal");
+            gtktoolitem.method<&GtkToolItem_::set_visible_vertical>("set_visible_vertical");
+            gtktoolitem.method<&GtkToolItem_::get_visible_vertical>("get_visible_vertical");
+            gtktoolitem.method<&GtkToolItem_::set_is_important>("set_is_important");
+            gtktoolitem.method<&GtkToolItem_::get_is_important>("get_is_important");
+            gtktoolitem.method<&GtkToolItem_::get_icon_size>("get_icon_size");
+            gtktoolitem.method<&GtkToolItem_::get_orientation>("get_orientation");
+            gtktoolitem.method<&GtkToolItem_::get_toolbar_style>("get_toolbar_style");
+            gtktoolitem.method<&GtkToolItem_::get_relief_style>("get_relief_style");
+            gtktoolitem.method<&GtkToolItem_::get_text_alignment>("get_text_alignment");
+            gtktoolitem.method<&GtkToolItem_::get_text_orientation>("get_text_orientation");
+            gtktoolitem.method<&GtkToolItem_::retrieve_proxy_menu_item>("retrieve_proxy_menu_item");
+            gtktoolitem.method<&GtkToolItem_::set_proxy_menu_item>("set_proxy_menu_item");
+            gtktoolitem.method<&GtkToolItem_::get_proxy_menu_item>("get_proxy_menu_item");
+            gtktoolitem.method<&GtkToolItem_::rebuild_menu>("rebuild_menu");
+            gtktoolitem.method<&GtkToolItem_::toolbar_reconfigured>("toolbar_reconfigured");
+            gtktoolitem.method<&GtkToolItem_::get_text_size_group>("get_text_size_group");
+
+
+        // GtkToolbar
+        Php::Class<GtkToolbar_> gtktoolbar("GtkToolbar");
+            gtktoolbar.extends(gtkcontainer);
+            gtktoolbar.method<&GtkToolbar_::__construct>("__construct");
+            gtktoolbar.method<&GtkToolbar_::insert>("insert");
+            gtktoolbar.method<&GtkToolbar_::get_item_index>("get_item_index");
+            gtktoolbar.method<&GtkToolbar_::get_n_items>("get_n_items");
+            gtktoolbar.method<&GtkToolbar_::get_nth_item>("get_nth_item");
+            gtktoolbar.method<&GtkToolbar_::get_drop_index>("get_drop_index");
+            gtktoolbar.method<&GtkToolbar_::set_drop_highlight_item>("set_drop_highlight_item");
+            gtktoolbar.method<&GtkToolbar_::set_show_arrow>("set_show_arrow");
+            gtktoolbar.method<&GtkToolbar_::unset_icon_size>("unset_icon_size");
+            gtktoolbar.method<&GtkToolbar_::get_show_arrow>("get_show_arrow");
+            gtktoolbar.method<&GtkToolbar_::get_style>("get_style");
+            gtktoolbar.method<&GtkToolbar_::get_icon_size>("get_icon_size");
+            gtktoolbar.method<&GtkToolbar_::get_relief_style>("get_relief_style");
+            gtktoolbar.method<&GtkToolbar_::set_style>("set_style");
+            gtktoolbar.method<&GtkToolbar_::set_icon_size>("set_icon_size");
+            gtktoolbar.method<&GtkToolbar_::unset_style>("unset_style");
+
+
+        // GtkToolButton
+        Php::Class<GtkToolButton_> gtktoolbutton("GtkToolButton");
+            gtktoolbutton.extends(gtktoolitem);
+            gtktoolbutton.method<&GtkToolButton_::__construct>("__construct");
+            gtktoolbutton.method<&GtkToolButton_::set_label>("set_label");
+            gtktoolbutton.method<&GtkToolButton_::get_label>("get_label");
+            gtktoolbutton.method<&GtkToolButton_::set_use_underline>("set_use_underline");
+            gtktoolbutton.method<&GtkToolButton_::get_use_underline>("get_use_underline");
+            gtktoolbutton.method<&GtkToolButton_::set_icon_name>("set_icon_name");
+            gtktoolbutton.method<&GtkToolButton_::get_icon_name>("get_icon_name");
+            gtktoolbutton.method<&GtkToolButton_::set_icon_widget>("set_icon_widget");
+            gtktoolbutton.method<&GtkToolButton_::get_icon_widget>("get_icon_widget");
+            gtktoolbutton.method<&GtkToolButton_::set_label_widget>("set_label_widget");
+            gtktoolbutton.method<&GtkToolButton_::get_label_widget>("get_label_widget");
+        
+
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
@@ -874,6 +976,13 @@ extern "C"
         extension.add(std::move(gtkbuttonstype));
         extension.add(std::move(gtkmessagedialog));
         extension.add(std::move(gtkiconsize));
+        extension.add(std::move(gtksizegroupmode));
+        extension.add(std::move(gtktoolbarstyle));
+        extension.add(std::move(gtkreliefstyle));
+        extension.add(std::move(gtksizegroup));
+        extension.add(std::move(gtktoolitem));
+        extension.add(std::move(gtktoolbar));
+        extension.add(std::move(gtktoolbutton));
 
         // return the extension
         return extension;

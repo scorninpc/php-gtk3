@@ -78,4 +78,15 @@
 
     #include "src/GtkIconSize.h"
 
+    #include "src/GtkSizeGroupMode.h"
+    #include "src/GtkToolbarStyle.h"
+    #include "src/GtkReliefStyle.h"
+
+    #include "src/GtkSizeGroup.h"
+
+    #include "src/GtkToolbar.h"
+
+    #include "src/GtkToolItem.h"
+    #include "src/GtkToolButton.h"
+
 #endif
