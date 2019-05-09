@@ -727,10 +727,10 @@ extern "C"
 
         // GtkFileFilterFlags
         Php::Class<GtkFileFilterFlags_> gtkfilefilterflags("GtkFileFilterFlags");
-            gtkresponsetype.constant("FILENAME", (int)GTK_FILE_FILTER_FILENAME);
-            gtkresponsetype.constant("URI", (int)GTK_FILE_FILTER_URI);
-            gtkresponsetype.constant("DIPLAY_NAME", (int)GTK_FILE_FILTER_DISPLAY_NAME);
-            gtkresponsetype.constant("MIME_TYPE", (int)GTK_FILE_FILTER_MIME_TYPE);
+            gtkfilefilterflags.constant("FILENAME", (int)GTK_FILE_FILTER_FILENAME);
+            gtkfilefilterflags.constant("URI", (int)GTK_FILE_FILTER_URI);
+            gtkfilefilterflags.constant("DIPLAY_NAME", (int)GTK_FILE_FILTER_DISPLAY_NAME);
+            gtkfilefilterflags.constant("MIME_TYPE", (int)GTK_FILE_FILTER_MIME_TYPE);
         
 
         // GtkFileFilter
@@ -797,6 +797,35 @@ extern "C"
 
         // GtkFileFilterInfo
         Php::Class<GtkFileFilterInfo_> gtkfilefilterinfo("GtkFileFilterInfo");
+
+        // GtkMessageType
+        Php::Class<GtkMessageType_> gtkmessagetype("GtkMessageType");
+            gtkmessagetype.constant("INFO", (int)GTK_MESSAGE_INFO);
+            gtkmessagetype.constant("WARNING", (int)GTK_MESSAGE_WARNING);
+            gtkmessagetype.constant("QUESTION", (int)GTK_MESSAGE_QUESTION);
+            gtkmessagetype.constant("ERROR", (int)GTK_MESSAGE_ERROR);
+            gtkmessagetype.constant("OTHER", (int)GTK_MESSAGE_OTHER);
+
+
+        // GtkButtonsType
+        Php::Class<GtkButtonsType_> gtkbuttonstype("GtkButtonsType");
+            gtkbuttonstype.constant("NONE", (int)GTK_BUTTONS_NONE);
+            gtkbuttonstype.constant("OK", (int)GTK_BUTTONS_OK);
+            gtkbuttonstype.constant("CLOSE", (int)GTK_BUTTONS_CLOSE);
+            gtkbuttonstype.constant("CANCEL", (int)GTK_BUTTONS_CANCEL);
+            gtkbuttonstype.constant("YES_NO", (int)GTK_BUTTONS_YES_NO);
+            gtkbuttonstype.constant("OK_CANCEL", (int)GTK_BUTTONS_OK_CANCEL);
+
+
+        // GtkMessageDialog
+        Php::Class<GtkMessageDialog_> gtkmessagedialog("GtkMessageDialog");
+            gtkmessagedialog.extends(gtkdialog);
+            gtkmessagedialog.method<&GtkMessageDialog_::__construct>("__construct");
+            gtkmessagedialog.method<&GtkMessageDialog_::new_with_markup>("new_with_markup");
+            gtkmessagedialog.method<&GtkMessageDialog_::set_markup>("set_markup");
+            gtkmessagedialog.method<&GtkMessageDialog_::format_secondary_text>("format_secondary_text");
+            gtkmessagedialog.method<&GtkMessageDialog_::format_secondary_markup>("format_secondary_markup");
+            gtkmessagedialog.method<&GtkMessageDialog_::get_message_area>("get_message_area");
         
 
 
@@ -846,7 +875,9 @@ extern "C"
         extension.add(std::move(gtkfilefilterflags));
         extension.add(std::move(gtkfilefilterinfo));
         extension.add(std::move(gtkfilefilter));
-       
+        extension.add(std::move(gtkmessagetype));
+        extension.add(std::move(gtkbuttonstype));
+        extension.add(std::move(gtkmessagedialog));
 
         // return the extension
         return extension;

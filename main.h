@@ -71,4 +71,9 @@
     #include "src/GtkFileFilter.h"
     #include "src/GtkFileFilterInfo.h"
 
+    #include "src/GtkMessageType.h"
+    #include "src/GtkButtonsType.h"
+
+    #include "src/GtkMessageDialog.h"
+
 #endif
