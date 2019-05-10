@@ -43,13 +43,24 @@ class Application
 		$this->create_new_tab("GtkLabel.h");
 		$this->create_new_tab("main.cpp");
 		$this->create_new_tab("main.h");
+
+		// Toolbar
+		$tlb = new GtkToolbar();
+		$tlb_btn1 = new GtkToolButton("OK");
+		$tlb_btn1->set_icon_name("network-wired");
+		$tlb->insert($tlb_btn1);
+
+		// VBox
+		$main_box = new GtkVBox();
+		$main_box->pack_start($tlb, FALSE, FALSE);
+		$main_box->pack_start($paned, TRUE, TRUE);
 		
 		// $this->b->connect("clicked", [$this, "b_clicked"]);
 
 		// Create window
 		$this->win = new GtkWindow();
 		$this->win->set_default_size(800, 600);
-		$this->win->add($paned);
+		$this->win->add($main_box);
 
 		// Connects
 		$this->win->connect("destroy", [$this, "GtkWindowDestroy"]);
@@ -69,7 +80,7 @@ class Application
 	public function create_new_tab($label)
 	{
 		$hbox = new GtkHBox();
-		$button_close = GtkButton::new_with_label("x");
+		$button_close = GtkButton::new_from_icon_name("gtk-close");
 		$button_close->set_size_request(5, 5);
 		$label = new GtkLabel($label);
 		$hbox->pack_start($label, TRUE, TRUE, 10);

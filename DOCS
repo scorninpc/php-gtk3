@@ -34,3 +34,10 @@ https://developer.gnome.org/gobject/stable/gobject-The-Base-Object-Type.html
 
 -- Interfaces
 http://www.php-cpp.com/documentation/inheritance
+
+-- Icon nameing spec
+https://developer.gnome.org/icon-naming-spec/
+
+
+-- GTK++ codes
+https://source.puri.sm/dorota.czaplejewicz/gtk/commit/8e69f87a4695631b62a74740880e89d30aa10d0f?view=inline&w=1

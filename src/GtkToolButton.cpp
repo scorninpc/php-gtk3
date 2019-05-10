@@ -13,19 +13,11 @@ GtkToolButton_::~GtkToolButton_() = default;
 
 void GtkToolButton_::__construct(Php::Parameters &parameters)
 {
-	GtkWidget *icon_widget;
-	
-
-	Php::Value object_icon_widget = parameters[0];
-	if (object_icon_widget != NULL) {
-		GtkWidget_ *phpgtk_icon_widget = (GtkWidget_ *)object_icon_widget.implementation();
-		icon_widget = GTK_WIDGET(phpgtk_icon_widget->get_instance());
-	}
-
-	std::string s_label = parameters[1];
+	std::string s_label = parameters[0];
 	gchar *label = (gchar *)s_label.c_str();
 
-	instance = (gpointer *)gtk_tool_button_new (icon_widget, label);
+	instance = (gpointer *)gtk_tool_button_new (NULL, NULL);
+	gtk_tool_button_set_label(GTK_TOOL_BUTTON(instance), label);
 
 }
 

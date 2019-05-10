@@ -816,8 +816,8 @@ extern "C"
         Php::Class<GtkIconSize_> gtkiconsize("GtkIconSize");
             gtkiconsize.constant("INVALID", (int)GTK_ICON_SIZE_INVALID);
             gtkiconsize.constant("MENU", (int)GTK_ICON_SIZE_MENU);
-            gtkiconsize.constant("TOOLBAR", (int)GTK_ICON_SIZE_SMALL_TOOLBAR);
-            gtkiconsize.constant("TOOLBA", (int)GTK_ICON_SIZE_LARGE_TOOLBAR);
+            gtkiconsize.constant("SMALL_TOOLBAR", (int)GTK_ICON_SIZE_SMALL_TOOLBAR);
+            gtkiconsize.constant("LARGE_TOOLBAR", (int)GTK_ICON_SIZE_LARGE_TOOLBAR);
             gtkiconsize.constant("BUTTON", (int)GTK_ICON_SIZE_BUTTON);
             gtkiconsize.constant("DND", (int)GTK_ICON_SIZE_DND);
             gtkiconsize.constant("DIALOG", (int)GTK_ICON_SIZE_DIALOG);
