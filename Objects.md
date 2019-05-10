@@ -1,3 +1,4 @@
+```
 * - Complete
 # - Partial
 _ - With issue
@@ -258,3 +259,4 @@ _GObject
     ├── GtkTreePath
     ├── GtkIconSet
     ╰── GtkTargetList
+   ```
