@@ -200,11 +200,15 @@ void GtkFileChooserDialog_::unselect_all()
 
 Php::Value GtkFileChooserDialog_::get_filenames()
 {
-	//GList ret = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER(instance));
+	GSList *ret = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER(instance));
 
-	// CONVERTER O GList em PHP:array
+	Php::Value ret_arr;
 
-	return "1";
+	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
+		ret_arr[index] = (char *) item->data;
+	}
+
+	return ret_arr;
 }
 
 Php::Value GtkFileChooserDialog_::set_current_folder(Php::Parameters &parameters)
@@ -262,9 +266,15 @@ void GtkFileChooserDialog_::unselect_uri(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_uris()
 {
-	std::string ret = gtk_file_chooser_get_current_folder_uri (GTK_FILE_CHOOSER(instance));
+	GSList *ret = gtk_file_chooser_get_uris (GTK_FILE_CHOOSER(instance));
 
-	return ret;
+	Php::Value ret_arr;
+
+	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
+		ret_arr[index] = (char *) item->data;
+	}
+
+	return ret_arr;
 }
 
 Php::Value GtkFileChooserDialog_::set_current_folder_uri(Php::Parameters &parameters)
@@ -276,6 +286,14 @@ Php::Value GtkFileChooserDialog_::set_current_folder_uri(Php::Parameters &parame
 
 	return ret;
 }
+
+Php::Value GtkFileChooserDialog_::get_current_folder_uri()
+{
+	std::string s_uri = gtk_file_chooser_get_current_folder_uri (GTK_FILE_CHOOSER(instance));
+
+	return s_uri.c_str();
+}
+
 
 void GtkFileChooserDialog_::set_preview_widget(Php::Parameters &parameters)
 {
@@ -373,12 +391,9 @@ void GtkFileChooserDialog_::add_filter(Php::Parameters &parameters)
 
 void GtkFileChooserDialog_::remove_filter(Php::Parameters &parameters)
 {
-	GtkFileFilter *filter;
-	if(parameters.size() > 0) {
-		Php::Value object_filter = parameters[0];
-		GtkFileFilter_ *phpgtk_filter = (GtkFileFilter_ *)object_filter.implementation();
-		filter = GTK_FILE_FILTER(phpgtk_filter->get_instance());
-	}
+	Php::Value object_filter = parameters[0];
+	GtkFileFilter_ *phpgtk_filter = (GtkFileFilter_ *)object_filter.implementation();
+	GtkFileFilter *filter = GTK_FILE_FILTER(phpgtk_filter->get_instance());
 
 	gtk_file_chooser_remove_filter (GTK_FILE_CHOOSER(instance), filter);
 
@@ -386,11 +401,20 @@ void GtkFileChooserDialog_::remove_filter(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::list_filters()
 {
-	//GList ret = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER(instance));
+	GSList *ret = gtk_file_chooser_list_filters (GTK_FILE_CHOOSER(instance));
+
+	Php::Value ret_arr;
+
+	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
+		GtkFileFilter_ *return_parsed = new GtkFileFilter_();
+
+		return_parsed->set_instance((gpointer *)GTK_FILE_CHOOSER(item->data));
 
 
-	// Converter GList to Php::array
-	return "1";
+		ret_arr[index] = Php::Object("GtkFileFilter", return_parsed);
+	}
+
+	return ret_arr;
 }
 
 void GtkFileChooserDialog_::set_filter(Php::Parameters &parameters)

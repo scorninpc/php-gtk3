@@ -664,10 +664,73 @@ extern "C"
         
 
         // GtkTextView
+                // GtkTextView
         Php::Class<GtkTextView_> gtktextview("GtkTextView");
             gtktextview.extends(gtkcontainer);
             gtktextview.method<&GtkTextView_::__construct>("__construct");
-        
+            gtktextview.method<&GtkTextView_::new_with_buffer>("new_with_buffer");
+            gtktextview.method<&GtkTextView_::set_buffer>("set_buffer");
+            gtktextview.method<&GtkTextView_::get_buffer>("get_buffer");
+            gtktextview.method<&GtkTextView_::scroll_to_mark>("scroll_to_mark");
+            gtktextview.method<&GtkTextView_::scroll_to_iter>("scroll_to_iter");
+            gtktextview.method<&GtkTextView_::scroll_mark_onscreen>("scroll_mark_onscreen");
+            gtktextview.method<&GtkTextView_::move_mark_onscreen>("move_mark_onscreen");
+            gtktextview.method<&GtkTextView_::place_cursor_onscreen>("place_cursor_onscreen");
+            gtktextview.method<&GtkTextView_::get_line_at_y>("get_line_at_y");
+            gtktextview.method<&GtkTextView_::get_line_yrange>("get_line_yrange");
+            gtktextview.method<&GtkTextView_::get_iter_at_location>("get_iter_at_location");
+            gtktextview.method<&GtkTextView_::get_iter_at_position>("get_iter_at_position");
+            gtktextview.method<&GtkTextView_::buffer_to_window_coords>("buffer_to_window_coords");
+            gtktextview.method<&GtkTextView_::window_to_buffer_coords>("window_to_buffer_coords");
+            gtktextview.method<&GtkTextView_::get_window>("get_window");
+            gtktextview.method<&GtkTextView_::get_window_type>("get_window_type");
+            gtktextview.method<&GtkTextView_::set_border_window_size>("set_border_window_size");
+            gtktextview.method<&GtkTextView_::get_border_window_size>("get_border_window_size");
+            gtktextview.method<&GtkTextView_::forward_display_line>("forward_display_line");
+            gtktextview.method<&GtkTextView_::backward_display_line>("backward_display_line");
+            gtktextview.method<&GtkTextView_::forward_display_line_end>("forward_display_line_end");
+            gtktextview.method<&GtkTextView_::backward_display_line_start>("backward_display_line_start");
+            gtktextview.method<&GtkTextView_::starts_display_line>("starts_display_line");
+            gtktextview.method<&GtkTextView_::move_visually>("move_visually");
+            gtktextview.method<&GtkTextView_::add_child_in_window>("add_child_in_window");
+            gtktextview.method<&GtkTextView_::move_child>("move_child");
+            gtktextview.method<&GtkTextView_::set_wrap_mode>("set_wrap_mode");
+            gtktextview.method<&GtkTextView_::get_wrap_mode>("get_wrap_mode");
+            gtktextview.method<&GtkTextView_::set_editable>("set_editable");
+            gtktextview.method<&GtkTextView_::get_editable>("get_editable");
+            gtktextview.method<&GtkTextView_::set_cursor_visible>("set_cursor_visible");
+            gtktextview.method<&GtkTextView_::get_cursor_visible>("get_cursor_visible");
+            gtktextview.method<&GtkTextView_::overwrite>("overwrite");
+            gtktextview.method<&GtkTextView_::get_overwrite>("get_overwrite");
+            gtktextview.method<&GtkTextView_::set_pixels_above_lines>("set_pixels_above_lines");
+            gtktextview.method<&GtkTextView_::get_pixels_above_lines>("get_pixels_above_lines");
+            gtktextview.method<&GtkTextView_::set_pixels_below_lines>("set_pixels_below_lines");
+            gtktextview.method<&GtkTextView_::get_pixels_below_lines>("get_pixels_below_lines");
+            gtktextview.method<&GtkTextView_::set_pixels_inside_wrap>("set_pixels_inside_wrap");
+            gtktextview.method<&GtkTextView_::get_pixels_inside_wrap>("get_pixels_inside_wrap");
+            gtktextview.method<&GtkTextView_::set_justification>("set_justification");
+            gtktextview.method<&GtkTextView_::get_justification>("get_justification");
+            gtktextview.method<&GtkTextView_::set_left_margin>("set_left_margin");
+            gtktextview.method<&GtkTextView_::get_left_margin>("get_left_margin");
+            gtktextview.method<&GtkTextView_::set_right_margin>("set_right_margin");
+            gtktextview.method<&GtkTextView_::get_right_margin>("get_right_margin");
+            gtktextview.method<&GtkTextView_::set_top_margin>("set_top_margin");
+            gtktextview.method<&GtkTextView_::get_top_margin>("get_top_margin");
+            gtktextview.method<&GtkTextView_::set_bottom_margin>("set_bottom_margin");
+            gtktextview.method<&GtkTextView_::get_bottom_margin>("get_bottom_margin");
+            gtktextview.method<&GtkTextView_::set_indent>("set_indent");
+            gtktextview.method<&GtkTextView_::get_indent>("get_indent");
+            gtktextview.method<&GtkTextView_::set_accepts_tab>("set_accepts_tab");
+            gtktextview.method<&GtkTextView_::get_accepts_tab>("get_accepts_tab");
+            gtktextview.method<&GtkTextView_::im_context_filter_keypress>("im_context_filter_keypress");
+            gtktextview.method<&GtkTextView_::reset_im_context>("reset_im_context");
+            gtktextview.method<&GtkTextView_::set_input_purpose>("set_input_purpose");
+            gtktextview.method<&GtkTextView_::get_input_purpose>("get_input_purpose");
+            gtktextview.method<&GtkTextView_::set_input_hints>("set_input_hints");
+            gtktextview.method<&GtkTextView_::get_input_hints>("get_input_hints");
+            gtktextview.method<&GtkTextView_::set_monospace>("set_monospace");
+            gtktextview.method<&GtkTextView_::get_monospace>("get_monospace");
+
 
         // GtkTextIter
         Php::Class<GtkTextIter_> gtktextiter("GtkTextIter");
@@ -684,6 +747,73 @@ extern "C"
 
         // GtkTextTag
         Php::Class<GtkTextTag_> gtktexttag("GtkTextTag");
+            gtktexttag.extends(gobject);
+            gtktexttag.method<&GtkTextTag_::__construct>("__construct");
+            gtktexttag.method<&GtkTextTag_::get_priority>("get_priority");
+            gtktexttag.method<&GtkTextTag_::set_priority>("set_priority");
+            gtktexttag.method<&GtkTextTag_::event>("event");
+            gtktexttag.method<&GtkTextTag_::tag_changed>("tag_changed");
+        
+
+        // GtkTextWindowType
+        Php::Class<GtkTextWindowType_> gtktextwindowtype("GtkTextWindowType");
+            gtktextwindowtype.constant("PRIVATE", (int)GTK_TEXT_WINDOW_PRIVATE);
+            gtktextwindowtype.constant("WIDGET", (int)GTK_TEXT_WINDOW_WIDGET);
+            gtktextwindowtype.constant("TEXT", (int)GTK_TEXT_WINDOW_TEXT);
+            gtktextwindowtype.constant("LEFT", (int)GTK_TEXT_WINDOW_LEFT);
+            gtktextwindowtype.constant("RIGHT", (int)GTK_TEXT_WINDOW_RIGHT);
+            gtktextwindowtype.constant("TOP", (int)GTK_TEXT_WINDOW_TOP);
+            gtktextwindowtype.constant("BOTTOM", (int)GTK_TEXT_WINDOW_BOTTOM);
+
+
+        // GtkWrapMode
+        Php::Class<GtkWrapMode_> gtkwrapmode("GtkWrapMode");
+            gtkwrapmode.constant("NONE", (int)GTK_WRAP_NONE);
+            gtkwrapmode.constant("CHAR", (int)GTK_WRAP_CHAR);
+            gtkwrapmode.constant("WORD", (int)GTK_WRAP_WORD);
+            gtkwrapmode.constant("WORD_CHAR", (int)GTK_WRAP_WORD_CHAR);
+        
+
+        // GtkInputHints
+        Php::Class<GtkInputHints_> gtkinputhints("GtkInputHints");
+            gtkinputhints.constant("NONE", (int)GTK_INPUT_HINT_NONE);
+            gtkinputhints.constant("SPELLCHECK", (int)GTK_INPUT_HINT_SPELLCHECK);
+            gtkinputhints.constant("NO_SPELLCHECK", (int)GTK_INPUT_HINT_NO_SPELLCHECK);
+            gtkinputhints.constant("WORD_COMPLETION", (int)GTK_INPUT_HINT_WORD_COMPLETION);
+            gtkinputhints.constant("LOWERCASE", (int)GTK_INPUT_HINT_LOWERCASE);
+            gtkinputhints.constant("UPPERCASE_CHARS", (int)GTK_INPUT_HINT_UPPERCASE_CHARS);
+            gtkinputhints.constant("UPPERCASE_WORDS", (int)GTK_INPUT_HINT_UPPERCASE_WORDS);
+            gtkinputhints.constant("UPPERCASE_SENTENCES", (int)GTK_INPUT_HINT_UPPERCASE_SENTENCES);
+            gtkinputhints.constant("INHIBIT_OSK", (int)GTK_INPUT_HINT_INHIBIT_OSK);
+            gtkinputhints.constant("VERTICAL_WRITING", (int)GTK_INPUT_HINT_VERTICAL_WRITING);
+            // gtkinputhints.constant("EMOJI", (int)GTK_INPUT_HINT_EMOJI);
+            // gtkinputhints.constant("NO_EMOJI", (int)GTK_INPUT_HINT_NO_EMOJI);
+
+
+        // GtkInputPurpose
+        Php::Class<GtkInputPurpose_> gtkinputpurpose("GtkInputPurpose");
+            gtkinputhints.constant("FREE_FORM", (int)GTK_INPUT_PURPOSE_FREE_FORM);
+            gtkinputhints.constant("ALPHA", (int)GTK_INPUT_PURPOSE_ALPHA);
+            gtkinputhints.constant("DIGITS", (int)GTK_INPUT_PURPOSE_DIGITS);
+            gtkinputhints.constant("NUMBER", (int)GTK_INPUT_PURPOSE_NUMBER);
+            gtkinputhints.constant("PHONE", (int)GTK_INPUT_PURPOSE_PHONE);
+            gtkinputhints.constant("URL", (int)GTK_INPUT_PURPOSE_URL);
+            gtkinputhints.constant("EMAIL", (int)GTK_INPUT_PURPOSE_EMAIL);
+            gtkinputhints.constant("NAME", (int)GTK_INPUT_PURPOSE_NAME);
+            gtkinputhints.constant("PASSWORD", (int)GTK_INPUT_PURPOSE_PASSWORD);
+            gtkinputhints.constant("PIN", (int)GTK_INPUT_PURPOSE_PIN);
+
+
+        // GtkTextMark
+        Php::Class<GtkTextMark_> gtktextmark("GtkTextMark");
+            gtktextmark.extends(gobject);
+            gtktextmark.method<&GtkTextMark_::__construct>("__construct");
+            gtktextmark.method<&GtkTextMark_::set_visible>("set_visible");
+            gtktextmark.method<&GtkTextMark_::set_buffer>("set_buffer");
+            gtktextmark.method<&GtkTextMark_::get_deleted>("get_deleted");
+            gtktextmark.method<&GtkTextMark_::get_name>("get_name");
+            gtktextmark.method<&GtkTextMark_::get_buffer>("get_buffer");
+            gtktextmark.method<&GtkTextMark_::get_left_gravity>("get_left_gravity");
         
 
         // GtkDialogFlags
@@ -967,6 +1097,11 @@ extern "C"
         extension.add(std::move(gtktextiter));
         extension.add(std::move(gtktextbuffer));
         extension.add(std::move(gtktexttag));
+        extension.add(std::move(gtktextwindowtype));
+        extension.add(std::move(gtkinputhints));
+        extension.add(std::move(gtkinputpurpose));
+        extension.add(std::move(gtkwrapmode));
+        extension.add(std::move(gtktextmark));
         extension.add(std::move(gtkdialogflags));
         extension.add(std::move(gtkresponsetype));
         extension.add(std::move(gtkfilefilterflags));

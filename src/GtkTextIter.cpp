@@ -11,12 +11,16 @@ GtkTextIter_::GtkTextIter_() = default;
  */
 GtkTextIter_::~GtkTextIter_() = default;
 
-void GtkTextIter_::set_instance(GtkTextIter *a) {
+void GtkTextIter_::set_instance(GtkTextIter *a)
+{
 	instance = a;
 }
-GtkTextIter *GtkTextIter_::get_instance() {
+
+GtkTextIter *GtkTextIter_::get_instance()
+{
 	return instance;
 }
+
 
 
 Php::Value GtkTextIter_::get_buffer()
@@ -145,14 +149,86 @@ Php::Value GtkTextIter_::get_visible_text(Php::Parameters &parameters)
 	return ret;
 }
 
-// Php::Value GtkTextIter_::get_toggled_tags(Php::Parameters &parameters)
-// {
-// 	gboolean toggled_on = (gboolean)parameters[0];
+Php::Value GtkTextIter_::get_toggled_tags(Php::Parameters &parameters)
+{
+	gboolean toggled_on = (gboolean)parameters[0];
 
-// 	GSList ret = gtk_text_iter_get_toggled_tags (instance, toggled_on);
+	GSList *ret = gtk_text_iter_get_toggled_tags (instance, toggled_on);
 
-// 	return ret;
-// }
+	Php::Value ret_arr;
+
+	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
+		ret_arr[index] = (char *) item->data;
+	}
+
+	return ret_arr;
+}
+
+Php::Value GtkTextIter_::starts_tag(Php::Parameters &parameters)
+{
+	Php::Value object_tag = parameters[0];
+	GtkTextTag_ *phpgtk_tag = (GtkTextTag_ *)object_tag.implementation();
+	GtkTextTag *tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
+
+
+	gboolean ret = gtk_text_iter_starts_tag (instance, tag);
+
+	return ret;
+}
+
+Php::Value GtkTextIter_::toggles_tag(Php::Parameters &parameters)
+{
+	Php::Value object_tag = parameters[0];
+	GtkTextTag_ *phpgtk_tag = (GtkTextTag_ *)object_tag.implementation();
+	GtkTextTag *tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
+
+
+	gboolean ret = gtk_text_iter_toggles_tag (instance, tag);
+
+	return ret;
+}
+
+Php::Value GtkTextIter_::has_tag(Php::Parameters &parameters)
+{
+	Php::Value object_tag = parameters[0];
+	GtkTextTag_ *phpgtk_tag = (GtkTextTag_ *)object_tag.implementation();
+	GtkTextTag *tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
+
+
+	gboolean ret = gtk_text_iter_has_tag (instance, tag);
+
+	return ret;
+}
+
+Php::Value GtkTextIter_::ends_tag(Php::Parameters &parameters)
+{
+	Php::Value object_tag = parameters[0];
+	GtkTextTag_ *phpgtk_tag = (GtkTextTag_ *)object_tag.implementation();
+	GtkTextTag *tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
+
+	gboolean ret = gtk_text_iter_ends_tag (instance, tag);
+
+	return ret;
+}
+
+Php::Value GtkTextIter_::get_tags()
+{
+	GSList *ret = gtk_text_iter_get_tags (instance);
+
+	Php::Value ret_arr;
+
+	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
+		GtkTextTag_ *return_parsed = new GtkTextTag_();
+
+		return_parsed->set_instance((gpointer *)GTK_TEXT_TAG(item->data));
+
+
+		ret_arr[index] = Php::Object("GtkTextTag", return_parsed);
+	}
+
+	return ret_arr;
+}
+
 
 Php::Value GtkTextIter_::editable(Php::Parameters &parameters)
 {

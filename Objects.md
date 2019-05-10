@@ -15,7 +15,7 @@ _GObject
     │   │   │   │   │   │   ├── GtkAppChooserDialog
     │   │   │   │   │   │   ├── GtkColorChooserDialog
     │   │   │   │   │   │   ├── GtkColorSelectionDialog
-    │   │   │   │   │   │   ├── #GtkFileChooserDialog
+    │   │   │   │   │   │   ├── *GtkFileChooserDialog
     │   │   │   │   │   │   ├── GtkFontChooserDialog
     │   │   │   │   │   │   ├── GtkFontSelectionDialog
     │   │   │   │   │   │   ├── *GtkMessageDialog
@@ -110,7 +110,7 @@ _GObject
     │   │   │   ├── GtkSocket
     │   │   │   ├── GtkStack
     │   │   │   ├── GtkTable
-    │   │   │   ├── #GtkTextView
+    │   │   │   ├── #GtkTextView (implement GdkWindow)
     │   │   │   ├── *GtkToolbar
     │   │   │   ├── GtkToolItemGroup
     │   │   │   ├── GtkToolPalette
@@ -215,8 +215,8 @@ _GObject
     ├── GtkStyleContext
     ├── #GtkTextBuffer
     ├── GtkTextChildAnchor
-    ├── GtkTextMark
-    ├── #GtkTextTag
+    ├── *GtkTextMark
+    ├── _GtkTextTag (Convert GdkEvent)
     ├── GtkTextTagTable
     ├── GtkThemingEngine
     ├── GtkTreeModelFilter
@@ -250,7 +250,7 @@ _GObject
     ╰── GtkToolShell
     GBoxed
     ├── GtkPaperSize
-    ├── #GtkTextIter
+    ├── *GtkTextIter
     ├── GtkSelectionData
     ├── #GtkRequisition
     ├── GtkBorder

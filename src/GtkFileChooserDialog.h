@@ -86,6 +86,8 @@
 
             Php::Value set_current_folder_uri(Php::Parameters &parameters);
 
+            Php::Value get_current_folder_uri();
+
             void set_preview_widget(Php::Parameters &parameters);
 
             Php::Value get_preview_widget();

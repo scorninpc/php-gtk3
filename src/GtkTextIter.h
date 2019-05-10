@@ -60,7 +60,17 @@
 
             Php::Value get_visible_text(Php::Parameters &parameters);
 
-            // Php::Value get_toggled_tags(Php::Parameters &parameters);
+            Php::Value get_toggled_tags(Php::Parameters &parameters);
+
+            Php::Value starts_tag(Php::Parameters &parameters);
+
+            Php::Value ends_tag(Php::Parameters &parameters);
+
+            Php::Value toggles_tag(Php::Parameters &parameters);
+
+            Php::Value has_tag(Php::Parameters &parameters);
+
+            Php::Value get_tags();
 
             Php::Value editable(Php::Parameters &parameters);
 
