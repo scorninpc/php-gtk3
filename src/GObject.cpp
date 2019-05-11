@@ -35,6 +35,7 @@ void GObject_::set_instance(gpointer *pased_instance)
 {
     instance = pased_instance;
 }
+
 /**
  * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
  *

@@ -13,7 +13,7 @@ GtkTextBuffer_::~GtkTextBuffer_() = default;
 
 void GtkTextBuffer_::__construct()
 {
-	instance = (gpointer *)gtk_text_view_new ();
+	instance = (gpointer *)gtk_text_buffer_new (NULL);
 
 }
 

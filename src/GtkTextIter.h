@@ -5,9 +5,9 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
+	#include "GtkTextTag.h"
     #include "GtkTextBuffer.h"
-    #include "GtkTextTag.h"
-
+    #include "GtkTextMark.h"
 
     /**
      * GtkTextIter_
@@ -21,16 +21,19 @@
          */
         public:
 
+            GtkTextIter *instance;
+
+            /**
+             * Set/Get original GtkTextIter
+             */
+            GtkTextIter *get_instance();
+            void set_instance(GtkTextIter *pased_instance);
+
             /**
              *  C++ constructor and destructor
              */
             GtkTextIter_();
             ~GtkTextIter_();
-
-            GtkTextIter *instance;
-
-            void set_instance(GtkTextIter *a);
-            GtkTextIter *get_instance();
 
             Php::Value get_buffer();
 
@@ -59,6 +62,8 @@
             Php::Value get_visible_slice(Php::Parameters &parameters);
 
             Php::Value get_visible_text(Php::Parameters &parameters);
+
+            Php::Value get_marks();
 
             Php::Value get_toggled_tags(Php::Parameters &parameters);
 

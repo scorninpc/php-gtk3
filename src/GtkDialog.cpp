@@ -84,7 +84,7 @@ void GtkDialog_::add_buttons(Php::Parameters &parameters)
 
 	gint response_id = (gint)parameters[1];
 
-	gtk_dialog_add_buttons (GTK_DIALOG(instance), button_text, response_id);
+	gtk_dialog_add_buttons (GTK_DIALOG(instance), button_text, response_id, NULL);
 
 }
 

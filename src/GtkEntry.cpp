@@ -115,10 +115,9 @@ void GtkEntry_::set_invisible_char(Php::Parameters &parameters)
 Php::Value GtkEntry_::get_invisible_char()
 {
 	gunichar ch = gtk_entry_get_invisible_char(GTK_ENTRY(instance));
+	
 	char a;
-
 	g_unichar_to_utf8(ch, &a);
-
 
 	return a;
 }

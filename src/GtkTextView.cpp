@@ -26,11 +26,11 @@ Php::Value GtkTextView_::new_with_buffer(Php::Parameters &parameters)
 		buffer = GTK_TEXT_BUFFER(phpgtk_buffer->get_instance());
 	}
 
-	gtk_text_view_new_with_buffer (buffer);
+	gpointer *a = (gpointer *)gtk_text_view_new_with_buffer (buffer);
 
-	GtkTextBuffer_ *return_parsed = new GtkTextBuffer_();
-	return_parsed->set_instance((gpointer *)buffer);
-	return Php::Object("GtkTextBuffer", return_parsed);
+	GtkTextView_ *return_parsed = new GtkTextView_();
+	return_parsed->set_instance(a);
+	return Php::Object("GtkTextView", return_parsed);
 
 }
 
@@ -170,8 +170,8 @@ Php::Value GtkTextView_::get_line_yrange(Php::Parameters &parameters)
 	gtk_text_view_get_line_yrange (GTK_TEXT_VIEW(instance), target_iter, &y, &height);
 
 	Php::Value ret;
-	ret['y'] = y;
-	ret['height'] = height;
+	ret["y"] = y;
+	ret["height"] = height;
 
 	return ret;
 }
@@ -180,8 +180,8 @@ Php::Value GtkTextView_::get_iter_at_location(Php::Parameters &parameters)
 {
 	GtkTextIter *target_iter;
 
-	gint x = (gint)parameters[1];
-	gint y = (gint)parameters[2];
+	gint x = (gint)parameters[0];
+	gint y = (gint)parameters[1];
 
 	gint ret = gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW(instance), target_iter, x, y);
 	if(!ret)
@@ -197,14 +197,14 @@ Php::Value GtkTextView_::get_iter_at_position(Php::Parameters &parameters)
 	
 	gint x = (gint)parameters[0];
 	gint y = (gint)parameters[1];
-	GtkTextIter *target_iter;
+	GtkTextIter target_iter;
 
-	gboolean ret = gtk_text_view_get_iter_at_position (GTK_TEXT_VIEW(instance), target_iter, NULL, x, y);
+	gboolean ret = gtk_text_view_get_iter_at_position (GTK_TEXT_VIEW(instance), &target_iter, NULL, x, y);
 	if(!ret)
 		return ret;
 
 	GtkTextIter_ *return_parsed = new GtkTextIter_();
-	return_parsed->set_instance(target_iter);
+	return_parsed->set_instance(&target_iter);
 	return Php::Object("GtkTextIter", return_parsed);
 }
 
@@ -216,14 +216,14 @@ Php::Value GtkTextView_::buffer_to_window_coords(Php::Parameters &parameters)
 	gint buffer_x = (gint)parameters[1];
 	gint buffer_y = (gint)parameters[2];
 
-	gint *window_x;
-	gint *window_y;
+	gint window_x;
+	gint window_y;
 
-	gtk_text_view_buffer_to_window_coords (GTK_TEXT_VIEW(instance), win, buffer_x, buffer_y, window_x, window_y);
+	gtk_text_view_buffer_to_window_coords (GTK_TEXT_VIEW(instance), win, buffer_x, buffer_y, &window_x, &window_y);
 
 	Php::Value ret;
-	ret['window_x'] = window_x;
-	ret['window_y'] = window_y;
+	ret["window_x"] = window_x;
+	ret["window_y"] = window_y;
 
 	return ret;
 }
@@ -236,14 +236,14 @@ Php::Value GtkTextView_::window_to_buffer_coords(Php::Parameters &parameters)
 	gint window_x = (gint)parameters[1];
 	gint window_y = (gint)parameters[2];
 
-	gint *buffer_x;
-	gint *buffer_y;
+	gint buffer_x;
+	gint buffer_y;
 
-	gtk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW(instance), win, window_x, window_y, buffer_x, buffer_y);
+	gtk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW(instance), win, window_x, window_y, &buffer_x, &buffer_y);
 
 	Php::Value ret;
-	ret['buffer_x'] = buffer_x;
-	ret['buffer_y'] = buffer_y;
+	ret["buffer_x"] = buffer_x;
+	ret["buffer_y"] = buffer_y;
 
 	return ret;
 }

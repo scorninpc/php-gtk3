@@ -16,10 +16,9 @@ function GtkWindowReleased($widget=NULL, $event=NULL)
 }
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
-	global $text;
+	global $text, $buffer;
 
-	$a = $text->get_iter_at_location(1, 1);
-	var_dump($a);
+	var_dump($buffer->get_char_count());
 
 	// Tests
 	// $buffer = $text->get_buffer();
@@ -94,7 +93,7 @@ $win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
 $win->set_icon_from_file("./logo.png");
 
 // TextView
-$text = new GtkTextView();
+$text = GtkTextView::new_with_buffer(new GtkTextBuffer());
 $text->set_wrap_mode(GtkWrapMode::CHAR);
 
 $scroll = new GtkScrolledWindow();
