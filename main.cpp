@@ -824,7 +824,72 @@ extern "C"
             gtktextbuffer.method<&GtkTextBuffer_::__construct>("__construct");
             gtktextbuffer.method<&GtkTextBuffer_::get_line_count>("get_line_count");
             gtktextbuffer.method<&GtkTextBuffer_::get_char_count>("get_char_count");
+            gtktextbuffer.method<&GtkTextBuffer_::get_tag_table>("get_tag_table");
             gtktextbuffer.method<&GtkTextBuffer_::insert>("insert");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_at_cursor>("insert_at_cursor");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_interactive>("insert_interactive");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_interactive_at_cursor>("insert_interactive_at_cursor");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_range>("insert_range");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_range_interactive>("insert_range_interactive");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_with_tags>("insert_with_tags");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_with_tags_by_name>("insert_with_tags_by_name");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_markup>("insert_markup");
+            gtktextbuffer.method<&GtkTextBuffer_::delete_>("delete");
+            gtktextbuffer.method<&GtkTextBuffer_::delete_interactive>("delete_interactive");
+            gtktextbuffer.method<&GtkTextBuffer_::backspace>("backspace");
+            gtktextbuffer.method<&GtkTextBuffer_::set_text>("set_text");
+            gtktextbuffer.method<&GtkTextBuffer_::get_text>("get_text");
+            gtktextbuffer.method<&GtkTextBuffer_::get_slice>("get_slice");
+            gtktextbuffer.method<&GtkTextBuffer_::insert_pixbuf>("insert_pixbuf");
+            gtktextbuffer.method<&GtkTextBuffer_::create_mark>("create_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::move_mark>("move_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::move_mark_by_name>("move_mark_by_name");
+            gtktextbuffer.method<&GtkTextBuffer_::add_mark>("add_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::delete_mark>("delete_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::delete_mark_by_name>("delete_mark_by_name");
+            gtktextbuffer.method<&GtkTextBuffer_::get_mark>("get_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::get_insert>("get_insert");
+            gtktextbuffer.method<&GtkTextBuffer_::get_selection_bound>("get_selection_bound");
+            gtktextbuffer.method<&GtkTextBuffer_::get_has_selection>("get_has_selection");
+            gtktextbuffer.method<&GtkTextBuffer_::place_cursor>("place_cursor");
+            gtktextbuffer.method<&GtkTextBuffer_::select_range>("select_range");
+            gtktextbuffer.method<&GtkTextBuffer_::apply_tag>("apply_tag");
+            gtktextbuffer.method<&GtkTextBuffer_::remove_tag>("remove_tag");
+            gtktextbuffer.method<&GtkTextBuffer_::apply_tag_by_name>("apply_tag_by_name");
+            gtktextbuffer.method<&GtkTextBuffer_::remove_tag_by_name>("remove_tag_by_name");
+            gtktextbuffer.method<&GtkTextBuffer_::remove_all_tags>("remove_all_tags");
+            gtktextbuffer.method<&GtkTextBuffer_::create_tag>("create_tag");
+            gtktextbuffer.method<&GtkTextBuffer_::get_iter_at_line_offset>("get_iter_at_line_offset");
+            gtktextbuffer.method<&GtkTextBuffer_::get_iter_at_offset>("get_iter_at_offset");
+            gtktextbuffer.method<&GtkTextBuffer_::get_iter_at_line>("get_iter_at_line");
+            gtktextbuffer.method<&GtkTextBuffer_::get_iter_at_line_index>("get_iter_at_line_index");
+            gtktextbuffer.method<&GtkTextBuffer_::get_iter_at_mark>("get_iter_at_mark");
+            gtktextbuffer.method<&GtkTextBuffer_::get_start_iter>("get_start_iter");
+            gtktextbuffer.method<&GtkTextBuffer_::get_end_iter>("get_end_iter");
+            gtktextbuffer.method<&GtkTextBuffer_::get_bounds>("get_bounds");
+            gtktextbuffer.method<&GtkTextBuffer_::get_modified>("get_modified");
+            gtktextbuffer.method<&GtkTextBuffer_::set_modified>("set_modified");
+            gtktextbuffer.method<&GtkTextBuffer_::delete_selection>("delete_selection");
+            gtktextbuffer.method<&GtkTextBuffer_::paste_clipboard>("paste_clipboard");
+            gtktextbuffer.method<&GtkTextBuffer_::copy_clipboard>("copy_clipboard");
+            gtktextbuffer.method<&GtkTextBuffer_::cut_clipboard>("cut_clipboard");
+            gtktextbuffer.method<&GtkTextBuffer_::get_selection_bounds>("get_selection_bounds");
+            gtktextbuffer.method<&GtkTextBuffer_::begin_user_action>("begin_user_action");
+            gtktextbuffer.method<&GtkTextBuffer_::end_user_action>("end_user_action");
+            gtktextbuffer.method<&GtkTextBuffer_::remove_selection_clipboard>("remove_selection_clipboard");
+            gtktextbuffer.method<&GtkTextBuffer_::deserialize>("deserialize");
+            gtktextbuffer.method<&GtkTextBuffer_::deserialize_get_can_create_tags>("deserialize_get_can_create_tags");
+            gtktextbuffer.method<&GtkTextBuffer_::deserialize_set_can_create_tags>("deserialize_set_can_create_tags");
+            gtktextbuffer.method<&GtkTextBuffer_::get_copy_target_list>("get_copy_target_list");
+            gtktextbuffer.method<&GtkTextBuffer_::get_deserialize_formats>("get_deserialize_formats");
+            gtktextbuffer.method<&GtkTextBuffer_::get_paste_target_list>("get_paste_target_list");
+            gtktextbuffer.method<&GtkTextBuffer_::get_serialize_formats>("get_serialize_formats");
+            gtktextbuffer.method<&GtkTextBuffer_::register_deserialize_format>("register_deserialize_format");
+            gtktextbuffer.method<&GtkTextBuffer_::register_serialize_format>("register_serialize_format");
+            gtktextbuffer.method<&GtkTextBuffer_::register_serialize_tagset>("register_serialize_tagset");
+            gtktextbuffer.method<&GtkTextBuffer_::serialize>("serialize");
+            gtktextbuffer.method<&GtkTextBuffer_::unregister_deserialize_format>("unregister_deserialize_format");
+            gtktextbuffer.method<&GtkTextBuffer_::unregister_serialize_format>("unregister_serialize_format");
         
 
         // GtkTextTag
@@ -1137,6 +1202,17 @@ extern "C"
             gtktoolbutton.method<&GtkToolButton_::get_label_widget>("get_label_widget");
         
 
+        // GtkTextTagTable
+        Php::Class<GtkTextTagTable_> gtktexttagtable("GtkTextTagTable");
+            gtktexttagtable.extends(gobject);
+            gtktexttagtable.method<&GtkTextTagTable_::__construct>("__construct");
+            gtktexttagtable.method<&GtkTextTagTable_::add>("add");
+            gtktexttagtable.method<&GtkTextTagTable_::remove>("remove");
+            gtktexttagtable.method<&GtkTextTagTable_::lookup>("lookup");
+            gtktexttagtable.method<&GtkTextTagTable_::foreach>("foreach");
+            gtktexttagtable.method<&GtkTextTagTable_::get_size>("get_size");
+        
+
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
@@ -1200,6 +1276,7 @@ extern "C"
         extension.add(std::move(gtktoolitem));
         extension.add(std::move(gtktoolbar));
         extension.add(std::move(gtktoolbutton));
+        extension.add(std::move(gtktexttagtable));
 
         // return the extension
         return extension;

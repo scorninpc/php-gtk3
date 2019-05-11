@@ -16,9 +16,16 @@ function GtkWindowReleased($widget=NULL, $event=NULL)
 }
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
-	global $text, $buffer;
+	global $text;
 
-	var_dump($buffer->get_char_count());
+	$buffer = $text->get_buffer();
+
+	// $buffer->delete_selection(TRUE, TRUE);
+
+	$iter = $buffer->get_iter_at_line_offset(1, 2);
+	var_dump($iter->get_char());
+	$iter->forward_line();
+	var_dump($iter->get_char());
 
 	// Tests
 	// $buffer = $text->get_buffer();
@@ -35,11 +42,14 @@ function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 
 function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 {
-	global $model, $tree;
+	global $text;
 
-	$model->append([FALSE, 3, "param 2"]);
+	$buffer = $text->get_buffer();
 
-	//$tree->set_model($model);
+	list($start, $end) = $buffer->get_selection_bounds();
+	
+	$buffer->delete($start, $end);
+
 }
 
 function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
@@ -95,6 +105,7 @@ $win->set_icon_from_file("./logo.png");
 // TextView
 $text = GtkTextView::new_with_buffer(new GtkTextBuffer());
 $text->set_wrap_mode(GtkWrapMode::CHAR);
+$text->get_buffer()->set_text("aaaaaaaaaaaaaaaaaaaaaaaaaa\nbbbbbbbbbbbbbbbbbbbbbbb\ncccccccccccccccccccccc\ndddddddddddddddddddd");
 
 $scroll = new GtkScrolledWindow();
 $scroll->add($text);

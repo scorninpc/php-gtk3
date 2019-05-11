@@ -21,13 +21,13 @@
          */
         public:
 
-            GtkTextIter *instance;
+            GtkTextIter instance;
 
             /**
              * Set/Get original GtkTextIter
              */
-            GtkTextIter *get_instance();
-            void set_instance(GtkTextIter *pased_instance);
+            GtkTextIter get_instance();
+            void set_instance(GtkTextIter pased_instance);
 
             /**
              *  C++ constructor and destructor

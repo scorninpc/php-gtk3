@@ -79,12 +79,10 @@ void GtkTextView_::scroll_to_mark(Php::Parameters &parameters)
 
 void GtkTextView_::scroll_to_iter(Php::Parameters &parameters)
 {
-	GtkTextIter *iter;
-	if(parameters.size() > 0) {
-		Php::Value object_iter = parameters[0];
-		GtkTextIter_ *phpgtk_iter = (GtkTextIter_ *)object_iter.implementation();
-		iter = (phpgtk_iter->get_instance());
-	}
+	
+	Php::Value object_iter = parameters[0];
+	GtkTextIter_ *phpgtk_iter = (GtkTextIter_ *)object_iter.implementation();
+	GtkTextIter iter = (phpgtk_iter->get_instance());
 
 	gdouble within_margin = (gdouble)parameters[1];
 
@@ -94,7 +92,7 @@ void GtkTextView_::scroll_to_iter(Php::Parameters &parameters)
 
 	gdouble yalign = (gdouble)parameters[4];
 
-	gtk_text_view_scroll_to_iter (GTK_TEXT_VIEW(instance), iter, within_margin, use_align, xalign, yalign);
+	gtk_text_view_scroll_to_iter (GTK_TEXT_VIEW(instance), &iter, within_margin, use_align, xalign, yalign);
 
 }
 
@@ -134,12 +132,10 @@ Php::Value GtkTextView_::place_cursor_onscreen()
 
 Php::Value GtkTextView_::get_line_at_y(Php::Parameters &parameters)
 {
-	GtkTextIter *target_iter;
-	if(parameters.size() > 0) {
-		Php::Value object_target_iter = parameters[0];
-		GtkTextIter_ *phpgtk_target_iter = (GtkTextIter_ *)object_target_iter.implementation();
-		target_iter = (phpgtk_target_iter->get_instance());
-	}
+	
+	Php::Value object_target_iter = parameters[0];
+	GtkTextIter_ *phpgtk_target_iter = (GtkTextIter_ *)object_target_iter.implementation();
+	GtkTextIter target_iter = (phpgtk_target_iter->get_instance());
 
 	gint y = (gint)parameters[1];
 
@@ -148,7 +144,7 @@ Php::Value GtkTextView_::get_line_at_y(Php::Parameters &parameters)
 
 	gint ret;
 
-	gtk_text_view_get_line_at_y (GTK_TEXT_VIEW(instance), target_iter, y, &line_top);
+	gtk_text_view_get_line_at_y (GTK_TEXT_VIEW(instance), &target_iter, y, &line_top);
 
 	ret = line_top;
 
@@ -157,17 +153,15 @@ Php::Value GtkTextView_::get_line_at_y(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_line_yrange(Php::Parameters &parameters)
 {
-	GtkTextIter *target_iter;
-	if(parameters.size() > 0) {
-		Php::Value object_target_iter = parameters[0];
-		GtkTextIter_ *phpgtk_target_iter = (GtkTextIter_ *)object_target_iter.implementation();
-		target_iter = (phpgtk_target_iter->get_instance());
-	}
+	
+	Php::Value object_target_iter = parameters[0];
+	GtkTextIter_ *phpgtk_target_iter = (GtkTextIter_ *)object_target_iter.implementation();
+	GtkTextIter target_iter = (phpgtk_target_iter->get_instance());
 
 	gint y;
 	gint height;
 
-	gtk_text_view_get_line_yrange (GTK_TEXT_VIEW(instance), target_iter, &y, &height);
+	gtk_text_view_get_line_yrange (GTK_TEXT_VIEW(instance), &target_iter, &y, &height);
 
 	Php::Value ret;
 	ret["y"] = y;
@@ -178,12 +172,12 @@ Php::Value GtkTextView_::get_line_yrange(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_iter_at_location(Php::Parameters &parameters)
 {
-	GtkTextIter *target_iter;
+	GtkTextIter target_iter;
 
 	gint x = (gint)parameters[0];
 	gint y = (gint)parameters[1];
 
-	gint ret = gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW(instance), target_iter, x, y);
+	gint ret = gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW(instance), &target_iter, x, y);
 	if(!ret)
 		return ret;
 
@@ -204,7 +198,7 @@ Php::Value GtkTextView_::get_iter_at_position(Php::Parameters &parameters)
 		return ret;
 
 	GtkTextIter_ *return_parsed = new GtkTextIter_();
-	return_parsed->set_instance(&target_iter);
+	return_parsed->set_instance(target_iter);
 	return Php::Object("GtkTextIter", return_parsed);
 }
 
@@ -299,86 +293,74 @@ Php::Value GtkTextView_::get_border_window_size(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::forward_display_line(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_forward_display_line (GTK_TEXT_VIEW(instance), type);
+	gboolean ret = gtk_text_view_forward_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::backward_display_line(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_backward_display_line (GTK_TEXT_VIEW(instance), type);
+	gboolean ret = gtk_text_view_backward_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::forward_display_line_end(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_forward_display_line_end (GTK_TEXT_VIEW(instance), type);
+	gboolean ret = gtk_text_view_forward_display_line_end (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::backward_display_line_start(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_backward_display_line_start (GTK_TEXT_VIEW(instance), type);
+	gboolean ret = gtk_text_view_backward_display_line_start (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::starts_display_line(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_starts_display_line (GTK_TEXT_VIEW(instance), type);
+	gboolean ret = gtk_text_view_starts_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::move_visually(Php::Parameters &parameters)
 {
-	GtkTextIter *type;
-	if(parameters.size() > 0) {
-		Php::Value object_type = parameters[0];
-		GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
-		type = (phpgtk_type->get_instance());
-	}
+	
+	Php::Value object_type = parameters[0];
+	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
+	GtkTextIter type = (phpgtk_type->get_instance());
 
 	gint count = (gint)parameters[1];
 
-	gboolean ret = gtk_text_view_move_visually (GTK_TEXT_VIEW(instance), type, count);
+	gboolean ret = gtk_text_view_move_visually (GTK_TEXT_VIEW(instance), &type, count);
 
 	return ret;
 }
