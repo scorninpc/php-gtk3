@@ -5,7 +5,9 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
-    #include "GObject.h"
+	#include "GObject.h"
+    #include "GdkEvent.h"
+	#include "GtkTextIter.h"
 
     /**
      * GtkTextTag_
@@ -19,13 +21,26 @@
          */
         public:
 
+            GtkTextTag *tag;
+
+            GtkTextTag *get_tag();
+            void set_tag(GtkTextTag *passed_tag);
+
             /**
              *  C++ constructor and destructor
              */
             GtkTextTag_();
             ~GtkTextTag_();
 
+            void __construct(Php::Parameters &parameters);
 
+            Php::Value get_priority();
+
+            void set_priority(Php::Parameters &parameters);
+
+            Php::Value event(Php::Parameters &parameters);
+
+            void tag_changed(Php::Parameters &parameters);
     };
 
 #endif

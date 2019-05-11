@@ -139,11 +139,30 @@ class Application
 			$dialog->add_filter($filter);
 
 
-			$dialog->set_select_multiple(FALSE);
+
+			$dialog->set_select_multiple(TRUE);
 			$a = $dialog->run();
 			if($a == GtkResponseType::OK) {
-				var_dump($dialog->get_filename());
+				var_dump($dialog->get_filenames());
 			}
+			
+
+
+			$a = $dialog->list_filters();
+			foreach($a as $b) {
+				$dialog->remove_filter($a);
+				// var_dump($b->get_name());
+			}
+
+			$a = $dialog->run();
+			if($a == GtkResponseType::OK) {
+				var_dump($dialog->get_filenames());
+			}
+
+
+
+
+
 			$dialog->destroy();
 
 		});

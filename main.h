@@ -58,6 +58,11 @@
     #include "src/GtkTextView.h"
 
     #include "src/GtkTextTag.h"
+    #include "src/GtkTextWindowType.h"
+    #include "src/GtkInputHints.h"
+    #include "src/GtkWrapMode.h"
+    #include "src/GtkInputPurpose.h"
+    #include "src/GtkTextMark.h"
 
     #include "src/GtkDialogFlags.h"
 
