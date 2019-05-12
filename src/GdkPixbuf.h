@@ -5,6 +5,8 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
+    #include "GdkPixbufFormat.h"
+
     /**
      * GdkPixbuf
      * 
@@ -16,7 +18,7 @@
          * Publics
          */
         public:
-            GdkPixbuf *pixbuf;
+            GdkPixbuf *instance;
 
             /**
              *  C++ constructor and destructor
@@ -27,12 +29,12 @@
             /**
              * Return original GdkPixbuf
              */
-            GdkPixbuf *get_pixbuf();
+            GdkPixbuf *get_instance();
 
             /**
              * Set the original GdkPixbuf
              */
-            void set_pixbuf(GdkPixbuf *pased_pixbuf);
+            void set_instance(GdkPixbuf *pased_pixbuf);
 
             /**
              * PHP Construct
@@ -45,6 +47,30 @@
              * https://developer.gnome.org/gdk-pixbuf/stable/gdk-pixbuf-File-Loading.html#gdk-pixbuf-new-from-file
              */
             static Php::Value new_from_file(Php::Parameters &parameters);
+
+            static Php::Value new_from_file_at_size(Php::Parameters &parameters);
+
+            static Php::Value new_from_file_at_scale(Php::Parameters &parameters);
+
+            static Php::Value get_file_info(Php::Parameters &parameters);
+
+            Php::Value get_colorspace();
+
+            Php::Value get_n_channels();
+
+            Php::Value get_has_alpha();
+
+            Php::Value get_pixels();
+
+            Php::Value get_width();
+
+            Php::Value get_height();
+
+            Php::Value get_rowstride();
+
+            Php::Value get_option(Php::Parameters &parameters);
+
+            Php::Value save(Php::Parameters &parameters);
     };
 
 #endif

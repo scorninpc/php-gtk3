@@ -9,6 +9,7 @@
 	#include "GtkTextIter.h"
 	#include "GtkTextTag.h"
     #include "GtkTextTagTable.h"
+    #include "GdkPixbuf.h"
 
     /**
      * GtkTextBuffer_

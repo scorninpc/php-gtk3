@@ -125,7 +125,34 @@ extern "C"
         Php::Class<GdkPixbuf_> gdkpixbuf("GdkPixbuf");
             gdkpixbuf.method<&GdkPixbuf_::__construct>("__construct");
             gdkpixbuf.method<&GdkPixbuf_::new_from_file>("new_from_file");
+            gdkpixbuf.method<&GdkPixbuf_::new_from_file_at_size>("new_from_file_at_size");
+            gdkpixbuf.method<&GdkPixbuf_::new_from_file_at_scale>("new_from_file_at_scale");
+            gdkpixbuf.method<&GdkPixbuf_::get_file_info>("get_file_info");
+            gdkpixbuf.method<&GdkPixbuf_::get_colorspace>("get_colorspace");
+            gdkpixbuf.method<&GdkPixbuf_::get_n_channels>("get_n_channels");
+            gdkpixbuf.method<&GdkPixbuf_::get_has_alpha>("get_has_alpha");
+            gdkpixbuf.method<&GdkPixbuf_::get_pixels>("get_pixels");
+            gdkpixbuf.method<&GdkPixbuf_::get_width>("get_width");
+            gdkpixbuf.method<&GdkPixbuf_::get_height>("get_height");
+            gdkpixbuf.method<&GdkPixbuf_::get_rowstride>("get_rowstride");
+            gdkpixbuf.method<&GdkPixbuf_::get_option>("get_option");
+            gdkpixbuf.method<&GdkPixbuf_::save>("save");
         
+
+        // GdkPixbufFormat
+        Php::Class<GdkPixbufFormat_> gdkpixbufformat("GdkPixbufFormat");
+
+
+        // GdkPixbufAlphaMode
+        Php::Class<GdkPixbufAlphaMode_> gdkpixbufalphamode("GdkPixbufAlphaMode");
+            gdkpixbufalphamode.constant("BILEVEL", (int)GDK_PIXBUF_ALPHA_BILEVEL);
+            gdkpixbufalphamode.constant("FULL", (int)GDK_PIXBUF_ALPHA_FULL);
+
+
+        // GdkColorspace
+        Php::Class<GdkColorspace_> gdkcolorspace("GdkColorspace");
+            gdkcolorspace.constant("RGB", (int)GDK_COLORSPACE_RGB);
+
 
         // Gtk
         Php::Class<Gtk_> gtk("Gtk");
@@ -1213,11 +1240,66 @@ extern "C"
             gtktexttagtable.method<&GtkTextTagTable_::get_size>("get_size");
         
 
+        // GdkSelection
+        Php::Class<GdkSelection_> gdkselection("GdkSelection");
+            gdkselection.constant("PRIMARY", 1);
+            gdkselection.constant("SECONDARY", 2);
+            gdkselection.constant("CLIPBOARD", 69);
+            // gdkselection.constant("NORMAL", GDK_TARGET_BITMAP);
+            // gdkselection.constant("NORMAL", GDK_TARGET_COLORMAP);
+            // gdkselection.constant("NORMAL", GDK_TARGET_DRAWABLE);
+            // gdkselection.constant("NORMAL", GDK_TARGET_PIXMAP);
+            // gdkselection.constant("NORMAL", GDK_TARGET_STRING);
+            gdkselection.constant("TYPE_ATOM", 4);
+            gdkselection.constant("TYPE_BITMAP", 5);
+            gdkselection.constant("TYPE_COLORMAP", 7);
+            gdkselection.constant("TYPE_DRAWABLE", 17);
+            gdkselection.constant("TYPE_INTEGER", 19);
+            gdkselection.constant("TYPE_PIXMAP", 20);
+            gdkselection.constant("TYPE_WINDOW", 33);
+            gdkselection.constant("TYPE_STRING", 31);
+
+
+        // GtkClipboard
+        Php::Class<GtkClipboard_> gtkclipboard("GtkClipboard");
+            gtkclipboard.extends(gobject);
+            gtkclipboard.method<&GtkClipboard_::__construct>("__construct");
+            gtkclipboard.method<&GtkClipboard_::get_for_display>("get_for_display");
+            gtkclipboard.method<&GtkClipboard_::get_display>("get_display");
+            gtkclipboard.method<&GtkClipboard_::set_with_data>("set_with_data");
+            gtkclipboard.method<&GtkClipboard_::set_with_owner>("set_with_owner");
+            gtkclipboard.method<&GtkClipboard_::get_owner>("get_owner");
+            gtkclipboard.method<&GtkClipboard_::clear>("clear");
+            gtkclipboard.method<&GtkClipboard_::set_text>("set_text");
+            gtkclipboard.method<&GtkClipboard_::set_image>("set_image");
+            gtkclipboard.method<&GtkClipboard_::request_contents>("request_contents");
+            gtkclipboard.method<&GtkClipboard_::request_text>("request_text");
+            gtkclipboard.method<&GtkClipboard_::request_image>("request_image");
+            gtkclipboard.method<&GtkClipboard_::request_targets>("request_targets");
+            gtkclipboard.method<&GtkClipboard_::request_rich_text>("request_rich_text");
+            gtkclipboard.method<&GtkClipboard_::request_uris>("request_uris");
+            gtkclipboard.method<&GtkClipboard_::wait_for_contents>("wait_for_contents");
+            gtkclipboard.method<&GtkClipboard_::wait_for_text>("wait_for_text");
+            gtkclipboard.method<&GtkClipboard_::wait_for_image>("wait_for_image");
+            gtkclipboard.method<&GtkClipboard_::wait_for_rich_text>("wait_for_rich_text");
+            gtkclipboard.method<&GtkClipboard_::wait_for_uris>("wait_for_uris");
+            gtkclipboard.method<&GtkClipboard_::wait_is_text_available>("wait_is_text_available");
+            gtkclipboard.method<&GtkClipboard_::wait_is_image_available>("wait_is_image_available");
+            gtkclipboard.method<&GtkClipboard_::wait_is_uris_available>("wait_is_uris_available");
+            gtkclipboard.method<&GtkClipboard_::wait_is_target_available>("wait_is_target_available");
+            gtkclipboard.method<&GtkClipboard_::set_can_store>("set_can_store");
+            gtkclipboard.method<&GtkClipboard_::get_selection>("get_selection");
+        
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkpixbuf));
+        
+        extension.add(std::move(gdkpixbufformat));
+        extension.add(std::move(gdkpixbufalphamode));
+        extension.add(std::move(gdkcolorspace));
+
         extension.add(std::move(gtk));
         extension.add(std::move(gtkorientation));
         extension.add(std::move(gtkpolicytype));
@@ -1277,6 +1359,10 @@ extern "C"
         extension.add(std::move(gtktoolbar));
         extension.add(std::move(gtktoolbutton));
         extension.add(std::move(gtktexttagtable));
+
+        extension.add(std::move(gdkselection));
+
+        extension.add(std::move(gtkclipboard));
 
         // return the extension
         return extension;

@@ -2,40 +2,40 @@
 #ifndef _PHPGTK_GOBJECT_H_
 #define _PHPGTK_GOBJECT_H_
 
-	#include <phpcpp.h>
-	#include <iostream>
-	#include <gtk/gtk.h>
+    #include <phpcpp.h>
+    #include <iostream>
+    #include <gtk/gtk.h>
 
-	/**
-	 *  
-	 */
-	class GObject_ : public Php::Base
-	{
-		/**
+    /**
+     *  
+     */
+    class GObject_ : public Php::Base
+    {
+        /**
          * Privates
          */
         private:
             struct st_callback;
 
-		/**
-		 * Publics
-		 */
-		public:
-			gpointer *instance;
+        /**
+         * Publics
+         */
+        public:
+            gpointer *instance;
 
-			/**
+            /**
              * Set/Get original gpoint
              */
             gpointer *get_instance();
             void set_instance(gpointer *pased_instance);
 
-			/**
-			 *  C++ constructor/destructor
-			 */
-			GObject_();
-			virtual ~GObject_();
+            /**
+             *  C++ constructor/destructor
+             */
+            GObject_();
+            virtual ~GObject_();
 
-			/**
+            /**
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
              */
             Php::Value connect(Php::Parameters &parameters);
@@ -51,6 +51,6 @@
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
              */
             void handler_disconnect(Php::Parameters &parameters);
-	};
+    };
 
 #endif

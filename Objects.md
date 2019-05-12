@@ -171,7 +171,7 @@ _GObject
     │   ╰── GtkApplication
     ├── GtkBuilder
     ├── GtkCellAreaContext
-    ├── GtkClipboard
+    ├── #GtkClipboard (implement GdkDisplay, GdkAtom)
     ├── GtkCssProvider
     ├── #GtkEntryBuffer
     ├── GtkEntryCompletion
@@ -213,7 +213,7 @@ _GObject
     ├── GtkStatusIcon
     ├── GtkStyle
     ├── GtkStyleContext
-    ├── #GtkTextBuffer
+    ├── #GtkTextBuffer (implement Clipboards, GdkAtom, GdkPixbuf)
     ├── GtkTextChildAnchor
     ├── *GtkTextMark
     ├── _GtkTextTag (Convert GdkEvent)

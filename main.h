@@ -11,6 +11,10 @@
     #include "src/GdkEvent.h"
     #include "src/GdkPixbuf.h"
 
+    #include "src/GdkPixbufFormat.h"
+    #include "src/GdkPixbufAlphaMode.h"
+    #include "src/GdkColorspace.h"
+
     #include "src/Gtk.h"
     #include "src/GtkWidget.h"
     #include "src/GtkEntry.h"
@@ -95,5 +99,9 @@
     #include "src/GtkToolButton.h"
 
     #include "src/GtkTextTagTable.h"
+
+    #include "src/GdkSelection.h"
+
+    #include "src/GtkClipboard.h"
 
 #endif

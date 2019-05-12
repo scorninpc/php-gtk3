@@ -308,15 +308,15 @@ Php::Value GtkTextBuffer_::get_slice(Php::Parameters &parameters)
 void GtkTextBuffer_::insert_pixbuf(Php::Parameters &parameters)
 {
 	
-// 	Php::Value object_iter = parameters[0];
-// 	GtkTextIter_ *phpgtk_iter = (GtkTextIter_ *)object_iter.implementation();
-// GtkTextIter iter	iter = phpgtk_iter->get_instance();
-// }
+	Php::Value object_iter = parameters[0];
+	GtkTextIter_ *phpgtk_iter = (GtkTextIter_ *)object_iter.implementation();
+	GtkTextIter iter = phpgtk_iter->get_instance();
 
+	Php::Value object_pixbuf = parameters[1];
+	GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
+	GdkPixbuf *pixbuf = phpgtk_pixbuf->get_instance();
 
-	// gtk_text_buffer_insert_pixbuf (GTK_TEXT_BUFFER(instance), &iter, pixbuf);
-
-	throw Php::Exception("GtkTextBuffer_::insert_pixbuf not implemented");
+	gtk_text_buffer_insert_pixbuf (GTK_TEXT_BUFFER(instance), &iter, pixbuf);
 }
 
 Php::Value GtkTextBuffer_::create_mark(Php::Parameters &parameters)

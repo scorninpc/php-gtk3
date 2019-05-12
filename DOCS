@@ -41,3 +41,8 @@ https://developer.gnome.org/icon-naming-spec/
 
 -- GTK++ codes
 https://source.puri.sm/dorota.czaplejewicz/gtk/commit/8e69f87a4695631b62a74740880e89d30aa10d0f?view=inline&w=1
+
+
+-- GdkAtom
+https://developer.gnome.org/gdk3/stable/gdk3-Properties-and-Atoms.html#gdk-atom-intern
+https://github.com/adobe/webkit/blob/master/Source/WebCore/platform/gtk/PasteboardHelper.cpp

@@ -164,8 +164,8 @@ Php::Value GtkTextView_::get_line_yrange(Php::Parameters &parameters)
 	gtk_text_view_get_line_yrange (GTK_TEXT_VIEW(instance), &target_iter, &y, &height);
 
 	Php::Value ret;
-	ret["y"] = y;
-	ret["height"] = height;
+	ret[0] = ret["y"] = y;
+	ret[1] = ret["height"] = height;
 
 	return ret;
 }
@@ -216,8 +216,8 @@ Php::Value GtkTextView_::buffer_to_window_coords(Php::Parameters &parameters)
 	gtk_text_view_buffer_to_window_coords (GTK_TEXT_VIEW(instance), win, buffer_x, buffer_y, &window_x, &window_y);
 
 	Php::Value ret;
-	ret["window_x"] = window_x;
-	ret["window_y"] = window_y;
+	ret[0] = ret["window_x"] = window_x;
+	ret[1] = ret["window_y"] = window_y;
 
 	return ret;
 }
@@ -236,8 +236,8 @@ Php::Value GtkTextView_::window_to_buffer_coords(Php::Parameters &parameters)
 	gtk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW(instance), win, window_x, window_y, &buffer_x, &buffer_y);
 
 	Php::Value ret;
-	ret["buffer_x"] = buffer_x;
-	ret["buffer_y"] = buffer_y;
+	ret[0] = ret["buffer_x"] = buffer_x;
+	ret[1] = ret["buffer_y"] = buffer_y;
 
 	return ret;
 }

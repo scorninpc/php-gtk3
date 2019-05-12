@@ -47,19 +47,24 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 	$buffer = $text->get_buffer();
 
 	list($start, $end) = $buffer->get_selection_bounds();
-	
-	$buffer->delete($start, $end);
+	if($start) {
+		$buffer->delete($start, $end);
+	}
 
 }
 
 function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 {
+	global $text;
 
-}
+	$buffer = $text->get_buffer();
+	$iter = $buffer->get_iter_at_line_offset(1, 2);
 
-function GtkCellRendererToggled($renderer=NULL, $row=NULL)
-{
-	// echo "ok\n";
+	// $pixbuf = GdkPixbuf::new_from_file("./logo.png");
+	// $pixbuf = GdkPixbuf::new_from_file_at_scale("./logo.png", 20, -1, TRUE);
+	$pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", -1, 25);
+
+	$buffer->insert_pixbuf($iter, $pixbuf);
 }
 
 // ----------------------
@@ -106,6 +111,7 @@ $win->set_icon_from_file("./logo.png");
 $text = GtkTextView::new_with_buffer(new GtkTextBuffer());
 $text->set_wrap_mode(GtkWrapMode::CHAR);
 $text->get_buffer()->set_text("aaaaaaaaaaaaaaaaaaaaaaaaaa\nbbbbbbbbbbbbbbbbbbbbbbb\ncccccccccccccccccccccc\ndddddddddddddddddddd");
+$text->set_accepts_tab(TRUE);
 
 $scroll = new GtkScrolledWindow();
 $scroll->add($text);
@@ -113,6 +119,25 @@ $scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 
 $vbox->pack_start($scroll, TRUE, TRUE, 5);
 
+function clipboard_request($clipboard=NULL, $text=NULL, $param1=NULL, $param2=NULL)
+{
+	var_dump($clipboard);
+	var_dump($text);
+	var_dump($param1);
+	var_dump($param2);
+}
+
+$clipboard = new GtkClipboard(GdkSelection::CLIPBOARD);
+// $clipboard->request_text("clipboard_request", "param1", "param2");
+//$clipboard->set_text("BLABLABLA");
+
+// var_dump($clipboard->wait_for_text());
+
+// $img = $clipboard->wait_for_image();
+// $img->save("./b.jpg", "jpeg");
+
+// $pixbuf = GdkPixbuf::new_from_file("./logo.png");
+// var_dump($pixbuf->get_has_alpha());
 
 
 // Connects

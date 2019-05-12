@@ -684,7 +684,7 @@ void GtkWindow_::set_icon(Php::Parameters &parameters)
     if (!object.instanceOf("GdkPixbuf")) throw Php::Exception("parameter expect GdkPixbuf instance");
     GdkPixbuf_ *passedPixbuf = (GdkPixbuf_ *)object.implementation();
 
-    gtk_window_set_icon(GTK_WINDOW(instance), passedPixbuf->get_pixbuf());
+    gtk_window_set_icon(GTK_WINDOW(instance), passedPixbuf->get_instance());
 }
 
 /**
@@ -697,7 +697,7 @@ Php::Value GtkWindow_::get_icon()
     GdkPixbuf *returnedPixbuf = gtk_window_get_icon(GTK_WINDOW(instance));
 
     GdkPixbuf_ *returnPixbuf = new GdkPixbuf_();
-    returnPixbuf->set_pixbuf(returnedPixbuf);
+    returnPixbuf->set_instance(returnedPixbuf);
 
     return Php::Object("GdkPixbuf", returnPixbuf);
 }
@@ -793,7 +793,7 @@ void GtkWindow_::set_default_icon(Php::Parameters &parameters)
     if (!object.instanceOf("GdkPixbuf")) throw Php::Exception("parameter expect GdkPixbuf instance");
     GdkPixbuf_ *passedPixbuf = (GdkPixbuf_ *)object.implementation();
 
-    gtk_window_set_default_icon(passedPixbuf->get_pixbuf());
+    gtk_window_set_default_icon(passedPixbuf->get_instance());
 }
 
 /*
