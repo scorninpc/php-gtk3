@@ -2,17 +2,26 @@
 
 function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	Gtk::main_quit();
+	// Gtk::main_quit();
+	var_dump($widget);
+	var_dump($event);
+	var_dump($param1);
+	var_dump($param2);
+	var_dump($param4);
 }
 
 function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	// var_dump("OK");
+
 }
 
-function GtkWindowReleased($widget=NULL, $event=NULL)
+function GtkWindowReleased($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	// var_dump("OK");
+	var_dump($widget);
+	var_dump($event);
+	var_dump($param1);
+	var_dump($param2);
+	var_dump($param4);
 }
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
@@ -37,7 +46,8 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 
 function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 {
-
+	var_dump($widget);
+	var_dump($event);
 }
 
 function GtkCellRendererToggled($renderer=NULL, $row=NULL)
@@ -133,11 +143,12 @@ $tree->set_model($model);
 
 
 // Connects
-$win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
-$btn1->connect("clicked", "GtkWindowButton1Clicked");
-// $btn2->connect("button-release-event", "GtkWindowReleased");
-$btn2->connect("clicked", "GtkWindowReleased");
-$btn2->connect("clicked", "GtkWindowButton2Clicked");
+// $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
+$win->connect("delete-event", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
+// $btn1->connect("clicked", "GtkWindowButton1Clicked");
+$btn2->connect("button-release-event", "GtkWindowReleased");
+// $btn2->connect("clicked", "GtkWindowReleased");
+// $btn2->connect("clicked", "GtkWindowButton2Clicked");
 $btn3->connect("clicked", "GtkWindowButton3Clicked");
 
 // Show all

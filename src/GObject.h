@@ -43,7 +43,7 @@
             /**
              * Class to abstract php callback for connect method, to call PHP function
              */
-            static void connect_callback(GtkWidget *passedInstance, GdkEvent user_event, gpointer user_data);
+            static void connect_callback(gpointer user_data);
 
             /**
              * Disconnect signal by handle

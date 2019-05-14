@@ -58,34 +58,39 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
     callback_object->type = 99;
 
     // Create the CPP callback
-    int ret = g_signal_connect(instance, callback_event, G_CALLBACK (connect_callback), callback_object);
+    // int ret = g_signal_connect(instance, callback_event, G_CALLBACK (connect_callback), callback_object);
+
+    GClosure  *closure;
+    closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, NULL);
+    g_signal_connect_closure (instance, callback_event, closure, TRUE);
 
     // Return handler id
-    return ret;
+    // return ret;
+    return 1;
 }
 
 /**
  * Class to abstract php callback for connect method, to call PHP function
  */
-void GObject_::connect_callback(GtkWidget *passedInstance, GdkEvent user_event, gpointer user_data)
+void GObject_::connect_callback(gpointer user_data)
 {
     // Return to st_callback
     struct st_callback *callback_object = (struct st_callback *) user_data;
 
     // Create event from callback
-    GdkEvent_ *event_ = new GdkEvent_();
-    Php::Value gdkevent = Php::Object("GdkEvent", event_);
-    event_->populate(&user_event);
+    // GdkEvent_ *event_ = new GdkEvent_();
+    // Php::Value gdkevent = Php::Object("GdkEvent", event_);
+    // event_->populate(&user_event);
 
     // Create internal params, GtkWidget + GdkEvent
     Php::Value internal_parameters;
     internal_parameters[0] = callback_object->self_widget;
-    internal_parameters[1] = gdkevent;
+    // internal_parameters[1] = gdkevent;
 
     // Merge internal parameters with custom parameters
-    Php::Value callback_params = callback_object->callback_params;
-    Php::Value custom_parameters = Php::call("array_slice", callback_params, 2, callback_params.size());
-    Php::Value php_callback_param = Php::call("array_merge", internal_parameters, custom_parameters);
+    // Php::Value callback_params = callback_object->callback_params;
+    // Php::Value custom_parameters = Php::call("array_slice", callback_params, 2, callback_params.size());
+    // Php::Value php_callback_param = Php::call("array_merge", internal_parameters, custom_parameters);
 
     // Call php function with parameters
     Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
