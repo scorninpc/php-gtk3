@@ -22,7 +22,12 @@ void GdkEvent_::populate(GdkEvent *event)
     // self["expose"] = event->expose;
     // self["visibility"] = event->visibility;
     // self["motion"] = event->motion;
-    // self["button"] = event->button;
+    
+    GdkEventButton_ *eventbutton_ = new GdkEventButton_();
+    Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
+    eventbutton_->populate(event->button);
+    self["button"] = eventbutton_;
+
     // self["touch"] = event->touch;
     // self["scroll"] = event->scroll;
     // self["key"] = event->key;

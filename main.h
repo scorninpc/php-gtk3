@@ -9,6 +9,7 @@
 
     #include "src/Gdk.h"
     #include "src/GdkEvent.h"
+    #include "src/GdkEventButton.h"
     #include "src/GdkPixbuf.h"
 
     #include "src/GdkPixbufFormat.h"

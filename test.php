@@ -17,12 +17,20 @@ function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $
 
 function GtkWindowReleased($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
+	echo "\n------ GtkWindowReleased\n";
 	var_dump($widget);
 	var_dump($event);
-	var_dump($param1);
-	var_dump($param2);
-	var_dump($param4);
+	// var_dump($param1);
+	// var_dump($param2);
+	// var_dump($param4);
 }
+
+function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
+{
+	var_dump($widget);
+	var_dump($event);
+}
+
 function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
 {
 	
@@ -50,9 +58,19 @@ function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 	var_dump($event);
 }
 
-function GtkCellRendererToggled($renderer=NULL, $row=NULL)
+function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 {
-	// echo "ok\n";
+	echo "\n------ GtkCellRendererToggled\n";
+	// global $model, $tree;
+
+	// $iter = $model->get_iter($path);
+	// if($iter) {
+	// 	$value = $model->get($iter, 0);
+	// 	$model->set($iter, 0, !$value);
+	// }
+
+	var_dump($renderer);
+	var_dump($path);
 }
 
 // ----------------------
@@ -116,7 +134,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$tree->append_column($column1);
 	$column1->set_fixed_width(20);
 
-	// $renderer1->connect('toggled', "GtkCellRendererToggled");
+	$renderer1->connect('toggled', "GtkCellRendererToggled");
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
@@ -144,12 +162,13 @@ $tree->set_model($model);
 
 // Connects
 // $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
-$win->connect("delete-event", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
+// $win->connect("delete-event", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
 // $btn1->connect("clicked", "GtkWindowButton1Clicked");
 $btn2->connect("button-release-event", "GtkWindowReleased");
 // $btn2->connect("clicked", "GtkWindowReleased");
 // $btn2->connect("clicked", "GtkWindowButton2Clicked");
-$btn3->connect("clicked", "GtkWindowButton3Clicked");
+// $btn3->connect("clicked", "GtkWindowButton3Clicked");
+// $tree->connect("button-release-event", "GtkTreeViewButtonPressed");
 
 // Show all
 $win->show_all();

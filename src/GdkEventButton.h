@@ -1,16 +1,14 @@
 
-#ifndef _PHPGTK_GDKEVENT_H_
-#define _PHPGTK_GDKEVENT_H_
+#ifndef _PHPGTK_GdkEVENTBUTTON_H_
+#define _PHPGTK_GdkEVENTBUTTON_H_
 
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
-    #include "GdkEventButton.h"
-
     /**
      * 
      */
-    class GdkEvent_ : public Php::Base
+    class GdkEventButton_ : public Php::Base
     {
         /**
          * Publics
@@ -20,12 +18,12 @@
             /**
              *  C++ constructor and destructor
              */
-            GdkEvent_();
+            GdkEventButton_();
 
             /**
-             * Populate GdkEvent to PHPGTK::GDKEVENT
+             * Populate GdkEventButton to PHPGTK::GdkEventButton
              */
-            void populate(GdkEvent *event);
+            void populate(GdkEventButton event);
     };
 
 #endif

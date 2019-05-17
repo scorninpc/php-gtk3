@@ -72,20 +72,30 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
 /**
  * Class to abstract php callback for connect method, to call PHP function
  */
-void GObject_::connect_callback(gpointer user_data)
+bool GObject_::connect_callback(gpointer user_data, gpointer *user_param)
 {
     // Return to st_callback
     struct st_callback *callback_object = (struct st_callback *) user_data;
 
-    // Create event from callback
-    // GdkEvent_ *event_ = new GdkEvent_();
-    // Php::Value gdkevent = Php::Object("GdkEvent", event_);
-    // event_->populate(&user_event);
 
     // Create internal params, GtkWidget + GdkEvent
     Php::Value internal_parameters;
     internal_parameters[0] = callback_object->self_widget;
-    // internal_parameters[1] = gdkevent;
+   
+
+    Php::call("var_dump", G_TYPE_IS_FUNDAMENTAL(G_TYPE_FROM_CLASS(user_param)));
+
+     // Verify if user_param is a GFundamentalType
+    if(G_TYPE_IS_FUNDAMENTAL(G_TYPE_FROM_CLASS(user_param))) {
+
+        // Create event from callback
+        GdkEvent_ *event_ = new GdkEvent_();
+        Php::Value gdkevent = Php::Object("GdkEvent", event_);
+        event_->populate((GdkEvent *) user_param);
+        
+        // Add as second parameter
+        internal_parameters[1] = gdkevent;
+    }
 
     // Merge internal parameters with custom parameters
     // Php::Value callback_params = callback_object->callback_params;
@@ -93,7 +103,9 @@ void GObject_::connect_callback(gpointer user_data)
     // Php::Value php_callback_param = Php::call("array_merge", internal_parameters, custom_parameters);
 
     // Call php function with parameters
-    Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
+    Php::Value ret = Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
+
+    return ret;
 }
 
 
