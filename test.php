@@ -106,6 +106,10 @@ $hbox->pack_start($btn2, TRUE, TRUE, 5);
 $btn3 = GtkToggleButton::new_with_label("Button 3");
 $hbox->pack_start($btn3, TRUE, TRUE, 5);
 
+// Button 4
+$btn4 = GtkCheckButton::new_with_label("Button 4");
+$hbox->pack_start($btn4, TRUE, TRUE, 5);
+
 // ----------------------
 // Vertical box
 $vbox = new GtkVBox(FALSE, 5);

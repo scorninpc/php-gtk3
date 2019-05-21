@@ -438,6 +438,15 @@ extern "C"
             gtktogglebutton.method<&GtkToggleButton_::get_inconsistent>("get_inconsistent");
             gtktogglebutton.method<&GtkToggleButton_::set_inconsistent>("set_inconsistent");
 
+
+        // GtkCheckButton
+        Php::Class<GtkCheckButton_> gtkcheckbutton("GtkCheckButton");
+            gtkcheckbutton.extends(gtktogglebutton);
+            gtkcheckbutton.method<&GtkCheckButton_::__construct>("__construct");
+            gtkcheckbutton.method<&GtkCheckButton_::new_with_label>("new_with_label");
+            gtkcheckbutton.method<&GtkCheckButton_::new_with_mnemonic>("new_with_mnemonic");
+
+
         // GtkAdjustment
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
             gtkadjustment.extends(gobject);
@@ -1341,6 +1350,7 @@ extern "C"
         extension.add(std::move(gtkfilechooserdialog));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtktogglebutton));
+        extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkadjustment));
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));

@@ -35,9 +35,9 @@ _GObject
     │   │   │   │   ├── GtkFrame
     │   │   │   │   │   ╰── GtkAspectFrame
     │   │   │   │   ├── #GtkButton
-    │   │   │   │   │   ├── GtkToggleButton
-    │   │   │   │   │   │   ├── GtkCheckButton
-    │   │   │   │   │   │   │   ╰── GtkRadioButton
+    │   │   │   │   │   ├── *GtkToggleButton
+    │   │   │   │   │   │   ├── *GtkCheckButton
+    │   │   │   │   │   │   │   ╰── *GtkRadioButton
     │   │   │   │   │   │   ╰── GtkMenuButton
     │   │   │   │   │   ├── GtkColorButton
     │   │   │   │   │   ├── GtkFontButton
