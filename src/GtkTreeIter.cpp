@@ -14,15 +14,15 @@ GtkTreeIter_::~GtkTreeIter_() = default;
 /**
  * Return original GtkTreeIter
  */
-GtkTreeIter *GtkTreeIter_::get_iter()
+GtkTreeIter GtkTreeIter_::get_instance()
 {
-    return iter;
+    return instance;
 }
 
 /**
  * Set the original GtkTreeIter
  */
-void GtkTreeIter_::set_iter(GtkTreeIter *passed_iter)
+void GtkTreeIter_::set_instance(GtkTreeIter passed_instance)
 {
-    iter = passed_iter;
+    instance = passed_instance;
 }

@@ -17,7 +17,7 @@
          */
         public:
 
-            GtkTreeIter *iter;
+            GtkTreeIter instance;
 
             /**
              *  C++ constructor and destructor
@@ -28,12 +28,12 @@
             /**
              * Return original GtkTreeIter
              */
-            GtkTreeIter *get_iter();
+            GtkTreeIter get_instance();
 
             /**
              * Set the original GtkTreeIter
              */
-            void set_iter(GtkTreeIter *passed_iter);
+            void set_instance(GtkTreeIter passed_instance);
     };
 
 #endif

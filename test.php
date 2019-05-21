@@ -13,16 +13,16 @@ function GtkWindowDestroy($widget=NULL, $param1=NULL, $param2=NULL, $param3=NULL
 
 function GtkWindowDelete($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	echo "\n------ GtkWindowDelete\n";
-	// Gtk::main_quit();
-	var_dump($widget);
-	var_dump($event);
-	var_dump($param1);
-	var_dump($param2);
-	var_dump($param3);
-	var_dump($param4);
+	// global $win;
+	// $dialog = GtkMessageDialog::new_with_markup($win, GtkDialogFlags::MODAL, GtkMessageType::INFO, GtkButtonsType::YES_NO, "Want close PHP-GTK3 test program?");
+	// $a = $dialog->run();
+	// $dialog->destroy();
 
-	return TRUE;
+	// if($a == GtkResponseType::YES) {
+		Gtk::main_quit();
+	// }
+
+	// return TRUE;
 }
 
 function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
@@ -78,16 +78,14 @@ function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 {
 	// echo "\n------ GtkCellRendererToggled\n";
-	// global $model, $tree;
+	global $model, $tree;
 
-	// $iter = $model->get_iter($path);
-	// if($iter) {
-	// 	$value = $model->get($iter, 0);
-	// 	$model->set($iter, 0, !$value);
-	// }
-
-	var_dump($renderer);
-	var_dump($path);
+	$iter = $model->get_iter($path);
+	if($iter) {
+		$value = $model->get_value($iter, 0);
+		var_dump($value);
+		$model->set_value($iter, 0, !$value);
+	}
 }
 
 // ----------------------
@@ -149,7 +147,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$column1 = new GtkTreeViewColumn("", $renderer1, "active", 0);
 	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
-	$column1->set_fixed_width(20);
+	$column1->set_fixed_width(30);
 
 	$renderer1->connect('toggled', "GtkCellRendererToggled");
 
@@ -169,9 +167,15 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$tree->append_column($column3, TRUE);
 
 
-$model = new GtkListStore(GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_STRING);
-$model->append([TRUE, 1, "line 1"]);
-$model->append([FALSE, 2, "line 2"]);
+	// Column 4
+	$renderer4 = new GtkCellRendererText();
+	$column4 = new GtkTreeViewColumn("Column 4", $renderer4, "text", 3);
+	$tree->append_column($column4, TRUE);
+
+
+$model = new GtkListStore(GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
+$model->append([TRUE, 1, 2.3, "line 1"]);
+$model->append([FALSE, 2, 92.2, "line 2"]);
 
 
 $tree->set_model($model);

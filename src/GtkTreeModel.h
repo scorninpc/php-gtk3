@@ -5,6 +5,8 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
+    #include "GtkTreeIter.h"
+
     /**
      * GtkTreeModel_
      * 
@@ -40,6 +42,10 @@
              * PHP Construct
              */
             void __construct(Php::Parameters &parameters);
+
+            
+            Php::Value get_iter(Php::Parameters &parameters);
+            Php::Value get_value(Php::Parameters &parameters);
     };
 
 #endif
