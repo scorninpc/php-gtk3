@@ -1,13 +1,28 @@
 <?php
 
-function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkWindowDestroy($widget=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
+	echo "\n------ GtkWindowDestroy\n";
+	// Gtk::main_quit();
+	var_dump($widget);
+	var_dump($param1);
+	var_dump($param2);
+	var_dump($param3);
+	var_dump($param4);
+}
+
+function GtkWindowDelete($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+{
+	echo "\n------ GtkWindowDelete\n";
 	// Gtk::main_quit();
 	var_dump($widget);
 	var_dump($event);
 	var_dump($param1);
 	var_dump($param2);
+	var_dump($param3);
 	var_dump($param4);
+
+	return TRUE;
 }
 
 function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
@@ -15,9 +30,9 @@ function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $
 
 }
 
-function GtkWindowReleased($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkButton2Released($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
-	echo "\n------ GtkWindowReleased\n";
+	echo "\n------ GtkButton2Released\n";
 	var_dump($widget);
 	var_dump($event);
 	// var_dump($param1);
@@ -27,12 +42,14 @@ function GtkWindowReleased($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL
 
 function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
 {
-	var_dump($widget);
-	var_dump($event);
+	// var_dump($widget);
+	// var_dump($event);
 }
 
-function GtkWindowButton1Clicked($widget=NULL, $event=NULL)
+function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
 {
+	echo "\n------ GtkWindowButton1Clicked\n";
+	var_dump($param1);
 	
 	// global $win;
 
@@ -54,13 +71,13 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 
 function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 {
-	var_dump($widget);
-	var_dump($event);
+	// var_dump($widget);
+	// var_dump($event);
 }
 
 function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 {
-	echo "\n------ GtkCellRendererToggled\n";
+	// echo "\n------ GtkCellRendererToggled\n";
 	// global $model, $tree;
 
 	// $iter = $model->get_iter($path);
@@ -162,9 +179,9 @@ $tree->set_model($model);
 
 // Connects
 // $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
-// $win->connect("delete-event", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
-// $btn1->connect("clicked", "GtkWindowButton1Clicked");
-$btn2->connect("button-release-event", "GtkWindowReleased");
+$win->connect("delete-event", "GtkWindowDelete", "param 1", "param 2", "param 3", "param 4");
+$btn1->connect("clicked", "GtkWindowButton1Clicked", "Extra Param 1");
+$btn2->connect("button-release-event", "GtkButton2Released");
 // $btn2->connect("clicked", "GtkWindowReleased");
 // $btn2->connect("clicked", "GtkWindowButton2Clicked");
 // $btn3->connect("clicked", "GtkWindowButton3Clicked");

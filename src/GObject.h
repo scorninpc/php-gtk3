@@ -43,7 +43,7 @@
             /**
              * Class to abstract php callback for connect method, to call PHP function
              */
-            static bool connect_callback(gpointer user_data, gpointer *user_param);
+            static bool connect_callback(gpointer user_data, ...);
 
             /**
              * Disconnect signal by handle
