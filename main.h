@@ -26,6 +26,7 @@
     #include "src/GtkBin.h"
     #include "src/GtkWindow.h"
     #include "src/GtkButton.h"
+    #include "src/GtkToggleButton.h"
 
     #include "src/GtkAdjustment.h"
     #include "src/GtkScrolledWindow.h"

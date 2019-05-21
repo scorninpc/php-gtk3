@@ -424,6 +424,20 @@ extern "C"
             gtkbutton.method<&GtkButton_::get_use_underline>("get_use_underline");
         
 
+        // GtkToggleButton
+        Php::Class<GtkToggleButton_> gtktogglebutton("GtkToggleButton");
+            gtktogglebutton.extends(gtkbutton);
+            gtktogglebutton.method<&GtkToggleButton_::__construct>("__construct");
+            gtktogglebutton.method<&GtkToggleButton_::new_with_label>("new_with_label");
+            gtktogglebutton.method<&GtkToggleButton_::new_with_mnemonic>("new_with_mnemonic");
+            gtktogglebutton.method<&GtkToggleButton_::set_mode>("set_mode");
+            gtktogglebutton.method<&GtkToggleButton_::get_mode>("get_mode");
+            gtktogglebutton.method<&GtkToggleButton_::toggled>("toggled");
+            gtktogglebutton.method<&GtkToggleButton_::get_active>("get_active");
+            gtktogglebutton.method<&GtkToggleButton_::set_active>("set_active");
+            gtktogglebutton.method<&GtkToggleButton_::get_inconsistent>("get_inconsistent");
+            gtktogglebutton.method<&GtkToggleButton_::set_inconsistent>("set_inconsistent");
+
         // GtkAdjustment
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
             gtkadjustment.extends(gobject);
@@ -1320,6 +1334,7 @@ extern "C"
         extension.add(std::move(gtkdialog));
         extension.add(std::move(gtkfilechooserdialog));
         extension.add(std::move(gtkbutton));
+        extension.add(std::move(gtktogglebutton));
         extension.add(std::move(gtkadjustment));
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));

@@ -105,7 +105,7 @@ $btn2 = GtkButton::new_with_mnemonic("Bu_tton 2");
 $hbox->pack_start($btn2, TRUE, TRUE, 5);
 
 // Button 3
-$btn3 = GtkButton::new_with_label("Button 3");
+$btn3 = GtkToggleButton::new_with_label("Button 3");
 $hbox->pack_start($btn3, TRUE, TRUE, 5);
 
 // ----------------------
