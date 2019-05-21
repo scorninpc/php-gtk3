@@ -564,10 +564,16 @@ extern "C"
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_radio>("get_radio");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_active>("set_active");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_active>("get_active");
-        
+
+        // GtkTreeModel
+        Php::Class<GtkTreeModel_> gtktreemodel("GtkTreeModel");
+            gtktreemodel.method<&GtkTreeModel_::__construct>("__construct");
+            gtktreemodel.method<&GtkTreeModel_::get_iter>("get_iter");
+            gtktreemodel.method<&GtkTreeModel_::get_value>("get_value");
 
         // GtkListStore
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");
+            gtkliststore.extends(gtktreemodel);
             gtkliststore.method<&GtkListStore_::__construct>("__construct");
             gtkliststore.method<&GtkListStore_::set_value>("set_value");
             gtkliststore.method<&GtkListStore_::append>("append");
@@ -1330,6 +1336,7 @@ extern "C"
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
         extension.add(std::move(gtkcellrenderertoggle));
+        extension.add(std::move(gtktreemodel));
         extension.add(std::move(gtkliststore));
         extension.add(std::move(gtktreemodelflags));
         extension.add(std::move(gtktreeiter));
