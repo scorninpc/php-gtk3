@@ -1323,6 +1323,30 @@ extern "C"
             gtkclipboard.method<&GtkClipboard_::wait_is_target_available>("wait_is_target_available");
             gtkclipboard.method<&GtkClipboard_::set_can_store>("set_can_store");
             gtkclipboard.method<&GtkClipboard_::get_selection>("get_selection");
+
+
+        // GtkTreeStore
+        Php::Class<GtkTreeStore_> gtktreestore("GtkTreeStore");
+            gtktreestore.extends(gtktreemodel);
+            gtktreestore.method<&GtkTreeStore_::__construct>("__construct");
+            gtktreestore.method<&GtkTreeStore_::set_column_types>("set_column_types");
+            gtktreestore.method<&GtkTreeStore_::set_value>("set_value");
+            gtktreestore.method<&GtkTreeStore_::remove>("remove");
+            gtktreestore.method<&GtkTreeStore_::insert>("insert");
+            gtktreestore.method<&GtkTreeStore_::insert_before>("insert_before");
+            gtktreestore.method<&GtkTreeStore_::insert_after>("insert_after");
+            gtktreestore.method<&GtkTreeStore_::insert_with_values>("insert_with_values");
+            gtktreestore.method<&GtkTreeStore_::prepend>("prepend");
+            gtktreestore.method<&GtkTreeStore_::append>("append");
+            gtktreestore.method<&GtkTreeStore_::is_ancestor>("is_ancestor");
+            gtktreestore.method<&GtkTreeStore_::iter_depth>("iter_depth");
+            gtktreestore.method<&GtkTreeStore_::clear>("clear");
+            gtktreestore.method<&GtkTreeStore_::reorder>("reorder");
+            gtktreestore.method<&GtkTreeStore_::swap>("swap");
+            gtktreestore.method<&GtkTreeStore_::move_before>("move_before");
+            gtktreestore.method<&GtkTreeStore_::move_after>("move_after");
+        
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -1401,6 +1425,8 @@ extern "C"
         extension.add(std::move(gdkselection));
 
         extension.add(std::move(gtkclipboard));
+
+        extension.add(std::move(gtktreestore));
 
         // return the extension
         return extension;

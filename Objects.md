@@ -3,6 +3,7 @@
 # - Partial
 _ - With issue
 % - Deprecated
+$ - Untested all
 
 _GObject
     ├── GInitiallyUnowned
@@ -222,7 +223,7 @@ _GObject
     ├── GtkTreeModelFilter
     ├── GtkTreeModelSort
     ├── GtkTreeSelection
-    ├── GtkTreeStore
+    ├── $GtkTreeStore
     ├── GtkUIManager
     ├── GtkWindowGroup
     ├── GtkTooltip

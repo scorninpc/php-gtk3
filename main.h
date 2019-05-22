@@ -107,4 +107,6 @@
 
     #include "src/GtkClipboard.h"
 
+    #include "src/GtkTreeStore.h"
+
 #endif

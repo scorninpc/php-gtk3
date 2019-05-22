@@ -20,12 +20,11 @@ class Application
 			$column = new GtkTreeViewColumn("", $renderer, "text", 0);
 			$tree->append_column($column);
 		
-		$model = new GtkListStore(GObject::TYPE_STRING);
-		$model->append(["line 1"]); $model->append(["line 2"]); $model->append(["line 3"]);
-		$model->append(["line 1"]); $model->append(["line 2"]); $model->append(["line 3"]);
-		$model->append(["line 1"]); $model->append(["line 2"]); $model->append(["line 3"]);
-		$model->append(["line 1"]); $model->append(["line 2"]); $model->append(["line 3"]);
-		$model->append(["line 1"]); $model->append(["line 2"]); $model->append(["line 3"]);
+		$model = new GtkTreeStore(GObject::TYPE_STRING);
+		$iter = $model->append(NULL, ["Line 1"]);
+			$iter2 = $model->append($iter, ["Line 1 of 1"]);
+				$model->append($iter2, ["Line 1 of 2"]);
+			$model->append($iter, ["Line 2 of 1"]);
 		$tree->set_model($model);
 
 		$scroll = new GtkScrolledWindow();
