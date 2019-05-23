@@ -46,6 +46,7 @@
             
             Php::Value get_iter(Php::Parameters &parameters);
             Php::Value get_value(Php::Parameters &parameters);
+            Php::Value get_path(Php::Parameters &parameters);
     };
 
 #endif

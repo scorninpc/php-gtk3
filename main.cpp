@@ -648,6 +648,7 @@ extern "C"
             gtktreemodel.method<&GtkTreeModel_::__construct>("__construct");
             gtktreemodel.method<&GtkTreeModel_::get_iter>("get_iter");
             gtktreemodel.method<&GtkTreeModel_::get_value>("get_value");
+            gtktreemodel.method<&GtkTreeModel_::get_path>("get_path");
 
         // GtkListStore
         Php::Class<GtkListStore_> gtkliststore("GtkListStore");

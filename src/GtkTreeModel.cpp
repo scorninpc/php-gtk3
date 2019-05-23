@@ -96,3 +96,15 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
 
     return false;
 }
+
+Php::Value GtkTreeModel_::get_path(Php::Parameters &parameters)
+{
+    // Cast iter back
+    Php::Value object_iter = parameters[0];
+    GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
+    GtkTreeIter iter = phpgtk_iter->get_instance();
+
+    GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(model), &iter);
+
+    return gtk_tree_path_to_string(path);
+}
