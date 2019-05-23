@@ -146,9 +146,15 @@ $win->set_icon_from_file("./logo.png");
 $tree = new GtkTreeView();
 $vbox->pack_start($tree, TRUE, TRUE, 5);
 
+	// Column 0
+	$renderer0 = new GtkCellRendererPixbuf();
+	$column0 = new GtkTreeViewColumn("", $renderer0, "pixbuf", 0);
+	$tree->append_column($column0, TRUE);
+
+
 	// Column 1
 	$renderer1 = new GtkCellRendererToggle();
-	$column1 = new GtkTreeViewColumn("", $renderer1, "active", 0);
+	$column1 = new GtkTreeViewColumn("", $renderer1, "active", 1);
 	$renderer1->set_activatable(TRUE);
 	$tree->append_column($column1);
 	$column1->set_fixed_width(30);
@@ -157,7 +163,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 
 	// Column 2
 	$renderer2 = new GtkCellRendererText();
-	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 1);
+	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 2);
 	$tree->append_column($column2);
 	$renderer2->set_alignment(0.5, 0.5);
 	$column2->set_alignment(0.5, 0.5);
@@ -167,19 +173,20 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 
 	// Column 3
 	$renderer3 = new GtkCellRendererText();
-	$column3 = new GtkTreeViewColumn("Column 3", $renderer3, "text", 2);
+	$column3 = new GtkTreeViewColumn("Column 3", $renderer3, "text", 3);
 	$tree->append_column($column3, TRUE);
 
 
 	// Column 4
 	$renderer4 = new GtkCellRendererText();
-	$column4 = new GtkTreeViewColumn("Column 4", $renderer4, "text", 3);
+	$column4 = new GtkTreeViewColumn("Column 4", $renderer4, "text", 4);
 	$tree->append_column($column4, TRUE);
 
 
-$model = new GtkListStore(GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
-$model->append([TRUE, 1, 2.3, "line 1"]);
-$model->append([FALSE, 2, 92.2, "line 2"]);
+$model = new GtkListStore(Gdk::TYPE_PIXBUF, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
+$pixbuf = GdkPixbuf::new_from_file("./logo.png");
+$model->append([$pixbuf, TRUE, 1, 2.3, "line 1"]);
+$model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 
 
 $tree->set_model($model);

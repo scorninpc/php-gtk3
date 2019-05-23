@@ -44,6 +44,7 @@
     #include "src/GtkCellRenderer.h"
     #include "src/GtkCellRendererText.h"
     #include "src/GtkCellRendererToggle.h"
+    #include "src/GtkCellRendererPixbuf.h"
 
     #include "src/GtkSortType.h"
     #include "src/GtkTreeModel.h"

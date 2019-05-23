@@ -55,6 +55,7 @@ extern "C"
             gobject.constant("TYPE_FLOAT", (int)G_TYPE_FLOAT);
             gobject.constant("TYPE_DOUBLE", (int)G_TYPE_DOUBLE);
             gobject.constant("TYPE_STRING", (int)G_TYPE_STRING);
+            gobject.constant("TYPE_PIXBUF", (int)GDK_TYPE_PIXBUF);
             gobject.constant("TYPE_POINTER", (int)G_TYPE_POINTER);
             gobject.constant("TYPE_BOXED", (int)G_TYPE_BOXED);
             gobject.constant("TYPE_PARAM", (int)G_TYPE_PARAM);
@@ -642,6 +643,13 @@ extern "C"
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_radio>("get_radio");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::set_active>("set_active");
             gtkcellrenderertoggle.method<&GtkCellRendererToggle_::get_active>("get_active");
+
+
+        // GtkCellRendererPixbuf
+        Php::Class<GtkCellRendererPixbuf_> gtkcellrendererpixbuf("GtkCellRendererPixbuf");
+            gtkcellrendererpixbuf.extends(gtkcellrenderer);
+            gtkcellrendererpixbuf.method<&GtkCellRendererPixbuf_::__construct>("__construct");
+        
 
         // GtkTreeModel
         Php::Class<GtkTreeModel_> gtktreemodel("GtkTreeModel");
@@ -1472,6 +1480,7 @@ extern "C"
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
         extension.add(std::move(gtkcellrenderertoggle));
+        extension.add(std::move(gtkcellrendererpixbuf));
         extension.add(std::move(gtktreemodel));
         extension.add(std::move(gtkliststore));
         extension.add(std::move(gtktreemodelflags));
