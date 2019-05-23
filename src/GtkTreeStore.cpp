@@ -290,8 +290,6 @@ Php::Value GtkTreeStore_::append(Php::Parameters &parameters)
                 g_value_init(&a, G_TYPE_STRING);
                 g_value_set_string(&a, b.c_str());
 
-                Php::call("var_dump", b.c_str());
-
                 break;
             }
         }

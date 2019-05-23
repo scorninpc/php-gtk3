@@ -8,6 +8,7 @@
     #include "GtkContainer.h"
     #include "GtkTreeViewColumn.h"
     #include "GtkTreeModel.h"
+    #include "GtkTreeSelection.h"
 
     /**
      * GtkTreeView_
@@ -45,6 +46,9 @@
              * https://developer.gnome.org/gtk3/stable/GtkTreeView.html#gtk-tree-view-set-model
              */
             void set_model(Php::Parameters &parameters);
+            Php::Value get_model();
+
+            Php::Value get_selection();
     };
 
 #endif

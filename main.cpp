@@ -113,6 +113,59 @@ extern "C"
             gdk.constant("WINDOW_TYPE_HINT_COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
             gdk.constant("WINDOW_TYPE_HINT_DND", GDK_WINDOW_TYPE_HINT_DND);
             gdk.constant("TYPE_PIXBUF",(int) GDK_TYPE_PIXBUF);
+
+
+            gdk.constant("NOTHING",(int) GDK_NOTHING);
+            gdk.constant("DELETE",(int) GDK_DELETE);
+            gdk.constant("DESTROY",(int) GDK_DESTROY);
+            gdk.constant("EXPOSE",(int) GDK_EXPOSE);
+            gdk.constant("MOTION_NOTIFY",(int) GDK_MOTION_NOTIFY);
+            gdk.constant("BUTTON_PRESS",(int) GDK_BUTTON_PRESS);
+            gdk.constant("_2BUTTON_PRESS",(int) GDK_2BUTTON_PRESS);
+            gdk.constant("DOUBLE_BUTTON_PRESS",(int) GDK_DOUBLE_BUTTON_PRESS);
+            gdk.constant("_3BUTTON_PRESS",(int) GDK_3BUTTON_PRESS);
+            gdk.constant("TRIPLE_BUTTON_PRESS",(int) GDK_TRIPLE_BUTTON_PRESS);
+            gdk.constant("BUTTON_RELEASE",(int) GDK_BUTTON_RELEASE);
+            gdk.constant("KEY_PRESS",(int) GDK_KEY_PRESS);
+            gdk.constant("KEY_RELEASE",(int) GDK_KEY_RELEASE);
+            gdk.constant("ENTER_NOTIFY",(int) GDK_ENTER_NOTIFY);
+            gdk.constant("LEAVE_NOTIFY",(int) GDK_LEAVE_NOTIFY);
+            gdk.constant("FOCUS_CHANGE",(int) GDK_FOCUS_CHANGE);
+            gdk.constant("CONFIGURE",(int) GDK_CONFIGURE);
+            gdk.constant("MAP",(int) GDK_MAP);
+            gdk.constant("UNMAP",(int) GDK_UNMAP);
+            gdk.constant("PROPERTY_NOTIFY",(int) GDK_PROPERTY_NOTIFY);
+            gdk.constant("SELECTION_CLEAR",(int) GDK_SELECTION_CLEAR);
+            gdk.constant("SELECTION_REQUEST",(int) GDK_SELECTION_REQUEST);
+            gdk.constant("SELECTION_NOTIFY",(int) GDK_SELECTION_NOTIFY);
+            gdk.constant("PROXIMITY_IN",(int) GDK_PROXIMITY_IN);
+            gdk.constant("PROXIMITY_OUT",(int) GDK_PROXIMITY_OUT);
+            gdk.constant("DRAG_ENTER",(int) GDK_DRAG_ENTER);
+            gdk.constant("DRAG_LEAVE",(int) GDK_DRAG_LEAVE);
+            gdk.constant("DRAG_MOTION",(int) GDK_DRAG_MOTION);
+            gdk.constant("DRAG_STATUS",(int) GDK_DRAG_STATUS);
+            gdk.constant("DROP_START",(int) GDK_DROP_START);
+            gdk.constant("DROP_FINISHED",(int) GDK_DROP_FINISHED);
+            gdk.constant("CLIENT_EVENT",(int) GDK_CLIENT_EVENT);
+            gdk.constant("VISIBILITY_NOTIFY",(int) GDK_VISIBILITY_NOTIFY);
+            gdk.constant("SCROLL",(int) GDK_SCROLL);
+            gdk.constant("WINDOW_STATE",(int) GDK_WINDOW_STATE);
+            gdk.constant("SETTING",(int) GDK_SETTING);
+            gdk.constant("OWNER_CHANGE",(int) GDK_OWNER_CHANGE);
+            gdk.constant("GRAB_BROKEN",(int) GDK_GRAB_BROKEN);
+            gdk.constant("DAMAGE",(int) GDK_DAMAGE);
+            gdk.constant("TOUCH_BEGIN",(int) GDK_TOUCH_BEGIN);
+            gdk.constant("TOUCH_UPDATE",(int) GDK_TOUCH_UPDATE);
+            gdk.constant("TOUCH_END",(int) GDK_TOUCH_END);
+            gdk.constant("TOUCH_CANCEL",(int) GDK_TOUCH_CANCEL);
+            gdk.constant("TOUCHPAD_SWIPE",(int) GDK_TOUCHPAD_SWIPE);
+            gdk.constant("TOUCHPAD_PINCH",(int) GDK_TOUCHPAD_PINCH);
+            gdk.constant("PAD_BUTTON_PRESS",(int) GDK_PAD_BUTTON_PRESS);
+            gdk.constant("PAD_BUTTON_RELEASE",(int) GDK_PAD_BUTTON_RELEASE);
+            gdk.constant("PAD_RING",(int) GDK_PAD_RING);
+            gdk.constant("PAD_STRIP",(int) GDK_PAD_STRIP);
+            gdk.constant("PAD_GROUP_MODE",(int) GDK_PAD_GROUP_MODE);
+            gdk.constant("EVENT_LAST",(int) GDK_EVENT_LAST);
         
 
         // GdkEvent
@@ -531,6 +584,8 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::__construct>("__construct");
             gtktreeview.method<&GtkTreeView_::append_column>("append_column");
             gtktreeview.method<&GtkTreeView_::set_model>("set_model");
+            gtktreeview.method<&GtkTreeView_::get_selection>("get_selection");
+            gtktreeview.method<&GtkTreeView_::get_model>("get_model");
         
 
         // GtkTreeViewColumn
@@ -1346,8 +1401,39 @@ extern "C"
             gtktreestore.method<&GtkTreeStore_::move_before>("move_before");
             gtktreestore.method<&GtkTreeStore_::move_after>("move_after");
         
-
         
+        // GtkSelectionMode
+        Php::Class<GtkSelectionMode_> gtkselectionmode("GtkSelectionMode");
+            gtkselectionmode.constant("NONE", GTK_SELECTION_NONE);
+            gtkselectionmode.constant("SINGLE", GTK_SELECTION_SINGLE);
+            gtkselectionmode.constant("BROWSE", GTK_SELECTION_BROWSE);
+            gtkselectionmode.constant("MULTIPLE", GTK_SELECTION_MULTIPLE);
+
+
+        // GtkTreeSelection
+        Php::Class<GtkTreeSelection_> gtktreeselection("GtkTreeSelection");
+            gtktreeselection.extends(gobject);
+            gtktreeselection.method<&GtkTreeSelection_::set_mode>("set_mode");
+            gtktreeselection.method<&GtkTreeSelection_::get_mode>("get_mode");
+            gtktreeselection.method<&GtkTreeSelection_::set_select_function>("set_select_function");
+            gtktreeselection.method<&GtkTreeSelection_::get_select_function>("get_select_function");
+            gtktreeselection.method<&GtkTreeSelection_::get_user_data>("get_user_data");
+            gtktreeselection.method<&GtkTreeSelection_::get_tree_view>("get_tree_view");
+            gtktreeselection.method<&GtkTreeSelection_::get_selected>("get_selected");
+            gtktreeselection.method<&GtkTreeSelection_::selected_foreach>("selected_foreach");
+            gtktreeselection.method<&GtkTreeSelection_::get_selected_rows>("get_selected_rows");
+            gtktreeselection.method<&GtkTreeSelection_::count_selected_rows>("count_selected_rows");
+            gtktreeselection.method<&GtkTreeSelection_::select_path>("select_path");
+            gtktreeselection.method<&GtkTreeSelection_::unselect_path>("unselect_path");
+            gtktreeselection.method<&GtkTreeSelection_::path_is_selected>("path_is_selected");
+            gtktreeselection.method<&GtkTreeSelection_::select_iter>("select_iter");
+            gtktreeselection.method<&GtkTreeSelection_::unselect_iter>("unselect_iter");
+            gtktreeselection.method<&GtkTreeSelection_::iter_is_selected>("iter_is_selected");
+            gtktreeselection.method<&GtkTreeSelection_::select_all>("select_all");
+            gtktreeselection.method<&GtkTreeSelection_::unselect_all>("unselect_all");
+            gtktreeselection.method<&GtkTreeSelection_::unselect_range>("unselect_range");
+
+
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
@@ -1427,6 +1513,9 @@ extern "C"
         extension.add(std::move(gtkclipboard));
 
         extension.add(std::move(gtktreestore));
+
+        extension.add(std::move(gtkselectionmode));
+        extension.add(std::move(gtktreeselection));
 
         // return the extension
         return extension;

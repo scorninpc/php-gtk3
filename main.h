@@ -108,5 +108,7 @@
     #include "src/GtkClipboard.h"
 
     #include "src/GtkTreeStore.h"
+    #include "src/GtkSelectionMode.h"
+    #include "src/GtkTreeSelection.h"
 
 #endif

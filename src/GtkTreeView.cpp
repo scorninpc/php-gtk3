@@ -58,3 +58,24 @@ void GtkTreeView_::set_model(Php::Parameters &parameters)
     // 
     gtk_tree_view_set_model(GTK_TREE_VIEW(instance), passedModel->get_model());
 }
+
+Php::Value GtkTreeView_::get_model()
+{
+    // 
+    GtkTreeModel *ret = gtk_tree_view_get_model(GTK_TREE_VIEW(instance));
+
+    GtkTreeModel_ *return_parsed = new GtkTreeModel_();
+    return_parsed->set_model(ret);
+    return Php::Object("GtkTreeModel", return_parsed);
+}
+
+
+Php::Value GtkTreeView_::get_selection()
+{
+    // 
+    GtkTreeSelection *ret = gtk_tree_view_get_selection(GTK_TREE_VIEW(instance));
+
+    GtkTreeSelection_ *return_parsed = new GtkTreeSelection_();
+    return_parsed->set_instance((gpointer *)ret);
+    return Php::Object("GtkTreeSelection", return_parsed);
+}
