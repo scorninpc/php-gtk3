@@ -24,7 +24,7 @@ void GtkFileChooserDialog_::__construct(Php::Parameters &parameters)
 	int int_action = (int)parameters[2];
 	GtkFileChooserAction action = (GtkFileChooserAction)int_action;
 
-	instance = (gpointer *)gtk_file_chooser_dialog_new (title, parent, action, parameters[3][0], NULL);
+	instance = (gpointer *)gtk_file_chooser_dialog_new (title, parent, action, NULL);
 
 	// Step buttons
 	Php::Array arr = parameters[3];
