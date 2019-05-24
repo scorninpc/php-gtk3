@@ -14,17 +14,23 @@ class Application
 		$paned = new GtkPaned(GtkOrientation::HORIZONTAL); // GtkHPaned and GtkVPaned is deprecated
 		$paned->set_position(120);
 
+		$pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", 15, -1);
+
 		// Treeview
 		$tree = new GtkTreeView();
+			$renderer = new GtkCellRendererPixbuf();
+			$column = new GtkTreeViewColumn("", $renderer, "pixbuf", 0);
+			$tree->append_column($column);
+
 			$renderer = new GtkCellRendererText();
-			$column = new GtkTreeViewColumn("", $renderer, "text", 0);
+			$column = new GtkTreeViewColumn("", $renderer, "text", 1);
 			$tree->append_column($column);
 		
-		$model = new GtkTreeStore(GObject::TYPE_STRING);
-		$iter = $model->append(NULL, ["Line 1"]);
-			$iter2 = $model->append($iter, ["Line 1 of 1"]);
-				$model->append($iter2, ["Line 1 of 2"]);
-			$model->append($iter, ["Line 2 of 1"]);
+		$model = new GtkTreeStore(GObject::TYPE_OBJECT, GObject::TYPE_STRING);
+		$iter = $model->append(NULL, [$pixbuf, "Line 1"]);
+			$iter2 = $model->append($iter, [$pixbuf, "Line 1 of 1"]);
+				$model->append($iter2, [$pixbuf, "Line 1 of 2"]);
+			$model->append($iter, [$pixbuf, "Line 2 of 1"]);
 		$tree->set_model($model);
 
 		$scroll = new GtkScrolledWindow();

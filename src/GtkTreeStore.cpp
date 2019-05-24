@@ -55,59 +55,9 @@ void GtkTreeStore_::set_value(Php::Parameters &parameters)
     GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), column);
 
     // Populate the column var with correct type
-    GValue value = {0};
-    switch(type_column) {
-        case G_TYPE_INT:{
-             // Cast
-            int b = (int)parameters[2];
+    GValue value = phpgtk_get_gvalue(parameters[2], type_column);
 
-            g_value_init(&value, G_TYPE_INT);
-            g_value_set_int(&value, b);
-
-            break;
-        }
-        case G_TYPE_BOOLEAN:
-        {
-            // Cast
-            bool b = (bool)parameters[2];
-
-            g_value_init(&value, G_TYPE_BOOLEAN);
-            g_value_set_boolean(&value, b);
-
-            break;
-        }
-        case G_TYPE_DOUBLE:
-        {
-            // Cast
-            double b = (double)parameters[2];
-
-            g_value_init(&value, G_TYPE_DOUBLE);
-            g_value_set_double(&value, b);
-
-            break;
-        }
-        case G_TYPE_FLOAT:
-        {
-            // Cast
-            double b = (double)parameters[2];
-
-            g_value_init(&value, G_TYPE_FLOAT);
-            g_value_set_float(&value, b);
-
-            break;
-        }
-        case G_TYPE_STRING:
-        {
-            // Cast
-            std::string b = parameters[2];
-
-            g_value_init(&value, G_TYPE_STRING);
-            g_value_set_string(&value, b.c_str());
-
-            break;
-        }
-    }
-
+    // Add the value
     gtk_tree_store_set_value(GTK_TREE_STORE(model), &iter, column, &value);
 
 }
@@ -241,61 +191,10 @@ Php::Value GtkTreeStore_::append(Php::Parameters &parameters)
         GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
 
         // Populate the column var with correct type
-        GValue a = {0};
-        switch(type_column) {
-            case G_TYPE_INT:{
-                 // Cast
-                int b = (int)arr[index];
-
-                g_value_init(&a, G_TYPE_INT);
-                g_value_set_int(&a, b);
-
-                break;
-            }
-            case G_TYPE_BOOLEAN:
-            {
-                // Cast
-                bool b = (bool)arr[index];
-
-                g_value_init(&a, G_TYPE_BOOLEAN);
-                g_value_set_boolean(&a, b);
-
-                break;
-            }
-            case G_TYPE_DOUBLE:
-            {
-                // Cast
-                double b = (double)arr[index];
-
-                g_value_init(&a, G_TYPE_DOUBLE);
-                g_value_set_double(&a, b);
-
-                break;
-            }
-            case G_TYPE_FLOAT:
-            {
-                // Cast
-                double b = (double)arr[index];
-
-                g_value_init(&a, G_TYPE_FLOAT);
-                g_value_set_float(&a, b);
-
-                break;
-            }
-            case G_TYPE_STRING:
-            {
-                // Cast
-                std::string b = arr[index];
-
-                g_value_init(&a, G_TYPE_STRING);
-                g_value_set_string(&a, b.c_str());
-
-                break;
-            }
-        }
+        GValue value = phpgtk_get_gvalue(arr[index], type_column);
 
         // Set the value
-        gtk_tree_store_set_value(GTK_TREE_STORE(model), &localIter, index, &a);
+        gtk_tree_store_set_value(GTK_TREE_STORE(model), &localIter, index, &value);
     }
 
 

@@ -6,6 +6,7 @@
     #include <gtk/gtk.h>
 
 	#include "GtkTreeModel.h"
+    #include "../main.h"
 
     /**
      * GtkTreeStore_
