@@ -112,4 +112,7 @@
     #include "src/GtkSelectionMode.h"
     #include "src/GtkTreeSelection.h"
 
+
+    GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
+
 #endif

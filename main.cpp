@@ -113,7 +113,7 @@ extern "C"
             gdk.constant("WINDOW_TYPE_HINT_NOTIFICATION", GDK_WINDOW_TYPE_HINT_NOTIFICATION);
             gdk.constant("WINDOW_TYPE_HINT_COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
             gdk.constant("WINDOW_TYPE_HINT_DND", GDK_WINDOW_TYPE_HINT_DND);
-            gdk.constant("TYPE_PIXBUF",(int) GDK_TYPE_PIXBUF);
+            // gdk.constant("TYPE_PIXBUF", GDK_TYPE_PIXBUF);
 
 
             gdk.constant("NOTHING",(int) GDK_NOTHING);
@@ -1530,4 +1530,140 @@ extern "C"
         // return the extension
         return extension;
     }
+}
+
+
+
+GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column) 
+{
+
+    // Populate the column var with correct type
+    GValue gtk_value = {0};
+    switch(type_column) {
+        case G_TYPE_INVALID:
+        case G_TYPE_NONE:
+            throw Php::Exception("G_TYPE_INVALID not implemented");
+            break;
+        case G_TYPE_INT:{
+             // Cast
+            int b = (int)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_INT);
+            g_value_set_int(&gtk_value, b);
+
+            break;
+        }
+        case G_TYPE_BOOLEAN:
+        {
+            // Cast
+            bool b = (bool)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_BOOLEAN);
+            g_value_set_boolean(&gtk_value, b);
+
+            break;
+        }
+        case G_TYPE_DOUBLE:
+        {
+            // Cast
+            double b = (double)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_DOUBLE);
+            g_value_set_double(&gtk_value, b);
+
+            break;
+        }
+        case G_TYPE_FLOAT:
+        {
+            // Cast
+            double b = (double)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_FLOAT);
+            g_value_set_float(&gtk_value, b);
+
+            break;
+        }
+        case G_TYPE_STRING:
+        {
+            // Cast
+            std::string b = phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_STRING);
+            g_value_set_string(&gtk_value, b.c_str());
+
+            break;
+        }
+        case G_TYPE_CHAR:
+        {
+            throw Php::Exception("G_TYPE_CHAR not implemented");
+            break;
+        }
+        case G_TYPE_LONG:
+        {
+            throw Php::Exception("G_TYPE_LONG not implemented");
+            break;
+        }
+        case G_TYPE_ULONG:
+        {
+            throw Php::Exception("G_TYPE_ULONG not implemented");
+            break;
+        }
+        case G_TYPE_UINT:
+        {
+            throw Php::Exception("G_TYPE_UINT not implemented");
+            break;
+        }
+        case G_TYPE_UCHAR:
+        {
+            throw Php::Exception("G_TYPE_UCHAR not implemented");
+            break;
+        }
+        case G_TYPE_OBJECT:
+        {
+            g_value_init(&gtk_value, G_TYPE_OBJECT);
+
+            Php::Value a_object = phpgtk_value;
+            GObject_ *o_object = (GObject_ *)a_object.implementation();
+            g_value_set_object(&gtk_value, o_object->get_instance());
+            
+            break;
+        }
+        case G_TYPE_INTERFACE:
+        {
+            throw Php::Exception("G_TYPE_INTERFACE not implemented");
+            break;
+        }
+        case G_TYPE_PARAM:
+        {
+            throw Php::Exception("G_TYPE_PARAM not implemented");
+            break;
+        }
+        case G_TYPE_BOXED:
+        {
+            throw Php::Exception("G_TYPE_BOXED not implemented");
+            break;
+        }
+        case G_TYPE_POINTER:
+        {
+            throw Php::Exception("G_TYPE_POINTER not implemented");
+            break;
+        }
+        case G_TYPE_FLAGS:
+        {
+            throw Php::Exception("G_TYPE_FLAGS not implemented");
+            break;
+        }
+        case G_TYPE_ENUM:
+        {
+            throw Php::Exception("G_TYPE_ENUM not implemented");
+            break;
+        }
+        default:
+            std::string s_error("could not create param spec for type ");
+            s_error += g_type_name(type_column);
+            throw Php::Exception(s_error);
+    }
+
+    return gtk_value;
+
 }

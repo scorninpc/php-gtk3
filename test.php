@@ -82,9 +82,9 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 
 	$iter = $model->get_iter($path);
 	if($iter) {
-		$value = $model->get_value($iter, 0);
+		$value = $model->get_value($iter, 1);
 		var_dump($value);
-		$model->set_value($iter, 0, !$value);
+		$model->set_value($iter, 1, !$value);
 	}
 }
 
@@ -183,8 +183,8 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$tree->append_column($column4, TRUE);
 
 
-$model = new GtkListStore(Gdk::TYPE_PIXBUF, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
-$pixbuf = GdkPixbuf::new_from_file("./logo.png");
+$model = new GtkListStore(GObject::TYPE_OBJECT, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
+$pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", 15, -1);
 $model->append([$pixbuf, TRUE, 1, 2.3, "line 1"]);
 $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 

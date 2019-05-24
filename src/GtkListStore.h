@@ -7,6 +7,9 @@
 
     #include "GtkTreeIter.h"
     #include "GtkTreeModel.h"
+    #include "GdkPixbuf.h"
+    #include "GObject.h"
+    #include "../main.h"
 
     /**
      * GtkListStore_

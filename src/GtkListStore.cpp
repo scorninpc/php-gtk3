@@ -34,8 +34,7 @@ void GtkListStore_::__construct(Php::Parameters &parameters)
     }
 
     // Create the store
-    // model = GTK_TREE_MODEL(gtk_list_store_newv(n_columns, types));
-    model = GTK_TREE_MODEL(gtk_list_store_new(5, GDK_TYPE_PIXBUF, G_TYPE_BOOLEAN, G_TYPE_INT, G_TYPE_DOUBLE, G_TYPE_STRING));
+    model = GTK_TREE_MODEL(gtk_list_store_newv(5, types));
 }
 
 /**
@@ -55,89 +54,10 @@ void GtkListStore_::set_value(Php::Parameters &parameters)
     GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), column);
 
     // Populate the column var with correct type
-    GValue value = {0};
-    switch(type_column) {
-        case G_TYPE_INT:{
-             // Cast
-            int b = (int)parameters[2];
+    GValue value = phpgtk_get_gvalue(parameters[2], type_column);
 
-            g_value_init(&value, G_TYPE_INT);
-            g_value_set_int(&value, b);
-
-            Php::call("var_dump", "INT");
-
-            break;
-        }
-        case G_TYPE_BOOLEAN:
-        {
-            // Cast
-            bool b = (bool)parameters[2];
-
-            g_value_init(&value, G_TYPE_BOOLEAN);
-            g_value_set_boolean(&value, b);
-
-            Php::call("var_dump", "BOOLEAN");
-
-            break;
-        }
-        case G_TYPE_DOUBLE:
-        {
-            // Cast
-            double b = (double)parameters[2];
-
-            g_value_init(&value, G_TYPE_DOUBLE);
-            g_value_set_double(&value, b);
-
-            Php::call("var_dump", "DOUBLE");
-
-            break;
-        }
-        case G_TYPE_FLOAT:
-        {
-            // Cast
-            double b = (double)parameters[2];
-
-            g_value_init(&value, G_TYPE_FLOAT);
-            g_value_set_float(&value, b);
-
-            Php::call("var_dump", "FLOAT");
-
-            break;
-        }
-        case G_TYPE_STRING:
-        {
-            // Cast
-            std::string b = parameters[2];
-
-            g_value_init(&value, G_TYPE_STRING);
-            g_value_set_string(&value, b.c_str());
-
-            Php::call("var_dump", "STRING");
-
-            break;
-        }
-        case G_TYPE_OBJECT:
-        {
-            // // Cast
-            // GtkPixbug b = parameters[2];
-
-            // g_value_init(&value, G_TYPE_STRING);
-            // g_value_set_string(&value, b.c_str());
-            Php::call("var_dump", "POINTER");
-
-            break;
-        }
-        default:
-            std::string s_error("could not create param spec for type ");
-            s_error += type_column;
-            throw Php::Exception(s_error);
-    }
-
+    // Add the value
     gtk_list_store_set_value(GTK_LIST_STORE(model), &iter, column, &value);
-
-    
-
-    //gtk_list_store_set(GTK_LIST_STORE(store), a, parameters[1], parameters[2], -1);
 }
 
 /**
@@ -155,81 +75,11 @@ void GtkListStore_::append(Php::Parameters &parameters)
     // Loop columns of param
     for(int index=0; index < (int)arr.size(); index++) {
 
-        GValue a = { 0 };
+        // Get column type
+        GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
 
-
-        // // Get column type
-        // GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
-
-        // // Populate the column var with correct type
-        // GValue a = {0};
-        // switch(type_column) {
-        //     case G_TYPE_INT:{
-        //          // Cast
-        //         int b = (int)arr[index];
-
-        //         g_value_init(&a, G_TYPE_INT);
-        //         g_value_set_int(&a, b);
-
-        //         break;
-        //     }
-        //     case G_TYPE_BOOLEAN:
-        //     {
-        //         // Cast
-        //         bool b = (bool)arr[index];
-
-        //         g_value_init(&a, G_TYPE_BOOLEAN);
-        //         g_value_set_boolean(&a, b);
-
-        //         break;
-        //     }
-        //     case G_TYPE_DOUBLE:
-        //     {
-        //         // Cast
-        //         double b = (double)arr[index];
-
-        //         g_value_init(&a, G_TYPE_DOUBLE);
-        //         g_value_set_double(&a, b);
-
-        //         break;
-        //     }
-        //     case G_TYPE_FLOAT:
-        //     {
-        //         // Cast
-        //         double b = (double)arr[index];
-
-        //         g_value_init(&a, G_TYPE_FLOAT);
-        //         g_value_set_float(&a, b);
-
-        //         break;
-        //     }
-        //     case G_TYPE_STRING:
-        //     {
-        //         // Cast
-        //         std::string b = arr[index];
-
-        //         g_value_init(&a, G_TYPE_STRING);
-        //         g_value_set_string(&a, b.c_str());
-
-        //         break;
-        //     }
-        //     case GTK_IMAGE_PIXBUF:
-        //     {
-        //         // // Cast
-        //         // std::string b = arr[index];
-
-        //         // g_value_init(&a, G_TYPE_STRING);
-        //         // g_value_set_string(&a, b.c_str());
-
-        //         Php::call("var_dump", "ok");
-
-        //         break;
-        //     }
-        //     default:
-        //         std::string s_error("could not create param spec for type ");
-        //         s_error += type_column;
-        //         throw Php::Exception(s_error);
-        // }
+        // Populate the column var with correct type
+        GValue a = phpgtk_get_gvalue(arr[index], type_column);
 
         // Set the value
         gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
