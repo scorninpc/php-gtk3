@@ -111,6 +111,13 @@
     #include "src/GtkTreeStore.h"
     #include "src/GtkSelectionMode.h"
     #include "src/GtkTreeSelection.h"
+    
+    #include "src/GtkMenuShell.h"
+    #include "src/GtkPackDirection.h"
+    #include "src/GtkMenuBar.h"
+    #include "src/GtkMenu.h"
+    #include "src/GtkMenuItem.h"
+    #include "src/GtkSeparatorMenuItem.h"
 
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);

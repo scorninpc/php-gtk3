@@ -89,9 +89,37 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 }
 
 // ----------------------
+// Vertical box
+$vbox = new GtkVBox(FALSE, 5);
+
+// ----------------------
+// Menu
+$menubar = new GtkMenuBar();
+$vbox->pack_start($menubar, FALSE, FALSE, 0);
+	
+	$mnuFile = GtkMenuItem::new_with_mnemonic("_File");
+		
+		$menu = new GtkMenu();
+			$mnuFile1 = GtkMenuItem::new_with_label("New File"); $menu->append($mnuFile1);
+			$mnuFile2 = GtkMenuItem::new_with_label("Open File"); $menu->append($mnuFile2);
+			$mnuFile3 = new GtkSeparatorMenuItem(); $menu->append($mnuFile3);
+			$mnuFile4 = GtkMenuItem::new_with_label("Quit"); $menu->append($mnuFile4); 
+			$mnuFile4->connect("activate", function($widget) {
+				Gtk::main_quit();
+			});
+			$mnuFile->set_submenu($menu);
+
+		$mnuAbout = GtkMenuItem::new_with_label("About"); 
+		
+
+	$menubar->append($mnuFile);
+	$menubar->append($mnuAbout);
+
+// ----------------------
 // Horizontal box 2
 $hbox = new GtkHBox(TRUE, 5);
 
+// ----------------------
 // Button 1
 // $btn1 = new GtkButton();
 // $btn1->set_label("Button 1");
@@ -110,9 +138,6 @@ $hbox->pack_start($btn3, TRUE, TRUE, 5);
 $btn4 = GtkCheckButton::new_with_label("Button 4");
 $hbox->pack_start($btn4, TRUE, TRUE, 5);
 
-// ----------------------
-// Vertical box
-$vbox = new GtkVBox(FALSE, 5);
 $vbox->pack_start($hbox, FALSE, FALSE, 5);
 
 // ----------------------
@@ -190,6 +215,7 @@ $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 
 
 $tree->set_model($model);
+
 
 
 // Connects

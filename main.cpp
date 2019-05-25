@@ -1443,6 +1443,104 @@ extern "C"
             gtktreeselection.method<&GtkTreeSelection_::unselect_range>("unselect_range");
 
 
+        // GtkMenuShell
+        Php::Class<GtkMenuShell_> gtkmenushell("GtkMenuShell");
+            gtkmenushell.extends(gtkcontainer);
+            gtkmenushell.method<&GtkMenuShell_::append>("append");
+            gtkmenushell.method<&GtkMenuShell_::prepend>("prepend");
+            gtkmenushell.method<&GtkMenuShell_::insert>("insert");
+            gtkmenushell.method<&GtkMenuShell_::deactivate>("deactivate");
+            gtkmenushell.method<&GtkMenuShell_::select_item>("select_item");
+            gtkmenushell.method<&GtkMenuShell_::select_first>("select_first");
+            gtkmenushell.method<&GtkMenuShell_::deselect>("deselect");
+            gtkmenushell.method<&GtkMenuShell_::activate_item>("activate_item");
+            gtkmenushell.method<&GtkMenuShell_::cancel>("cancel");
+            gtkmenushell.method<&GtkMenuShell_::set_take_focus>("set_take_focus");
+            gtkmenushell.method<&GtkMenuShell_::get_take_focus>("get_take_focus");
+            gtkmenushell.method<&GtkMenuShell_::get_selected_item>("get_selected_item");
+            gtkmenushell.method<&GtkMenuShell_::get_parent_shell>("get_parent_shell");
+            gtkmenushell.method<&GtkMenuShell_::bind_model>("bind_model");
+
+
+        // GtkPackDirection
+        Php::Class<GtkPackDirection_> gtkpackdirection("GtkPackDirection");
+            gtkpackdirection.constant("LTR", GTK_PACK_DIRECTION_LTR);
+            gtkpackdirection.constant("RTL", GTK_PACK_DIRECTION_RTL);
+            gtkpackdirection.constant("TTB", GTK_PACK_DIRECTION_TTB);
+            gtkpackdirection.constant("BTT", GTK_PACK_DIRECTION_BTT);
+
+
+        // GtkMenuBar
+        Php::Class<GtkMenuBar_> gtkmenubar("GtkMenuBar");
+            gtkmenubar.extends(gtkmenushell);
+            gtkmenubar.method<&GtkMenuBar_::__construct>("__construct");
+            gtkmenubar.method<&GtkMenuBar_::new_from_model>("new_from_model");
+            gtkmenubar.method<&GtkMenuBar_::set_pack_direction>("set_pack_direction");
+            gtkmenubar.method<&GtkMenuBar_::get_pack_direction>("get_pack_direction");
+            gtkmenubar.method<&GtkMenuBar_::set_child_pack_direction>("set_child_pack_direction");
+            gtkmenubar.method<&GtkMenuBar_::child_pack_direction>("child_pack_direction");
+
+
+
+        // GtkMenu
+        Php::Class<GtkMenu_> gtkmenu("GtkMenu");
+            gtkmenu.extends(gtkmenushell);
+            gtkmenu.method<&GtkMenu_::__construct>("__construct");
+            gtkmenu.method<&GtkMenu_::new_from_model>("new_from_model");
+            gtkmenu.method<&GtkMenu_::set_screen>("set_screen");
+            gtkmenu.method<&GtkMenu_::reorder_child>("reorder_child");
+            gtkmenu.method<&GtkMenu_::attach>("attach");
+            gtkmenu.method<&GtkMenu_::popup_at_rect>("popup_at_rect");
+            gtkmenu.method<&GtkMenu_::at_widget>("at_widget");
+            gtkmenu.method<&GtkMenu_::at_pointer>("at_pointer");
+            gtkmenu.method<&GtkMenu_::set_accel_group>("set_accel_group");
+            gtkmenu.method<&GtkMenu_::get_accel_group>("get_accel_group");
+            gtkmenu.method<&GtkMenu_::set_accel_path>("set_accel_path");
+            gtkmenu.method<&GtkMenu_::get_accel_path>("get_accel_path");
+            gtkmenu.method<&GtkMenu_::set_monitor>("set_monitor");
+            gtkmenu.method<&GtkMenu_::get_monitor>("get_monitor");
+            gtkmenu.method<&GtkMenu_::place_on_monitor>("place_on_monitor");
+            gtkmenu.method<&GtkMenu_::set_reserve_toggle_size>("set_reserve_toggle_size");
+            gtkmenu.method<&GtkMenu_::get_reserve_toggle_size>("get_reserve_toggle_size");
+            gtkmenu.method<&GtkMenu_::popdown>("popdown");
+            gtkmenu.method<&GtkMenu_::reposition>("reposition");
+            gtkmenu.method<&GtkMenu_::get_active>("get_active");
+            gtkmenu.method<&GtkMenu_::set_active>("set_active");
+            gtkmenu.method<&GtkMenu_::attach_to_widget>("attach_to_widget");
+            gtkmenu.method<&GtkMenu_::detach>("detach");
+            gtkmenu.method<&GtkMenu_::get_attach_widget>("get_attach_widget");
+            gtkmenu.method<&GtkMenu_::get_for_attach_widget>("get_for_attach_widget");
+
+
+            // GtkMenuItem
+        Php::Class<GtkMenuItem_> gtkmenuitem("GtkMenuItem");
+            gtkmenuitem.extends(gtkbin);
+            gtkmenuitem.method<&GtkMenuItem_::__construct>("__construct");
+            gtkmenuitem.method<&GtkMenuItem_::new_with_label>("new_with_label");
+            gtkmenuitem.method<&GtkMenuItem_::new_with_mnemonic>("new_with_mnemonic");
+            gtkmenuitem.method<&GtkMenuItem_::get_label>("get_label");
+            gtkmenuitem.method<&GtkMenuItem_::set_label>("set_label");
+            gtkmenuitem.method<&GtkMenuItem_::get_use_underline>("get_use_underline");
+            gtkmenuitem.method<&GtkMenuItem_::set_use_underline>("set_use_underline");
+            gtkmenuitem.method<&GtkMenuItem_::set_submenu>("set_submenu");
+            gtkmenuitem.method<&GtkMenuItem_::get_submenu>("get_submenu");
+            gtkmenuitem.method<&GtkMenuItem_::set_accel_path>("set_accel_path");
+            gtkmenuitem.method<&GtkMenuItem_::get_accel_path>("get_accel_path");
+            gtkmenuitem.method<&GtkMenuItem_::select>("select");
+            gtkmenuitem.method<&GtkMenuItem_::deselect>("deselect");
+            gtkmenuitem.method<&GtkMenuItem_::activate>("activate");
+            gtkmenuitem.method<&GtkMenuItem_::toggle_size_request>("toggle_size_request");
+            gtkmenuitem.method<&GtkMenuItem_::size_allocate>("size_allocate");
+            gtkmenuitem.method<&GtkMenuItem_::get_reserve_indicator>("get_reserve_indicator");
+            gtkmenuitem.method<&GtkMenuItem_::set_reserve_indicator>("set_reserve_indicator");
+
+
+        // GtkSeparatorMenuItem
+        Php::Class<GtkSeparatorMenuItem_> gtkseparatormenuitem("GtkSeparatorMenuItem");
+            gtkseparatormenuitem.extends(gtkmenuitem);
+            gtkseparatormenuitem.method<&GtkSeparatorMenuItem_::__construct>("__construct");
+        
+
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
@@ -1526,6 +1624,13 @@ extern "C"
 
         extension.add(std::move(gtkselectionmode));
         extension.add(std::move(gtktreeselection));
+
+        extension.add(std::move(gtkmenushell));
+        extension.add(std::move(gtkpackdirection));
+        extension.add(std::move(gtkmenubar));
+        extension.add(std::move(gtkmenu));
+        extension.add(std::move(gtkmenuitem));
+        extension.add(std::move(gtkseparatormenuitem));
 
         // return the extension
         return extension;
