@@ -16,11 +16,17 @@
          * Publics
          */
         public:
+            GdkEvent *instance;
 
             /**
              *  C++ constructor and destructor
              */
             GdkEvent_();
+
+            GdkEvent *get_instance();
+
+            // 
+            void set_instance(GdkEvent *event);
 
             /**
              * Populate GdkEvent to PHPGTK::GDKEVENT

@@ -10,9 +10,23 @@ GdkEvent_::GdkEvent_()
     
 }
 
+// 
+GdkEvent *GdkEvent_::get_instance()
+{
+    return instance;
+}
+
+// 
+void GdkEvent_::set_instance(GdkEvent *event)
+{
+    instance = event;
+}
+
 
 void GdkEvent_::populate(GdkEvent *event)
 {
+    instance = event;
+    
    // get self reference as Php::Value object
     Php::Value self(this);
 

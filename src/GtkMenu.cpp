@@ -120,7 +120,7 @@ void GtkMenu_::popup_at_rect(Php::Parameters &parameters)
 
 }
 
-void GtkMenu_::at_widget(Php::Parameters &parameters)
+void GtkMenu_::popup_at_widget(Php::Parameters &parameters)
 {
 	// GtkWidget *widget;
 	// if(parameters.size() > 0) {
@@ -156,19 +156,14 @@ void GtkMenu_::at_widget(Php::Parameters &parameters)
 
 }
 
-void GtkMenu_::at_pointer(Php::Parameters &parameters)
+void GtkMenu_::popup_at_pointer (Php::Parameters &parameters)
 {
-	// GdkEvent *trigger_event;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_trigger_event = parameters[0];
-	// 	GdkEvent_ *phpgtk_trigger_event = (GdkEvent_ *)object_trigger_event.implementation();
-	// 	trigger_event = phpgtk_trigger_event->get_instance();
-	// }
+	GdkEvent *trigger_event;
+	Php::Value object_trigger_event = parameters[0];
+	GdkEvent_ *phpgtk_trigger_event = (GdkEvent_ *)object_trigger_event.implementation();
+	trigger_event = phpgtk_trigger_event->get_instance();
 
-	// gtk_menu_popup_at_pointer (GTK_MENU(instance), trigger_event);
-
-	throw Php::Exception("GtkMenu_::at_pointer not implemented");
-
+	gtk_menu_popup_at_pointer (GTK_MENU(instance), trigger_event);
 }
 
 void GtkMenu_::set_accel_group(Php::Parameters &parameters)

@@ -1491,8 +1491,8 @@ extern "C"
             gtkmenu.method<&GtkMenu_::reorder_child>("reorder_child");
             gtkmenu.method<&GtkMenu_::attach>("attach");
             gtkmenu.method<&GtkMenu_::popup_at_rect>("popup_at_rect");
-            gtkmenu.method<&GtkMenu_::at_widget>("at_widget");
-            gtkmenu.method<&GtkMenu_::at_pointer>("at_pointer");
+            gtkmenu.method<&GtkMenu_::popup_at_widget>("popup_at_widget");
+            gtkmenu.method<&GtkMenu_::popup_at_pointer>("popup_at_pointer");
             gtkmenu.method<&GtkMenu_::set_accel_group>("set_accel_group");
             gtkmenu.method<&GtkMenu_::get_accel_group>("get_accel_group");
             gtkmenu.method<&GtkMenu_::set_accel_path>("set_accel_path");
@@ -1539,6 +1539,21 @@ extern "C"
         Php::Class<GtkSeparatorMenuItem_> gtkseparatormenuitem("GtkSeparatorMenuItem");
             gtkseparatormenuitem.extends(gtkmenuitem);
             gtkseparatormenuitem.method<&GtkSeparatorMenuItem_::__construct>("__construct");
+
+
+        // GtkCheckMenuItem
+        Php::Class<GtkCheckMenuItem_> gtkcheckmenuitem("GtkCheckMenuItem");
+            gtkcheckmenuitem.extends(gtkmenuitem);
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::__construct>("__construct");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::new_with_label>("new_with_label");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::new_with_mnemonic>("new_with_mnemonic");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::get_active>("get_active");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::set_active>("set_active");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::toggled>("toggled");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::get_inconsistent>("get_inconsistent");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::set_inconsistent>("set_inconsistent");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::get_draw_as_radio>("get_draw_as_radio");
+            gtkcheckmenuitem.method<&GtkCheckMenuItem_::set_draw_as_radio>("set_draw_as_radio");
         
 
         // Add classes to extension
@@ -1631,6 +1646,7 @@ extern "C"
         extension.add(std::move(gtkmenu));
         extension.add(std::move(gtkmenuitem));
         extension.add(std::move(gtkseparatormenuitem));
+        extension.add(std::move(gtkcheckmenuitem));
 
         // return the extension
         return extension;

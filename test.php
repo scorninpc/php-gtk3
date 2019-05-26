@@ -42,8 +42,13 @@ function GtkButton2Released($widget=NULL, $event=NULL, $param1=NULL, $param2=NUL
 
 function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
 {
+	global $popupmenu;
+
 	// var_dump($widget);
-	// var_dump($event);
+	if($event->button->button == 3) {
+		// $popupmenu->popup_at_pointer($event);
+		$popupmenu->popup_at_widget($widget);
+	}
 }
 
 function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
@@ -107,6 +112,7 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 			$mnuFile4->connect("activate", function($widget) {
 				Gtk::main_quit();
 			});
+			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile5); 
 			$mnuFile->set_submenu($menu);
 
 		$mnuAbout = GtkMenuItem::new_with_label("About"); 
@@ -217,6 +223,31 @@ $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 $tree->set_model($model);
 
 
+// Menu for treeview
+$popupmenu = new GtkMenu();
+	$menuitem1 = GtkMenuItem::new_with_label("Menu Item 1"); 
+	$popupmenu->append($menuitem1);
+	$menuitem1->connect('activate', function($widget, $tree) {
+		
+		$model = $tree->get_model();
+		$selection = $tree->get_selection();
+		$iter = $selection->get_selected($model);
+		
+		$value = $model->get_value($iter, 1);
+		var_dump($value);
+		$value = $model->get_value($iter, 2);
+		var_dump($value);
+		$value = $model->get_value($iter, 3);
+		var_dump($value);
+		$value = $model->get_value($iter, 4);
+		var_dump($value);
+
+	}, $tree);
+	$menuitem2 = GtkMenuItem::new_with_label("Menu Item 2"); 
+	$popupmenu->append($menuitem2);
+	$popupmenu->show_all();
+
+
 
 // Connects
 // $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
@@ -226,7 +257,7 @@ $btn2->connect("button-release-event", "GtkButton2Released");
 // $btn2->connect("clicked", "GtkWindowReleased");
 // $btn2->connect("clicked", "GtkWindowButton2Clicked");
 // $btn3->connect("clicked", "GtkWindowButton3Clicked");
-// $tree->connect("button-release-event", "GtkTreeViewButtonPressed");
+$tree->connect("button-release-event", "GtkTreeViewButtonPressed");
 
 // Show all
 $win->show_all();

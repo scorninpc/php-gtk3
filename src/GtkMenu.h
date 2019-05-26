@@ -38,9 +38,9 @@
 
             void popup_at_rect(Php::Parameters &parameters);
 
-            void at_widget(Php::Parameters &parameters);
+            void popup_at_widget(Php::Parameters &parameters);
 
-            void at_pointer(Php::Parameters &parameters);
+            void popup_at_pointer (Php::Parameters &parameters);
 
             void set_accel_group(Php::Parameters &parameters);
 
