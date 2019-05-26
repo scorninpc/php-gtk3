@@ -46,8 +46,7 @@ function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
 
 	// var_dump($widget);
 	if($event->button->button == 3) {
-		// $popupmenu->popup_at_pointer($event);
-		$popupmenu->popup_at_widget($widget);
+		$popupmenu->popup_at_pointer($event);
 	}
 }
 
