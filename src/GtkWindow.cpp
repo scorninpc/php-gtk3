@@ -75,6 +75,23 @@ Php::Value GtkWindow_::get_default_size()
     return arr;
 }
 
+Php::Value GtkWindow_::get_size()
+{
+    // Verify sizes
+    int width = -1;
+    int height = -1;
+
+    // Set default size
+    gtk_window_get_size(GTK_WINDOW(instance), &width, &height);
+
+    // Cria o retorno
+    Php::Value arr;
+    arr[0] = arr["width"] = width;
+    arr[1] = arr["height"] = height;
+
+    return arr;
+}
+
 /**
  * Sets whether the user can resize a window.
  */

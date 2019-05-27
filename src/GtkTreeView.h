@@ -49,6 +49,14 @@
             Php::Value get_model();
 
             Php::Value get_selection();
+
+            Php::Value expand_row(Php::Parameters &parameters);
+            void set_level_indentation(Php::Parameters &parameters);
+            void set_show_expanders(Php::Parameters &parameters);
+            void set_enable_tree_lines(Php::Parameters &parameters);
+
+            Php::Value row_expanded(Php::Parameters &parameters);
+            Php::Value collapse_row(Php::Parameters &parameters);
     };
 
 #endif

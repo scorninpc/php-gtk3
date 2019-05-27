@@ -79,3 +79,64 @@ Php::Value GtkTreeView_::get_selection()
     return_parsed->set_instance((gpointer *)ret);
     return Php::Object("GtkTreeSelection", return_parsed);
 }
+
+
+Php::Value GtkTreeView_::expand_row(Php::Parameters &parameters)
+{
+    std::string param_path = parameters[0];
+    GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
+
+    bool open_all = false;
+    if(parameters.size() > 1) {
+        open_all = (bool)parameters[1];
+    }
+
+    // 
+    bool ret = gtk_tree_view_expand_row(GTK_TREE_VIEW(instance), path, open_all);
+
+    return ret;
+}
+
+Php::Value GtkTreeView_::row_expanded(Php::Parameters &parameters)
+{
+    std::string param_path = parameters[0];
+    GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
+
+    // 
+    bool ret = gtk_tree_view_row_expanded(GTK_TREE_VIEW(instance), path);
+
+    return ret;
+}
+
+Php::Value GtkTreeView_::collapse_row(Php::Parameters &parameters)
+{
+    std::string param_path = parameters[0];
+    GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
+
+    // 
+    bool ret = gtk_tree_view_collapse_row(GTK_TREE_VIEW(instance), path);
+
+    return ret;
+}
+
+
+void GtkTreeView_::set_level_indentation(Php::Parameters &parameters)
+{
+    gint indentation = (int)parameters[0];
+
+    gtk_tree_view_set_level_indentation(GTK_TREE_VIEW(instance), indentation);
+}
+
+void GtkTreeView_::set_show_expanders(Php::Parameters &parameters)
+{
+    bool enabled = (bool)parameters[0];
+
+    gtk_tree_view_set_show_expanders(GTK_TREE_VIEW(instance), enabled);
+}
+
+void GtkTreeView_::set_enable_tree_lines(Php::Parameters &parameters)
+{
+    bool enabled = (bool)parameters[0];
+
+    gtk_tree_view_set_enable_tree_lines(GTK_TREE_VIEW(instance), enabled);
+}

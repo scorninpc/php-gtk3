@@ -401,6 +401,7 @@
             Php::Value get_margin_bottom();
 
             void set_size_request(Php::Parameters &parameters);
+            Php::Value get_size_request(Php::Parameters &parameters);
         };
 
 #endif

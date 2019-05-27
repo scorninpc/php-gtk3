@@ -305,6 +305,7 @@ extern "C"
             gtkwidget.method<&GtkWidget_::set_margin_bottom>("set_margin_bottom");
             gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
             gtkwidget.method<&GtkWidget_::set_size_request>("set_size_request");
+            gtkwidget.method<&GtkWidget_::get_size_request>("get_size_request");
         
 
         // GtkContainer
@@ -433,6 +434,7 @@ extern "C"
             gtkwindow.method<&GtkWindow_::set_titlebar>("set_titlebar");
             gtkwindow.method<&GtkWindow_::get_titlebar>("get_titlebar");
             gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
+            gtkwindow.method<&GtkWindow_::get_size>("get_size");
         
 
         // GtkDialog
@@ -587,6 +589,12 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::set_model>("set_model");
             gtktreeview.method<&GtkTreeView_::get_selection>("get_selection");
             gtktreeview.method<&GtkTreeView_::get_model>("get_model");
+            gtktreeview.method<&GtkTreeView_::expand_row>("expand_row");
+            gtktreeview.method<&GtkTreeView_::set_level_indentation>("set_level_indentation");
+            gtktreeview.method<&GtkTreeView_::set_show_expanders>("set_show_expanders");
+            gtktreeview.method<&GtkTreeView_::set_enable_tree_lines>("set_enable_tree_lines");
+            gtktreeview.method<&GtkTreeView_::row_expanded>("row_expanded");
+            gtktreeview.method<&GtkTreeView_::collapse_row>("collapse_row");
         
 
         // GtkTreeViewColumn

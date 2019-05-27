@@ -528,3 +528,22 @@ void GtkWidget_::set_size_request(Php::Parameters &parameters)
     // Set default size
     gtk_widget_set_size_request(GTK_WIDGET(instance), width, height);
 }
+
+Php::Value GtkWidget_::get_size_request(Php::Parameters &parameters)
+{
+    // Verify sizes
+    int width = -1;
+    int height = -1;
+
+    // Set default size
+    gtk_widget_get_size_request(GTK_WIDGET(instance), &width, &height);
+
+    // Cria o retorno
+    Php::Value arr;
+    arr["width"] = width;
+    arr["height"] = height;
+    arr[0] = width;
+    arr[1] = height;
+
+    return arr;
+}
