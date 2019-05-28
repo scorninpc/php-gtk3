@@ -1298,6 +1298,14 @@ extern "C"
             gtktoolitem.method<&GtkToolItem_::get_text_size_group>("get_text_size_group");
 
 
+        // GtkSeparatorToolItem
+        Php::Class<GtkSeparatorToolItem_> gtkseparatortoolitem("GtkSeparatorToolItem");
+            gtkseparatortoolitem.extends(gtktoolitem);
+            gtkseparatortoolitem.method<&GtkSeparatorToolItem_::__construct>("__construct");
+            gtkseparatortoolitem.method<&GtkSeparatorToolItem_::set_draw>("set_draw");
+            gtkseparatortoolitem.method<&GtkSeparatorToolItem_::get_draw>("get_draw");
+
+
         // GtkToolbar
         Php::Class<GtkToolbar_> gtktoolbar("GtkToolbar");
             gtktoolbar.extends(gtkcontainer);
@@ -1635,6 +1643,7 @@ extern "C"
         extension.add(std::move(gtkreliefstyle));
         extension.add(std::move(gtksizegroup));
         extension.add(std::move(gtktoolitem));
+        extension.add(std::move(gtkseparatortoolitem));
         extension.add(std::move(gtktoolbar));
         extension.add(std::move(gtktoolbutton));
         extension.add(std::move(gtktexttagtable));

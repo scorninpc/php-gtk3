@@ -101,6 +101,7 @@
 
     #include "src/GtkToolItem.h"
     #include "src/GtkToolButton.h"
+    #include "src/GtkSeparatorToolItem.h"
 
     #include "src/GtkTextTagTable.h"
 

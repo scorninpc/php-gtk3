@@ -173,8 +173,8 @@ Php::Value GtkWindow_::get_position()
 
     // Cria o retorno
     Php::Value arr;
-    arr["x"] = x;
-    arr["y"] = y;
+    arr[0] = arr["x"] = x;
+    arr[1] = arr["y"] = y;
 
     return arr;
 }
