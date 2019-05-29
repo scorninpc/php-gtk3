@@ -5,6 +5,11 @@ Repositório para alguns testes com bind php-gtk3
 > Repositoty to do some tests with php-gtk3 bind
 
 
+Downloads
+==============
+Você pode baixar o PHP com a extensão GTK no formato AppImage na página de [releases](https://github.com/scorninpc/php-gtk3/releases)
+> You can find all PHP + GTK extension in AppImage package on [releases](https://github.com/scorninpc/php-gtk3/releases) page
+
 Compile
 ==============
 
