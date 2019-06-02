@@ -47,23 +47,23 @@ _GObject
     │   │   │   │   │   ├── GtkModelButton
     │   │   │   │   │   ╰── GtkScaleButton
     │   │   │   │   │       ╰── GtkVolumeButton
-    │   │   │   │   ├── GtkMenuItem
-    │   │   │   │   │   ├── GtkCheckMenuItem
+    │   │   │   │   ├── #GtkMenuItem
+    │   │   │   │   │   ├── *GtkCheckMenuItem
     │   │   │   │   │   │   ╰── GtkRadioMenuItem
-    │   │   │   │   │   ├── GtkImageMenuItem
-    │   │   │   │   │   ├── GtkSeparatorMenuItem
-    │   │   │   │   │   ╰── GtkTearoffMenuItem
+    │   │   │   │   │   ├── %GtkImageMenuItem
+    │   │   │   │   │   ├── *GtkSeparatorMenuItem
+    │   │   │   │   │   ╰── %GtkTearoffMenuItem
     │   │   │   │   ├── GtkEventBox
     │   │   │   │   ├── GtkExpander
     │   │   │   │   ├── GtkFlowBoxChild
     │   │   │   │   ├── GtkHandleBox
-    │   │   │   │   ├── GtkListBoxRow
+    │   │   │   │   ├── #GtkListBoxRow
     │   │   │   │   ├── *GtkToolItem
     │   │   │   │   │   ├── *GtkToolButton
     │   │   │   │   │   │   ├── GtkMenuToolButton
     │   │   │   │   │   │   ╰── GtkToggleToolButton
     │   │   │   │   │   │       ╰── GtkRadioToolButton
-    │   │   │   │   │   ╰── GtkSeparatorToolItem
+    │   │   │   │   │   ╰── *GtkSeparatorToolItem
     │   │   │   │   ├── GtkOverlay
     │   │   │   │   ├── #GtkScrolledWindow
     │   │   │   │   │   ╰── GtkPlacesSidebar
@@ -91,7 +91,7 @@ _GObject
     │   │   │   │   ├── GtkShortcutsGroup
     │   │   │   │   ├── GtkShortcutsShortcut
     │   │   │   │   ├── GtkStackSwitcher
-    │   │   │   │   ├── GtkStatusbar
+    │   │   │   │   ├── *GtkStatusbar
     │   │   │   │   ╰── *GtkVBox
     │   │   │   ├── GtkFixed
     │   │   │   ├── GtkFlowBox
@@ -102,10 +102,10 @@ _GObject
     │   │   │   │   ╰── %GtkVPaned
     │   │   │   ├── GtkIconView
     │   │   │   ├── GtkLayout
-    │   │   │   ├── GtkListBox
-    │   │   │   ├── GtkMenuShell
-    │   │   │   │   ├── GtkMenuBar
-    │   │   │   │   ╰── GtkMenu
+    │   │   │   ├── #GtkListBox
+    │   │   │   ├── #GtkMenuShell
+    │   │   │   │   ├── #GtkMenuBar
+    │   │   │   │   ╰── #GtkMenu
     │   │   │   │       ╰── GtkRecentChooserMenu
     │   │   │   ├── #GtkNotebook
     │   │   │   ├── GtkSocket
@@ -150,12 +150,12 @@ _GObject
     │   ├── #GtkCellRenderer
     │   │   ├── #GtkCellRendererText
     │   │   │   ├── GtkCellRendererAccel
-    │   │   │   ├── GtkCellRendererCombo
+    │   │   │   ├── *GtkCellRendererCombo
     │   │   │   ╰── GtkCellRendererSpin
-    │   │   ├── GtkCellRendererPixbuf
+    │   │   ├── *GtkCellRendererPixbuf
     │   │   ├── GtkCellRendererProgress
     │   │   ├── GtkCellRendererSpinner
-    │   │   ╰── #GtkCellRendererToggle
+    │   │   ╰── *GtkCellRendererToggle
     │   ├── *GtkFileFilter
     │   ├── #GtkTreeViewColumn
     │   ╰── GtkRecentFilter

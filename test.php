@@ -94,10 +94,12 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 
 // ----------------------
 // Vertical box
-$vbox = new GtkVBox(FALSE, 5);
+$vbox = new GtkVBox(FALSE, 1);
 
 // ----------------------
 // Menu
+$vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+
 $menubar = new GtkMenuBar();
 $vbox->pack_start($menubar, FALSE, FALSE, 0);
 	
@@ -126,6 +128,8 @@ $hbox = new GtkHBox(TRUE, 5);
 
 // ----------------------
 // Button 1
+$vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+
 // $btn1 = new GtkButton();
 // $btn1->set_label("Button 1");
 $btn1 = GtkButton::new_from_icon_name("help-faq", GtkIconSize::BUTTON);
@@ -147,20 +151,10 @@ $vbox->pack_start($hbox, FALSE, FALSE, 5);
 
 // ----------------------
 // Entry 1
+$vbox->pack_start($hlbl = new GtkLabel("- GtkEntry"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
 $txt1 = new GtkEntry();
 $vbox->pack_start($txt1, FALSE, FALSE, 5);
 
-// ----------------------
-// Window
-$win = new GtkWindow(Gtk::WINDOW_TOPLEVEL);
-$win->add($vbox);
-$win->set_default_size(300, 200);
-$win->set_title("PHP-GTK3 @ 7.3");
-$win->set_position(GTK::WIN_POS_CENTER);
-$win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
-
-// Icon from file
-$win->set_icon_from_file("./logo.png");
 
 // Icon from pixbuf
 // $pixbuf = GdkPixbuf::new_from_file("./logo.png");
@@ -172,7 +166,10 @@ $win->set_icon_from_file("./logo.png");
 // 
 //$win->set_interactive_debugging(TRUE);
 
+// ----------------------
 // Treeview
+$vbox->pack_start($hlbl = new GtkLabel("- GtkTreeView"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+
 $tree = new GtkTreeView();
 $vbox->pack_start($tree, TRUE, TRUE, 5);
 
@@ -222,6 +219,7 @@ $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 $tree->set_model($model);
 
 
+// ----------------------
 // Menu for treeview
 $popupmenu = new GtkMenu();
 	$menuitem1 = GtkMenuItem::new_with_label("Menu Item 1"); 
@@ -246,6 +244,69 @@ $popupmenu = new GtkMenu();
 	$popupmenu->append($menuitem2);
 	$popupmenu->show_all();
 
+// ----------------------
+// ListBox
+$vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+
+
+$ltb = new GtkListBox();
+
+$scroll = new GtkScrolledWindow();
+$scroll->add($ltb); // add_with_viewport is deprecated
+$scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
+$vbox->pack_start($scroll, TRUE, TRUE, 5);
+
+$row = new GtkListBoxRow();
+	$lhbox = new GtkHBox();
+	$lhbox->pack_start(new GtkLabel("Cell 1x1"), TRUE, TRUE);
+	$lhbox->pack_start(new GtkLabel("Cell 1x2"), TRUE, TRUE);
+	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
+$row->add($lhbox, TRUE, TRUE);
+$ltb->insert($row);
+
+$row = new GtkListBoxRow();
+	$lhbox = new GtkHBox();
+	$lhbox->pack_start(new GtkLabel("Cell 2x1"), TRUE, TRUE);
+	$lhbox->pack_start(new GtkLabel("Cell 2x2"), TRUE, TRUE);
+	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
+$row->add($lhbox, TRUE, TRUE);
+$ltb->insert($row);
+
+// // $ltb->add(new GtkLabel("OK"));
+// $ltb->insert(new GtkLabel("OK1"), 1);
+// $ltb->insert(new GtkLabel("OK2"), 3);
+
+// $ltb->prepend(new GtkLabel("OK3"));
+
+// ----------------------
+// Status
+$vbox->pack_start($hlbl = new GtkLabel("- GtkStatusbar"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+
+$stt1 = new GtkStatusbar();
+$vbox->pack_start($stt1, FALSE, TRUE, 0);
+$stt1->set_size_request(20, 20);
+
+// add messages
+$context_id = $stt1->get_context_id("global");
+$stt1->push($context_id, "Status 1");
+$stt1->push($context_id, "Status 2");
+$stt1->push($context_id, "Status 3");
+
+$stt1->pop($context_id);
+
+
+// ----------------------
+// Window
+$win = new GtkWindow(Gtk::WINDOW_TOPLEVEL);
+$win->add($vbox);
+$win->set_default_size(300, 200);
+$win->set_title("PHP-GTK3 @ 7.3");
+$win->set_position(GTK::WIN_POS_CENTER);
+$win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
+
+
+// Icon from file
+$win->set_icon_from_file("./logo.png");
 
 
 // Connects

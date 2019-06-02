@@ -1570,8 +1570,59 @@ extern "C"
             gtkcheckmenuitem.method<&GtkCheckMenuItem_::set_inconsistent>("set_inconsistent");
             gtkcheckmenuitem.method<&GtkCheckMenuItem_::get_draw_as_radio>("get_draw_as_radio");
             gtkcheckmenuitem.method<&GtkCheckMenuItem_::set_draw_as_radio>("set_draw_as_radio");
-        
 
+
+        // GtkStatusbar
+        Php::Class<GtkStatusbar_> gtkstatusbar("GtkStatusbar");
+            gtkstatusbar.extends(gtkbox);
+            gtkstatusbar.method<&GtkStatusbar_::__construct>("__construct");
+            gtkstatusbar.method<&GtkStatusbar_::get_context_id>("get_context_id");
+            gtkstatusbar.method<&GtkStatusbar_::push>("push");
+            gtkstatusbar.method<&GtkStatusbar_::pop>("pop");
+            gtkstatusbar.method<&GtkStatusbar_::remove>("remove");
+            gtkstatusbar.method<&GtkStatusbar_::remove_all>("remove_all");
+            gtkstatusbar.method<&GtkStatusbar_::get_message_area>("get_message_area");
+
+
+        // GtkListBoxRow
+        Php::Class<GtkListBoxRow_> gtklistboxrow("GtkListBoxRow");
+            gtklistboxrow.extends(gtkbin);
+            gtklistboxrow.method<&GtkListBoxRow_::__construct>("__construct");
+
+
+        // GtkListBox
+        Php::Class<GtkListBox_> gtklistbox("GtkListBox");
+            gtklistbox.extends(gtkbin);
+            gtklistbox.method<&GtkListBox_::__construct>("__construct");
+            gtklistbox.method<&GtkListBox_::prepend>("prepend");
+            gtklistbox.method<&GtkListBox_::insert>("insert");
+            gtklistbox.method<&GtkListBox_::select_row>("select_row");
+            gtklistbox.method<&GtkListBox_::unselect_row>("unselect_row");
+            gtklistbox.method<&GtkListBox_::select_all>("select_all");
+            gtklistbox.method<&GtkListBox_::unselect_all>("unselect_all");
+            gtklistbox.method<&GtkListBox_::get_selected_row>("get_selected_row");
+            gtklistbox.method<&GtkListBox_::selected_foreach>("selected_foreach");
+            gtklistbox.method<&GtkListBox_::get_selected_rows>("get_selected_rows");
+            gtklistbox.method<&GtkListBox_::set_selection_mode>("set_selection_mode");
+            gtklistbox.method<&GtkListBox_::get_selection_mode>("get_selection_mode");
+            gtklistbox.method<&GtkListBox_::set_activate_on_single_click>("set_activate_on_single_click");
+            gtklistbox.method<&GtkListBox_::get_activate_on_single_click>("get_activate_on_single_click");
+            gtklistbox.method<&GtkListBox_::get_adjustment>("get_adjustment");
+            gtklistbox.method<&GtkListBox_::set_adjustment>("set_adjustment");
+            gtklistbox.method<&GtkListBox_::set_placeholder>("set_placeholder");
+            gtklistbox.method<&GtkListBox_::get_row_at_index>("get_row_at_index");
+            gtklistbox.method<&GtkListBox_::get_row_at_y>("get_row_at_y");
+            gtklistbox.method<&GtkListBox_::invalidate_filter>("invalidate_filter");
+            gtklistbox.method<&GtkListBox_::invalidate_headers>("invalidate_headers");
+            gtklistbox.method<&GtkListBox_::invalidate_sort>("invalidate_sort");
+            gtklistbox.method<&GtkListBox_::set_filter_func>("set_filter_func");
+            gtklistbox.method<&GtkListBox_::set_header_func>("set_header_func");
+            gtklistbox.method<&GtkListBox_::set_sort_func>("set_sort_func");
+            gtklistbox.method<&GtkListBox_::drag_highlight_row>("drag_highlight_row");
+            gtklistbox.method<&GtkListBox_::drag_unhighlight_row>("drag_unhighlight_row");
+            gtklistbox.method<&GtkListBox_::bind_model>("bind_model");
+        
+        
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
@@ -1664,6 +1715,11 @@ extern "C"
         extension.add(std::move(gtkmenuitem));
         extension.add(std::move(gtkseparatormenuitem));
         extension.add(std::move(gtkcheckmenuitem));
+
+        extension.add(std::move(gtkstatusbar));
+
+        extension.add(std::move(gtklistboxrow));
+        extension.add(std::move(gtklistbox));
 
         // return the extension
         return extension;

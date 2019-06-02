@@ -121,6 +121,11 @@
     #include "src/GtkSeparatorMenuItem.h"
     #include "src/GtkCheckMenuItem.h"
 
+    #include "src/GtkStatusbar.h"
+
+    #include "src/GtkListBoxRow.h"
+    #include "src/GtkListBox.h"
+
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 
