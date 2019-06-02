@@ -164,19 +164,14 @@ $cml = new GtkListStore(GObject::TYPE_STRING);
 $cml->append(["Test 1"]);
 $cml->append(["Test 2"]);
 $cml->append(["Test 3"]);
-$cml->append(["Test 3"]);
-$cml->append(["Test 3"]);
 
-
-// $cmb1 = GtkComboBox::new_with_model($cml);
-$cmb1 = new GtkComboBox();
-$cmb1->set_model($cml);
+$cmb1 = GtkComboBox::new_with_model($cml);
 $vbox->pack_start($cmb1, FALSE, FALSE, 5);
 
 $cellRenderer = new GtkCellRendererText();
 $cmb1->pack_start($cellRenderer);
 $cmb1->add_attribute($cellRenderer, 'text', 0);
-$cmb1->set_active(0);
+$cmb1->set_active(2);
 
 // Icon from pixbuf
 // $pixbuf = GdkPixbuf::new_from_file("./logo.png");
