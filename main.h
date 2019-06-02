@@ -125,6 +125,9 @@
 
     #include "src/GtkListBoxRow.h"
     #include "src/GtkListBox.h"
+    
+    #include "src/GtkSensitivityType.h"
+    #include "src/GtkComboBox.h"
 
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);

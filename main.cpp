@@ -1622,6 +1622,59 @@ extern "C"
             gtklistbox.method<&GtkListBox_::drag_unhighlight_row>("drag_unhighlight_row");
             gtklistbox.method<&GtkListBox_::bind_model>("bind_model");
         
+
+        // GtkSensitivityType
+        Php::Class<GtkSensitivityType_> gtksensitivitytype("GtkSensitivityType");
+            gtksensitivitytype.constant("AUTO", (int)GTK_SENSITIVITY_AUTO);
+            gtksensitivitytype.constant("ON", (int)GTK_SENSITIVITY_ON);
+            gtksensitivitytype.constant("OFF", (int)GTK_SENSITIVITY_OFF);
+        
+
+        // GtkComboBox
+        Php::Class<GtkComboBox_> gtkcombobox("GtkComboBox");
+            gtkcombobox.extends(gtkbin);
+            gtkcombobox.method<&GtkComboBox_::__construct>("__construct");
+            gtkcombobox.method<&GtkComboBox_::new_with_entry>("new_with_entry");
+            gtkcombobox.method<&GtkComboBox_::new_with_model>("new_with_model");
+            gtkcombobox.method<&GtkComboBox_::new_with_model_and_entry>("new_with_model_and_entry");
+            gtkcombobox.method<&GtkComboBox_::new_with_area>("new_with_area");
+            gtkcombobox.method<&GtkComboBox_::new_with_area_and_entry>("new_with_area_and_entry");
+            gtkcombobox.method<&GtkComboBox_::get_wrap_width>("get_wrap_width");
+            gtkcombobox.method<&GtkComboBox_::set_wrap_width>("set_wrap_width");
+            gtkcombobox.method<&GtkComboBox_::get_row_span_column>("get_row_span_column");
+            gtkcombobox.method<&GtkComboBox_::set_row_span_column>("set_row_span_column");
+            gtkcombobox.method<&GtkComboBox_::get_column_span_column>("get_column_span_column");
+            gtkcombobox.method<&GtkComboBox_::set_column_span_column>("set_column_span_column");
+            gtkcombobox.method<&GtkComboBox_::get_active>("get_active");
+            gtkcombobox.method<&GtkComboBox_::set_active>("set_active");
+            gtkcombobox.method<&GtkComboBox_::get_active_iter>("get_active_iter");
+            gtkcombobox.method<&GtkComboBox_::set_active_iter>("set_active_iter");
+            gtkcombobox.method<&GtkComboBox_::get_id_column>("get_id_column");
+            gtkcombobox.method<&GtkComboBox_::set_id_column>("set_id_column");
+            gtkcombobox.method<&GtkComboBox_::get_active_id>("get_active_id");
+            gtkcombobox.method<&GtkComboBox_::set_active_id>("set_active_id");
+            gtkcombobox.method<&GtkComboBox_::get_model>("get_model");
+            gtkcombobox.method<&GtkComboBox_::set_model>("set_model");
+            gtkcombobox.method<&GtkComboBox_::popup_for_device>("popup_for_device");
+            gtkcombobox.method<&GtkComboBox_::popup>("popup");
+            gtkcombobox.method<&GtkComboBox_::popdown>("popdown");
+            gtkcombobox.method<&GtkComboBox_::get_popup_accessible>("get_popup_accessible");
+            gtkcombobox.method<&GtkComboBox_::get_row_separator_func>("get_row_separator_func");
+            gtkcombobox.method<&GtkComboBox_::set_row_separator_func>("set_row_separator_func");
+            gtkcombobox.method<&GtkComboBox_::set_button_sensitivity>("set_button_sensitivity");
+            gtkcombobox.method<&GtkComboBox_::get_button_sensitivity>("get_button_sensitivity");
+            gtkcombobox.method<&GtkComboBox_::get_has_entry>("get_has_entry");
+            gtkcombobox.method<&GtkComboBox_::get_entry_text_column>("get_entry_text_column");
+            gtkcombobox.method<&GtkComboBox_::set_entry_text_column>("set_entry_text_column");
+            gtkcombobox.method<&GtkComboBox_::get_popup_fixed_width>("get_popup_fixed_width");
+            gtkcombobox.method<&GtkComboBox_::set_popup_fixed_width>("set_popup_fixed_width");
+            
+            gtkcombobox.method<&GtkComboBox_::pack_start>("pack_start");
+            gtkcombobox.method<&GtkComboBox_::pack_end>("pack_end");
+            gtkcombobox.method<&GtkComboBox_::reorder>("reorder");
+            gtkcombobox.method<&GtkComboBox_::clear>("clear");
+            gtkcombobox.method<&GtkComboBox_::add_attribute>("add_attribute");
+        
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -1720,6 +1773,9 @@ extern "C"
 
         extension.add(std::move(gtklistboxrow));
         extension.add(std::move(gtklistbox));
+
+        extension.add(std::move(gtksensitivitytype));
+        extension.add(std::move(gtkcombobox));
 
         // return the extension
         return extension;
