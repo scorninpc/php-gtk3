@@ -129,6 +129,8 @@
     #include "src/GtkSensitivityType.h"
     #include "src/GtkComboBox.h"
 
+    #include "src/GtkBuilder.h"
+
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 

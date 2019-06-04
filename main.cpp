@@ -1674,6 +1674,37 @@ extern "C"
             gtkcombobox.method<&GtkComboBox_::reorder>("reorder");
             gtkcombobox.method<&GtkComboBox_::clear>("clear");
             gtkcombobox.method<&GtkComboBox_::add_attribute>("add_attribute");
+
+
+        // GtkBuilder
+        Php::Class<GtkBuilder_> gtkbuilder("GtkBuilder");
+            gtkbuilder.extends(gobject);
+            gtkbuilder.method<&GtkBuilder_::__construct>("__construct");
+            gtkbuilder.method<&GtkBuilder_::new_from_file>("new_from_file");
+            gtkbuilder.method<&GtkBuilder_::new_from_resource>("new_from_resource");
+            gtkbuilder.method<&GtkBuilder_::new_from_string>("new_from_string");
+            gtkbuilder.method<&GtkBuilder_::add_callback_symbol>("add_callback_symbol");
+            gtkbuilder.method<&GtkBuilder_::add_callback_symbols>("add_callback_symbols");
+            gtkbuilder.method<&GtkBuilder_::lookup_callback_symbol>("lookup_callback_symbol");
+            gtkbuilder.method<&GtkBuilder_::add_from_file>("add_from_file");
+            gtkbuilder.method<&GtkBuilder_::add_from_resource>("add_from_resource");
+            gtkbuilder.method<&GtkBuilder_::add_from_string>("add_from_string");
+            gtkbuilder.method<&GtkBuilder_::add_objects_from_file>("add_objects_from_file");
+            gtkbuilder.method<&GtkBuilder_::add_objects_from_string>("add_objects_from_string");
+            gtkbuilder.method<&GtkBuilder_::add_objects_from_resource>("add_objects_from_resource");
+            gtkbuilder.method<&GtkBuilder_::extend_with_template>("extend_with_template");
+            gtkbuilder.method<&GtkBuilder_::get_object>("get_object");
+            gtkbuilder.method<&GtkBuilder_::get_objects>("get_objects");
+            gtkbuilder.method<&GtkBuilder_::expose_object>("expose_object");
+            gtkbuilder.method<&GtkBuilder_::connect_signals>("connect_signals");
+            gtkbuilder.method<&GtkBuilder_::connect_signals_full>("connect_signals_full");
+            gtkbuilder.method<&GtkBuilder_::set_translation_domain>("set_translation_domain");
+            gtkbuilder.method<&GtkBuilder_::get_translation_domain>("get_translation_domain");
+            gtkbuilder.method<&GtkBuilder_::get_application>("get_application");
+            gtkbuilder.method<&GtkBuilder_::set_application>("set_application");
+            gtkbuilder.method<&GtkBuilder_::get_type_from_name>("get_type_from_name");
+            gtkbuilder.method<&GtkBuilder_::value_from_string>("value_from_string");
+            gtkbuilder.method<&GtkBuilder_::value_from_string_type>("value_from_string_type");
         
         
         // Add classes to extension
@@ -1776,6 +1807,8 @@ extern "C"
 
         extension.add(std::move(gtksensitivitytype));
         extension.add(std::move(gtkcombobox));
+
+        extension.add(std::move(gtkbuilder));
 
         // return the extension
         return extension;
