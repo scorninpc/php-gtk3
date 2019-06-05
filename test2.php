@@ -76,7 +76,8 @@ class Application
 		$this->win->show_all();
 
 
-		$dialog = GtkMessageDialog::new_with_markup($this->win, GtkDialogFlags::MODAL, GtkMessageType::WARNING, GtkButtonsType::OK_CANCEL, "My <b>PHP-GTK3</b> tests");
+		// $dialog = GtkMessageDialog::new_with_markup($this->win, GtkDialogFlags::MODAL, GtkMessageType::WARNING, GtkButtonsType::OK_CANCEL, "My <b>PHP-GTK3</b> tests");
+		$dialog = GtkMessageDialog::new_with_markup(NULL, GtkDialogFlags::MODAL, GtkMessageType::WARNING, GtkButtonsType::OK_CANCEL, "My <b>PHP-GTK3</b> tests");
 		$dialog->format_secondary_markup("This is a <i>GtkMessageDialog</i> test");
 		$a = $dialog->run();
 		$dialog->destroy();

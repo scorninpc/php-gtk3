@@ -13,9 +13,9 @@ GtkMessageDialog_::~GtkMessageDialog_() = default;
 
 void GtkMessageDialog_::__construct(Php::Parameters &parameters)
 {
+	Php::Value object_parent = parameters[0];
 	GtkWindow *parent;
-	if(parameters.size() > 0) {
-		Php::Value object_parent = parameters[0];
+	if (object_parent.instanceOf("GtkWindow")) {
 		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
 		parent = GTK_WINDOW(phpgtk_parent->get_instance());
 	}
@@ -47,9 +47,9 @@ Php::Value GtkMessageDialog_::new_with_markup(Php::Parameters &parameters)
 {
 	GtkMessageDialog_ *messagedialog = new GtkMessageDialog_();
 
+	Php::Value object_parent = parameters[0];
 	GtkWindow *parent;
-	if(parameters.size() > 0) {
-		Php::Value object_parent = parameters[0];
+	if (object_parent.instanceOf("GtkWindow")) {
 		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
 		parent = GTK_WINDOW(phpgtk_parent->get_instance());
 	}
