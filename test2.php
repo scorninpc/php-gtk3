@@ -153,17 +153,15 @@ class Application
 			}
 			
 
+			$a = $dialog->list_filters();
+			foreach($a as $b) {
+				$dialog->remove_filter($b);
+			}
 
-			// $a = $dialog->list_filters();
-			// foreach($a as $b) {
-			// 	$dialog->remove_filter($a);
-			// 	// var_dump($b->get_name());
-			// }
-
-			// $a = $dialog->run();
-			// if($a == GtkResponseType::OK) {
-			// 	var_dump($dialog->get_filenames());
-			// }
+			$a = $dialog->run();
+			if($a == GtkResponseType::OK) {
+				var_dump($dialog->get_filenames());
+			}
 
 
 

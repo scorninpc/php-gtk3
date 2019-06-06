@@ -26,23 +26,18 @@ void GtkFileChooserDialog_::__construct(Php::Parameters &parameters)
 	int int_action = (int)parameters[2];
 	GtkFileChooserAction action = (GtkFileChooserAction)int_action;
 
-	instance = (gpointer *)gtk_file_chooser_dialog_new (title, parent, action, NULL);
+	Php::Value arr = parameters[3];
+    if(arr.size() < 2) {
+         throw Php::Exception("parameters expect one button with response");
+    }
 
-	// Step buttons
-	Php::Array arr = parameters[3];
-	for(int i=0; i<=arr.size(); i+=2) {
+    instance = (gpointer *)gtk_file_chooser_dialog_new (title, parent, action, arr[0], (int)arr[1], NULL);
 
-		if(arr.size() >= i+1) {
-			std::string button_text = arr[i];
-			gchar *text = (gchar *)button_text.c_str();
-
-			int button_action = (int)arr[i+1];
-			GtkResponseType action = (GtkResponseType)button_action;
-
-			gtk_dialog_add_button(GTK_DIALOG(instance), text, action);
-		}
-
-	}
+	// Add buttons
+    for(int index=2; index < (int)arr.size(); index+=2) {
+        gtk_dialog_add_button(GTK_DIALOG(instance), arr[index], (int)arr[index+1]);
+        
+    }
 
 }
 
@@ -410,7 +405,7 @@ Php::Value GtkFileChooserDialog_::list_filters()
 	for(int index=0; GSList *item=g_slist_nth(ret, index); index++) {
 		GtkFileFilter_ *return_parsed = new GtkFileFilter_();
 
-		return_parsed->set_instance((gpointer *)GTK_FILE_CHOOSER(item->data));
+		return_parsed->set_instance((gpointer *)GTK_FILE_FILTER(item->data));
 
 
 		ret_arr[index] = Php::Object("GtkFileFilter", return_parsed);
