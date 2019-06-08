@@ -69,7 +69,7 @@ function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
 
 // ----------------------
 // Horizontal box 2
-$hbox = new GtkHBox(TRUE, 5);
+$hbox = new GtkBox(GtkOrientation::HORIZONTAL, 5);
 
 // Button 1
 // $btn1 = new GtkButton();
@@ -87,7 +87,7 @@ $hbox->pack_start($btn3, TRUE, TRUE, 5);
 
 // ----------------------
 // Vertical box
-$vbox = new GtkVBox(FALSE, 5);
+$vbox = new GtkBox(GtkOrientation::VERTICAL, 5);
 $vbox->pack_start($hbox, FALSE, FALSE, 5);
 
 // ----------------------

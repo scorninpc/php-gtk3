@@ -16,6 +16,8 @@ GtkHBox_::~GtkHBox_() = default;
  */
 void GtkHBox_::__construct(Php::Parameters &parameters)
 {
+	Php::warning << "GtkHBox is deprecated on Gtk 3.20 and will be removed on non-beta release" << std::flush;
+
 	// Construct the parent
 	Php::call("parent::__construct", GTK_ORIENTATION_HORIZONTAL, 0);
 

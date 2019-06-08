@@ -5,10 +5,14 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
-    #include "GtkContainer.h"
+	#include "GtkContainer.h"
+	#include "GtkWidget.h"
+	#include "GtkPackType.h"
 
     /**
+     * GtkBox_
      * 
+     * https://developer.gnome.org/gtk3/stable/GtkBox.html
      */
     class GtkBox_ : public GtkContainer_
     {
@@ -21,36 +25,35 @@
              *  C++ constructor and destructor
              */
             GtkBox_();
-            virtual ~GtkBox_();
+            ~GtkBox_();
 
-            /**
-             * PHP Construct
-             */
             void __construct(Php::Parameters &parameters);
 
-            /**
-             * Adds child to box , packed with reference to the start of box . The child is packed after any other child packed with reference to the start of box.
-             *      https://developer.gnome.org/gtk3/stable/GtkBox.html#gtk-box-pack-start
-             */
             void pack_start(Php::Parameters &parameters);
 
-            /**
-             * Adds child to box , packed with reference to the end of box . The child is packed after (away from end of) any other child packed with reference to the end of box.
-             *      https://developer.gnome.org/gtk3/stable/GtkBox.html#gtk-box-pack-end
-             */
             void pack_end(Php::Parameters &parameters);
 
-            /**
-             * Sets the “homogeneous” property of box , controlling whether or not all children of box are given equal space in the box.
-             *      https://developer.gnome.org/gtk3/stable/GtkBox.html#gtk-box-set-homogeneous
-             */
+            Php::Value get_homogeneous();
+
             void set_homogeneous(Php::Parameters &parameters);
 
-            /**
-             * Sets the “spacing” property of box , which is the number of pixels to place between children of box.
-             *      https://developer.gnome.org/gtk3/stable/GtkBox.html#gtk-box-set-spacing
-             */
+            Php::Value get_spacing();
+
             void set_spacing(Php::Parameters &parameters);
+
+            void reorder_child(Php::Parameters &parameters);
+
+            Php::Value query_child_packing(Php::Parameters &parameters);
+
+            void set_child_packing(Php::Parameters &parameters);
+
+            Php::Value get_baseline_position();
+
+            void set_baseline_position(Php::Parameters &parameters);
+
+            Php::Value get_center_widget();
+
+            void set_center_widget(Php::Parameters &parameters);
     };
 
 #endif

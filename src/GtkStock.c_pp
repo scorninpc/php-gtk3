@@ -1,0 +1,13 @@
+
+#include "GtkStock.h"
+
+/**
+ * Constructor
+ */
+GtkStock_::GtkStock_() = default;
+
+/**
+ * Destructor
+ */
+GtkStock_::~GtkStock_() = default;
+

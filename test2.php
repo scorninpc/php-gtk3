@@ -56,7 +56,7 @@ class Application
 		$tlb->insert($tlb_btn1);
 
 		// VBox
-		$main_box = new GtkVBox();
+		$main_box = new GtkBox(GtkOrientation::VERTICAL);
 		$main_box->pack_start($tlb, FALSE, FALSE);
 		$main_box->pack_start($paned, TRUE, TRUE);
 		
@@ -85,7 +85,7 @@ class Application
 
 	public function create_new_tab($label)
 	{
-		$hbox = new GtkHBox();
+		$hbox = new GtkBox(GtkOrientation::HORIZONTAL);
 		$button_close = GtkButton::new_from_icon_name("gtk-close");
 		$button_close->set_size_request(5, 5);
 		$label = new GtkLabel($label);
@@ -105,7 +105,7 @@ class Application
 			// $dialog->set_transient_for($this->win);
 			// $box = $dialog->get_content_area();
 			// var_dump($box);
-			// $h = new GtkHBox(30);
+			// $h = new GtkBox(GtkOrientation::HORIZONTAL, 30);
 			// $h->set_margin_start(20);
 			// $h->set_margin_end(20);
 			// $h->set_margin_top(20);

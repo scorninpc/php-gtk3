@@ -131,6 +131,14 @@
 
     #include "src/GtkBuilder.h"
 
+    #include "src/GtkBaselinePosition.h"
+    #include "src/GtkDeleteType.h"
+    #include "src/GtkDirectionType.h"
+    #include "src/GtkMovementStep.h"
+    #include "src/GtkScrollStep.h"
+    #include "src/GtkScrollType.h"
+    #include "src/GtkShadowType.h"
+    #include "src/GtkStateFlags.h"
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 

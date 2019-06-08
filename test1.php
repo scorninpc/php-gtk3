@@ -10,13 +10,15 @@ $win->set_default_size(300, 200);
 
 $win->connect("destroy", "GtkWindowDestroy");
 
+$win->add(GtkButton::new_from_icon_name("gtk-apply"));
+
 $win->show_all();
 
 /*
 // Create dialog with buttons
 $dialogBox = GtkDialog::new_with_buttons("Pergunta", $win, GtkDialogFlags::MODAL, ["OK", GtkResponseType::OK, "Cancel", GtkResponseType::CANCEL]);
 	// Create content area
-	$hbox = new GtkHBox();
+	$hbox = new GtkBox(GtkOrientation::HORIZONTAL);
 	$label = new GtkLabel("Hello!");
 	$hbox->pack_start($label, FALSE, FALSE);
 
@@ -44,6 +46,7 @@ $dialog = GtkMessageDialog::new_with_markup($win, GtkDialogFlags::MODAL, GtkMess
 	$dialog->destroy();
 */
 
+/*
 // File chooser
 $dialog = new GtkFileChooserDialog("Open file", $win, GtkFileChooserAction::OPEN, ["Cancel", GtkResponseType::CANCEL, "Ok", GtkResponseType::OK]);
 
@@ -74,7 +77,13 @@ $dialog = new GtkFileChooserDialog("Open file", $win, GtkFileChooserAction::OPEN
 		var_dump($dialog->get_filenames());
 	}
 	$dialog->destroy();
+*/
 
+$dialog = GtkDialog::new_with_buttons("TITLE", $win, GtkDialogFlags::MODAL, [
+	"_Quit", GtkResponseType::CANCEL
+]);
+$dialog->run();
+$dialog->destroy();
 
 
 

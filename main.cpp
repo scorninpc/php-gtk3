@@ -321,8 +321,17 @@ extern "C"
             gtkbox.method<&GtkBox_::__construct>("__construct");
             gtkbox.method<&GtkBox_::pack_start>("pack_start");
             gtkbox.method<&GtkBox_::pack_end>("pack_end");
+            gtkbox.method<&GtkBox_::get_homogeneous>("get_homogeneous");
             gtkbox.method<&GtkBox_::set_homogeneous>("set_homogeneous");
+            gtkbox.method<&GtkBox_::get_spacing>("get_spacing");
             gtkbox.method<&GtkBox_::set_spacing>("set_spacing");
+            gtkbox.method<&GtkBox_::reorder_child>("reorder_child");
+            gtkbox.method<&GtkBox_::query_child_packing>("query_child_packing");
+            gtkbox.method<&GtkBox_::set_child_packing>("set_child_packing");
+            gtkbox.method<&GtkBox_::get_baseline_position>("get_baseline_position");
+            gtkbox.method<&GtkBox_::set_baseline_position>("set_baseline_position");
+            gtkbox.method<&GtkBox_::get_center_widget>("get_center_widget");
+            gtkbox.method<&GtkBox_::set_center_widget>("set_center_widget");
 
 
         // GtkHBox
@@ -1668,7 +1677,6 @@ extern "C"
             gtkcombobox.method<&GtkComboBox_::set_entry_text_column>("set_entry_text_column");
             gtkcombobox.method<&GtkComboBox_::get_popup_fixed_width>("get_popup_fixed_width");
             gtkcombobox.method<&GtkComboBox_::set_popup_fixed_width>("set_popup_fixed_width");
-            
             gtkcombobox.method<&GtkComboBox_::pack_start>("pack_start");
             gtkcombobox.method<&GtkComboBox_::pack_end>("pack_end");
             gtkcombobox.method<&GtkComboBox_::reorder>("reorder");
@@ -1705,6 +1713,107 @@ extern "C"
             gtkbuilder.method<&GtkBuilder_::get_type_from_name>("get_type_from_name");
             gtkbuilder.method<&GtkBuilder_::value_from_string>("value_from_string");
             gtkbuilder.method<&GtkBuilder_::value_from_string_type>("value_from_string_type");
+        
+
+        // GtkBaselinePosition
+        Php::Class<GtkBaselinePosition_> gtkbaselineposition("GtkBaselinePosition");
+            gtkbaselineposition.constant("TOP", (int)GTK_BASELINE_POSITION_TOP);
+            gtkbaselineposition.constant("CENTER", (int)GTK_BASELINE_POSITION_CENTER);
+            gtkbaselineposition.constant("BOTTOM", (int)GTK_BASELINE_POSITION_BOTTOM);
+
+
+        // GtkDeleteType
+        Php::Class<GtkDeleteType_> gtkdeletetype("GtkDeleteType");
+            gtkdeletetype.constant("CHARS", (int)GTK_DELETE_CHARS);
+            gtkdeletetype.constant("WORD_ENDS", (int)GTK_DELETE_WORD_ENDS);
+            gtkdeletetype.constant("WORDS", (int)GTK_DELETE_WORDS);
+            gtkdeletetype.constant("DISPLAY_LINES", (int)GTK_DELETE_DISPLAY_LINES);
+            gtkdeletetype.constant("DISPLAY_LINE_ENDS", (int)GTK_DELETE_DISPLAY_LINE_ENDS);
+            gtkdeletetype.constant("PARAGRAPH_ENDS", (int)GTK_DELETE_PARAGRAPH_ENDS);
+            gtkdeletetype.constant("PARAGRAPHS", (int)GTK_DELETE_PARAGRAPHS);
+            gtkdeletetype.constant("WHITESPACE", (int)GTK_DELETE_WHITESPACE);
+
+
+        // GtkDirectionType
+        Php::Class<GtkDirectionType_> gtkdirectiontype("GtkDirectionType");
+            gtkdirectiontype.constant("TAB_FORWARD", (int)GTK_DIR_TAB_FORWARD);
+            gtkdirectiontype.constant("TAB_BACKWARD", (int)GTK_DIR_TAB_BACKWARD);
+            gtkdirectiontype.constant("UP", (int)GTK_DIR_UP);
+            gtkdirectiontype.constant("DOWN", (int)GTK_DIR_DOWN);
+            gtkdirectiontype.constant("LEFT", (int)GTK_DIR_LEFT);
+            gtkdirectiontype.constant("RIGHT", (int)GTK_DIR_RIGHT);
+
+
+        // GtkMovementStep
+        Php::Class<GtkMovementStep_> gtkmovementstep("GtkMovementStep");
+            gtkmovementstep.constant("LOGICAL_POSITIONS", (int)GTK_MOVEMENT_LOGICAL_POSITIONS);
+            gtkmovementstep.constant("VISUAL_POSITIONS", (int)GTK_MOVEMENT_VISUAL_POSITIONS);
+            gtkmovementstep.constant("WORDS", (int)GTK_MOVEMENT_WORDS);
+            gtkmovementstep.constant("DISPLAY_LINES", (int)GTK_MOVEMENT_DISPLAY_LINES);
+            gtkmovementstep.constant("DISPLAY_LINE_ENDS", (int)GTK_MOVEMENT_DISPLAY_LINE_ENDS);
+            gtkmovementstep.constant("PARAGRAPHS", (int)GTK_MOVEMENT_PARAGRAPHS);
+            gtkmovementstep.constant("PARAGRAPH_ENDS", (int)GTK_MOVEMENT_PARAGRAPH_ENDS);
+            gtkmovementstep.constant("PAGES", (int)GTK_MOVEMENT_PAGES);
+            gtkmovementstep.constant("BUFFER_ENDS", (int)GTK_MOVEMENT_BUFFER_ENDS);
+            gtkmovementstep.constant("HORIZONTAL_PAGES", (int)GTK_MOVEMENT_HORIZONTAL_PAGES);
+
+
+        // GtkScrollStep
+        Php::Class<GtkScrollStep_> gtkscrollstep("GtkScrollStep");
+            gtkscrollstep.constant("STEPS", (int)GTK_SCROLL_STEPS);
+            gtkscrollstep.constant("PAGES", (int)GTK_SCROLL_PAGES);
+            gtkscrollstep.constant("ENDS", (int)GTK_SCROLL_ENDS);
+            gtkscrollstep.constant("HORIZONTAL_STEPS", (int)GTK_SCROLL_HORIZONTAL_STEPS);
+            gtkscrollstep.constant("HORIZONTAL_PAGES", (int)GTK_SCROLL_HORIZONTAL_PAGES);
+            gtkscrollstep.constant("HORIZONTAL_ENDS", (int)GTK_SCROLL_HORIZONTAL_ENDS);
+        
+        
+        // GtkScrollType
+        Php::Class<GtkScrollType_> gtkscrolltype("GtkScrollType");
+            gtkscrolltype.constant("NONE", (int)GTK_SCROLL_NONE);
+            gtkscrolltype.constant("JUMP", (int)GTK_SCROLL_JUMP);
+            gtkscrolltype.constant("STEP_BACKWARD", (int)GTK_SCROLL_STEP_BACKWARD);
+            gtkscrolltype.constant("STEP_FORWARD", (int)GTK_SCROLL_STEP_FORWARD);
+            gtkscrolltype.constant("PAGE_BACKWARD", (int)GTK_SCROLL_PAGE_BACKWARD);
+            gtkscrolltype.constant("PAGE_FORWARD", (int)GTK_SCROLL_PAGE_FORWARD);
+            gtkscrolltype.constant("STEP_UP", (int)GTK_SCROLL_STEP_UP);
+            gtkscrolltype.constant("STEP_DOWN", (int)GTK_SCROLL_STEP_DOWN);
+            gtkscrolltype.constant("PAGE_UP", (int)GTK_SCROLL_PAGE_UP);
+            gtkscrolltype.constant("PAGE_DOWN", (int)GTK_SCROLL_PAGE_DOWN);
+            gtkscrolltype.constant("STEP_LEFT", (int)GTK_SCROLL_STEP_LEFT);
+            gtkscrolltype.constant("STEP_RIGHT", (int)GTK_SCROLL_STEP_RIGHT);
+            gtkscrolltype.constant("PAGE_LEFT", (int)GTK_SCROLL_PAGE_LEFT);
+            gtkscrolltype.constant("PAGE_RIGHT", (int)GTK_SCROLL_PAGE_RIGHT);
+            gtkscrolltype.constant("START", (int)GTK_SCROLL_START);
+            gtkscrolltype.constant("END", (int)GTK_SCROLL_END);
+
+
+        // GtkShadowType
+        Php::Class<GtkShadowType_> gtkshadowtype("GtkShadowType");
+            gtkshadowtype.constant("NONE", (int)GTK_SHADOW_NONE);
+            gtkshadowtype.constant("IN", (int)GTK_SHADOW_IN);
+            gtkshadowtype.constant("OUT", (int)GTK_SHADOW_OUT);
+            gtkshadowtype.constant("ETCHED_IN", (int)GTK_SHADOW_ETCHED_IN);
+            gtkshadowtype.constant("ETCHED_OUT", (int)GTK_SHADOW_ETCHED_OUT);
+
+
+        // GtkStateFlags
+        Php::Class<GtkStateFlags_> gtkstateflags("GtkStateFlags");
+            gtkstateflags.constant("NORMAL", (int)GTK_STATE_FLAG_NORMAL);
+            gtkstateflags.constant("ACTIVE", (int)GTK_STATE_FLAG_ACTIVE);
+            gtkstateflags.constant("PRELIGHT", (int)GTK_STATE_FLAG_PRELIGHT);
+            gtkstateflags.constant("SELECTED", (int)GTK_STATE_FLAG_SELECTED);
+            gtkstateflags.constant("INSENSITIVE", (int)GTK_STATE_FLAG_INSENSITIVE);
+            gtkstateflags.constant("INCONSISTENT", (int)GTK_STATE_FLAG_INCONSISTENT);
+            gtkstateflags.constant("FOCUSED", (int)GTK_STATE_FLAG_FOCUSED);
+            gtkstateflags.constant("BACKDROP", (int)GTK_STATE_FLAG_BACKDROP);
+            gtkstateflags.constant("DIR_LTR", (int)GTK_STATE_FLAG_DIR_LTR);
+            gtkstateflags.constant("DIR_RTL", (int)GTK_STATE_FLAG_DIR_RTL);
+            gtkstateflags.constant("LINK", (int)GTK_STATE_FLAG_LINK);
+            gtkstateflags.constant("VISITED", (int)GTK_STATE_FLAG_VISITED);
+            gtkstateflags.constant("CHECKED", (int)GTK_STATE_FLAG_CHECKED);
+            gtkstateflags.constant("DROP_ACTIVE", (int)GTK_STATE_FLAG_DROP_ACTIVE);
+        
         
         
         // Add classes to extension
@@ -1809,6 +1918,15 @@ extern "C"
         extension.add(std::move(gtkcombobox));
 
         extension.add(std::move(gtkbuilder));
+
+        extension.add(std::move(gtkbaselineposition));
+        extension.add(std::move(gtkdeletetype));
+        extension.add(std::move(gtkdirectiontype));
+        extension.add(std::move(gtkmovementstep));
+        extension.add(std::move(gtkscrollstep));
+        extension.add(std::move(gtkscrolltype));
+        extension.add(std::move(gtkshadowtype));
+        extension.add(std::move(gtkstateflags));
 
         // return the extension
         return extension;

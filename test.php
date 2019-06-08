@@ -94,7 +94,7 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 
 // ----------------------
 // Vertical box
-$vbox = new GtkVBox(FALSE, 1);
+$vbox = new GtkBox(GtkOrientation::VERTICAL);
 
 // ----------------------
 // Menu
@@ -124,7 +124,7 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 
 // ----------------------
 // Horizontal box 2
-$hbox = new GtkHBox(TRUE, 5);
+$hbox = new GtkBox(GtkOrientation::HORIZONTAL, 5);
 
 // ----------------------
 // Button 1
@@ -274,7 +274,7 @@ $scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 $vbox->pack_start($scroll, TRUE, TRUE, 5);
 
 $row = new GtkListBoxRow();
-	$lhbox = new GtkHBox();
+	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
 	$lhbox->pack_start(new GtkLabel("Cell 1x1"), TRUE, TRUE);
 	$lhbox->pack_start(new GtkLabel("Cell 1x2"), TRUE, TRUE);
 	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
@@ -282,7 +282,7 @@ $row->add($lhbox, TRUE, TRUE);
 $ltb->insert($row);
 
 $row = new GtkListBoxRow();
-	$lhbox = new GtkHBox();
+	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
 	$lhbox->pack_start(new GtkLabel("Cell 2x1"), TRUE, TRUE);
 	$lhbox->pack_start(new GtkLabel("Cell 2x2"), TRUE, TRUE);
 	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
