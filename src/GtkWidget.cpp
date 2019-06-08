@@ -326,6 +326,16 @@ Php::Value GtkWidget_::get_parent()
     throw Php::Exception("Parent type of " + widget_type + " not implemented yet");
 }
 
+
+void GtkWidget_::set_parent(Php::Parameters &parameters)
+{
+    Php::Value object_child = parameters[0];
+    GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+    GtkWidget *child = GTK_WIDGET(phpgtk_child->get_instance());
+
+    gtk_widget_set_parent(GTK_WIDGET(instance), child);
+}
+
 /**
  * Sets text as the contents of the tooltip
  */

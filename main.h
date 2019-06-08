@@ -143,6 +143,9 @@
     #include "src/GtkShadowType.h"
     #include "src/GtkStateFlags.h"
 
+    #include "src/GtkRevealerTransitionType.h"
+    #include "src/GtkRevealer.h"
+
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 
 #endif

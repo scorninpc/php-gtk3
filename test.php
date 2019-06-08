@@ -113,7 +113,7 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 			$mnuFile4->connect("activate", function($widget) {
 				Gtk::main_quit();
 			});
-			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile1); 
+			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile5); 
 			$mnuFile->set_submenu($menu);
 
 		$mnuAbout = GtkMenuItem::new_with_label("About"); 

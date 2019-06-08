@@ -245,6 +245,7 @@
              * https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-get-parent
              */
             Php::Value get_parent();
+            void set_parent(Php::Parameters &parameters);
 
             /**
              * Sets text as the contents of the tooltip

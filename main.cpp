@@ -283,6 +283,7 @@ extern "C"
             gtkwidget.method<&GtkWidget_::is_sensitive>("is_sensitive");
             gtkwidget.method<&GtkWidget_::mnemonic_activate>("mnemonic_activate");
             gtkwidget.method<&GtkWidget_::get_parent>("get_parent");
+            gtkwidget.method<&GtkWidget_::set_parent>("set_parent");
             gtkwidget.method<&GtkWidget_::set_tooltip_text>("set_tooltip_text");
             gtkwidget.method<&GtkWidget_::get_tooltip_text>("get_tooltip_text");
             gtkwidget.method<&GtkWidget_::get_allocated_width>("get_allocated_width");
@@ -1841,6 +1842,28 @@ extern "C"
             gtkstateflags.constant("CHECKED", (int)GTK_STATE_FLAG_CHECKED);
             gtkstateflags.constant("DROP_ACTIVE", (int)GTK_STATE_FLAG_DROP_ACTIVE);
         
+
+        // GtkRevealerTransitionType
+        Php::Class<GtkRevealerTransitionType_> gtkrevealertransitiontype("GtkRevealerTransitionType");
+            gtkrevealertransitiontype.constant("NONE", (int)GTK_REVEALER_TRANSITION_TYPE_NONE);
+            gtkrevealertransitiontype.constant("CROSSFADE", (int)GTK_REVEALER_TRANSITION_TYPE_CROSSFADE);
+            gtkrevealertransitiontype.constant("RIGHT", (int)GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT);
+            gtkrevealertransitiontype.constant("LEFT", (int)GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT);
+            gtkrevealertransitiontype.constant("UP", (int)GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
+            gtkrevealertransitiontype.constant("DOWN", (int)GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+        
+
+        // GtkRevealer
+        Php::Class<GtkRevealer_> gtkrevealer("GtkRevealer");
+            gtkrevealer.extends(gtkbin);
+            gtkrevealer.method<&GtkRevealer_::__construct>("__construct");
+            gtkrevealer.method<&GtkRevealer_::get_reveal_child>("get_reveal_child");
+            gtkrevealer.method<&GtkRevealer_::set_reveal_child>("set_reveal_child");
+            gtkrevealer.method<&GtkRevealer_::get_child_revealed>("get_child_revealed");
+            gtkrevealer.method<&GtkRevealer_::get_transition_duration>("get_transition_duration");
+            gtkrevealer.method<&GtkRevealer_::set_transition_duration>("set_transition_duration");
+            gtkrevealer.method<&GtkRevealer_::get_transition_type>("get_transition_type");
+            gtkrevealer.method<&GtkRevealer_::set_transition_type>("set_transition_type");
         
         
         // Add classes to extension
@@ -1955,6 +1978,9 @@ extern "C"
         extension.add(std::move(gtkscrolltype));
         extension.add(std::move(gtkshadowtype));
         extension.add(std::move(gtkstateflags));
+
+        extension.add(std::move(gtkrevealertransitiontype));
+        extension.add(std::move(gtkrevealer));
 
         // return the extension
         return extension;
