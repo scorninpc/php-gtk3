@@ -98,7 +98,7 @@ $vbox = new GtkBox(GtkOrientation::VERTICAL);
 
 // ----------------------
 // Menu
-$vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 $menubar = new GtkMenuBar();
 $vbox->pack_start($menubar, FALSE, FALSE, 0);
@@ -113,7 +113,7 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 			$mnuFile4->connect("activate", function($widget) {
 				Gtk::main_quit();
 			});
-			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile5); 
+			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile1); 
 			$mnuFile->set_submenu($menu);
 
 		$mnuAbout = GtkMenuItem::new_with_label("About"); 
@@ -124,41 +124,41 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 
 // ----------------------
 // Horizontal box 2
-$hbox = new GtkBox(GtkOrientation::HORIZONTAL, 5);
+$hbox = new GtkBox(GtkOrientation::HORIZONTAL, 1);
 
 // ----------------------
 // Button 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 // $btn1 = new GtkButton();
 // $btn1->set_label("Button 1");
 $btn1 = GtkButton::new_from_icon_name("help-faq", GtkIconSize::BUTTON);
-$hbox->pack_start($btn1, TRUE, TRUE, 5);
+$hbox->pack_start($btn1, TRUE, TRUE, 1);
 
 // Button 2
 $btn2 = GtkButton::new_with_mnemonic("Bu_tton 2");
-$hbox->pack_start($btn2, TRUE, TRUE, 5);
+$hbox->pack_start($btn2, TRUE, TRUE, 1);
 
 // Button 3
 $btn3 = GtkToggleButton::new_with_label("Button 3");
-$hbox->pack_start($btn3, TRUE, TRUE, 5);
+$hbox->pack_start($btn3, TRUE, TRUE, 1);
 
 // Button 4
 $btn4 = GtkCheckButton::new_with_label("Button 4");
-$hbox->pack_start($btn4, TRUE, TRUE, 5);
+$hbox->pack_start($btn4, TRUE, TRUE, 1);
 
-$vbox->pack_start($hbox, FALSE, FALSE, 5);
+$vbox->pack_start($hbox, FALSE, FALSE, 1);
 
 // ----------------------
 // Entry 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkEntry"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkEntry"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 $txt1 = new GtkEntry();
-$vbox->pack_start($txt1, FALSE, FALSE, 5);
+$vbox->pack_start($txt1, FALSE, FALSE, 1);
 
 // ----------------------
 // GtkComboBox 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkComboBox"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkComboBox"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 $cml = new GtkListStore(GObject::TYPE_STRING);
 $cml->append(["Test 1"]);
@@ -166,7 +166,7 @@ $cml->append(["Test 2"]);
 $cml->append(["Test 3"]);
 
 $cmb1 = GtkComboBox::new_with_model($cml);
-$vbox->pack_start($cmb1, FALSE, FALSE, 5);
+$vbox->pack_start($cmb1, FALSE, FALSE, 1);
 
 $cellRenderer = new GtkCellRendererText();
 $cmb1->pack_start($cellRenderer);
@@ -185,10 +185,10 @@ $cmb1->set_active(2);
 
 // ----------------------
 // Treeview
-$vbox->pack_start($hlbl = new GtkLabel("- GtkTreeView"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkTreeView"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 $tree = new GtkTreeView();
-$vbox->pack_start($tree, TRUE, TRUE, 5);
+$vbox->pack_start($tree, TRUE, TRUE, 1);
 
 	// Column 0
 	$renderer0 = new GtkCellRendererPixbuf();
@@ -209,8 +209,8 @@ $vbox->pack_start($tree, TRUE, TRUE, 5);
 	$renderer2 = new GtkCellRendererText();
 	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 2);
 	$tree->append_column($column2);
-	$renderer2->set_alignment(0.5, 0.5);
-	$column2->set_alignment(0.5, 0.5);
+	$renderer2->set_alignment(0.5, 0.1);
+	$column2->set_alignment(0.5, 0.1);
 	$column2->set_resizable(TRUE);
 
 	$column2->set_sort_column_id(1);
@@ -263,7 +263,7 @@ $popupmenu = new GtkMenu();
 
 // ----------------------
 // ListBox
-$vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 
 $ltb = new GtkListBox();
@@ -271,7 +271,7 @@ $ltb = new GtkListBox();
 $scroll = new GtkScrolledWindow();
 $scroll->add($ltb); // add_with_viewport is deprecated
 $scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
-$vbox->pack_start($scroll, TRUE, TRUE, 5);
+$vbox->pack_start($scroll, TRUE, TRUE, 1);
 
 $row = new GtkListBoxRow();
 	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
@@ -296,8 +296,30 @@ $ltb->insert($row);
 // $ltb->prepend(new GtkLabel("OK3"));
 
 // ----------------------
+// Grid
+$vbox->pack_start($hlbl = new GtkLabel("- GtkGrid"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$grid = new GtkGrid();
+$vbox->pack_start($grid, TRUE, TRUE);
+
+
+$grid->attach(GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1);
+$grid->attach(GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
+
+$grid->attach(GtkButton::new_with_label("Grid 2x1"), 0, 1, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);
+
+$grid->attach(GtkButton::new_with_label("Grid 3x1"), 0, 2, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
+$grid->attach(GtkButton::new_with_label("Grid 3x3"), 2, 2, 2, 1);
+$grid->attach(GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
+
+// ----------------------
 // Status
-$vbox->pack_start($hlbl = new GtkLabel("- GtkStatusbar"), TRUE, TRUE, 5); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkStatusbar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
 $stt1 = new GtkStatusbar();
 $vbox->pack_start($stt1, FALSE, TRUE, 0);

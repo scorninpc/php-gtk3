@@ -334,6 +334,33 @@ extern "C"
             gtkbox.method<&GtkBox_::set_center_widget>("set_center_widget");
 
 
+        // GtkGrid
+        Php::Class<GtkGrid_> gtkgrid("GtkGrid");
+            gtkgrid.extends(gtkcontainer);
+            gtkgrid.method<&GtkGrid_::__construct>("__construct");
+            gtkgrid.method<&GtkGrid_::attach>("attach");
+            gtkgrid.method<&GtkGrid_::attach_next_to>("attach_next_to");
+            gtkgrid.method<&GtkGrid_::get_child_at>("get_child_at");
+            gtkgrid.method<&GtkGrid_::insert_row>("insert_row");
+            gtkgrid.method<&GtkGrid_::insert_column>("insert_column");
+            gtkgrid.method<&GtkGrid_::remove_row>("remove_row");
+            gtkgrid.method<&GtkGrid_::remove_column>("remove_column");
+            gtkgrid.method<&GtkGrid_::insert_next_to>("insert_next_to");
+            gtkgrid.method<&GtkGrid_::set_row_homogeneous>("set_row_homogeneous");
+            gtkgrid.method<&GtkGrid_::get_row_homogeneous>("get_row_homogeneous");
+            gtkgrid.method<&GtkGrid_::set_row_spacing>("set_row_spacing");
+            gtkgrid.method<&GtkGrid_::get_row_spacing>("get_row_spacing");
+            gtkgrid.method<&GtkGrid_::set_column_homogeneous>("set_column_homogeneous");
+            gtkgrid.method<&GtkGrid_::get_column_homogeneous>("get_column_homogeneous");
+            gtkgrid.method<&GtkGrid_::set_column_spacing>("set_column_spacing");
+            gtkgrid.method<&GtkGrid_::get_column_spacing>("get_column_spacing");
+            gtkgrid.method<&GtkGrid_::set_baseline_row>("set_baseline_row");
+            gtkgrid.method<&GtkGrid_::get_baseline_row>("get_baseline_row");
+            gtkgrid.method<&GtkGrid_::set_row_baseline_position>("set_row_baseline_position");
+            gtkgrid.method<&GtkGrid_::get_row_baseline_position>("get_row_baseline_position");
+        
+
+
         // GtkHBox
         Php::Class<GtkHBox_> gtkhbox("GtkHBox");
             gtkhbox.extends(gtkbox);
@@ -1833,6 +1860,7 @@ extern "C"
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkcontainer));
         extension.add(std::move(gtkbox));
+        extension.add(std::move(gtkgrid));
         extension.add(std::move(gtkhbox));
         extension.add(std::move(gtkvbox));
         extension.add(std::move(gtkbin));

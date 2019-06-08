@@ -20,10 +20,13 @@
     #include "src/GtkWidget.h"
     #include "src/GtkEntry.h"
     #include "src/GtkContainer.h"
+    
     #include "src/GtkBox.h"
+    #include "src/GtkGrid.h"
     #include "src/GtkHBox.h"
     #include "src/GtkVBox.h"
     #include "src/GtkBin.h"
+    
     #include "src/GtkWindow.h"
     #include "src/GtkButton.h"
     #include "src/GtkToggleButton.h"
