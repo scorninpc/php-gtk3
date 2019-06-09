@@ -152,6 +152,8 @@
     #include "src/GladeEditor.h"
     #include "src/GladePalette.h"
 
+    #include "src/GtkFlowBoxChild.h"
+    #include "src/GtkFlowBox.h"
 
     
 

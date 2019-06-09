@@ -1895,6 +1895,49 @@ extern "C"
             gladepalette.method<&GladePalette_::set_use_small_item_icons>("set_use_small_item_icons");
             gladepalette.method<&GladePalette_::get_show_selector_button>("get_show_selector_button");
             gladepalette.method<&GladePalette_::set_show_selector_button>("set_show_selector_button");
+
+
+        // GtkFlowBoxChild
+        Php::Class<GtkFlowBoxChild_> gtkflowboxchild("GtkFlowBoxChild");
+            gtkflowboxchild.extends(gtkbin);
+            gtkflowboxchild.method<&GtkFlowBoxChild_::__construct>("__construct");
+            gtkflowboxchild.method<&GtkFlowBoxChild_::get_index>("get_index");
+            gtkflowboxchild.method<&GtkFlowBoxChild_::is_selected>("is_selected");
+            gtkflowboxchild.method<&GtkFlowBoxChild_::changed>("changed");
+
+        // GtkFlowBox
+        Php::Class<GtkFlowBox_> gtkflowbox("GtkFlowBox");
+            gtkflowbox.extends(gtkcontainer);
+            gtkflowbox.method<&GtkFlowBox_::__construct>("__construct");
+            gtkflowbox.method<&GtkFlowBox_::insert>("insert");
+            gtkflowbox.method<&GtkFlowBox_::get_child_at_index>("get_child_at_index");
+            gtkflowbox.method<&GtkFlowBox_::set_hadjustment>("set_hadjustment");
+            gtkflowbox.method<&GtkFlowBox_::set_vadjustment>("set_vadjustment");
+            gtkflowbox.method<&GtkFlowBox_::set_homogeneous>("set_homogeneous");
+            gtkflowbox.method<&GtkFlowBox_::get_homogeneous>("get_homogeneous");
+            gtkflowbox.method<&GtkFlowBox_::set_row_spacing>("set_row_spacing");
+            gtkflowbox.method<&GtkFlowBox_::get_row_spacing>("get_row_spacing");
+            gtkflowbox.method<&GtkFlowBox_::set_column_spacing>("set_column_spacing");
+            gtkflowbox.method<&GtkFlowBox_::get_column_spacing>("get_column_spacing");
+            gtkflowbox.method<&GtkFlowBox_::set_min_children_per_line>("set_min_children_per_line");
+            gtkflowbox.method<&GtkFlowBox_::get_min_children_per_line>("get_min_children_per_line");
+            gtkflowbox.method<&GtkFlowBox_::set_max_children_per_line>("set_max_children_per_line");
+            gtkflowbox.method<&GtkFlowBox_::get_max_children_per_line>("get_max_children_per_line");
+            gtkflowbox.method<&GtkFlowBox_::set_activate_on_single_click>("set_activate_on_single_click");
+            gtkflowbox.method<&GtkFlowBox_::get_activate_on_single_click>("get_activate_on_single_click");
+            gtkflowbox.method<&GtkFlowBox_::selected_foreach>("selected_foreach");
+            gtkflowbox.method<&GtkFlowBox_::get_selected_children>("get_selected_children");
+            gtkflowbox.method<&GtkFlowBox_::select_child>("select_child");
+            gtkflowbox.method<&GtkFlowBox_::unselect_child>("unselect_child");
+            gtkflowbox.method<&GtkFlowBox_::select_all>("select_all");
+            gtkflowbox.method<&GtkFlowBox_::unselect_all>("unselect_all");
+            gtkflowbox.method<&GtkFlowBox_::set_selection_mode>("set_selection_mode");
+            gtkflowbox.method<&GtkFlowBox_::get_selection_mode>("get_selection_mode");
+            gtkflowbox.method<&GtkFlowBox_::set_filter_func>("set_filter_func");
+            gtkflowbox.method<&GtkFlowBox_::invalidate_filter>("invalidate_filter");
+            gtkflowbox.method<&GtkFlowBox_::set_sort_func>("set_sort_func");
+            gtkflowbox.method<&GtkFlowBox_::invalidate_sort>("invalidate_sort");
+            gtkflowbox.method<&GtkFlowBox_::bind_model>("bind_model");
         
         
         
@@ -2018,6 +2061,9 @@ extern "C"
         extension.add(std::move(gladeproject));
         extension.add(std::move(gladeeditor));
         extension.add(std::move(gladepalette));
+
+        extension.add(std::move(gtkflowboxchild));
+        extension.add(std::move(gtkflowbox));
 
         // return the extension
         return extension;
