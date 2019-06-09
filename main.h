@@ -146,6 +146,15 @@
     #include "src/GtkRevealerTransitionType.h"
     #include "src/GtkRevealer.h"
 
+
+    #include "src/GladeProject.h"
+    #include "src/GladeDesignView.h"
+    #include "src/GladeEditor.h"
+    #include "src/GladePalette.h"
+
+
+    
+
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 
 #endif

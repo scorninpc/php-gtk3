@@ -83,8 +83,8 @@ LINKER              =   g++
 #   with a list of all flags that should be passed to the linker.
 #
 
-GTKFLAGS            =   `pkg-config --cflags gtk+-3.0`
-GTKLIBS             =   `pkg-config --libs gtk+-3.0`
+GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0`
+GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0`
 
 COMPILER_FLAGS      =   -Wall -c -std=c++11 -fpic -o 
 LINKER_FLAGS        =   -shared ${GTKLIBS}

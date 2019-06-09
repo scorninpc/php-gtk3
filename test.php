@@ -113,7 +113,9 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 			$mnuFile4->connect("activate", function($widget) {
 				Gtk::main_quit();
 			});
+			
 			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile5); 
+
 			$mnuFile->set_submenu($menu);
 
 		$mnuAbout = GtkMenuItem::new_with_label("About"); 
@@ -289,18 +291,11 @@ $row = new GtkListBoxRow();
 $row->add($lhbox, TRUE, TRUE);
 $ltb->insert($row);
 
-// // $ltb->add(new GtkLabel("OK"));
-// $ltb->insert(new GtkLabel("OK1"), 1);
-// $ltb->insert(new GtkLabel("OK2"), 3);
-
-// $ltb->prepend(new GtkLabel("OK3"));
-
 // ----------------------
 // Grid
 $vbox->pack_start($hlbl = new GtkLabel("- GtkGrid"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 $grid = new GtkGrid();
 $vbox->pack_start($grid, TRUE, TRUE);
-
 
 $grid->attach(GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1);
 $grid->attach(GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1);

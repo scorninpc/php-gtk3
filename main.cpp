@@ -1864,6 +1864,38 @@ extern "C"
             gtkrevealer.method<&GtkRevealer_::set_transition_duration>("set_transition_duration");
             gtkrevealer.method<&GtkRevealer_::get_transition_type>("get_transition_type");
             gtkrevealer.method<&GtkRevealer_::set_transition_type>("set_transition_type");
+
+
+        // GladeProject
+        Php::Class<GladeProject_> gladeproject("GladeProject");
+            gladeproject.extends(gobject);
+            gladeproject.method<&GladeProject_::__construct>("__construct");
+
+        // GladeDesignView
+        Php::Class<GladeDesignView_> gladedesignview("GladeDesignView");
+            gladedesignview.extends(gtkbox);
+            gladedesignview.method<&GladeDesignView_::__construct>("__construct");
+            gladedesignview.method<&GladeDesignView_::get_project>("get_project");
+            gladedesignview.method<&GladeDesignView_::get_from_project>("get_from_project");
+
+        // GladeEditor
+        Php::Class<GladeEditor_> gladeeditor("GladeEditor");
+            gladeeditor.extends(gtkbox);
+            gladeeditor.method<&GladeEditor_::__construct>("__construct");
+            gladeeditor.method<&GladeEditor_::load_widget>("load_widget");
+            gladeeditor.method<&GladeEditor_::query_dialog>("query_dialog");
+
+        // GladePalette
+        Php::Class<GladePalette_> gladepalette("GladePalette");
+            gladepalette.extends(gtkbox);
+            gladepalette.method<&GladePalette_::__construct>("__construct");
+            gladepalette.method<&GladePalette_::get_item_appearance>("get_item_appearance");
+            gladepalette.method<&GladePalette_::set_item_appearance>("set_item_appearance");
+            gladepalette.method<&GladePalette_::get_use_small_item_icons>("get_use_small_item_icons");
+            gladepalette.method<&GladePalette_::set_use_small_item_icons>("set_use_small_item_icons");
+            gladepalette.method<&GladePalette_::get_show_selector_button>("get_show_selector_button");
+            gladepalette.method<&GladePalette_::set_show_selector_button>("set_show_selector_button");
+        
         
         
         // Add classes to extension
@@ -1981,6 +2013,11 @@ extern "C"
 
         extension.add(std::move(gtkrevealertransitiontype));
         extension.add(std::move(gtkrevealer));
+
+        extension.add(std::move(gladedesignview));
+        extension.add(std::move(gladeproject));
+        extension.add(std::move(gladeeditor));
+        extension.add(std::move(gladepalette));
 
         // return the extension
         return extension;
