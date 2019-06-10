@@ -28,13 +28,13 @@ _GObject
     │   │   │   │   │   ├── GtkOffscreenWindow
     │   │   │   │   │   ├── GtkPlug
     │   │   │   │   │   ╰── GtkShortcutsWindow
-    │   │   │   │   ├── GtkActionBar
+    │   │   │   │   ├── *GtkActionBar
     │   │   │   │   ├── GtkAlignment
-    │   │   │   │   ├── GtkComboBox
+    │   │   │   │   ├── #GtkComboBox
     │   │   │   │   │   ├── GtkAppChooserButton
     │   │   │   │   │   ╰── GtkComboBoxText
-    │   │   │   │   ├── GtkFrame
-    │   │   │   │   │   ╰── GtkAspectFrame
+    │   │   │   │   ├── *GtkFrame
+    │   │   │   │   │   ╰── *GtkAspectFrame
     │   │   │   │   ├── #GtkButton
     │   │   │   │   │   ├── *GtkToggleButton
     │   │   │   │   │   │   ├── *GtkCheckButton
@@ -54,8 +54,8 @@ _GObject
     │   │   │   │   │   ├── *GtkSeparatorMenuItem
     │   │   │   │   │   ╰── %GtkTearoffMenuItem
     │   │   │   │   ├── GtkEventBox
-    │   │   │   │   ├── GtkExpander
-    │   │   │   │   ├── GtkFlowBoxChild
+    │   │   │   │   ├── *GtkExpander
+    │   │   │   │   ├── *GtkFlowBoxChild
     │   │   │   │   ├── GtkHandleBox
     │   │   │   │   ├── #GtkListBoxRow
     │   │   │   │   ├── *GtkToolItem
@@ -64,44 +64,44 @@ _GObject
     │   │   │   │   │   │   ╰── GtkToggleToolButton
     │   │   │   │   │   │       ╰── GtkRadioToolButton
     │   │   │   │   │   ╰── *GtkSeparatorToolItem
-    │   │   │   │   ├── GtkOverlay
+    │   │   │   │   ├── *GtkOverlay
     │   │   │   │   ├── #GtkScrolledWindow
     │   │   │   │   │   ╰── GtkPlacesSidebar
     │   │   │   │   ├── GtkPopover
     │   │   │   │   │   ╰── GtkPopoverMenu
-    │   │   │   │   ├── GtkRevealer
+    │   │   │   │   ├── *GtkRevealer
     │   │   │   │   ├── GtkSearchBar
-    │   │   │   │   ├── GtkStackSidebar
+    │   │   │   │   ├── *GtkStackSidebar
     │   │   │   │   ╰── GtkViewport
     │   │   │   ├── #GtkBox
     │   │   │   │   ├── GtkAppChooserWidget
-    │   │   │   │   ├── GtkButtonBox
-    │   │   │   │   │   ├── GtkHButtonBox
-    │   │   │   │   │   ╰── GtkVButtonBox
+    │   │   │   │   ├── *GtkButtonBox
+    │   │   │   │   │   ├── %GtkHButtonBox
+    │   │   │   │   │   ╰── %GtkVButtonBox
     │   │   │   │   ├── GtkColorChooserWidget
     │   │   │   │   ├── GtkColorSelection
     │   │   │   │   ├── GtkFileChooserButton
     │   │   │   │   ├── GtkFileChooserWidget
     │   │   │   │   ├── GtkFontChooserWidget
     │   │   │   │   ├── GtkFontSelection
-    │   │   │   │   ├── *GtkHBox
+    │   │   │   │   ├── %GtkHBox
     │   │   │   │   ├── GtkInfoBar
     │   │   │   │   ├── GtkRecentChooserWidget
     │   │   │   │   ├── GtkShortcutsSection
     │   │   │   │   ├── GtkShortcutsGroup
     │   │   │   │   ├── GtkShortcutsShortcut
-    │   │   │   │   ├── GtkStackSwitcher
+    │   │   │   │   ├── *GtkStackSwitcher
     │   │   │   │   ├── *GtkStatusbar
-    │   │   │   │   ╰── *GtkVBox
+    │   │   │   │   ╰── %GtkVBox
     │   │   │   ├── GtkFixed
-    │   │   │   ├── GtkFlowBox
-    │   │   │   ├── GtkGrid
-    │   │   │   ├── GtkHeaderBar
-    │   │   │   ├── #GtkPaned
+    │   │   │   ├── #GtkFlowBox
+    │   │   │   ├── *GtkGrid
+    │   │   │   ├── *GtkHeaderBar
+    │   │   │   ├── *GtkPaned
     │   │   │   │   ├── %GtkHPaned
     │   │   │   │   ╰── %GtkVPaned
     │   │   │   ├── GtkIconView
-    │   │   │   ├── GtkLayout
+    │   │   │   ├── #GtkLayout
     │   │   │   ├── #GtkListBox
     │   │   │   ├── #GtkMenuShell
     │   │   │   │   ├── #GtkMenuBar
@@ -109,7 +109,7 @@ _GObject
     │   │   │   │       ╰── GtkRecentChooserMenu
     │   │   │   ├── #GtkNotebook
     │   │   │   ├── GtkSocket
-    │   │   │   ├── GtkStack
+    │   │   │   ├── *GtkStack
     │   │   │   ├── GtkTable
     │   │   │   ├── #GtkTextView (implement GdkWindow)
     │   │   │   ├── *GtkToolbar
@@ -170,7 +170,7 @@ _GObject
     ├── GtkActionGroup
     ├── GApplication
     │   ╰── GtkApplication
-    ├── GtkBuilder
+    ├── #GtkBuilder
     ├── GtkCellAreaContext
     ├── #GtkClipboard (implement GdkDisplay, GdkAtom)
     ├── GtkCssProvider
@@ -222,7 +222,7 @@ _GObject
     ├── GtkThemingEngine
     ├── GtkTreeModelFilter
     ├── GtkTreeModelSort
-    ├── GtkTreeSelection
+    ├── #GtkTreeSelection
     ├── $GtkTreeStore
     ├── GtkUIManager
     ├── GtkWindowGroup

@@ -1989,8 +1989,142 @@ extern "C"
             gtkstack.method<&GtkStack_::get_transition_running>("get_transition_running");
             gtkstack.method<&GtkStack_::get_interpolate_size>("get_interpolate_size");
             gtkstack.method<&GtkStack_::set_interpolate_size>("set_interpolate_size");
+
+        // GtkStackSwitcher
+        Php::Class<GtkStackSwitcher_> gtkstackswitcher("GtkStackSwitcher");
+            gtkstackswitcher.extends(gtkbox);
+            gtkstackswitcher.method<&GtkStackSwitcher_::__construct>("__construct");
+            gtkstackswitcher.method<&GtkStackSwitcher_::set_stack>("set_stack");
+            gtkstackswitcher.method<&GtkStackSwitcher_::get_stack>("get_stack");
+
+        // GtkStackSidebar
+        Php::Class<GtkStackSidebar_> gtkstacksidebar("GtkStackSidebar");
+            gtkstacksidebar.extends(gtkbin);
+            gtkstacksidebar.method<&GtkStackSidebar_::__construct>("__construct");
+            gtkstacksidebar.method<&GtkStackSidebar_::set_stack>("set_stack");
+            gtkstacksidebar.method<&GtkStackSidebar_::get_stack>("get_stack");
+
+
+        // GtkActionBar
+        Php::Class<GtkActionBar_> gtkactionbar("GtkActionBar");
+            gtkactionbar.extends(gtkbin);
+            gtkactionbar.method<&GtkActionBar_::__construct>("__construct");
+            gtkactionbar.method<&GtkActionBar_::pack_start>("pack_start");
+            gtkactionbar.method<&GtkActionBar_::pack_end>("pack_end");
+            gtkactionbar.method<&GtkActionBar_::get_center_widget>("get_center_widget");
+            gtkactionbar.method<&GtkActionBar_::set_center_widget>("set_center_widget");
         
+
+        // GtkHeaderBar
+        Php::Class<GtkHeaderBar_> gtkheaderbar("GtkHeaderBar");
+            gtkheaderbar.extends(gtkcontainer);
+            gtkheaderbar.method<&GtkHeaderBar_::__construct>("__construct");
+            gtkheaderbar.method<&GtkHeaderBar_::set_title>("set_title");
+            gtkheaderbar.method<&GtkHeaderBar_::get_title>("get_title");
+            gtkheaderbar.method<&GtkHeaderBar_::set_subtitle>("set_subtitle");
+            gtkheaderbar.method<&GtkHeaderBar_::get_subtitle>("get_subtitle");
+            gtkheaderbar.method<&GtkHeaderBar_::set_has_subtitle>("set_has_subtitle");
+            gtkheaderbar.method<&GtkHeaderBar_::get_has_subtitle>("get_has_subtitle");
+            gtkheaderbar.method<&GtkHeaderBar_::set_custom_title>("set_custom_title");
+            gtkheaderbar.method<&GtkHeaderBar_::get_custom_title>("get_custom_title");
+            gtkheaderbar.method<&GtkHeaderBar_::pack_start>("pack_start");
+            gtkheaderbar.method<&GtkHeaderBar_::pack_end>("pack_end");
+            gtkheaderbar.method<&GtkHeaderBar_::set_show_close_button>("set_show_close_button");
+            gtkheaderbar.method<&GtkHeaderBar_::get_show_close_button>("get_show_close_button");
+            gtkheaderbar.method<&GtkHeaderBar_::set_decoration_layout>("set_decoration_layout");
+            gtkheaderbar.method<&GtkHeaderBar_::get_decoration_layout>("get_decoration_layout");
+
+
+        // GtkOverlay
+        Php::Class<GtkOverlay_> gtkoverlay("GtkOverlay");
+            gtkoverlay.extends(gtkbin);
+            gtkoverlay.method<&GtkOverlay_::__construct>("__construct");
+            gtkoverlay.method<&GtkOverlay_::add_overlay>("add_overlay");
+            gtkoverlay.method<&GtkOverlay_::reorder_overlay>("reorder_overlay");
+            gtkoverlay.method<&GtkOverlay_::get_overlay_pass_through>("get_overlay_pass_through");
+            gtkoverlay.method<&GtkOverlay_::set_overlay_pass_through>("set_overlay_pass_through");
+
+
+        // GtkButtonBoxStyle
+        Php::Class<GtkButtonBoxStyle_> gtkbuttonboxstyle("GtkButtonBoxStyle");
+            gtkbuttonboxstyle.constant("SPREAD", (int)GTK_BUTTONBOX_SPREAD);
+            gtkbuttonboxstyle.constant("EDGE", (int)GTK_BUTTONBOX_EDGE);
+            gtkbuttonboxstyle.constant("START", (int)GTK_BUTTONBOX_START);
+            gtkbuttonboxstyle.constant("END", (int)GTK_BUTTONBOX_END);
+            gtkbuttonboxstyle.constant("CENTER", (int)GTK_BUTTONBOX_CENTER);
+            gtkbuttonboxstyle.constant("EXPAND", (int)GTK_BUTTONBOX_EXPAND);
+                
+
+        // GtkButtonBox
+        Php::Class<GtkButtonBox_> gtkbuttonbox("GtkButtonBox");
+            gtkbuttonbox.extends(gtkbox);
+            gtkbuttonbox.method<&GtkButtonBox_::__construct>("__construct");
+            gtkbuttonbox.method<&GtkButtonBox_::get_layout>("get_layout");
+            gtkbuttonbox.method<&GtkButtonBox_::get_child_secondary>("get_child_secondary");
+            gtkbuttonbox.method<&GtkButtonBox_::get_child_non_homogeneous>("get_child_non_homogeneous");
+            gtkbuttonbox.method<&GtkButtonBox_::set_layout>("set_layout");
+            gtkbuttonbox.method<&GtkButtonBox_::set_child_secondary>("set_child_secondary");
+            gtkbuttonbox.method<&GtkButtonBox_::set_child_non_homogeneous>("set_child_non_homogeneous");
         
+
+        // GtkLayout
+        Php::Class<GtkLayout_> gtklayout("GtkLayout");
+            gtklayout.extends(gtkcontainer);
+            gtklayout.method<&GtkLayout_::__construct>("__construct");
+            gtklayout.method<&GtkLayout_::put>("put");
+            gtklayout.method<&GtkLayout_::move>("move");
+            gtklayout.method<&GtkLayout_::set_size>("set_size");
+            gtklayout.method<&GtkLayout_::get_size>("get_size");
+            gtklayout.method<&GtkLayout_::get_hadjustment>("get_hadjustment");
+            gtklayout.method<&GtkLayout_::get_vadjustment>("get_vadjustment");
+            gtklayout.method<&GtkLayout_::set_hadjustment>("set_hadjustment");
+            gtklayout.method<&GtkLayout_::set_vadjustment>("set_vadjustment");
+            gtklayout.method<&GtkLayout_::get_bin_window>("get_bin_window");
+
+
+        // GtkExpander
+        Php::Class<GtkExpander_> gtkexpander("GtkExpander");
+            gtkexpander.extends(gtkbin);
+            gtkexpander.method<&GtkExpander_::__construct>("__construct");
+            gtkexpander.method<&GtkExpander_::new_with_mnemonic>("new_with_mnemonic");
+            gtkexpander.method<&GtkExpander_::set_expanded>("set_expanded");
+            gtkexpander.method<&GtkExpander_::get_expanded>("get_expanded");
+            gtkexpander.method<&GtkExpander_::set_spacing>("set_spacing");
+            gtkexpander.method<&GtkExpander_::get_spacing>("get_spacing");
+            gtkexpander.method<&GtkExpander_::set_label>("set_label");
+            gtkexpander.method<&GtkExpander_::get_label>("get_label");
+            gtkexpander.method<&GtkExpander_::set_use_underline>("set_use_underline");
+            gtkexpander.method<&GtkExpander_::get_use_underline>("get_use_underline");
+            gtkexpander.method<&GtkExpander_::set_use_markup>("set_use_markup");
+            gtkexpander.method<&GtkExpander_::get_use_markup>("get_use_markup");
+            gtkexpander.method<&GtkExpander_::set_label_widget>("set_label_widget");
+            gtkexpander.method<&GtkExpander_::get_label_widget>("get_label_widget");
+            gtkexpander.method<&GtkExpander_::set_label_fill>("set_label_fill");
+            gtkexpander.method<&GtkExpander_::get_label_fill>("get_label_fill");
+            gtkexpander.method<&GtkExpander_::set_resize_toplevel>("set_resize_toplevel");
+            gtkexpander.method<&GtkExpander_::get_resize_toplevel>("get_resize_toplevel");
+        
+
+        // GtkFrame
+        Php::Class<GtkFrame_> gtkframe("GtkFrame");
+            gtkframe.extends(gtkbin);
+            gtkframe.method<&GtkFrame_::__construct>("__construct");
+            gtkframe.method<&GtkFrame_::set_label>("set_label");
+            gtkframe.method<&GtkFrame_::set_label_widget>("set_label_widget");
+            gtkframe.method<&GtkFrame_::set_label_align>("set_label_align");
+            gtkframe.method<&GtkFrame_::set_shadow_type>("set_shadow_type");
+            gtkframe.method<&GtkFrame_::get_label>("get_label");
+            gtkframe.method<&GtkFrame_::get_label_align>("get_label_align");
+            gtkframe.method<&GtkFrame_::get_label_widget>("get_label_widget");
+            gtkframe.method<&GtkFrame_::get_shadow_type>("get_shadow_type");
+        
+
+        // GtkAspectFrame
+        Php::Class<GtkAspectFrame_> gtkaspectframe("GtkAspectFrame");
+            gtkaspectframe.extends(gtkframe);
+            gtkaspectframe.method<&GtkAspectFrame_::__construct>("__construct");
+            gtkaspectframe.method<&GtkAspectFrame_::set>("set");
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -2118,6 +2252,23 @@ extern "C"
 
         extension.add(std::move(gtkstacktransitiontype));
         extension.add(std::move(gtkstack));
+        extension.add(std::move(gtkstackswitcher));
+        extension.add(std::move(gtkstacksidebar));
+
+        extension.add(std::move(gtkactionbar));
+        extension.add(std::move(gtkheaderbar));
+        extension.add(std::move(gtkoverlay));
+
+        extension.add(std::move(gtkbuttonboxstyle));
+        extension.add(std::move(gtkbuttonbox));
+
+        extension.add(std::move(gtklayout));
+        extension.add(std::move(gtkexpander));
+        extension.add(std::move(gtkframe));
+
+        extension.add(std::move(gtkaspectframe));
+        
+        
 
         // return the extension
         return extension;

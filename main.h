@@ -157,6 +157,21 @@
     
     #include "src/GtkStackTransitionType.h"
     #include "src/GtkStack.h"
+    #include "src/GtkStackSwitcher.h"
+    #include "src/GtkStackSidebar.h"
+
+    #include "src/GtkActionBar.h"
+    #include "src/GtkHeaderBar.h"
+    #include "src/GtkOverlay.h"
+
+    #include "src/GtkButtonBoxStyle.h"
+    #include "src/GtkButtonBox.h"
+    
+    #include "src/GtkLayout.h"
+    #include "src/GtkExpander.h"
+
+    #include "src/GtkFrame.h"
+    #include "src/GtkAspectFrame.h"
 
     
 
