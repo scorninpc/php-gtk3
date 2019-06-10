@@ -154,6 +154,9 @@
 
     #include "src/GtkFlowBoxChild.h"
     #include "src/GtkFlowBox.h"
+    
+    #include "src/GtkStackTransitionType.h"
+    #include "src/GtkStack.h"
 
     
 

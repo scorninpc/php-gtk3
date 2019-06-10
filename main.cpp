@@ -1938,6 +1938,57 @@ extern "C"
             gtkflowbox.method<&GtkFlowBox_::set_sort_func>("set_sort_func");
             gtkflowbox.method<&GtkFlowBox_::invalidate_sort>("invalidate_sort");
             gtkflowbox.method<&GtkFlowBox_::bind_model>("bind_model");
+
+
+        // GtkStackTransitionType
+        Php::Class<GtkStackTransitionType_> gtkstacktransitiontype("GtkStackTransitionType");
+            gtkstacktransitiontype.constant("NONE", (int)GTK_STACK_TRANSITION_TYPE_NONE);
+            gtkstacktransitiontype.constant("CROSSFADE", (int)GTK_STACK_TRANSITION_TYPE_CROSSFADE);
+            gtkstacktransitiontype.constant("SLIDE_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT);
+            gtkstacktransitiontype.constant("SLIDE_LEFT", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT);
+            gtkstacktransitiontype.constant("SLIDE_UP", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_UP);
+            gtkstacktransitiontype.constant("SLIDE_DOWN", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_DOWN);
+            gtkstacktransitiontype.constant("SLIDE_LEFT_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
+            gtkstacktransitiontype.constant("SLIDE_UP_DOWN", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN);
+            gtkstacktransitiontype.constant("OVER_UP", (int)GTK_STACK_TRANSITION_TYPE_OVER_UP);
+            gtkstacktransitiontype.constant("OVER_DOWN", (int)GTK_STACK_TRANSITION_TYPE_OVER_DOWN);
+            gtkstacktransitiontype.constant("OVER_LEFT", (int)GTK_STACK_TRANSITION_TYPE_OVER_LEFT);
+            gtkstacktransitiontype.constant("OVER_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_OVER_RIGHT);
+            gtkstacktransitiontype.constant("UNDER_UP", (int)GTK_STACK_TRANSITION_TYPE_UNDER_UP);
+            gtkstacktransitiontype.constant("UNDER_DOWN", (int)GTK_STACK_TRANSITION_TYPE_UNDER_DOWN);
+            gtkstacktransitiontype.constant("UNDER_LEF", (int)GTK_STACK_TRANSITION_TYPE_UNDER_LEFT);
+            gtkstacktransitiontype.constant("UNDER_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_UNDER_RIGHT);
+            gtkstacktransitiontype.constant("OVER_UP_DOWN", (int)GTK_STACK_TRANSITION_TYPE_OVER_UP_DOWN);
+            gtkstacktransitiontype.constant("OVER_DOWN_UP", (int)GTK_STACK_TRANSITION_TYPE_OVER_DOWN_UP);
+            gtkstacktransitiontype.constant("OVER_LEFT_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_OVER_LEFT_RIGHT);
+            gtkstacktransitiontype.constant("OVER_RIGHT_LEFT", (int)GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT);
+        
+        
+        // GtkStack
+        Php::Class<GtkStack_> gtkstack("GtkStack");
+            gtkstack.extends(gtkcontainer);
+            gtkstack.method<&GtkStack_::__construct>("__construct");
+            gtkstack.method<&GtkStack_::add_named>("add_named");
+            gtkstack.method<&GtkStack_::add_titled>("add_titled");
+            gtkstack.method<&GtkStack_::get_child_by_name>("get_child_by_name");
+            gtkstack.method<&GtkStack_::set_visible_child>("set_visible_child");
+            gtkstack.method<&GtkStack_::get_visible_child>("get_visible_child");
+            gtkstack.method<&GtkStack_::set_visible_child_name>("set_visible_child_name");
+            gtkstack.method<&GtkStack_::get_visible_child_name>("get_visible_child_name");
+            gtkstack.method<&GtkStack_::set_visible_child_full>("set_visible_child_full");
+            gtkstack.method<&GtkStack_::set_homogeneous>("set_homogeneous");
+            gtkstack.method<&GtkStack_::get_homogeneous>("get_homogeneous");
+            gtkstack.method<&GtkStack_::set_hhomogeneous>("set_hhomogeneous");
+            gtkstack.method<&GtkStack_::get_hhomogeneous>("get_hhomogeneous");
+            gtkstack.method<&GtkStack_::set_vhomogeneous>("set_vhomogeneous");
+            gtkstack.method<&GtkStack_::get_vhomogeneous>("get_vhomogeneous");
+            gtkstack.method<&GtkStack_::set_transition_duration>("set_transition_duration");
+            gtkstack.method<&GtkStack_::get_transition_duration>("get_transition_duration");
+            gtkstack.method<&GtkStack_::set_transition_type>("set_transition_type");
+            gtkstack.method<&GtkStack_::get_transition_type>("get_transition_type");
+            gtkstack.method<&GtkStack_::get_transition_running>("get_transition_running");
+            gtkstack.method<&GtkStack_::get_interpolate_size>("get_interpolate_size");
+            gtkstack.method<&GtkStack_::set_interpolate_size>("set_interpolate_size");
         
         
         
@@ -2064,6 +2115,9 @@ extern "C"
 
         extension.add(std::move(gtkflowboxchild));
         extension.add(std::move(gtkflowbox));
+
+        extension.add(std::move(gtkstacktransitiontype));
+        extension.add(std::move(gtkstack));
 
         // return the extension
         return extension;
