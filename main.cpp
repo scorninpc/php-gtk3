@@ -309,11 +309,51 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_size_request>("get_size_request");
         
 
+        // GtkMisc
+        Php::Class<GtkMisc_> gtkmisc("GtkMisc");
+            gtkmisc.extends(gtkwidget);
+
         // GtkContainer
         Php::Class<GtkContainer_> gtkcontainer("GtkContainer");
             gtkcontainer.extends(gtkwidget);
             gtkcontainer.method<&GtkContainer_::add>("add");
-            gtkcontainer.method<&GtkContainer_::test2>("test2");
+            gtkcontainer.method<&GtkContainer_::remove>("remove");
+            gtkcontainer.method<&GtkContainer_::add_with_properties>("add_with_properties");
+            gtkcontainer.method<&GtkContainer_::get_resize_mode>("get_resize_mode");
+            gtkcontainer.method<&GtkContainer_::set_resize_mode>("set_resize_mode");
+            gtkcontainer.method<&GtkContainer_::check_resize>("check_resize");
+            gtkcontainer.method<&GtkContainer_::foreach>("foreach");
+            gtkcontainer.method<&GtkContainer_::get_children>("get_children");
+            gtkcontainer.method<&GtkContainer_::get_path_for_child>("get_path_for_child");
+            gtkcontainer.method<&GtkContainer_::set_reallocate_redraws>("set_reallocate_redraws");
+            gtkcontainer.method<&GtkContainer_::get_focus_child>("get_focus_child");
+            gtkcontainer.method<&GtkContainer_::set_focus_child>("set_focus_child");
+            gtkcontainer.method<&GtkContainer_::get_focus_vadjustment>("get_focus_vadjustment");
+            gtkcontainer.method<&GtkContainer_::set_focus_vadjustment>("set_focus_vadjustment");
+            gtkcontainer.method<&GtkContainer_::get_focus_hadjustment>("get_focus_hadjustment");
+            gtkcontainer.method<&GtkContainer_::set_focus_hadjustment>("set_focus_hadjustment");
+            gtkcontainer.method<&GtkContainer_::resize_children>("resize_children");
+            gtkcontainer.method<&GtkContainer_::child_type>("child_type");
+            gtkcontainer.method<&GtkContainer_::child_get>("child_get");
+            gtkcontainer.method<&GtkContainer_::child_set>("child_set");
+            gtkcontainer.method<&GtkContainer_::child_get_property>("child_get_property");
+            gtkcontainer.method<&GtkContainer_::child_set_property>("child_set_property");
+            gtkcontainer.method<&GtkContainer_::child_get_valist>("child_get_valist");
+            gtkcontainer.method<&GtkContainer_::child_set_valist>("child_set_valist");
+            gtkcontainer.method<&GtkContainer_::child_notify>("child_notify");
+            gtkcontainer.method<&GtkContainer_::child_notify_by_pspec>("child_notify_by_pspec");
+            gtkcontainer.method<&GtkContainer_::forall>("forall");
+            gtkcontainer.method<&GtkContainer_::get_border_width>("get_border_width");
+            gtkcontainer.method<&GtkContainer_::set_border_width>("set_border_width");
+            gtkcontainer.method<&GtkContainer_::propagate_draw>("propagate_draw");
+            gtkcontainer.method<&GtkContainer_::get_focus_chain>("get_focus_chain");
+            gtkcontainer.method<&GtkContainer_::set_focus_chain>("set_focus_chain");
+            gtkcontainer.method<&GtkContainer_::unset_focus_chain>("unset_focus_chain");
+            gtkcontainer.method<&GtkContainer_::class_find_child_property>("class_find_child_property");
+            gtkcontainer.method<&GtkContainer_::class_install_child_property>("class_install_child_property");
+            gtkcontainer.method<&GtkContainer_::class_install_child_properties>("class_install_child_properties");
+            gtkcontainer.method<&GtkContainer_::class_list_child_properties>("class_list_child_properties");
+            gtkcontainer.method<&GtkContainer_::class_handle_border_width>("class_handle_border_width");
         
 
         // GtkBox
@@ -2125,6 +2165,100 @@ extern "C"
             gtkaspectframe.method<&GtkAspectFrame_::__construct>("__construct");
             gtkaspectframe.method<&GtkAspectFrame_::set>("set");
 
+
+        // GtkResizeMode
+        Php::Class<GtkResizeMode_> gtkresizemode("GtkResizeMode");
+            gtkresizemode.constant("PARENT", (int)GTK_RESIZE_PARENT);
+            gtkresizemode.constant("QUEUE", (int)GTK_RESIZE_QUEUE);
+            gtkresizemode.constant("IMMEDIATE", (int)GTK_RESIZE_IMMEDIATE);
+
+        // GtkWidgetPath
+        Php::Class<GtkWidgetPath_> gtkwidgetpath("GtkWidgetPath");
+            gtkwidgetpath.method<&GtkWidgetPath_::append_type>("append_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::append_with_siblings>("append_with_siblings");
+            gtkwidgetpath.method<&GtkWidgetPath_::append_for_widget>("append_for_widget");
+            gtkwidgetpath.method<&GtkWidgetPath_::copy>("copy");
+            gtkwidgetpath.method<&GtkWidgetPath_::ref>("ref");
+            gtkwidgetpath.method<&GtkWidgetPath_::unref>("unref");
+            gtkwidgetpath.method<&GtkWidgetPath_::free>("free");
+            gtkwidgetpath.method<&GtkWidgetPath_::get_object_type>("get_object_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::has_parent>("has_parent");
+            gtkwidgetpath.method<&GtkWidgetPath_::is_type>("is_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_add_class>("iter_add_class");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_add_region>("iter_add_region");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_clear_classes>("iter_clear_classes");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_clear_regions>("iter_clear_regions");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_name>("iter_get_name");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_object_name>("iter_get_object_name");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_object_type>("iter_get_object_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_siblings>("iter_get_siblings");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_sibling_index>("iter_get_sibling_index");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_get_state>("iter_get_state");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_class>("iter_has_class");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_name>("iter_has_name");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_qclass>("iter_has_qclass");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_qname>("iter_has_qname");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_qregion>("iter_has_qregion");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_has_region>("iter_has_region");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_list_classes>("iter_list_classes");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_list_regions>("iter_list_regions");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_remove_class>("iter_remove_class");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_remove_region>("iter_remove_region");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_set_name>("iter_set_name");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_set_object_name>("iter_set_object_name");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_set_object_type>("iter_set_object_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::iter_set_state>("iter_set_state");
+            gtkwidgetpath.method<&GtkWidgetPath_::length>("length");
+            gtkwidgetpath.method<&GtkWidgetPath_::__construct>("new");
+            gtkwidgetpath.method<&GtkWidgetPath_::prepend_type>("prepend_type");
+            gtkwidgetpath.method<&GtkWidgetPath_::to_string>("to_string");
+        
+
+         // GtkImageType
+        Php::Class<GtkImageType_> gtkimagetype("GtkImageType");
+            gtkimagetype.constant("EMPTY", (int)GTK_IMAGE_EMPTY);
+            gtkimagetype.constant("PIXBUF", (int)GTK_IMAGE_PIXBUF);
+            gtkimagetype.constant("STOCK", (int)GTK_IMAGE_STOCK);
+            gtkimagetype.constant("ICON_SET", (int)GTK_IMAGE_ICON_SET);
+            gtkimagetype.constant("ANIMATION", (int)GTK_IMAGE_ANIMATION);
+            gtkimagetype.constant("ICON_NAME", (int)GTK_IMAGE_ICON_NAME);
+            gtkimagetype.constant("GICON", (int)GTK_IMAGE_GICON);
+            gtkimagetype.constant("SURFACE", (int)GTK_IMAGE_SURFACE);
+
+        // GtkImage
+        Php::Class<GtkImage_> gtkimage("GtkImage");
+            gtkimage.extends(gtkmisc);
+            gtkimage.method<&GtkImage_::__construct>("__construct");
+            gtkimage.method<&GtkImage_::new_from_file>("new_from_file");
+            gtkimage.method<&GtkImage_::new_from_icon_set>("new_from_icon_set");
+            gtkimage.method<&GtkImage_::get_icon_set>("get_icon_set");
+            gtkimage.method<&GtkImage_::get_pixbuf>("get_pixbuf");
+            gtkimage.method<&GtkImage_::get_stock>("get_stock");
+            gtkimage.method<&GtkImage_::get_animation>("get_animation");
+            gtkimage.method<&GtkImage_::get_icon_name>("get_icon_name");
+            gtkimage.method<&GtkImage_::get_gicon>("get_gicon");
+            gtkimage.method<&GtkImage_::get_storage_type>("get_storage_type");
+            gtkimage.method<&GtkImage_::new_from_pixbuf>("new_from_pixbuf");
+            gtkimage.method<&GtkImage_::new_from_stock>("new_from_stock");
+            gtkimage.method<&GtkImage_::new_from_animation>("new_from_animation");
+            gtkimage.method<&GtkImage_::new_from_icon_name>("new_from_icon_name");
+            gtkimage.method<&GtkImage_::new_from_gicon>("new_from_gicon");
+            gtkimage.method<&GtkImage_::new_from_resource>("new_from_resource");
+            gtkimage.method<&GtkImage_::new_from_surface>("new_from_surface");
+            gtkimage.method<&GtkImage_::set_from_file>("set_from_file");
+            gtkimage.method<&GtkImage_::set_from_icon_set>("set_from_icon_set");
+            gtkimage.method<&GtkImage_::set_from_pixbuf>("set_from_pixbuf");
+            gtkimage.method<&GtkImage_::set_from_stock>("set_from_stock");
+            gtkimage.method<&GtkImage_::set_from_animation>("set_from_animation");
+            gtkimage.method<&GtkImage_::set_from_icon_name>("set_from_icon_name");
+            gtkimage.method<&GtkImage_::set_from_gicon>("set_from_gicon");
+            gtkimage.method<&GtkImage_::set_from_resource>("set_from_resource");
+            gtkimage.method<&GtkImage_::set_from_surface>("set_from_surface");
+            gtkimage.method<&GtkImage_::clear>("clear");
+            gtkimage.method<&GtkImage_::set_pixel_size>("set_pixel_size");
+            gtkimage.method<&GtkImage_::get_pixel_size>("get_pixel_size");
+        
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -2141,6 +2275,7 @@ extern "C"
         extension.add(std::move(gtkorientation));
         extension.add(std::move(gtkpolicytype));
         extension.add(std::move(gtkwidget));
+        extension.add(std::move(gtkmisc));
         extension.add(std::move(gtkcontainer));
         extension.add(std::move(gtkbox));
         extension.add(std::move(gtkgrid));
@@ -2267,7 +2402,13 @@ extern "C"
         extension.add(std::move(gtkframe));
 
         extension.add(std::move(gtkaspectframe));
+
+        extension.add(std::move(gtkresizemode));
+
+        extension.add(std::move(gtkwidgetpath));
         
+        extension.add(std::move(gtkimagetype));
+        extension.add(std::move(gtkimage));
         
 
         // return the extension

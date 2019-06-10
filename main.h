@@ -26,6 +26,8 @@
     #include "src/GtkHBox.h"
     #include "src/GtkVBox.h"
     #include "src/GtkBin.h"
+
+    #include "src/GtkMisc.h"
     
     #include "src/GtkWindow.h"
     #include "src/GtkButton.h"
@@ -172,6 +174,12 @@
 
     #include "src/GtkFrame.h"
     #include "src/GtkAspectFrame.h"
+    
+    #include "src/GtkResizeMode.h"
+    #include "src/GtkWidgetPath.h"
+
+    #include "src/GtkImageType.h"
+    #include "src/GtkImage.h"
 
     
 
