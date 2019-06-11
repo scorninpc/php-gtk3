@@ -13,10 +13,13 @@ GtkLabel_::~GtkLabel_() = default;
 
 void GtkLabel_::__construct(Php::Parameters &parameters)
 {
-	std::string s_str = parameters[0];
-	gchar *str = (gchar *)s_str.c_str();
+	std::string s_str = "";
+	;
+	if(parameters.size() > 0) {
+		s_str.assign((const char *)parameters[0]);
+	}
 
-	instance = (gpointer *)gtk_label_new (str);
+	instance = (gpointer *)gtk_label_new (s_str.c_str());
 
 }
 

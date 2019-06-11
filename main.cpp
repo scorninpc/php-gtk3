@@ -550,11 +550,31 @@ extern "C"
             gtkbutton.method<&GtkButton_::new_with_label>("new_with_label");
             gtkbutton.method<&GtkButton_::new_with_mnemonic>("new_with_mnemonic");
             gtkbutton.method<&GtkButton_::new_from_icon_name>("new_from_icon_name");
-            gtkbutton.method<&GtkButton_::set_label>("set_label");
-            gtkbutton.method<&GtkButton_::get_label>("get_label");
+            gtkbutton.method<&GtkButton_::new_from_stock>("new_from_stock");
+            gtkbutton.method<&GtkButton_::pressed>("pressed");
+            gtkbutton.method<&GtkButton_::released>("released");
             gtkbutton.method<&GtkButton_::clicked>("clicked");
-            gtkbutton.method<&GtkButton_::set_use_underline>("set_use_underline");
+            gtkbutton.method<&GtkButton_::enter>("enter");
+            gtkbutton.method<&GtkButton_::leave>("leave");
+            gtkbutton.method<&GtkButton_::set_relief>("set_relief");
+            gtkbutton.method<&GtkButton_::get_relief>("get_relief");
+            gtkbutton.method<&GtkButton_::get_label>("get_label");
+            gtkbutton.method<&GtkButton_::set_label>("set_label");
+            gtkbutton.method<&GtkButton_::get_use_stock>("get_use_stock");
+            gtkbutton.method<&GtkButton_::set_use_stock>("set_use_stock");
             gtkbutton.method<&GtkButton_::get_use_underline>("get_use_underline");
+            gtkbutton.method<&GtkButton_::set_use_underline>("set_use_underline");
+            gtkbutton.method<&GtkButton_::set_focus_on_click>("set_focus_on_click");
+            gtkbutton.method<&GtkButton_::get_focus_on_click>("get_focus_on_click");
+            gtkbutton.method<&GtkButton_::set_alignment>("set_alignment");
+            gtkbutton.method<&GtkButton_::get_alignment>("get_alignment");
+            gtkbutton.method<&GtkButton_::set_image>("set_image");
+            gtkbutton.method<&GtkButton_::get_image>("get_image");
+            gtkbutton.method<&GtkButton_::set_image_position>("set_image_position");
+            gtkbutton.method<&GtkButton_::get_image_position>("get_image_position");
+            gtkbutton.method<&GtkButton_::set_always_show_image>("set_always_show_image");
+            gtkbutton.method<&GtkButton_::get_always_show_image>("get_always_show_image");
+            gtkbutton.method<&GtkButton_::get_event_window>("get_event_window");
         
 
         // GtkToggleButton
@@ -1327,9 +1347,9 @@ extern "C"
 
         // GtkReliefStyle
         Php::Class<GtkReliefStyle_> gtkreliefstyle("GtkReliefStyle");
-            gtktoolbarstyle.constant("NORMAL", (int)GTK_RELIEF_NORMAL);
-            gtktoolbarstyle.constant("HALF", (int)GTK_RELIEF_HALF);
-            gtktoolbarstyle.constant("NONE", (int)GTK_RELIEF_NONE);
+            gtkreliefstyle.constant("NORMAL", (int)GTK_RELIEF_NORMAL);
+            gtkreliefstyle.constant("HALF", (int)GTK_RELIEF_HALF);
+            gtkreliefstyle.constant("NONE", (int)GTK_RELIEF_NONE);
 
 
         // GtkSizeGroup
@@ -2259,6 +2279,37 @@ extern "C"
             gtkimage.method<&GtkImage_::get_pixel_size>("get_pixel_size");
         
 
+        // GtkCalendarDisplayOptions
+        Php::Class<GtkCalendarDisplayOptions_> gtkcalendardisplayoptions("GtkCalendarDisplayOptions");
+            gtkcalendardisplayoptions.constant("SHOW_HEADING", (int)GTK_CALENDAR_SHOW_HEADING);
+            gtkcalendardisplayoptions.constant("SHOW_DAY_NAMES", (int)GTK_CALENDAR_SHOW_DAY_NAMES);
+            gtkcalendardisplayoptions.constant("NO_MONTH_CHANGE", (int)GTK_CALENDAR_NO_MONTH_CHANGE);
+            gtkcalendardisplayoptions.constant("SHOW_WEEK_NUMBERS", (int)GTK_CALENDAR_SHOW_WEEK_NUMBERS);
+            gtkcalendardisplayoptions.constant("SHOW_DETAILS", (int)GTK_CALENDAR_SHOW_DETAILS);
+            
+
+        // GtkCalendar
+        Php::Class<GtkCalendar_> gtkcalendar("GtkCalendar");
+            gtkcalendar.extends(gtkwidget);
+            gtkcalendar.method<&GtkCalendar_::__construct>("__construct");
+            gtkcalendar.method<&GtkCalendar_::select_month>("select_month");
+            gtkcalendar.method<&GtkCalendar_::select_day>("select_day");
+            gtkcalendar.method<&GtkCalendar_::mark_day>("mark_day");
+            gtkcalendar.method<&GtkCalendar_::unmark_day>("unmark_day");
+            gtkcalendar.method<&GtkCalendar_::get_day_is_marked>("get_day_is_marked");
+            gtkcalendar.method<&GtkCalendar_::clear_marks>("clear_marks");
+            gtkcalendar.method<&GtkCalendar_::get_display_options>("get_display_options");
+            gtkcalendar.method<&GtkCalendar_::set_display_options>("set_display_options");
+            gtkcalendar.method<&GtkCalendar_::get_date>("get_date");
+            gtkcalendar.method<&GtkCalendar_::set_detail_func>("set_detail_func");
+            gtkcalendar.method<&GtkCalendar_::get_detail_width_chars>("get_detail_width_chars");
+            gtkcalendar.method<&GtkCalendar_::set_detail_width_chars>("set_detail_width_chars");
+            gtkcalendar.method<&GtkCalendar_::get_detail_height_rows>("get_detail_height_rows");
+            gtkcalendar.method<&GtkCalendar_::set_detail_height_rows>("set_detail_height_rows");
+        
+
+
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -2409,6 +2460,9 @@ extern "C"
         
         extension.add(std::move(gtkimagetype));
         extension.add(std::move(gtkimage));
+
+        extension.add(std::move(gtkcalendardisplayoptions));
+        extension.add(std::move(gtkcalendar));
         
 
         // return the extension

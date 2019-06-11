@@ -181,6 +181,8 @@
     #include "src/GtkImageType.h"
     #include "src/GtkImage.h"
 
+    #include "src/GtkCalendarDisplayOptions.h"
+    #include "src/GtkCalendar.h"
     
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);

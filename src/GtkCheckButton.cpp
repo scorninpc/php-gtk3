@@ -24,9 +24,9 @@ Php::Value GtkCheckButton_::new_with_label(Php::Parameters &parameters)
 
 	GtkWidget *ret = gtk_check_button_new_with_label (label);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
+	GtkCheckButton_ *return_parsed = new GtkCheckButton_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkCheckButton", return_parsed);
 }
 
 Php::Value GtkCheckButton_::new_with_mnemonic(Php::Parameters &parameters)
@@ -36,8 +36,8 @@ Php::Value GtkCheckButton_::new_with_mnemonic(Php::Parameters &parameters)
 
 	GtkWidget *ret = gtk_check_button_new_with_mnemonic (label);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
+	GtkCheckButton_ *return_parsed = new GtkCheckButton_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkCheckButton", return_parsed);
 }
 

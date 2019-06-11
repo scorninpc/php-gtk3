@@ -46,3 +46,16 @@ https://source.puri.sm/dorota.czaplejewicz/gtk/commit/8e69f87a4695631b62a7474088
 -- GdkAtom
 https://developer.gnome.org/gdk3/stable/gdk3-Properties-and-Atoms.html#gdk-atom-intern
 https://github.com/adobe/webkit/blob/master/Source/WebCore/platform/gtk/PasteboardHelper.cpp
+
+-- Refs
+
+// Exception
+throw Php::Exception("GtkMenuShell_::bind_model not implemented");
+
+// Deprecated
+Php::deprecated << "new_from_icon_set is deprecated on Gtk 3.10" << std::endl;
+
+// Cria o retorno
+Php::Value arr;
+arr[0] = arr["width"] = (int)width;
+arr[1] = arr["height"] = (int)height;

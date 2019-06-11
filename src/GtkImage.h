@@ -29,9 +29,23 @@
 
             void __construct();
 
-            Php::Value new_from_file(Php::Parameters &parameters);
+            static Php::Value new_from_file(Php::Parameters &parameters);
 
-            Php::Value new_from_icon_set(Php::Parameters &parameters);
+            static Php::Value new_from_icon_set(Php::Parameters &parameters);
+
+            static Php::Value new_from_pixbuf(Php::Parameters &parameters);
+
+            static Php::Value new_from_stock(Php::Parameters &parameters);
+
+            static Php::Value new_from_animation();
+
+            static Php::Value new_from_icon_name(Php::Parameters &parameters);
+
+            static Php::Value new_from_gicon(Php::Parameters &parameters);
+
+            static Php::Value new_from_resource(Php::Parameters &parameters);
+
+            static Php::Value new_from_surface();
 
             void get_icon_set(Php::Parameters &parameters);
 
@@ -46,20 +60,6 @@
             void get_gicon(Php::Parameters &parameters);
 
             Php::Value get_storage_type();
-
-            Php::Value new_from_pixbuf(Php::Parameters &parameters);
-
-            Php::Value new_from_stock(Php::Parameters &parameters);
-
-            Php::Value new_from_animation();
-
-            Php::Value new_from_icon_name(Php::Parameters &parameters);
-
-            Php::Value new_from_gicon(Php::Parameters &parameters);
-
-            Php::Value new_from_resource(Php::Parameters &parameters);
-
-            Php::Value new_from_surface();
 
             void set_from_file(Php::Parameters &parameters);
 

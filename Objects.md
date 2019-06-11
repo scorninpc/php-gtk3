@@ -120,8 +120,8 @@ _GObject
     │   │   │   ├── *GtkLabel
     │   │   │   │   ╰── GtkAccelLabel
     │   │   │   ├── GtkArrow
-    │   │   │   ╰── GtkImage
-    │   │   ├── GtkCalendar
+    │   │   │   ╰── #GtkImage
+    │   │   ├── #GtkCalendar
     │   │   ├── GtkCellView
     │   │   ├── GtkDrawingArea
     │   │   ├── #GtkEntry
