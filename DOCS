@@ -47,6 +47,10 @@ https://source.puri.sm/dorota.czaplejewicz/gtk/commit/8e69f87a4695631b62a7474088
 https://developer.gnome.org/gdk3/stable/gdk3-Properties-and-Atoms.html#gdk-atom-intern
 https://github.com/adobe/webkit/blob/master/Source/WebCore/platform/gtk/PasteboardHelper.cpp
 
+
+-- is_subclass_of
+https://github.com/CopernicaMarketingSoftware/PHP-CPP/blob/b50838c0bc5a3eae8b65f7d969172def30fd2ea9/include/call.h
+
 -- Refs
 
 // Exception
