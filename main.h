@@ -133,6 +133,8 @@
     
     #include "src/GtkSensitivityType.h"
     #include "src/GtkComboBox.h"
+    #include "src/GtkComboBoxText.h"
+    #include "src/GtkAppChooserButton.h"
 
     #include "src/GtkBuilder.h"
 
@@ -183,6 +185,7 @@
 
     #include "src/GtkCalendarDisplayOptions.h"
     #include "src/GtkCalendar.h"
+    
     
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);

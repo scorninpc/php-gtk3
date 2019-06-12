@@ -31,8 +31,8 @@ _GObject
     │   │   │   │   ├── *GtkActionBar
     │   │   │   │   ├── GtkAlignment
     │   │   │   │   ├── #GtkComboBox
-    │   │   │   │   │   ├── GtkAppChooserButton
-    │   │   │   │   │   ╰── GtkComboBoxText
+    │   │   │   │   │   ├── #GtkAppChooserButton
+    │   │   │   │   │   ╰── *GtkComboBoxText
     │   │   │   │   ├── *GtkFrame
     │   │   │   │   │   ╰── *GtkAspectFrame
     │   │   │   │   ├── #GtkButton

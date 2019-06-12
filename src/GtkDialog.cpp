@@ -25,7 +25,7 @@ Php::Value GtkDialog_::new_with_buttons(Php::Parameters &parameters)
     gchar *title = (gchar *)s_title.c_str();
 
     Php::Value object_parent = parameters[1];
-    GtkWindow *parent;
+    GtkWindow *parent = NULL;
     if (object_parent.instanceOf("GtkWindow")) {
         GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
         parent = GTK_WINDOW(phpgtk_parent->get_instance());
@@ -39,7 +39,7 @@ Php::Value GtkDialog_::new_with_buttons(Php::Parameters &parameters)
          throw Php::Exception("parameters expect one button with response");
     }
 
-    GtkWidget *instance_dialog = gtk_dialog_new_with_buttons(title, GTK_WINDOW(parent), flags, arr[0], (int)arr[1], NULL);
+    GtkWidget *instance_dialog = gtk_dialog_new_with_buttons(title, parent, flags, arr[0], (int)arr[1], NULL);
 
     // Add buttons
     for(int index=2; index < (int)arr.size(); index+=2) {

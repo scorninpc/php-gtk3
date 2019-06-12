@@ -1772,6 +1772,37 @@ extern "C"
             gtkcombobox.method<&GtkComboBox_::add_attribute>("add_attribute");
 
 
+        // GtkComboBoxText
+        Php::Class<GtkComboBoxText_> gtkcomboboxtext("GtkComboBoxText");
+            gtkcomboboxtext.extends(gtkcombobox);
+            gtkcomboboxtext.method<&GtkComboBoxText_::__construct>("__construct");
+            gtkcomboboxtext.method<&GtkComboBoxText_::new_with_entry>("new_with_entry");
+            gtkcomboboxtext.method<&GtkComboBoxText_::append>("append");
+            gtkcomboboxtext.method<&GtkComboBoxText_::prepend>("prepend");
+            gtkcomboboxtext.method<&GtkComboBoxText_::insert>("insert");
+            gtkcomboboxtext.method<&GtkComboBoxText_::append_text>("append_text");
+            gtkcomboboxtext.method<&GtkComboBoxText_::prepend_text>("prepend_text");
+            gtkcomboboxtext.method<&GtkComboBoxText_::insert_text>("insert_text");
+            gtkcomboboxtext.method<&GtkComboBoxText_::remove>("remove");
+            gtkcomboboxtext.method<&GtkComboBoxText_::remove_all>("remove_all");
+            gtkcomboboxtext.method<&GtkComboBoxText_::get_active_text>("get_active_text");
+
+
+        // GtkAppChooserButton
+        Php::Class<GtkAppChooserButton_> gtkappchooserbutton("GtkAppChooserButton");
+            gtkappchooserbutton.extends(gtkcombobox);
+            gtkappchooserbutton.method<&GtkAppChooserButton_::__construct>("__construct");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::append_custom_item>("append_custom_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::append_separator>("append_separator");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::set_active_custom_item>("set_active_custom_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::get_show_default_item>("get_show_default_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::set_show_default_item>("set_show_default_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::get_show_dialog_item>("get_show_dialog_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::set_show_dialog_item>("set_show_dialog_item");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::get_heading>("get_heading");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::set_heading>("set_heading");
+
+
         // GtkBuilder
         Php::Class<GtkBuilder_> gtkbuilder("GtkBuilder");
             gtkbuilder.extends(gobject);
@@ -2413,6 +2444,8 @@ extern "C"
 
         extension.add(std::move(gtksensitivitytype));
         extension.add(std::move(gtkcombobox));
+        extension.add(std::move(gtkcomboboxtext));
+        extension.add(std::move(gtkappchooserbutton));
 
         extension.add(std::move(gtkbuilder));
 
