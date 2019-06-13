@@ -5,7 +5,9 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
-	#include "GtkContainer.h"
+    #include "../php-gtk.h"
+
+    #include "GtkContainer.h"
 	#include "GtkWidget.h"
 	#include "GtkPackType.h"
 

@@ -1,9 +1,11 @@
-#ifndef _PHPGTK_H_
-#define _PHPGTK_H_
+#ifndef _PHPGTK_MAIN_H_
+#define _PHPGTK_MAIN_H_
 
     #include <phpcpp.h>
     #include <iostream>
     #include <gtk/gtk.h>
+
+    #include "php-gtk.h"
 
     #include "src/GObject.h"
 
@@ -189,5 +191,6 @@
     
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
+    void phpgtk_throw_wrong_type(int param, Php::Type type);
 
 #endif

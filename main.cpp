@@ -2638,3 +2638,40 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
     return gtk_value;
 
 }
+
+
+
+void phpgtk_throw_wrong_type(int param, Php::Type type)
+{
+    char *buffer;
+    int len;
+    std::string str_type;
+
+    switch(type) {
+        case Php::Type::Undefined: str_type.assign("undefined"); break;
+        case Php::Type::Null: str_type.assign("Null"); break;
+        case Php::Type::False: str_type.assign("False"); break;
+        case Php::Type::True: str_type.assign("True"); break;
+        case Php::Type::Numeric: str_type.assign("Numeric"); break;
+        case Php::Type::Float: str_type.assign("Float"); break;
+        case Php::Type::String: str_type.assign("String"); break;
+        case Php::Type::Array: str_type.assign("Array"); break;
+        case Php::Type::Object: str_type.assign("Object"); break;
+        case Php::Type::Resource: str_type.assign("Resource"); break;
+        case Php::Type::Reference: str_type.assign("Reference"); break;
+        case Php::Type::Constant: str_type.assign("Constant"); break;
+        case Php::Type::ConstantAST: str_type.assign("ConstantAST"); break;
+        case Php::Type::Bool: str_type.assign("Bool"); break;
+        case Php::Type::Callable: str_type.assign("Callable"); break;
+    }
+    
+    // Get len of string
+    len = snprintf(NULL, 0, "expects at least %d parameters, %s given", param, str_type.c_str());
+    buffer = (char *)malloc((len + 1) * sizeof(char));
+    
+    // Save into buffer
+    snprintf(buffer, len+1, "expects at least %d parameters, %s given", param, str_type.c_str());
+
+    // throw
+    throw Php::Exception(buffer);
+}

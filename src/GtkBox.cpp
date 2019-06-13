@@ -13,6 +13,8 @@ GtkBox_::~GtkBox_() = default;
 
 void GtkBox_::__construct(Php::Parameters &parameters)
 {
+	//phpgtk_check_parameter(parameters[0], Php::Type::Numeric, TRUE);
+
 	int int_child = (int)parameters[0];
 	GtkOrientation child = (GtkOrientation)int_child;
 
