@@ -79,12 +79,24 @@ $dialog = new GtkFileChooserDialog("Open file", $win, GtkFileChooserAction::OPEN
 	$dialog->destroy();
 */
 
+/*
 $dialog = GtkDialog::new_with_buttons("TITLE", $win, GtkDialogFlags::MODAL, [
 	"_Quit", GtkResponseType::CANCEL
 ]);
 $dialog->run();
 $dialog->destroy();
+*/
 
+
+/*
+// About
+$dialog = new GtkAboutDialog();
+
+$dialog->set_authors("OK");
+
+$dialog->run();
+$dialog->destroy();
+*/
 
 
 

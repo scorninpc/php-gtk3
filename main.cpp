@@ -531,7 +531,7 @@ extern "C"
             gtkdialog.method<&GtkDialog_::get_content_area>("get_content_area");
             gtkdialog.method<&GtkDialog_::get_header_bar>("get_header_bar");
         
-
+        
         // GtkFileChooser
         // Php::Interface gtkfilechooser("GtkFileChooser");
             // gtkfilechooser.extends(gobject);
@@ -1213,6 +1213,21 @@ extern "C"
             gtkresponsetype.constant("APPLY", (int)GTK_RESPONSE_APPLY);
             gtkresponsetype.constant("HELP", (int)GTK_RESPONSE_HELP);
         
+        // GtkLicense
+        Php::Class<GtkLicense_> gtklicense("GtkLicense");
+            gtklicense.constant("UNKNOWN", (int)GTK_LICENSE_UNKNOWN);
+            gtklicense.constant("CUSTOM", (int)GTK_LICENSE_CUSTOM);
+            gtklicense.constant("GPL_2_0", (int)GTK_LICENSE_GPL_2_0);
+            gtklicense.constant("GPL_3_0", (int)GTK_LICENSE_GPL_3_0);
+            gtklicense.constant("LGPL_2_1", (int)GTK_LICENSE_LGPL_2_1);
+            gtklicense.constant("LGPL_3_0", (int)GTK_LICENSE_LGPL_3_0);
+            gtklicense.constant("BSD", (int)GTK_LICENSE_BSD);
+            gtklicense.constant("MIT_X11", (int)GTK_LICENSE_MIT_X11);
+            gtklicense.constant("ARTISTIC", (int)GTK_LICENSE_ARTISTIC);
+            gtklicense.constant("GPL_2_0_ONLY", (int)GTK_LICENSE_GPL_2_0_ONLY);
+            gtklicense.constant("GPL_3_0_ONLY", (int)GTK_LICENSE_GPL_3_0_ONLY);
+            gtklicense.constant("LGPL_2_1_ONLY", (int)GTK_LICENSE_LGPL_2_1_ONLY);
+            gtklicense.constant("LGPL_3_0_ONLY", (int)GTK_LICENSE_LGPL_3_0_ONLY);
 
         // GtkFileFilterFlags
         Php::Class<GtkFileFilterFlags_> gtkfilefilterflags("GtkFileFilterFlags");
@@ -1317,6 +1332,44 @@ extern "C"
             gtkmessagedialog.method<&GtkMessageDialog_::format_secondary_text>("format_secondary_text");
             gtkmessagedialog.method<&GtkMessageDialog_::format_secondary_markup>("format_secondary_markup");
             gtkmessagedialog.method<&GtkMessageDialog_::get_message_area>("get_message_area");
+        
+
+        // GtkAboutDialog
+        Php::Class<GtkAboutDialog_> gtkaboutdialog("GtkAboutDialog");
+            gtkaboutdialog.extends(gtkdialog);
+            gtkaboutdialog.method<&GtkAboutDialog_::__construct>("__construct");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_program_name>("get_program_name");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_program_name>("set_program_name");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_version>("get_version");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_version>("set_version");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_copyright>("get_copyright");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_copyright>("set_copyright");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_comments>("get_comments");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_comments>("set_comments");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_license>("get_license");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_license>("set_license");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_wrap_license>("get_wrap_license");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_wrap_license>("set_wrap_license");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_license_type>("get_license_type");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_license_type>("set_license_type");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_website>("get_website");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_website>("set_website");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_website_label>("get_website_label");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_website_label>("set_website_label");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_authors>("get_authors");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_authors>("set_authors");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_artists>("get_artists");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_artists>("set_artists");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_documenters>("get_documenters");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_documenters>("set_documenters");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_translator_credits>("get_translator_credits");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_translator_credits>("set_translator_credits");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_logo>("get_logo");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_logo>("set_logo");
+            gtkaboutdialog.method<&GtkAboutDialog_::get_logo_icon_name>("get_logo_icon_name");
+            gtkaboutdialog.method<&GtkAboutDialog_::set_logo_icon_name>("set_logo_icon_name");
+            gtkaboutdialog.method<&GtkAboutDialog_::add_credit_section>("add_credit_section");
+            gtkaboutdialog.method<&GtkAboutDialog_::gtk_show_about_dialog>("gtk_show_about_dialog");
         
 
         // GtkIconSize
@@ -2368,6 +2421,7 @@ extern "C"
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkdialog));
         extension.add(std::move(gtkfilechooserdialog));
+        extension.add(std::move(gtklicense));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtktogglebutton));
         extension.add(std::move(gtkcheckbutton));
@@ -2409,6 +2463,7 @@ extern "C"
         extension.add(std::move(gtkmessagetype));
         extension.add(std::move(gtkbuttonstype));
         extension.add(std::move(gtkmessagedialog));
+        extension.add(std::move(gtkaboutdialog));
         extension.add(std::move(gtkiconsize));
         extension.add(std::move(gtksizegroupmode));
         extension.add(std::move(gtktoolbarstyle));

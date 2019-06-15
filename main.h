@@ -80,9 +80,11 @@
     #include "src/GtkTextMark.h"
 
     #include "src/GtkDialogFlags.h"
+    #include "src/GtkLicense.h"
 
     #include "src/GtkResponseType.h"
     #include "src/GtkDialog.h"
+    #include "src/GtkAboutDialog.h"
 
     #include "src/GtkFileChooser.h"
     #include "src/GtkFileChooserDialog.h"

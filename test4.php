@@ -1,6 +1,8 @@
 <?php
 
-$builder = GtkBuilder::new_from_file("./test4.ui");
+defined("APPLICATION_PATH") || define("APPLICATION_PATH", dirname(__FILE__));
+
+$builder = GtkBuilder::new_from_file(APPLICATION_PATH . "/test4.ui");
 
 // Label
 $label = $builder->get_object("label");
