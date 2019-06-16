@@ -94,9 +94,8 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 
 // ----------------------
 // Vertical box
+// $vbox = new GtkBox(GtkOrientation::VERTICAL);
 $vbox = new GtkBox(GtkOrientation::VERTICAL);
-
-// $vbox->pack_start(2.2, TRUE, TRUE);
 
 // ----------------------
 // Menu

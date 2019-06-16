@@ -1,5 +1,6 @@
 
 #include "GtkBox.h"
+#include "../main.h"
 
 /**
  * Constructor
@@ -13,19 +14,28 @@ GtkBox_::~GtkBox_() = default;
 
 void GtkBox_::__construct(Php::Parameters &parameters)
 {
-	//phpgtk_check_parameter(parameters[0], Php::Type::Numeric, TRUE);
-
+	// ----
+	phpgtk_check_parameter(parameters, 1, Php::Type::Numeric, TRUE, NULL);
 	int int_child = (int)parameters[0];
 	GtkOrientation child = (GtkOrientation)int_child;
 
-	gint spacing = (gint)parameters[1];
+	// ----
+	bool check_1 = phpgtk_check_parameter(parameters, 2, Php::Type::Numeric, FALSE, NULL);
+	gint spacing = 0;
+	if(check_1) {
+		spacing = (gint)parameters[1];
+	}
 
+	// ----
 	instance = (gpointer *)gtk_box_new (child, spacing);
 
 }
 
 void GtkBox_::pack_start(Php::Parameters &parameters)
 {
+	// ----
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
+	
 	GtkWidget *child;
 	if(parameters.size() > 0) {
 		Php::Value object_child = parameters[0];
@@ -33,11 +43,26 @@ void GtkBox_::pack_start(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean expand = (gboolean)parameters[1];
+	// ----
+	bool check_2 = phpgtk_check_parameter(parameters, 2, Php::Type::Bool, FALSE, NULL);
+	gboolean expand = false;
+	if(check_2) {
+		expand = (gboolean)parameters[1];
+	}
 
-	gboolean fill = (gboolean)parameters[2];
+	// ----
+	bool check_3 = phpgtk_check_parameter(parameters, 3, Php::Type::Bool, FALSE, NULL);
+	gboolean fill = false;
+	if(check_3) {
+		fill = (gboolean)parameters[2];
+	}
 
-	guint padding = (int)parameters[3];
+	// ----
+	bool check_4 = phpgtk_check_parameter(parameters, 4, Php::Type::Numeric, FALSE, NULL);
+	guint padding = 0;
+	if(check_4) {
+		padding = (int)parameters[3];
+	}
 
 	gtk_box_pack_start (GTK_BOX(instance), child, expand, fill, padding);
 
@@ -45,6 +70,9 @@ void GtkBox_::pack_start(Php::Parameters &parameters)
 
 void GtkBox_::pack_end(Php::Parameters &parameters)
 {
+	// ----
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
+
 	GtkWidget *child;
 	if(parameters.size() > 0) {
 		Php::Value object_child = parameters[0];
@@ -52,11 +80,26 @@ void GtkBox_::pack_end(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean expand = (gboolean)parameters[1];
+	// ----
+	bool check_2 = phpgtk_check_parameter(parameters, 2, Php::Type::Bool, FALSE, NULL);
+	gboolean expand = false;
+	if(check_2) {
+		expand = (gboolean)parameters[1];
+	}
 
-	gboolean fill = (gboolean)parameters[2];
+	// ----
+	bool check_3 = phpgtk_check_parameter(parameters, 3, Php::Type::Bool, FALSE, NULL);
+	gboolean fill = false;
+	if(check_3) {
+		fill = (gboolean)parameters[2];
+	}
 
-	guint padding = (int)parameters[3];
+	// ----
+	bool check_4 = phpgtk_check_parameter(parameters, 4, Php::Type::Numeric, FALSE, NULL);
+	guint padding = 0;
+	if(check_4) {
+		padding = (int)parameters[3];
+	}
 
 	gtk_box_pack_end (GTK_BOX(instance), child, expand, fill, padding);
 
@@ -71,6 +114,8 @@ Php::Value GtkBox_::get_homogeneous()
 
 void GtkBox_::set_homogeneous(Php::Parameters &parameters)
 {
+	// ----
+	phpgtk_check_parameter(parameters, 1, Php::Type::Bool, TRUE, NULL);
 	gboolean homogeneous = (gboolean)parameters[0];
 
 	gtk_box_set_homogeneous (GTK_BOX(instance), homogeneous);
@@ -86,6 +131,7 @@ Php::Value GtkBox_::get_spacing()
 
 void GtkBox_::set_spacing(Php::Parameters &parameters)
 {
+	phpgtk_check_parameter(parameters, 1, Php::Type::Numeric, TRUE, NULL);
 	gboolean spacing = (gboolean)parameters[0];
 
 	gtk_box_set_spacing (GTK_BOX(instance), spacing);
@@ -94,6 +140,8 @@ void GtkBox_::set_spacing(Php::Parameters &parameters)
 
 void GtkBox_::reorder_child(Php::Parameters &parameters)
 {
+	// ----
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
 	GtkWidget *child;
 	if(parameters.size() > 0) {
 		Php::Value object_child = parameters[0];
@@ -101,6 +149,7 @@ void GtkBox_::reorder_child(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
+	phpgtk_check_parameter(parameters, 2, Php::Type::Numeric, TRUE, NULL);
 	gboolean position = (gboolean)parameters[1];
 
 	gtk_box_reorder_child (GTK_BOX(instance), child, position);
@@ -109,6 +158,7 @@ void GtkBox_::reorder_child(Php::Parameters &parameters)
 
 Php::Value GtkBox_::query_child_packing(Php::Parameters &parameters)
 {
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
 	GtkWidget *child;
 	if(parameters.size() > 0) {
 		Php::Value object_child = parameters[0];
@@ -148,6 +198,7 @@ Php::Value GtkBox_::query_child_packing(Php::Parameters &parameters)
 
 void GtkBox_::set_child_packing(Php::Parameters &parameters)
 {
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
 	GtkWidget *child;
 	if(parameters.size() > 0) {
 		Php::Value object_child = parameters[0];
@@ -155,12 +206,16 @@ void GtkBox_::set_child_packing(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
+	phpgtk_check_parameter(parameters, 2, Php::Type::Bool, TRUE, NULL);
 	gboolean expand = (gboolean)parameters[1];
 
+	phpgtk_check_parameter(parameters, 3, Php::Type::Bool, TRUE, NULL);
 	gboolean fill = (gboolean)parameters[2];
 
+	phpgtk_check_parameter(parameters, 4, Php::Type::Numeric, TRUE, NULL);
 	guint padding = (int)parameters[3];
 
+	phpgtk_check_parameter(parameters, 5, Php::Type::Numeric, TRUE, NULL);
 	int int_pack_type = (int)parameters[4];
 	GtkPackType pack_type = (GtkPackType)int_pack_type;
 
@@ -177,6 +232,7 @@ Php::Value GtkBox_::get_baseline_position()
 
 void GtkBox_::set_baseline_position(Php::Parameters &parameters)
 {
+	phpgtk_check_parameter(parameters, 1, Php::Type::Numeric, TRUE, NULL);
 	int int_position = (int)parameters[0];
 	GtkBaselinePosition position = (GtkBaselinePosition)int_position;
 
@@ -195,6 +251,7 @@ Php::Value GtkBox_::get_center_widget()
 
 void GtkBox_::set_center_widget(Php::Parameters &parameters)
 {
+	phpgtk_check_parameter(parameters, 1, Php::Type::Object, TRUE, "GtkWidget");
 	GtkWidget *widget;
 	if(parameters.size() > 0) {
 		Php::Value object_widget = parameters[0];
