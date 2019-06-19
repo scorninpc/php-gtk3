@@ -197,6 +197,11 @@ extern "C"
             gdkpixbuf.method<&GdkPixbuf_::get_option>("get_option");
             gdkpixbuf.method<&GdkPixbuf_::save>("save");
         
+        // GdkRGBA
+        Php::Class<GdkRGBA_> gdkrgba("GdkRGBA");
+            gdkrgba.method<&GdkRGBA_::parse>("parse");
+            gdkrgba.method<&GdkRGBA_::to_string>("to_string");
+            
 
         // GdkPixbufFormat
         Php::Class<GdkPixbufFormat_> gdkpixbufformat("GdkPixbufFormat");
@@ -532,6 +537,14 @@ extern "C"
             gtkdialog.method<&GtkDialog_::get_header_bar>("get_header_bar");
         
         
+        // GtkAppChooserDialog
+        Php::Class<GtkAppChooserDialog_> gtkappchooserdialog("GtkAppChooserDialog");
+            gtkappchooserdialog.extends(gtkdialog);
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::__construc>("__construc");
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::new_for_content_type>("new_for_content_type");
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::get_widget>("get_widget");
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::set_heading>("set_heading");
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::get_heading>("get_heading");
         // GtkFileChooser
         // Php::Interface gtkfilechooser("GtkFileChooser");
             // gtkfilechooser.extends(gobject);
@@ -542,6 +555,16 @@ extern "C"
         //     gtkfilechooser.extends(gobject);
         //     gtkfilechooser.method<&GtkFileChooser_::get_filename>("get_filename");
 
+        // GtkColorChooserDialog
+        Php::Class<GtkColorChooserDialog_> gtkcolorchooserdialog("GtkColorChooserDialog");
+            gtkcolorchooserdialog.extends(gtkdialog);
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::__construct>("__construct");
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::get_rgba>("get_rgba");
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::set_rgba>("set_rgba");
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::get_use_alpha>("get_use_alpha");
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::set_use_alpha>("set_use_alpha");
+            gtkcolorchooserdialog.method<&GtkColorChooserDialog_::add_palette>("add_palette");
+        
 
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
@@ -2401,6 +2424,7 @@ extern "C"
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkpixbuf));
+        extension.add(std::move(gdkrgba));
         
         extension.add(std::move(gdkpixbufformat));
         extension.add(std::move(gdkpixbufalphamode));
@@ -2420,7 +2444,9 @@ extern "C"
         extension.add(std::move(gtkpaned));
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkdialog));
+        extension.add(std::move(gtkappchooserdialog));
         extension.add(std::move(gtkfilechooserdialog));
+        extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtklicense));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtktogglebutton));

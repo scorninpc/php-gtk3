@@ -13,6 +13,8 @@
     #include "src/GdkEvent.h"
     #include "src/GdkEventButton.h"
     #include "src/GdkPixbuf.h"
+    
+    #include "src/GdkRGBA.h"
 
     #include "src/GdkPixbufFormat.h"
     #include "src/GdkPixbufAlphaMode.h"
@@ -85,6 +87,8 @@
     #include "src/GtkResponseType.h"
     #include "src/GtkDialog.h"
     #include "src/GtkAboutDialog.h"
+    #include "src/GtkAppChooserDialog.h"
+    #include "src/GtkColorChooserDialog.h"
 
     #include "src/GtkFileChooser.h"
     #include "src/GtkFileChooserDialog.h"

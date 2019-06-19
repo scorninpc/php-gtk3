@@ -52,8 +52,22 @@ function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
 
 function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
 {
+	global $win;
+
 	echo "\n------ GtkWindowButton1Clicked\n";
 	var_dump($param1);
+
+	$dialog = new GtkColorChooserDialog("color", $win);
+
+	$dialog->set_use_alpha(TRUE);
+	$dialog->set_rgba(GdkRGBA::parse("rgba(255,50,180,0.5)"));
+
+	$dialog->run();
+	$rgba = $dialog->get_rgba();
+	$dialog->destroy();
+	
+	var_dump($rgba->to_string());
+
 	
 	// global $win;
 
@@ -137,10 +151,12 @@ $vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 1); $hlbl->se
 // $btn1->set_label("Button 1");
 $btn1 = GtkButton::new_from_icon_name("help-faq", GtkIconSize::BUTTON);
 $hbox->pack_start($btn1, TRUE, TRUE, 1);
+$btn1->connect("clicked", "GtkWindowButton1Clicked", "Extra Param 1");
 
 // Button 2
 $btn2 = GtkButton::new_with_mnemonic("Bu_tton 2");
 $hbox->pack_start($btn2, TRUE, TRUE, 1);
+$btn2->connect("button-release-event", "GtkButton2Released");
 
 // Button 3
 $btn3 = GtkToggleButton::new_with_label("Button 3");
@@ -347,8 +363,7 @@ $win->set_icon_from_file("./logo.png");
 // Connects
 // $win->connect("destroy", "GtkWindowDestroy", "param 1", "param 2", "param 3", "param 4");
 $win->connect("delete-event", "GtkWindowDelete", "param 1", "param 2", "param 3", "param 4");
-$btn1->connect("clicked", "GtkWindowButton1Clicked", "Extra Param 1");
-$btn2->connect("button-release-event", "GtkButton2Released");
+
 // $btn2->connect("clicked", "GtkWindowReleased");
 // $btn2->connect("clicked", "GtkWindowButton2Clicked");
 // $btn3->connect("clicked", "GtkWindowButton3Clicked");

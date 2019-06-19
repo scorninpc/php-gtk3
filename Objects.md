@@ -12,10 +12,10 @@ _GObject
     │   │   │   ├── *GtkBin
     │   │   │   │   ├── *GtkWindow
     │   │   │   │   │   ├── *GtkDialog
-    │   │   │   │   │   │   ├── GtkAboutDialog
-    │   │   │   │   │   │   ├── GtkAppChooserDialog
+    │   │   │   │   │   │   ├── #GtkAboutDialog
+    │   │   │   │   │   │   ├── #GtkAppChooserDialog (falta implementação da interface GtkAppChooser)
     │   │   │   │   │   │   ├── GtkColorChooserDialog
-    │   │   │   │   │   │   ├── GtkColorSelectionDialog
+    │   │   │   │   │   │   ├── %GtkColorSelectionDialog
     │   │   │   │   │   │   ├── *GtkFileChooserDialog
     │   │   │   │   │   │   ├── GtkFontChooserDialog
     │   │   │   │   │   │   ├── GtkFontSelectionDialog
