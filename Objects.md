@@ -14,8 +14,8 @@ _GObject
     │   │   │   │   │   ├── *GtkDialog
     │   │   │   │   │   │   ├── #GtkAboutDialog
     │   │   │   │   │   │   ├── #GtkAppChooserDialog (falta implementação da interface GtkAppChooser)
-    │   │   │   │   │   │   ├── GtkColorChooserDialog
-    │   │   │   │   │   │   ├── %GtkColorSelectionDialog
+    │   │   │   │   │   │   ├── #GtkColorChooserDialog
+    │   │   │   │   │   │   ├── %GtkColorSelectionDialog (falta gtk_color_chooser_add_palette)
     │   │   │   │   │   │   ├── *GtkFileChooserDialog
     │   │   │   │   │   │   ├── GtkFontChooserDialog
     │   │   │   │   │   │   ├── GtkFontSelectionDialog

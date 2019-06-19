@@ -55,8 +55,8 @@ function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
 	global $win;
 
 	echo "\n------ GtkWindowButton1Clicked\n";
-	var_dump($param1);
-
+	
+	// 
 	$dialog = new GtkColorChooserDialog("color", $win);
 
 	$dialog->set_use_alpha(TRUE);
@@ -67,15 +67,6 @@ function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
 	$dialog->destroy();
 	
 	var_dump($rgba->to_string());
-
-	
-	// global $win;
-
-	// // Move
-	// $win->move(10, 10);
-
-	// var_dump($widget);
-	// var_dump($event);
 }
 
 function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
@@ -104,6 +95,18 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 		var_dump($value);
 		$model->set_value($iter, 1, !$value);
 	}
+}
+
+function grid_1x1($widget) 
+{
+	global $win;
+
+	$dialog = GtkAppChooserDialog::new_for_content_type($win, GtkDialogFlags::MODAL, "image/jpeg");
+	$a = $dialog->run();
+	$dialog->destroy();
+
+	var_dump($a);
+
 }
 
 // ----------------------
@@ -314,7 +317,7 @@ $vbox->pack_start($hlbl = new GtkLabel("- GtkGrid"), TRUE, TRUE, 1); $hlbl->set_
 $grid = new GtkGrid();
 $vbox->pack_start($grid, TRUE, TRUE);
 
-$grid->attach(GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1);
+$grid->attach($a=GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1); $a->connect("clicked", "grid_1x1");
 $grid->attach(GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
