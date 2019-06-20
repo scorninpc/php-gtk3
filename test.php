@@ -97,26 +97,6 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 	}
 }
 
-function grid_5x1($widget) 
-{
-	var_dump($widget->get_app_info());
-}
-
-function grid_1x1($widget) 
-{
-	global $win;
-
-	$dialog = GtkAppChooserDialog::new_for_content_type($win, GtkDialogFlags::MODAL, "image/jpeg");
-	$a = $dialog->run();
-
-	var_dump($dialog->get_app_info());
-
-	$dialog->destroy();
-
-	var_dump($a);
-
-}
-
 // ----------------------
 // Vertical box
 // $vbox = new GtkBox(GtkOrientation::VERTICAL);
@@ -326,7 +306,7 @@ $grid = new GtkGrid();
 $vbox->pack_start($grid, TRUE, TRUE);
 
 $grid->attach($a=GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1); $a->connect("clicked", "grid_1x1");
-$grid->attach(GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1);
+$grid->attach($a=GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1); $a->connect("clicked", "grid_1x3");
 $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
 $grid->attach(GtkButton::new_with_label("Grid 2x1"), 0, 1, 1, 1);
@@ -341,6 +321,38 @@ $grid->attach(GtkButton::new_with_label("Grid 3x3"), 2, 2, 2, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
 
 $grid->attach($a = new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1); $a->connect("changed", "grid_5x1");
+
+function grid_1x1($widget) 
+{
+	global $win;
+
+	$dialog = GtkAppChooserDialog::new_for_content_type($win, GtkDialogFlags::MODAL, "image/jpeg");
+	$a = $dialog->run();
+
+	var_dump($dialog->get_app_info());
+
+	$dialog->destroy();
+}
+
+function grid_1x3($widget) 
+{
+	global $win;
+
+	$dialog = new GtkFontChooserDialog("Select fotn", $win);
+	$dialog->set_preview_text("PHP-GTK3 is f*cking hot");
+	$a = $dialog->run();
+
+	var_dump($dialog->get_font());
+
+	$dialog->destroy();
+}
+
+function grid_5x1($widget) 
+{
+	var_dump($widget->get_app_info());
+}
+
+
 
 // ----------------------
 // Status

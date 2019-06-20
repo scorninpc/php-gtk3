@@ -89,6 +89,7 @@
     #include "src/GtkAboutDialog.h"
     #include "src/GtkAppChooserDialog.h"
     #include "src/GtkColorChooserDialog.h"
+    #include "src/GtkFontChooserDialog.h"
 
     #include "src/GtkFileChooser.h"
     #include "src/GtkFileChooserDialog.h"

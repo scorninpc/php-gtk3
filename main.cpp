@@ -546,7 +546,7 @@ extern "C"
             gtkappchooserdialog.method<&GtkAppChooserDialog_::set_heading>("set_heading");
             gtkappchooserdialog.method<&GtkAppChooserDialog_::get_heading>("get_heading");
             gtkappchooserdialog.method<&GtkAppChooserDialog_::get_app_info>("get_app_info");
-            
+
         // GtkFileChooser
         // Php::Interface gtkfilechooser("GtkFileChooser");
             // gtkfilechooser.extends(gobject);
@@ -1396,6 +1396,18 @@ extern "C"
             gtkaboutdialog.method<&GtkAboutDialog_::add_credit_section>("add_credit_section");
             gtkaboutdialog.method<&GtkAboutDialog_::gtk_show_about_dialog>("gtk_show_about_dialog");
         
+
+        // GtkFontChooserDialog
+        Php::Class<GtkFontChooserDialog_> gtkfontchooserdialog("GtkFontChooserDialog");
+            gtkfontchooserdialog.extends(gtkdialog);
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::__construct>("__construct");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::get_font_size>("get_font_size");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::get_font>("get_font");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::get_preview_text>("get_preview_text");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::set_preview_text>("set_preview_text");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::get_show_preview_entry>("get_show_preview_entry");
+            gtkfontchooserdialog.method<&GtkFontChooserDialog_::set_show_preview_entry>("set_show_preview_entry");
+
 
         // GtkIconSize
         Php::Class<GtkIconSize_> gtkiconsize("GtkIconSize");
@@ -2493,6 +2505,7 @@ extern "C"
         extension.add(std::move(gtkbuttonstype));
         extension.add(std::move(gtkmessagedialog));
         extension.add(std::move(gtkaboutdialog));
+        extension.add(std::move(gtkfontchooserdialog));
         extension.add(std::move(gtkiconsize));
         extension.add(std::move(gtksizegroupmode));
         extension.add(std::move(gtktoolbarstyle));

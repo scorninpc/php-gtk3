@@ -13,12 +13,12 @@ GtkAppChooserDialog_::~GtkAppChooserDialog_() = default;
 
 void GtkAppChooserDialog_::__construc(Php::Parameters &parameters)
 {
-	GtkWindow *parent;
-	if(parameters.size() > 0) {
-		Php::Value object_parent = parameters[0];
-		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
-		parent = GTK_WINDOW(phpgtk_parent->get_instance());
-	}
+	Php::Value object_parent = parameters[0];
+    GtkWindow *parent = NULL;
+    if (object_parent.instanceOf("GtkWindow")) {
+        GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
+        parent = GTK_WINDOW(phpgtk_parent->get_instance());
+    }
 
 	int int_flags = (int)parameters[1];
 	GtkDialogFlags flags = (GtkDialogFlags)int_flags;
@@ -34,12 +34,12 @@ void GtkAppChooserDialog_::__construc(Php::Parameters &parameters)
 
 Php::Value GtkAppChooserDialog_::new_for_content_type(Php::Parameters &parameters)
 {
-	GtkWindow *parent;
-	if(parameters.size() > 0) {
-		Php::Value object_parent = parameters[0];
-		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
-		parent = GTK_WINDOW(phpgtk_parent->get_instance());
-	}
+	Php::Value object_parent = parameters[0];
+    GtkWindow *parent = NULL;
+    if (object_parent.instanceOf("GtkWindow")) {
+        GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
+        parent = GTK_WINDOW(phpgtk_parent->get_instance());
+    }
 
 	int int_flags = (int)parameters[1];
 	GtkDialogFlags flags = (GtkDialogFlags)int_flags;
