@@ -79,7 +79,6 @@ Php::Value GtkAppChooserDialog_::get_heading()
 	return ret;
 }
 
-
 Php::Value GtkAppChooserDialog_::get_app_info()
 {
 

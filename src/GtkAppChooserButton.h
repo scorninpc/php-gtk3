@@ -44,6 +44,8 @@
             Php::Value get_heading();
 
             void set_heading(Php::Parameters &parameters);
+            
+            Php::Value get_app_info();
     };
 
 #endif

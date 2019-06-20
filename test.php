@@ -97,6 +97,11 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 	}
 }
 
+function grid_5x1($widget) 
+{
+	var_dump($widget->get_app_info());
+}
+
 function grid_1x1($widget) 
 {
 	global $win;
@@ -335,7 +340,7 @@ $grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 2, 2, 2, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
 
-$grid->attach(new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1);
+$grid->attach($a = new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1); $a->connect("changed", "grid_5x1");
 
 // ----------------------
 // Status

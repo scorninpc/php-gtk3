@@ -95,3 +95,26 @@ void GtkAppChooserButton_::set_heading(Php::Parameters &parameters)
 
 }
 
+Php::Value GtkAppChooserButton_::get_app_info()
+{
+
+	GAppInfo *appinfo = gtk_app_chooser_get_app_info(GTK_APP_CHOOSER(instance));
+
+	// Cria o retorno
+	Php::Value arr;
+	arr[0] = arr["id"] = g_app_info_get_id(appinfo);
+	arr[1] = arr["name"] = g_app_info_get_name(appinfo);
+	arr[2] = arr["display_name"] = g_app_info_get_display_name(appinfo);
+	arr[3] = arr["description"] = g_app_info_get_description(appinfo);
+	arr[4] = arr["executable"] = g_app_info_get_executable(appinfo);
+	arr[5] = arr["commandline"] = g_app_info_get_commandline(appinfo);
+	arr[6] = arr["icon"] = g_icon_to_string(g_app_info_get_icon(appinfo));
+	arr[7] = arr["supports_files"] = g_app_info_supports_files(appinfo);
+	arr[8] = arr["supports_uris"] = g_app_info_supports_uris(appinfo);
+	arr[9] = arr["should_show"] = g_app_info_should_show(appinfo);
+	arr[10] = arr["can_delete"] = g_app_info_can_delete(appinfo);
+	arr[11] = arr["can_remove_supports_type"] = g_app_info_can_remove_supports_type(appinfo);
+	// arr[12] = arr["supported_types"] = g_app_info_get_supported_types(appinfo);
+
+	return arr;
+}

@@ -1879,6 +1879,7 @@ extern "C"
             gtkappchooserbutton.method<&GtkAppChooserButton_::set_show_dialog_item>("set_show_dialog_item");
             gtkappchooserbutton.method<&GtkAppChooserButton_::get_heading>("get_heading");
             gtkappchooserbutton.method<&GtkAppChooserButton_::set_heading>("set_heading");
+            gtkappchooserbutton.method<&GtkAppChooserButton_::get_app_info>("get_app_info");
 
 
         // GtkBuilder
