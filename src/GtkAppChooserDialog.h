@@ -36,6 +36,8 @@
             void set_heading(Php::Parameters &parameters);
 
             Php::Value get_heading();
+            
+            Php::Value get_app_info();
     };
 
 #endif

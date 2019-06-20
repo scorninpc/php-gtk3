@@ -545,6 +545,8 @@ extern "C"
             gtkappchooserdialog.method<&GtkAppChooserDialog_::get_widget>("get_widget");
             gtkappchooserdialog.method<&GtkAppChooserDialog_::set_heading>("set_heading");
             gtkappchooserdialog.method<&GtkAppChooserDialog_::get_heading>("get_heading");
+            gtkappchooserdialog.method<&GtkAppChooserDialog_::get_app_info>("get_app_info");
+            
         // GtkFileChooser
         // Php::Interface gtkfilechooser("GtkFileChooser");
             // gtkfilechooser.extends(gobject);

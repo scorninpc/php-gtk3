@@ -103,6 +103,9 @@ function grid_1x1($widget)
 
 	$dialog = GtkAppChooserDialog::new_for_content_type($win, GtkDialogFlags::MODAL, "image/jpeg");
 	$a = $dialog->run();
+
+	var_dump($dialog->get_app_info());
+
 	$dialog->destroy();
 
 	var_dump($a);
@@ -331,6 +334,8 @@ $grid->attach(GtkButton::new_with_label("Grid 3x1"), 0, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 2, 2, 2, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
+
+$grid->attach(new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1);
 
 // ----------------------
 // Status
