@@ -17,10 +17,10 @@ _GObject
     │   │   │   │   │   │   ├── #GtkColorChooserDialog
     │   │   │   │   │   │   ├── %GtkColorSelectionDialog (falta gtk_color_chooser_add_palette)
     │   │   │   │   │   │   ├── *GtkFileChooserDialog
-    │   │   │   │   │   │   ├── GtkFontChooserDialog
-    │   │   │   │   │   │   ├── GtkFontSelectionDialog
+    │   │   │   │   │   │   ├── *GtkFontChooserDialog
+    │   │   │   │   │   │   ├── %GtkFontSelectionDialog
     │   │   │   │   │   │   ├── *GtkMessageDialog
-    │   │   │   │   │   │   ├── GtkPageSetupUnixDialog
+    │   │   │   │   │   │   ├── ??GtkPageSetupUnixDialog??
     │   │   │   │   │   │   ├── GtkPrintUnixDialog
     │   │   │   │   │   │   ╰── GtkRecentChooserDialog
     │   │   │   │   │   ├── GtkApplicationWindow
@@ -201,12 +201,12 @@ _GObject
     │   ╰── GtkMountOperation
     ├── GEmblemedIcon
     │   ╰── GtkNumerableIcon
-    ├── GtkPageSetup
+    ├── #GtkPageSetup
     ├── GtkPrinter
     ├── GtkPrintContext
     ├── GtkPrintJob
     ├── GtkPrintOperation
-    ├── GtkPrintSettings
+    ├── #GtkPrintSettings
     ├── GtkRcStyle
     ├── GtkRecentManager
     ├── GtkSettings
@@ -250,7 +250,7 @@ _GObject
     ├── GtkRecentChooser
     ╰── GtkToolShell
     GBoxed
-    ├── GtkPaperSize
+    ├── *GtkPaperSize
     ├── *GtkTextIter
     ├── GtkSelectionData
     ├── #GtkRequisition

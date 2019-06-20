@@ -568,6 +568,162 @@ extern "C"
             gtkcolorchooserdialog.method<&GtkColorChooserDialog_::add_palette>("add_palette");
         
 
+        // GtkPrintSettings
+        Php::Class<GtkPrintSettings_> gtkprintsettings("GtkPrintSettings");
+            gtkprintsettings.extends(gobject);
+            gtkprintsettings.method<&GtkPrintSettings_::__construct>("__construct");
+            gtkprintsettings.method<&GtkPrintSettings_::copy>("copy");
+            gtkprintsettings.method<&GtkPrintSettings_::has_key>("has_key");
+            gtkprintsettings.method<&GtkPrintSettings_::get>("get");
+            gtkprintsettings.method<&GtkPrintSettings_::set>("set");
+            gtkprintsettings.method<&GtkPrintSettings_::unset>("unset");
+            gtkprintsettings.method<&GtkPrintSettings_::foreach>("foreach");
+            gtkprintsettings.method<&GtkPrintSettings_::get_bool>("get_bool");
+            gtkprintsettings.method<&GtkPrintSettings_::set_bool>("set_bool");
+            gtkprintsettings.method<&GtkPrintSettings_::get_double>("get_double");
+            gtkprintsettings.method<&GtkPrintSettings_::get_double_with_default>("get_double_with_default");
+            gtkprintsettings.method<&GtkPrintSettings_::set_double>("set_double");
+            gtkprintsettings.method<&GtkPrintSettings_::get_length>("get_length");
+            gtkprintsettings.method<&GtkPrintSettings_::set_length>("set_length");
+            gtkprintsettings.method<&GtkPrintSettings_::get_int>("get_int");
+            gtkprintsettings.method<&GtkPrintSettings_::get_int_with_default>("get_int_with_default");
+            gtkprintsettings.method<&GtkPrintSettings_::set_int>("set_int");
+            gtkprintsettings.method<&GtkPrintSettings_::get_printer>("get_printer");
+            gtkprintsettings.method<&GtkPrintSettings_::set_printer>("set_printer");
+            gtkprintsettings.method<&GtkPrintSettings_::get_orientation>("get_orientation");
+            gtkprintsettings.method<&GtkPrintSettings_::set_orientation>("set_orientation");
+            gtkprintsettings.method<&GtkPrintSettings_::get_paper_size>("get_paper_size");
+            gtkprintsettings.method<&GtkPrintSettings_::set_paper_size>("set_paper_size");
+            gtkprintsettings.method<&GtkPrintSettings_::get_paper_width>("get_paper_width");
+            gtkprintsettings.method<&GtkPrintSettings_::set_paper_width>("set_paper_width");
+            gtkprintsettings.method<&GtkPrintSettings_::get_paper_height>("get_paper_height");
+            gtkprintsettings.method<&GtkPrintSettings_::set_paper_height>("set_paper_height");
+            gtkprintsettings.method<&GtkPrintSettings_::get_use_color>("get_use_color");
+            gtkprintsettings.method<&GtkPrintSettings_::set_use_color>("set_use_color");
+            gtkprintsettings.method<&GtkPrintSettings_::get_collate>("get_collate");
+            gtkprintsettings.method<&GtkPrintSettings_::set_collate>("set_collate");
+            gtkprintsettings.method<&GtkPrintSettings_::get_reverse>("get_reverse");
+            gtkprintsettings.method<&GtkPrintSettings_::set_reverse>("set_reverse");
+            gtkprintsettings.method<&GtkPrintSettings_::get_duplex>("get_duplex");
+            gtkprintsettings.method<&GtkPrintSettings_::set_duplex>("set_duplex");
+            gtkprintsettings.method<&GtkPrintSettings_::get_quality>("get_quality");
+            gtkprintsettings.method<&GtkPrintSettings_::set_quality>("set_quality");
+            gtkprintsettings.method<&GtkPrintSettings_::get_n_copies>("get_n_copies");
+            gtkprintsettings.method<&GtkPrintSettings_::set_n_copies>("set_n_copies");
+            gtkprintsettings.method<&GtkPrintSettings_::get_number_up>("get_number_up");
+            gtkprintsettings.method<&GtkPrintSettings_::set_number_up>("set_number_up");
+            gtkprintsettings.method<&GtkPrintSettings_::get_number_up_layout>("get_number_up_layout");
+            gtkprintsettings.method<&GtkPrintSettings_::set_number_up_layout>("set_number_up_layout");
+            gtkprintsettings.method<&GtkPrintSettings_::get_resolution>("get_resolution");
+            gtkprintsettings.method<&GtkPrintSettings_::set_resolution>("set_resolution");
+            gtkprintsettings.method<&GtkPrintSettings_::set_resolution_xy>("set_resolution_xy");
+            gtkprintsettings.method<&GtkPrintSettings_::get_resolution_x>("get_resolution_x");
+            gtkprintsettings.method<&GtkPrintSettings_::get_resolution_y>("get_resolution_y");
+            gtkprintsettings.method<&GtkPrintSettings_::get_printer_lpi>("get_printer_lpi");
+            gtkprintsettings.method<&GtkPrintSettings_::set_printer_lpi>("set_printer_lpi");
+            gtkprintsettings.method<&GtkPrintSettings_::get_scale>("get_scale");
+            gtkprintsettings.method<&GtkPrintSettings_::set_scale>("set_scale");
+            gtkprintsettings.method<&GtkPrintSettings_::get_print_pages>("get_print_pages");
+            gtkprintsettings.method<&GtkPrintSettings_::set_print_pages>("set_print_pages");
+            gtkprintsettings.method<&GtkPrintSettings_::get_page_ranges>("get_page_ranges");
+            gtkprintsettings.method<&GtkPrintSettings_::set_page_ranges>("set_page_ranges");
+            gtkprintsettings.method<&GtkPrintSettings_::get_page_set>("get_page_set");
+            gtkprintsettings.method<&GtkPrintSettings_::set_page_set>("set_page_set");
+            gtkprintsettings.method<&GtkPrintSettings_::get_default_source>("get_default_source");
+            gtkprintsettings.method<&GtkPrintSettings_::set_default_source>("set_default_source");
+            gtkprintsettings.method<&GtkPrintSettings_::get_media_type>("get_media_type");
+            gtkprintsettings.method<&GtkPrintSettings_::set_media_type>("set_media_type");
+            gtkprintsettings.method<&GtkPrintSettings_::get_dither>("get_dither");
+            gtkprintsettings.method<&GtkPrintSettings_::set_dither>("set_dither");
+            gtkprintsettings.method<&GtkPrintSettings_::get_finishings>("get_finishings");
+            gtkprintsettings.method<&GtkPrintSettings_::set_finishings>("set_finishings");
+            gtkprintsettings.method<&GtkPrintSettings_::get_output_bin>("get_output_bin");
+            gtkprintsettings.method<&GtkPrintSettings_::set_output_bin>("set_output_bin");
+            gtkprintsettings.method<&GtkPrintSettings_::new_from_file>("new_from_file");
+            gtkprintsettings.method<&GtkPrintSettings_::new_from_key_file>("new_from_key_file");
+            gtkprintsettings.method<&GtkPrintSettings_::load_file>("load_file");
+            gtkprintsettings.method<&GtkPrintSettings_::load_key_file>("load_key_file");
+            gtkprintsettings.method<&GtkPrintSettings_::to_file>("to_file");
+            gtkprintsettings.method<&GtkPrintSettings_::to_key_file>("to_key_file");
+
+
+        // // GtkPageSetupUnixDialog
+        // Php::Class<GtkPageSetupUnixDialog_> gtkpagesetupunixdialog("GtkPageSetupUnixDialog");
+        //     gtkpagesetupunixdialog.extends(gtkdialog);
+        //     gtkpagesetupunixdialog.method<&GtkPageSetupUnixDialog_::__construct>("__construct");
+        //     gtkpagesetupunixdialog.method<&GtkPageSetupUnixDialog_::set_page_setup>("set_page_setup");
+        //     gtkpagesetupunixdialog.method<&GtkPageSetupUnixDialog_::get_page_setup>("get_page_setup");
+        //     gtkpagesetupunixdialog.method<&GtkPageSetupUnixDialog_::set_print_settings>("set_print_settings");
+        //     gtkpagesetupunixdialog.method<&GtkPageSetupUnixDialog_::get_print_settings>("get_print_settings");
+        
+
+
+        // GtkPageSetup
+        Php::Class<GtkPageSetup_> gtkpagesetup("GtkPageSetup");
+            gtkpagesetup.extends(gobject);
+            gtkpagesetup.method<&GtkPageSetup_::__construct>("__construct");
+            gtkpagesetup.method<&GtkPageSetup_::copy>("copy");
+            gtkpagesetup.method<&GtkPageSetup_::get_orientation>("get_orientation");
+            gtkpagesetup.method<&GtkPageSetup_::set_orientation>("set_orientation");
+            gtkpagesetup.method<&GtkPageSetup_::get_paper_size>("get_paper_size");
+            gtkpagesetup.method<&GtkPageSetup_::set_paper_size>("set_paper_size");
+            gtkpagesetup.method<&GtkPageSetup_::get_top_margin>("get_top_margin");
+            gtkpagesetup.method<&GtkPageSetup_::set_top_margin>("set_top_margin");
+            gtkpagesetup.method<&GtkPageSetup_::get_bottom_margin>("get_bottom_margin");
+            gtkpagesetup.method<&GtkPageSetup_::set_bottom_margin>("set_bottom_margin");
+            gtkpagesetup.method<&GtkPageSetup_::get_left_margin>("get_left_margin");
+            gtkpagesetup.method<&GtkPageSetup_::set_left_margin>("set_left_margin");
+            gtkpagesetup.method<&GtkPageSetup_::get_right_margin>("get_right_margin");
+            gtkpagesetup.method<&GtkPageSetup_::set_right_margin>("set_right_margin");
+            gtkpagesetup.method<&GtkPageSetup_::set_paper_size_and_default_margins>("set_paper_size_and_default_margins");
+            gtkpagesetup.method<&GtkPageSetup_::get_paper_width>("get_paper_width");
+            gtkpagesetup.method<&GtkPageSetup_::get_paper_height>("get_paper_height");
+            gtkpagesetup.method<&GtkPageSetup_::get_page_width>("get_page_width");
+            gtkpagesetup.method<&GtkPageSetup_::get_page_height>("get_page_height");
+            gtkpagesetup.method<&GtkPageSetup_::new_from_file>("new_from_file");
+            gtkpagesetup.method<&GtkPageSetup_::new_from_key_file>("new_from_key_file");
+            gtkpagesetup.method<&GtkPageSetup_::load_file>("load_file");
+            gtkpagesetup.method<&GtkPageSetup_::load_key_file>("load_key_file");
+            gtkpagesetup.method<&GtkPageSetup_::to_file>("to_file");
+            gtkpagesetup.method<&GtkPageSetup_::to_key_file>("to_key_file");
+
+
+        // GtkPaperSize
+        Php::Class<GtkPaperSize_> gtkpapersize("GtkPaperSize");
+            gtkpapersize.extends(gobject);
+            gtkpapersize.method<&GtkPaperSize_::__construct>("__construct");
+            gtkpapersize.method<&GtkPaperSize_::new_from_ppd>("new_from_ppd");
+            gtkpapersize.method<&GtkPaperSize_::new_from_ipp>("new_from_ipp");
+            gtkpapersize.method<&GtkPaperSize_::new_custom>("new_custom");
+            gtkpapersize.method<&GtkPaperSize_::copy>("copy");
+            gtkpapersize.method<&GtkPaperSize_::free>("free");
+            gtkpapersize.method<&GtkPaperSize_::is_equal>("is_equal");
+            gtkpapersize.method<&GtkPaperSize_::get_paper_sizes>("get_paper_sizes");
+            gtkpapersize.method<&GtkPaperSize_::get_name>("get_name");
+            gtkpapersize.method<&GtkPaperSize_::get_display_name>("get_display_name");
+            gtkpapersize.method<&GtkPaperSize_::get_ppd_name>("get_ppd_name");
+            gtkpapersize.method<&GtkPaperSize_::get_width>("get_width");
+            gtkpapersize.method<&GtkPaperSize_::get_height>("get_height");
+            gtkpapersize.method<&GtkPaperSize_::is_ipp>("is_ipp");
+            gtkpapersize.method<&GtkPaperSize_::is_custom>("is_custom");
+            gtkpapersize.method<&GtkPaperSize_::set_size>("set_size");
+            gtkpapersize.method<&GtkPaperSize_::get_default_top_margin>("get_default_top_margin");
+            gtkpapersize.method<&GtkPaperSize_::get_default_bottom_margin>("get_default_bottom_margin");
+            gtkpapersize.method<&GtkPaperSize_::get_default_left_margin>("get_default_left_margin");
+            gtkpapersize.method<&GtkPaperSize_::get_default_right_margin>("get_default_right_margin");
+            gtkpapersize.method<&GtkPaperSize_::get_default>("get_default");
+            gtkpapersize.method<&GtkPaperSize_::new_from_key_file>("new_from_key_file");
+            gtkpapersize.method<&GtkPaperSize_::to_key_file>("to_key_file");
+
+
+        // GtkUnit
+        Php::Class<GtkUnit_> gtkunit("GtkUnit");
+            gtkunit.constant("NONE", (int)GTK_UNIT_NONE);
+            gtkunit.constant("POINTS", (int)GTK_UNIT_POINTS);
+            gtkunit.constant("INCH", (int)GTK_UNIT_INCH);
+            gtkunit.constant("MM", (int)GTK_UNIT_MM);
+
+
         // GtkButton
         Php::Class<GtkButton_> gtkbutton("GtkButton");
             gtkbutton.extends(gtkbin);
@@ -701,7 +857,7 @@ extern "C"
         Php::Class<GtkSortType_> gtksorttype("GtkSortType");
             gtksorttype.constant("ASCENDING", (int)GTK_SORT_ASCENDING);
             gtksorttype.constant("DESCENDING", (int)GTK_SORT_DESCENDING);
-        
+
 
         // GtkTreeView
         Php::Class<GtkTreeView_> gtktreeview("GtkTreeView");
@@ -1396,6 +1552,53 @@ extern "C"
             gtkaboutdialog.method<&GtkAboutDialog_::add_credit_section>("add_credit_section");
             gtkaboutdialog.method<&GtkAboutDialog_::gtk_show_about_dialog>("gtk_show_about_dialog");
         
+        // GtkPageOrientation
+        Php::Class<GtkPageOrientation_> gtkpageorientation("GtkPageOrientation");
+            gtkpageorientation.constant("PORTRAIT", (int)GTK_PAGE_ORIENTATION_PORTRAIT);
+            gtkpageorientation.constant("LANDSCAPE", (int)GTK_PAGE_ORIENTATION_LANDSCAPE);
+            gtkpageorientation.constant("REVERSE_PORTRAIT", (int)GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT);
+            gtkpageorientation.constant("REVERSE_LANDSCAPE", (int)GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE);
+
+
+        // GtkPrintDuplex
+        Php::Class<GtkPrintDuplex_> gtkprintduplex("GtkPrintDuplex");
+            gtkprintduplex.constant("SIMPLEX", (int)GTK_PRINT_DUPLEX_SIMPLEX);
+            gtkprintduplex.constant("HORIZONTAL", (int)GTK_PRINT_DUPLEX_HORIZONTAL);
+            gtkprintduplex.constant("VERTICAL", (int)GTK_PRINT_DUPLEX_VERTICAL);
+
+        // GtkPrintQuality
+        Php::Class<GtkPrintQuality_> gtkprintquality("GtkPrintQuality");
+            gtkprintquality.constant("LOW", (int)GTK_PRINT_QUALITY_LOW);
+            gtkprintquality.constant("NORMAL", (int)GTK_PRINT_QUALITY_NORMAL);
+            gtkprintquality.constant("HIGH", (int)GTK_PRINT_QUALITY_HIGH);
+            gtkprintquality.constant("DRAFT", (int)GTK_PRINT_QUALITY_DRAFT);
+
+        // GtkNumberUpLayout
+        Php::Class<GtkNumberUpLayout_> gtknumberuplayout("GtkNumberUpLayout");
+            gtknumberuplayout.constant("LEFT_TO_RIGHT_TOP_TO_BOTTOM", (int)GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM);
+            gtknumberuplayout.constant("LEFT_TO_RIGHT_BOTTOM_TO_TOP", (int)GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP);
+            gtknumberuplayout.constant("RIGHT_TO_LEFT_TOP_TO_BOTTOM", (int)GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM);
+            gtknumberuplayout.constant("RIGHT_TO_LEFT_BOTTOM_TO_TOP", (int)GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP);
+            gtknumberuplayout.constant("TOP_TO_BOTTOM_LEFT_TO_RIGHT", (int)GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT);
+            gtknumberuplayout.constant("TOP_TO_BOTTOM_RIGHT_TO_LEFT", (int)GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT);
+            gtknumberuplayout.constant("BOTTOM_TO_TOP_LEFT_TO_RIGHT", (int)GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT);
+            gtknumberuplayout.constant("BOTTOM_TO_TOP_RIGHT_TO_LEFT", (int)GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT);
+
+
+        // GtkPrintPages
+        Php::Class<GtkPrintPages_> gtkprintpages("GtkPrintPages");
+            gtkprintpages.constant("ALL", (int)GTK_PRINT_PAGES_ALL);
+            gtkprintpages.constant("CURRENT", (int)GTK_PRINT_PAGES_CURRENT);
+            gtkprintpages.constant("RANGES", (int)GTK_PRINT_PAGES_RANGES);
+            gtkprintpages.constant("SELECTION", (int)GTK_PRINT_PAGES_SELECTION);
+        
+
+        // GtkPageSet
+        Php::Class<GtkPageSet_> gtkpageset("GtkPageSet");
+            gtkpageset.constant("ALL", (int)GTK_PAGE_SET_ALL);
+            gtkpageset.constant("EVEN", (int)GTK_PAGE_SET_EVEN);
+            gtkpageset.constant("ODD", (int)GTK_PAGE_SET_ODD);
+
 
         // GtkFontChooserDialog
         Php::Class<GtkFontChooserDialog_> gtkfontchooserdialog("GtkFontChooserDialog");
@@ -2462,6 +2665,17 @@ extern "C"
         extension.add(std::move(gtkappchooserdialog));
         extension.add(std::move(gtkfilechooserdialog));
         extension.add(std::move(gtkcolorchooserdialog));
+        extension.add(std::move(gtkprintsettings));
+        // extension.add(std::move(gtkpagesetupunixdialog));
+        extension.add(std::move(gtkpagesetup));
+        extension.add(std::move(gtkpapersize));
+        extension.add(std::move(gtkunit));
+        extension.add(std::move(gtkpageset));
+        extension.add(std::move(gtkprintpages));
+        extension.add(std::move(gtknumberuplayout));
+        extension.add(std::move(gtkprintquality));
+        extension.add(std::move(gtkprintduplex));
+        extension.add(std::move(gtkpageorientation));
         extension.add(std::move(gtklicense));
         extension.add(std::move(gtkbutton));
         extension.add(std::move(gtktogglebutton));

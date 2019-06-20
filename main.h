@@ -91,6 +91,20 @@
     #include "src/GtkColorChooserDialog.h"
     #include "src/GtkFontChooserDialog.h"
 
+    // #include "src/GtkPageSetupUnixDialog.h"
+    #include "src/GtkPrintSettings.h"
+
+    #include "src/GtkPageOrientation.h"
+    #include "src/GtkPrintDuplex.h"
+    #include "src/GtkPrintQuality.h"
+    #include "src/GtkNumberUpLayout.h"
+    #include "src/GtkPrintPages.h"
+    #include "src/GtkPageSet.h"
+    #include "src/GtkUnit.h"
+    
+    #include "src/GtkPaperSize.h"
+    #include "src/GtkPageSetup.h"
+
     #include "src/GtkFileChooser.h"
     #include "src/GtkFileChooserDialog.h"
     #include "src/GtkFileChooserAction.h"
