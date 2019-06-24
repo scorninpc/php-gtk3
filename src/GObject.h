@@ -51,6 +51,9 @@
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
              */
             void handler_disconnect(Php::Parameters &parameters);
+
+
+            void __clone();
     };
 
 #endif

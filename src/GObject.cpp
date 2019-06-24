@@ -29,6 +29,86 @@ struct GObject_::st_callback {
 GObject_::GObject_() = default;
 GObject_::~GObject_() = default;
 
+
+void GObject_::__clone()
+{
+    // GObject *object_src = G_OBJECT(instance);
+
+
+    // // Get name of gType
+    // std::string gtype_name = g_type_name(G_TYPE_FROM_INSTANCE(object_src));
+
+    // //
+
+    // // Return PHPGTK Object
+    // GObject_ *phpgtk_widget = new GObject_();
+    // phpgtk_widget->set_instance((gpointer *)object_src);
+    // return Php::Object(gtype_name.c_str(), phpgtk_widget);
+
+
+
+    GObject *src = G_OBJECT(instance);
+    
+    GParameter *params;
+    GParamSpec **specs;
+    guint n, n_specs, n_params;
+
+    specs = g_object_class_list_properties(G_OBJECT_GET_CLASS(instance), &n_specs);
+    params = g_new0(GParameter, n_specs);
+    n_params = 0;
+
+
+    gpointer dst = g_object_new(G_TYPE_OBJECT, 0, NULL);
+
+
+
+    for (n = 0; n < n_specs; ++n)
+        if (  strcmp(specs[n]->name, "parent")      &&     ((specs[n]->flags & G_PARAM_READWRITE) == G_PARAM_READWRITE)     ) {
+
+            params[n_params].name = g_intern_string(specs[n]->name);
+            g_value_init(&params[n_params].value, specs[n]->value_type);
+            g_object_get_property(src, specs[n]->name, &params[n_params].value);
+            ++ n_params;
+
+
+
+
+            g_value_init(&params[n_params].value, specs[n]->value_type);
+
+            g_object_set_property(G_OBJECT(dst), specs[n]->name, &params[n_params].value);
+
+    }
+
+    
+
+    // g_free(specs);
+    // g_free(params);
+
+    set_instance((gpointer *)dst);
+
+    // GType a = G_TYPE_FROM_CLASS(instance);
+
+    
+    // Php::call("var_dump", g_type_name(a));
+
+    // instance = g_object_ref(instance);
+    // gtk_widget_unmap(GTK_WIDGET(instance));
+
+    // GtkWidget *parent = gtk_widget_get_parent(GTK_WIDGET(instance));
+        
+
+    // g_object_ref(instance);
+
+    // gtk_container_remove(GTK_CONTAINER(parent), GTK_WIDGET(instance));
+
+    // instance = &instance_a;
+
+    // GObject *new_object = g_object_new_with_properties(instance);
+
+    // instance = (gpointer *)gtk_button_new_with_label("teste");
+    //gtk_widget_destroy(GTK_WIDGET(instance));
+}
+
 /**
  * Return original instance
  */
