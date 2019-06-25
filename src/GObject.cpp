@@ -44,7 +44,7 @@ void GObject_::__clone()
     // Save into buffer
     snprintf(buffer, len+1, "Trying to clone an uncloneable object of class %s", gtype_name.c_str());
 
-    throw Php::Exception(buffer);
+    throw Php::Exception("asdasdasd");
 }
 
 /**
