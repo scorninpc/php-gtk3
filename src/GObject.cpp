@@ -139,12 +139,16 @@ bool GObject_::connect_callback(gpointer user_data, ...)
             case G_TYPE_UCHAR:
                 // Php::call("var_dump", "uchar");
                 break;
-            case G_TYPE_STRING:
-                // Php::call("var_dump", "string");
 
+            case G_TYPE_STRING:
                 internal_parameters[i+1] = va_arg(ap, char *);
 
-                break;
+            case G_TYPE_BOOLEAN:
+                internal_parameters[i+1] = va_arg(ap, gboolean);
+
+            case G_TYPE_INT:
+                internal_parameters[i+1] = va_arg(ap, gint);
+                
             case G_TYPE_OBJECT:
                 // Php::call("var_dump", "gobject");
                 break;

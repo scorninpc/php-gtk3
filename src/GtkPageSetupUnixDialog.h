@@ -8,6 +8,7 @@
 	#include "GtkDialog.h"
 	#include "GtkPageSetup.h"
     #include "GtkWidget.h"
+    #include "GtkContainer.h"
 
     /**
      * GtkPageSetupUnixDialog_

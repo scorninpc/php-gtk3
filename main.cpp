@@ -312,6 +312,8 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_margin_bottom>("get_margin_bottom");
             gtkwidget.method<&GtkWidget_::set_size_request>("set_size_request");
             gtkwidget.method<&GtkWidget_::get_size_request>("get_size_request");
+            gtkwidget.method<&GtkWidget_::set_no_show_all>("set_no_show_all");
+            gtkwidget.method<&GtkWidget_::get_no_show_all>("get_no_show_all");
         
 
         // GtkMisc
@@ -2633,6 +2635,31 @@ extern "C"
             gtkcalendar.method<&GtkCalendar_::set_detail_height_rows>("set_detail_height_rows");
         
 
+        // GtkSpinner
+        Php::Class<GtkSpinner_> gtkspinner("GtkSpinner");
+            gtkspinner.extends(gtkwidget);
+            gtkspinner.method<&GtkSpinner_::__construct>("__construct");
+            gtkspinner.method<&GtkSpinner_::start>("start");
+            gtkspinner.method<&GtkSpinner_::stop>("stop");
+
+
+        // GtkInfoBar
+        Php::Class<GtkInfoBar_> gtkinfobar("GtkInfoBar");
+            gtkinfobar.extends(gtkbox);
+            gtkinfobar.method<&GtkInfoBar_::__construct>("__construct");
+            gtkinfobar.method<&GtkInfoBar_::new_with_buttons>("new_with_buttons");
+            gtkinfobar.method<&GtkInfoBar_::add_action_widget>("add_action_widget");
+            gtkinfobar.method<&GtkInfoBar_::add_button>("add_button");
+            gtkinfobar.method<&GtkInfoBar_::add_buttons>("add_buttons");
+            gtkinfobar.method<&GtkInfoBar_::set_response_sensitive>("set_response_sensitive");
+            gtkinfobar.method<&GtkInfoBar_::set_default_response>("set_default_response");
+            gtkinfobar.method<&GtkInfoBar_::response>("response");
+            gtkinfobar.method<&GtkInfoBar_::set_message_type>("set_message_type");
+            gtkinfobar.method<&GtkInfoBar_::get_message_type>("get_message_type");
+            gtkinfobar.method<&GtkInfoBar_::get_action_area>("get_action_area");
+            gtkinfobar.method<&GtkInfoBar_::get_content_area>("get_content_area");
+            gtkinfobar.method<&GtkInfoBar_::get_show_close_button>("get_show_close_button");
+            gtkinfobar.method<&GtkInfoBar_::set_show_close_button>("set_show_close_button");
 
 
         
@@ -2807,6 +2834,10 @@ extern "C"
 
         extension.add(std::move(gtkcalendardisplayoptions));
         extension.add(std::move(gtkcalendar));
+
+        extension.add(std::move(gtkspinner));
+
+        extension.add(std::move(gtkinfobar));
         
 
         // return the extension

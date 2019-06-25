@@ -403,6 +403,9 @@
 
             void set_size_request(Php::Parameters &parameters);
             Php::Value get_size_request(Php::Parameters &parameters);
+
+            void set_no_show_all(Php::Parameters &parameters);
+            Php::Value get_no_show_all();
         };
 
 #endif

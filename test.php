@@ -97,6 +97,13 @@ function GtkCellRendererToggled($renderer=NULL, $path=NULL)
 	}
 }
 
+function grid_2x2($widget)
+{
+	global $infobar;
+
+	$infobar->show();
+}
+
 // ----------------------
 // Vertical box
 // $vbox = new GtkBox(GtkOrientation::VERTICAL);
@@ -129,6 +136,23 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 
 	$menubar->append($mnuFile);
 	$menubar->append($mnuAbout);
+
+// ----------------------
+// Infor Bar
+$infobar = new GtkInfoBar();
+$vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($infobar, TRUE, TRUE, 1);
+
+$infobar->set_message_type(GtkMessageType::ERROR);
+$infobar->set_no_show_all(TRUE);
+$infobar->set_show_close_button(TRUE);
+$area = $infobar->get_content_area();
+$area->add(new GtkLabel("My Message area"));
+$area->show_all();
+$infobar->connect("response", function($widget, $response) {
+	$widget->hide();
+});
+
 
 // ----------------------
 // Horizontal box 2
@@ -309,8 +333,8 @@ $grid->attach($a=GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1); $a->connect
 $grid->attach($a=GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1); $a->connect("clicked", "grid_1x3");
 $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
-$grid->attach(GtkButton::new_with_label("Grid 2x1"), 0, 1, 1, 1);
-$grid->attach(GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1);
+$grid->attach($s=new GtkSpinner(), 0, 1, 1, 1); $s->start();
+$grid->attach($a=GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1); $a->connect("clicked", "grid_2x2");
 $grid->attach(GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);

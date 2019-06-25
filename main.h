@@ -208,6 +208,10 @@
 
     #include "src/GtkCalendarDisplayOptions.h"
     #include "src/GtkCalendar.h"
+
+    #include "src/GtkSpinner.h"
+
+    #include "src/GtkInfoBar.h"
     
     
 

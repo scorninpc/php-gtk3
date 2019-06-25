@@ -557,3 +557,15 @@ Php::Value GtkWidget_::get_size_request(Php::Parameters &parameters)
 
     return arr;
 }
+
+void GtkWidget_::set_no_show_all(Php::Parameters &parameters) 
+{
+    gboolean no_show_all = (bool)parameters[0];
+
+    gtk_widget_set_no_show_all(GTK_WIDGET(instance), no_show_all);
+}
+
+Php::Value GtkWidget_::get_no_show_all() 
+{
+    return gtk_widget_get_no_show_all(GTK_WIDGET(instance));
+}
