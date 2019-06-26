@@ -449,7 +449,7 @@ for($i=0; $i<=1; $i+=0.05) {
 	usleep(250000);
 }
 
-// Use way for non-block way to update progressbar example
+// Use for non-block way to update progressbar example
 $progress_percent = 0;
 Gtk::timeout_add(500, function() {
 	global $progress, $progress_percent;
