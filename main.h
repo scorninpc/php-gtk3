@@ -212,6 +212,8 @@
     #include "src/GtkSpinner.h"
 
     #include "src/GtkInfoBar.h"
+
+    #include "src/GtkProgressBar.h"
     
     
 

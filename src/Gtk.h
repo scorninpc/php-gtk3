@@ -20,6 +20,8 @@
 			 */
 			GtkWidget *widget;
 
+            struct st_timeout_add;
+
 		/**
 		 * Publics
 		 */
@@ -40,6 +42,13 @@
 			 *		https://developer.gnome.org/gtk3/stable/gtk3-General.html#gtk-main-quit
 			 */
 			static void main_quit();
+
+			static void timeout_add(Php::Parameters &parameters);
+			static gint timeout_add_callback(gpointer data);
+
+			static Php::Value events_pending();
+			static Php::Value main_iteration();
+
 	};
 
 #endif

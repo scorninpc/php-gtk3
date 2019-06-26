@@ -222,6 +222,10 @@ extern "C"
         Php::Class<Gtk_> gtk("Gtk");
             gtk.method<&Gtk_::main>("main");
             gtk.method<&Gtk_::main_quit>("main_quit");
+            gtk.method<&Gtk_::timeout_add>("timeout_add");
+            gtk.method<&Gtk_::events_pending>("events_pending");
+            gtk.method<&Gtk_::main_iteration>("main_iteration");
+            
             gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
     
@@ -2662,6 +2666,24 @@ extern "C"
             gtkinfobar.method<&GtkInfoBar_::set_show_close_button>("set_show_close_button");
 
 
+        // GtkProgressBar
+        Php::Class<GtkProgressBar_> gtkprogressbar("GtkProgressBar");
+            gtkprogressbar.extends(gtkwidget);
+            gtkprogressbar.method<&GtkProgressBar_::__construct>("__construct");
+            gtkprogressbar.method<&GtkProgressBar_::pulse>("pulse");
+            gtkprogressbar.method<&GtkProgressBar_::set_fraction>("set_fraction");
+            gtkprogressbar.method<&GtkProgressBar_::get_fraction>("get_fraction");
+            gtkprogressbar.method<&GtkProgressBar_::set_inverted>("set_inverted");
+            gtkprogressbar.method<&GtkProgressBar_::get_inverted>("get_inverted");
+            gtkprogressbar.method<&GtkProgressBar_::set_show_text>("set_show_text");
+            gtkprogressbar.method<&GtkProgressBar_::get_show_text>("get_show_text");
+            gtkprogressbar.method<&GtkProgressBar_::set_text>("set_text");
+            gtkprogressbar.method<&GtkProgressBar_::get_text>("get_text");
+            gtkprogressbar.method<&GtkProgressBar_::set_ellipsize>("set_ellipsize");
+            gtkprogressbar.method<&GtkProgressBar_::get_ellipsize>("get_ellipsize");
+            gtkprogressbar.method<&GtkProgressBar_::set_pulse_step>("set_pulse_step");
+            gtkprogressbar.method<&GtkProgressBar_::get_pulse_step>("get_pulse_step");
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -2838,6 +2860,8 @@ extern "C"
         extension.add(std::move(gtkspinner));
 
         extension.add(std::move(gtkinfobar));
+
+        extension.add(std::move(gtkprogressbar));
         
 
         // return the extension

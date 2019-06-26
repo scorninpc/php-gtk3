@@ -296,6 +296,18 @@ $popupmenu = new GtkMenu();
 	$popupmenu->show_all();
 
 // ----------------------
+// ProgressBar
+$vbox->pack_start($hlbl = new GtkLabel("- GtkProgressBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+
+$progress = new GtkProgressBar();
+$progress->set_text("0%");
+$progress->set_show_text(TRUE);
+$vbox->pack_start($progress, TRUE, TRUE, 1);
+
+
+
+
+// ----------------------
 // ListBox
 $vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
@@ -420,6 +432,43 @@ $tree->connect("button-release-event", "GtkTreeViewButtonPressed");
 
 // Show all
 $win->show_all();
+
+
+// Use blocks but iterate main_loop method for show progress bar (see that can be a little freezes)
+	// this way is not the best way to do that, it's only example to show how dont stop GKT painting and user actions
+for($i=0; $i<=1; $i+=0.05) {
+
+	$progress->set_fraction($i);
+	$progress->set_text(($i * 100) . "%");
+
+	// Look if there is some event freezing, and add some iteration to main_loop of GTK
+	while(Gtk::events_pending()) 
+		Gtk::main_iteration();
+	
+	// Freeze for 0.25s (note that sleep free PHP, so do some freezes on GTK too)
+	usleep(250000);
+}
+
+// Use way for non-block way to update progressbar example
+$progress_percent = 0;
+Gtk::timeout_add(500, function() {
+	global $progress, $progress_percent;
+
+	// Verify if all finished and stop propagation
+	if($progress_percent >= 1) {
+		return FALSE;
+	}
+
+	// Increase progressbar
+	$progress_percent += 0.05;
+
+	// Show
+	$progress->set_fraction($progress_percent);
+	$progress->set_text(($progress_percent * 100) . "%");
+
+	// Tell to continue calling
+	return TRUE;
+});
 
 // Loop
 Gtk::main();
