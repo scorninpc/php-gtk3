@@ -1,6 +1,8 @@
 
 #include "Gtk.h"
 
+// https://developer.gnome.org/gtk3/stable/gtkbase.html
+
 /**
  * Struct for callback gpointer
  */

@@ -64,7 +64,87 @@ extern "C"
             gobject.constant("TYPE_VARIANT", (int)G_TYPE_VARIANT);
             gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
         
+// ----- GTK ENUMS 
 
+        // GtkWidgetHelpType
+        Php::Class<GtkWidgetHelpType_> gtkwidgethelptype("GtkWidgetHelpType");
+            gtkwidgethelptype.constant("TOOLTIP", GTK_WIDGET_HELP_TOOLTIP);
+            gtkwidgethelptype.constant("WHATS_THIS", GTK_WIDGET_HELP_WHATS_THIS);
+
+        // GtkTextDirection
+        Php::Class<GtkTextDirection_> gtktextdirection("GtkTextDirection");
+            gtktextdirection.constant("NONE", GTK_TEXT_DIR_NONE);
+            gtktextdirection.constant("LTR", GTK_TEXT_DIR_LTR);
+            gtktextdirection.constant("RTL", GTK_TEXT_DIR_RTL);
+
+        // GtkSizeRequestMode
+        Php::Class<GtkSizeRequestMode_> gtksizerequestmode("GtkSizeRequestMode");
+            gtksizerequestmode.constant("HEIGHT_FOR_WIDTH", GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH);
+            gtksizerequestmode.constant("WIDTH_FOR_HEIGHT", GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT);
+            gtksizerequestmode.constant("CONSTANT_SIZE", GTK_SIZE_REQUEST_CONSTANT_SIZE);
+
+        // GtkAlign
+        Php::Class<GtkAlign_> gtkalign("GtkAlign");
+            gtkalign.constant("FILL", GTK_ALIGN_FILL);
+            gtkalign.constant("START", GTK_ALIGN_START);
+            gtkalign.constant("END", GTK_ALIGN_END);
+            gtkalign.constant("CENTER", GTK_ALIGN_CENTER);
+            gtkalign.constant("BASELINE", GTK_ALIGN_BASELINE);
+
+        // GtkBorderStyle
+        Php::Class<GtkBorderStyle_> gtkborderstyle("GtkBorderStyle");
+            gtkborderstyle.constant("NONE", GTK_BORDER_STYLE_NONE);
+            gtkborderstyle.constant("SOLID", GTK_BORDER_STYLE_SOLID);
+            gtkborderstyle.constant("INSET", GTK_BORDER_STYLE_INSET);
+            gtkborderstyle.constant("OUTSET", GTK_BORDER_STYLE_OUTSET);
+            gtkborderstyle.constant("HIDDEN", GTK_BORDER_STYLE_HIDDEN);
+            gtkborderstyle.constant("DOTTED", GTK_BORDER_STYLE_DOTTED);
+            gtkborderstyle.constant("DASHED", GTK_BORDER_STYLE_DASHED);
+            gtkborderstyle.constant("DOUBLE", GTK_BORDER_STYLE_DOUBLE);
+            gtkborderstyle.constant("GROOVE", GTK_BORDER_STYLE_GROOVE);
+            gtkborderstyle.constant("RIDGE", GTK_BORDER_STYLE_RIDGE);
+
+        // GtkJunctionSides
+        Php::Class<GtkJunctionSides_> gtkjunctionsides("GtkJunctionSides");
+            gtkjunctionsides.constant("NONE", GTK_JUNCTION_NONE);
+            gtkjunctionsides.constant("CORNER_TOPLEFT", GTK_JUNCTION_CORNER_TOPLEFT);
+            gtkjunctionsides.constant("CORNER_TOPRIGHT", GTK_JUNCTION_CORNER_TOPRIGHT);
+            gtkjunctionsides.constant("CORNER_BOTTOMLEFT", GTK_JUNCTION_CORNER_BOTTOMLEFT);
+            gtkjunctionsides.constant("CORNER_BOTTOMRIGHT", GTK_JUNCTION_CORNER_BOTTOMRIGHT);
+            gtkjunctionsides.constant("TOP", GTK_JUNCTION_TOP);
+            gtkjunctionsides.constant("BOTTOM", GTK_JUNCTION_BOTTOM);
+            gtkjunctionsides.constant("LEFT", GTK_JUNCTION_LEFT);
+            gtkjunctionsides.constant("RIGHT", GTK_JUNCTION_RIGHT);
+        
+        // GtkRegionFlags
+        Php::Class<GtkRegionFlags_> gtkregionflags("GtkRegionFlags");
+            gtkregionflags.constant("EVEN", GTK_REGION_EVEN);
+            gtkregionflags.constant("ODD", GTK_REGION_ODD);
+            gtkregionflags.constant("FIRST", GTK_REGION_FIRST);
+            gtkregionflags.constant("LAST", GTK_REGION_LAST);
+            gtkregionflags.constant("ONLY", GTK_REGION_ONLY);
+            gtkregionflags.constant("SORTED", GTK_REGION_SORTED);
+        
+        // GtkStyleContextPrintFlags
+        Php::Class<GtkStyleContextPrintFlags_> gtkstylecontextprintflags("GtkStyleContextPrintFlags");
+            gtkstylecontextprintflags.constant("NONE", GTK_STYLE_CONTEXT_PRINT_NONE);
+            gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
+            gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
+        
+        
+        
+            
+// ----- GTK ENUMS 
+        extension.add(std::move(gtkwidgethelptype));
+        extension.add(std::move(gtktextdirection));
+        extension.add(std::move(gtksizerequestmode));
+        extension.add(std::move(gtkalign));
+        extension.add(std::move(gtkborderstyle));
+        extension.add(std::move(gtkjunctionsides));
+        extension.add(std::move(gtkregionflags));
+        extension.add(std::move(gtkstylecontextprintflags));
+
+// ----- GDK
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
             gdk.constant("SHIFT_MASK", GDK_SHIFT_MASK);

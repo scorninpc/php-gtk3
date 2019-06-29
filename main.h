@@ -9,6 +9,18 @@
 
     #include "src/GObject.h"
 
+    // ENUMS
+    #include "src/GtkWidgetHelpType.h"
+    #include "src/GtkTextDirection.h"
+    #include "src/GtkSizeRequestMode.h"
+    #include "src/GtkAlign.h"
+    #include "src/GtkBorderStyle.h"
+    #include "src/GtkJunctionSides.h"
+    #include "src/GtkRegionFlags.h"
+    #include "src/GtkStyleContextPrintFlags.h"
+
+    
+    // GDK
     #include "src/Gdk.h"
     #include "src/GdkEvent.h"
     #include "src/GdkEventButton.h"
@@ -20,6 +32,7 @@
     #include "src/GdkPixbufAlphaMode.h"
     #include "src/GdkColorspace.h"
 
+    // GTK
     #include "src/Gtk.h"
     #include "src/GtkWidget.h"
     #include "src/GtkEntry.h"
