@@ -9,7 +9,10 @@
 
     #include "src/GObject.h"
 
-    // ENUMS
+// ENUMS
+    #include "src/GdkByteOrder.h"
+    #include "src/GdkVisualType.h"
+
     #include "src/GtkWidgetHelpType.h"
     #include "src/GtkTextDirection.h"
     #include "src/GtkSizeRequestMode.h"
@@ -19,12 +22,35 @@
     #include "src/GtkRegionFlags.h"
     #include "src/GtkStyleContextPrintFlags.h"
 
+    #include "src/GdkWindowType.h"
+    #include "src/GdkWindowWindowClass.h"
+    #include "src/GdkWindowHints.h"
+    #include "src/GdkGravity.h"
+    #include "src/GdkAnchorHints.h"
+    #include "src/GdkWindowEdge.h"
+    #include "src/GdkModifierIntent.h"
+    #include "src/GdkWindowAttributesType.h"
+    #include "src/GdkFullscreenMode.h"
+    #include "src/GdkFilterReturn.h"
+    #include "src/GdkWMDecoration.h"
+    #include "src/GdkWMFunction.h"
+
     
     // GDK
+    #include "src/GtkCssProviderError.h"
+    #include "src/GtkCssSectionType.h"
+    #include "src/GtkCssProvider.h"
+    #include "src/GtkStyleContext.h"
+
+
     #include "src/Gdk.h"
     #include "src/GdkEvent.h"
     #include "src/GdkEventButton.h"
     #include "src/GdkPixbuf.h"
+
+    #include "src/GdkWindow.h"
+
+    #include "src/GdkVisual.h"
     
     #include "src/GdkRGBA.h"
 

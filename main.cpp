@@ -64,7 +64,142 @@ extern "C"
             gobject.constant("TYPE_VARIANT", (int)G_TYPE_VARIANT);
             gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
         
-// ----- GTK ENUMS 
+// ----- ENUMS 
+        // GdkByteOrder
+        Php::Class<GdkByteOrder_> gdkbyteorder("GdkByteOrder");
+            gdkbyteorder.constant("LSB_FIRST", GDK_LSB_FIRST);
+            gdkbyteorder.constant("MSB_FIRST", GDK_MSB_FIRST);
+
+        // GdkVisualType
+        Php::Class<GdkVisualType_> gdkvisualtype("GdkVisualType");
+            gdkvisualtype.constant("STATIC_GRAY", GDK_VISUAL_STATIC_GRAY);
+            gdkvisualtype.constant("STATIC_GRAYSCALE", GDK_VISUAL_GRAYSCALE);
+            gdkvisualtype.constant("STATIC_COLOR", GDK_VISUAL_STATIC_COLOR);
+            gdkvisualtype.constant("PSEUDO_COLOR", GDK_VISUAL_PSEUDO_COLOR);
+            gdkvisualtype.constant("TRUE_COLOR", GDK_VISUAL_TRUE_COLOR);
+            gdkvisualtype.constant("DIRECT_COLOR", GDK_VISUAL_DIRECT_COLOR);
+        
+        // GdkWindowType
+        Php::Class<GdkWindowType_> gdkwindowtype("GdkWindowType");
+            gdkwindowtype.constant("ROOT", GDK_WINDOW_ROOT);
+            gdkwindowtype.constant("TOPLEVEL", GDK_WINDOW_TOPLEVEL);
+            gdkwindowtype.constant("CHILD", GDK_WINDOW_CHILD);
+            gdkwindowtype.constant("TEMP", GDK_WINDOW_TEMP);
+            gdkwindowtype.constant("FOREIGN", GDK_WINDOW_FOREIGN);
+            gdkwindowtype.constant("OFFSCREEN", GDK_WINDOW_OFFSCREEN);
+            gdkwindowtype.constant("SUBSURFACE", GDK_WINDOW_SUBSURFACE);
+
+        // GdkWindowWindowClass
+        Php::Class<GdkWindowWindowClass_> gdkwindowwindowclass("GdkWindowWindowClass");
+            gdkwindowwindowclass.constant("INPUT_OUTPUT", GDK_INPUT_OUTPUT);
+            gdkwindowwindowclass.constant("INPUT_ONLY", GDK_INPUT_ONLY);
+        
+        // GdkWindowHints
+        Php::Class<GdkWindowHints_> gdkwindowhints("GdkWindowHints");
+            gdkwindowhints.constant("POS", GDK_HINT_POS);
+            gdkwindowhints.constant("MIN_SIZE", GDK_HINT_MIN_SIZE);
+            gdkwindowhints.constant("MAX_SIZE", GDK_HINT_MAX_SIZE);
+            gdkwindowhints.constant("BASE_SIZE", GDK_HINT_BASE_SIZE);
+            gdkwindowhints.constant("ASPECT", GDK_HINT_ASPECT);
+            gdkwindowhints.constant("RESIZE_INC", GDK_HINT_RESIZE_INC);
+            gdkwindowhints.constant("WIN_GRAVITY", GDK_HINT_WIN_GRAVITY);
+            gdkwindowhints.constant("USER_POS", GDK_HINT_USER_POS);
+            gdkwindowhints.constant("USER_SIZE", GDK_HINT_USER_SIZE);
+        
+        // GdkGravity
+        Php::Class<GdkGravity_> gdkgravity("GdkGravity");
+            gdkgravity.constant("NORTH_WEST", GDK_GRAVITY_NORTH_WEST);
+            gdkgravity.constant("NORTH", GDK_GRAVITY_NORTH);
+            gdkgravity.constant("NORTH_EAST", GDK_GRAVITY_NORTH_EAST);
+            gdkgravity.constant("WEST", GDK_GRAVITY_WEST);
+            gdkgravity.constant("CENTER", GDK_GRAVITY_CENTER);
+            gdkgravity.constant("EAST", GDK_GRAVITY_EAST);
+            gdkgravity.constant("SOUTH_WEST", GDK_GRAVITY_SOUTH_WEST);
+            gdkgravity.constant("SOUTH", GDK_GRAVITY_SOUTH);
+            gdkgravity.constant("SOUTH_EAST", GDK_GRAVITY_SOUTH_EAST);
+            gdkgravity.constant("STATIC", GDK_GRAVITY_STATIC);
+
+        // GdkAnchorHints
+        Php::Class<GdkAnchorHints_> gdkanchorhints("GdkAnchorHints");
+            gdkanchorhints.constant("FLIP_X", GDK_ANCHOR_FLIP_X);
+            gdkanchorhints.constant("FLIP_Y", GDK_ANCHOR_FLIP_Y);
+            gdkanchorhints.constant("SLIDE_X", GDK_ANCHOR_SLIDE_X);
+            gdkanchorhints.constant("SLIDE_Y", GDK_ANCHOR_SLIDE_Y);
+            gdkanchorhints.constant("RESIZE_X", GDK_ANCHOR_RESIZE_X);
+            gdkanchorhints.constant("RESIZE_Y", GDK_ANCHOR_RESIZE_Y);
+            gdkanchorhints.constant("FLIP", GDK_ANCHOR_FLIP);
+            gdkanchorhints.constant("SLIDE", GDK_ANCHOR_SLIDE);
+            gdkanchorhints.constant("RESIZE", GDK_ANCHOR_RESIZE);
+
+        // GdkWindowEdge
+        Php::Class<GdkWindowEdge_> gdkwindowedge("GdkWindowEdge");
+            gdkwindowedge.constant("NORTH_WEST", GDK_WINDOW_EDGE_NORTH_WEST);
+            gdkwindowedge.constant("NORTH", GDK_WINDOW_EDGE_NORTH);
+            gdkwindowedge.constant("NORTH_EAST", GDK_WINDOW_EDGE_NORTH_EAST);
+            gdkwindowedge.constant("WEST", GDK_WINDOW_EDGE_WEST);
+            gdkwindowedge.constant("EAST", GDK_WINDOW_EDGE_EAST);
+            gdkwindowedge.constant("SOUTH_WEST", GDK_WINDOW_EDGE_SOUTH_WEST);
+            gdkwindowedge.constant("SOUTH", GDK_WINDOW_EDGE_SOUTH);
+            gdkwindowedge.constant("SOUTH_EAST", GDK_WINDOW_EDGE_SOUTH_EAST);
+
+        // GdkWindowAttributesType
+        Php::Class<GdkWindowAttributesType_> gdkwindowattributestype("GdkWindowAttributesType");
+            gdkwindowattributestype.constant("TITLE", GDK_WA_TITLE);
+            gdkwindowattributestype.constant("X", GDK_WA_X);
+            gdkwindowattributestype.constant("Y", GDK_WA_Y);
+            gdkwindowattributestype.constant("CURSOR", GDK_WA_CURSOR);
+            gdkwindowattributestype.constant("VISUAL", GDK_WA_VISUAL);
+            gdkwindowattributestype.constant("WMCLASS", GDK_WA_WMCLASS);
+            gdkwindowattributestype.constant("NOREDIR", GDK_WA_NOREDIR);
+            gdkwindowattributestype.constant("TYPE_HINT", GDK_WA_TYPE_HINT);
+
+        // GdkFullscreenMode
+        Php::Class<GdkFullscreenMode_> gdkfullscreenmode("GdkFullscreenMode");
+            gdkfullscreenmode.constant("ON_CURRENT_MONITOR", GDK_FULLSCREEN_ON_CURRENT_MONITOR);
+            gdkfullscreenmode.constant("ON_ALL_MONITORS", GDK_FULLSCREEN_ON_ALL_MONITORS);
+
+        // GdkFilterReturn
+        Php::Class<GdkFilterReturn_> gdkfilterreturn("GdkFilterReturn");
+            gdkfilterreturn.constant("CONTINUE", GDK_FILTER_CONTINUE);
+            gdkfilterreturn.constant("TRANSLATE", GDK_FILTER_TRANSLATE);
+            gdkfilterreturn.constant("REMOVE", GDK_FILTER_REMOVE);
+        
+        // GdkModifierIntent
+        Php::Class<GdkModifierIntent_> gdkmodifierintent("GdkModifierIntent");
+            gdkmodifierintent.constant("PRIMARY_ACCELERATOR", GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
+            gdkmodifierintent.constant("CONTEXT_MENU", GDK_MODIFIER_INTENT_CONTEXT_MENU);
+            gdkmodifierintent.constant("EXTEND_SELECTION", GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+            gdkmodifierintent.constant("MODIFY_SELECTION", GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+            gdkmodifierintent.constant("NO_TEXT_INPUT", GDK_MODIFIER_INTENT_NO_TEXT_INPUT);
+            gdkmodifierintent.constant("SHIFT_GROUP", GDK_MODIFIER_INTENT_SHIFT_GROUP);
+            gdkmodifierintent.constant("DEFAULT_MOD_MASK", GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK);
+
+        // GdkWMDecoration
+        Php::Class<GdkWMDecoration_> gdkwmdecoration("GdkWMDecoration");
+            gdkwmdecoration.constant("ALL", GDK_DECOR_ALL);
+            gdkwmdecoration.constant("BORDER", GDK_DECOR_BORDER);
+            gdkwmdecoration.constant("RESIZEH", GDK_DECOR_RESIZEH);
+            gdkwmdecoration.constant("TITLE", GDK_DECOR_TITLE);
+            gdkwmdecoration.constant("MENU", GDK_DECOR_MENU);
+            gdkwmdecoration.constant("MINIMIZE", GDK_DECOR_MINIMIZE);
+            gdkwmdecoration.constant("MAXIMIZE", GDK_DECOR_MAXIMIZE);
+
+        // GdkWMFunction
+        Php::Class<GdkWMFunction_> gdkwmfunction("GdkWMFunction");
+            gdkwmfunction.constant("ALL", GDK_FUNC_ALL);
+            gdkwmfunction.constant("RESIZE", GDK_FUNC_RESIZE);
+            gdkwmfunction.constant("MOVE", GDK_FUNC_MOVE);
+            gdkwmfunction.constant("MINIMIZE", GDK_FUNC_MINIMIZE);
+            gdkwmfunction.constant("MAXIMIZE", GDK_FUNC_MAXIMIZE);
+            gdkwmfunction.constant("CLOSE", GDK_FUNC_CLOSE);
+        
+        // GdkWindow
+        Php::Class<GdkWindow_> gdkwindow("GdkWindow");
+            gdkwindow.extends(gobject);
+            gdkwindow.method<&GdkWindow_::beep>("beep");
+            gdkwindow.method<&GdkWindow_::maximize>("maximize");
+            gdkwindow.method<&GdkWindow_::get_default_root_window>("get_default_root_window");
+        
 
         // GtkWidgetHelpType
         Php::Class<GtkWidgetHelpType_> gtkwidgethelptype("GtkWidgetHelpType");
@@ -131,10 +266,7 @@ extern "C"
             gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
             gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
         
-        
-        
-            
-// ----- GTK ENUMS 
+// ----- ENUMS 
         extension.add(std::move(gtkwidgethelptype));
         extension.add(std::move(gtktextdirection));
         extension.add(std::move(gtksizerequestmode));
@@ -247,6 +379,17 @@ extern "C"
             gdk.constant("PAD_STRIP",(int) GDK_PAD_STRIP);
             gdk.constant("PAD_GROUP_MODE",(int) GDK_PAD_GROUP_MODE);
             gdk.constant("EVENT_LAST",(int) GDK_EVENT_LAST);
+        
+
+        // GdkVisual
+        Php::Class<GdkVisual_> gdkvisual("GdkVisual");
+            gdkvisual.extends(gobject);
+            gdkvisual.method<&GdkVisual_::get_blue_pixel_details>("get_blue_pixel_details");
+            gdkvisual.method<&GdkVisual_::get_green_pixel_details>("get_green_pixel_details");
+            gdkvisual.method<&GdkVisual_::get_red_pixel_details>("get_red_pixel_details");
+            gdkvisual.method<&GdkVisual_::get_depth>("get_depth");
+            gdkvisual.method<&GdkVisual_::get_visual_type>("get_visual_type");
+            gdkvisual.method<&GdkVisual_::get_screen>("get_screen");
         
 
         // GdkEvent
@@ -398,6 +541,8 @@ extern "C"
             gtkwidget.method<&GtkWidget_::get_size_request>("get_size_request");
             gtkwidget.method<&GtkWidget_::set_no_show_all>("set_no_show_all");
             gtkwidget.method<&GtkWidget_::get_no_show_all>("get_no_show_all");
+            gtkwidget.method<&GtkWidget_::get_window>("get_window");
+            gtkwidget.method<&GtkWidget_::get_style_context>("get_style_context");
         
 
         // GtkMisc
@@ -2764,10 +2909,136 @@ extern "C"
             gtkprogressbar.method<&GtkProgressBar_::set_pulse_step>("set_pulse_step");
             gtkprogressbar.method<&GtkProgressBar_::get_pulse_step>("get_pulse_step");
 
+
+        // GtkCssProviderError
+        Php::Class<GtkCssProviderError_> gtkcssprovidererror("GtkCssProviderError");
+            gtkcssprovidererror.constant("FAILED", (int)GTK_CSS_PROVIDER_ERROR_FAILED);
+            gtkcssprovidererror.constant("SYNTAX", (int)GTK_CSS_PROVIDER_ERROR_SYNTAX);
+            gtkcssprovidererror.constant("IMPORT", (int)GTK_CSS_PROVIDER_ERROR_IMPORT);
+            gtkcssprovidererror.constant("NAME", (int)GTK_CSS_PROVIDER_ERROR_NAME);
+            gtkcssprovidererror.constant("UNKNOWN_VALUE", (int)GTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE);
+            gtkcssprovidererror.constant("DEPRECATED", (int)GTK_CSS_PROVIDER_ERROR_DEPRECATED);
+        
+        // GtkCssSectionType
+        Php::Class<GtkCssSectionType_> gtkcsssectiontype("GtkCssSectionType");
+            gtkcsssectiontype.constant("DOCUMENT", (int)GTK_CSS_SECTION_DOCUMENT);
+            gtkcsssectiontype.constant("IMPORT", (int)GTK_CSS_SECTION_IMPORT);
+            gtkcsssectiontype.constant("COLOR_DEFINITION", (int)GTK_CSS_SECTION_COLOR_DEFINITION);
+            gtkcsssectiontype.constant("BINDING_SET", (int)GTK_CSS_SECTION_BINDING_SET);
+            gtkcsssectiontype.constant("RULESET", (int)GTK_CSS_SECTION_RULESET);
+            gtkcsssectiontype.constant("SELECTOR", (int)GTK_CSS_SECTION_SELECTOR);
+            gtkcsssectiontype.constant("DECLARATION", (int)GTK_CSS_SECTION_DECLARATION);
+            gtkcsssectiontype.constant("VALUE", (int)GTK_CSS_SECTION_VALUE);
+            gtkcsssectiontype.constant("KEYFRAMES", (int)GTK_CSS_SECTION_KEYFRAMES);
+
+        // GtkCssProvider
+        Php::Class<GtkCssProvider_> gtkcssprovider("GtkCssProvider");
+            gtkcssprovider.extends(gobject);
+            gtkcssprovider.method<&GtkCssProvider_::get_named>("get_named");
+            gtkcssprovider.method<&GtkCssProvider_::load_from_data>("load_from_data");
+            gtkcssprovider.method<&GtkCssProvider_::load_from_file>("load_from_file");
+            gtkcssprovider.method<&GtkCssProvider_::load_from_path>("load_from_path");
+            gtkcssprovider.method<&GtkCssProvider_::load_from_resource>("load_from_resource");
+            gtkcssprovider.method<&GtkCssProvider_::__construct>("__construct");
+            gtkcssprovider.method<&GtkCssProvider_::to_string>("to_string");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_end_line>("gtk_css_section_get_end_line");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_end_position>("gtk_css_section_get_end_position");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_file>("gtk_css_section_get_file");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_parent>("gtk_css_section_get_parent");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_section_type>("gtk_css_section_get_section_type");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_start_line>("gtk_css_section_get_start_line");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_get_start_position>("gtk_css_section_get_start_position");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_ref>("gtk_css_section_ref");
+            gtkcssprovider.method<&GtkCssProvider_::gtk_css_section_unref>("gtk_css_section_unref");
+
+        // GtkStyleContext
+        Php::Class<GtkStyleContext_> gtkstylecontext("GtkStyleContext");
+            gtkstylecontext.extends(gobject);
+            gtkstylecontext.method<&GtkStyleContext_::__construct>("__construct");
+            gtkstylecontext.method<&GtkStyleContext_::add_provider>("add_provider");
+            gtkstylecontext.method<&GtkStyleContext_::add_provider_for_screen>("add_provider_for_screen");
+            gtkstylecontext.method<&GtkStyleContext_::get>("get");
+            gtkstylecontext.method<&GtkStyleContext_::get_direction>("get_direction");
+            gtkstylecontext.method<&GtkStyleContext_::get_junction_sides>("get_junction_sides");
+            gtkstylecontext.method<&GtkStyleContext_::get_parent>("get_parent");
+            gtkstylecontext.method<&GtkStyleContext_::get_path>("get_path");
+            gtkstylecontext.method<&GtkStyleContext_::get_property>("get_property");
+            gtkstylecontext.method<&GtkStyleContext_::get_screen>("get_screen");
+            gtkstylecontext.method<&GtkStyleContext_::get_frame_clock>("get_frame_clock");
+            gtkstylecontext.method<&GtkStyleContext_::get_state>("get_state");
+            gtkstylecontext.method<&GtkStyleContext_::get_style>("get_style");
+            gtkstylecontext.method<&GtkStyleContext_::get_style_property>("get_style_property");
+            gtkstylecontext.method<&GtkStyleContext_::get_style_valist>("get_style_valist");
+            gtkstylecontext.method<&GtkStyleContext_::get_valist>("get_valist");
+            gtkstylecontext.method<&GtkStyleContext_::get_section>("get_section");
+            gtkstylecontext.method<&GtkStyleContext_::get_color>("get_color");
+            gtkstylecontext.method<&GtkStyleContext_::get_background_color>("get_background_color");
+            gtkstylecontext.method<&GtkStyleContext_::get_border_color>("get_border_color");
+            gtkstylecontext.method<&GtkStyleContext_::get_border>("get_border");
+            gtkstylecontext.method<&GtkStyleContext_::get_padding>("get_padding");
+            gtkstylecontext.method<&GtkStyleContext_::get_margin>("get_margin");
+            gtkstylecontext.method<&GtkStyleContext_::get_font>("get_font");
+            gtkstylecontext.method<&GtkStyleContext_::invalidate>("invalidate");
+            gtkstylecontext.method<&GtkStyleContext_::state_is_running>("state_is_running");
+            gtkstylecontext.method<&GtkStyleContext_::lookup_color>("lookup_color");
+            gtkstylecontext.method<&GtkStyleContext_::lookup_icon_set>("lookup_icon_set");
+            gtkstylecontext.method<&GtkStyleContext_::notify_state_change>("notify_state_change");
+            gtkstylecontext.method<&GtkStyleContext_::pop_animatable_region>("pop_animatable_region");
+            gtkstylecontext.method<&GtkStyleContext_::push_animatable_region>("push_animatable_region");
+            gtkstylecontext.method<&GtkStyleContext_::cancel_animations>("cancel_animations");
+            gtkstylecontext.method<&GtkStyleContext_::scroll_animations>("scroll_animations");
+            gtkstylecontext.method<&GtkStyleContext_::remove_provider>("remove_provider");
+            gtkstylecontext.method<&GtkStyleContext_::remove_provider_for_screen>("remove_provider_for_screen");
+            gtkstylecontext.method<&GtkStyleContext_::reset_widgets>("reset_widgets");
+            gtkstylecontext.method<&GtkStyleContext_::set_background>("set_background");
+            gtkstylecontext.method<&GtkStyleContext_::restore>("restore");
+            gtkstylecontext.method<&GtkStyleContext_::save>("save");
+            gtkstylecontext.method<&GtkStyleContext_::set_direction>("set_direction");
+            gtkstylecontext.method<&GtkStyleContext_::set_junction_sides>("set_junction_sides");
+            gtkstylecontext.method<&GtkStyleContext_::set_parent>("set_parent");
+            gtkstylecontext.method<&GtkStyleContext_::set_path>("set_path");
+            gtkstylecontext.method<&GtkStyleContext_::add_class>("add_class");
+            gtkstylecontext.method<&GtkStyleContext_::remove_class>("remove_class");
+            gtkstylecontext.method<&GtkStyleContext_::has_class>("has_class");
+            gtkstylecontext.method<&GtkStyleContext_::list_classes>("list_classes");
+            gtkstylecontext.method<&GtkStyleContext_::add_region>("add_region");
+            gtkstylecontext.method<&GtkStyleContext_::remove_region>("remove_region");
+            gtkstylecontext.method<&GtkStyleContext_::has_region>("has_region");
+            gtkstylecontext.method<&GtkStyleContext_::list_regions>("list_regions");
+            gtkstylecontext.method<&GtkStyleContext_::set_screen>("set_screen");
+            gtkstylecontext.method<&GtkStyleContext_::set_frame_clock>("set_frame_clock");
+            gtkstylecontext.method<&GtkStyleContext_::set_state>("set_state");
+            gtkstylecontext.method<&GtkStyleContext_::set_scale>("set_scale");
+            gtkstylecontext.method<&GtkStyleContext_::get_scale>("get_scale");
+            gtkstylecontext.method<&GtkStyleContext_::to_string>("to_string");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_border_new>("gtk_border_new");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_border_copy>("gtk_border_copy");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_border_free>("gtk_border_free");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_arrow>("gtk_render_arrow");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_background>("gtk_render_background");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_background_get_clip>("gtk_render_background_get_clip");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_check>("gtk_render_check");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_expander>("gtk_render_expander");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_extension>("gtk_render_extension");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_focus>("gtk_render_focus");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_frame>("gtk_render_frame");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_frame_gap>("gtk_render_frame_gap");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_handle>("gtk_render_handle");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_layout>("gtk_render_layout");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_line>("gtk_render_line");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_option>("gtk_render_option");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_slider>("gtk_render_slider");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_activity>("gtk_render_activity");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_icon_pixbuf>("gtk_render_icon_pixbuf");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_icon_surface>("gtk_render_icon_surface");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_icon>("gtk_render_icon");
+            gtkstylecontext.method<&GtkStyleContext_::gtk_render_insertion_cursor>("gtk_render_insertion_cursor");
+
         
         // Add classes to extension
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
+        extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkpixbuf));
@@ -2776,6 +3047,22 @@ extern "C"
         extension.add(std::move(gdkpixbufformat));
         extension.add(std::move(gdkpixbufalphamode));
         extension.add(std::move(gdkcolorspace));
+
+        extension.add(std::move(gdkwindow));
+        extension.add(std::move(gdkbyteorder));
+        extension.add(std::move(gdkvisualtype));
+        extension.add(std::move(gdkwindowtype));
+        extension.add(std::move(gdkwindowwindowclass));
+        extension.add(std::move(gdkwindowhints));
+        extension.add(std::move(gdkgravity));
+        extension.add(std::move(gdkanchorhints));
+        extension.add(std::move(gdkwindowedge));
+        extension.add(std::move(gdkwindowattributestype));
+        extension.add(std::move(gdkfullscreenmode));
+        extension.add(std::move(gdkfilterreturn));
+        extension.add(std::move(gdkmodifierintent));
+        extension.add(std::move(gdkwmdecoration));
+        extension.add(std::move(gdkwmfunction));
 
         extension.add(std::move(gtk));
         extension.add(std::move(gtkorientation));
@@ -2942,7 +3229,11 @@ extern "C"
         extension.add(std::move(gtkinfobar));
 
         extension.add(std::move(gtkprogressbar));
-        
+
+        extension.add(std::move(gtkcssprovidererror));
+        extension.add(std::move(gtkcsssectiontype));
+        extension.add(std::move(gtkcssprovider));
+        extension.add(std::move(gtkstylecontext));
 
         // return the extension
         return extension;

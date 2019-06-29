@@ -63,3 +63,9 @@ Php::deprecated << "new_from_icon_set is deprecated on Gtk 3.10" << std::endl;
 Php::Value arr;
 arr[0] = arr["width"] = (int)width;
 arr[1] = arr["height"] = (int)height;
+
+// Retorna um objeto
+	// Create the PHP-GTK object and set GTK object
+	GtkButton_ *widget_ = new GtkButton_();
+	widget_->set_instance((gpointer *)widget);
+	return Php::Object("GtkButton", widget_);

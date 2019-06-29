@@ -8,6 +8,8 @@
 
     #include "GdkEvent.h"
     #include "GObject.h"
+    #include "GdkWindow.h"
+    #include "GtkStyleContext.h"
 
 
     /**
@@ -406,6 +408,10 @@
 
             void set_no_show_all(Php::Parameters &parameters);
             Php::Value get_no_show_all();
+
+
+            Php::Value get_window();
+            Php::Value get_style_context();
         };
 
 #endif

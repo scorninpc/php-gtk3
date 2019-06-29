@@ -569,3 +569,23 @@ Php::Value GtkWidget_::get_no_show_all()
 {
     return gtk_widget_get_no_show_all(GTK_WIDGET(instance));
 }
+
+Php::Value GtkWidget_::get_window() 
+{
+    GdkWindow *ret = gtk_widget_get_window(GTK_WIDGET(instance));
+
+    // Create the PHP-GTK object and set GTK object
+    GdkWindow_ *widget_ = new GdkWindow_();
+    widget_->set_instance((gpointer *)ret);
+    return Php::Object("GdkWindow", widget_);
+}
+
+Php::Value GtkWidget_::get_style_context() 
+{
+    GtkStyleContext *ret = gtk_widget_get_style_context(GTK_WIDGET(instance));
+
+    // Create the PHP-GTK object and set GTK object
+    GtkStyleContext_ *widget_ = new GtkStyleContext_();
+    widget_->set_instance((gpointer *)ret);
+    return Php::Object("GtkStyleContext", widget_);
+}
