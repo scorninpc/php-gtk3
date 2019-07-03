@@ -7,12 +7,22 @@ function GtkWindowDestroy($widget=NULL, $event=NULL)
 
 $win = new GtkWindow();
 $win->set_default_size(300, 200);
-
 $win->connect("destroy", "GtkWindowDestroy");
-
-$win->add(GtkButton::new_from_icon_name("gtk-apply"));
-
 $win->show_all();
+
+
+/*
+// Create dialog with buttons
+$dialog = new GtkRecentChooserDialog("Recent Files", $win, ["OK", GtkResponseType::OK, "Cancel", GtkResponseType::CANCEL]);
+$dialog->set_select_multiple(TRUE);
+
+// run
+$result = $dialog->run();
+if($result == GtkResponseType::OK) {
+	// var_dump($dialog->get_current_uri());
+}
+$dialog->destroy();
+*/
 
 /*
 // Create dialog with buttons

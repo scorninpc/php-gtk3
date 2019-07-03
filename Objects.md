@@ -21,7 +21,7 @@ _GObject
     │   │   │   │   │   │   ├── %GtkFontSelectionDialog
     │   │   │   │   │   │   ├── *GtkMessageDialog
     │   │   │   │   │   │   ├── ??GtkPageSetupUnixDialog??
-    │   │   │   │   │   │   ├── GtkPrintUnixDialog
+    │   │   │   │   │   │   ├── ??GtkPrintUnixDialog??
     │   │   │   │   │   │   ╰── GtkRecentChooserDialog
     │   │   │   │   │   ├── GtkApplicationWindow
     │   │   │   │   │   ├── GtkAssistant

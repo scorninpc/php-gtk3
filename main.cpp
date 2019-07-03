@@ -3034,6 +3034,55 @@ extern "C"
             gtkstylecontext.method<&GtkStyleContext_::gtk_render_icon>("gtk_render_icon");
             gtkstylecontext.method<&GtkStyleContext_::gtk_render_insertion_cursor>("gtk_render_insertion_cursor");
 
+        // GtkRecentChooserError
+        Php::Class<GtkRecentChooserError_> gtkrecentchoosererror("GtkRecentChooserError");
+            gtkrecentchoosererror.constant("NOT_FOUND", (int)GTK_RECENT_CHOOSER_ERROR_NOT_FOUND);
+            gtkrecentchoosererror.constant("INVALID_URI", (int)GTK_RECENT_CHOOSER_ERROR_INVALID_URI);
+
+        // GtkRecentSortType
+        Php::Class<GtkRecentSortType_> gtkrecentsorttype("GtkRecentSortType");
+            gtkrecentsorttype.constant("NONE", (int)GTK_RECENT_SORT_NONE);
+            gtkrecentsorttype.constant("MRU", (int)GTK_RECENT_SORT_MRU);
+            gtkrecentsorttype.constant("LRU", (int)GTK_RECENT_SORT_LRU);
+            gtkrecentsorttype.constant("CUSTOM", (int)GTK_RECENT_SORT_CUSTOM);
+
+        // GtkRecentChooserDialog
+        Php::Class<GtkRecentChooserDialog_> gtkrecentchooserdialog("GtkRecentChooserDialog");
+            gtkrecentchooserdialog.extends(gtkdialog);
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::__construct>("__construct");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::new_for_manager>("new_for_manager");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_show_private>("set_show_private");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_show_private>("get_show_private");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_show_not_found>("set_show_not_found");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_show_not_found>("get_show_not_found");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_show_icons>("set_show_icons");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_show_icons>("get_show_icons");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_select_multiple>("set_select_multiple");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_select_multiple>("get_select_multiple");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_local_only>("set_local_only");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_local_only>("get_local_only");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_limit>("set_limit");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_limit>("get_limit");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_show_tips>("set_show_tips");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_show_tips>("get_show_tips");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_sort_type>("set_sort_type");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_sort_type>("get_sort_type");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_sort_func>("set_sort_func");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_current_uri>("set_current_uri");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_current_uri>("get_current_uri");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_current_item>("get_current_item");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::select_uri>("select_uri");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::unselect_uri>("unselect_uri");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::select_all>("select_all");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::unselect_all>("unselect_all");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_items>("get_items");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_uris>("get_uris");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::add_filter>("add_filter");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::remove_filter>("remove_filter");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::list_filters>("list_filters");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_filter>("set_filter");
+            gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_filter>("get_filter");
+        
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -3234,6 +3283,11 @@ extern "C"
         extension.add(std::move(gtkcsssectiontype));
         extension.add(std::move(gtkcssprovider));
         extension.add(std::move(gtkstylecontext));
+
+
+        extension.add(std::move(gtkrecentchoosererror));
+        extension.add(std::move(gtkrecentsorttype));
+        extension.add(std::move(gtkrecentchooserdialog));
 
         // return the extension
         return extension;

@@ -253,6 +253,10 @@
     #include "src/GtkInfoBar.h"
 
     #include "src/GtkProgressBar.h"
+
+    #include "src/GtkRecentSortType.h"
+    #include "src/GtkRecentChooserError.h"
+    #include "src/GtkRecentChooserDialog.h"
     
     
 
