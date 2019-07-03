@@ -22,14 +22,14 @@ _GObject
     │   │   │   │   │   │   ├── *GtkMessageDialog
     │   │   │   │   │   │   ├── ??GtkPageSetupUnixDialog??
     │   │   │   │   │   │   ├── ??GtkPrintUnixDialog??
-    │   │   │   │   │   │   ╰── GtkRecentChooserDialog
+    │   │   │   │   │   │   ╰── #GtkRecentChooserDialog
     │   │   │   │   │   ├── GtkApplicationWindow
     │   │   │   │   │   ├── GtkAssistant
     │   │   │   │   │   ├── GtkOffscreenWindow
     │   │   │   │   │   ├── GtkPlug
     │   │   │   │   │   ╰── GtkShortcutsWindow
     │   │   │   │   ├── *GtkActionBar
-    │   │   │   │   ├── GtkAlignment
+    │   │   │   │   ├── %GtkAlignment
     │   │   │   │   ├── #GtkComboBox
     │   │   │   │   │   ├── #GtkAppChooserButton
     │   │   │   │   │   ╰── *GtkComboBoxText

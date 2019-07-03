@@ -3082,7 +3082,15 @@ extern "C"
             gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::list_filters>("list_filters");
             gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::set_filter>("set_filter");
             gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_filter>("get_filter");
-        
+
+        // GtkArrowType
+        Php::Class<GtkArrowType_> gtkarrowtype("GtkArrowType");
+            gtkarrowtype.constant("UP", (int)GTK_ARROW_UP);
+            gtkarrowtype.constant("DOWN", (int)GTK_ARROW_DOWN);
+            gtkarrowtype.constant("LEFT", (int)GTK_ARROW_LEFT);
+            gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
+            gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
+                
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -3288,6 +3296,8 @@ extern "C"
         extension.add(std::move(gtkrecentchoosererror));
         extension.add(std::move(gtkrecentsorttype));
         extension.add(std::move(gtkrecentchooserdialog));
+
+        extension.add(std::move(gtkarrowtype));
 
         // return the extension
         return extension;

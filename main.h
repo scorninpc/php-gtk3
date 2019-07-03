@@ -257,6 +257,9 @@
     #include "src/GtkRecentSortType.h"
     #include "src/GtkRecentChooserError.h"
     #include "src/GtkRecentChooserDialog.h"
+
+    #include "src/GtkArrowType.h"
+    #include "src/GtkMenuButton.h"
     
     
 
