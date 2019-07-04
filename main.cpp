@@ -3090,6 +3090,73 @@ extern "C"
             gtkarrowtype.constant("LEFT", (int)GTK_ARROW_LEFT);
             gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
             gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
+
+
+        // GtkSourceSmartHomeEndType
+        Php::Class<GtkSourceSmartHomeEndType_> gtksourcesmarthomeendtype("GtkSourceSmartHomeEndType");
+            gtksourcesmarthomeendtype.constant("DISABLED", (int)GTK_SOURCE_SMART_HOME_END_DISABLED);
+            gtksourcesmarthomeendtype.constant("BEFORE", (int)GTK_SOURCE_SMART_HOME_END_BEFORE);
+            gtksourcesmarthomeendtype.constant("AFTER", (int)GTK_SOURCE_SMART_HOME_END_AFTER);
+            gtksourcesmarthomeendtype.constant("ALWAYS", (int)GTK_SOURCE_SMART_HOME_END_ALWAYS);
+
+        // GtkSourceDrawSpacesFlags
+        Php::Class<GtkSourceDrawSpacesFlags_> gtksourcedrawspacesflags("GtkSourceDrawSpacesFlags");
+            gtksourcedrawspacesflags.constant("SPACE", (int)GTK_SOURCE_DRAW_SPACES_SPACE);
+            gtksourcedrawspacesflags.constant("TAB", (int)GTK_SOURCE_DRAW_SPACES_TAB);
+            gtksourcedrawspacesflags.constant("NEWLINE", (int)GTK_SOURCE_DRAW_SPACES_NEWLINE);
+            gtksourcedrawspacesflags.constant("NBSP", (int)GTK_SOURCE_DRAW_SPACES_NBSP);
+            gtksourcedrawspacesflags.constant("LEADING", (int)GTK_SOURCE_DRAW_SPACES_LEADING);
+            gtksourcedrawspacesflags.constant("TEXT", (int)GTK_SOURCE_DRAW_SPACES_TEXT);
+            gtksourcedrawspacesflags.constant("TRAILING", (int)GTK_SOURCE_DRAW_SPACES_TRAILING);
+            gtksourcedrawspacesflags.constant("ALL", (int)GTK_SOURCE_DRAW_SPACES_ALL);
+
+        // GtkSourceBackgroundPatternType
+        Php::Class<GtkSourceBackgroundPatternType_> gtksourcebackgroundpatterntype("GtkSourceBackgroundPatternType");
+            gtksourcebackgroundpatterntype.constant("NONE", (int)GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE);
+            gtksourcebackgroundpatterntype.constant("GRID", (int)GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID);
+        
+        // GtkSourceView
+        Php::Class<GtkSourceView_> gtksourceview("GtkSourceView");
+            gtksourceview.extends(gtktextview);
+            gtksourceview.method<&GtkSourceView_::__construct>("__construct");
+            gtksourceview.method<&GtkSourceView_::new_with_buffer>("new_with_buffer");
+            gtksourceview.method<&GtkSourceView_::set_show_line_numbers>("set_show_line_numbers");
+            gtksourceview.method<&GtkSourceView_::get_show_line_numbers>("get_show_line_numbers");
+            gtksourceview.method<&GtkSourceView_::set_show_right_margin>("set_show_right_margin");
+            gtksourceview.method<&GtkSourceView_::get_show_right_margin>("get_show_right_margin");
+            gtksourceview.method<&GtkSourceView_::set_right_margin_position>("set_right_margin_position");
+            gtksourceview.method<&GtkSourceView_::get_right_margin_position>("get_right_margin_position");
+            gtksourceview.method<&GtkSourceView_::set_highlight_current_line>("set_highlight_current_line");
+            gtksourceview.method<&GtkSourceView_::get_highlight_current_line>("get_highlight_current_line");
+            gtksourceview.method<&GtkSourceView_::set_auto_indent>("set_auto_indent");
+            gtksourceview.method<&GtkSourceView_::get_auto_indent>("get_auto_indent");
+            gtksourceview.method<&GtkSourceView_::set_indent_on_tab>("set_indent_on_tab");
+            gtksourceview.method<&GtkSourceView_::get_indent_on_tab>("get_indent_on_tab");
+            gtksourceview.method<&GtkSourceView_::set_tab_width>("set_tab_width");
+            gtksourceview.method<&GtkSourceView_::get_tab_width>("get_tab_width");
+            gtksourceview.method<&GtkSourceView_::set_indent_width>("set_indent_width");
+            gtksourceview.method<&GtkSourceView_::get_indent_width>("get_indent_width");
+            gtksourceview.method<&GtkSourceView_::set_insert_spaces_instead_of_tabs>("set_insert_spaces_instead_of_tabs");
+            gtksourceview.method<&GtkSourceView_::get_insert_spaces_instead_of_tabs>("get_insert_spaces_instead_of_tabs");
+            gtksourceview.method<&GtkSourceView_::indent_lines>("indent_lines");
+            gtksourceview.method<&GtkSourceView_::unindent_lines>("unindent_lines");
+            gtksourceview.method<&GtkSourceView_::get_visual_column>("get_visual_column");
+            gtksourceview.method<&GtkSourceView_::set_smart_backspace>("set_smart_backspace");
+            gtksourceview.method<&GtkSourceView_::get_smart_backspace>("get_smart_backspace");
+            gtksourceview.method<&GtkSourceView_::set_smart_home_end>("set_smart_home_end");
+            gtksourceview.method<&GtkSourceView_::get_smart_home_end>("get_smart_home_end");
+            gtksourceview.method<&GtkSourceView_::set_mark_attributes>("set_mark_attributes");
+            gtksourceview.method<&GtkSourceView_::get_mark_attributes>("get_mark_attributes");
+            gtksourceview.method<&GtkSourceView_::set_show_line_marks>("set_show_line_marks");
+            gtksourceview.method<&GtkSourceView_::get_show_line_marks>("get_show_line_marks");
+            gtksourceview.method<&GtkSourceView_::set_draw_spaces>("set_draw_spaces");
+            gtksourceview.method<&GtkSourceView_::get_draw_spaces>("get_draw_spaces");
+            gtksourceview.method<&GtkSourceView_::get_completion>("get_completion");
+            gtksourceview.method<&GtkSourceView_::get_gutter>("get_gutter");
+            gtksourceview.method<&GtkSourceView_::set_background_pattern>("set_background_pattern");
+            gtksourceview.method<&GtkSourceView_::get_background_pattern>("get_background_pattern");
+        
+
                 
         
         // Add classes to extension
@@ -3292,12 +3359,17 @@ extern "C"
         extension.add(std::move(gtkcssprovider));
         extension.add(std::move(gtkstylecontext));
 
-
         extension.add(std::move(gtkrecentchoosererror));
         extension.add(std::move(gtkrecentsorttype));
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        // GtkSourceView
+        extension.add(std::move(gtksourcesmarthomeendtype));
+        extension.add(std::move(gtksourcedrawspacesflags));
+        extension.add(std::move(gtksourcebackgroundpatterntype));
+        extension.add(std::move(gtksourceview));
 
         // return the extension
         return extension;

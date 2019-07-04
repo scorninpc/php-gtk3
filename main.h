@@ -4,6 +4,7 @@
     #include <phpcpp.h>
     #include <iostream>
     #include <gtk/gtk.h>
+    #include <gtksourceview/gtksource.h>
 
     #include "php-gtk.h"
 
@@ -259,7 +260,13 @@
     #include "src/GtkRecentChooserDialog.h"
 
     #include "src/GtkArrowType.h"
-    #include "src/GtkMenuButton.h"
+    // #include "src/GtkMenuButton.h"
+
+    
+    #include "src/GtkSourceSmartHomeEndType.h"
+    #include "src/GtkSourceDrawSpacesFlags.h"
+    #include "src/GtkSourceBackgroundPatternType.h"
+    #include "src/GtkSourceView.h"
     
     
 
