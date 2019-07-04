@@ -395,12 +395,16 @@ extern "C"
         // GdkEvent
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
+            // gdkevent.method<&GdkEvent_::__get>("__get");
             // gdkevent.property("type", 0);
 
         // GdkEventButton
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
+
+        // GdkEventKey
+        Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
         
 
         // GdkPixbuf
@@ -3165,6 +3169,7 @@ extern "C"
         extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
+        extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkpixbuf));
         extension.add(std::move(gdkrgba));
         

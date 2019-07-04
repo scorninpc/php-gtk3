@@ -16,6 +16,15 @@ $gtk_label = new GtkLabel(" - My Label - ");
 $style_context = $gtk_label->get_style_context();
 $style_context->add_provider($css_provider, 600);
 
+// GtkEntry
+$gtk_entry = new GtkEntry();
+$gtk_entry->connect("key-release-event", function($widget, $event) {
+	var_dump($event->key);
+});
+$gtk_entry->connect("button-release-event", function($widget, $event) {
+	var_dump($event->button);
+});
+
 // GtkSourceView
 $gtk_sourceview = new GtkSourceView();
 $gtk_sourceview_scroll = new GtkScrolledWindow();
@@ -24,6 +33,7 @@ $gtk_sourceview_scroll->add($gtk_sourceview);
 // Box
 $hbox = new GtkBox(GtkOrientation::VERTICAL);
 $hbox->pack_start($gtk_label, FALSE, FALSE);
+$hbox->pack_start($gtk_entry, FALSE, FALSE);
 $hbox->pack_start($gtk_sourceview_scroll, TRUE, TRUE);
 
 // GtkWindow

@@ -6,6 +6,7 @@
     #include <gtk/gtk.h>
 
     #include "GdkEventButton.h"
+    #include "GdkEventKey.h"
 
     /**
      * 
@@ -21,17 +22,18 @@
             /**
              *  C++ constructor and destructor
              */
-            GdkEvent_();
-
-            GdkEvent *get_instance();
-
+            GdkEvent_() = default;
+            virtual ~GdkEvent_() = default;
             // 
+            GdkEvent *get_instance();
             void set_instance(GdkEvent *event);
 
             /**
              * Populate GdkEvent to PHPGTK::GDKEVENT
              */
             void populate(GdkEvent *event);
+
+            Php::Value __get(const Php::Value &name);
     };
 
 #endif
