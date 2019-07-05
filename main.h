@@ -263,12 +263,12 @@
     #include "src/GtkArrowType.h"
     // #include "src/GtkMenuButton.h"
 
-    
+#ifdef WITH_GTKSOURCEVIEW
     #include "src/GtkSourceSmartHomeEndType.h"
     #include "src/GtkSourceDrawSpacesFlags.h"
     #include "src/GtkSourceBackgroundPatternType.h"
     #include "src/GtkSourceView.h"
-    
+#endif
     
 
     GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);

@@ -32,8 +32,6 @@
              * Populate GdkEvent to PHPGTK::GDKEVENT
              */
             void populate(GdkEvent *event);
-
-            Php::Value __get(const Php::Value &name);
     };
 
 #endif

@@ -3095,6 +3095,7 @@ extern "C"
             gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
             gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+#ifdef WITH_GTKSOURCEVIEW
 
         // GtkSourceSmartHomeEndType
         Php::Class<GtkSourceSmartHomeEndType_> gtksourcesmarthomeendtype("GtkSourceSmartHomeEndType");
@@ -3159,7 +3160,7 @@ extern "C"
             gtksourceview.method<&GtkSourceView_::get_gutter>("get_gutter");
             gtksourceview.method<&GtkSourceView_::set_background_pattern>("set_background_pattern");
             gtksourceview.method<&GtkSourceView_::get_background_pattern>("get_background_pattern");
-        
+#endif
 
                 
         
@@ -3370,12 +3371,14 @@ extern "C"
 
         extension.add(std::move(gtkarrowtype));
 
+#ifdef WITH_GTKSOURCEVIEW
         // GtkSourceView
         extension.add(std::move(gtksourcesmarthomeendtype));
         extension.add(std::move(gtksourcedrawspacesflags));
         extension.add(std::move(gtksourcebackgroundpatterntype));
         extension.add(std::move(gtksourceview));
-
+#endif
+        
         // return the extension
         return extension;
     }

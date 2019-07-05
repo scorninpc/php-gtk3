@@ -86,7 +86,7 @@ LINKER              =   g++
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
 
-COMPILER_FLAGS      =   -Wall -c -std=c++11 -fpic -o 
+COMPILER_FLAGS      =   -DWITH_GTKSOURCEVIEW=1 -Wall -c -std=c++11 -fpic -o 
 LINKER_FLAGS        =   -shared ${GTKLIBS}
 LINKER_DEPENDENCIES =   -lphpcpp
 
