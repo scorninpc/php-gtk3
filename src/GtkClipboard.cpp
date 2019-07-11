@@ -181,7 +181,7 @@ void GtkClipboard_::request_text_callback(GtkClipboard *clipboard, const gchar *
     Php::Value internal_parameters;
     internal_parameters[0] = callback_object->self_widget;
     internal_parameters[1] = clipboard_text;
-    for(int i=1; i<callback_object->user_parameters.size(); i++) {
+    for(int i=1; i<(int)callback_object->user_parameters.size(); i++) {
     	internal_parameters[i+1] = callback_object->user_parameters[i];
     }
 

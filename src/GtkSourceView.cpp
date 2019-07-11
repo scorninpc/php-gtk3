@@ -302,18 +302,24 @@ Php::Value GtkSourceView_::get_show_line_marks()
 
 void GtkSourceView_::set_draw_spaces(Php::Parameters &parameters)
 {
-	int int_flags = (int)parameters[0];
-	GtkSourceDrawSpacesFlags flags = (GtkSourceDrawSpacesFlags)int_flags;
+	// int int_flags = (int)parameters[0];
+	// GtkSourceDrawSpacesFlags flags = (GtkSourceDrawSpacesFlags)int_flags;
 
-	gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW(instance), flags);
+	// gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW(instance), flags);
+
+	// Deprecated
+	Php::deprecated << "set_draw_spaces is deprecated on Gtk 3.24" << std::endl;
 
 }
 
 Php::Value GtkSourceView_::get_draw_spaces()
 {
-	GtkSourceDrawSpacesFlags ret = gtk_source_view_get_draw_spaces (GTK_SOURCE_VIEW(instance));
+	// GtkSourceDrawSpacesFlags ret = gtk_source_view_get_draw_spaces (GTK_SOURCE_VIEW(instance));
 
-	return ret;
+	// Deprecated
+	Php::deprecated << "get_draw_spaces is deprecated on Gtk 3.24" << std::endl;
+
+	return 1;
 }
 
 Php::Value GtkSourceView_::get_completion()

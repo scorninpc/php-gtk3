@@ -423,7 +423,10 @@ void GtkContainer_::set_focus_chain(Php::Parameters &parameters)
 
 void GtkContainer_::unset_focus_chain()
 {
-	gtk_container_unset_focus_chain (GTK_CONTAINER(instance));
+	// gtk_container_unset_focus_chain (GTK_CONTAINER(instance));
+
+	// Deprecated
+	Php::deprecated << "unset_focus_chain is deprecated on Gtk 3.24" << std::endl;
 
 }
 

@@ -109,6 +109,8 @@ function grid_2x2($widget)
 // $vbox = new GtkBox(GtkOrientation::VERTICAL);
 $vbox = new GtkBox(GtkOrientation::VERTICAL);
 
+
+
 // ----------------------
 // Menu
 $vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
@@ -123,6 +125,7 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 			$mnuFile2 = GtkMenuItem::new_with_label("Open File"); $menu->append($mnuFile2);
 			$mnuFile3 = new GtkSeparatorMenuItem(); $menu->append($mnuFile3);
 			$mnuFile4 = GtkMenuItem::new_with_label("Quit"); $menu->append($mnuFile4); 
+			
 			$mnuFile4->connect("activate", function($widget) {
 				Gtk::main_quit();
 			});
@@ -203,8 +206,11 @@ $cmb1 = GtkComboBox::new_with_model($cml);
 $vbox->pack_start($cmb1, FALSE, FALSE, 1);
 
 $cellRenderer = new GtkCellRendererText();
-$cmb1->pack_start($cellRenderer);
+
+$cmb1->pack_start($cellRenderer, TRUE);
+
 $cmb1->add_attribute($cellRenderer, 'text', 0);
+
 $cmb1->set_active(2);
 
 // Icon from pixbuf
@@ -275,6 +281,7 @@ $tree->set_model($model);
 $popupmenu = new GtkMenu();
 	$menuitem1 = GtkMenuItem::new_with_label("Menu Item 1"); 
 	$popupmenu->append($menuitem1);
+	
 	$menuitem1->connect('activate', function($widget, $tree) {
 		
 		$model = $tree->get_model();
@@ -291,9 +298,11 @@ $popupmenu = new GtkMenu();
 		var_dump($value);
 
 	}, $tree);
+	
 	$menuitem2 = GtkMenuItem::new_with_label("Menu Item 2"); 
 	$popupmenu->append($menuitem2);
 	$popupmenu->show_all();
+	
 
 // ----------------------
 // ProgressBar
@@ -325,7 +334,7 @@ $row = new GtkListBoxRow();
 	$lhbox->pack_start(new GtkLabel("Cell 1x2"), TRUE, TRUE);
 	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
 $row->add($lhbox, TRUE, TRUE);
-$ltb->insert($row);
+$ltb->insert($row, -1);
 
 $row = new GtkListBoxRow();
 	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
@@ -333,7 +342,7 @@ $row = new GtkListBoxRow();
 	$lhbox->pack_start(new GtkLabel("Cell 2x2"), TRUE, TRUE);
 	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
 $row->add($lhbox, TRUE, TRUE);
-$ltb->insert($row);
+$ltb->insert($row, -1);
 
 // ----------------------
 // Grid
