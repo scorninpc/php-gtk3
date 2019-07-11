@@ -7,7 +7,6 @@
 
 	#include "GtkBin.h"
 	#include "GtkWidget.h"
-	#include "GtkSelectionMode.h"
 	#include "GtkAdjustment.h"
     #include "GtkListBoxRow.h"
     #include "GtkLabel.h"

@@ -9,7 +9,6 @@
 
     #include "GtkContainer.h"
 	#include "GtkWidget.h"
-	#include "GtkPackType.h"
 
     /**
      * GtkBox_

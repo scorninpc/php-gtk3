@@ -6,7 +6,6 @@
     #include <gtk/gtk.h>
 
 	#include "GObject.h"
-    #include "GtkFileFilterInfo.h"
 
     /**
      * GtkFileFilter_

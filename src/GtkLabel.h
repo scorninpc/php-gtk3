@@ -6,7 +6,6 @@
     #include <gtk/gtk.h>
 
 	#include "GtkWidget.h"
-	#include "GtkJustification.h"
 
     /**
      * GtkLabel_

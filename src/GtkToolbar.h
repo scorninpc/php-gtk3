@@ -8,9 +8,6 @@
 	#include "GtkContainer.h"
 	#include "GtkWidget.h"
 	#include "GtkToolItem.h"
-	#include "GtkToolbarStyle.h"
-	#include "GtkIconSize.h"
-	#include "GtkReliefStyle.h"
 
     /**
      * GtkToolbar_

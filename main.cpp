@@ -66,12 +66,12 @@ extern "C"
         
 // ----- ENUMS 
         // GdkByteOrder
-        Php::Class<GdkByteOrder_> gdkbyteorder("GdkByteOrder");
+        Php::Class<Php::Base> gdkbyteorder("GdkByteOrder");
             gdkbyteorder.constant("LSB_FIRST", GDK_LSB_FIRST);
             gdkbyteorder.constant("MSB_FIRST", GDK_MSB_FIRST);
 
         // GdkVisualType
-        Php::Class<GdkVisualType_> gdkvisualtype("GdkVisualType");
+        Php::Class<Php::Base> gdkvisualtype("GdkVisualType");
             gdkvisualtype.constant("STATIC_GRAY", GDK_VISUAL_STATIC_GRAY);
             gdkvisualtype.constant("STATIC_GRAYSCALE", GDK_VISUAL_GRAYSCALE);
             gdkvisualtype.constant("STATIC_COLOR", GDK_VISUAL_STATIC_COLOR);
@@ -80,7 +80,7 @@ extern "C"
             gdkvisualtype.constant("DIRECT_COLOR", GDK_VISUAL_DIRECT_COLOR);
         
         // GdkWindowType
-        Php::Class<GdkWindowType_> gdkwindowtype("GdkWindowType");
+        Php::Class<Php::Base> gdkwindowtype("GdkWindowType");
             gdkwindowtype.constant("ROOT", GDK_WINDOW_ROOT);
             gdkwindowtype.constant("TOPLEVEL", GDK_WINDOW_TOPLEVEL);
             gdkwindowtype.constant("CHILD", GDK_WINDOW_CHILD);
@@ -90,12 +90,12 @@ extern "C"
             gdkwindowtype.constant("SUBSURFACE", GDK_WINDOW_SUBSURFACE);
 
         // GdkWindowWindowClass
-        Php::Class<GdkWindowWindowClass_> gdkwindowwindowclass("GdkWindowWindowClass");
+        Php::Class<Php::Base> gdkwindowwindowclass("GdkWindowWindowClass");
             gdkwindowwindowclass.constant("INPUT_OUTPUT", GDK_INPUT_OUTPUT);
             gdkwindowwindowclass.constant("INPUT_ONLY", GDK_INPUT_ONLY);
         
         // GdkWindowHints
-        Php::Class<GdkWindowHints_> gdkwindowhints("GdkWindowHints");
+        Php::Class<Php::Base> gdkwindowhints("GdkWindowHints");
             gdkwindowhints.constant("POS", GDK_HINT_POS);
             gdkwindowhints.constant("MIN_SIZE", GDK_HINT_MIN_SIZE);
             gdkwindowhints.constant("MAX_SIZE", GDK_HINT_MAX_SIZE);
@@ -107,7 +107,7 @@ extern "C"
             gdkwindowhints.constant("USER_SIZE", GDK_HINT_USER_SIZE);
         
         // GdkGravity
-        Php::Class<GdkGravity_> gdkgravity("GdkGravity");
+        Php::Class<Php::Base> gdkgravity("GdkGravity");
             gdkgravity.constant("NORTH_WEST", GDK_GRAVITY_NORTH_WEST);
             gdkgravity.constant("NORTH", GDK_GRAVITY_NORTH);
             gdkgravity.constant("NORTH_EAST", GDK_GRAVITY_NORTH_EAST);
@@ -120,7 +120,7 @@ extern "C"
             gdkgravity.constant("STATIC", GDK_GRAVITY_STATIC);
 
         // GdkAnchorHints
-        Php::Class<GdkAnchorHints_> gdkanchorhints("GdkAnchorHints");
+        Php::Class<Php::Base> gdkanchorhints("GdkAnchorHints");
             gdkanchorhints.constant("FLIP_X", GDK_ANCHOR_FLIP_X);
             gdkanchorhints.constant("FLIP_Y", GDK_ANCHOR_FLIP_Y);
             gdkanchorhints.constant("SLIDE_X", GDK_ANCHOR_SLIDE_X);
@@ -132,7 +132,7 @@ extern "C"
             gdkanchorhints.constant("RESIZE", GDK_ANCHOR_RESIZE);
 
         // GdkWindowEdge
-        Php::Class<GdkWindowEdge_> gdkwindowedge("GdkWindowEdge");
+        Php::Class<Php::Base> gdkwindowedge("GdkWindowEdge");
             gdkwindowedge.constant("NORTH_WEST", GDK_WINDOW_EDGE_NORTH_WEST);
             gdkwindowedge.constant("NORTH", GDK_WINDOW_EDGE_NORTH);
             gdkwindowedge.constant("NORTH_EAST", GDK_WINDOW_EDGE_NORTH_EAST);
@@ -143,7 +143,7 @@ extern "C"
             gdkwindowedge.constant("SOUTH_EAST", GDK_WINDOW_EDGE_SOUTH_EAST);
 
         // GdkWindowAttributesType
-        Php::Class<GdkWindowAttributesType_> gdkwindowattributestype("GdkWindowAttributesType");
+        Php::Class<Php::Base> gdkwindowattributestype("GdkWindowAttributesType");
             gdkwindowattributestype.constant("TITLE", GDK_WA_TITLE);
             gdkwindowattributestype.constant("X", GDK_WA_X);
             gdkwindowattributestype.constant("Y", GDK_WA_Y);
@@ -154,18 +154,18 @@ extern "C"
             gdkwindowattributestype.constant("TYPE_HINT", GDK_WA_TYPE_HINT);
 
         // GdkFullscreenMode
-        Php::Class<GdkFullscreenMode_> gdkfullscreenmode("GdkFullscreenMode");
+        Php::Class<Php::Base> gdkfullscreenmode("GdkFullscreenMode");
             gdkfullscreenmode.constant("ON_CURRENT_MONITOR", GDK_FULLSCREEN_ON_CURRENT_MONITOR);
             gdkfullscreenmode.constant("ON_ALL_MONITORS", GDK_FULLSCREEN_ON_ALL_MONITORS);
 
         // GdkFilterReturn
-        Php::Class<GdkFilterReturn_> gdkfilterreturn("GdkFilterReturn");
+        Php::Class<Php::Base> gdkfilterreturn("GdkFilterReturn");
             gdkfilterreturn.constant("CONTINUE", GDK_FILTER_CONTINUE);
             gdkfilterreturn.constant("TRANSLATE", GDK_FILTER_TRANSLATE);
             gdkfilterreturn.constant("REMOVE", GDK_FILTER_REMOVE);
         
         // GdkModifierIntent
-        Php::Class<GdkModifierIntent_> gdkmodifierintent("GdkModifierIntent");
+        Php::Class<Php::Base> gdkmodifierintent("GdkModifierIntent");
             gdkmodifierintent.constant("PRIMARY_ACCELERATOR", GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
             gdkmodifierintent.constant("CONTEXT_MENU", GDK_MODIFIER_INTENT_CONTEXT_MENU);
             gdkmodifierintent.constant("EXTEND_SELECTION", GDK_MODIFIER_INTENT_EXTEND_SELECTION);
@@ -175,7 +175,7 @@ extern "C"
             gdkmodifierintent.constant("DEFAULT_MOD_MASK", GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK);
 
         // GdkWMDecoration
-        Php::Class<GdkWMDecoration_> gdkwmdecoration("GdkWMDecoration");
+        Php::Class<Php::Base> gdkwmdecoration("GdkWMDecoration");
             gdkwmdecoration.constant("ALL", GDK_DECOR_ALL);
             gdkwmdecoration.constant("BORDER", GDK_DECOR_BORDER);
             gdkwmdecoration.constant("RESIZEH", GDK_DECOR_RESIZEH);
@@ -185,7 +185,7 @@ extern "C"
             gdkwmdecoration.constant("MAXIMIZE", GDK_DECOR_MAXIMIZE);
 
         // GdkWMFunction
-        Php::Class<GdkWMFunction_> gdkwmfunction("GdkWMFunction");
+        Php::Class<Php::Base> gdkwmfunction("GdkWMFunction");
             gdkwmfunction.constant("ALL", GDK_FUNC_ALL);
             gdkwmfunction.constant("RESIZE", GDK_FUNC_RESIZE);
             gdkwmfunction.constant("MOVE", GDK_FUNC_MOVE);
@@ -202,24 +202,24 @@ extern "C"
         
 
         // GtkWidgetHelpType
-        Php::Class<GtkWidgetHelpType_> gtkwidgethelptype("GtkWidgetHelpType");
+        Php::Class<Php::Base> gtkwidgethelptype("GtkWidgetHelpType");
             gtkwidgethelptype.constant("TOOLTIP", GTK_WIDGET_HELP_TOOLTIP);
             gtkwidgethelptype.constant("WHATS_THIS", GTK_WIDGET_HELP_WHATS_THIS);
 
         // GtkTextDirection
-        Php::Class<GtkTextDirection_> gtktextdirection("GtkTextDirection");
+        Php::Class<Php::Base> gtktextdirection("GtkTextDirection");
             gtktextdirection.constant("NONE", GTK_TEXT_DIR_NONE);
             gtktextdirection.constant("LTR", GTK_TEXT_DIR_LTR);
             gtktextdirection.constant("RTL", GTK_TEXT_DIR_RTL);
 
         // GtkSizeRequestMode
-        Php::Class<GtkSizeRequestMode_> gtksizerequestmode("GtkSizeRequestMode");
+        Php::Class<Php::Base> gtksizerequestmode("GtkSizeRequestMode");
             gtksizerequestmode.constant("HEIGHT_FOR_WIDTH", GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH);
             gtksizerequestmode.constant("WIDTH_FOR_HEIGHT", GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT);
             gtksizerequestmode.constant("CONSTANT_SIZE", GTK_SIZE_REQUEST_CONSTANT_SIZE);
 
         // GtkAlign
-        Php::Class<GtkAlign_> gtkalign("GtkAlign");
+        Php::Class<Php::Base> gtkalign("GtkAlign");
             gtkalign.constant("FILL", GTK_ALIGN_FILL);
             gtkalign.constant("START", GTK_ALIGN_START);
             gtkalign.constant("END", GTK_ALIGN_END);
@@ -227,7 +227,7 @@ extern "C"
             gtkalign.constant("BASELINE", GTK_ALIGN_BASELINE);
 
         // GtkBorderStyle
-        Php::Class<GtkBorderStyle_> gtkborderstyle("GtkBorderStyle");
+        Php::Class<Php::Base> gtkborderstyle("GtkBorderStyle");
             gtkborderstyle.constant("NONE", GTK_BORDER_STYLE_NONE);
             gtkborderstyle.constant("SOLID", GTK_BORDER_STYLE_SOLID);
             gtkborderstyle.constant("INSET", GTK_BORDER_STYLE_INSET);
@@ -240,7 +240,7 @@ extern "C"
             gtkborderstyle.constant("RIDGE", GTK_BORDER_STYLE_RIDGE);
 
         // GtkJunctionSides
-        Php::Class<GtkJunctionSides_> gtkjunctionsides("GtkJunctionSides");
+        Php::Class<Php::Base> gtkjunctionsides("GtkJunctionSides");
             gtkjunctionsides.constant("NONE", GTK_JUNCTION_NONE);
             gtkjunctionsides.constant("CORNER_TOPLEFT", GTK_JUNCTION_CORNER_TOPLEFT);
             gtkjunctionsides.constant("CORNER_TOPRIGHT", GTK_JUNCTION_CORNER_TOPRIGHT);
@@ -252,7 +252,7 @@ extern "C"
             gtkjunctionsides.constant("RIGHT", GTK_JUNCTION_RIGHT);
         
         // GtkRegionFlags
-        Php::Class<GtkRegionFlags_> gtkregionflags("GtkRegionFlags");
+        Php::Class<Php::Base> gtkregionflags("GtkRegionFlags");
             gtkregionflags.constant("EVEN", GTK_REGION_EVEN);
             gtkregionflags.constant("ODD", GTK_REGION_ODD);
             gtkregionflags.constant("FIRST", GTK_REGION_FIRST);
@@ -261,7 +261,7 @@ extern "C"
             gtkregionflags.constant("SORTED", GTK_REGION_SORTED);
         
         // GtkStyleContextPrintFlags
-        Php::Class<GtkStyleContextPrintFlags_> gtkstylecontextprintflags("GtkStyleContextPrintFlags");
+        Php::Class<Php::Base> gtkstylecontextprintflags("GtkStyleContextPrintFlags");
             gtkstylecontextprintflags.constant("NONE", GTK_STYLE_CONTEXT_PRINT_NONE);
             gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
             gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
@@ -435,13 +435,13 @@ extern "C"
 
 
         // GdkPixbufAlphaMode
-        Php::Class<GdkPixbufAlphaMode_> gdkpixbufalphamode("GdkPixbufAlphaMode");
+        Php::Class<Php::Base> gdkpixbufalphamode("GdkPixbufAlphaMode");
             gdkpixbufalphamode.constant("BILEVEL", (int)GDK_PIXBUF_ALPHA_BILEVEL);
             gdkpixbufalphamode.constant("FULL", (int)GDK_PIXBUF_ALPHA_FULL);
 
 
         // GdkColorspace
-        Php::Class<GdkColorspace_> gdkcolorspace("GdkColorspace");
+        Php::Class<Php::Base> gdkcolorspace("GdkColorspace");
             gdkcolorspace.constant("RGB", (int)GDK_COLORSPACE_RGB);
 
 
@@ -473,13 +473,13 @@ extern "C"
         
         
         // GtkOrientation
-        Php::Class<GtkOrientation_> gtkorientation("GtkOrientation");
+        Php::Class<Php::Base> gtkorientation("GtkOrientation");
             gtkorientation.constant("HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
             gtkorientation.constant("VERTICAL", GTK_ORIENTATION_VERTICAL);
         
 
         // GtkPolicyType
-        Php::Class<GtkPolicyType_> gtkpolicytype("GtkPolicyType");
+        Php::Class<Php::Base> gtkpolicytype("GtkPolicyType");
             gtkpolicytype.constant("ALWAYS", GTK_POLICY_ALWAYS);
             gtkpolicytype.constant("AUTOMATIC", GTK_POLICY_AUTOMATIC);
             gtkpolicytype.constant("NEVER", GTK_POLICY_NEVER);
@@ -952,7 +952,7 @@ extern "C"
 
 
         // GtkUnit
-        Php::Class<GtkUnit_> gtkunit("GtkUnit");
+        Php::Class<Php::Base> gtkunit("GtkUnit");
             gtkunit.constant("NONE", (int)GTK_UNIT_NONE);
             gtkunit.constant("POINTS", (int)GTK_UNIT_POINTS);
             gtkunit.constant("INCH", (int)GTK_UNIT_INCH);
@@ -1089,7 +1089,7 @@ extern "C"
         
 
         // GtkSortType
-        Php::Class<GtkSortType_> gtksorttype("GtkSortType");
+        Php::Class<Php::Base> gtksorttype("GtkSortType");
             gtksorttype.constant("ASCENDING", (int)GTK_SORT_ASCENDING);
             gtksorttype.constant("DESCENDING", (int)GTK_SORT_DESCENDING);
 
@@ -1188,7 +1188,7 @@ extern "C"
         
 
         // GtkTreeModelFlags
-        Php::Class<GtkTreeModelFlags_> gtktreemodelflags("GtkTreeModelFlags");
+        Php::Class<Php::Base> gtktreemodelflags("GtkTreeModelFlags");
             gtktreemodelflags.constant("TREE_MODEL_ITERS_PERSIST", (int)GTK_TREE_MODEL_ITERS_PERSIST);
             gtktreemodelflags.constant("TREE_MODEL_LIST_ONLY", (int)GTK_TREE_MODEL_LIST_ONLY);
         
@@ -1278,7 +1278,7 @@ extern "C"
         
 
         // GtkPositionType
-        Php::Class<GtkPositionType_> gtkpositiontype("GtkPositionType");
+        Php::Class<Php::Base> gtkpositiontype("GtkPositionType");
             gtkpositiontype.constant("LEFT", (int)GTK_POS_LEFT);
             gtkpositiontype.constant("RIGHT", (int)GTK_POS_RIGHT);
             gtkpositiontype.constant("TOP", (int)GTK_POS_TOP);
@@ -1286,14 +1286,14 @@ extern "C"
         
 
         // GtkPackType
-        Php::Class<GtkPackType_> gtkpacktype("GtkPackType");
+        Php::Class<Php::Base> gtkpacktype("GtkPackType");
             gtkpacktype.constant("STARTY", (int)GTK_PACK_START);
             gtkpacktype.constant("END", (int)GTK_PACK_END);
         
 
 
         // GtkJustification
-        Php::Class<GtkJustification_> gtkjustification("GtkJustification");
+        Php::Class<Php::Base> gtkjustification("GtkJustification");
             gtkjustification.constant("LEFT", (int)GTK_JUSTIFY_LEFT);
             gtkjustification.constant("RIGHT", (int)GTK_JUSTIFY_RIGHT);
             gtkjustification.constant("CENTER", (int)GTK_JUSTIFY_CENTER);
@@ -1302,7 +1302,7 @@ extern "C"
         
 
         // GtkFileChooserAction
-        Php::Class<GtkFileChooserAction_> gtkfilechooseraction("GtkFileChooserAction");
+        Php::Class<Php::Base> gtkfilechooseraction("GtkFileChooserAction");
             gtkfilechooseraction.constant("OPEN", (int)GTK_FILE_CHOOSER_ACTION_OPEN);
             gtkfilechooseraction.constant("SAVE", (int)GTK_FILE_CHOOSER_ACTION_SAVE);
             gtkfilechooseraction.constant("SELECT_FOLDER", (int)GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -1549,7 +1549,7 @@ extern "C"
         
 
         // GtkTextWindowType
-        Php::Class<GtkTextWindowType_> gtktextwindowtype("GtkTextWindowType");
+        Php::Class<Php::Base> gtktextwindowtype("GtkTextWindowType");
             gtktextwindowtype.constant("PRIVATE", (int)GTK_TEXT_WINDOW_PRIVATE);
             gtktextwindowtype.constant("WIDGET", (int)GTK_TEXT_WINDOW_WIDGET);
             gtktextwindowtype.constant("TEXT", (int)GTK_TEXT_WINDOW_TEXT);
@@ -1560,7 +1560,7 @@ extern "C"
 
 
         // GtkWrapMode
-        Php::Class<GtkWrapMode_> gtkwrapmode("GtkWrapMode");
+        Php::Class<Php::Base> gtkwrapmode("GtkWrapMode");
             gtkwrapmode.constant("NONE", (int)GTK_WRAP_NONE);
             gtkwrapmode.constant("CHAR", (int)GTK_WRAP_CHAR);
             gtkwrapmode.constant("WORD", (int)GTK_WRAP_WORD);
@@ -1568,7 +1568,7 @@ extern "C"
         
 
         // GtkInputHints
-        Php::Class<GtkInputHints_> gtkinputhints("GtkInputHints");
+        Php::Class<Php::Base> gtkinputhints("GtkInputHints");
             gtkinputhints.constant("NONE", (int)GTK_INPUT_HINT_NONE);
             gtkinputhints.constant("SPELLCHECK", (int)GTK_INPUT_HINT_SPELLCHECK);
             gtkinputhints.constant("NO_SPELLCHECK", (int)GTK_INPUT_HINT_NO_SPELLCHECK);
@@ -1584,7 +1584,7 @@ extern "C"
 
 
         // GtkInputPurpose
-        Php::Class<GtkInputPurpose_> gtkinputpurpose("GtkInputPurpose");
+        Php::Class<Php::Base> gtkinputpurpose("GtkInputPurpose");
             gtkinputhints.constant("FREE_FORM", (int)GTK_INPUT_PURPOSE_FREE_FORM);
             gtkinputhints.constant("ALPHA", (int)GTK_INPUT_PURPOSE_ALPHA);
             gtkinputhints.constant("DIGITS", (int)GTK_INPUT_PURPOSE_DIGITS);
@@ -1610,14 +1610,14 @@ extern "C"
         
 
         // GtkDialogFlags
-        Php::Class<GtkDialogFlags_> gtkdialogflags("GtkDialogFlags");
+        Php::Class<Php::Base> gtkdialogflags("GtkDialogFlags");
             gtkdialogflags.constant("MODAL", (int)GTK_DIALOG_MODAL);
             gtkdialogflags.constant("DESTROY_WITH_PARENT", (int)GTK_DIALOG_DESTROY_WITH_PARENT);
             gtkdialogflags.constant("USE_HEADER_BAR", (int)GTK_DIALOG_USE_HEADER_BAR);
         
 
         // GtkResponseType
-        Php::Class<GtkResponseType_> gtkresponsetype("GtkResponseType");
+        Php::Class<Php::Base> gtkresponsetype("GtkResponseType");
             gtkresponsetype.constant("REJECT", (int)GTK_RESPONSE_REJECT);
             gtkresponsetype.constant("ACCEPT", (int)GTK_RESPONSE_ACCEPT);
             gtkresponsetype.constant("DELETE_EVENT", (int)GTK_RESPONSE_DELETE_EVENT);
@@ -1630,7 +1630,7 @@ extern "C"
             gtkresponsetype.constant("HELP", (int)GTK_RESPONSE_HELP);
         
         // GtkLicense
-        Php::Class<GtkLicense_> gtklicense("GtkLicense");
+        Php::Class<Php::Base> gtklicense("GtkLicense");
             gtklicense.constant("UNKNOWN", (int)GTK_LICENSE_UNKNOWN);
             gtklicense.constant("CUSTOM", (int)GTK_LICENSE_CUSTOM);
             gtklicense.constant("GPL_2_0", (int)GTK_LICENSE_GPL_2_0);
@@ -1646,7 +1646,7 @@ extern "C"
             gtklicense.constant("LGPL_3_0_ONLY", (int)GTK_LICENSE_LGPL_3_0_ONLY);
 
         // GtkFileFilterFlags
-        Php::Class<GtkFileFilterFlags_> gtkfilefilterflags("GtkFileFilterFlags");
+        Php::Class<Php::Base> gtkfilefilterflags("GtkFileFilterFlags");
             gtkfilefilterflags.constant("FILENAME", (int)GTK_FILE_FILTER_FILENAME);
             gtkfilefilterflags.constant("URI", (int)GTK_FILE_FILTER_URI);
             gtkfilefilterflags.constant("DIPLAY_NAME", (int)GTK_FILE_FILTER_DISPLAY_NAME);
@@ -1715,13 +1715,8 @@ extern "C"
             gtkfilechooserdialog.method<&GtkFileChooserDialog_::set_filter>("set_filter");
             gtkfilechooserdialog.method<&GtkFileChooserDialog_::get_filter>("get_filter");
 
-
-        // GtkFileFilterInfo
-        Php::Class<GtkFileFilterInfo_> gtkfilefilterinfo("GtkFileFilterInfo");
-
-
         // GtkMessageType
-        Php::Class<GtkMessageType_> gtkmessagetype("GtkMessageType");
+        Php::Class<Php::Base> gtkmessagetype("GtkMessageType");
             gtkmessagetype.constant("INFO", (int)GTK_MESSAGE_INFO);
             gtkmessagetype.constant("WARNING", (int)GTK_MESSAGE_WARNING);
             gtkmessagetype.constant("QUESTION", (int)GTK_MESSAGE_QUESTION);
@@ -1730,7 +1725,7 @@ extern "C"
 
 
         // GtkButtonsType
-        Php::Class<GtkButtonsType_> gtkbuttonstype("GtkButtonsType");
+        Php::Class<Php::Base> gtkbuttonstype("GtkButtonsType");
             gtkbuttonstype.constant("NONE", (int)GTK_BUTTONS_NONE);
             gtkbuttonstype.constant("OK", (int)GTK_BUTTONS_OK);
             gtkbuttonstype.constant("CLOSE", (int)GTK_BUTTONS_CLOSE);
@@ -1788,7 +1783,7 @@ extern "C"
             gtkaboutdialog.method<&GtkAboutDialog_::gtk_show_about_dialog>("gtk_show_about_dialog");
         
         // GtkPageOrientation
-        Php::Class<GtkPageOrientation_> gtkpageorientation("GtkPageOrientation");
+        Php::Class<Php::Base> gtkpageorientation("GtkPageOrientation");
             gtkpageorientation.constant("PORTRAIT", (int)GTK_PAGE_ORIENTATION_PORTRAIT);
             gtkpageorientation.constant("LANDSCAPE", (int)GTK_PAGE_ORIENTATION_LANDSCAPE);
             gtkpageorientation.constant("REVERSE_PORTRAIT", (int)GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT);
@@ -1796,20 +1791,20 @@ extern "C"
 
 
         // GtkPrintDuplex
-        Php::Class<GtkPrintDuplex_> gtkprintduplex("GtkPrintDuplex");
+        Php::Class<Php::Base> gtkprintduplex("GtkPrintDuplex");
             gtkprintduplex.constant("SIMPLEX", (int)GTK_PRINT_DUPLEX_SIMPLEX);
             gtkprintduplex.constant("HORIZONTAL", (int)GTK_PRINT_DUPLEX_HORIZONTAL);
             gtkprintduplex.constant("VERTICAL", (int)GTK_PRINT_DUPLEX_VERTICAL);
 
         // GtkPrintQuality
-        Php::Class<GtkPrintQuality_> gtkprintquality("GtkPrintQuality");
+        Php::Class<Php::Base> gtkprintquality("GtkPrintQuality");
             gtkprintquality.constant("LOW", (int)GTK_PRINT_QUALITY_LOW);
             gtkprintquality.constant("NORMAL", (int)GTK_PRINT_QUALITY_NORMAL);
             gtkprintquality.constant("HIGH", (int)GTK_PRINT_QUALITY_HIGH);
             gtkprintquality.constant("DRAFT", (int)GTK_PRINT_QUALITY_DRAFT);
 
         // GtkNumberUpLayout
-        Php::Class<GtkNumberUpLayout_> gtknumberuplayout("GtkNumberUpLayout");
+        Php::Class<Php::Base> gtknumberuplayout("GtkNumberUpLayout");
             gtknumberuplayout.constant("LEFT_TO_RIGHT_TOP_TO_BOTTOM", (int)GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM);
             gtknumberuplayout.constant("LEFT_TO_RIGHT_BOTTOM_TO_TOP", (int)GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP);
             gtknumberuplayout.constant("RIGHT_TO_LEFT_TOP_TO_BOTTOM", (int)GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM);
@@ -1821,7 +1816,7 @@ extern "C"
 
 
         // GtkPrintPages
-        Php::Class<GtkPrintPages_> gtkprintpages("GtkPrintPages");
+        Php::Class<Php::Base> gtkprintpages("GtkPrintPages");
             gtkprintpages.constant("ALL", (int)GTK_PRINT_PAGES_ALL);
             gtkprintpages.constant("CURRENT", (int)GTK_PRINT_PAGES_CURRENT);
             gtkprintpages.constant("RANGES", (int)GTK_PRINT_PAGES_RANGES);
@@ -1829,7 +1824,7 @@ extern "C"
         
 
         // GtkPageSet
-        Php::Class<GtkPageSet_> gtkpageset("GtkPageSet");
+        Php::Class<Php::Base> gtkpageset("GtkPageSet");
             gtkpageset.constant("ALL", (int)GTK_PAGE_SET_ALL);
             gtkpageset.constant("EVEN", (int)GTK_PAGE_SET_EVEN);
             gtkpageset.constant("ODD", (int)GTK_PAGE_SET_ODD);
@@ -1848,7 +1843,7 @@ extern "C"
 
 
         // GtkIconSize
-        Php::Class<GtkIconSize_> gtkiconsize("GtkIconSize");
+        Php::Class<Php::Base> gtkiconsize("GtkIconSize");
             gtkiconsize.constant("INVALID", (int)GTK_ICON_SIZE_INVALID);
             gtkiconsize.constant("MENU", (int)GTK_ICON_SIZE_MENU);
             gtkiconsize.constant("SMALL_TOOLBAR", (int)GTK_ICON_SIZE_SMALL_TOOLBAR);
@@ -1859,14 +1854,14 @@ extern "C"
         
 
         // GtkSizeGroupMode
-        Php::Class<GtkSizeGroupMode_> gtksizegroupmode("GtkSizeGroupMode");
+        Php::Class<Php::Base> gtksizegroupmode("GtkSizeGroupMode");
             gtksizegroupmode.constant("NONE", (int)GTK_SIZE_GROUP_NONE);
             gtksizegroupmode.constant("HORIZONTAL", (int)GTK_SIZE_GROUP_HORIZONTAL);
             gtksizegroupmode.constant("VERTICAL", (int)GTK_SIZE_GROUP_VERTICAL);
             gtksizegroupmode.constant("BOTH", (int)GTK_SIZE_GROUP_BOTH);
 
         // GtkToolbarStyle
-        Php::Class<GtkToolbarStyle_> gtktoolbarstyle("GtkToolbarStyle");
+        Php::Class<Php::Base> gtktoolbarstyle("GtkToolbarStyle");
             gtktoolbarstyle.constant("ICONS", (int)GTK_TOOLBAR_ICONS);
             gtktoolbarstyle.constant("TEXT", (int)GTK_TOOLBAR_TEXT);
             gtktoolbarstyle.constant("BOTH", (int)GTK_TOOLBAR_BOTH);
@@ -1874,7 +1869,7 @@ extern "C"
 
 
         // GtkReliefStyle
-        Php::Class<GtkReliefStyle_> gtkreliefstyle("GtkReliefStyle");
+        Php::Class<Php::Base> gtkreliefstyle("GtkReliefStyle");
             gtkreliefstyle.constant("NORMAL", (int)GTK_RELIEF_NORMAL);
             gtkreliefstyle.constant("HALF", (int)GTK_RELIEF_HALF);
             gtkreliefstyle.constant("NONE", (int)GTK_RELIEF_NONE);
@@ -1980,7 +1975,7 @@ extern "C"
         
 
         // GdkSelection
-        Php::Class<GdkSelection_> gdkselection("GdkSelection");
+        Php::Class<Php::Base> gdkselection("GdkSelection");
             gdkselection.constant("PRIMARY", 1);
             gdkselection.constant("SECONDARY", 2);
             gdkselection.constant("CLIPBOARD", 69);
@@ -2053,7 +2048,7 @@ extern "C"
         
         
         // GtkSelectionMode
-        Php::Class<GtkSelectionMode_> gtkselectionmode("GtkSelectionMode");
+        Php::Class<Php::Base> gtkselectionmode("GtkSelectionMode");
             gtkselectionmode.constant("NONE", GTK_SELECTION_NONE);
             gtkselectionmode.constant("SINGLE", GTK_SELECTION_SINGLE);
             gtkselectionmode.constant("BROWSE", GTK_SELECTION_BROWSE);
@@ -2104,7 +2099,7 @@ extern "C"
 
 
         // GtkPackDirection
-        Php::Class<GtkPackDirection_> gtkpackdirection("GtkPackDirection");
+        Php::Class<Php::Base> gtkpackdirection("GtkPackDirection");
             gtkpackdirection.constant("LTR", GTK_PACK_DIRECTION_LTR);
             gtkpackdirection.constant("RTL", GTK_PACK_DIRECTION_RTL);
             gtkpackdirection.constant("TTB", GTK_PACK_DIRECTION_TTB);
@@ -2249,7 +2244,7 @@ extern "C"
         
 
         // GtkSensitivityType
-        Php::Class<GtkSensitivityType_> gtksensitivitytype("GtkSensitivityType");
+        Php::Class<Php::Base> gtksensitivitytype("GtkSensitivityType");
             gtksensitivitytype.constant("AUTO", (int)GTK_SENSITIVITY_AUTO);
             gtksensitivitytype.constant("ON", (int)GTK_SENSITIVITY_ON);
             gtksensitivitytype.constant("OFF", (int)GTK_SENSITIVITY_OFF);
@@ -2364,14 +2359,14 @@ extern "C"
         
 
         // GtkBaselinePosition
-        Php::Class<GtkBaselinePosition_> gtkbaselineposition("GtkBaselinePosition");
+        Php::Class<Php::Base> gtkbaselineposition("GtkBaselinePosition");
             gtkbaselineposition.constant("TOP", (int)GTK_BASELINE_POSITION_TOP);
             gtkbaselineposition.constant("CENTER", (int)GTK_BASELINE_POSITION_CENTER);
             gtkbaselineposition.constant("BOTTOM", (int)GTK_BASELINE_POSITION_BOTTOM);
 
 
         // GtkDeleteType
-        Php::Class<GtkDeleteType_> gtkdeletetype("GtkDeleteType");
+        Php::Class<Php::Base> gtkdeletetype("GtkDeleteType");
             gtkdeletetype.constant("CHARS", (int)GTK_DELETE_CHARS);
             gtkdeletetype.constant("WORD_ENDS", (int)GTK_DELETE_WORD_ENDS);
             gtkdeletetype.constant("WORDS", (int)GTK_DELETE_WORDS);
@@ -2383,7 +2378,7 @@ extern "C"
 
 
         // GtkDirectionType
-        Php::Class<GtkDirectionType_> gtkdirectiontype("GtkDirectionType");
+        Php::Class<Php::Base> gtkdirectiontype("GtkDirectionType");
             gtkdirectiontype.constant("TAB_FORWARD", (int)GTK_DIR_TAB_FORWARD);
             gtkdirectiontype.constant("TAB_BACKWARD", (int)GTK_DIR_TAB_BACKWARD);
             gtkdirectiontype.constant("UP", (int)GTK_DIR_UP);
@@ -2393,7 +2388,7 @@ extern "C"
 
 
         // GtkMovementStep
-        Php::Class<GtkMovementStep_> gtkmovementstep("GtkMovementStep");
+        Php::Class<Php::Base> gtkmovementstep("GtkMovementStep");
             gtkmovementstep.constant("LOGICAL_POSITIONS", (int)GTK_MOVEMENT_LOGICAL_POSITIONS);
             gtkmovementstep.constant("VISUAL_POSITIONS", (int)GTK_MOVEMENT_VISUAL_POSITIONS);
             gtkmovementstep.constant("WORDS", (int)GTK_MOVEMENT_WORDS);
@@ -2407,7 +2402,7 @@ extern "C"
 
 
         // GtkScrollStep
-        Php::Class<GtkScrollStep_> gtkscrollstep("GtkScrollStep");
+        Php::Class<Php::Base> gtkscrollstep("GtkScrollStep");
             gtkscrollstep.constant("STEPS", (int)GTK_SCROLL_STEPS);
             gtkscrollstep.constant("PAGES", (int)GTK_SCROLL_PAGES);
             gtkscrollstep.constant("ENDS", (int)GTK_SCROLL_ENDS);
@@ -2417,7 +2412,7 @@ extern "C"
         
         
         // GtkScrollType
-        Php::Class<GtkScrollType_> gtkscrolltype("GtkScrollType");
+        Php::Class<Php::Base> gtkscrolltype("GtkScrollType");
             gtkscrolltype.constant("NONE", (int)GTK_SCROLL_NONE);
             gtkscrolltype.constant("JUMP", (int)GTK_SCROLL_JUMP);
             gtkscrolltype.constant("STEP_BACKWARD", (int)GTK_SCROLL_STEP_BACKWARD);
@@ -2437,7 +2432,7 @@ extern "C"
 
 
         // GtkShadowType
-        Php::Class<GtkShadowType_> gtkshadowtype("GtkShadowType");
+        Php::Class<Php::Base> gtkshadowtype("GtkShadowType");
             gtkshadowtype.constant("NONE", (int)GTK_SHADOW_NONE);
             gtkshadowtype.constant("IN", (int)GTK_SHADOW_IN);
             gtkshadowtype.constant("OUT", (int)GTK_SHADOW_OUT);
@@ -2446,7 +2441,7 @@ extern "C"
 
 
         // GtkStateFlags
-        Php::Class<GtkStateFlags_> gtkstateflags("GtkStateFlags");
+        Php::Class<Php::Base> gtkstateflags("GtkStateFlags");
             gtkstateflags.constant("NORMAL", (int)GTK_STATE_FLAG_NORMAL);
             gtkstateflags.constant("ACTIVE", (int)GTK_STATE_FLAG_ACTIVE);
             gtkstateflags.constant("PRELIGHT", (int)GTK_STATE_FLAG_PRELIGHT);
@@ -2464,7 +2459,7 @@ extern "C"
         
 
         // GtkRevealerTransitionType
-        Php::Class<GtkRevealerTransitionType_> gtkrevealertransitiontype("GtkRevealerTransitionType");
+        Php::Class<Php::Base> gtkrevealertransitiontype("GtkRevealerTransitionType");
             gtkrevealertransitiontype.constant("NONE", (int)GTK_REVEALER_TRANSITION_TYPE_NONE);
             gtkrevealertransitiontype.constant("CROSSFADE", (int)GTK_REVEALER_TRANSITION_TYPE_CROSSFADE);
             gtkrevealertransitiontype.constant("RIGHT", (int)GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT);
@@ -2561,7 +2556,7 @@ extern "C"
 
 
         // GtkStackTransitionType
-        Php::Class<GtkStackTransitionType_> gtkstacktransitiontype("GtkStackTransitionType");
+        Php::Class<Php::Base> gtkstacktransitiontype("GtkStackTransitionType");
             gtkstacktransitiontype.constant("NONE", (int)GTK_STACK_TRANSITION_TYPE_NONE);
             gtkstacktransitiontype.constant("CROSSFADE", (int)GTK_STACK_TRANSITION_TYPE_CROSSFADE);
             gtkstacktransitiontype.constant("SLIDE_RIGHT", (int)GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT);
@@ -2666,7 +2661,7 @@ extern "C"
 
 
         // GtkButtonBoxStyle
-        Php::Class<GtkButtonBoxStyle_> gtkbuttonboxstyle("GtkButtonBoxStyle");
+        Php::Class<Php::Base> gtkbuttonboxstyle("GtkButtonBoxStyle");
             gtkbuttonboxstyle.constant("SPREAD", (int)GTK_BUTTONBOX_SPREAD);
             gtkbuttonboxstyle.constant("EDGE", (int)GTK_BUTTONBOX_EDGE);
             gtkbuttonboxstyle.constant("START", (int)GTK_BUTTONBOX_START);
@@ -2747,7 +2742,7 @@ extern "C"
 
 
         // GtkResizeMode
-        Php::Class<GtkResizeMode_> gtkresizemode("GtkResizeMode");
+        Php::Class<Php::Base> gtkresizemode("GtkResizeMode");
             gtkresizemode.constant("PARENT", (int)GTK_RESIZE_PARENT);
             gtkresizemode.constant("QUEUE", (int)GTK_RESIZE_QUEUE);
             gtkresizemode.constant("IMMEDIATE", (int)GTK_RESIZE_IMMEDIATE);
@@ -2795,7 +2790,7 @@ extern "C"
         
 
          // GtkImageType
-        Php::Class<GtkImageType_> gtkimagetype("GtkImageType");
+        Php::Class<Php::Base> gtkimagetype("GtkImageType");
             gtkimagetype.constant("EMPTY", (int)GTK_IMAGE_EMPTY);
             gtkimagetype.constant("PIXBUF", (int)GTK_IMAGE_PIXBUF);
             gtkimagetype.constant("STOCK", (int)GTK_IMAGE_STOCK);
@@ -2840,7 +2835,7 @@ extern "C"
         
 
         // GtkCalendarDisplayOptions
-        Php::Class<GtkCalendarDisplayOptions_> gtkcalendardisplayoptions("GtkCalendarDisplayOptions");
+        Php::Class<Php::Base> gtkcalendardisplayoptions("GtkCalendarDisplayOptions");
             gtkcalendardisplayoptions.constant("SHOW_HEADING", (int)GTK_CALENDAR_SHOW_HEADING);
             gtkcalendardisplayoptions.constant("SHOW_DAY_NAMES", (int)GTK_CALENDAR_SHOW_DAY_NAMES);
             gtkcalendardisplayoptions.constant("NO_MONTH_CHANGE", (int)GTK_CALENDAR_NO_MONTH_CHANGE);
@@ -2915,7 +2910,7 @@ extern "C"
 
 
         // GtkCssProviderError
-        Php::Class<GtkCssProviderError_> gtkcssprovidererror("GtkCssProviderError");
+        Php::Class<Php::Base> gtkcssprovidererror("GtkCssProviderError");
             gtkcssprovidererror.constant("FAILED", (int)GTK_CSS_PROVIDER_ERROR_FAILED);
             gtkcssprovidererror.constant("SYNTAX", (int)GTK_CSS_PROVIDER_ERROR_SYNTAX);
             gtkcssprovidererror.constant("IMPORT", (int)GTK_CSS_PROVIDER_ERROR_IMPORT);
@@ -2924,7 +2919,7 @@ extern "C"
             gtkcssprovidererror.constant("DEPRECATED", (int)GTK_CSS_PROVIDER_ERROR_DEPRECATED);
         
         // GtkCssSectionType
-        Php::Class<GtkCssSectionType_> gtkcsssectiontype("GtkCssSectionType");
+        Php::Class<Php::Base> gtkcsssectiontype("GtkCssSectionType");
             gtkcsssectiontype.constant("DOCUMENT", (int)GTK_CSS_SECTION_DOCUMENT);
             gtkcsssectiontype.constant("IMPORT", (int)GTK_CSS_SECTION_IMPORT);
             gtkcsssectiontype.constant("COLOR_DEFINITION", (int)GTK_CSS_SECTION_COLOR_DEFINITION);
@@ -3039,12 +3034,12 @@ extern "C"
             gtkstylecontext.method<&GtkStyleContext_::gtk_render_insertion_cursor>("gtk_render_insertion_cursor");
 
         // GtkRecentChooserError
-        Php::Class<GtkRecentChooserError_> gtkrecentchoosererror("GtkRecentChooserError");
+        Php::Class<Php::Base> gtkrecentchoosererror("GtkRecentChooserError");
             gtkrecentchoosererror.constant("NOT_FOUND", (int)GTK_RECENT_CHOOSER_ERROR_NOT_FOUND);
             gtkrecentchoosererror.constant("INVALID_URI", (int)GTK_RECENT_CHOOSER_ERROR_INVALID_URI);
 
         // GtkRecentSortType
-        Php::Class<GtkRecentSortType_> gtkrecentsorttype("GtkRecentSortType");
+        Php::Class<Php::Base> gtkrecentsorttype("GtkRecentSortType");
             gtkrecentsorttype.constant("NONE", (int)GTK_RECENT_SORT_NONE);
             gtkrecentsorttype.constant("MRU", (int)GTK_RECENT_SORT_MRU);
             gtkrecentsorttype.constant("LRU", (int)GTK_RECENT_SORT_LRU);
@@ -3088,7 +3083,7 @@ extern "C"
             gtkrecentchooserdialog.method<&GtkRecentChooserDialog_::get_filter>("get_filter");
 
         // GtkArrowType
-        Php::Class<GtkArrowType_> gtkarrowtype("GtkArrowType");
+        Php::Class<Php::Base> gtkarrowtype("GtkArrowType");
             gtkarrowtype.constant("UP", (int)GTK_ARROW_UP);
             gtkarrowtype.constant("DOWN", (int)GTK_ARROW_DOWN);
             gtkarrowtype.constant("LEFT", (int)GTK_ARROW_LEFT);
@@ -3098,14 +3093,14 @@ extern "C"
 #ifdef WITH_GTKSOURCEVIEW
 
         // GtkSourceSmartHomeEndType
-        Php::Class<GtkSourceSmartHomeEndType_> gtksourcesmarthomeendtype("GtkSourceSmartHomeEndType");
+        Php::Class<Php::Base> gtksourcesmarthomeendtype("GtkSourceSmartHomeEndType");
             gtksourcesmarthomeendtype.constant("DISABLED", (int)GTK_SOURCE_SMART_HOME_END_DISABLED);
             gtksourcesmarthomeendtype.constant("BEFORE", (int)GTK_SOURCE_SMART_HOME_END_BEFORE);
             gtksourcesmarthomeendtype.constant("AFTER", (int)GTK_SOURCE_SMART_HOME_END_AFTER);
             gtksourcesmarthomeendtype.constant("ALWAYS", (int)GTK_SOURCE_SMART_HOME_END_ALWAYS);
 
         // GtkSourceDrawSpacesFlags
-        Php::Class<GtkSourceDrawSpacesFlags_> gtksourcedrawspacesflags("GtkSourceDrawSpacesFlags");
+        Php::Class<Php::Base> gtksourcedrawspacesflags("GtkSourceDrawSpacesFlags");
             gtksourcedrawspacesflags.constant("SPACE", (int)GTK_SOURCE_DRAW_SPACES_SPACE);
             gtksourcedrawspacesflags.constant("TAB", (int)GTK_SOURCE_DRAW_SPACES_TAB);
             gtksourcedrawspacesflags.constant("NEWLINE", (int)GTK_SOURCE_DRAW_SPACES_NEWLINE);
@@ -3116,7 +3111,7 @@ extern "C"
             gtksourcedrawspacesflags.constant("ALL", (int)GTK_SOURCE_DRAW_SPACES_ALL);
 
         // GtkSourceBackgroundPatternType
-        Php::Class<GtkSourceBackgroundPatternType_> gtksourcebackgroundpatterntype("GtkSourceBackgroundPatternType");
+        Php::Class<Php::Base> gtksourcebackgroundpatterntype("GtkSourceBackgroundPatternType");
             gtksourcebackgroundpatterntype.constant("NONE", (int)GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE);
             gtksourcebackgroundpatterntype.constant("GRID", (int)GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID);
         
@@ -3259,7 +3254,6 @@ extern "C"
         extension.add(std::move(gtkdialogflags));
         extension.add(std::move(gtkresponsetype));
         extension.add(std::move(gtkfilefilterflags));
-        extension.add(std::move(gtkfilefilterinfo));
         extension.add(std::move(gtkfilefilter));
         extension.add(std::move(gtkmessagetype));
         extension.add(std::move(gtkbuttonstype));

@@ -7,7 +7,6 @@
 
 	#include "GtkDialog.h"
 	#include "GdkRGBA.h"
-	#include "GtkOrientation.h"
 
     /**
      * GtkColorChooserDialog_

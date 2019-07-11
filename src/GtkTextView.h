@@ -9,7 +9,6 @@
 	#include "GtkTextBuffer.h"
 	#include "GtkTextMark.h"
 	#include "GtkTextIter.h"
-	#include "GtkInputPurpose.h"
 
     /**
      * GtkTextView_

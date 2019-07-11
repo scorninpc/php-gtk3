@@ -6,7 +6,6 @@
     #include <gtk/gtk.h>
 
 	#include "GObject.h"
-	#include "GdkSelection.h"
 	#include "GdkPixbuf.h"
 	#include "GtkTextBuffer.h"
 

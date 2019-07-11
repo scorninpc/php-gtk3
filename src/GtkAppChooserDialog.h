@@ -6,7 +6,6 @@
     #include <gtk/gtk.h>
 
 	#include "GtkDialog.h"
-	#include "GtkDialogFlags.h"
 	#include "GtkWindow.h"
 
     /**

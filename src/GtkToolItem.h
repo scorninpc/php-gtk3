@@ -7,10 +7,6 @@
 
 	#include "GtkBin.h"
 	#include "GtkWidget.h"
-	#include "GtkIconSize.h"
-	#include "GtkOrientation.h"
-	#include "GtkToolbarStyle.h"
-	#include "GtkReliefStyle.h"
 	#include "GtkSizeGroup.h"
 
     /**

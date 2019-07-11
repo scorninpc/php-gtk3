@@ -7,7 +7,6 @@
 
 	#include "GtkContainer.h"
 	#include "GtkWidget.h"
-	#include "GtkPackType.h"
 
     /**
      * GtkGrid_
