@@ -5,10 +5,8 @@
     #include <phpcpp.h>
     #include <gtk/gtk.h>
 
-    #include "GtkTreeIter.h"
-    #include "GtkTreeModel.h"
-    #include "GdkPixbuf.h"
-    #include "GObject.h"
+	#include "GtkTreeModel.h"
+	#include "GtkTreeIter.h"
     #include "../main.h"
 
     /**
@@ -29,24 +27,45 @@
             GtkListStore_();
             ~GtkListStore_();
 
-            /**
-             * PHP Construct
-             */
             void __construct(Php::Parameters &parameters);
 
-            /**
-             * Sets the data in the cell specified by iter and column . The type of value must be convertible to the type of the column.
-             *
-             * https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-set-value
-             */
+            void set_column_types(Php::Parameters &parameters);
+
+            void set(Php::Parameters &parameters);
+
+            void set_valist(Php::Parameters &parameters);
+
             void set_value(Php::Parameters &parameters);
 
-            /**
-             * Appends a new row to list_store
-             *
-             * https://developer.gnome.org/gtk3/stable/GtkListStore.html#gtk-list-store-append
-             */
-            void append(Php::Parameters &parameters);
+            void set_valuesv(Php::Parameters &parameters);
+
+            Php::Value remove(Php::Parameters &parameters);
+
+            Php::Value insert(Php::Parameters &parameters);
+
+            Php::Value insert_before(Php::Parameters &parameters);
+
+            Php::Value insert_after(Php::Parameters &parameters);
+
+            void insert_with_values(Php::Parameters &parameters);
+
+            void insert_with_valuesv(Php::Parameters &parameters);
+
+            Php::Value prepend(Php::Parameters &parameters);
+
+            Php::Value append(Php::Parameters &parameters);
+
+            void clear();
+
+            Php::Value iter_is_valid(Php::Parameters &parameters);
+
+            void reorder(Php::Parameters &parameters);
+
+            void swap(Php::Parameters &parameters);
+
+            void move_before(Php::Parameters &parameters);
+
+            void move_after(Php::Parameters &parameters);
     };
 
 #endif

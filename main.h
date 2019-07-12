@@ -41,6 +41,7 @@
     
     #include "src/GtkBox.h"
     #include "src/GtkGrid.h"
+    #include "src/GtkFixed.h"
     #include "src/GtkHBox.h"
     #include "src/GtkVBox.h"
     #include "src/GtkBin.h"
@@ -120,6 +121,8 @@
     #include "src/GtkTreeStore.h"
     #include "src/GtkTreeSelection.h"
     
+    #include "src/GtkListStore.h"
+
     #include "src/GtkMenuShell.h"
     #include "src/GtkMenuBar.h"
     #include "src/GtkMenu.h"

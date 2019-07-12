@@ -641,6 +641,13 @@ extern "C"
             gtkgrid.method<&GtkGrid_::get_row_baseline_position>("get_row_baseline_position");
         
 
+        // GtkFixed
+        Php::Class<GtkFixed_> gtkfixed("GtkFixed");
+            gtkfixed.extends(gtkcontainer);
+            gtkfixed.method<&GtkFixed_::__construct>("__construct");
+            gtkfixed.method<&GtkFixed_::put>("put");
+            gtkfixed.method<&GtkFixed_::move>("move");
+        
 
         // GtkHBox
         Php::Class<GtkHBox_> gtkhbox("GtkHBox");
@@ -1178,14 +1185,6 @@ extern "C"
             gtktreemodel.method<&GtkTreeModel_::get_iter>("get_iter");
             gtktreemodel.method<&GtkTreeModel_::get_value>("get_value");
             gtktreemodel.method<&GtkTreeModel_::get_path>("get_path");
-
-        // GtkListStore
-        Php::Class<GtkListStore_> gtkliststore("GtkListStore");
-            gtkliststore.extends(gtktreemodel);
-            gtkliststore.method<&GtkListStore_::__construct>("__construct");
-            gtkliststore.method<&GtkListStore_::set_value>("set_value");
-            gtkliststore.method<&GtkListStore_::append>("append");
-        
 
         // GtkTreeModelFlags
         Php::Class<Php::Base> gtktreemodelflags("GtkTreeModelFlags");
@@ -2046,6 +2045,32 @@ extern "C"
             gtktreestore.method<&GtkTreeStore_::move_before>("move_before");
             gtktreestore.method<&GtkTreeStore_::move_after>("move_after");
         
+
+        // GtkListStore
+        Php::Class<GtkListStore_> gtkliststore("GtkListStore");
+            gtkliststore.extends(gtktreemodel);
+            gtkliststore.method<&GtkListStore_::__construct>("__construct");
+            gtkliststore.method<&GtkListStore_::set_column_types>("set_column_types");
+            gtkliststore.method<&GtkListStore_::set>("set");
+            gtkliststore.method<&GtkListStore_::set_valist>("set_valist");
+            gtkliststore.method<&GtkListStore_::set_value>("set_value");
+            gtkliststore.method<&GtkListStore_::set_valuesv>("set_valuesv");
+            gtkliststore.method<&GtkListStore_::remove>("remove");
+            gtkliststore.method<&GtkListStore_::insert>("insert");
+            gtkliststore.method<&GtkListStore_::insert_before>("insert_before");
+            gtkliststore.method<&GtkListStore_::insert_after>("insert_after");
+            gtkliststore.method<&GtkListStore_::insert_with_values>("insert_with_values");
+            gtkliststore.method<&GtkListStore_::insert_with_valuesv>("insert_with_valuesv");
+            gtkliststore.method<&GtkListStore_::prepend>("prepend");
+            gtkliststore.method<&GtkListStore_::append>("append");
+            gtkliststore.method<&GtkListStore_::clear>("clear");
+            gtkliststore.method<&GtkListStore_::iter_is_valid>("iter_is_valid");
+            gtkliststore.method<&GtkListStore_::reorder>("reorder");
+            gtkliststore.method<&GtkListStore_::swap>("swap");
+            gtkliststore.method<&GtkListStore_::move_before>("move_before");
+            gtkliststore.method<&GtkListStore_::move_after>("move_after");
+        
+
         
         // GtkSelectionMode
         Php::Class<Php::Base> gtkselectionmode("GtkSelectionMode");
@@ -3197,6 +3222,7 @@ extern "C"
         extension.add(std::move(gtkcontainer));
         extension.add(std::move(gtkbox));
         extension.add(std::move(gtkgrid));
+        extension.add(std::move(gtkfixed));
         extension.add(std::move(gtkhbox));
         extension.add(std::move(gtkvbox));
         extension.add(std::move(gtkbin));

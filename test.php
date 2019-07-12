@@ -104,6 +104,22 @@ function grid_2x2($widget)
 	$infobar->show();
 }
 
+function grid_2x3($widget)
+{
+	global $cml;
+
+	$cml->clear();
+}
+
+function grid_2x4($widget)
+{
+	global $cml, $txt1;
+
+	$text = $txt1->get_text();
+	
+	$cml->append([$text]);
+}
+
 // ----------------------
 // Vertical box
 // $vbox = new GtkBox(GtkOrientation::VERTICAL);
@@ -356,8 +372,8 @@ $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
 $grid->attach($s=new GtkSpinner(), 0, 1, 1, 1); $s->start();
 $grid->attach($a=GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1); $a->connect("clicked", "grid_2x2");
-$grid->attach(GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1);
-$grid->attach(GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1);
+$grid->attach($a=GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1); $a->connect("clicked", "grid_2x3");
+$grid->attach($a=GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1); $a->connect("clicked", "grid_2x4");
 $grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);
 
 $grid->attach(GtkButton::new_with_label("Grid 3x1"), 0, 2, 1, 1);
