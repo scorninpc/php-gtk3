@@ -145,6 +145,7 @@
 
 
     #include "src/GladeProject.h"
+    #include "src/GladeApp.h"
     #include "src/GladeDesignView.h"
     #include "src/GladeEditor.h"
     #include "src/GladePalette.h"

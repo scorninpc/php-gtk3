@@ -78,18 +78,25 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
     // Create gpoint param
     struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
     memset(callback_object, 0, sizeof(struct st_callback));
-    
+
     // Add my internal parameters
     callback_object->callback_name = callback_name;
     callback_object->callback_params = callback_params;
     callback_object->self_widget = Php::Object("GtkWidget", this);
     callback_object->parameters = parameters;
     
-    
-    // Retriave and store signal query parameters , to be used on callback
+
+     // Retriave and store signal query parameters , to be used on callback
     GSignalQuery signal_info;
-    g_signal_query(g_signal_lookup (callback_event, G_OBJECT_TYPE (instance)), &signal_info);
-    
+
+    if(G_IS_OBJECT(instance)) {
+        g_signal_query(g_signal_lookup (callback_event, G_OBJECT_TYPE (instance)), &signal_info);
+    }
+
+    if(G_IS_OBJECT_CLASS(instance)) {
+        g_signal_query(g_signal_lookup (callback_event, G_OBJECT_CLASS_TYPE (instance)), &signal_info);
+    }
+
     callback_object->signal_id = signal_info.signal_id;
     callback_object->signal_name = signal_info.signal_name;
     callback_object->itype = signal_info.itype;
@@ -97,7 +104,6 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
     callback_object->return_type = signal_info.return_type;
     callback_object->n_params = signal_info.n_params;
     callback_object->param_types = signal_info.param_types;
-
 
     // Create the CPP callback
     // int ret = g_signal_connect(instance, callback_event, G_CALLBACK (connect_callback), callback_object);
@@ -116,7 +122,6 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
  */
 bool GObject_::connect_callback(gpointer user_data, ...)
 {
-    
     // Return to st_callback
     struct st_callback *callback_object = (struct st_callback *) user_data;
 

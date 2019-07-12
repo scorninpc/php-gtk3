@@ -2505,7 +2505,27 @@ extern "C"
             gtkrevealer.method<&GtkRevealer_::get_transition_type>("get_transition_type");
             gtkrevealer.method<&GtkRevealer_::set_transition_type>("set_transition_type");
 
-
+        // GladeApp
+        Php::Class<GladeApp_> gladeapp("GladeApp");
+            gladeapp.extends(gobject);
+            gladeapp.method<&GladeApp_::__construct>("__construct");
+            gladeapp.method<&GladeApp_::get>("get");
+            gladeapp.method<&GladeApp_::set_window>("set_window");
+            gladeapp.method<&GladeApp_::get_window>("get_window");
+            gladeapp.method<&GladeApp_::get_clipboard>("get_clipboard");
+            gladeapp.method<&GladeApp_::add_project>("add_project");
+            gladeapp.method<&GladeApp_::remove_project>("remove_project");
+            gladeapp.method<&GladeApp_::get_projects>("get_projects");
+            gladeapp.method<&GladeApp_::get_config>("get_config");
+            gladeapp.method<&GladeApp_::is_project_loaded>("is_project_loaded");
+            gladeapp.method<&GladeApp_::get_project_by_path>("get_project_by_path");
+            gladeapp.method<&GladeApp_::config_save>("config_save");
+            gladeapp.method<&GladeApp_::set_accel_group>("set_accel_group");
+            gladeapp.method<&GladeApp_::get_catalogs_dir>("get_catalogs_dir");
+            gladeapp.method<&GladeApp_::get_modules_dir>("get_modules_dir");
+            gladeapp.method<&GladeApp_::get_pixmaps_dir>("get_pixmaps_dir");
+            gladeapp.method<&GladeApp_::get_locale_dir>("get_locale_dir");
+        
         // GladeProject
         Php::Class<GladeProject_> gladeproject("GladeProject");
             gladeproject.extends(gobject);
@@ -3338,6 +3358,7 @@ extern "C"
         extension.add(std::move(gtkrevealertransitiontype));
         extension.add(std::move(gtkrevealer));
 
+        extension.add(std::move(gladeapp));
         extension.add(std::move(gladedesignview));
         extension.add(std::move(gladeproject));
         extension.add(std::move(gladeeditor));
