@@ -25,7 +25,8 @@ void GdkEventKey_::populate(GdkEventKey event)
     self["keyval"] = (int)event.keyval;
     self["length"] = (int)event.length;
     self["string"] = event.string;
-    self["keycode"] = self["hardware_keycode"] = (int)event.hardware_keycode;
+    self["hardware_keycode"] = (int)event.hardware_keycode;
+    self["keycode"] = (int)event.hardware_keycode;
     self["group"] = (int)event.group;
     self["is_modifier"] = (int)event.is_modifier;
     
