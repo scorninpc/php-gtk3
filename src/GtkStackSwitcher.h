@@ -31,6 +31,8 @@
             void set_stack(Php::Parameters &parameters);
 
             Php::Value get_stack();
+            void set_orientation(Php::Parameters &parameters);
+            Php::Value get_orientation();
     };
 
 #endif

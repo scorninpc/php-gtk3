@@ -2924,6 +2924,8 @@ extern "C"
             gtkstackswitcher.method<&GtkStackSwitcher_::__construct>("__construct");
             gtkstackswitcher.method<&GtkStackSwitcher_::set_stack>("set_stack");
             gtkstackswitcher.method<&GtkStackSwitcher_::get_stack>("get_stack");
+            gtkstackswitcher.method<&GtkStackSwitcher_::get_orientation>("get_orientation");
+            gtkstackswitcher.method<&GtkStackSwitcher_::set_orientation>("set_orientation");
 
         // GtkStackSidebar
         Php::Class<GtkStackSidebar_> gtkstacksidebar("GtkStackSidebar");

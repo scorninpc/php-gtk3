@@ -39,3 +39,17 @@ Php::Value GtkStackSwitcher_::get_stack()
 	return Php::Object("GtkStack", return_parsed);
 }
 
+
+void GtkStackSwitcher_::set_orientation(Php::Parameters &parameters)
+{
+	// Cast GtkOrientation param
+    int php_orientation = parameters[0];
+    GtkOrientation orientation = (GtkOrientation)php_orientation;
+
+	gtk_orientable_set_orientation(GTK_ORIENTABLE(instance), orientation);
+}
+
+Php::Value GtkStackSwitcher_::get_orientation() 
+{
+	return gtk_orientable_get_orientation(GTK_ORIENTABLE(instance));
+}
