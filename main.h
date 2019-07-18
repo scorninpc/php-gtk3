@@ -49,6 +49,7 @@
     #include "src/GtkWindow.h"
     #include "src/GtkButton.h"
     #include "src/GtkColorButton.h"
+    #include "src/GtkFontButton.h"
     #include "src/GtkToggleButton.h"
     #include "src/GtkCheckButton.h"
 

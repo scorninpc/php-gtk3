@@ -1214,6 +1214,26 @@ extern "C"
             gtkcolorbutton.method<&GtkColorButton_::set_title>("set_title");
             gtkcolorbutton.method<&GtkColorButton_::get_title>("get_title");
 
+        // GtkFontButton
+        Php::Class<GtkFontButton_> gtkfontbutton("GtkFontButton");
+            gtkfontbutton.extends(gtkbutton);
+            gtkfontbutton.method<&GtkFontButton_::__construct>("__construct");
+            gtkfontbutton.method<&GtkFontButton_::new_with_font>("new_with_font");
+            gtkfontbutton.method<&GtkFontButton_::set_font_name>("set_font_name");
+            gtkfontbutton.method<&GtkFontButton_::set_font>("set_font");
+            gtkfontbutton.method<&GtkFontButton_::get_font_name>("get_font_name");
+            gtkfontbutton.method<&GtkFontButton_::get_font>("get_font");
+            gtkfontbutton.method<&GtkFontButton_::set_show_style>("set_show_style");
+            gtkfontbutton.method<&GtkFontButton_::get_show_style>("get_show_style");
+            gtkfontbutton.method<&GtkFontButton_::set_show_size>("set_show_size");
+            gtkfontbutton.method<&GtkFontButton_::get_show_size>("get_show_size");
+            gtkfontbutton.method<&GtkFontButton_::set_use_font>("set_use_font");
+            gtkfontbutton.method<&GtkFontButton_::get_use_font>("get_use_font");
+            gtkfontbutton.method<&GtkFontButton_::set_use_size>("set_use_size");
+            gtkfontbutton.method<&GtkFontButton_::get_use_size>("get_use_size");
+            gtkfontbutton.method<&GtkFontButton_::set_title>("set_title");
+            gtkfontbutton.method<&GtkFontButton_::get_title>("get_title");
+
         // GtkToggleButton
         Php::Class<GtkToggleButton_> gtktogglebutton("GtkToggleButton");
             gtktogglebutton.extends(gtkbutton);
@@ -3479,6 +3499,7 @@ extern "C"
         extension.add(std::move(gtkpageorientation));
         extension.add(std::move(gtklicense));
         extension.add(std::move(gtkbutton));
+        extension.add(std::move(gtkfontbutton));
         extension.add(std::move(gtkcolorbutton));
         extension.add(std::move(gtktogglebutton));
         extension.add(std::move(gtkcheckbutton));
