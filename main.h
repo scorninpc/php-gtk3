@@ -37,6 +37,7 @@
     #include "src/Gtk.h"
     #include "src/GtkWidget.h"
     #include "src/GtkEntry.h"
+    #include "src/GtkEntryCompletion.h"
     #include "src/GtkContainer.h"
     
     #include "src/GtkBox.h"

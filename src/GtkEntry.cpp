@@ -95,6 +95,29 @@ Php::Value GtkEntry_::get_visibility()
 	return gtk_entry_get_visibility(GTK_ENTRY(instance));
 }
 
+void GtkEntry_::set_completion(Php::Parameters &parameters)
+{
+	GtkEntryCompletion *completion;
+	if(parameters.size() > 0) {
+		Php::Value object_completion = parameters[0];
+		GtkEntryCompletion_ *phpgtk_completion = (GtkEntryCompletion_ *)object_completion.implementation();
+		completion = GTK_ENTRY_COMPLETION(phpgtk_completion->get_instance());
+	}
+
+	gtk_entry_set_completion(GTK_ENTRY(instance), completion);
+}
+
+
+Php::Value GtkEntry_::get_completion()
+{
+	GtkEntryCompletion *ret = gtk_entry_get_completion(GTK_ENTRY(instance));
+
+	// Create the PHP-GTK object and set GTK object
+	GtkEntryCompletion_ *widget_ = new GtkEntryCompletion_();
+	widget_->set_instance((gpointer *)ret);
+	return Php::Object("GtkEntryCompletion", widget_);
+}
+
 /**
  * Sets the character to use in place of the actual text when gtk_entry_set_visibility()
  */

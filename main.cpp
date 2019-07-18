@@ -1289,6 +1289,38 @@ extern "C"
             gtkentrybuffer.method<&GtkEntryBuffer_::get_max_length>("get_max_length");
             gtkentrybuffer.method<&GtkEntryBuffer_::insert_text>("insert_text");
             gtkentrybuffer.method<&GtkEntryBuffer_::delete_text>("delete_text");
+
+
+        // GtkEntryCompletion
+        Php::Class<GtkEntryCompletion_> gtkentrycompletion("GtkEntryCompletion");
+            gtkentrycompletion.extends(gobject);
+            gtkentrycompletion.method<&GtkEntryCompletion_::__construct>("__construct");
+            gtkentrycompletion.method<&GtkEntryCompletion_::new_with_area>("new_with_area");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_entry>("get_entry");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_model>("set_model");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_model>("get_model");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_match_func>("set_match_func");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_minimum_key_length>("set_minimum_key_length");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_minimum_key_length>("get_minimum_key_length");
+            gtkentrycompletion.method<&GtkEntryCompletion_::compute_prefix>("compute_prefix");
+            gtkentrycompletion.method<&GtkEntryCompletion_::complete>("complete");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_completion_prefix>("get_completion_prefix");
+            gtkentrycompletion.method<&GtkEntryCompletion_::insert_prefix>("insert_prefix");
+            gtkentrycompletion.method<&GtkEntryCompletion_::insert_action_text>("insert_action_text");
+            gtkentrycompletion.method<&GtkEntryCompletion_::insert_action_markup>("insert_action_markup");
+            gtkentrycompletion.method<&GtkEntryCompletion_::delete_action>("delete_action");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_text_column>("set_text_column");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_text_column>("get_text_column");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_inline_completion>("set_inline_completion");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_inline_completion>("get_inline_completion");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_inline_selection>("set_inline_selection");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_inline_selection>("get_inline_selection");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_popup_completion>("set_popup_completion");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_popup_completion>("get_popup_completion");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_popup_set_width>("set_popup_set_width");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_popup_set_width>("get_popup_set_width");
+            gtkentrycompletion.method<&GtkEntryCompletion_::set_popup_single_match>("set_popup_single_match");
+            gtkentrycompletion.method<&GtkEntryCompletion_::get_popup_single_match>("get_popup_single_match");
         
 
         // GtkEntry
@@ -1303,6 +1335,8 @@ extern "C"
             gtkentry.method<&GtkEntry_::get_text_length>("get_text_length");
             gtkentry.method<&GtkEntry_::set_visibility>("set_visibility");
             gtkentry.method<&GtkEntry_::get_visibility>("get_visibility");
+            gtkentry.method<&GtkEntry_::set_completion>("set_completion");
+            gtkentry.method<&GtkEntry_::get_completion>("get_completion");
             gtkentry.method<&GtkEntry_::set_invisible_char>("set_invisible_char");
             gtkentry.method<&GtkEntry_::get_invisible_char>("get_invisible_char");
             gtkentry.method<&GtkEntry_::unset_invisible_char>("unset_invisible_char");
@@ -3507,6 +3541,7 @@ extern "C"
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));
         extension.add(std::move(gtkentry));
+        extension.add(std::move(gtkentrycompletion));
         extension.add(std::move(gtksorttype));
         extension.add(std::move(gtktreeview));
         extension.add(std::move(gtktreeviewcolumn));

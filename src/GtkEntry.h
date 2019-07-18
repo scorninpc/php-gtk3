@@ -7,6 +7,7 @@
 
     #include "GtkWidget.h"
     #include "GtkEntryBuffer.h"
+    #include "GtkEntryCompletion.h"
 
     /**
      * 
@@ -86,6 +87,9 @@
              * https://developer.gnome.org/gtk3/stable/GtkEntry.html#gtk-entry-get-visibility
              */
             Php::Value get_visibility();
+
+            void set_completion(Php::Parameters &parameters);
+            Php::Value get_completion();
 
             /**
              * Sets the character to use in place of the actual text when gtk_entry_set_visibility()
