@@ -17,6 +17,17 @@ void GdkRGBA_::set_instance(GdkRGBA event)
     instance = event;
 }
 
+Php::Value GdkRGBA_::__get(const Php::Value &name)
+{
+    if (name == "red") return instance.red;
+    if (name == "green") return instance.green;
+    if (name == "blue") return instance.blue;
+    if (name == "alpha") return instance.alpha;
+
+    // property not supported, fall back on default
+    return Php::Base::__get(name);
+}
+
 
 Php::Value GdkRGBA_::parse(Php::Parameters &parameters)
 {

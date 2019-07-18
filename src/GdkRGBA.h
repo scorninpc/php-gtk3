@@ -20,6 +20,7 @@
             GdkRGBA_();
             ~GdkRGBA_();
 
+            Php::Value __get(const Php::Value &name);
 
             GdkRGBA instance;
             GdkRGBA get_instance();
