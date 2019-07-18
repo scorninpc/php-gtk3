@@ -97,17 +97,14 @@ void GtkColorButton_::get_alpha(Php::Parameters &parameters)
 
 void GtkColorButton_::set_rgba(Php::Parameters &parameters)
 {
-	// GdkRGBA *rgba;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_rgba = parameters[0];
-	// 	GdkRGBA_ *phpgtk_rgba = (GdkRGBA_ *)object_rgba.implementation();
-	// 	rgba = GTK_WIDGET(phpgtk_rgba->get_instance());
-	// }
+	GdkRGBA color;
+	if(parameters.size() > 0) {
+		Php::Value object_color = parameters[0];
+		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
+		color = phpgtk_color->get_instance();
+	}
 
-	// gtk_color_button_set_rgba (GTK_COLOR_BUTTON(instance), rgba);
-
-	Php::deprecated << "GtkColorButton_::set_rgba is deprecated on Gtk 3.4" << std::endl;
-
+	gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER(instance), &color);
 }
 
 Php::Value GtkColorButton_::get_rgba(Php::Parameters &parameters)
@@ -125,22 +122,17 @@ Php::Value GtkColorButton_::get_rgba(Php::Parameters &parameters)
 
 void GtkColorButton_::set_use_alpha(Php::Parameters &parameters)
 {
-	// gboolean use_alpha = (gboolean)parameters[0];
+	gboolean use_alpha = (gboolean)parameters[0];
 
-	// gtk_color_button_set_use_alpha (GTK_COLOR_BUTTON(instance), use_alpha);
-
-	Php::deprecated << "GtkColorButton_::set_use_alpha is deprecated on Gtk 3.4" << std::endl;
+	gtk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER(instance), use_alpha);
 
 }
 
 Php::Value GtkColorButton_::get_use_alpha()
 {
-	// gboolean ret = gtk_color_button_get_use_alpha (GTK_COLOR_BUTTON(instance));
+	gboolean ret = gtk_color_chooser_get_use_alpha (GTK_COLOR_CHOOSER(instance));
 
-	// return ret;
-
-	Php::deprecated << "GtkColorButton_::get_use_alpha is deprecated on Gtk 3.4" << std::endl;
-	return 1;
+	return ret;
 }
 
 void GtkColorButton_::set_title(Php::Parameters &parameters)
