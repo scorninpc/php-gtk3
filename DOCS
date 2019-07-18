@@ -57,7 +57,7 @@ https://github.com/CopernicaMarketingSoftware/PHP-CPP/blob/b50838c0bc5a3eae8b65f
 throw Php::Exception("GtkMenuShell_::bind_model not implemented");
 
 // Deprecated
-Php::deprecated << "new_from_icon_set is deprecated on Gtk 3.24" << std::endl;
+Php::deprecated << "GtkColorButton_::get_color is deprecated on Gtk 3.24" << std::endl;
 
 // Cria o retorno
 Php::Value arr;

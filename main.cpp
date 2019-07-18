@@ -1197,6 +1197,22 @@ extern "C"
             gtkbutton.method<&GtkButton_::get_always_show_image>("get_always_show_image");
             gtkbutton.method<&GtkButton_::get_event_window>("get_event_window");
         
+        // GtkColorButton
+        Php::Class<GtkColorButton_> gtkcolorbutton("GtkColorButton");
+            gtkcolorbutton.extends(gtkbutton);
+            gtkcolorbutton.method<&GtkColorButton_::__construct>("__construct");
+            gtkcolorbutton.method<&GtkColorButton_::new_with_color>("new_with_color");
+            gtkcolorbutton.method<&GtkColorButton_::new_with_rgba>("new_with_rgba");
+            gtkcolorbutton.method<&GtkColorButton_::set_color>("set_color");
+            gtkcolorbutton.method<&GtkColorButton_::get_color>("get_color");
+            gtkcolorbutton.method<&GtkColorButton_::set_alpha>("set_alpha");
+            gtkcolorbutton.method<&GtkColorButton_::get_alpha>("get_alpha");
+            gtkcolorbutton.method<&GtkColorButton_::set_rgba>("set_rgba");
+            gtkcolorbutton.method<&GtkColorButton_::get_rgba>("get_rgba");
+            gtkcolorbutton.method<&GtkColorButton_::set_use_alpha>("set_use_alpha");
+            gtkcolorbutton.method<&GtkColorButton_::get_use_alpha>("get_use_alpha");
+            gtkcolorbutton.method<&GtkColorButton_::set_title>("set_title");
+            gtkcolorbutton.method<&GtkColorButton_::get_title>("get_title");
 
         // GtkToggleButton
         Php::Class<GtkToggleButton_> gtktogglebutton("GtkToggleButton");
@@ -3463,6 +3479,7 @@ extern "C"
         extension.add(std::move(gtkpageorientation));
         extension.add(std::move(gtklicense));
         extension.add(std::move(gtkbutton));
+        extension.add(std::move(gtkcolorbutton));
         extension.add(std::move(gtktogglebutton));
         extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkadjustment));
