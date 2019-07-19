@@ -1542,6 +1542,13 @@ extern "C"
             gtknotebook.method<&GtkNotebook_::get_show_border>("get_show_border");
             gtknotebook.method<&GtkNotebook_::get_show_tabs>("get_show_tabs");
             gtknotebook.method<&GtkNotebook_::get_tab_label_text>("get_tab_label_text");
+            gtknotebook.method<&GtkNotebook_::get_tab_reorderable>("get_tab_reorderable");
+            gtknotebook.method<&GtkNotebook_::get_tab_detachable>("get_tab_detachable");
+            gtknotebook.method<&GtkNotebook_::set_current_page>("set_current_page");
+            gtknotebook.method<&GtkNotebook_::set_group_name>("set_group_name");
+            gtknotebook.method<&GtkNotebook_::get_group_name>("get_group_name");
+            gtknotebook.method<&GtkNotebook_::set_action_widget>("set_action_widget");
+            gtknotebook.method<&GtkNotebook_::get_action_widget>("get_action_widget");
         
 
         // GtkPositionType

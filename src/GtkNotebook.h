@@ -88,6 +88,20 @@
             Php::Value get_tab_label_text(Php::Parameters &parameters);
 
             Php::Value get_tab_pos();
+
+            Php::Value get_tab_reorderable(Php::Parameters &parameters);
+
+            Php::Value get_tab_detachable(Php::Parameters &parameters);
+
+            void set_current_page(Php::Parameters &parameters);
+
+            void set_group_name(Php::Parameters &parameters);
+
+            Php::Value get_group_name();
+
+            void set_action_widget(Php::Parameters &parameters);
+
+            Php::Value get_action_widget(Php::Parameters &parameters);
     };
 
 #endif

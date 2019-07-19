@@ -383,3 +383,83 @@ Php::Value GtkNotebook_::get_tab_pos()
 	return ret;
 }
 
+Php::Value GtkNotebook_::get_tab_reorderable(Php::Parameters &parameters)
+{
+	GtkWidget *child;
+	if(parameters.size() > 0) {
+		Php::Value object_child = parameters[0];
+		GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+		child = GTK_WIDGET(phpgtk_child->get_instance());
+	}
+
+	gboolean ret = gtk_notebook_get_tab_reorderable (GTK_NOTEBOOK(instance), child);
+
+	return ret;
+}
+
+Php::Value GtkNotebook_::get_tab_detachable(Php::Parameters &parameters)
+{
+	GtkWidget *child;
+	if(parameters.size() > 0) {
+		Php::Value object_child = parameters[0];
+		GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+		child = GTK_WIDGET(phpgtk_child->get_instance());
+	}
+
+	gboolean ret = gtk_notebook_get_tab_detachable (GTK_NOTEBOOK(instance), child);
+
+	return ret;
+}
+
+void GtkNotebook_::set_current_page(Php::Parameters &parameters)
+{
+	gint page_num = (gint)parameters[0];
+
+	gtk_notebook_set_current_page (GTK_NOTEBOOK(instance), page_num);
+
+}
+
+void GtkNotebook_::set_group_name(Php::Parameters &parameters)
+{
+	std::string s_group_name = parameters[0];
+	gchar *group_name = (gchar *)s_group_name.c_str();
+
+	gtk_notebook_set_group_name (GTK_NOTEBOOK(instance), group_name);
+
+}
+
+Php::Value GtkNotebook_::get_group_name()
+{
+	std::string ret = gtk_notebook_get_group_name (GTK_NOTEBOOK(instance));
+
+	return ret;
+}
+
+void GtkNotebook_::set_action_widget(Php::Parameters &parameters)
+{
+	GtkWidget *child;
+	if(parameters.size() > 0) {
+		Php::Value object_child = parameters[0];
+		GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+		child = GTK_WIDGET(phpgtk_child->get_instance());
+	}
+
+	int int_pack_type = (int)parameters[1];
+	GtkPackType pack_type = (GtkPackType)int_pack_type;
+
+	gtk_notebook_set_action_widget (GTK_NOTEBOOK(instance), child, pack_type);
+
+}
+
+Php::Value GtkNotebook_::get_action_widget(Php::Parameters &parameters)
+{
+	int int_pack_type = (int)parameters[0];
+	GtkPackType pack_type = (GtkPackType)int_pack_type;
+
+	GtkWidget *ret = gtk_notebook_get_action_widget (GTK_NOTEBOOK(instance), pack_type);
+
+	GtkWidget_ *return_parsed = new GtkWidget_();
+	return_parsed->set_instance((gpointer *)ret);
+	return Php::Object("GtkWidget", return_parsed);
+}
+
