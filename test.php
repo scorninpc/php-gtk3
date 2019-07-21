@@ -302,12 +302,17 @@ $vbox->pack_start($tree, TRUE, TRUE, 1);
 
 $model = new GtkListStore(GObject::TYPE_OBJECT, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
 $pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", 15, -1);
+
+// $gd = imagecreate( 100, 100 );
+// imagecolorallocate( $gd, 0, 0, 0 );
+// var_dump($gd);
+// $pixbuf = GdkPixbuf::new_from_gd($gd);
+
+
 $model->append([$pixbuf, TRUE, 1, 2.3, "line 1"]);
 $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 
-
 $tree->set_model($model);
-
 
 // ----------------------
 // Menu for treeview
@@ -396,7 +401,13 @@ $grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);
 $grid->attach(new GtkColorButton(), 0, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
 $grid->attach(new GtkFontButton(), 2, 2, 2, 1);
-$grid->attach(GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
+$grid->attach($a = GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1); $a->connect("clicked", function($widget) {
+
+	global $tree;
+
+	$model = $tree->get_model();
+	$model->clear();
+});
 
 $grid->attach($a = new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1); $a->connect("changed", "grid_5x1");
 

@@ -14,7 +14,7 @@ GtkComboBox_::~GtkComboBox_() = default;
 void GtkComboBox_::__construct()
 {
 	instance = (gpointer *)gtk_combo_box_new ();
-
+	liststore_type = false;
 }
 
 Php::Value GtkComboBox_::new_with_entry()
@@ -37,6 +37,13 @@ Php::Value GtkComboBox_::new_with_model(Php::Parameters &parameters)
 
 	GtkComboBox_ *phpgtk_combobox = new GtkComboBox_();
 	phpgtk_combobox->set_instance((gpointer *)combobox);
+
+	// Store the Model type
+	phpgtk_combobox->liststore_type = false;
+	if(object_model.instanceOf("GtkListStore")) {
+		phpgtk_combobox->liststore_type = true;
+	}
+
 	return Php::Object("GtkComboBox", phpgtk_combobox);
 
 }
@@ -44,8 +51,9 @@ Php::Value GtkComboBox_::new_with_model(Php::Parameters &parameters)
 Php::Value GtkComboBox_::new_with_model_and_entry(Php::Parameters &parameters)
 {
 	GtkTreeModel *model;
+	Php::Value object_model;
 	if(parameters.size() > 0) {
-		Php::Value object_model = parameters[0];
+		object_model = parameters[0];
 		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
 		model = phpgtk_model->get_model();
 	}
@@ -54,6 +62,13 @@ Php::Value GtkComboBox_::new_with_model_and_entry(Php::Parameters &parameters)
 
 	GtkComboBox_ *phpgtk_combobox = new GtkComboBox_();
 	phpgtk_combobox->set_instance((gpointer *)combobox);
+
+	// Store the Model type
+	phpgtk_combobox->liststore_type = false;
+	if(object_model.instanceOf("GtkListStore")) {
+		phpgtk_combobox->liststore_type = true;
+	}
+	
 	return Php::Object("GtkComboBox", phpgtk_combobox);
 }
 
@@ -210,16 +225,28 @@ Php::Value GtkComboBox_::get_model()
 
 	GtkTreeModel_ *return_parsed = new GtkTreeModel_();
 	return_parsed->set_model(ret);
-	return Php::Object("GtkTreeModel", return_parsed);
+
+	if(liststore_type) {
+		return Php::Object("GtkListStore", return_parsed);
+	}
+	
+	return Php::Object("GtkTreeStore", return_parsed);
 }
 
 void GtkComboBox_::set_model(Php::Parameters &parameters)
 {
 	GtkTreeModel *model;
+	Php::Value object_model;
 	if(parameters.size() > 0) {
-		Php::Value object_model = parameters[0];
+		object_model = parameters[0];
 		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
 		model = phpgtk_model->get_model();
+	}
+
+	// Store the Model type
+	liststore_type = false;
+	if(object_model.instanceOf("GtkListStore")) {
+		liststore_type = true;
 	}
 
 	gtk_combo_box_set_model (GTK_COMBO_BOX(instance), model);
@@ -348,9 +375,9 @@ void GtkComboBox_::set_popup_fixed_width(Php::Parameters &parameters)
 void GtkComboBox_::pack_start(Php::Parameters &parameters)
 {
 	Php::Value object = parameters[0];
-    GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
+	GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
-    gboolean expand = parameters[1];
+	gboolean expand = parameters[1];
 
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT(instance), GTK_CELL_RENDERER(passedRenderer->get_instance()), expand);
 
@@ -359,9 +386,9 @@ void GtkComboBox_::pack_start(Php::Parameters &parameters)
 void GtkComboBox_::pack_end(Php::Parameters &parameters)
 {
 	Php::Value object = parameters[0];
-    GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
+	GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
-    gboolean expand = parameters[1];
+	gboolean expand = parameters[1];
 
 	gtk_cell_layout_pack_end (GTK_CELL_LAYOUT(instance), GTK_CELL_RENDERER(passedRenderer->get_instance()), expand);
 
@@ -370,9 +397,9 @@ void GtkComboBox_::pack_end(Php::Parameters &parameters)
 void GtkComboBox_::reorder(Php::Parameters &parameters)
 {
 	Php::Value object = parameters[0];
-    GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
+	GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
-    gint position = parameters[1];
+	gint position = parameters[1];
 
 	gtk_cell_layout_reorder (GTK_CELL_LAYOUT(instance), GTK_CELL_RENDERER(passedRenderer->get_instance()), position);
 }
@@ -385,11 +412,11 @@ void GtkComboBox_::clear(Php::Parameters &parameters)
 void GtkComboBox_::add_attribute(Php::Parameters &parameters)
 {
 	Php::Value object = parameters[0];
-    GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
+	GtkCellRenderer_ *passedRenderer = (GtkCellRenderer_ *)object.implementation();
 
-    std::string atribute = parameters[1];
+	std::string atribute = parameters[1];
 
-    gint column = (int)parameters[2];
+	gint column = (int)parameters[2];
 
 	gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT(instance), GTK_CELL_RENDERER(passedRenderer->get_instance()), atribute.c_str(), column);
 }

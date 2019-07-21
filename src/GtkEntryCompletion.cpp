@@ -15,6 +15,8 @@ void GtkEntryCompletion_::__construct()
 {
 	instance = (gpointer *)gtk_entry_completion_new ();
 
+	liststore_type = false;
+
 }
 
 Php::Value GtkEntryCompletion_::new_with_area()
@@ -39,11 +41,15 @@ Php::Value GtkEntryCompletion_::get_entry()
 void GtkEntryCompletion_::set_model(Php::Parameters &parameters)
 {
 	GtkTreeModel *model;
-	if(parameters.size() > 0) {
-		Php::Value object_model = parameters[0];
-		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
-		model = phpgtk_model->get_model();
-	}
+	Php::Value object_model = parameters[0];
+	GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
+	model = phpgtk_model->get_model();
+
+	// Store the Model type
+    liststore_type = false;
+    if(object_model.instanceOf("GtkListStore")) {
+        liststore_type = true;
+    }
 
 	gtk_entry_completion_set_model (GTK_ENTRY_COMPLETION(instance), model);
 
@@ -55,7 +61,12 @@ Php::Value GtkEntryCompletion_::get_model()
 
 	GtkTreeModel_ *return_parsed = new GtkTreeModel_();
 	return_parsed->set_model(ret);
-	return Php::Object("GtkTreeModel", return_parsed);
+	
+	if(liststore_type) {
+		return Php::Object("GtkListStore", return_parsed);
+	}
+	
+	return Php::Object("GtkTreeStore", return_parsed);
 }
 
 void GtkEntryCompletion_::set_match_func(Php::Parameters &parameters)

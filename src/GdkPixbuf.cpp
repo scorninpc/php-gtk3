@@ -50,6 +50,28 @@ Php::Value GdkPixbuf_::new_from_file(Php::Parameters &parameters)
 	return Php::Object("GdkPixbuf", pixbuf_);
 }
 
+Php::Value GdkPixbuf_::new_from_gd(Php::Parameters &parameters)
+{
+	Php::Value a = parameters[0];
+	if (!a.instanceOf("gd")) throw Php::Exception("Not a GD resource");
+	Php::call("var_dump", "OK1");
+	Php::call("imagepng", a.implementation());
+	Php::call("var_dump", "OK2");
+	return 1;
+
+	std::string filename = parameters[0];
+
+	// Create pixbuff
+	GdkPixbuf *l_pixbuf = gdk_pixbuf_new_from_file(filename.c_str(), NULL);
+	
+	// Create the PHP-GTK object and set GTK object
+	GdkPixbuf_ *pixbuf_ = new GdkPixbuf_();
+	pixbuf_->set_instance(l_pixbuf);
+
+	// Return PHP-GTK object
+	return Php::Object("GdkPixbuf", pixbuf_);
+}
+
 Php::Value GdkPixbuf_::new_from_file_at_size(Php::Parameters &parameters)
 {
 	std::string filename = parameters[0];

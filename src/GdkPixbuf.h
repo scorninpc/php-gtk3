@@ -47,6 +47,7 @@
              * https://developer.gnome.org/gdk-pixbuf/stable/gdk-pixbuf-File-Loading.html#gdk-pixbuf-new-from-file
              */
             static Php::Value new_from_file(Php::Parameters &parameters);
+            static Php::Value new_from_gd(Php::Parameters &parameters);
 
             static Php::Value new_from_file_at_size(Php::Parameters &parameters);
 

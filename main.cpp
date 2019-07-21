@@ -413,6 +413,7 @@ extern "C"
             gdkpixbuf.method<&GdkPixbuf_::new_from_file>("new_from_file");
             gdkpixbuf.method<&GdkPixbuf_::new_from_file_at_size>("new_from_file_at_size");
             gdkpixbuf.method<&GdkPixbuf_::new_from_file_at_scale>("new_from_file_at_scale");
+            gdkpixbuf.method<&GdkPixbuf_::new_from_gd>("new_from_gd");
             gdkpixbuf.method<&GdkPixbuf_::get_file_info>("get_file_info");
             gdkpixbuf.method<&GdkPixbuf_::get_colorspace>("get_colorspace");
             gdkpixbuf.method<&GdkPixbuf_::get_n_channels>("get_n_channels");

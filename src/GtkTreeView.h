@@ -22,6 +22,8 @@
          */
         public:
 
+            bool liststore_type;
+            
             /**
              *  C++ constructor and destructor
              */
