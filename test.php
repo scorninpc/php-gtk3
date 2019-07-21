@@ -158,6 +158,23 @@ $vbox->pack_start($menubar, FALSE, FALSE, 0);
 
 // ----------------------
 // Infor Bar
+$vbox->pack_start($hlbl = new GtkLabel("- GtkToolbar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+
+$tb = new GtkToolbar();
+$tb->set_show_arrow(FALSE);
+$vbox->pack_start($tb, FALSE, TRUE, 0);
+
+$toolbutton1 = new GtkToolButton("");
+$toolbutton1->set_icon_name("gtk-refresh", GtkIconSize::SMALL_TOOLBAR);
+
+$lbl = new GtkLabel("");
+$lbl->set_markup( '<span underline="single">U</span>pdate' );
+$toolbutton1->set_label_widget( $lbl );
+
+$tb->insert($toolbutton1, -1);
+
+// ----------------------
+// Infor Bar
 $infobar = new GtkInfoBar();
 $vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 $vbox->pack_start($infobar, TRUE, TRUE, 1);
