@@ -1,8 +1,8 @@
-vote for future
+help wanted
 ==============
-Vote about namespaces methods, please
+- Complile for Windows
+- Improvement of Makefile
 
-https://twitter.com/ScornInPC/status/1146740464541995009
 
 php-gtk3-tests
 ==============
