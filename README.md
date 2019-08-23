@@ -23,7 +23,7 @@ Você precisará das libs para desenvolvimento php-dev e tambem libgtk-3-dev, ou
 > You will need php-dev and libgtk-3-dev, or in some cases gnome-devel. On Debian and ubuntu:
 
 ```sh
-:$ sudo apt-get install build-essential gnome-devel php-dev
+:$ sudo apt-get install build-essential gnome-devel php-dev libgladeui-dev libgtksourceview-3.0-dev
 ```
 
 Será necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP)

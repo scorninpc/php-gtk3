@@ -175,19 +175,19 @@ $tb->insert($toolbutton1, -1);
 
 // ----------------------
 // Infor Bar
-$infobar = new GtkInfoBar();
-$vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
-$vbox->pack_start($infobar, TRUE, TRUE, 1);
+// $infobar = new GtkInfoBar();
+// $vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+// $vbox->pack_start($infobar, TRUE, TRUE, 1);
 
-$infobar->set_message_type(GtkMessageType::ERROR);
-$infobar->set_no_show_all(TRUE);
-$infobar->set_show_close_button(TRUE);
-$area = $infobar->get_content_area();
-$area->add(new GtkLabel("My Message area"));
-$area->show_all();
-$infobar->connect("response", function($widget, $response) {
-	$widget->hide();
-});
+// $infobar->set_message_type(GtkMessageType::ERROR);
+// $infobar->set_no_show_all(TRUE);
+// $infobar->set_show_close_button(TRUE);
+// $area = $infobar->get_content_area();
+// $area->add(new GtkLabel("My Message area"));
+// $area->show_all();
+// $infobar->connect("response", function($widget, $response) {
+// 	$widget->hide();
+// });
 
 
 // ----------------------
@@ -346,10 +346,10 @@ $popupmenu = new GtkMenu();
 // ProgressBar
 $vbox->pack_start($hlbl = new GtkLabel("- GtkProgressBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
 
-$progress = new GtkProgressBar();
-$progress->set_text("0%");
-$progress->set_show_text(TRUE);
-$vbox->pack_start($progress, TRUE, TRUE, 1);
+// $progress = new GtkProgressBar();
+// $progress->set_text("0%");
+// $progress->set_show_text(TRUE);
+// $vbox->pack_start($progress, TRUE, TRUE, 1);
 
 
 
@@ -392,15 +392,15 @@ $grid->attach($a=GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1); $a->connect
 $grid->attach($a=GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1); $a->connect("clicked", "grid_1x3");
 $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
-$grid->attach($s=new GtkSpinner(), 0, 1, 1, 1); $s->start();
+// $grid->attach($s=new GtkSpinner(), 0, 1, 1, 1); $s->start();
 $grid->attach($a=GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1); $a->connect("clicked", "grid_2x2");
 $grid->attach($a=GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1); $a->connect("clicked", "grid_2x3");
 $grid->attach($a=GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1); $a->connect("clicked", "grid_2x4");
 $grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);
 
-$grid->attach(new GtkColorButton(), 0, 2, 1, 1);
+// $grid->attach(new GtkColorButton(), 0, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
-$grid->attach(new GtkFontButton(), 2, 2, 2, 1);
+// $grid->attach(new GtkFontButton(), 2, 2, 2, 1);
 $grid->attach($a = GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1); $a->connect("clicked", function($widget) {
 
 	global $tree;
@@ -489,39 +489,39 @@ $win->show_all();
 
 // Use blocks but iterate main_loop method for show progress bar (see that can be a little freezes)
 	// this way is not the best way to do that, it's only example to show how dont stop GKT painting and user actions
-for($i=0; $i<=1; $i+=0.05) {
+// for($i=0; $i<=1; $i+=0.05) {
 
-	$progress->set_fraction($i);
-	$progress->set_text(($i * 100) . "%");
+// 	$progress->set_fraction($i);
+// 	$progress->set_text(($i * 100) . "%");
 
-	// Look if there is some event freezing, and add some iteration to main_loop of GTK
-	while(Gtk::events_pending()) 
-		Gtk::main_iteration();
+// 	// Look if there is some event freezing, and add some iteration to main_loop of GTK
+// 	while(Gtk::events_pending()) 
+// 		Gtk::main_iteration();
 	
-	// Freeze for 0.25s (note that sleep free PHP, so do some freezes on GTK too)
-	usleep(250000);
-}
+// 	// Freeze for 0.25s (note that sleep free PHP, so do some freezes on GTK too)
+// 	usleep(250000);
+// }
 
-// Use for non-block way to update progressbar example
-$progress_percent = 0;
-Gtk::timeout_add(500, function() {
-	global $progress, $progress_percent;
+// // Use for non-block way to update progressbar example
+// $progress_percent = 0;
+// Gtk::timeout_add(500, function() {
+// 	global $progress, $progress_percent;
 
-	// Verify if all finished and stop propagation
-	if($progress_percent >= 1) {
-		return FALSE;
-	}
+// 	// Verify if all finished and stop propagation
+// 	if($progress_percent >= 1) {
+// 		return FALSE;
+// 	}
 
-	// Increase progressbar
-	$progress_percent += 0.05;
+// 	// Increase progressbar
+// 	$progress_percent += 0.05;
 
-	// Show
-	$progress->set_fraction($progress_percent);
-	$progress->set_text(($progress_percent * 100) . "%");
+// 	// Show
+// 	$progress->set_fraction($progress_percent);
+// 	$progress->set_text(($progress_percent * 100) . "%");
 
-	// Tell to continue calling
-	return TRUE;
-});
+// 	// Tell to continue calling
+// 	return TRUE;
+// });
 
 // Loop
 Gtk::main();
