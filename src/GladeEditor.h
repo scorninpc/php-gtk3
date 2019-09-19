@@ -9,6 +9,7 @@
 	#include "GtkBox.h"
 	#include "GtkWidget.h"
 	#include "GladeProject.h"
+    #include "GladeWidget.h"
 
     /**
      * GladeEditor_

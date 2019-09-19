@@ -19,9 +19,14 @@ void GladeEditor_::__construct()
 
 void GladeEditor_::load_widget(Php::Parameters &parameters)
 {
+	Php::Value object_widget = parameters[0];
+	GladeWidget_ *phpgtk_widget = (GladeWidget_ *)object_widget.implementation();
+	GladeWidget *widget = (GladeWidget *)phpgtk_widget->get_instance();
 
-	// glade_editor_load_widget (GLADE_EDITOR(instance), widget);
-	throw Php::Exception("GladeEditor_::load_widget not implemented");
+	// Php::call("var_dump", glade_widget_get_name(widget));
+
+
+	glade_editor_load_widget (GLADE_EDITOR(instance), glade_widget_get_from_gobject(widget));
 }
 
 Php::Value GladeEditor_::query_dialog(Php::Parameters &parameters)

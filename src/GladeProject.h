@@ -9,6 +9,7 @@
 	#include "GObject.h"
 	#include "GtkWidget.h"
 	#include "GladeProject.h"
+    #include "GladeWidget.h"
 
     /**
      * GladeProject_
@@ -22,10 +23,10 @@
          */
         public:
 
-            GladeProject *project;
+            // GladeProject *project;
 
-            void set_project(GladeProject *passed_project);
-            GladeProject *get_project();
+            // void set_project(GladeProject *passed_project);
+            // GladeProject *get_project();
 
             /**
              *  C++ constructor and destructor
@@ -34,6 +35,8 @@
             ~GladeProject_();
 
             void __construct();
+
+            Php::Value selection_get();
     };
 
 #endif
