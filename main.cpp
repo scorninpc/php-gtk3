@@ -279,6 +279,8 @@ extern "C"
 // ----- GDK
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
+            gdk.method<&Gdk_::test_simulate_button>("test_simulate_button");
+
             gdk.constant("SHIFT_MASK", GDK_SHIFT_MASK);
             gdk.constant("LOCK_MASK", GDK_LOCK_MASK);
             gdk.constant("CONTROL_MASK", GDK_CONTROL_MASK);
@@ -405,6 +407,60 @@ extern "C"
 
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
+
+        // GdkEventKey
+        Php::Class<Php::Base> gdkeventtype("GdkEventType");
+            gdkeventtype.constant("NOTHING",(int) GDK_NOTHING);
+            gdkeventtype.constant("DELETE",(int) GDK_DELETE);
+            gdkeventtype.constant("DESTROY",(int) GDK_DESTROY);
+            gdkeventtype.constant("EXPOSE",(int) GDK_EXPOSE);
+            gdkeventtype.constant("MOTION_NOTIFY",(int) GDK_MOTION_NOTIFY);
+            gdkeventtype.constant("BUTTON_PRESS",(int) GDK_BUTTON_PRESS);
+            gdkeventtype.constant("_2BUTTON_PRESS",(int) GDK_2BUTTON_PRESS);
+            gdkeventtype.constant("DOUBLE_BUTTON_PRESS",(int) GDK_DOUBLE_BUTTON_PRESS);
+            gdkeventtype.constant("_3BUTTON_PRESS",(int) GDK_3BUTTON_PRESS);
+            gdkeventtype.constant("TRIPLE_BUTTON_PRESS",(int) GDK_TRIPLE_BUTTON_PRESS);
+            gdkeventtype.constant("BUTTON_RELEASE",(int) GDK_BUTTON_RELEASE);
+            gdkeventtype.constant("KEY_PRESS",(int) GDK_KEY_PRESS);
+            gdkeventtype.constant("KEY_RELEASE",(int) GDK_KEY_RELEASE);
+            gdkeventtype.constant("ENTER_NOTIFY",(int) GDK_ENTER_NOTIFY);
+            gdkeventtype.constant("LEAVE_NOTIFY",(int) GDK_LEAVE_NOTIFY);
+            gdkeventtype.constant("FOCUS_CHANGE",(int) GDK_FOCUS_CHANGE);
+            gdkeventtype.constant("CONFIGURE",(int) GDK_CONFIGURE);
+            gdkeventtype.constant("MAP",(int) GDK_MAP);
+            gdkeventtype.constant("UNMAP",(int) GDK_UNMAP);
+            gdkeventtype.constant("PROPERTY_NOTIFY",(int) GDK_PROPERTY_NOTIFY);
+            gdkeventtype.constant("SELECTION_CLEAR",(int) GDK_SELECTION_CLEAR);
+            gdkeventtype.constant("SELECTION_REQUEST",(int) GDK_SELECTION_REQUEST);
+            gdkeventtype.constant("SELECTION_NOTIFY",(int) GDK_SELECTION_NOTIFY);
+            gdkeventtype.constant("PROXIMITY_IN",(int) GDK_PROXIMITY_IN);
+            gdkeventtype.constant("PROXIMITY_OUT",(int) GDK_PROXIMITY_OUT);
+            gdkeventtype.constant("DRAG_ENTER",(int) GDK_DRAG_ENTER);
+            gdkeventtype.constant("DRAG_LEAVE",(int) GDK_DRAG_LEAVE);
+            gdkeventtype.constant("DRAG_MOTION",(int) GDK_DRAG_MOTION);
+            gdkeventtype.constant("DRAG_STATUS",(int) GDK_DRAG_STATUS);
+            gdkeventtype.constant("DROP_START",(int) GDK_DROP_START);
+            gdkeventtype.constant("DROP_FINISHED",(int) GDK_DROP_FINISHED);
+            gdkeventtype.constant("CLIENT_EVENT",(int) GDK_CLIENT_EVENT);
+            gdkeventtype.constant("VISIBILITY_NOTIFY",(int) GDK_VISIBILITY_NOTIFY);
+            gdkeventtype.constant("SCROLL",(int) GDK_SCROLL);
+            gdkeventtype.constant("WINDOW_STATE",(int) GDK_WINDOW_STATE);
+            gdkeventtype.constant("SETTING",(int) GDK_SETTING);
+            gdkeventtype.constant("OWNER_CHANGE",(int) GDK_OWNER_CHANGE);
+            gdkeventtype.constant("GRAB_BROKEN",(int) GDK_GRAB_BROKEN);
+            gdkeventtype.constant("DAMAGE",(int) GDK_DAMAGE);
+            gdkeventtype.constant("TOUCH_BEGIN",(int) GDK_TOUCH_BEGIN);
+            gdkeventtype.constant("TOUCH_UPDATE",(int) GDK_TOUCH_UPDATE);
+            gdkeventtype.constant("TOUCH_END",(int) GDK_TOUCH_END);
+            gdkeventtype.constant("TOUCH_CANCEL",(int) GDK_TOUCH_CANCEL);
+            gdkeventtype.constant("TOUCHPAD_SWIPE",(int) GDK_TOUCHPAD_SWIPE);
+            gdkeventtype.constant("TOUCHPAD_PINCH",(int) GDK_TOUCHPAD_PINCH);
+            gdkeventtype.constant("PAD_BUTTON_PRESS",(int) GDK_PAD_BUTTON_PRESS);
+            gdkeventtype.constant("PAD_BUTTON_RELEASE",(int) GDK_PAD_BUTTON_RELEASE);
+            gdkeventtype.constant("PAD_RING",(int) GDK_PAD_RING);
+            gdkeventtype.constant("PAD_STRIP",(int) GDK_PAD_STRIP);
+            gdkeventtype.constant("PAD_GROUP_MODE",(int) GDK_PAD_GROUP_MODE);
+            gdkeventtype.constant("EVENT_LAST",(int) GDK_EVENT_LAST);
         
 
         // GdkPixbuf
@@ -440,6 +496,40 @@ extern "C"
             gdkpixbufalphamode.constant("BILEVEL", (int)GDK_PIXBUF_ALPHA_BILEVEL);
             gdkpixbufalphamode.constant("FULL", (int)GDK_PIXBUF_ALPHA_FULL);
 
+        // GdkModifierType
+        Php::Class<Php::Base> gdkmodifiertype("GdkModifierType");
+            gdkmodifiertype.constant("SHIFT_MASK", GDK_SHIFT_MASK);
+            gdkmodifiertype.constant("LOCK_MASK", GDK_LOCK_MASK);
+            gdkmodifiertype.constant("CONTROL_MASK", GDK_CONTROL_MASK);
+            gdkmodifiertype.constant("MOD1_MASK", GDK_MOD1_MASK);
+            gdkmodifiertype.constant("MOD2_MASK", GDK_MOD2_MASK);
+            gdkmodifiertype.constant("MOD3_MASK", GDK_MOD3_MASK);
+            gdkmodifiertype.constant("MOD4_MASK", GDK_MOD4_MASK);
+            gdkmodifiertype.constant("MOD5_MASK", GDK_MOD5_MASK);
+            gdkmodifiertype.constant("BUTTON1_MASK", GDK_BUTTON1_MASK);
+            gdkmodifiertype.constant("BUTTON2_MASK", GDK_BUTTON2_MASK);
+            gdkmodifiertype.constant("BUTTON3_MASK", GDK_BUTTON3_MASK);
+            gdkmodifiertype.constant("BUTTON4_MASK", GDK_BUTTON4_MASK);
+            gdkmodifiertype.constant("BUTTON5_MASK", GDK_BUTTON5_MASK);
+            gdkmodifiertype.constant("RESERVED_13_MASK", GDK_MODIFIER_RESERVED_13_MASK);
+            gdkmodifiertype.constant("RESERVED_14_MASK", GDK_MODIFIER_RESERVED_14_MASK);
+            gdkmodifiertype.constant("RESERVED_15_MASK", GDK_MODIFIER_RESERVED_15_MASK);
+            gdkmodifiertype.constant("RESERVED_16_MASK", GDK_MODIFIER_RESERVED_16_MASK);
+            gdkmodifiertype.constant("RESERVED_17_MASK", GDK_MODIFIER_RESERVED_17_MASK);
+            gdkmodifiertype.constant("RESERVED_18_MASK", GDK_MODIFIER_RESERVED_18_MASK);
+            gdkmodifiertype.constant("RESERVED_19_MASK", GDK_MODIFIER_RESERVED_19_MASK);
+            gdkmodifiertype.constant("RESERVED_20_MASK", GDK_MODIFIER_RESERVED_20_MASK);
+            gdkmodifiertype.constant("RESERVED_21_MASK", GDK_MODIFIER_RESERVED_21_MASK);
+            gdkmodifiertype.constant("RESERVED_22_MASK", GDK_MODIFIER_RESERVED_22_MASK);
+            gdkmodifiertype.constant("RESERVED_23_MASK", GDK_MODIFIER_RESERVED_23_MASK);
+            gdkmodifiertype.constant("RESERVED_24_MASK", GDK_MODIFIER_RESERVED_24_MASK);
+            gdkmodifiertype.constant("RESERVED_25_MASK", GDK_MODIFIER_RESERVED_25_MASK);
+            gdkmodifiertype.constant("RESERVED_29_MASK", GDK_MODIFIER_RESERVED_29_MASK);
+            gdkmodifiertype.constant("SUPER_MASK", GDK_SUPER_MASK);
+            gdkmodifiertype.constant("HYPER_MASK", GDK_HYPER_MASK);
+            gdkmodifiertype.constant("META_MASK", GDK_META_MASK);
+            gdkmodifiertype.constant("RELEASE_MASK", GDK_RELEASE_MASK);
+            gdkmodifiertype.constant("MODIFIER_MASK", GDK_MODIFIER_MASK);
 
         // GdkColorspace
         Php::Class<Php::Base> gdkcolorspace("GdkColorspace");
@@ -3489,11 +3579,13 @@ extern "C"
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkeventkey));
+        extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkpixbuf));
         extension.add(std::move(gdkrgba));
         
         extension.add(std::move(gdkpixbufformat));
         extension.add(std::move(gdkpixbufalphamode));
+        extension.add(std::move(gdkmodifiertype));
         extension.add(std::move(gdkcolorspace));
 
         extension.add(std::move(gdkwindow));

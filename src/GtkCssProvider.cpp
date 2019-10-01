@@ -5,10 +5,6 @@
  * Constructor
  */
 GtkCssProvider_::GtkCssProvider_() = default;
-
-/**
- * Destructor
- */
 GtkCssProvider_::~GtkCssProvider_() = default;
 
 Php::Value GtkCssProvider_::get_named(Php::Parameters &parameters)

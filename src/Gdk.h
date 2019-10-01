@@ -6,6 +6,8 @@
 	#include <iostream>
 	#include <gtk/gtk.h>
 
+	#include "GdkWindow.h"
+
 	/**
 	 *  
 	 */
@@ -20,6 +22,8 @@
 			 */
 			Gdk_();
 			virtual ~Gdk_();
+
+			static Php::Value test_simulate_button(Php::Parameters &parameters);
 	};
 
 #endif
