@@ -2896,6 +2896,12 @@ extern "C"
         Php::Class<GladeProject_> gladeproject("GladeProject");
             gladeproject.extends(gobject);
             gladeproject.method<&GladeProject_::__construct>("__construct");
+            gladeproject.method<&GladeProject_::selection_get>("selection_get");
+
+        // GladeWidget
+        Php::Class<GladeWidget_> gladewidget("GladeWidget");
+            gladewidget.extends(gobject);
+            gladewidget.method<&GladeWidget_::__construct>("__construct");
 
         // GladeDesignView
         Php::Class<GladeDesignView_> gladedesignview("GladeDesignView");
@@ -3736,6 +3742,7 @@ extern "C"
         extension.add(std::move(gladeproject));
         extension.add(std::move(gladeeditor));
         extension.add(std::move(gladepalette));
+        extension.add(std::move(gladewidget));
 
         extension.add(std::move(gtkflowboxchild));
         extension.add(std::move(gtkflowbox));

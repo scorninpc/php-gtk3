@@ -13,7 +13,16 @@ GtkSourceView_::~GtkSourceView_() = default;
 
 void GtkSourceView_::__construct()
 {
-	instance = (gpointer *)gtk_source_view_new ();
+	// instance = (gpointer *)gtk_source_view_new ();
+
+	GtkSourceBuffer *buffer = gtk_source_buffer_new (NULL);
+	GtkSourceLanguageManager *langm = gtk_source_language_manager_new ();
+	GtkSourceLanguage *lang = gtk_source_language_manager_get_language (langm, "php");
+	gtk_source_buffer_set_language(buffer, lang);
+
+	instance = (gpointer *)gtk_source_view_new_with_buffer (buffer);
+
+
 
 }
 

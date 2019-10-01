@@ -125,8 +125,6 @@ function grid_2x4($widget)
 // $vbox = new GtkBox(GtkOrientation::VERTICAL);
 $vbox = new GtkBox(GtkOrientation::VERTICAL);
 
-
-
 // ----------------------
 // Menu
 $vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
