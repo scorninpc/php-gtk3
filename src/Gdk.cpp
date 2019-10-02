@@ -61,7 +61,13 @@ Php::Value Gdk_::test_simulate_button(Php::Parameters &parameters)
 		button_pressrelease = (GdkEventType)phpgtk_button_pressrelease;
 	}
 
-	gdk_test_simulate_button (window, x, y, button, modifiers, button_pressrelease);
+	// Move the cursor
+	GdkDevice *device = gdk_device_manager_get_client_pointer(gdk_display_get_device_manager(gdk_display_get_default()));
+	GdkScreen *screen = gdk_screen_get_default();
+	gdk_device_warp (device, screen, x, y);
+
+	// 
+	gdk_test_simulate_button(window, x, y, button, modifiers, button_pressrelease);
 
 	return 1;
 }

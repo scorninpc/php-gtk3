@@ -13,19 +13,22 @@ $button->connect("clicked", function($widget) {
 
 	if($widget->get_label() == "Start") {
 		$widget->set_label("Stop");
-	}
-	else {
-		$widget->set_label("Start");
-		$handler = Gtk::timeout_add(500, function() {
-			global $win;
 
-			$gdkwindow = $win->get_parent_window();
+		$handler = Gtk::timeout_add(1000, function() {
+			
+			$gdkwindow = GdkWindow::get_default_root_window();
 
-			Gdk::test_simulate_button($gdkwindow, 0, 0, 1);
+			Gdk::test_simulate_button($gdkwindow, 451, 531, 1);
+
+			echo "OK\n";
 
 			// Tell to continue calling
 			return TRUE;
 		});
+	}
+	else {
+		$widget->set_label("Start");
+		
 	}
 });
 
