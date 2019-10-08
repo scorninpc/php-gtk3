@@ -86,7 +86,7 @@ LINKER              =   g++
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
 
-COMPILER_FLAGS      =   -DWITH_GTKSOURCEVIEW=1 -Wall -c -std=c++11 -fpic -o 
+COMPILER_FLAGS      =   -Wall -c -std=c++11 -fpic -o 
 LINKER_FLAGS        =   -shared ${GTKLIBS}
 LINKER_DEPENDENCIES =   -lphpcpp
 
@@ -109,7 +109,7 @@ MKDIR               =   mkdir -p
 #   file, with the .cpp extension being replaced by .o.
 #
 
-SOURCES             =   $(wildcard src/*.cpp *.cpp)
+SOURCES             =   $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp)
 OBJECTS             =   $(SOURCES:%.cpp=%.o)
 
 #

@@ -1,201 +1,142 @@
 #ifndef _PHPGTK_MAIN_H_
 #define _PHPGTK_MAIN_H_
 
-    #include <phpcpp.h>
-    #include <iostream>
-    #include <gtk/gtk.h>
-    #include <gtksourceview/gtksource.h>
+	#include <phpcpp.h>
+	#include <iostream>
+	#include <gtk/gtk.h>
+	#include <gtksourceview/gtksource.h>
 
-    #include "php-gtk.h"
+	// PHP-GTK
+	#include "php-gtk.h"
 
-    #include "src/GObject.h"
+	// G
+	#include "src/G/GApplication.h"
+	#include "src/G/GObject.h"
 
-// ENUMS
+	// GDK
+	#include "src/Gdk/Gdk.h"
+	#include "src/Gdk/GdkEvent.h"
+	#include "src/Gdk/GdkEventButton.h"
+	#include "src/Gdk/GdkEventKey.h"
+	#include "src/Gdk/GdkPixbuf.h"
+	#include "src/Gdk/GdkWindow.h"
+	#include "src/Gdk/GdkVisual.h"
+	#include "src/Gdk/GdkRGBA.h"
+	#include "src/Gdk/GdkPixbufFormat.h"
 
+	// GTK
+	#include "src/Gtk/Gtk.h"
+	#include "src/Gtk/GtkApplication.h"
+	#include "src/Gtk/GtkWidget.h"
+	#include "src/Gtk/GtkEntry.h"
+	#include "src/Gtk/GtkEntryCompletion.h"
+	#include "src/Gtk/GtkContainer.h"
+	#include "src/Gtk/GtkCssProvider.h"
+	#include "src/Gtk/GtkStyleContext.h"
+	#include "src/Gtk/GtkBox.h"
+	#include "src/Gtk/GtkGrid.h"
+	#include "src/Gtk/GtkFixed.h"
+	#include "src/Gtk/GtkHBox.h"
+	#include "src/Gtk/GtkVBox.h"
+	#include "src/Gtk/GtkBin.h"
+	#include "src/Gtk/GtkWindow.h"
+	#include "src/Gtk/GtkButton.h"
+	#include "src/Gtk/GtkColorButton.h"
+	#include "src/Gtk/GtkFontButton.h"
+	#include "src/Gtk/GtkToggleButton.h"
+	#include "src/Gtk/GtkCheckButton.h"
+	#include "src/Gtk/GtkAdjustment.h"
+	#include "src/Gtk/GtkScrolledWindow.h"
+	#include "src/Gtk/GtkPaned.h"
+	#include "src/Gtk/GtkTreeView.h"
+	#include "src/Gtk/GtkTreeViewColumn.h"
+	#include "src/Gtk/GtkNotebook.h"
+	#include "src/Gtk/GtkCellRenderer.h"
+	#include "src/Gtk/GtkCellRendererText.h"
+	#include "src/Gtk/GtkCellRendererToggle.h"
+	#include "src/Gtk/GtkCellRendererPixbuf.h"
+	#include "src/Gtk/GtkTreeModel.h"
+	#include "src/Gtk/GtkListStore.h"
+	#include "src/Gtk/GtkTreeIter.h"
+	#include "src/Gtk/GtkEntryBuffer.h"
+	#include "src/Gtk/GtkLabel.h"
+	#include "src/Gtk/GtkTextIter.h"
+	#include "src/Gtk/GtkTextBuffer.h"
+	#include "src/Gtk/GtkTextView.h"
+	#include "src/Gtk/GtkTextTag.h"
+	#include "src/Gtk/GtkTextMark.h"
+	#include "src/Gtk/GtkDialog.h"
+	#include "src/Gtk/GtkAboutDialog.h"
+	#include "src/Gtk/GtkAppChooserDialog.h"
+	#include "src/Gtk/GtkColorChooserDialog.h"
+	#include "src/Gtk/GtkFontChooserDialog.h"
+//	#include "src/Gtk/GtkPageSetupUnixDialog.h"
+	#include "src/Gtk/GtkPrintSettings.h"
+	#include "src/Gtk/GtkPaperSize.h"
+	#include "src/Gtk/GtkPageSetup.h"
+	#include "src/Gtk/GtkFileChooser.h"
+	#include "src/Gtk/GtkFileChooserDialog.h"
+	#include "src/Gtk/GtkFileFilter.h"
+	#include "src/Gtk/GtkMessageDialog.h"
+	#include "src/Gtk/GtkSizeGroup.h"
+	#include "src/Gtk/GtkToolbar.h"
+	#include "src/Gtk/GtkToolItem.h"
+	#include "src/Gtk/GtkMisc.h"
+	#include "src/Gtk/GtkToolButton.h"
+	#include "src/Gtk/GtkSeparatorToolItem.h"
+	#include "src/Gtk/GtkTextTagTable.h"
+	#include "src/Gtk/GtkClipboard.h"
+	#include "src/Gtk/GtkTreeStore.h"
+	#include "src/Gtk/GtkTreeSelection.h"
+	#include "src/Gtk/GtkListStore.h"
+	#include "src/Gtk/GtkMenuShell.h"
+	#include "src/Gtk/GtkMenuBar.h"
+	#include "src/Gtk/GtkMenu.h"
+	#include "src/Gtk/GtkMenuItem.h"
+	#include "src/Gtk/GtkSeparatorMenuItem.h"
+	#include "src/Gtk/GtkCheckMenuItem.h"
+	#include "src/Gtk/GtkStatusbar.h"
+	#include "src/Gtk/GtkListBoxRow.h"
+	#include "src/Gtk/GtkListBox.h"
+	#include "src/Gtk/GtkComboBox.h"
+	#include "src/Gtk/GtkComboBoxText.h"
+	#include "src/Gtk/GtkAppChooserButton.h"
+	#include "src/Gtk/GtkBuilder.h"
+	#include "src/Gtk/GtkRevealer.h"
+	#include "src/Gtk/GtkFlowBoxChild.h"
+	#include "src/Gtk/GtkFlowBox.h"
+	#include "src/Gtk/GtkStack.h"
+	#include "src/Gtk/GtkStackSwitcher.h"
+	#include "src/Gtk/GtkStackSidebar.h"
+	#include "src/Gtk/GtkActionBar.h"
+	#include "src/Gtk/GtkHeaderBar.h"
+	#include "src/Gtk/GtkOverlay.h"
+	#include "src/Gtk/GtkButtonBox.h"
+	#include "src/Gtk/GtkLayout.h"
+	#include "src/Gtk/GtkExpander.h"
+	#include "src/Gtk/GtkFrame.h"
+	#include "src/Gtk/GtkAspectFrame.h"
+	#include "src/Gtk/GtkWidgetPath.h"
+	#include "src/Gtk/GtkImage.h"
+	#include "src/Gtk/GtkCalendar.h"
+	#include "src/Gtk/GtkSpinner.h"
+	#include "src/Gtk/GtkInfoBar.h"
+	#include "src/Gtk/GtkProgressBar.h"
+	#include "src/Gtk/GtkRecentChooserDialog.h"
 
-    
-    // GDK
-    #include "src/GtkCssProvider.h"
-    #include "src/GtkStyleContext.h"
+	// GtkSourceView
+	#include "src/GtkSourceView/GtkSourceView.h"
 
-    #include "src/GApplication.h"
+	// Glade
+	#include "src/Glade/GladeProject.h"
+	#include "src/Glade/GladeApp.h"
+	#include "src/Glade/GladeDesignView.h"
+	#include "src/Glade/GladeEditor.h"
+	#include "src/Glade/GladePalette.h"
+	#include "src/Glade/GladeWidget.h"
 
-    #include "src/Gdk.h"
-    #include "src/GdkEvent.h"
-    #include "src/GdkEventButton.h"
-    #include "src/GdkEventKey.h"
-    #include "src/GdkPixbuf.h"
-
-    #include "src/GdkWindow.h"
-
-    #include "src/GdkVisual.h"
-    
-    #include "src/GdkRGBA.h"
-
-    #include "src/GdkPixbufFormat.h"
-
-    // GTK
-    #include "src/Gtk.h"
-    #include "src/GtkApplication.h"
-    #include "src/GtkWidget.h"
-    #include "src/GtkEntry.h"
-    #include "src/GtkEntryCompletion.h"
-    #include "src/GtkContainer.h"
-    
-    #include "src/GtkBox.h"
-    #include "src/GtkGrid.h"
-    #include "src/GtkFixed.h"
-    #include "src/GtkHBox.h"
-    #include "src/GtkVBox.h"
-    #include "src/GtkBin.h"
-
-    #include "src/GtkWindow.h"
-    #include "src/GtkButton.h"
-    #include "src/GtkColorButton.h"
-    #include "src/GtkFontButton.h"
-    #include "src/GtkToggleButton.h"
-    #include "src/GtkCheckButton.h"
-
-    #include "src/GtkAdjustment.h"
-    #include "src/GtkScrolledWindow.h"
-
-    #include "src/GtkPaned.h"
-
-    #include "src/GtkTreeView.h"
-    #include "src/GtkTreeViewColumn.h"
-
-    #include "src/GtkNotebook.h"
-    
-    #include "src/GtkCellRenderer.h"
-    #include "src/GtkCellRendererText.h"
-    #include "src/GtkCellRendererToggle.h"
-    #include "src/GtkCellRendererPixbuf.h"
-
-    #include "src/GtkTreeModel.h"
-    #include "src/GtkListStore.h"
-    #include "src/GtkTreeIter.h"
-
-    #include "src/GtkEntryBuffer.h"
-    
-
-    #include "src/GtkLabel.h"
-
-    #include "src/GtkTextIter.h"
-    #include "src/GtkTextBuffer.h"
-
-    #include "src/GtkTextView.h"
-
-    #include "src/GtkTextTag.h"
-    #include "src/GtkTextMark.h"
-
-    #include "src/GtkDialog.h"
-    #include "src/GtkAboutDialog.h"
-    #include "src/GtkAppChooserDialog.h"
-    #include "src/GtkColorChooserDialog.h"
-    #include "src/GtkFontChooserDialog.h"
-
-    // #include "src/GtkPageSetupUnixDialog.h"
-    #include "src/GtkPrintSettings.h"
-
-    
-    #include "src/GtkPaperSize.h"
-    #include "src/GtkPageSetup.h"
-
-    #include "src/GtkFileChooser.h"
-    #include "src/GtkFileChooserDialog.h"
-    #include "src/GtkFileFilter.h"
-
-
-    #include "src/GtkMessageDialog.h"
-
-
-
-    #include "src/GtkSizeGroup.h"
-
-    #include "src/GtkToolbar.h"
-
-    #include "src/GtkToolItem.h"
-    #include "src/GtkMisc.h"
-    #include "src/GtkToolButton.h"
-    #include "src/GtkSeparatorToolItem.h"
-
-    #include "src/GtkTextTagTable.h"
-
-    #include "src/GtkClipboard.h"
-
-    #include "src/GtkTreeStore.h"
-    #include "src/GtkTreeSelection.h"
-    
-    #include "src/GtkListStore.h"
-
-    #include "src/GtkMenuShell.h"
-    #include "src/GtkMenuBar.h"
-    #include "src/GtkMenu.h"
-    #include "src/GtkMenuItem.h"
-    #include "src/GtkSeparatorMenuItem.h"
-    #include "src/GtkCheckMenuItem.h"
-
-    #include "src/GtkStatusbar.h"
-
-    #include "src/GtkListBoxRow.h"
-    #include "src/GtkListBox.h"
-    
-    #include "src/GtkComboBox.h"
-    #include "src/GtkComboBoxText.h"
-    #include "src/GtkAppChooserButton.h"
-
-    #include "src/GtkBuilder.h"
-
-    #include "src/GtkRevealer.h"
-
-
-    #include "src/GladeProject.h"
-    #include "src/GladeApp.h"
-    #include "src/GladeDesignView.h"
-    #include "src/GladeEditor.h"
-    #include "src/GladePalette.h"
-    #include "src/GladeWidget.h"
-
-    #include "src/GtkFlowBoxChild.h"
-    #include "src/GtkFlowBox.h"
-    
-    #include "src/GtkStack.h"
-    #include "src/GtkStackSwitcher.h"
-    #include "src/GtkStackSidebar.h"
-
-    #include "src/GtkActionBar.h"
-    #include "src/GtkHeaderBar.h"
-    #include "src/GtkOverlay.h"
-
-    #include "src/GtkButtonBox.h"
-    
-    #include "src/GtkLayout.h"
-    #include "src/GtkExpander.h"
-
-    #include "src/GtkFrame.h"
-    #include "src/GtkAspectFrame.h"
-    
-    #include "src/GtkWidgetPath.h"
-
-    #include "src/GtkImage.h"
-
-    #include "src/GtkCalendar.h"
-
-    #include "src/GtkSpinner.h"
-
-    #include "src/GtkInfoBar.h"
-
-    #include "src/GtkProgressBar.h"
-
-    #include "src/GtkRecentChooserDialog.h"
-
-
-#ifdef WITH_GTKSOURCEVIEW
-    #include "src/GtkSourceView.h"
-#endif
-    
-
-    GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
-    void phpgtk_throw_wrong_type(int param, Php::Type type);
+	// Self methods
+	GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
+	void phpgtk_throw_wrong_type(int param, Php::Type type);
 
 #endif
