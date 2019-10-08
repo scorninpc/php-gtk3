@@ -1,6 +1,6 @@
 <?php
 
-
+Gtk::init();
 
 // Create a css provider
 $css_provider = new GtkCssProvider();

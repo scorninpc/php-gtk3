@@ -18,6 +18,7 @@
     #include "src/GtkCssProvider.h"
     #include "src/GtkStyleContext.h"
 
+    #include "src/GApplication.h"
 
     #include "src/Gdk.h"
     #include "src/GdkEvent.h"
@@ -35,6 +36,7 @@
 
     // GTK
     #include "src/Gtk.h"
+    #include "src/GtkApplication.h"
     #include "src/GtkWidget.h"
     #include "src/GtkEntry.h"
     #include "src/GtkEntryCompletion.h"

@@ -48,6 +48,7 @@
 
 			static Php::Value events_pending();
 			static Php::Value main_iteration();
+			static void init();
 
 	};
 

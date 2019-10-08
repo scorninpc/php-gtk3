@@ -74,3 +74,8 @@ Php::Value Gtk_::main_iteration()
 {
 	return gtk_main_iteration();
 }
+
+void Gtk_::init()
+{
+    gtk_init(0, NULL);
+}

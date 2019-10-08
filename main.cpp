@@ -32,7 +32,7 @@ extern "C"
         static Php::Extension extension("php-gtk3", "1.0");
 
         // Initialize GTK
-        gtk_init (0, NULL);
+        // gtk_init (0, NULL);
 
         // GObject
         Php::Class<GObject_> gobject("GObject");
@@ -200,6 +200,89 @@ extern "C"
             gdkwindow.method<&GdkWindow_::maximize>("maximize");
             gdkwindow.method<&GdkWindow_::get_default_root_window>("get_default_root_window");
         
+        // GtkApplication
+        Php::Class<GtkApplication_> gtkapplication("GtkApplication");
+            gtkapplication.extends(gobject);
+            gtkapplication.method<&GtkApplication_::__construct>("__construct");
+            gtkapplication.method<&GtkApplication_::add_window>("add_window");
+            gtkapplication.method<&GtkApplication_::remove_window>("remove_window");
+            gtkapplication.method<&GtkApplication_::get_windows>("get_windows");
+            gtkapplication.method<&GtkApplication_::get_window_by_id>("get_window_by_id");
+            gtkapplication.method<&GtkApplication_::get_active_window>("get_active_window");
+            gtkapplication.method<&GtkApplication_::inhibit>("inhibit");
+            gtkapplication.method<&GtkApplication_::uninhibit>("uninhibit");
+            gtkapplication.method<&GtkApplication_::is_inhibited>("is_inhibited");
+            gtkapplication.method<&GtkApplication_::prefers_app_menu>("prefers_app_menu");
+            gtkapplication.method<&GtkApplication_::get_app_menu>("get_app_menu");
+            gtkapplication.method<&GtkApplication_::set_app_menu>("set_app_menu");
+            gtkapplication.method<&GtkApplication_::get_menubar>("get_menubar");
+            gtkapplication.method<&GtkApplication_::set_menubar>("set_menubar");
+            gtkapplication.method<&GtkApplication_::get_menu_by_id>("get_menu_by_id");
+            gtkapplication.method<&GtkApplication_::add_accelerator>("add_accelerator");
+            gtkapplication.method<&GtkApplication_::remove_accelerator>("remove_accelerator");
+            gtkapplication.method<&GtkApplication_::list_action_descriptions>("list_action_descriptions");
+            gtkapplication.method<&GtkApplication_::get_accels_for_action>("get_accels_for_action");
+            gtkapplication.method<&GtkApplication_::set_accels_for_action>("set_accels_for_action");
+            gtkapplication.method<&GtkApplication_::get_actions_for_accel>("get_actions_for_accel");
+            gtkapplication.method<&GtkApplication_::window_new>("window_new");
+        
+        // GApplication
+        Php::Class<GApplication_> gapplication("GApplication");
+            gapplication.extends(gobject);
+            gapplication.method<&GApplication_::id_is_valid>("id_is_valid");
+            gapplication.method<&GApplication_::__construct>("__construct");
+            gapplication.method<&GApplication_::get_application_id>("get_application_id");
+            gapplication.method<&GApplication_::set_application_id>("set_application_id");
+            gapplication.method<&GApplication_::get_inactivity_timeout>("get_inactivity_timeout");
+            gapplication.method<&GApplication_::set_inactivity_timeout>("set_inactivity_timeout");
+            gapplication.method<&GApplication_::get_flags>("get_flags");
+            gapplication.method<&GApplication_::set_flags>("set_flags");
+            gapplication.method<&GApplication_::get_resource_base_path>("get_resource_base_path");
+            gapplication.method<&GApplication_::set_resource_base_path>("set_resource_base_path");
+            gapplication.method<&GApplication_::get_dbus_connection>("get_dbus_connection");
+            gapplication.method<&GApplication_::get_dbus_object_path>("get_dbus_object_path");
+            gapplication.method<&GApplication_::set_action_group>("set_action_group");
+            gapplication.method<&GApplication_::get_is_registered>("get_is_registered");
+            gapplication.method<&GApplication_::get_is_remote>("get_is_remote");
+            // gapplication.method<&GApplication_::register>("register");
+            gapplication.method<&GApplication_::hold>("hold");
+            gapplication.method<&GApplication_::release>("release");
+            gapplication.method<&GApplication_::quit>("quit");
+            gapplication.method<&GApplication_::activate>("activate");
+            gapplication.method<&GApplication_::open>("open");
+            gapplication.method<&GApplication_::send_notification>("send_notification");
+            gapplication.method<&GApplication_::withdraw_notification>("withdraw_notification");
+            gapplication.method<&GApplication_::run>("run");
+            gapplication.method<&GApplication_::add_main_option_entries>("add_main_option_entries");
+            gapplication.method<&GApplication_::add_main_option>("add_main_option");
+            gapplication.method<&GApplication_::add_option_group>("add_option_group");
+            gapplication.method<&GApplication_::set_option_context_parameter_string>("set_option_context_parameter_string");
+            gapplication.method<&GApplication_::set_option_context_summary>("set_option_context_summary");
+            gapplication.method<&GApplication_::set_option_context_description>("set_option_context_description");
+            gapplication.method<&GApplication_::set_default>("set_default");
+            gapplication.method<&GApplication_::get_default>("get_default");
+            gapplication.method<&GApplication_::mark_busy>("mark_busy");
+            gapplication.method<&GApplication_::unmark_busy>("unmark_busy");
+            gapplication.method<&GApplication_::get_is_busy>("get_is_busy");
+            gapplication.method<&GApplication_::bind_busy_property>("bind_busy_property");
+            gapplication.method<&GApplication_::unbind_busy_property>("unbind_busy_property");
+            gapplication.constant("FLAGS_NONE", G_APPLICATION_FLAGS_NONE);
+            gapplication.constant("IS_SERVICE", G_APPLICATION_IS_SERVICE);
+            gapplication.constant("IS_LAUNCHER", G_APPLICATION_IS_LAUNCHER);
+            gapplication.constant("HANDLES_OPEN", G_APPLICATION_HANDLES_OPEN);
+            gapplication.constant("HANDLES_COMMAND_LINE", G_APPLICATION_HANDLES_COMMAND_LINE);
+            gapplication.constant("SEND_ENVIRONMENT", G_APPLICATION_SEND_ENVIRONMENT);
+            gapplication.constant("NON_UNIQUE", G_APPLICATION_NON_UNIQUE);
+            gapplication.constant("CAN_OVERRIDE_APP_ID", G_APPLICATION_CAN_OVERRIDE_APP_ID);
+            // gapplication.constant("ALLOW_REPLACEMENT", G_APPLICATION_ALLOW_REPLACEMENT);
+            // gapplication.constant("REPLACE", G_APPLICATION_REPLACE);
+            
+        // GtkApplicationInhibitFlags
+        Php::Class<Php::Base> gtkapplicationinhibitflag("GtkApplicationInhibitFlags");
+            gtkapplicationinhibitflag.constant("LOGOUT", GTK_APPLICATION_INHIBIT_LOGOUT);
+            gtkapplicationinhibitflag.constant("SWITCH", GTK_APPLICATION_INHIBIT_SWITCH);
+            gtkapplicationinhibitflag.constant("SUSPEND", GTK_APPLICATION_INHIBIT_SUSPEND);
+            gtkapplicationinhibitflag.constant("IDLE", GTK_APPLICATION_INHIBIT_IDLE);
 
         // GtkWidgetHelpType
         Php::Class<Php::Base> gtkwidgethelptype("GtkWidgetHelpType");
@@ -538,6 +621,7 @@ extern "C"
 
         // Gtk
         Php::Class<Gtk_> gtk("Gtk");
+            gtk.method<&Gtk_::init>("init");
             gtk.method<&Gtk_::main>("main");
             gtk.method<&Gtk_::main_quit>("main_quit");
             gtk.method<&Gtk_::timeout_add>("timeout_add");
@@ -3576,7 +3660,6 @@ extern "C"
             gtksourceview.method<&GtkSourceView_::get_background_pattern>("get_background_pattern");
 #endif
 
-                
         
         // Add classes to extension
         extension.add(std::move(gobject));
@@ -3593,7 +3676,7 @@ extern "C"
         extension.add(std::move(gdkpixbufalphamode));
         extension.add(std::move(gdkmodifiertype));
         extension.add(std::move(gdkcolorspace));
-
+        
         extension.add(std::move(gdkwindow));
         extension.add(std::move(gdkbyteorder));
         extension.add(std::move(gdkvisualtype));
@@ -3610,7 +3693,11 @@ extern "C"
         extension.add(std::move(gdkwmdecoration));
         extension.add(std::move(gdkwmfunction));
 
+        extension.add(std::move(gapplication));
+
         extension.add(std::move(gtk));
+        extension.add(std::move(gtkapplication));
+        extension.add(std::move(gtkapplicationinhibitflag));
         extension.add(std::move(gtkorientation));
         extension.add(std::move(gtkpolicytype));
         extension.add(std::move(gtkwidget));

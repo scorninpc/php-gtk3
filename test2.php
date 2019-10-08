@@ -1,5 +1,7 @@
 <?php
 
+Gtk::init();
+
 /**
  * Application class
  */

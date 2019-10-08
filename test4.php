@@ -1,5 +1,7 @@
 <?php
 
+Gtk::init();
+
 defined("APPLICATION_PATH") || define("APPLICATION_PATH", dirname(__FILE__));
 
 $builder = GtkBuilder::new_from_file(APPLICATION_PATH . "/test4.ui");

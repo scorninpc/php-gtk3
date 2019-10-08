@@ -1,5 +1,7 @@
 <?php
 
+Gtk::init();
+
 function GtkWindowDestroy($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
 {
 	Gtk::main_quit();
