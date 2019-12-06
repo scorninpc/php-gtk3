@@ -591,12 +591,10 @@ void GtkStyleContext_::set_path(Php::Parameters &parameters)
 
 void GtkStyleContext_::add_class(Php::Parameters &parameters)
 {
-	// std::string s_class_name = parameters[0];
-	// gchar *class_name = (gchar *)s_class_name.c_str();
+	std::string s_class_name = parameters[0];
+	gchar *class_name = (gchar *)s_class_name.c_str();
 
-	// gtk_style_context_add_class (GTK_STYLE_CONTEXT(instance), class_name);
-
-	throw Php::Exception("GtkStyleContext_::gtk_render_icon not implemented");
+	gtk_style_context_add_class (GTK_STYLE_CONTEXT(instance), class_name);
 }
 
 void GtkStyleContext_::remove_class(Php::Parameters &parameters)
