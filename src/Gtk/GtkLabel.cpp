@@ -325,3 +325,19 @@ Php::Value GtkLabel_::get_track_visited_links()
 	return ret;
 }
 
+void GtkLabel_::set_ellipsize(Php::Parameters &parameters)
+{
+	int int_etype = (int)parameters[0];
+	PangoEllipsizeMode etype = (PangoEllipsizeMode)int_etype;
+
+	gtk_label_set_ellipsize (GTK_LABEL(instance), etype);
+
+}
+
+Php::Value GtkLabel_::get_ellipsize()
+{
+	gint ret = gtk_label_get_ellipsize (GTK_LABEL(instance));
+
+	return ret;
+}
+
