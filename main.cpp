@@ -1687,6 +1687,8 @@ extern "C"
             gtklabel.method<&GtkLabel_::get_current_uri>("get_current_uri");
             gtklabel.method<&GtkLabel_::set_track_visited_links>("set_track_visited_links");
             gtklabel.method<&GtkLabel_::get_track_visited_links>("get_track_visited_links");
+            gtklabel.method<&GtkLabel_::set_ellipsize>("set_ellipsize");
+            gtklabel.method<&GtkLabel_::get_ellipsize>("get_ellipsize");
         
         
         // GtkNotebook

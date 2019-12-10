@@ -102,6 +102,11 @@
             void set_track_visited_links(Php::Parameters &parameters);
 
             Php::Value get_track_visited_links();
+
+            void set_ellipsize(Php::Parameters &parameters);
+
+            Php::Value get_ellipsize();
+
     };
 
 #endif

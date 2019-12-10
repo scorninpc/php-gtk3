@@ -197,6 +197,11 @@ void GtkListStore_::insert_with_values(Php::Parameters &parameters)
 
 }
 
+void GtkListStore_::insert_with_valuesv(Php::Parameters &parameters)
+{
+	throw Php::Exception("GtkListStore_::insert_with_valuesv implemented yet");
+}
+
 Php::Value GtkListStore_::prepend(Php::Parameters &parameters)
 {
 	

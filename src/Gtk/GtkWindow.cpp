@@ -481,7 +481,7 @@ void GtkWindow_::unfullscreen()
 void GtkWindow_::set_keep_above(Php::Parameters &parameters)
 {
     // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
@@ -494,7 +494,7 @@ void GtkWindow_::set_keep_above(Php::Parameters &parameters)
 void GtkWindow_::set_keep_below(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
@@ -507,7 +507,7 @@ void GtkWindow_::set_keep_below(Php::Parameters &parameters)
 void GtkWindow_::set_decorated(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
 
@@ -530,7 +530,7 @@ Php::Value GtkWindow_::get_decorated()
 void GtkWindow_::set_deletable(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
@@ -574,7 +574,7 @@ Php::Value GtkWindow_::get_type_hint()
 void GtkWindow_::set_skip_taskbar_hint(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
@@ -599,7 +599,7 @@ Php::Value GtkWindow_::get_skip_taskbar_hint()
 void GtkWindow_::set_skip_pager_hint(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
@@ -624,7 +624,7 @@ Php::Value GtkWindow_::get_skip_pager_hint()
 void GtkWindow_::set_urgency_hint(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
@@ -649,7 +649,7 @@ Php::Value GtkWindow_::get_urgency_hint()
 void GtkWindow_::set_accept_focus(Php::Parameters &parameters)
 {
      // Verify parameter
-    if(parameters.size() == 1) {
+    if(parameters.size() != 1) {
         throw Php::Exception("parameter 1 must be a boolean");
     }
     
