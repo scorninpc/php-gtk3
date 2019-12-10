@@ -4,8 +4,10 @@
 
     #include <phpcpp.h>
     #include <gtk/gtk.h>
+    #include <gdk/gdk.h>
 
     #include "GdkPixbufFormat.h"
+    #include "GdkWindow.h"
 
     /**
      * GdkPixbuf
@@ -72,6 +74,8 @@
             Php::Value get_option(Php::Parameters &parameters);
 
             Php::Value save(Php::Parameters &parameters);
+            
+            Php::Value get_from_drawable(Php::Parameters &parameters);
     };
 
 #endif

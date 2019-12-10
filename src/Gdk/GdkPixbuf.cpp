@@ -189,3 +189,43 @@ Php::Value GdkPixbuf_::save(Php::Parameters &parameters)
 	return (bool)ret;
 }
 
+
+Php::Value GdkPixbuf_::get_from_drawable(Php::Parameters &parameters)
+{
+	throw Php::Exception("GdkPixbuf_::get_from_drawable not implemented");
+	// GdkPixbuf *screenshot;
+
+	// [0] // Pixbuf para copiar
+	// [1] // source
+	// [2] // colormap
+	// [3] // source_x
+	// [4] // source_y
+	// [5] // dest_x
+	// [6] // dest_y
+	// [7] // width
+	// [8] // height
+
+	// GdkWindow *drawable;
+	// Php::Value object_drawable = parameters[0];
+	// GdkWindow_ *phpgtk_drawable = (GdkWindow_ *)object_drawable.implementation();
+	// drawable = GDK_WINDOW(phpgtk_drawable->get_instance());
+
+	// int source_x = parameters[3];
+	// int source_y = parameters[4];
+
+	// int dest_x = parameters[5];
+	// int dest_y = parameters[6];
+
+	// int width = parameters[7];
+	// int height = parameters[8];
+
+
+	// screenshot = gdk_pixbuf_get_from_drawable (NULL, drawable, NULL, source_x, source_y, dest_x, dest_y, width, height);
+
+	// // Create the PHP-GTK object and set GTK object
+	// GdkWindow_ *widget_ = new GdkWindow_();
+	// widget_->set_instance((gpointer *)ret);
+	// return Php::Object("GdkWindow", widget_);
+	return 1;
+}
+

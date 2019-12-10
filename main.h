@@ -19,6 +19,7 @@
 	#include "src/Gdk/GdkEventButton.h"
 	#include "src/Gdk/GdkEventKey.h"
 	#include "src/Gdk/GdkPixbuf.h"
+	#include "src/Gdk/GdkDrawable.h"
 	#include "src/Gdk/GdkWindow.h"
 	#include "src/Gdk/GdkVisual.h"
 	#include "src/Gdk/GdkRGBA.h"

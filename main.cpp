@@ -563,7 +563,13 @@ extern "C"
             gdkpixbuf.method<&GdkPixbuf_::get_rowstride>("get_rowstride");
             gdkpixbuf.method<&GdkPixbuf_::get_option>("get_option");
             gdkpixbuf.method<&GdkPixbuf_::save>("save");
+            gdkpixbuf.method<&GdkPixbuf_::get_from_drawable>("get_from_drawable");
         
+        // GdkDrawable
+        Php::Class<GdkDrawable_> gdkdrawable("GdkDrawable");
+            // gdkdrawable.method<&GdkDrawable_::parse>("parse");
+            // gdkdrawable.method<&GdkDrawable_::to_string>("to_string");
+
         // GdkRGBA
         Php::Class<GdkRGBA_> gdkrgba("GdkRGBA");
             gdkrgba.method<&GdkRGBA_::parse>("parse");
@@ -3604,6 +3610,7 @@ extern "C"
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkpixbuf));
+        extension.add(std::move(gdkdrawable));
         extension.add(std::move(gdkrgba));
         
         extension.add(std::move(gdkpixbufformat));
