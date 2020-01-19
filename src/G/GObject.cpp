@@ -86,7 +86,7 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
     callback_object->parameters = parameters;
     
 
-     // Retriave and store signal query parameters , to be used on callback
+    // Retriave and store signal query parameters , to be used on callback
     GSignalQuery signal_info;
 
     if(G_IS_OBJECT(instance)) {

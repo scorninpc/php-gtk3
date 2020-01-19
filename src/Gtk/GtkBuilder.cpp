@@ -239,6 +239,9 @@ void GtkBuilder_::connect_signals(Php::Parameters &parameters)
 
 void GtkBuilder_::connect_signals_full(Php::Parameters &parameters)
 {
+
+	gtk_builder_connect_signals_full (GTK_BUILDER(instance), connect_signals_full_callback, NULL);
+
 	// std::string s_func = parameters[0];
 	// gchar *func = (gchar *)s_func.c_str();
 
@@ -246,8 +249,82 @@ void GtkBuilder_::connect_signals_full(Php::Parameters &parameters)
 
 	// gtk_builder_connect_signals_full (GTK_BUILDER(instance), func, user_data);
 
-	throw Php::Exception("GtkBuilder_::connect_signals_full not implemented");
+	// throw Php::Exception("GtkBuilder_::connect_signals_full not implemented");
 
+}
+
+
+/**
+ * Struct for callback gpointer
+ */
+struct GtkBuilder_::st_callback {
+	Php::Object self_widget;
+	Php::Value callback_name;
+
+    guint signal_id;
+    const gchar *signal_name;
+    GType itype;
+    GSignalFlags signal_flags;
+    GType return_type;
+    guint n_params;
+    const GType *param_types;
+};
+
+void GtkBuilder_::connect_signals_full_callback(GtkBuilder *builder, GObject *instance, const gchar *signal_name, const char *handler_name, GObject *object, GConnectFlags flags, gpointer data)
+{
+
+	// Retriave and store signal query parameters , to be used on callback
+    GSignalQuery signal_info;
+
+    if(G_IS_OBJECT(instance)) {
+        g_signal_query(g_signal_lookup (signal_name, G_OBJECT_TYPE (instance)), &signal_info);
+    }
+
+    if(G_IS_OBJECT_CLASS(instance)) {
+        g_signal_query(g_signal_lookup (signal_name, G_OBJECT_CLASS_TYPE (instance)), &signal_info);
+    }
+
+
+    // Create gpoint param
+    struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
+    memset(callback_object, 0, sizeof(struct st_callback));
+    
+    GtkWidget_ *php_object = new GtkWidget_();
+	php_object->set_instance((gpointer *)instance);
+    callback_object->self_widget = Php::Object("GtkWidget", php_object);
+
+    callback_object->callback_name = handler_name;
+
+    callback_object->signal_id = signal_info.signal_id;
+    callback_object->signal_name = signal_info.signal_name;
+    callback_object->itype = signal_info.itype;
+    callback_object->signal_flags = signal_info.signal_flags;
+    callback_object->return_type = signal_info.return_type;
+    callback_object->n_params = signal_info.n_params;
+    callback_object->param_types = signal_info.param_types;
+
+    // Connect
+    GClosure  *closure;
+    closure = g_cclosure_new_swap (G_CALLBACK (connect_signals_full_callback1), callback_object, NULL);
+    g_signal_connect_closure (instance, signal_name, closure, TRUE);
+}
+
+/**
+ * Class to abstract php callback for connect method, to call PHP function
+ * @fix Fatal error: Uncaught Error: Using $this when not in object context in Unknown:1
+ *		when use $this->method on callback on glade, this method is out of context. Works only with static method
+ */
+void GtkBuilder_::connect_signals_full_callback1(gpointer user_data, ...)
+{
+	// Return to st_callback
+    struct st_callback *callback_object = (struct st_callback *) user_data;
+
+    // Create the params
+    Php::Value internal_parameters;
+    internal_parameters[0] = callback_object->self_widget;
+
+    // Call php function with parameters
+    Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
 }
 
 void GtkBuilder_::set_translation_domain(Php::Parameters &parameters)

@@ -20,6 +20,12 @@
     class GtkBuilder_ : public GObject_
     {
         /**
+         * Privates
+         */
+        private:
+            struct st_callback;
+            
+        /**
          * Publics
          */
         public:
@@ -67,6 +73,8 @@
             void connect_signals(Php::Parameters &parameters);
 
             void connect_signals_full(Php::Parameters &parameters);
+            static void connect_signals_full_callback(GtkBuilder *builder, GObject *object, const gchar *signal_name, const char *handler_name, GObject *connect_object, GConnectFlags flags, gpointer data);
+            static void connect_signals_full_callback1(gpointer user_data, ...);
 
             void set_translation_domain(Php::Parameters &parameters);
 
