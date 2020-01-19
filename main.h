@@ -46,6 +46,7 @@
 	#include "src/Gtk/GtkFontButton.h"
 	#include "src/Gtk/GtkToggleButton.h"
 	#include "src/Gtk/GtkCheckButton.h"
+	#include "src/Gtk/GtkRadioButton.h"
 	#include "src/Gtk/GtkAdjustment.h"
 	#include "src/Gtk/GtkScrolledWindow.h"
 	#include "src/Gtk/GtkPaned.h"

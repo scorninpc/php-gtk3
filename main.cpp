@@ -1437,6 +1437,18 @@ extern "C"
             gtkcheckbutton.method<&GtkCheckButton_::new_with_label>("new_with_label");
             gtkcheckbutton.method<&GtkCheckButton_::new_with_mnemonic>("new_with_mnemonic");
 
+        // GtkRadioButton
+        Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
+            gtkradiobutton.extends(gtkcheckbutton);
+            gtkradiobutton.method<&GtkRadioButton_::__construct>("__construct");
+            gtkradiobutton.method<&GtkRadioButton_::new_from_widget>("new_from_widget");
+            gtkradiobutton.method<&GtkRadioButton_::new_with_label>("new_with_label");
+            gtkradiobutton.method<&GtkRadioButton_::new_with_label_from_widget>("new_with_label_from_widget");
+            gtkradiobutton.method<&GtkRadioButton_::new_with_mnemonic>("new_with_mnemonic");
+            gtkradiobutton.method<&GtkRadioButton_::new_with_mnemonic_from_widget>("new_with_mnemonic_from_widget");
+            gtkradiobutton.method<&GtkRadioButton_::set_group>("set_group");
+            gtkradiobutton.method<&GtkRadioButton_::get_group>("get_group");
+            gtkradiobutton.method<&GtkRadioButton_::join_group>("join_group");
 
         // GtkAdjustment
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
@@ -3675,6 +3687,7 @@ extern "C"
         extension.add(std::move(gtkcolorbutton));
         extension.add(std::move(gtktogglebutton));
         extension.add(std::move(gtkcheckbutton));
+        extension.add(std::move(gtkradiobutton));
         extension.add(std::move(gtkadjustment));
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));
