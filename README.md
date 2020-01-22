@@ -3,6 +3,7 @@ help wanted
 - Complile for Windows
 - Improvement of Makefile
 
+Read how to [Compile on MAC](https://github.com/scorninpc/php-gtk3/wiki/Compile-on-MAC)
 
 php-gtk3-tests
 ==============
