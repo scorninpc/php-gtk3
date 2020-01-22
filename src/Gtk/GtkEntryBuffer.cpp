@@ -66,7 +66,7 @@ void GtkEntryBuffer_::set_text(Php::Parameters &parameters)
  */
 Php::Value GtkEntryBuffer_::get_bytes()
 {
-	long int bytes = (long int)gtk_entry_buffer_get_bytes(GTK_ENTRY_BUFFER(instance));
+	int bytes = (int)gtk_entry_buffer_get_bytes(GTK_ENTRY_BUFFER(instance));
 	return bytes;
 }
 
@@ -75,7 +75,7 @@ Php::Value GtkEntryBuffer_::get_bytes()
  */
 Php::Value GtkEntryBuffer_::get_length()
 {
-	long int length = (long int)gtk_entry_buffer_get_length(GTK_ENTRY_BUFFER(instance));
+	int length = (int)gtk_entry_buffer_get_length(GTK_ENTRY_BUFFER(instance));
 	return length;
 }
 
@@ -84,7 +84,7 @@ Php::Value GtkEntryBuffer_::get_length()
  */
 Php::Value GtkEntryBuffer_::get_max_length()
 {
-	int length = (long int)gtk_entry_buffer_get_max_length(GTK_ENTRY_BUFFER(instance));
+	int length = (int)gtk_entry_buffer_get_max_length(GTK_ENTRY_BUFFER(instance));
 	return length;
 }
 
@@ -93,9 +93,9 @@ Php::Value GtkEntryBuffer_::get_max_length()
  */
 Php::Value GtkEntryBuffer_::insert_text(Php::Parameters &parameters)
 {
-	long int position = (long int) parameters[0];
+	int position = (int) parameters[0];
 
-	long int length = (long int) gtk_entry_buffer_insert_text (GTK_ENTRY_BUFFER(instance), position, parameters[1], -1);
+	int length = (int) gtk_entry_buffer_insert_text (GTK_ENTRY_BUFFER(instance), position, parameters[1], -1);
 	return length;
 }
 
@@ -104,8 +104,8 @@ Php::Value GtkEntryBuffer_::insert_text(Php::Parameters &parameters)
  */
 void GtkEntryBuffer_::delete_text(Php::Parameters &parameters)
 {
-	long int position = (long int) parameters[0];
-	long int n_chars = (long int) parameters[1];
+	int position = (int) parameters[0];
+	int n_chars = (int) parameters[1];
 
 	gtk_entry_buffer_delete_text (GTK_ENTRY_BUFFER(instance), position, n_chars);
 }

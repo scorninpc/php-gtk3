@@ -21,7 +21,7 @@ GtkClipboard_::~GtkClipboard_() = default;
 
 void GtkClipboard_::__construct(Php::Parameters &parameters)
 {
-	long int a = parameters[0];
+	int a = parameters[0];
 	instance = (gpointer *)gtk_clipboard_get (_GDK_MAKE_ATOM(a));
 
 }
