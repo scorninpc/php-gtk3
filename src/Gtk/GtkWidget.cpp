@@ -1387,6 +1387,13 @@ Php::Value GtkWidget_::get_parent()
 {
 	GtkWidget *ret = gtk_widget_get_parent (GTK_WIDGET(instance));
 
+
+
+	// GType t = G_OBJECT_TYPE(ret);
+	// g_print("<Widget>: %s\n", g_type_name(t));
+
+
+
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)ret);
 	return Php::Object("GtkWidget", return_parsed);

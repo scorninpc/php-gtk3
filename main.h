@@ -137,6 +137,9 @@
 	#include "src/Glade/GladePalette.h"
 	#include "src/Glade/GladeWidget.h"
 
+	// GtkosxApplication
+	#include "src/Gtk/GtkosxApplication.h"
+
 	// Self methods
 	GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 	void phpgtk_throw_wrong_type(int param, Php::Type type);

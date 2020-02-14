@@ -3613,6 +3613,29 @@ extern "C"
             gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
             gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+
+         // GdkVisual
+        Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
+            //gtkosxapplication.extends(gobject);
+            gtkosxapplication.method<&GtkosxApplication_::__construct>("__construct");
+            gtkosxapplication.method<&GtkosxApplication_::set_dock_icon_pixbuf>("set_dock_icon_pixbuf");
+            gtkosxapplication.method<&GtkosxApplication_::sync_menubar>("sync_menubar");
+            gtkosxapplication.method<&GtkosxApplication_::ready>("ready");
+            gtkosxapplication.method<&GtkosxApplication_::set_use_quartz_accelerators>("set_use_quartz_accelerators");
+            gtkosxapplication.method<&GtkosxApplication_::use_quartz_accelerators>("use_quartz_accelerators");
+            gtkosxapplication.method<&GtkosxApplication_::set_menu_bar>("set_menu_bar");
+            gtkosxapplication.method<&GtkosxApplication_::insert_app_menu_item>("insert_app_menu_item");
+            gtkosxapplication.method<&GtkosxApplication_::set_window_menu>("set_window_menu");
+            gtkosxapplication.method<&GtkosxApplication_::set_help_menu>("set_help_menu");
+            gtkosxapplication.method<&GtkosxApplication_::set_dock_menu>("set_dock_menu");
+            gtkosxapplication.method<&GtkosxApplication_::set_dock_icon_resource>("set_dock_icon_resource");
+            gtkosxapplication.method<&GtkosxApplication_::attention_request>("attention_request");
+            gtkosxapplication.method<&GtkosxApplication_::cancel_attention_request>("cancel_attention_request");
+            gtkosxapplication.method<&GtkosxApplication_::get_bundle_path>("get_bundle_path");
+            gtkosxapplication.method<&GtkosxApplication_::get_resource_path>("get_resource_path");
+            gtkosxapplication.method<&GtkosxApplication_::get_executable_path>("get_executable_path");
+            gtkosxapplication.method<&GtkosxApplication_::get_bundle_id>("get_bundle_id");
+            gtkosxapplication.method<&GtkosxApplication_::get_bundle_info>("get_bundle_info");
 /**
  * Add classes to extension
  */
@@ -3834,6 +3857,10 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        extension.add(std::move(gtkosxapplication));
+
+
 
 /**
  * GtkSourceView
