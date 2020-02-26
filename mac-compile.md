@@ -2,13 +2,19 @@
 
 $ brew install bison@3.5
 
+$ echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' >> ~/.zshrc
+
+$ export PATH="/usr/local/opt/bison/bin:$PATH"
+
 $ brew install autoconf automake libtool re2c bison flex git
 
 $ git clone -b PHP-7.4 https://github.com/php/php-src.git php7.4
 
-$ ./buildconf
+$ ./buildconf --force
 
-$ ./configure --disable-all --enable-cli --prefix=/opt/php
+$ ./configure --disable-all --enable-cli --prefix=/opt/php7.4
+
+$ make
 
 $ sudo make install
 
@@ -36,7 +42,7 @@ $ sudo make install
 
 # Compilar Gtk 
 
-$ brew install gtk+3 gtksourceview3 libglade pkg-config
+$ brew install gtk+3 gtksourceview3 gtk-mac-integration libglade pkg-config
 
 
 
@@ -46,9 +52,9 @@ $ brew install gtk+3 gtksourceview3 libglade pkg-config
 
 $ git clone https://github.com/scorninpc/php-gtk3.git
 
-# Change php-config on Makefile
+# Change php-config on Makefile to /opt/php/bin/php-config
 
-	#include "../Gtk/GtkWidget.h"
-# THe Cellar still including gtk2 o cflags. So you need to run `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0` and replace on Makefile
+# The Cellar still including gtk2 on cflags as dependency of libglade. So you need to remove glade from main.h and main.cpp; Remove libglade from GTKFLAGS and GTKLIBS from Makefile; And remove Glade src from SOURCES of Makefile
 
 $ make
+
