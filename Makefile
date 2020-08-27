@@ -18,6 +18,13 @@
 #   are automatically generated
 #
 
+
+# Params:
+#
+# WITH_MAC_INTEGRATION=1 
+#	create a mac integration with lib gtk-mac-integration-gtk3
+
+
 NAME                =   php-gtk3
 
 #
@@ -83,8 +90,14 @@ LINKER              =   g++
 #   with a list of all flags that should be passed to the linker.
 #
 
-GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
-GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
+# @TODO - ADD PARAM FOR MAC gtk-mac-integration-gtk3
+
+GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
+GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
+ifdef WITH_MAC_INTEGRATION
+	GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
+	GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
+endif
 
 COMPILER_FLAGS      =   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o 
 LINKER_FLAGS        =   -shared ${GTKLIBS}
@@ -108,9 +121,12 @@ MKDIR               =   mkdir -p
 #   all source files. The object files are all compiled versions of the source
 #   file, with the .cpp extension being replaced by .o.
 #
-
-SOURCES             =   $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp)
-OBJECTS             =   $(SOURCES:%.cpp=%.o)
+ifdef WITH_MAC_INTEGRATION
+	SOURCES         =   $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp)
+else
+	SOURCES         = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp))
+endif
+OBJECTS         = $(SOURCES:%.cpp=%.o)
 
 #
 #   From here the build instructions start

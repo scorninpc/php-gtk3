@@ -3614,6 +3614,7 @@ extern "C"
             gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
 
+#ifdef WITH_MAC_INTEGRATION
          // GdkVisual
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
             //gtkosxapplication.extends(gobject);
@@ -3636,6 +3637,8 @@ extern "C"
             gtkosxapplication.method<&GtkosxApplication_::get_executable_path>("get_executable_path");
             gtkosxapplication.method<&GtkosxApplication_::get_bundle_id>("get_bundle_id");
             gtkosxapplication.method<&GtkosxApplication_::get_bundle_info>("get_bundle_info");
+#endif
+
 /**
  * Add classes to extension
  */
@@ -3858,7 +3861,9 @@ extern "C"
 
         extension.add(std::move(gtkarrowtype));
 
+#ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
+#endif
 
 
 

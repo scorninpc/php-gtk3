@@ -137,8 +137,10 @@
 	#include "src/Glade/GladePalette.h"
 	#include "src/Glade/GladeWidget.h"
 
+#ifdef WITH_MAC_INTEGRATION
 	// GtkosxApplication
 	#include "src/Gtk/GtkosxApplication.h"
+#endif
 
 	// Self methods
 	GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
