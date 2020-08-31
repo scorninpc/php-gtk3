@@ -24,6 +24,7 @@
 	#include "src/Gdk/GdkVisual.h"
 	#include "src/Gdk/GdkRGBA.h"
 	#include "src/Gdk/GdkPixbufFormat.h"
+	#include "src/Gdk/GdkScreen.h"
 
 	// GTK
 	#include "src/Gtk/Gtk.h"
@@ -144,6 +145,7 @@
 
 	// Self methods
 	GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
+	Php::Value phpgtk_get_phpvalue(GValue *gvalue);
 	void phpgtk_throw_wrong_type(int param, Php::Type type);
 
 #endif

@@ -28,6 +28,8 @@
             void beep();
             void maximize();
             static Php::Value get_default_root_window();
+            Php::Value get_window_type();
+            Php::Value get_children();
     };
 
 #endif

@@ -11,6 +11,24 @@ GdkVisual_::GdkVisual_() = default;
  */
 GdkVisual_::~GdkVisual_() = default;
 
+// /**
+//  * Return original GdkVisual
+//  */
+// GdkVisual *GdkVisual_::get_instance()
+// {
+//     return instance;
+// }
+
+// *
+//  * Set the original GdkVisual
+ 
+// void GdkVisual_::set_instance(GdkVisual *visual)
+// {
+//     instance = visual;
+// }
+
+
+
 Php::Value GdkVisual_::get_blue_pixel_details(Php::Parameters &parameters)
 {
 	guint32 mask;

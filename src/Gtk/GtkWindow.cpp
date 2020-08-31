@@ -944,3 +944,36 @@ void GtkWindow_::set_interactive_debugging(Php::Parameters &parameters)
 {
     gtk_window_set_interactive_debugging(parameters[0]);
 }
+
+/**
+ * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-screen
+ */
+Php::Value GtkWindow_::get_screen()
+{
+    GdkScreen *returndedValue = gtk_window_get_screen(GTK_WINDOW(instance));
+
+    GdkScreen_ *returnValue = new GdkScreen_();
+    returnValue->set_instance(returndedValue);
+
+    return Php::Object("GdkScreen", returnValue);
+}
+
+
+/**
+ * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-list-toplevels
+ */
+Php::Value GtkWindow_::list_toplevels()
+{
+    GList *ret =  gtk_window_list_toplevels();
+
+    Php::Value ret_arr;
+
+    for(int index=0; GList *item=g_list_nth(ret, index); index++) {
+        
+        GtkWindow_ *widget_ = new GtkWindow_();
+        widget_->set_instance((gpointer *)item->data);
+        ret_arr[index] = Php::Object("GtkWindow", widget_);
+    }
+
+    return ret_arr;
+}

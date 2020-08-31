@@ -7,6 +7,7 @@
     #include <gtk/gtk.h>
 
     #include "../Gdk/GdkPixbuf.h"
+    #include "../Gdk/GdkScreen.h"
     #include "GtkBin.h"
 
     /**
@@ -572,6 +573,8 @@
             void set_interactive_debugging(Php::Parameters &parameters);
 
             Php::Value get_size();
+            Php::Value get_screen();
+            static Php::Value list_toplevels();
     };
 
 #endif

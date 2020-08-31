@@ -6,6 +6,10 @@
     #include <gtk/gtk.h>
 
 
+    #include "GdkVisual.h"
+    #include "GdkWindow.h"
+
+
     /**
      * GdkScreen_
      * 
@@ -35,6 +39,8 @@
              * Set the original GdkScreen
              */
             void set_instance(GdkScreen *screen);
+            Php::Value get_rgba_visual();
+            Php::Value get_window_stack();
 
 
     };

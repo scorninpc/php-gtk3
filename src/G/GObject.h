@@ -6,6 +6,9 @@
     #include <iostream>
     #include <gtk/gtk.h>
 
+
+    
+
     /**
      *  
      */
@@ -51,6 +54,9 @@
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
              */
             void handler_disconnect(Php::Parameters &parameters);
+
+
+            Php::Value get_property(Php::Parameters &parameters);
 
 
             void __clone();

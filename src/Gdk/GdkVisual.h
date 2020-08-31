@@ -20,11 +20,19 @@
          */
         public:
 
+            // GdkVisual *instance;
+
             /**
              *  C++ constructor and destructor
              */
             GdkVisual_();
             ~GdkVisual_();
+
+            // /**
+            //  * Set and Get the original GdkVisual
+            //  */
+            // void set_instance(GdkVisual visual);
+            // GdkVisual *get_instance();
 
             Php::Value get_blue_pixel_details(Php::Parameters &parameters);
 

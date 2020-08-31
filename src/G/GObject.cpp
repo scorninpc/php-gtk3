@@ -4,6 +4,8 @@
 #include "GObject.h"
 #include "../Gtk/GtkWidget.h"
 
+#include "../../main.h"
+
 /**
  * Struct for callback gpointer
  */
@@ -252,3 +254,21 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 
     g_signal_handler_disconnect(instance, (int)callback_handle);
 }
+
+
+Php::Value GObject_::get_property(Php::Parameters &parameters)
+{
+    std::string s_property_name = parameters[0];
+    gchar *property_name = (gchar *)s_property_name.c_str();
+
+
+
+    GValue gvalue = {0};
+    g_value_init(&gvalue, G_TYPE_OBJECT);
+
+    g_object_get_property (G_OBJECT(instance), property_name, &gvalue);
+
+    return phpgtk_get_phpvalue(&gvalue);
+
+}
+

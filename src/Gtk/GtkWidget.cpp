@@ -2210,10 +2210,10 @@ Php::Value GtkWidget_::class_get_css_name()
 
 void GtkWidget_::class_set_css_name(Php::Parameters &parameters)
 {
-// 
-// 	gtk_widget_class_set_css_name (GTK_WIDGET(instance), name);
+	// std::string s_text = parameters[0];
+	// gchar *text = (gchar *)s_text.c_str();
 
-	 throw Php::Exception("GtkWidget_::class_set_css_name not implemented");
+ // 	gtk_widget_class_set_css_name (GTK_WIDGET(instance), text);
 }
 
 Php::Value GtkWidget_::gtk_requisition_new()

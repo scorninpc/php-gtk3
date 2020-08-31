@@ -38,6 +38,7 @@ extern "C"
         Php::Class<GObject_> gobject("GObject");
             gobject.method<&GObject_::connect>("connect");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
+            gobject.method<&GObject_::get_property>("get_property");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
             gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
             gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
@@ -199,6 +200,8 @@ extern "C"
             gdkwindow.method<&GdkWindow_::beep>("beep");
             gdkwindow.method<&GdkWindow_::maximize>("maximize");
             gdkwindow.method<&GdkWindow_::get_default_root_window>("get_default_root_window");
+            gdkwindow.method<&GdkWindow_::get_window_type>("get_window_type");
+            gdkwindow.method<&GdkWindow_::get_children>("get_children");
         
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");
@@ -487,6 +490,12 @@ extern "C"
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             // gdkevent.property("type", 0);
+
+        // GdkScreen
+        Php::Class<GdkScreen_> gdkscreen("GdkScreen");
+            // gdkevent.method<&GdkEvent_::__construct>("__construct");
+            gdkscreen.method<&GdkScreen_::get_rgba_visual>("get_rgba_visual");
+            gdkscreen.method<&GdkScreen_::get_window_stack>("get_window_stack");
 
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
@@ -1138,6 +1147,8 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_titlebar>("get_titlebar");
             gtkwindow.method<&GtkWindow_::set_interactive_debugging>("set_interactive_debugging");
             gtkwindow.method<&GtkWindow_::get_size>("get_size");
+            gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
+            gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
         
 
         // GtkDialog
@@ -3615,7 +3626,7 @@ extern "C"
 
 
 #ifdef WITH_MAC_INTEGRATION
-         // GdkVisual
+         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
             //gtkosxapplication.extends(gobject);
             gtkosxapplication.method<&GtkosxApplication_::__construct>("__construct");
@@ -3657,6 +3668,7 @@ extern "C"
         extension.add(std::move(gdkpixbufalphamode));
         extension.add(std::move(gdkmodifiertype));
         extension.add(std::move(gdkcolorspace));
+        extension.add(std::move(gdkscreen));
         
         extension.add(std::move(gdkwindow));
         extension.add(std::move(gdkbyteorder));
@@ -3944,6 +3956,16 @@ extern "C"
     }
 }
 
+Php::Value phpgtk_get_phpvalue(GValue *gvalue) 
+{
+    switch(g_value_get_gtype(gvalue)) {
+        case G_TYPE_STRING:
+            return g_value_get_string(gvalue);
+            break;
+    }
+
+    return -1;
+}
 
 
 GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column) 
