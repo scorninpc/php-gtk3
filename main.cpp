@@ -573,7 +573,15 @@ extern "C"
             gdkpixbuf.method<&GdkPixbuf_::get_option>("get_option");
             gdkpixbuf.method<&GdkPixbuf_::save>("save");
             gdkpixbuf.method<&GdkPixbuf_::get_from_drawable>("get_from_drawable");
+            gdkpixbuf.method<&GdkPixbuf_::scale_simple>("scale_simple");
         
+        // GdkEventKey
+        Php::Class<Php::Base> gdkinterptype("GdkInterpType");
+            gdkinterptype.constant("NEAREST",(int) GDK_INTERP_NEAREST);
+            gdkinterptype.constant("TILES",(int) GDK_INTERP_TILES);
+            gdkinterptype.constant("BILINEAR",(int) GDK_INTERP_BILINEAR);
+            gdkinterptype.constant("HYPER",(int) GDK_INTERP_HYPER);
+
         // GdkDrawable
         Php::Class<GdkDrawable_> gdkdrawable("GdkDrawable");
             // gdkdrawable.method<&GdkDrawable_::parse>("parse");
@@ -3661,6 +3669,16 @@ extern "C"
             Php::Class<WnckWindow_> wnckwindow("WnckWindow");
             wnckwindow.extends(gobject);
             wnckwindow.method<&WnckWindow_::get_name>("get_name");
+            wnckwindow.method<&WnckWindow_::get_icon>("get_icon");
+            wnckwindow.method<&WnckWindow_::get_window_type>("get_window_type");
+            wnckwindow.constant("NORMAL", (int)WNCK_WINDOW_NORMAL);
+            wnckwindow.constant("DESKTOP", (int)WNCK_WINDOW_DESKTOP);
+            wnckwindow.constant("DOCK", (int)WNCK_WINDOW_DOCK);
+            wnckwindow.constant("DIALOG", (int)WNCK_WINDOW_DIALOG);
+            wnckwindow.constant("TOOLBAR", (int)WNCK_WINDOW_TOOLBAR);
+            wnckwindow.constant("MENU", (int)WNCK_WINDOW_MENU);
+            wnckwindow.constant("UTILITY", (int)WNCK_WINDOW_UTILITY);
+            wnckwindow.constant("SPLASHSCREEN", (int)WNCK_WINDOW_SPLASHSCREEN);
 #endif
 
 /**
@@ -3675,6 +3693,7 @@ extern "C"
         extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkpixbuf));
         extension.add(std::move(gdkdrawable));
+        extension.add(std::move(gdkinterptype));
         extension.add(std::move(gdkrgba));
         
         extension.add(std::move(gdkpixbufformat));

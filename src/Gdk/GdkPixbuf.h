@@ -76,6 +76,10 @@
             Php::Value save(Php::Parameters &parameters);
             
             Php::Value get_from_drawable(Php::Parameters &parameters);
+            
+            Php::Value scale_simple(Php::Parameters &parameters);
+
+
     };
 
 #endif

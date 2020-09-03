@@ -229,3 +229,24 @@ Php::Value GdkPixbuf_::get_from_drawable(Php::Parameters &parameters)
 	return 1;
 }
 
+/**
+ * https://developer.gnome.org/gdk-pixbuf/stable/gdk-pixbuf-Scaling.html#gdk-pixbuf-scale-simple
+ */
+Php::Value GdkPixbuf_::scale_simple(Php::Parameters &parameters)
+{
+	int width = parameters[0];
+	int height = parameters[1];
+	
+	int int_type = (int)parameters[2];
+	GdkInterpType type = (GdkInterpType)int_type;
+
+	// Scale
+	GdkPixbuf *l_pixbuf = gdk_pixbuf_scale_simple(GDK_PIXBUF(instance), width, height, type);
+	
+	// Create the PHP-GTK object and set GTK object
+	GdkPixbuf_ *pixbuf_ = new GdkPixbuf_();
+	pixbuf_->set_instance(l_pixbuf);
+
+	// Return PHP-GTK object
+	return Php::Object("GdkPixbuf", pixbuf_);
+}

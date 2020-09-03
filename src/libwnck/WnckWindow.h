@@ -6,6 +6,7 @@
 	#include <libwnck/libwnck.h>
 
 	#include "../G/GObject.h"
+	#include "../Gdk/GdkPixbuf.h"
 
 	/**
 	 *  
@@ -23,6 +24,8 @@
 			~WnckWindow_();
 
 			Php::Value get_name();
+			Php::Value get_icon();
+			Php::Value get_window_type();
 	};
 
 #endif
