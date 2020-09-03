@@ -157,8 +157,18 @@ bool GObject_::connect_callback(gpointer user_data, ...)
                 internal_parameters[i+1] = va_arg(ap, gint);
                 
             case G_TYPE_OBJECT:
-                // Php::call("var_dump", "gobject");
+            {
+
+                gpointer *e = va_arg(ap, gpointer *);
+
+                // Create event from callback
+                GObject_ *event_ = new GObject_();
+                event_->set_instance(e);
+                Php::Value gobject_ = Php::Object(g_type_name(callback_object->param_types[i]), event_);
+                internal_parameters[i+1] = gobject_;
+                
                 break;
+            }
             case G_TYPE_POINTER:
                 // Php::call("var_dump", "gpointer");
                 break;

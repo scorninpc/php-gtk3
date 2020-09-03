@@ -3655,7 +3655,8 @@ extern "C"
 #ifdef WITH_LIBWNCK
             Php::Class<WnckScreen_> wnckscreen("WnckScreen");
             wnckscreen.extends(gobject);
-            wnckscreen.method<&WnckScreen_::test>("test");
+            wnckscreen.method<&WnckScreen_::get_default>("get_default");
+            wnckscreen.method<&WnckScreen_::get_active_window>("get_active_window");
 
             Php::Class<WnckWindow_> wnckwindow("WnckWindow");
             wnckwindow.extends(gobject);

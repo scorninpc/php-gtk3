@@ -6,6 +6,7 @@
 	#include <libwnck/libwnck.h>
 
 	#include "../G/GObject.h"
+	#include "WnckWindow.h"
 
 	/**
 	 *  
@@ -22,7 +23,8 @@
 			WnckScreen_();
 			~WnckScreen_();
 
-			static Php::Value test(Php::Parameters &parameters);
+			static Php::Value get_default();
+			Php::Value get_active_window();
 	};
 
 #endif
