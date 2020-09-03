@@ -143,6 +143,12 @@
 	#include "src/Gtk/GtkosxApplication.h"
 #endif
 
+
+#ifdef WITH_LIBWNCK
+	#include "src/libwnck/WnckScreen.h"
+	#include "src/libwnck/WnckWindow.h"
+#endif
+
 	// Self methods
 	GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column);
 	Php::Value phpgtk_get_phpvalue(GValue *gvalue);

@@ -141,7 +141,7 @@ Php::Value GtkImage_::new_from_pixbuf(Php::Parameters &parameters)
 
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_stock(Php::Parameters &parameters)
@@ -184,7 +184,7 @@ Php::Value GtkImage_::new_from_icon_name(Php::Parameters &parameters)
 
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_gicon(Php::Parameters &parameters)
@@ -211,7 +211,7 @@ Php::Value GtkImage_::new_from_resource(Php::Parameters &parameters)
 
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_surface()

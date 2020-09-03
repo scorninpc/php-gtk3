@@ -53,7 +53,7 @@ Php::Value GtkButton_::new_from_icon_name(Php::Parameters &parameters)
 
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return Php::Object("GtkButton", return_parsed);
 }
 
 Php::Value GtkButton_::new_from_stock()

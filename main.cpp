@@ -3626,7 +3626,7 @@ extern "C"
 
 
 #ifdef WITH_MAC_INTEGRATION
-         // gtkosxapplication
+        // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
             //gtkosxapplication.extends(gobject);
             gtkosxapplication.method<&GtkosxApplication_::__construct>("__construct");
@@ -3648,6 +3648,18 @@ extern "C"
             gtkosxapplication.method<&GtkosxApplication_::get_executable_path>("get_executable_path");
             gtkosxapplication.method<&GtkosxApplication_::get_bundle_id>("get_bundle_id");
             gtkosxapplication.method<&GtkosxApplication_::get_bundle_info>("get_bundle_info");
+#endif
+
+
+
+#ifdef WITH_LIBWNCK
+            Php::Class<WnckScreen_> wnckscreen("WnckScreen");
+            wnckscreen.extends(gobject);
+            wnckscreen.method<&WnckScreen_::test>("test");
+
+            Php::Class<WnckWindow_> wnckwindow("WnckWindow");
+            wnckwindow.extends(gobject);
+            wnckwindow.method<&WnckWindow_::get_name>("get_name");
 #endif
 
 /**
@@ -3875,6 +3887,11 @@ extern "C"
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
+#endif
+
+#ifdef WITH_LIBWNCK
+        extension.add(std::move(wnckscreen));
+        extension.add(std::move(wnckwindow));
 #endif
 
 

@@ -1,3 +1,12 @@
+# Params:
+#
+# WITH_MAC_INTEGRATION=1 
+#	create a mac integration with lib gtk-mac-integration-gtk3
+#
+# WITH_LIBWNCK=1
+#	create a libwnck bind
+#
+
 #
 #   Makefile template
 #
@@ -17,12 +26,6 @@
 #   name of the library file (name.so) and the name of the config file (name.ini)
 #   are automatically generated
 #
-
-
-# Params:
-#
-# WITH_MAC_INTEGRATION=1 
-#	create a mac integration with lib gtk-mac-integration-gtk3
 
 
 NAME                =   php-gtk3
@@ -74,32 +77,39 @@ INI                 =   ${NAME}.ini
 COMPILER            =   g++
 LINKER              =   g++
 
+
 #
-#   Compiler and linker flags
-#
-#   This variable holds the flags that are passed to the compiler. By default, 
-#   we include the -O2 flag. This flag tells the compiler to optimize the code, 
-#   but it makes debugging more difficult. So if you're debugging your application, 
-#   you probably want to remove this -O2 flag. At the same time, you can then 
-#   add the -g flag to instruct the compiler to include debug information in
-#   the library (but this will make the final libphpcpp.so file much bigger, so
-#   you want to leave that flag out on production servers).
-#
-#   If your extension depends on other libraries (and it does at least depend on
-#   one: the PHP-CPP library), you should update the LINKER_DEPENDENCIES variable
-#   with a list of all flags that should be passed to the linker.
+# With libwnck
 #
 
-# @TODO - ADD PARAM FOR MAC gtk-mac-integration-gtk3
+ifdef WITH_LIBWNCK
+	LIBWNCKFLAGS = libwnck-3.0
+	LIBWNCKLIBS = libwnck-3.0
+	LIBWNCKPATH = $(wildcard src/libwnck/*.cpp)
 
-GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
-GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0`
-ifdef WITH_MAC_INTEGRATION
-	GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
-	GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 gtk-mac-integration-gtk3`
+	COMPILER_FLAGS += -DWITH_LIBWNCK -DWNCK_I_KNOW_THIS_IS_UNSTABLE
 endif
 
-COMPILER_FLAGS      =   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o 
+#
+# With gtk3 mac integration
+#
+
+ifdef WITH_MAC_INTEGRATION
+	MAC_INTEGRATIONFLAGS = gtk-mac-integration-gtk3
+	MAC_INTEGRATIONLIBS = gtk-mac-integration-gtk3
+
+	COMPILER_FLAGS += -DWITH_MAC_INTEGRATION
+endif
+
+
+#
+# All flags
+#
+
+GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONFLAGS} ${LIBWNCKFLAGS}`
+GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONLIBS} ${LIBWNCKLIBS}`
+
+COMPILER_FLAGS      +=   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o 
 LINKER_FLAGS        =   -shared ${GTKLIBS}
 LINKER_DEPENDENCIES =   -lphpcpp
 
@@ -121,12 +131,15 @@ MKDIR               =   mkdir -p
 #   all source files. The object files are all compiled versions of the source
 #   file, with the .cpp extension being replaced by .o.
 #
+
 ifdef WITH_MAC_INTEGRATION
-	SOURCES         =   $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp)
+	SOURCES = $(wildcard *.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/libwnck/*.cpp)
 else
-	SOURCES         = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard src/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp *.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp))
+	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard *.cpp src/*.cpp src/libwnck/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp))
 endif
+
 OBJECTS         = $(SOURCES:%.cpp=%.o)
+
 
 #
 #   From here the build instructions start
