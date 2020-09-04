@@ -3671,6 +3671,13 @@ extern "C"
             wnckwindow.method<&WnckWindow_::get_name>("get_name");
             wnckwindow.method<&WnckWindow_::get_icon>("get_icon");
             wnckwindow.method<&WnckWindow_::get_window_type>("get_window_type");
+            wnckwindow.method<&WnckWindow_::get_xid>("get_xid");
+            wnckwindow.method<&WnckWindow_::get_pid>("get_pid");
+            wnckwindow.method<&WnckWindow_::get_class_group>("get_class_group");
+            wnckwindow.method<&WnckWindow_::is_active>("is_active");
+            wnckwindow.method<&WnckWindow_::activate>("activate");
+            wnckwindow.method<&WnckWindow_::minimize>("minimize");
+            wnckwindow.method<&WnckWindow_::get_window>("get");
             wnckwindow.constant("NORMAL", (int)WNCK_WINDOW_NORMAL);
             wnckwindow.constant("DESKTOP", (int)WNCK_WINDOW_DESKTOP);
             wnckwindow.constant("DOCK", (int)WNCK_WINDOW_DOCK);
@@ -3679,6 +3686,14 @@ extern "C"
             wnckwindow.constant("MENU", (int)WNCK_WINDOW_MENU);
             wnckwindow.constant("UTILITY", (int)WNCK_WINDOW_UTILITY);
             wnckwindow.constant("SPLASHSCREEN", (int)WNCK_WINDOW_SPLASHSCREEN);
+
+            Php::Class<WnckClassGroup_> wnckclassgroup("WnckClassGroup");
+            wnckclassgroup.extends(gobject);
+            wnckclassgroup.method<&WnckClassGroup_::get_id>("get_id");
+            wnckclassgroup.method<&WnckClassGroup_::get_name>("get_name");
+            wnckclassgroup.method<&WnckClassGroup_::get_icon>("get_icon");
+            wnckclassgroup.method<&WnckClassGroup_::get_mini_icon>("get_mini_icon");
+            wnckclassgroup.method<&WnckClassGroup_::get_windows>("get_windows");
 #endif
 
 /**
@@ -3912,6 +3927,7 @@ extern "C"
 #ifdef WITH_LIBWNCK
         extension.add(std::move(wnckscreen));
         extension.add(std::move(wnckwindow));
+        extension.add(std::move(wnckclassgroup));
 #endif
 
 

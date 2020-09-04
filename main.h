@@ -147,6 +147,7 @@
 #ifdef WITH_LIBWNCK
 	#include "src/libwnck/WnckScreen.h"
 	#include "src/libwnck/WnckWindow.h"
+	#include "src/libwnck/WnckClassGroup.h"
 #endif
 
 	// Self methods
