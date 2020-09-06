@@ -25,6 +25,8 @@
 
 			static Php::Value get_default();
 			Php::Value get_active_window();
+			Php::Value get_width();
+			Php::Value get_height();
 	};
 
 #endif

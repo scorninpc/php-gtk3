@@ -56,3 +56,13 @@ Php::Value GdkWindow_::get_children()
 
 	return ret_arr;
 }
+
+Php::Value GdkWindow_::get_width()
+{
+	return gdk_window_get_width(GDK_WINDOW(instance));
+}
+
+Php::Value GdkWindow_::get_height()
+{
+	return gdk_window_get_height(GDK_WINDOW(instance));
+}

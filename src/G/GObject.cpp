@@ -66,12 +66,31 @@ void GObject_::set_instance(gpointer *pased_instance)
 }
 
 /**
+ * https://developer.gnome.org/gobject/stable/gobject-Signals.html#g-signal-connect-after
+ */
+Php::Value GObject_::connect_after(Php::Parameters &parameters)
+{
+    return GObject_::connect_internal(parameters, TRUE);
+}
+
+/**
  * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
  *
  * @todo Verify if callback are callable with Php::Callable::Callable
  * @todo Some events like the delete-event, dont pass gpointer param correctly
  */
 Php::Value GObject_::connect(Php::Parameters &parameters)
+{
+    return GObject_::connect_internal(parameters, FALSE);
+}
+
+/**
+ * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
+ *
+ * @todo Verify if callback are callable with Php::Callable::Callable
+ * @todo Some events like the delete-event, dont pass gpointer param correctly
+ */
+Php::Value GObject_::connect_internal(Php::Parameters &parameters, bool after)
 {
     Php::Array callback_params = parameters;
     Php::Value callback_event = callback_params[0];
@@ -112,7 +131,7 @@ Php::Value GObject_::connect(Php::Parameters &parameters)
 
     GClosure  *closure;
     closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, NULL);
-    int ret = g_signal_connect_closure (instance, callback_event, closure, TRUE);
+    int ret = g_signal_connect_closure (instance, callback_event, closure, after);
 
     // Return handler id
     // return ret;

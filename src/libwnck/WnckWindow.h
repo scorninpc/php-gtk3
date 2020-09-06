@@ -34,6 +34,7 @@
 			Php::Value get_pid();
 			Php::Value get_class_group();
 			Php::Value is_active();
+			void close(Php::Parameters &parameters);
 			void minimize();
 			void activate(Php::Parameters &parameters);
 	};

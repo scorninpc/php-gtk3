@@ -41,7 +41,9 @@
             /**
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-connect
              */
+            Php::Value connect_internal(Php::Parameters &parameters, bool after);
             Php::Value connect(Php::Parameters &parameters);
+            Php::Value connect_after(Php::Parameters &parameters);
 
             /**
              * Class to abstract php callback for connect method, to call PHP function

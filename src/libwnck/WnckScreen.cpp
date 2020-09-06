@@ -41,3 +41,14 @@ Php::Value WnckScreen_::get_active_window()
 	}
 }
 
+
+
+Php::Value WnckScreen_::get_width()
+{
+	return wnck_screen_get_width(WNCK_SCREEN(instance));
+}
+
+Php::Value WnckScreen_::get_height()
+{
+	return wnck_screen_get_height(WNCK_SCREEN(instance));
+}

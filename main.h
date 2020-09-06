@@ -25,6 +25,8 @@
 	#include "src/Gdk/GdkRGBA.h"
 	#include "src/Gdk/GdkPixbufFormat.h"
 	#include "src/Gdk/GdkScreen.h"
+	#include "src/Gdk/GdkDisplay.h"
+	#include "src/Gdk/GdkMonitor.h"
 
 	// GTK
 	#include "src/Gtk/Gtk.h"

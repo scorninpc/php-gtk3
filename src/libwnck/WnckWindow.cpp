@@ -116,3 +116,13 @@ void WnckWindow_::activate(Php::Parameters &parameters)
 
 	wnck_window_activate(WNCK_WINDOW(instance), time);
 }
+
+/**
+ * https://developer.gnome.org/libwnck/stable/WnckWindow.html#wnck-window-close
+ */
+void WnckWindow_::close(Php::Parameters &parameters)
+{
+	int time = parameters[0];
+
+	wnck_window_close(WNCK_WINDOW(instance), time);
+}

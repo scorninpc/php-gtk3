@@ -37,6 +37,7 @@ extern "C"
         // GObject
         Php::Class<GObject_> gobject("GObject");
             gobject.method<&GObject_::connect>("connect");
+            gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.method<&GObject_::get_property>("get_property");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
@@ -202,6 +203,8 @@ extern "C"
             gdkwindow.method<&GdkWindow_::get_default_root_window>("get_default_root_window");
             gdkwindow.method<&GdkWindow_::get_window_type>("get_window_type");
             gdkwindow.method<&GdkWindow_::get_children>("get_children");
+            gdkwindow.method<&GdkWindow_::get_width>("get_width");
+            gdkwindow.method<&GdkWindow_::get_height>("get_height");
         
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");
@@ -496,6 +499,19 @@ extern "C"
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             gdkscreen.method<&GdkScreen_::get_rgba_visual>("get_rgba_visual");
             gdkscreen.method<&GdkScreen_::get_window_stack>("get_window_stack");
+
+        // GdkDisplay
+        Php::Class<GdkDisplay_> gdkdisplay("GdkDisplay");
+            gdkdisplay.extends(gobject);
+            gdkdisplay.method<&GdkDisplay_::get_default>("get_default");
+            gdkdisplay.method<&GdkDisplay_::get_primary_monitor>("get_primary_monitor");
+
+        // GdkMonitor
+        Php::Class<GdkMonitor_> gdkmonitor("GdkMonitor");
+            gdkmonitor.extends(gobject);
+            gdkmonitor.method<&GdkMonitor_::get_width_mm>("get_width_mm");
+            gdkmonitor.method<&GdkMonitor_::get_height_mm>("get_height_mm");
+            gdkmonitor.method<&GdkMonitor_::get_workarea>("get_workarea");
 
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
@@ -3665,6 +3681,8 @@ extern "C"
             wnckscreen.extends(gobject);
             wnckscreen.method<&WnckScreen_::get_default>("get_default");
             wnckscreen.method<&WnckScreen_::get_active_window>("get_active_window");
+            wnckscreen.method<&WnckScreen_::get_width>("get_width");
+            wnckscreen.method<&WnckScreen_::get_height>("get_height");
 
             Php::Class<WnckWindow_> wnckwindow("WnckWindow");
             wnckwindow.extends(gobject);
@@ -3678,6 +3696,7 @@ extern "C"
             wnckwindow.method<&WnckWindow_::activate>("activate");
             wnckwindow.method<&WnckWindow_::minimize>("minimize");
             wnckwindow.method<&WnckWindow_::get_window>("get");
+            wnckwindow.method<&WnckWindow_::close>("close");
             wnckwindow.constant("NORMAL", (int)WNCK_WINDOW_NORMAL);
             wnckwindow.constant("DESKTOP", (int)WNCK_WINDOW_DESKTOP);
             wnckwindow.constant("DOCK", (int)WNCK_WINDOW_DOCK);
@@ -3716,6 +3735,8 @@ extern "C"
         extension.add(std::move(gdkmodifiertype));
         extension.add(std::move(gdkcolorspace));
         extension.add(std::move(gdkscreen));
+        extension.add(std::move(gdkdisplay));
+        extension.add(std::move(gdkmonitor));
         
         extension.add(std::move(gdkwindow));
         extension.add(std::move(gdkbyteorder));
