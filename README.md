@@ -24,7 +24,7 @@ Você precisará das libs para desenvolvimento php-dev e tambem libgtk-3-dev, ou
 > You will need php-dev and libgtk-3-dev, or in some cases gnome-devel. On Debian and ubuntu:
 
 ```sh
-:$ sudo apt-get install build-essential gnome-devel php-dev libgladeui-dev libgtksourceview-3.0-dev
+:$ sudo apt-get install build-essential gnome-devel php-dev libgladeui-dev libgtksourceview-3.0-dev libwnck-3-dev
 ```
 
 Será necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
@@ -36,12 +36,12 @@ Será necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoft
 :$ make install
 ```
 
-Depois disso é só começar a testar e começar a ajudar no desenvolvimento do bind:
-> After that, just start test and start to help to dev this bind
+Depois disso é só começar a testar e começar a ajudar no desenvolvimento do bind (desabilite LIBWNCK por enquanto):
+> After that, just start test and start to help to dev this bind [disale LIBWNCK for now]
 
 ```sh
-:$ git clone https://github.com/scorninpc/php-gtk3-tests.git
-:$ cd php-gtk3-tests
+:$ git clone https://github.com/scorninpc/php-gtk3.git
+:$ cd php-gtk3
 :$ make
 :$ php -dextension=./php-gtk3.so test.php
 ```
