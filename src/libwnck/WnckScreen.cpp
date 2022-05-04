@@ -1,4 +1,4 @@
-
+#ifdef WITH_LIBWNCK
 #include "WnckScreen.h"
 
 /**
@@ -52,3 +52,4 @@ Php::Value WnckScreen_::get_height()
 {
 	return wnck_screen_get_height(WNCK_SCREEN(instance));
 }
+#endif

@@ -1,4 +1,4 @@
-
+#ifdef WITH_LIBWNCK
 #include "WnckWindow.h"
 
 /**
@@ -126,3 +126,4 @@ void WnckWindow_::close(Php::Parameters &parameters)
 
 	wnck_window_close(WNCK_WINDOW(instance), time);
 }
+#endif

@@ -1,4 +1,4 @@
-
+#ifdef WITH_LIBWNCK
 #include "WnckClassGroup.h"
 
 /**
@@ -72,3 +72,4 @@ Php::Value WnckClassGroup_::get_windows()
 
 	return ret_arr;
 }
+#endif
