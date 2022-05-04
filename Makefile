@@ -47,12 +47,12 @@ INI_DIR     =   /etc/php/7.4/mods-available/
 #   The extension dirs
 #
 #   This is normally a directory like /usr/lib/php5/20121221 (based on the 
-#   PHP version that you use. We make use of the command line 'php-config' 
+#   PHP version that you use. We make use of the command line '/opt/php/php7.4.29/bin/php-config' 
 #   instruction to find out what the extension directory is, you can override
 #   this with a different fixed directory
 #
 
-EXTENSION_DIR       =   $(shell php-config --extension-dir)
+EXTENSION_DIR       =   $(shell /opt/php/php7.4.29/bin/php-config --extension-dir)
 
 #
 #   The name of the extension and the name of the .ini file
@@ -97,6 +97,7 @@ endif
 ifdef WITH_MAC_INTEGRATION
 	MAC_INTEGRATIONFLAGS = gtk-mac-integration-gtk3
 	MAC_INTEGRATIONLIBS = gtk-mac-integration-gtk3
+	MAC_INTEGRATIONPATH = $(wildcard src/libwnck/*.cpp)
 
 	COMPILER_FLAGS += -DWITH_MAC_INTEGRATION
 endif
@@ -109,9 +110,9 @@ endif
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONFLAGS} ${LIBWNCKFLAGS}`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONLIBS} ${LIBWNCKLIBS}`
 
-COMPILER_FLAGS      +=   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o 
+COMPILER_FLAGS      +=   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o
 LINKER_FLAGS        =   -shared ${GTKLIBS}
-LINKER_DEPENDENCIES =   -lphpcpp
+LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS}
 
 #
 #   Command to remove files, copy files and create directories.
