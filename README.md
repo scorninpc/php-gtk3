@@ -17,6 +17,18 @@ Downloads
 Você pode baixar o PHP com a extensão GTK no formato AppImage na página de [releases](https://github.com/scorninpc/php-gtk3/releases)
 > You can find all PHP + GTK extension in AppImage package on [releases](https://github.com/scorninpc/php-gtk3/releases) page
 
+Para rodar programas no formato AppImage, você precisa do `fuse`
+> Do you need `fuse` to run AppImage bundle apps
+
+Basta baixar o ultimo release, faze-lo executavel e rodar seus scripts PHP
+> Just download the last release, make it executable and run your PHP scripts
+
+```sh
+:$ sudo apt-get install fuse
+:$ chmod +x php-gtk3-x86_64-0.10-beta.AppImage
+:$ ./php-gtk3-x86_64-0.10-beta.AppImage myapp.php
+```
+
 Compile
 ==============
 
