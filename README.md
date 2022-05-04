@@ -26,7 +26,8 @@ Basta baixar o ultimo release, faze-lo executavel e rodar seus scripts PHP
 ```sh
 :$ sudo apt-get install fuse
 :$ chmod +x php-gtk3-x86_64-0.10-beta.AppImage
-:$ ./php-gtk3-x86_64-0.10-beta.AppImage myapp.php
+:$ sudo ln -s ~/Downloads/php-gtk3-x86_64-0.10-beta.AppImage /usr/bin/php-gtk
+:$ php-gtk myapp.php
 ```
 
 Compile
