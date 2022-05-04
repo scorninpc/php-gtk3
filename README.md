@@ -36,8 +36,11 @@ Será necessário compilar o [PHP-CPP](https://github.com/CopernicaMarketingSoft
 :$ make install
 ```
 
-Depois disso é só começar a testar e começar a ajudar no desenvolvimento do bind (desabilite LIBWNCK por enquanto):
-> After that, just start test and start to help to dev this bind [disale LIBWNCK for now]
+Talvez algum erro ocorra no thoweble.h, então verifique se esse [issue](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pull/440/commits/86d3624857a4d6a5ca8f760bb233ed083079e462) está corrigido 
+> Maybe occur some errors on thoweble.h, so confirm that [issue](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pull/440/commits/86d3624857a4d6a5ca8f760bb233ed083079e462) are fixed
+
+Agora basta baixar e compilar o php-gtk3
+> After that, just download php-gtk3 and compile it
 
 ```sh
 :$ git clone https://github.com/scorninpc/php-gtk3.git
@@ -45,6 +48,9 @@ Depois disso é só começar a testar e começar a ajudar no desenvolvimento do 
 :$ make
 :$ php -dextension=./php-gtk3.so test.php
 ```
+
+Depois disso é só começar a testar e começar a ajudar no desenvolvimento do bind (desabilite LIBWNCK por enquanto):
+> After that, just start test and start to help to dev this bind [disale LIBWNCK for now]
 
 Some images of progress
 ==============
