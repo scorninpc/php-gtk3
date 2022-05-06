@@ -160,3 +160,9 @@ void GtkTreeView_::set_reorderable(Php::Parameters &parameters)
 
 	gtk_tree_view_set_reorderable(GTK_TREE_VIEW(instance), enabled);
 }
+
+Php::Value GtkTreeView_::get_reorderable()
+{
+    // 
+    return gtk_tree_view_get_reorderable(GTK_TREE_VIEW(instance));
+}
