@@ -152,3 +152,11 @@ void GtkTreeView_::set_enable_tree_lines(Php::Parameters &parameters)
 
 	gtk_tree_view_set_enable_tree_lines(GTK_TREE_VIEW(instance), enabled);
 }
+
+
+void GtkTreeView_::set_reorderable(Php::Parameters &parameters)
+{
+	bool enabled = (bool)parameters[0];
+
+	gtk_tree_view_set_reorderable(GTK_TREE_VIEW(instance), enabled);
+}

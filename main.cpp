@@ -1611,6 +1611,7 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::set_enable_tree_lines>("set_enable_tree_lines");
             gtktreeview.method<&GtkTreeView_::row_expanded>("row_expanded");
             gtktreeview.method<&GtkTreeView_::collapse_row>("collapse_row");
+            gtktreeview.method<&GtkTreeView_::set_reorderable>("set_reorderable");
         
 
         // GtkTreeViewColumn
@@ -1677,6 +1678,7 @@ extern "C"
 
         // GtkTreeModel
         Php::Class<GtkTreeModel_> gtktreemodel("GtkTreeModel");
+            gtktreemodel.extends(gobject);
             gtktreemodel.method<&GtkTreeModel_::__construct>("__construct");
             gtktreemodel.method<&GtkTreeModel_::get_iter>("get_iter");
             gtktreemodel.method<&GtkTreeModel_::get_value>("get_value");

@@ -59,6 +59,8 @@
 
             Php::Value row_expanded(Php::Parameters &parameters);
             Php::Value collapse_row(Php::Parameters &parameters);
+
+            void set_reorderable(Php::Parameters &parameters);
     };
 
 #endif
