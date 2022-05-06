@@ -97,6 +97,17 @@ Php::Value GtkTreeView_::get_selection()
 	return Php::Object("GtkTreeSelection", return_parsed);
 }
 
+void GtkTreeView_::collapse_all()
+{
+	// 
+	gtk_tree_view_collapse_all(GTK_TREE_VIEW(instance));
+}
+
+void GtkTreeView_::expand_all()
+{
+	// 
+	gtk_tree_view_expand_all(GTK_TREE_VIEW(instance));
+}
 
 Php::Value GtkTreeView_::expand_row(Php::Parameters &parameters)
 {
@@ -188,4 +199,11 @@ Php::Value GtkTreeView_::get_enable_search()
 {
     // 
     return gtk_tree_view_get_enable_search(GTK_TREE_VIEW(instance));
+}
+
+Php::Value GtkTreeView_::get_n_columns()
+{
+	guint ret = gtk_tree_view_get_n_columns(GTK_TREE_VIEW(instance));
+    // 
+    return (int)ret;
 }

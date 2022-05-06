@@ -1617,6 +1617,9 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::set_enable_search>("set_enable_search");
             gtktreeview.method<&GtkTreeView_::get_enable_search>("get_enable_search");
             gtktreeview.method<&GtkTreeView_::autosize>("autosize");
+            gtktreeview.method<&GtkTreeView_::collapse_all>("collapse_all");
+            gtktreeview.method<&GtkTreeView_::expand_all>("expand_all");
+            gtktreeview.method<&GtkTreeView_::get_n_columns>("get_n_columns");
         
 
         // GtkTreeViewColumn

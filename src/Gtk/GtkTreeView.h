@@ -51,10 +51,13 @@
             Php::Value get_model();
 
             void autosize();
-            
+
+            void collapse_all();
+            void expand_all();
+            Php::Value expand_row(Php::Parameters &parameters);
+
             Php::Value get_selection();
 
-            Php::Value expand_row(Php::Parameters &parameters);
             void set_level_indentation(Php::Parameters &parameters);
             void set_show_expanders(Php::Parameters &parameters);
 
@@ -69,6 +72,8 @@
 
             void set_enable_search(Php::Parameters &parameters);
             Php::Value get_enable_search();
+            
+            Php::Value get_n_columns();
     };
 
 #endif
