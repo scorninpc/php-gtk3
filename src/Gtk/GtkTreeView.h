@@ -50,6 +50,8 @@
             void set_model(Php::Parameters &parameters);
             Php::Value get_model();
 
+            void autosize();
+            
             Php::Value get_selection();
 
             Php::Value expand_row(Php::Parameters &parameters);

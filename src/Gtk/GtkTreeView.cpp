@@ -81,6 +81,11 @@ Php::Value GtkTreeView_::get_model()
 	return Php::Object("GtkTreeStore", return_parsed);
 }
 
+void GtkTreeView_::autosize()
+{
+	// 
+	gtk_tree_view_columns_autosize(GTK_TREE_VIEW(instance));
+}
 
 Php::Value GtkTreeView_::get_selection()
 {
