@@ -55,13 +55,18 @@
             Php::Value expand_row(Php::Parameters &parameters);
             void set_level_indentation(Php::Parameters &parameters);
             void set_show_expanders(Php::Parameters &parameters);
+
             void set_enable_tree_lines(Php::Parameters &parameters);
+            Php::Value get_enable_tree_lines();
 
             Php::Value row_expanded(Php::Parameters &parameters);
             Php::Value collapse_row(Php::Parameters &parameters);
 
             void set_reorderable(Php::Parameters &parameters);
             Php::Value get_reorderable();
+
+            void set_enable_search(Php::Parameters &parameters);
+            Php::Value get_enable_search();
     };
 
 #endif

@@ -1609,10 +1609,13 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::set_level_indentation>("set_level_indentation");
             gtktreeview.method<&GtkTreeView_::set_show_expanders>("set_show_expanders");
             gtktreeview.method<&GtkTreeView_::set_enable_tree_lines>("set_enable_tree_lines");
+            gtktreeview.method<&GtkTreeView_::get_enable_tree_lines>("get_enable_tree_lines");
             gtktreeview.method<&GtkTreeView_::row_expanded>("row_expanded");
             gtktreeview.method<&GtkTreeView_::collapse_row>("collapse_row");
             gtktreeview.method<&GtkTreeView_::set_reorderable>("set_reorderable");
             gtktreeview.method<&GtkTreeView_::get_reorderable>("get_reorderable");
+            gtktreeview.method<&GtkTreeView_::set_enable_search>("set_enable_search");
+            gtktreeview.method<&GtkTreeView_::get_enable_search>("get_enable_search");
         
 
         // GtkTreeViewColumn

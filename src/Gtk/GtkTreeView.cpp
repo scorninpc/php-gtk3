@@ -153,6 +153,11 @@ void GtkTreeView_::set_enable_tree_lines(Php::Parameters &parameters)
 	gtk_tree_view_set_enable_tree_lines(GTK_TREE_VIEW(instance), enabled);
 }
 
+Php::Value GtkTreeView_::get_enable_tree_lines()
+{
+    // 
+    return gtk_tree_view_get_enable_tree_lines(GTK_TREE_VIEW(instance));
+}
 
 void GtkTreeView_::set_reorderable(Php::Parameters &parameters)
 {
@@ -165,4 +170,17 @@ Php::Value GtkTreeView_::get_reorderable()
 {
     // 
     return gtk_tree_view_get_reorderable(GTK_TREE_VIEW(instance));
+}
+
+void GtkTreeView_::set_enable_search(Php::Parameters &parameters)
+{
+	bool enabled = (bool)parameters[0];
+
+	gtk_tree_view_set_enable_search(GTK_TREE_VIEW(instance), enabled);
+}
+
+Php::Value GtkTreeView_::get_enable_search()
+{
+    // 
+    return gtk_tree_view_get_enable_search(GTK_TREE_VIEW(instance));
 }
