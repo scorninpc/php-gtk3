@@ -6,7 +6,7 @@ help wanted
 - Create docker
 - Improvement of Makefile
 
-Read how to [Compile on MAC](https://github.com/scorninpc/php-gtk3/wiki/Compile-on-MAC)
+Read how to [Compile on MAC](https://github.com/scorninpc/php-gtk3/wiki/Compile-on-MAC) (old, and not intense tested. maybe some errors occur)
 
 php-gtk3-tests
 ==============
