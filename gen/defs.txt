@@ -1,0 +1,39 @@
+void gtk_application_add_accelerator (GtkApplication* application, const gchar* accelerator, const gchar* action_name, GVariant* parameter);
+
+void gtk_application_add_window (GtkApplication* application, GtkWindow* window);
+
+gchar** gtk_application_get_accels_for_action (GtkApplication* application, const gchar* detailed_action_name);
+
+gchar** gtk_application_get_actions_for_accel (GtkApplication* application, const gchar* accel);
+
+GtkWindow* gtk_application_get_active_window (GtkApplication* application);
+
+GMenuModel* gtk_application_get_app_menu (GtkApplication* application);
+
+GMenu* gtk_application_get_menu_by_id (GtkApplication* application, const gchar* id);
+
+GMenuModel* gtk_application_get_menubar (GtkApplication* application);
+
+GtkWindow* gtk_application_get_window_by_id (GtkApplication* application, guint id);
+
+GList* gtk_application_get_windows (GtkApplication* application);
+
+guint gtk_application_inhibit (GtkApplication* application, GtkWindow* window, GtkApplicationInhibitFlags flags, const gchar* reason);
+
+gboolean gtk_application_is_inhibited (GtkApplication* application, GtkApplicationInhibitFlags flags);
+
+gchar** gtk_application_list_action_descriptions (GtkApplication* application);
+
+gboolean gtk_application_prefers_app_menu (GtkApplication* application);
+
+void gtk_application_remove_accelerator (GtkApplication* application, const gchar* action_name, GVariant* parameter);
+
+void gtk_application_remove_window (GtkApplication* application, GtkWindow* window);
+
+void gtk_application_set_accels_for_action (GtkApplication* application, const gchar* detailed_action_name, const gchar* const* accels);
+
+void gtk_application_set_app_menu (GtkApplication* application, GMenuModel* app_menu);
+
+void gtk_application_set_menubar (GtkApplication* application, GMenuModel* menubar);
+
+void gtk_application_uninhibit (GtkApplication* application, guint cookie);
