@@ -1,6 +1,9 @@
 help wanted
 ==============
 - Complile for Windows
+- Compile for Mac
+- Better code for Mac integration
+- Create docker
 - Improvement of Makefile
 
 Read how to [Compile on MAC](https://github.com/scorninpc/php-gtk3/wiki/Compile-on-MAC)
