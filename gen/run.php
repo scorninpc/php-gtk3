@@ -234,11 +234,27 @@ foreach($def_classes as $class_name => $def_class) {
 		'methods' => implode("\n\t\t\t", $methods),
 	]);
 
-	// 
 	var_dump($header_file_content);
 
 
 	/**
 	 * Create cpp file
 	 */
+	$methods = [];
+	$template_file = "
+#include \"%(class_name)s.h\"
+#include \"../../main.h\"
+
+%(class_name)s_::%(class_name)s_() = default;
+%(class_name)s_::~%(class_name)s_() = default;
+
+";
+
+	// Do the replacements
+	$cpp_file_content = \Strings::vsprintf_named($template_file, [
+		'class_name' => $class_name,
+		'methods' => implode("\n\t\t\t", $methods),
+	]);
+
+	var_dump($cpp_file_content);
 }
