@@ -250,6 +250,8 @@ foreach($def_classes as $class_name => $def_class) {
 
 ";
 
+	
+
 	// Do the replacements
 	$cpp_file_content = \Strings::vsprintf_named($template_file, [
 		'class_name' => $class_name,
