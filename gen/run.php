@@ -40,6 +40,36 @@ class Strings
 }
 
 /**
+ * Helper for conversion
+ */
+class PhpConvert
+{
+	/**
+	 * convert class name to function style, like GtkApplication to gtk_application_
+	 */
+	static public function convertClassToFunctionStyle($class_name)
+	{
+		$class_functions_holder = \Strings::explodeCamelCase($class_name);
+		$class_functions_holder = array_map("strtolower", $class_functions_holder);
+		$class_functions_holder = implode("_", $class_functions_holder) . "_";
+
+		return $class_functions_holder;
+	}
+
+	/**
+	 * get type
+	 */
+	static public function getCleanType($type)
+	{
+		$type = str_replace("*", "", $type);
+		$type = rtrim(ltrim($type));
+
+		return $type;
+	}
+
+}
+
+/**
  * Controls
  */
 $existing_classes = [
@@ -153,65 +183,80 @@ foreach($def_classes as $class_name => $def_class) {
 #endif
 ";
 
+
+
 	// Loop into functions
 	foreach($def_class as $function_name => $function) {
 
-		$class_functions_holder = \Strings::explodeCamelCase($class_name);
-		$class_functions_holder = array_map("strtolower", $class_functions_holder);
-		$class_functions_holder = implode("_", $class_functions_holder) . "_";
+		// Store php final infos
+		$def_classes[$class_name]['php'] = [
+			'method_name' => "",
+			'return_type' => "void",
+			'params' => "",
+			'extra_includes' => [],
+		];
 
+		// Include the extends class as include
+		if(isset($existing_classes[$class_name])) {
+			$tmp = \Strings::explodeCamelCase($existing_classes[$class_name]);
+			if($tmp[0] == $namespace) {
+				$extra_include = "#include \"" . $existing_classes[$param_type] . ".h\"";
+			}
+			else {
+				$extra_include = "#include \"../" . $tmp[0] . "/" . $existing_classes[$param_type] . ".h\"";
+			}
+			$def_classes[$class_name]['php']['extra_includes'][] = $extra_include;
+		}
+
+		var_dump($def_classes);
+		die();
+
+		// Get class holder. the start name of functions in C
+		$class_functions_holder = \PhpConvert::convertClassToFunctionStyle($class_name);
+
+		// Remove holder from c function, like gtk_application_add_window to add_window
 		$method_name = str_replace($class_functions_holder, "", $function['name']);
+
+		// Verify if it's construct
 		if($method_name == "new") {
-			$method_name = "__construct";
-			$method_return  = "void";
+			$def_classes[$class_name]['php']['method_name'] = "__construct";
+			// if yes, return void
 		}
 		else {
-
 			// Parse return type
-			if($function['return'] == "void") {
-				$method_return = "void";
-			}
-			else {
+			if($function['return'] != "void") {
 				$method_return = "Php::Value";
 			}
+		}
 
-			// Parse params
-			$count = 0;
-			foreach($function['params'] as $index => $param) {
-				$tmp = explode(" ", $param);
-				$param_type = str_replace("*", "", $tmp[0]);
-				$param_name = $tmp[1];
+		// Loop params
+		$count = 0;
+		foreach($function['params'] as $index => $param) {
+			$tmp = explode(" ", $param);
+			$param_type = \PhpConvert::getCleanType($tmp[0]);
+			$param_name = $tmp[1];
 
-				// Verify if the first param are the class
-				if($index == 0) {
-					if($param_type == $class_name) {
-						continue;
-					}
+			// Verify if the first param are the class
+			if($index == 0) {
+				if($param_type == $class_name) {
+					continue;
 				}
-
-				// Include the extends class
-				if(isset($existing_classes[$param_type])) {
-					$tmp = \Strings::explodeCamelCase($existing_classes[$param_type]);
-					if($tmp[0] == $namespace) {
-						$extra_includes[$existing_classes[$param_type]] = "#include \"" . $existing_classes[$param_type] . ".h\"";
-					}
-					else {
-						$extra_includes[$existing_classes[$param_type]] = "#include \"../" . $tmp[0] . "/" . $existing_classes[$param_type] . ".h\"";
-					}
-				}
-
-				$count++;
-			}
-			if($count > 0) {
-				$method_param = "Php::Parameters &parameters";
-			}
-			else {
-				$method_param = "";
 			}
 
 			
+
+			$count++;
+		}
+		if($count > 0) {
+			$method_param = "Php::Parameters &parameters";
+		}
+		else {
+			$method_param = "";
 		}
 
+
+
+		// 
 		$methods[] = $method_return . " " . $method_name . "(" . $method_param . ");";
 
 	}
