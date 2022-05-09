@@ -45,6 +45,7 @@ class Strings
 $existing_classes = [
 	"GtkApplicationWindow" => "GtkWindow",
 	"GtkApplication" => "GApplication",
+	"GtkWindow" => "GtkWidget",
 ];
 
 $def_functions = [];
@@ -112,6 +113,10 @@ foreach($parsed_defs[0] as $index => $def) {
 
 // Create the header file
 foreach($def_classes as $class_name => $def_class) {
+
+	/**
+	 * Create header file
+	 */
 	$extra_includes = [];
 	$methods = [];
 
@@ -177,9 +182,21 @@ foreach($def_classes as $class_name => $def_class) {
 				$param_type = str_replace("*", "", $tmp[0]);
 				$param_name = $tmp[1];
 
+				// Verify if the first param are the class
 				if($index == 0) {
 					if($param_type == $class_name) {
 						continue;
+					}
+				}
+
+				// Include the extends class
+				if(isset($existing_classes[$param_type])) {
+					$tmp = \Strings::explodeCamelCase($existing_classes[$param_type]);
+					if($tmp[0] == $namespace) {
+						$extra_includes[$existing_classes[$param_type]] = "#include \"" . $existing_classes[$param_type] . ".h\"";
+					}
+					else {
+						$extra_includes[$existing_classes[$param_type]] = "#include \"../" . $tmp[0] . "/" . $existing_classes[$param_type] . ".h\"";
 					}
 				}
 
@@ -202,10 +219,10 @@ foreach($def_classes as $class_name => $def_class) {
 	// Include the extends class
 	$tmp = \Strings::explodeCamelCase($existing_classes[$class_name]);
 	if($tmp[0] == $namespace) {
-		$extra_includes[] = "#include \"" . $existing_classes[$class_name] . ".h\"";
+		$extra_includes[$existing_classes[$param_type]] = "#include \"" . $existing_classes[$class_name] . ".h\"";
 	}
 	else {
-		$extra_includes[] = "#include \"../" . $tmp[0] . "/" . $existing_classes[$class_name] . ".h\"";
+		$extra_includes[$existing_classes[$param_type]] = "#include \"../" . $tmp[0] . "/" . $existing_classes[$class_name] . ".h\"";
 	}
 	
 	// Do the replacements
@@ -219,7 +236,9 @@ foreach($def_classes as $class_name => $def_class) {
 
 	// 
 	var_dump($header_file_content);
+
+
+	/**
+	 * Create cpp file
+	 */
 }
-
-
-// Create cpp file
