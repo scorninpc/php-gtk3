@@ -22,7 +22,6 @@ guint gtk_application_inhibit (GtkApplication* application, GtkWindow* window, G
 
 gboolean gtk_application_is_inhibited (GtkApplication* application, GtkApplicationInhibitFlags flags);
 
-gchar** gtk_application_list_action_descriptions (GtkApplication* application);
 
 gboolean gtk_application_prefers_app_menu (GtkApplication* application);
 
@@ -37,3 +36,9 @@ void gtk_application_set_app_menu (GtkApplication* application, GMenuModel* app_
 void gtk_application_set_menubar (GtkApplication* application, GMenuModel* menubar);
 
 void gtk_application_uninhibit (GtkApplication* application, guint cookie);
+
+gchar** gtk_application_list_action_descriptions (GtkApplication* application);
+
+GtkWidget* gtk_application_window_new (GtkApplication* application);
+
+GtkApplication* gtk_application_new (const gchar* application_id, GApplicationFlags flags)
