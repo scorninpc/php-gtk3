@@ -91,10 +91,14 @@ class PhpConvert
 				$template_code .= "std::string c_%(param_name)s = parameters[%(param_count)s];\n";
 				$template_code .= "gchar *%(param_name)s = (gchar *)c_%(param_name)s.c_str();\n";
 
-
 			// Integer
 			case "guint":
+				$template_code .= "int %(param_name)s = (int)parameters[%(param_count)s];\n";
+				break;
 
+			// Boolean
+			case "gboolean":
+				$template_code .= "gboolean %(param_name)s = (gboolean)parameters[%(param_count)s];\n";
 				break;
 		}
 
