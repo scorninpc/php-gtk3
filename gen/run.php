@@ -59,12 +59,55 @@ class PhpConvert
 	/**
 	 * get type
 	 */
-	static public function getCleanType($type)
+	static public function getCleanType($type, $removePointer=TRUE)
 	{
-		$type = str_replace("*", "", $type);
+		$type = str_replace("const", "", $type);
+		if($removePointer) {
+			$type = str_replace("*", "", $type);
+		}
 		$type = rtrim(ltrim($type));
 
 		return $type;
+	}
+
+	/**
+	 * Converte the param of function, to work with php extensio
+	 */
+	static public function parseParam($count, $param)
+	{
+		// Remove constant key
+		$clean_param = \PhpConvert::getCleanType($param, FALSE);
+		$tmp = explode(" ", $clean_param);
+		$type = $tmp[0];
+		$name = $tmp[1];
+		
+		$template_code = "";
+
+		// Verifica o tipo
+		switch($type) {
+
+			// String
+			case "gchar*":
+				$template_code .= "std::string c_%(param_name)s = parameters[%(param_count)s];\n";
+				$template_code .= "gchar *%(param_name)s = (gchar *)c_%(param_name)s.c_str();\n";
+
+
+			// Integer
+			case "guint":
+
+				break;
+		}
+
+		$result_code = \Strings::vsprintf_named($template_code, [
+			'param_count' => $count,
+			'param_name' => $name
+		]);
+
+		die($result_code);
+
+
+
+		die();
 	}
 
 }
@@ -203,13 +246,10 @@ foreach($def_classes as $class_name => $def_class) {
 				$extra_include = "#include \"" . $existing_classes[$param_type] . ".h\"";
 			}
 			else {
-				$extra_include = "#include \"../" . $tmp[0] . "/" . $existing_classes[$param_type] . ".h\"";
+				$extra_include = "#include \"../" . $tmp[0] . "/" . $existing_classes[$class_name] . ".h\"";
 			}
-			$def_classes[$class_name]['php']['extra_includes'][] = $extra_include;
+			$def_classes[$class_name]['php']['extra_includes'][$class_name] = $extra_include;
 		}
-
-		var_dump($def_classes);
-		die();
 
 		// Get class holder. the start name of functions in C
 		$class_functions_holder = \PhpConvert::convertClassToFunctionStyle($class_name);
@@ -243,10 +283,14 @@ foreach($def_classes as $class_name => $def_class) {
 				}
 			}
 
+			// Convert the function param to php
+			$codeConverted = \PhpConvert::parseParam($count, $param);
 			
-
+			// Next param
 			$count++;
 		}
+
+		// Verify if there is param
 		if($count > 0) {
 			$method_param = "Php::Parameters &parameters";
 		}
