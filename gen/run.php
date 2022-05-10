@@ -89,16 +89,19 @@ class PhpConvert
 			// String
 			case "gchar*":
 				$template_code .= "std::string c_%(param_name)s = parameters[%(param_count)s];\n";
-				$template_code .= "gchar *%(param_name)s = (gchar *)c_%(param_name)s.c_str();\n";
+				$template_code .= "gchar *%(param_name)s = (gchar *)c_%(param_name)s.c_str();";
 
-			// Integer
-			case "guint":
-				$template_code .= "int %(param_name)s = (int)parameters[%(param_count)s];\n";
+			// Float
+			case "gfloat":
+				$template_code .= "double c_%(param_name)s = parameters[%(param_count)s];\n";
+				$template_code .= "gfloat %(param_name)s = (float)d_%(param_name)s;";
 				break;
 
-			// Boolean
+			// Some simple casts
+			case "guint":
+			case "gint":
 			case "gboolean":
-				$template_code .= "gboolean %(param_name)s = (gboolean)parameters[%(param_count)s];\n";
+				$template_code .= "%(type)s %(param_name)s = (%(type)s)parameters[%(param_count)s];";
 				break;
 		}
 
