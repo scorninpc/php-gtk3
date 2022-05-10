@@ -1,4 +1,4 @@
-void gtk_application_add_accelerator (GtkApplication* application, const gchar* accelerator, const gchar* action_name, GVariant* parameter);
+void gtk_application_add_accelerator (GtkApplication* application, const gchar* accelerator, GtkJustification action_name, gint parameter);
 
 void gtk_application_add_window (GtkApplication* application, GtkWindow* window);
 

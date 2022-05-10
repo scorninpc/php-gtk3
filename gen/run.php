@@ -75,6 +75,8 @@ class PhpConvert
 	 */
 	static public function parseParam($count, $param)
 	{
+		global $existing_constants;
+
 		// Remove constant key
 		$clean_param = \PhpConvert::getCleanType($param, FALSE);
 		$tmp = explode(" ", $clean_param);
@@ -90,6 +92,7 @@ class PhpConvert
 			case "gchar*":
 				$template_code .= "std::string c_%(param_name)s = parameters[%(param_count)s];\n";
 				$template_code .= "gchar *%(param_name)s = (gchar *)c_%(param_name)s.c_str();";
+				break;
 
 			// Float
 			case "gfloat":
@@ -103,18 +106,23 @@ class PhpConvert
 			case "gboolean":
 				$template_code .= "%(type)s %(param_name)s = (%(type)s)parameters[%(param_count)s];";
 				break;
+
+			// Others
+			default:
+				if(isset($existing_constants[$type])) {
+					$template_code .= "int c_%(param_name)s = (int)parameters[%(param_count)s];\n";
+					$template_code .= "%(type)s %(param_name)s = (%(type)s)c_%(param_name)s;";
+				}
+
 		}
 
 		$result_code = \Strings::vsprintf_named($template_code, [
 			'param_count' => $count,
-			'param_name' => $name
+			'param_name' => $name,
+			'type' => $type,
 		]);
 
-		die($result_code);
-
-
-
-		die();
+		return $result_code;
 	}
 
 }
@@ -126,6 +134,10 @@ $existing_classes = [
 	"GtkApplicationWindow" => "GtkWindow",
 	"GtkApplication" => "GApplication",
 	"GtkWindow" => "GtkWidget",
+];
+
+$existing_constants = [
+	"GtkJustification" => TRUE,
 ];
 
 $def_functions = [];
@@ -239,10 +251,10 @@ foreach($def_classes as $class_name => $def_class) {
 	foreach($def_class as $function_name => $function) {
 
 		// Store php final infos
-		$def_classes[$class_name]['php'] = [
+		$def_classes[$class_name]['php'][$function_name] = [
 			'method_name' => "",
 			'return_type' => "void",
-			'params' => "",
+			'params' => [],
 			'extra_includes' => [],
 		];
 
@@ -255,7 +267,7 @@ foreach($def_classes as $class_name => $def_class) {
 			else {
 				$extra_include = "#include \"../" . $tmp[0] . "/" . $existing_classes[$class_name] . ".h\"";
 			}
-			$def_classes[$class_name]['php']['extra_includes'][$class_name] = $extra_include;
+			$def_classes[$class_name]['php'][$function_name]['extra_includes'][$class_name] = $extra_include;
 		}
 
 		// Get class holder. the start name of functions in C
@@ -266,7 +278,7 @@ foreach($def_classes as $class_name => $def_class) {
 
 		// Verify if it's construct
 		if($method_name == "new") {
-			$def_classes[$class_name]['php']['method_name'] = "__construct";
+			$def_classes[$class_name]['php'][$function_name]['method_name'] = "__construct";
 			// if yes, return void
 		}
 		else {
@@ -291,11 +303,14 @@ foreach($def_classes as $class_name => $def_class) {
 			}
 
 			// Convert the function param to php
-			$codeConverted = \PhpConvert::parseParam($count, $param);
+			$def_classes[$class_name]['php'][$function_name]['params'][] = \PhpConvert::parseParam($count, $param);
 			
 			// Next param
 			$count++;
 		}
+
+		var_dump("\n\n" . implode("\n\n", $def_classes[$class_name]['php'][$function_name]['params']) . "\n\n");
+		die();
 
 		// Verify if there is param
 		if($count > 0) {
