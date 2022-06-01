@@ -158,26 +158,35 @@ bool GObject_::connect_callback(gpointer user_data, ...)
     // Loop into param_types of GSignalQuery from g_signal_query
     for (int i=0; i<param_count; i++) {
 
+        // Php::call("var_dump", g_type_name(callback_object->param_types[i]));
+
         switch (G_TYPE_FUNDAMENTAL(callback_object->param_types[i])) {
             case G_TYPE_CHAR:
                 // Php::call("var_dump", "char");
                 break;
+                
             case G_TYPE_UCHAR:
                 // Php::call("var_dump", "uchar");
                 break;
 
             case G_TYPE_STRING:
+            // Php::call("var_dump", "string");
                 internal_parameters[i+1] = va_arg(ap, char *);
+                break;
 
             case G_TYPE_BOOLEAN:
+            // Php::call("var_dump", "boolean");
                 internal_parameters[i+1] = va_arg(ap, gboolean);
+                break;
 
             case G_TYPE_INT:
+                // Php::call("var_dump", "int");
                 internal_parameters[i+1] = va_arg(ap, gint);
+                break;
                 
             case G_TYPE_OBJECT:
             {
-
+                // Php::call("var_dump", "object");
                 gpointer *e = va_arg(ap, gpointer *);
 
                 // Create event from callback
@@ -189,7 +198,7 @@ bool GObject_::connect_callback(gpointer user_data, ...)
                 break;
             }
             case G_TYPE_POINTER:
-                // Php::call("var_dump", "gpointer");
+                // Php::call("var_dump", "pointer");
                 break;
             case G_TYPE_INTERFACE: 
                 // Php::call("var_dump", "interface");
@@ -200,7 +209,6 @@ bool GObject_::connect_callback(gpointer user_data, ...)
             case G_TYPE_BOXED:
             {
                 // Php::call("var_dump", "boxed");
-
 
                 GdkEvent *e = va_arg(ap, GdkEvent *);
 
