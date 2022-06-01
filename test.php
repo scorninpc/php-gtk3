@@ -303,6 +303,14 @@ $vbox->pack_start($tree, TRUE, TRUE, 1);
 $model = new GtkListStore(GObject::TYPE_OBJECT, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
 $pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", 15, -1);
 
+$tree->set_reorderable(TRUE);
+$model->connect("row-inserted", function($model, $path, $iter) {
+	echo "\ninseriu\n";
+});
+$model->connect("row-deleted", function($model, $path) {
+	echo "\nremoveu\n";
+});
+
 // $gd = imagecreate( 100, 100 );
 // imagecolorallocate( $gd, 0, 0, 0 );
 // var_dump($gd);
