@@ -2,10 +2,10 @@
 
 ## Index
 
- - [Compile PHP from source](https://github.com/scorninpc/php-gtk3/edit/master/docs/compile-linux.md#compile-php-from-source)
- - [Compile PHP-CPP from source](https://github.com/scorninpc/php-gtk3/edit/master/docs/compile-linux.md#compile-php-cpp-from-source)
- - [Compile PHP-GTK](https://github.com/scorninpc/php-gtk3/edit/master/docs/compile-linux.md#compile-php-gtk3-from-source)
- - [Make a manual instalation](https://github.com/scorninpc/php-gtk3/edit/master/docs/compile-linux.md#make-a-manual-instalation)
+ - [Compile PHP from source](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-from-source)
+ - [Compile PHP-CPP from source](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-cpp-from-source)
+ - [Compile PHP-GTK](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-gtk3-from-source)
+ - [Make a manual instalation](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#make-a-manual-instalation)
 
 ## Compile PHP from source
 	
