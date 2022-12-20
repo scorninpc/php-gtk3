@@ -3,17 +3,12 @@
 
 PHP-GTK is a bind of GTK 3 to create desktop applications with PHP
 
-
-
-
-
 ## Acknowledgements
 
  - [Compile for window](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md)
  - [Compile for linux](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md)
  - [Compile for mac](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-mac.md)
  - [Appimage](https://github.com/scorninpc/php-gtk3/blob/master/docs/appimage.md)
-
 
 ## Contributing
 
@@ -24,6 +19,7 @@ See [issues](https://github.com/scorninpc/php-gtk3/issues) for problems and impr
 ## How its works
 
 PHP-GTK3 work with a middleway of [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP). In addition to making work faster, syntax and how to program closely resemble PHP, so more people can contribute to the project. Another strong point, perhaps the most important are the updates of Zend.h. In the migration from PHP5 to PHP7 for example, every bind was lost. In that way, there is a nice community working on PHP-CPP to make this updated
+
 ## Example
 
 ```php
@@ -49,12 +45,10 @@ $win->connect("destroy", "GtkWindowDestroy");
 $win->show_all();
 ```
 
-
 ## Involved
 
 - [@scorninpc](https://www.github.com/scorninpc) - Main dev
 - [@subabrain](https://www.github.com/subabrain) - Thank you for your hard work to compile on Windows
-
 
 ## Screenshots
 
