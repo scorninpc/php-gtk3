@@ -1,5 +1,7 @@
 # Compilar o PHP
 
+_this doc is old, and not intense tested. maybe some errors occur_ 
+
 $ brew install bison@3.5
 
 $ echo 'export PATH="/usr/local/opt/bison/bin:$PATH"' >> ~/.zshrc
