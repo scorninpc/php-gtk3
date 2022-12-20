@@ -42,7 +42,7 @@ This will create and install libphpcpp.so.2.3
 Clone source
 ```sh
 :$ git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
-:$ cd PHP-GTK
+:$ cd PHP-CPP
 ```
 
 Merge PR 497 for PHP 8.1 support
