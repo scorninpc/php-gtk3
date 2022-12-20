@@ -4,7 +4,7 @@
 
  - [Compile PHP from source](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-from-source)
  - [Compile PHP-CPP from source](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-cpp-from-source)
- - [Compile PHP-GTK](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-gtk3-from-source)
+ - [Compile PHP-GTK from source](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#compile-php-gtk3-from-source)
  - [Make a manual instalation](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md#make-a-manual-instalation)
 
 ## Compile PHP from source
@@ -35,7 +35,6 @@ Compile and install
 :$ make -j 4 && sudo make install 
 ```
 
-
 ## Compile PHP-CPP from source
 
 This will create and install libphpcpp.so.2.3
@@ -50,6 +49,8 @@ Merge PR 497 for PHP 8.1 support
 ```sh
 :$ git fetch origin pull/497/head:MASTER
 ```
+
+If you compiling on PHP7.4, maybe occur some errors on thoweble.h, so look that [issue](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pull/440/commits/86d3624857a4d6a5ca8f760bb233ed083079e462) appear to be fix it
 
 Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.1.14/bin/php-config`.
 
