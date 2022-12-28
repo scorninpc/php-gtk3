@@ -73,7 +73,6 @@ _WIN32
 NDEBUG
 ZEND_DEBUG=0
 _CRT_SECURE_NO_WARNINGS
-ZEND_WIN32_KEEP_INLINE
 PHP_WIN32
 ZEND_WIN32
 _MSC_VER=1934
@@ -84,7 +83,10 @@ G_PLATFORM_WIN32
 GIO_COMPILATION
 BUILDING_PHPCPP
 PHP_VERSION_ID=70300
-INTERNAL_FUNCTION_PARAMETERS
+GDK_PIXBUF_COMPILATION
+GDK_COMPILATION
+GTK_COMPILATION
+GLIB_COMPILATION
 ```
 
 If you want to compile in 32bit you must set the definition:
@@ -243,7 +245,10 @@ libzstd.dll
 zlib1.dll
 ```
 
+
 I don’t know, maybe there are some redundancies but this should work for the moment. And then of course, we add our .dll from the compilation into the `ext` folder of our `<extracted_folder_of_php_binaries>\` folder.
+
+To fix icons problem, you'll need create a pixbuf cache, running `gdk-pixbuf-query-loaders.exe --update-cache` and copy `c:\msys64\mingw64\lib\gdk-pixbuf-2.0` to `PHP_DIR/lib/`
 
 Rename the `php.ini-development` to `php.ini` and change the following stuff:
 
