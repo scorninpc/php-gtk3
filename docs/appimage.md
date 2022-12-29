@@ -25,6 +25,7 @@ _Please, let we know if this appimage run fine on your system openning a [issue]
 AppImage 0.12
 
 - [x] Deepin Linux 20
+- [x] Debian 11
 
 AppImage 0.11
 
