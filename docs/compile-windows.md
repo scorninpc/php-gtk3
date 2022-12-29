@@ -131,6 +131,8 @@ Now you can compile PHP-CPP, but you might get some syntax errors, so you can fi
 
 ## GTK Dependencies
 
+Copy the file `mingw64\lib\glib-2.0\include\glibconfig.h` to the folder `mingw64\include\glib-2.0`
+
 Now we just have to set the linker libraries to get it run.
 
 Add the additional dependencies as follows (add them to the `php7.lib`):
