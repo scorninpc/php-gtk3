@@ -41,6 +41,7 @@
             void set_instance(GdkScreen *screen);
             Php::Value get_rgba_visual();
             Php::Value get_window_stack();
+            static Php::Value get_default();
 
 
     };

@@ -499,6 +499,7 @@ extern "C"
             // gdkevent.method<&GdkEvent_::__construct>("__construct");
             gdkscreen.method<&GdkScreen_::get_rgba_visual>("get_rgba_visual");
             gdkscreen.method<&GdkScreen_::get_window_stack>("get_window_stack");
+            gdkscreen.method<&GdkScreen_::get_default>("get_default");
 
         // GdkDisplay
         Php::Class<GdkDisplay_> gdkdisplay("GdkDisplay");

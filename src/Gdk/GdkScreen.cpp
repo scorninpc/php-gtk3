@@ -58,3 +58,13 @@ Php::Value GdkScreen_::get_window_stack()
 
 	return ret_arr;
 }
+
+Php::Value GdkScreen_::get_default()
+{
+    GdkScreen *ret = gdk_screen_get_default();
+
+    GdkScreen_ *returnValue = new GdkScreen_();
+    returnValue->set_instance(ret);
+
+    return Php::Object("GdkScreen", returnValue);
+}
