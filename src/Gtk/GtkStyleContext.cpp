@@ -45,7 +45,7 @@ void GtkStyleContext_::add_provider_for_screen(Php::Parameters &parameters)
 
 	GdkScreen *screen = gdk_screen_get_default();
 
-	gtk_style_context_add_provider_for_screen (screen, GTK_STYLE_PROVIDER(provider), priority);
+	gtk_style_context_add_provider_for_screen (screen, GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
 }
 
@@ -126,12 +126,12 @@ void GtkStyleContext_::get_property(Php::Parameters &parameters)
 
 Php::Value GtkStyleContext_::get_screen()
 {
-	// GdkScreen ret = gtk_style_context_get_screen (GTK_STYLE_CONTEXT(instance));
+	GdkScreen *ret = gtk_style_context_get_screen (GTK_STYLE_CONTEXT(instance));
 
-	// return ret;
+	GdkScreen_ *returnValue = new GdkScreen_();
+    returnValue->set_instance(ret);
 
-	throw Php::Exception("GtkStyleContext_::gtk_render_icon not implemented");
-	return 1;
+    return Php::Object("GdkScreen", returnValue);
 }
 
 Php::Value GtkStyleContext_::get_frame_clock()
