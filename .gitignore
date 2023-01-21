@@ -3,3 +3,5 @@
 thumbs.db
 *.o
 *.so
+.vscode/settings.json
+.vscode/c_cpp_properties.json
