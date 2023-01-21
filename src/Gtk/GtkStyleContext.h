@@ -7,6 +7,7 @@
 
 	#include "../G/GObject.h"
     #include "GtkCssProvider.h"
+    #include "../Gdk/GdkScreen.h"
 
     /**
      * GtkStyleContext_
