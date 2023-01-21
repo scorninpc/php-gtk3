@@ -505,6 +505,7 @@ extern "C"
             gdkdisplay.extends(gobject);
             gdkdisplay.method<&GdkDisplay_::get_default>("get_default");
             gdkdisplay.method<&GdkDisplay_::get_primary_monitor>("get_primary_monitor");
+            gdkdisplay.method<&GdkDisplay_::get_default_screen>("get_default_screen");
 
         // GdkMonitor
         Php::Class<GdkMonitor_> gdkmonitor("GdkMonitor");
@@ -1078,6 +1079,14 @@ extern "C"
             gtkbin.extends(gtkcontainer);
             gtkbin.method<&GtkBin_::test3>("test3");
 
+        // GtkEventBox
+        Php::Class<GtkEventBox_> gtkeventbox("GtkEventBox");
+            gtkeventbox.extends(gtkbin);
+            gtkeventbox.method<&GtkEventBox_::__construct>("__construct");
+            gtkeventbox.method<&GtkEventBox_::get_visible_window>("get_visible_window");
+            gtkeventbox.method<&GtkEventBox_::set_visible_window>("set_visible_window");
+            gtkeventbox.method<&GtkEventBox_::get_above_child>("get_above_child");
+            gtkeventbox.method<&GtkEventBox_::set_above_child>("set_above_child");
 
         // GtkPaned
         Php::Class<GtkPaned_> gtkpaned("GtkPaned");
@@ -3780,6 +3789,7 @@ extern "C"
         extension.add(std::move(gtkhbox));
         extension.add(std::move(gtkvbox));
         extension.add(std::move(gtkbin));
+        extension.add(std::move(gtkeventbox));
         extension.add(std::move(gtkpaned));
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkdialog));
@@ -3787,6 +3797,7 @@ extern "C"
         extension.add(std::move(gtkfilechooserdialog));
         extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtkprintsettings));
+        
         // extension.add(std::move(gtkpagesetupunixdialog));
         extension.add(std::move(gtkpagesetup));
         extension.add(std::move(gtkpapersize));

@@ -52,3 +52,13 @@ Php::Value GdkDisplay_::get_primary_monitor()
 
     return Php::Object("GdkMonitor", returnValue);
 }
+
+Php::Value GdkDisplay_::get_default_screen()
+{
+   GdkScreen* ret = gdk_display_get_default_screen(GDK_DISPLAY(instance));
+
+    GdkScreen_ *returnValue = new GdkScreen_();
+    returnValue->set_instance(ret);
+
+    return Php::Object("GdkScreen", returnValue);
+}

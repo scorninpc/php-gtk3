@@ -6,6 +6,7 @@
     #include <gtk/gtk.h>
 
     #include "GdkMonitor.h"
+    #include "GdkScreen.h"
 
     /**
      * GdkDisplay_
@@ -35,6 +36,7 @@
 
             static Php::Value get_default();
             Php::Value get_primary_monitor();
+            Php::Value get_default_screen();
 
 
     };
