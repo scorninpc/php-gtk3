@@ -173,6 +173,12 @@ $toolbutton1->set_label_widget( $lbl );
 
 $tb->insert($toolbutton1, -1);
 
+
+// ----------------------
+// separator
+$separator = new GtkSeparator(GtkOrientation::HORIZONTAL);
+$vbox->pack_start($separator, TRUE, TRUE, 3);
+
 // ----------------------
 // Infor Bar
 $infobar = new GtkInfoBar();
@@ -301,7 +307,7 @@ $vbox->pack_start($tree, TRUE, TRUE, 1);
 
 
 $model = new GtkListStore(GObject::TYPE_OBJECT, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
-$pixbuf = GdkPixbuf::new_from_file_at_size("./logo.png", 15, -1);
+$pixbuf = GdkPixbuf::new_from_file_at_size(dirname(realpath(__FILE__)) . "/logo.png", 15, -1);
 
 $tree->set_reorderable(TRUE);
 $model->connect("row-inserted", function($model, $path, $iter) {
@@ -310,17 +316,18 @@ $model->connect("row-inserted", function($model, $path, $iter) {
 $model->connect("row-deleted", function($model, $path) {
 	echo "\nremoveu\n";
 });
+$tree->set_model($model);
 
 // $gd = imagecreate( 100, 100 );
 // imagecolorallocate( $gd, 0, 0, 0 );
 // var_dump($gd);
 // $pixbuf = GdkPixbuf::new_from_gd($gd);
 
-
+//GtkImage::new_from_pixbuf($pixbuf);
 $model->append([$pixbuf, TRUE, 1, 2.3, "line 1"]);
 $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 
-$tree->set_model($model);
+
 
 // ----------------------
 // Menu for treeview
@@ -479,7 +486,7 @@ $win->set_type_hint(Gdk::WINDOW_TYPE_HINT_NORMAL);
 
 
 // Icon from file
-$win->set_icon_from_file("./logo.png");
+$win->set_icon_from_file(dirname(realpath(__FILE__)) . "/logo.png");
 
 
 // Connects
