@@ -316,7 +316,7 @@ void GtkTreeViewColumn_::set_cell_data_func_callback(GtkTreeViewColumn* tree_col
     struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
 
     // Callback_name
-    std::string callback_name = callback_object->user_parameters[1];
+    Php::Value callback_name = callback_object->user_parameters[1];
 
     // Create internal params (GtkTreeViewColumn,GtkCellRenderer,GtkTreeModel,GtkTreeIter,user_data)
     Php::Value internal_parameters;
