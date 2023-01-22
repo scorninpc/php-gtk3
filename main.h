@@ -131,6 +131,7 @@
 	#include "src/Gtk/GtkRecentChooserDialog.h"
 	#include "src/Gtk/GtkSeparator.h"
 	#include "src/Gtk/GtkAlignment.h"
+	#include "src/Gtk/GtkStatusIcon.h"
 
 	// GtkSourceView
 	#include "src/GtkSourceView/GtkSourceView.h"

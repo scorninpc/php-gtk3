@@ -2513,6 +2513,38 @@ extern "C"
             gtktexttagtable.method<&GtkTextTagTable_::foreach>("foreach");
             gtktexttagtable.method<&GtkTextTagTable_::get_size>("get_size");
         
+        Php::Class<GtkStatusIcon_> gtkstatusicon("GtkStatusIcon");
+            gtkstatusicon.extends(gobject);
+            gtkstatusicon.method<&GtkStatusIcon_::set_from_pixbuf>("set_from_pixbuf");
+            gtkstatusicon.method<&GtkStatusIcon_::set_from_file>("set_from_file");
+            gtkstatusicon.method<&GtkStatusIcon_::set_from_stock>("set_from_stock");
+            gtkstatusicon.method<&GtkStatusIcon_::set_from_icon_name>("set_from_icon_name");
+            gtkstatusicon.method<&GtkStatusIcon_::get_storage_type>("get_storage_type");
+            gtkstatusicon.method<&GtkStatusIcon_::get_pixbuf>("get_pixbuf");
+            gtkstatusicon.method<&GtkStatusIcon_::get_stock>("get_stock");
+            gtkstatusicon.method<&GtkStatusIcon_::get_icon_name>("get_icon_name");
+            gtkstatusicon.method<&GtkStatusIcon_::get_gicon>("get_gicon");
+            gtkstatusicon.method<&GtkStatusIcon_::get_size>("get_size");
+            gtkstatusicon.method<&GtkStatusIcon_::get_screen>("get_screen");
+            gtkstatusicon.method<&GtkStatusIcon_::set_has_tooltip>("set_has_tooltip");
+            gtkstatusicon.method<&GtkStatusIcon_::set_tooltip_text>("set_tooltip_text");
+            gtkstatusicon.method<&GtkStatusIcon_::set_tooltip_markup>("set_tooltip_markup");
+            gtkstatusicon.method<&GtkStatusIcon_::set_title>("set_title");
+            gtkstatusicon.method<&GtkStatusIcon_::get_title>("get_title");
+            gtkstatusicon.method<&GtkStatusIcon_::set_name>("set_name");
+            gtkstatusicon.method<&GtkStatusIcon_::set_visible>("set_visible");
+            gtkstatusicon.method<&GtkStatusIcon_::get_visible>("get_visible");
+            gtkstatusicon.method<&GtkStatusIcon_::is_embedded>("is_embedded");
+            gtkstatusicon.method<&GtkStatusIcon_::get_has_tooltip>("get_has_tooltip");
+            gtkstatusicon.method<&GtkStatusIcon_::get_tooltip_text>("get_tooltip_text");
+            gtkstatusicon.method<&GtkStatusIcon_::get_tooltip_markup>("get_tooltip_markup");
+            gtkstatusicon.method<&GtkStatusIcon_::get_x11_window_id>("get_x11_window_id");
+            gtkstatusicon.method<&GtkStatusIcon_::__construct>("__construct");
+            gtkstatusicon.method<&GtkStatusIcon_::new_from_pixbuf>("new_from_pixbuf");
+            gtkstatusicon.method<&GtkStatusIcon_::new_from_file>("new_from_file");
+            gtkstatusicon.method<&GtkStatusIcon_::new_from_stock>("new_from_stock");
+            gtkstatusicon.method<&GtkStatusIcon_::new_from_icon_name>("new_from_icon_name");
+            gtkstatusicon.method<&GtkStatusIcon_::position_menu>("position_menu");
 
         // GdkSelection
         Php::Class<Php::Base> gdkselection("GdkSelection");
@@ -3884,6 +3916,7 @@ extern "C"
         extension.add(std::move(gtktoolbar));
         extension.add(std::move(gtktoolbutton));
         extension.add(std::move(gtktexttagtable));
+        extension.add(std::move(gtkstatusicon));
 
         extension.add(std::move(gdkselection));
 
