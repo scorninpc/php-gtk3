@@ -40,6 +40,7 @@ extern "C"
             gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.method<&GObject_::get_property>("get_property");
+            gobject.method<&GObject_::set_property>("set_property");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
             gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
             gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
