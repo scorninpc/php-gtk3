@@ -2418,6 +2418,13 @@ extern "C"
             gtksizegroup.method<&GtkSizeGroup_::remove_widget>("remove_widget");
             gtksizegroup.method<&GtkSizeGroup_::get_widgets>("get_widgets");
 
+        // GtkAlignment
+        Php::Class<GtkAlignment_> gtkalignment("GtkAlignment");
+            gtkalignment.extends(gtkbin);
+            gtkalignment.method<&GtkAlignment_::set>("set");
+            gtkalignment.method<&GtkAlignment_::set_padding>("set_padding");
+            gtkalignment.method<&GtkAlignment_::get_padding>("get_padding");
+            gtkalignment.method<&GtkAlignment_::__construct>("__construct");
 
         // GtkToolItem
         Php::Class<GtkToolItem_> gtktoolitem("GtkToolItem");
@@ -3871,6 +3878,7 @@ extern "C"
         extension.add(std::move(gtktoolbarstyle));
         extension.add(std::move(gtkreliefstyle));
         extension.add(std::move(gtksizegroup));
+        extension.add(std::move(gtkalignment));
         extension.add(std::move(gtktoolitem));
         extension.add(std::move(gtkseparatortoolitem));
         extension.add(std::move(gtktoolbar));
