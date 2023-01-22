@@ -2,6 +2,23 @@
 
 Gtk::init();
 
+/**
+ * highlight treeview lines
+ */
+function highlight($column, $renderer, $model, $iter, $cor1, $cor2) {
+	$path = $model->get_path($iter);
+	$row = $path[0];
+
+	if($row % 2 == 1) {
+		$color = $cor1;
+	}
+	else {
+		$color = $cor2;
+	}
+
+	$renderer->set_property("cell-background", $color);
+}
+
 // Status icon menu
 $menu = new GtkMenu();
 	$item = GtkMenuItem::new_with_label("Menu Item 1");
@@ -25,12 +42,31 @@ $status->connect("button_press_event", function($widget, $event=NULL) use ($menu
 	$menu->show_all();
 });
 
+// Treeview
+$treeview = new GtkTreeView();
+	$renderer = new GtkCellRendererText();
+	$column = new GtkTreeViewColumn("Column", $renderer, "text", 0);
+	$treeview->append_column($column);
+	
+	$column->set_cell_data_func($renderer, "highlight", "#ff0000", "#00FF00");
+
+	$model = new GtkListStore(GObject::TYPE_STRING);
+	$treeview->set_model($model);
+
+	$model->append(["line 1"]);
+	$model->append(["line 2"]);
+	$model->append(["line 3"]);
+	$model->append(["line 4"]);
+	$model->append(["line 5"]);
+	$model->append(["line 6"]);
 
 // Window
 $window = new GtkWindow();
 $window->connect("destroy", function() {
 	Gtk::main_quit();
 });
+$window->add($treeview);
+$window->set_default_size(300, 200);
 $window->show_all();
 
 Gtk::main();
