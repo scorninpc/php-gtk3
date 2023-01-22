@@ -207,3 +207,10 @@ Php::Value GtkTreeView_::get_n_columns()
     // 
     return (int)ret;
 }
+
+void GtkTreeView_::set_headers_visible(Php::Parameters &parameters)
+{
+	bool enabled = (bool)parameters[0];
+
+	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(instance), enabled);
+}

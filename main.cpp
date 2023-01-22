@@ -1634,6 +1634,7 @@ extern "C"
             gtktreeview.method<&GtkTreeView_::collapse_all>("collapse_all");
             gtktreeview.method<&GtkTreeView_::expand_all>("expand_all");
             gtktreeview.method<&GtkTreeView_::get_n_columns>("get_n_columns");
+            gtktreeview.method<&GtkTreeView_::set_headers_visible>("set_headers_visible");
         
 
         // GtkTreeViewColumn
@@ -1661,6 +1662,9 @@ extern "C"
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_order>("set_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_order>("get_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_tree_view>("get_tree_view");
+            gtktreeviewcolumn.constant("GROW_ONLY", GTK_TREE_VIEW_COLUMN_GROW_ONLY);
+            gtktreeviewcolumn.constant("AUTOSIZE", GTK_TREE_VIEW_COLUMN_AUTOSIZE);
+            gtktreeviewcolumn.constant("FIXED", GTK_TREE_VIEW_COLUMN_FIXED);
         
 
         // GtkCellRenderer

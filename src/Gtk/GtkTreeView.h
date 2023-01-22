@@ -74,6 +74,8 @@
             Php::Value get_enable_search();
             
             Php::Value get_n_columns();
+
+            void set_headers_visible(Php::Parameters &parameters);
     };
 
 #endif
