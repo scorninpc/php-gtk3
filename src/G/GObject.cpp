@@ -303,8 +303,6 @@ Php::Value GObject_::get_property(Php::Parameters &parameters)
     std::string s_property_name = parameters[0];
     gchar *property_name = (gchar *)s_property_name.c_str();
 
-
-
     GValue gvalue = {0};
     g_value_init(&gvalue, G_TYPE_OBJECT);
 
@@ -314,3 +312,14 @@ Php::Value GObject_::get_property(Php::Parameters &parameters)
 
 }
 
+void GObject_::set_property(Php::Parameters &parameters)
+{
+    std::string s_property_name = parameters[0];
+    gchar *property_name = (gchar *)s_property_name.c_str();
+
+    // @todo get way to find GType
+    GValue value = {0};
+    value = phpgtk_get_gvalue(parameters[1], G_TYPE_STRING);
+
+    g_object_set_property(G_OBJECT(instance), property_name, &value);
+}
