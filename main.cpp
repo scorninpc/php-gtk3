@@ -963,6 +963,10 @@ extern "C"
             gtkwidget.method<&GtkWidget_::class_set_connect_func>("class_set_connect_func");
         
 
+        Php::Class<GtkSeparator_> gtkseparator("GtkSeparator");
+            gtkseparator.extends(gtkwidget);
+            gtkseparator.method<&GtkSeparator_::__construct>("__construct");
+
         // GtkMisc
         Php::Class<GtkMisc_> gtkmisc("GtkMisc");
             gtkmisc.extends(gtkwidget);
@@ -3798,6 +3802,7 @@ extern "C"
         extension.add(std::move(gtkfilechooserdialog));
         extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtkprintsettings));
+        extension.add(std::move(gtkseparator));
         
         // extension.add(std::move(gtkpagesetupunixdialog));
         extension.add(std::move(gtkpagesetup));

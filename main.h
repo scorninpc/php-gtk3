@@ -129,6 +129,7 @@
 	#include "src/Gtk/GtkInfoBar.h"
 	#include "src/Gtk/GtkProgressBar.h"
 	#include "src/Gtk/GtkRecentChooserDialog.h"
+	#include "src/Gtk/GtkSeparator.h"
 
 	// GtkSourceView
 	#include "src/GtkSourceView/GtkSourceView.h"
