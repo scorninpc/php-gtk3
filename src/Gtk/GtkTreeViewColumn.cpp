@@ -1,6 +1,12 @@
 
 #include "GtkTreeViewColumn.h"
 
+
+struct GtkTreeViewColumn_::st_request_callback {
+    Php::Parameters user_parameters;
+    Php::Object self_widget;
+};
+
 /**
  * Constructor
  */
@@ -280,4 +286,62 @@ void GtkTreeViewColumn_::set_max_width(Php::Parameters &parameters)
 {
     int max_width = parameters[0];
     gtk_tree_view_column_set_max_width(GTK_TREE_VIEW_COLUMN(instance), max_width);
+}
+
+/**
+ * 
+ */
+void GtkTreeViewColumn_::set_cell_data_func(Php::Parameters &parameters)
+{
+    GtkCellRenderer *cell_renderer;
+    Php::Value o_cell_renderer = parameters[0];
+    GtkCellRenderer_ *p_cell_renderer = (GtkCellRenderer_ *)o_cell_renderer.implementation();
+    cell_renderer = GTK_CELL_RENDERER(p_cell_renderer->get_instance());
+
+    Php::Array callback_params = parameters;
+
+    // Create gpointer user data
+    struct st_request_callback *callback_object = (struct st_request_callback *)malloc(sizeof(struct st_request_callback));
+    memset(callback_object, 0, sizeof(struct st_request_callback));
+    callback_object->user_parameters = parameters;
+    callback_object->self_widget = Php::Object("GtkTreeViewColumn", this);
+
+    // Call the virtual callback
+    gtk_tree_view_column_set_cell_data_func(GTK_TREE_VIEW_COLUMN(instance), cell_renderer, set_cell_data_func_callback, (gpointer)callback_object, NULL);
+}
+
+void GtkTreeViewColumn_::set_cell_data_func_callback(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer user_data)
+{
+	// Return to st_callback
+    struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
+
+    // Callback_name
+    std::string callback_name = callback_object->user_parameters[1];
+
+    // Create internal params (GtkTreeViewColumn,GtkCellRenderer,GtkTreeModel,GtkTreeIter,user_data)
+    Php::Value internal_parameters;
+    internal_parameters[0] = callback_object->self_widget;
+
+    // cell renderer
+    GtkCellRenderer_ *cell_ = new GtkCellRenderer_();
+    cell_->set_instance((gpointer *)cell);
+    internal_parameters[1] = Php::Object("GtkCellRenderer", cell_);
+
+    //  tree model
+    GtkTreeModel_ *tree_model_ = new GtkTreeModel_();
+    tree_model_->set_model(tree_model);
+    internal_parameters[2] = Php::Object("GtkTreeModel", tree_model_);
+
+    // iter
+    GtkTreeIter_ *iter_ = new GtkTreeIter_();
+    iter_->set_instance(*iter);
+    internal_parameters[3] = Php::Object("GtkTreeIter", iter_);
+
+    // user data
+    for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
+    	internal_parameters[i+2] = callback_object->user_parameters[i];
+    }
+
+	// Call php function with parameters
+    Php::call("call_user_func_array", callback_name, internal_parameters);
 }

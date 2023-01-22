@@ -18,6 +18,9 @@
      */
     class GtkTreeViewColumn_ : public GObject_
     {
+        private:
+            struct st_request_callback;
+        
         /**
          * Publics
          */
@@ -196,6 +199,9 @@
             Php::Value get_tree_view();
 
             void set_max_width(Php::Parameters &parameters);
+
+            void set_cell_data_func(Php::Parameters &parameters);
+            static void set_cell_data_func_callback(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer user_data);
     };
 
 #endif
