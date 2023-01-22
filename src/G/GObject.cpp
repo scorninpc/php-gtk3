@@ -183,6 +183,11 @@ bool GObject_::connect_callback(gpointer user_data, ...)
                 // Php::call("var_dump", "int");
                 internal_parameters[i+1] = va_arg(ap, gint);
                 break;
+
+            case G_TYPE_UINT:
+                // Php::call("var_dump", "int");
+                internal_parameters[i+1] = (int)va_arg(ap, guint);
+                break;
                 
             case G_TYPE_OBJECT:
             {
