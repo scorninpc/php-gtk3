@@ -275,3 +275,9 @@ Php::Value GtkTreeViewColumn_::get_tree_view()
     // Return PHP-GTK object
     return Php::Object("GtkTreeView", widget_);
 }
+
+void GtkTreeViewColumn_::set_max_width(Php::Parameters &parameters)
+{
+    int max_width = parameters[0];
+    gtk_tree_view_column_set_max_width(GTK_TREE_VIEW_COLUMN(instance), max_width);
+}

@@ -1662,6 +1662,7 @@ extern "C"
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_order>("set_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sort_order>("get_sort_order");
             gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_tree_view>("get_tree_view");
+            gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_max_width>("set_max_width");
             gtktreeviewcolumn.constant("GROW_ONLY", GTK_TREE_VIEW_COLUMN_GROW_ONLY);
             gtktreeviewcolumn.constant("AUTOSIZE", GTK_TREE_VIEW_COLUMN_AUTOSIZE);
             gtktreeviewcolumn.constant("FIXED", GTK_TREE_VIEW_COLUMN_FIXED);

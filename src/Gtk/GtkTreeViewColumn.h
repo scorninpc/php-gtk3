@@ -194,6 +194,8 @@
              * https://developer.gnome.org/gtk3/stable/GtkTreeViewColumn.html#gtk-tree-view-column-get-tree-view
              */
             Php::Value get_tree_view();
+
+            void set_max_width(Php::Parameters &parameters);
     };
 
 #endif
