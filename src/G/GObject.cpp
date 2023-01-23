@@ -323,3 +323,19 @@ void GObject_::set_property(Php::Parameters &parameters)
 
     g_object_set_property(G_OBJECT(instance), property_name, &value);
 }
+
+void GObject_::signal_handler_block(Php::Parameters &parameters)
+{
+    double p_handler_id = parameters[0];
+    gulong handler_id = (gulong) p_handler_id;
+
+    g_signal_handler_block(G_OBJECT(instance), handler_id);
+}
+
+void GObject_::signal_handler_unblock(Php::Parameters &parameters)
+{
+    double p_handler_id = parameters[0];
+    gulong handler_id = (gulong) p_handler_id;
+
+    g_signal_handler_unblock(G_OBJECT(instance), handler_id);
+}
