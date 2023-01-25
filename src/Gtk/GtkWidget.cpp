@@ -1,6 +1,7 @@
 
 #include "GtkWidget.h"
 #include "GtkWindow.h"
+#include "../Gdk/GdkRGBA.h"
 
 /**
  * Constructor
@@ -823,36 +824,37 @@ Php::Value GtkWidget_::get_composite_name()
 
 void GtkWidget_::override_background_color(Php::Parameters &parameters)
 {
-// // 	int int_state = (int)parameters[0];
-// 	GtkStateFlags state = (GtkStateFlags)int_state;
+ 	int int_state = (int)parameters[0];
+ 	GtkStateFlags state = (GtkStateFlags)int_state;
+	// GtkWidget* color;
+	GdkRGBA color;
 
-// // 	GdkRGBA *color;
-// 	if(parameters.size() > 1) {
-// 		Php::Value object_color = parameters[1];
-// 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
-// 		color = GTK_WIDGET(phpgtk_color->get_instance());
-// 	}
+ 	if(parameters.size() > 1) {
+ 		Php::Value object_color = parameters[1];
+ 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
+ 		color = phpgtk_color->get_instance();
+ 	}
 
-// 	gtk_widget_override_background_color (GTK_WIDGET(instance), state, color);
+ 	gtk_widget_override_background_color (GTK_WIDGET(instance), state, &color);
 
-	 Php::deprecated << "GtkWidget_::override_background_color  is deprecated on Gtk 3.16";
+	 //Php::deprecated << "GtkWidget_::override_background_color  is deprecated on Gtk 3.16";
 }
 
 void GtkWidget_::override_color(Php::Parameters &parameters)
 {
-// // 	int int_state = (int)parameters[0];
-// 	GtkStateFlags state = (GtkStateFlags)int_state;
+ 	int int_state = (int)parameters[0];
+	GtkStateFlags state = (GtkStateFlags)int_state;
 
-// // 	GdkRGBA *color;
-// 	if(parameters.size() > 1) {
-// 		Php::Value object_color = parameters[1];
-// 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
-// 		color = GTK_WIDGET(phpgtk_color->get_instance());
-// 	}
+ 	GdkRGBA color;
+	if(parameters.size() > 1) {
+		Php::Value object_color = parameters[1];
+ 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
+ 		color = phpgtk_color->get_instance();
+ 	}
 
-// 	gtk_widget_override_color (GTK_WIDGET(instance), state, color);
+ 	gtk_widget_override_color (GTK_WIDGET(instance), state, &color);
 
-	 Php::deprecated << "GtkWidget_::override_color  is deprecated on Gtk 3.16";
+//	 Php::deprecated << "GtkWidget_::override_color  is deprecated on Gtk 3.16";
 }
 
 void GtkWidget_::override_font(Php::Parameters &parameters)

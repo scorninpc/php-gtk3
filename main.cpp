@@ -37,12 +37,13 @@ extern "C"
         // GObject
         Php::Class<GObject_> gobject("GObject");
             gobject.method<&GObject_::connect>("connect");
+            // gobject.method<&GObject_::connect_simple>("connect_simple");
             gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.method<&GObject_::get_property>("get_property");
             gobject.method<&GObject_::set_property>("set_property");
-            gobject.method<&GObject_::set_property>("signal_handler_block");
-            gobject.method<&GObject_::set_property>("signal_handler_unblock");
+            gobject.method<&GObject_::signal_handler_block>("signal_handler_block");
+            gobject.method<&GObject_::signal_handler_unblock>("signal_handler_unblock");
             gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
             gobject.constant("TYPE_NONE", (int)G_TYPE_NONE);
             gobject.constant("TYPE_INTERFACE", (int)G_TYPE_INTERFACE);
@@ -2523,11 +2524,11 @@ extern "C"
             gtkstatusicon.method<&GtkStatusIcon_::set_from_file>("set_from_file");
             gtkstatusicon.method<&GtkStatusIcon_::set_from_stock>("set_from_stock");
             gtkstatusicon.method<&GtkStatusIcon_::set_from_icon_name>("set_from_icon_name");
-            gtkstatusicon.method<&GtkStatusIcon_::get_storage_type>("get_storage_type");
+           // gtkstatusicon.method<&GtkStatusIcon_::get_storage_type>("get_storage_type");
             gtkstatusicon.method<&GtkStatusIcon_::get_pixbuf>("get_pixbuf");
             gtkstatusicon.method<&GtkStatusIcon_::get_stock>("get_stock");
             gtkstatusicon.method<&GtkStatusIcon_::get_icon_name>("get_icon_name");
-            gtkstatusicon.method<&GtkStatusIcon_::get_gicon>("get_gicon");
+           // gtkstatusicon.method<&GtkStatusIcon_::get_gicon>("get_gicon");
             gtkstatusicon.method<&GtkStatusIcon_::get_size>("get_size");
             gtkstatusicon.method<&GtkStatusIcon_::get_screen>("get_screen");
             gtkstatusicon.method<&GtkStatusIcon_::set_has_tooltip>("set_has_tooltip");
@@ -2542,7 +2543,7 @@ extern "C"
             gtkstatusicon.method<&GtkStatusIcon_::get_has_tooltip>("get_has_tooltip");
             gtkstatusicon.method<&GtkStatusIcon_::get_tooltip_text>("get_tooltip_text");
             gtkstatusicon.method<&GtkStatusIcon_::get_tooltip_markup>("get_tooltip_markup");
-            gtkstatusicon.method<&GtkStatusIcon_::get_x11_window_id>("get_x11_window_id");
+           // gtkstatusicon.method<&GtkStatusIcon_::get_x11_window_id>("get_x11_window_id");
             gtkstatusicon.method<&GtkStatusIcon_::__construct>("__construct");
             gtkstatusicon.method<&GtkStatusIcon_::new_from_pixbuf>("new_from_pixbuf");
             gtkstatusicon.method<&GtkStatusIcon_::new_from_file>("new_from_file");

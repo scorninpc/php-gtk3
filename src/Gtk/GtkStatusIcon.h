@@ -21,11 +21,11 @@
 			void set_from_file(Php::Parameters &parameters);
 			void set_from_stock(Php::Parameters &parameters);
 			void set_from_icon_name(Php::Parameters &parameters);
-			Php::Value get_storage_type();
+			//Php::Value get_storage_type();
 			Php::Value get_pixbuf();
 			Php::Value get_stock();
 			Php::Value get_icon_name();
-			Php::Value get_gicon();
+			//Php::Value get_gicon();
 			Php::Value get_size();
 			Php::Value get_screen();
 			void set_has_tooltip(Php::Parameters &parameters);
@@ -40,7 +40,7 @@
 			Php::Value get_has_tooltip();
 			Php::Value get_tooltip_text();
 			Php::Value get_tooltip_markup();
-			Php::Value get_x11_window_id();
+			//Php::Value get_x11_window_id();
 			void __construct();
 			static Php::Value new_from_pixbuf(Php::Parameters &parameters);
 			static Php::Value new_from_file(Php::Parameters &parameters);

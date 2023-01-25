@@ -7,10 +7,12 @@ Thanks to [subabrain](https://github.com/subabrain) for make this possible ([#24
  - [Install and configure MSYS2](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#install-and-configure-msys2)
  - [Install Visual Studio and Redistributables](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#install-visual-studio-and-redistributables)
  - [Prepare sources](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#prepare-sources)
+ - [Compile PHP](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#compile-PHP)
  - [Fix PHP-CPP for Visual Studio](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#fix-php-cpp-for-visual-studio)
  - [Setup Visual Studio project](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#setup-visual-studio-project)
- - [Compile PHP-CPP](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#compile-php-cpp)
- - [GTK Dependencies](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#gtk-dependencies)
+ - [Visual Studio general Properties](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#Visual-Studio-general-Properties)
+ - [Visual Studio C/C++ Properties](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#Visual-Studio-C/C++-Properties)
+ - [Visual Studio Linker Properties](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#Visual-Studio-Linker-Properties)
  - [Compile PHP-GTK3](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#testing-the-extension)
  - [Testing the extension](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md#testing-the-extension)
 
@@ -38,6 +40,8 @@ Prepare MSYS2 for 32bit:
 :$ pacman -S mingw-w64-i686-gdk-pixbuf2
 :$ pacman -S mingw-w64-i686-glib2
 ```
+- Copy the file `mingw64\lib\glib-2.0\include\glibconfig.h` to the folder `mingw64\include\glib-2.0`
+- For 32bit, replace the "mingw64" with "mingw32"
 
 ## Install Visual Studio and Redistributables
 
@@ -47,11 +51,28 @@ Install Visual Studio 2022 from [here](https://visualstudio.microsoft.com/)
 
 ## Prepare sources
 
-Create a directory anywere to do some organization
+- Create a directory anywere to do some organization.
 
-Extract PHP source inside. Here we tested with [PHP 7.3.0](https://github.com/php/php-src/tree/PHP-7.3.0)
+- Get PHP sources and binaries of choice from [https://windows.php.net/download](https://windows.php.net/download). E.g.: 7.4.33
 
-Extract PHP-CPP source inside. The code can be downloaded from [here](https://github.com/CopernicaMarketingSoftware/PHP-CPP)
+Extract both into your working directory.
+
+- Get [PHP-CPP-win](https://github.com/apss-pohl/PHP-CPP-win) source (Original code: [PHP-CPP-win](https://github.com/CopernicaMarketingSoftware/PHP-CPP)).
+
+- Get [PHP-GTK3](https://github.com/scorninpc/php-gtk3) source.
+
+The directory should look similar to :
+
+```sh
+:$ php-7.4.33-nts-Win32-vc15-x64
+:$ php-7.4.33-src
+:$ PHP-CPP-win
+:$ php-gtk3
+```
+## Compile PHP
+Following the [PHP-SDK-Binary-Tools] (https://github.com/Microsoft/php-sdk-binary-tools/tree/php-sdk-2.2.0).
+Version must follow your intended compilation type.
+Once done, copy "config.w32.h" from "php-sdk\phpmaster\vc15\x64\php-src\main" to "php-7.4.33-src\main"
 
 ## Fix PHP-CPP for Visual Studio
 
@@ -59,13 +80,53 @@ We have a file named `zend\string.h` in the PHP-CPP folder. So on Windows there 
 
 Now you have to make this to correct in the other files of PHP-CPP, just by searching for `#include "string.h"` and replace it with `#include "strings.h"` in all files.
 
+This should be done if you used [PHP-CPP-win](https://github.com/apss-pohl/PHP-CPP-win) source.
+
 ## Setup Visual Studio project
 
 Create a new Project in Visual Studio. We will take a `Empty C++ Project` here. You can name it as you decide to.
 
-Set the Build Settings (I use "Release" with "X64")
+Add "*.cpp" sources from:
 
-Set the Preprocessor definitions to:
+- PHP-CPP-win\zend\
+- PHP-CPP-win\common\
+- php-gtk3\src\\**\
+- php-gtk3\
+
+##  Visual Studio general Properties
+Configure project as follows:
+
+- Set the Build Settings (I use "Release" with "X64")
+
+General:
+- Windows SDK Version: 10.0.17763.0
+- Platform Toolset: Visual Studio 2017 (v141)
+- Configuration Type: `dynamic library`
+
+##  Visual Studio C/C++ Properties
+- Additional Include Directories:
+```
+<extracted_folder_of_php_source>\
+<extracted_folder_of_php_source>\TSRM
+<extracted_folder_of_php_source\Zend
+<extracted_folder_of_php_source>\main
+<extracted_folder_of_php_cpp>\
+<mysys64_location>mingw64\include\libgladeui-2.0
+<mysys64_location>mingw64\include\harfbuzz
+<mysys64_location>mingw64\include\gtk-3.0
+<mysys64_location>mingw64\include\cairo
+<mysys64_location>mingw64\include\gtksourceview-3.0
+<mysys64_location>mingw64\include\glib-2.0
+<mysys64_location>mingw64\include\gdk-pixbuf-3.0
+<mysys64_location>mingw64\include\atk-1.0
+<mysys64_location>mingw64\include\pango-1.0
+```
+- Warning Level: Turn Off All Warnings (/W0)
+- SDL checks: No (/sdl-)
+- Multi-processor Compilation: Yes (/MP)
+- Runtime Library: Multi-threaded (/MT)
+- C++ Language Standard: ISO C++17 Standard (/std:c++17)
+- Preprocessor definitions:
 
 ```
 _WINDOWS
@@ -82,108 +143,36 @@ _NOEXCEPT=noexcept
 G_PLATFORM_WIN32
 GIO_COMPILATION
 BUILDING_PHPCPP
-PHP_VERSION_ID=70300
+PHP_VERSION_ID=70433 (Following your PHP version of choice)
 GDK_PIXBUF_COMPILATION
 GDK_COMPILATION
 GTK_COMPILATION
 GLIB_COMPILATION
-```
-
 If you want to compile in 32bit you must set the definition:
-
-```
 _USE_32BIT_TIME_T
 ```
 
-Add the include paths to:
-
-```
-<extracted_folder_of_php_source>\
-<extracted_folder_of_php_source>\TSRM
-<extracted_folder_of_php_source\Zend
-<extracted_folder_of_php_source>\main
-<extracted_folder_of_php_cpp>\
-```
-
-And set the libraries path to:
-
+##  Visual Studio Linker Properties
+- Additional Library Directories:
 ```
 <extracted_folder_of_php_binaries>\dev
+<mysys64_location>mingw64\lib
 ```
-
-And the library to:
-
-```
-php7.lib
-```
-
-Set the buildtype to `dynamic library`
-
-Set the C++ Lanaguage Version to `c++17`
-
-Set the C Language Version to `c17`
-
-Set the Runtime Library to `Multithreaded`
-
-## Compile PHP-CPP
-
-Now you can compile PHP-CPP, but you might get some syntax errors, so you can fix that, or you can see the PHP-CPP repository to get some PR, but it's easy to fix
-
-## GTK Dependencies
-
-Copy the file `mingw64\lib\glib-2.0\include\glibconfig.h` to the folder `mingw64\include\glib-2.0`
-
-Now we just have to set the linker libraries to get it run.
-
-Add the additional dependencies as follows (add them to the `php7.lib`):
-
+- Additional Dependencies:
 ```
 libgtk-3.dll.a
 libgobject-2.0.dll.a
 libgio-2.0.dll.a
 libgdk-3.dll.a
+php7.lib
 libgdk_pixbuf-2.0.dll.a
 libglib-2.0.dll.a
 libgladeui-2.dll.a
 libgtksourceview-3.0.dll.a
 ```
 
-And add additional dependencies paths to (to the "dev folder" that already exists):
-
-```
-<folder_of_msys2>\mingw64\lib
-```
-
-And now add the following paths to the include paths of your Project (add them to the existing ones):
-
-```
-<extracted_folder_of_phpcpp>\
-<extracted_folder_of_php_source>\ 
-<extracted_folder_of_php_source>\TSRM
-<extracted_folder_of_php_source>\Zend
-<extracted_folder_of_php_source>\main
-<folder_of_msys2>\mingw64\include\libgladeui-2.0
-<folder_of_msys2>\mingw64\include\harfbuzz
-<folder_of_msys2>\mingw64\include\gtk-3.0
-<folder_of_msys2>\mingw64\include\cairo
-<folder_of_msys2>\mingw64\include\gtksourceview-3.0
-<folder_of_msys2>\mingw64\include\glib-2.0
-<folder_of_msys2>\mingw64\include\gdk-pixbuf-2.0
-<folder_of_msys2>\mingw64\include\atk-1.0
-<folder_of_msys2>\mingw64\include\pango-1.0
-```
-
-For 32bit, replace the "mingw64" with "mingw32"
-
 ## Compile PHP-GTK3
-
-With PHP-CPP compiled, now you can compile PHP-GTK3
-
-You need to add .cpp files to Visual Studio
-
-Add .cpp files from `src\G` `src\Gdk` `src\Glade` `src\Gtk` `src\GtkSourceView` `php-gtk.cpp` and `main.cpp` to your source code folder of Visual Studio using `Add Existing Files`
-
-Now, if all is correct, it should compile without errors!
+You should now be able to compile PHP-GTK3. Hit "Build/ Build Solution"
 
 ## Testing the extension
 
