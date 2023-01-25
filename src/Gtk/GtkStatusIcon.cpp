@@ -42,6 +42,7 @@ void GtkStatusIcon_::set_from_icon_name(Php::Parameters &parameters)
 	gtk_status_icon_set_from_icon_name(GTK_STATUS_ICON(instance), icon_name);
 }
 
+/*
 Php::Value GtkStatusIcon_::get_storage_type()
 {
 	// GtkImageType ret = gtk_status_icon_get_storage_type(GTK_STATUS_ICON(instance));
@@ -50,6 +51,7 @@ Php::Value GtkStatusIcon_::get_storage_type()
 	// phpgtk_ret->set_instance((gpointer *)ret);
 	// return Php::Object("GtkImageType", phpgtk_ret);
 }
+*/
 
 Php::Value GtkStatusIcon_::get_pixbuf()
 {
@@ -74,6 +76,7 @@ Php::Value GtkStatusIcon_::get_icon_name()
 	return ret;
 }
 
+/*
 Php::Value GtkStatusIcon_::get_gicon()
 {
 	// GIcon* ret = gtk_status_icon_get_gicon(GTK_STATUS_ICON(instance));
@@ -82,6 +85,7 @@ Php::Value GtkStatusIcon_::get_gicon()
 	// phpgtk_ret->set_instance((gpointer *)ret);
 	// return Php::Object("GIcon*", phpgtk_ret);
 }
+*/
 
 Php::Value GtkStatusIcon_::get_size()
 {
@@ -191,6 +195,7 @@ Php::Value GtkStatusIcon_::get_tooltip_markup()
 	return ret;
 }
 
+/*
 Php::Value GtkStatusIcon_::get_x11_window_id()
 {
 	// guint32 ret = gtk_status_icon_get_x11_window_id(GTK_STATUS_ICON(instance));
@@ -199,6 +204,7 @@ Php::Value GtkStatusIcon_::get_x11_window_id()
 	// phpgtk_ret->set_instance((gpointer *)ret);
 	// return Php::Object("guint32", phpgtk_ret);
 }
+*/
 
 void GtkStatusIcon_::__construct()
 {
