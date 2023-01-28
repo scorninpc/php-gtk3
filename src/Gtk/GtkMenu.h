@@ -7,6 +7,8 @@
 
 	#include "GtkMenuShell.h"
 	#include "GtkWidget.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkMenu_

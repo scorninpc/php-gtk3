@@ -7,6 +7,8 @@
 
 	#include "GtkDialog.h"
     #include "GtkFileFilter.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkFileChooserDialog_

@@ -242,11 +242,13 @@ void GtkBox_::set_baseline_position(Php::Parameters &parameters)
 
 Php::Value GtkBox_::get_center_widget()
 {
-	GtkWidget *ret = gtk_box_get_center_widget (GTK_BOX(instance));
+	gpointer *ret = (gpointer *)gtk_box_get_center_widget (GTK_BOX(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkBox_::set_center_widget(Php::Parameters &parameters)

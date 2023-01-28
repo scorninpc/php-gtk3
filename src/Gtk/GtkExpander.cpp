@@ -25,11 +25,13 @@ Php::Value GtkExpander_::new_with_mnemonic(Php::Parameters &parameters)
 	std::string s_label = parameters[0];
 	gchar *label = (gchar *)s_label.c_str();
 
-	GtkWidget *ret = gtk_expander_new_with_mnemonic (label);
+	gpointer *ret = (gpointer *)gtk_expander_new_with_mnemonic (label);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkExpander_::set_expanded(Php::Parameters &parameters)
@@ -123,11 +125,12 @@ void GtkExpander_::set_label_widget(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_label_widget()
 {
-	GtkWidget *ret = gtk_expander_get_label_widget (GTK_EXPANDER(instance));
+	gpointer *ret = (gpointer *)gtk_expander_get_label_widget (GTK_EXPANDER(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkExpander_::set_label_fill(Php::Parameters &parameters)

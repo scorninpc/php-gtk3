@@ -38,11 +38,13 @@ Php::Value GtkColorButton_::new_with_rgba(Php::Parameters &parameters)
 		rgba = phpgtk_rgba->get_instance();
 	}
 
-	GtkWidget *ret = gtk_color_button_new_with_rgba (&rgba);
+	gpointer *ret = (gpointer *)gtk_color_button_new_with_rgba (&rgba);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkColorButton_::set_color(Php::Parameters &parameters)

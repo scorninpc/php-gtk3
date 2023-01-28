@@ -7,6 +7,8 @@
 
 	#include "GtkButton.h"
 	#include "../Gdk/GdkRGBA.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkColorButton_

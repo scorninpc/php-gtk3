@@ -106,9 +106,10 @@ Php::Value GtkContainer_::get_children()
 
 	for(int index=0; GList *item=g_list_nth(ret, index); index++) {
 		
-		GtkWidget_ *widget_ = new GtkWidget_();
-		widget_->set_instance((gpointer *)item->data);
-		ret_arr[index] = Php::Object("GtkWidget", widget_);
+		// GtkWidget_ *widget_ = new GtkWidget_();
+		// widget_->set_instance((gpointer *)item->data);
+		// ret_arr[index] = Php::Object("GtkWidget", widget_);
+		ret_arr[index] = cobject_to_phpobject((gpointer *)item->data);
 	}
 
 	return ret_arr;
@@ -142,11 +143,13 @@ void GtkContainer_::set_reallocate_redraws(Php::Parameters &parameters)
 
 Php::Value GtkContainer_::get_focus_child()
 {
-	GtkWidget *ret = gtk_container_get_focus_child (GTK_CONTAINER(instance));
+	gpointer *ret = (gpointer *)gtk_container_get_focus_child (GTK_CONTAINER(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkContainer_::set_focus_child(Php::Parameters &parameters)

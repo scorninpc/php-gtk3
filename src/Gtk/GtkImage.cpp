@@ -22,11 +22,13 @@ Php::Value GtkImage_::new_from_file(Php::Parameters &parameters)
 	std::string s_filename = parameters[0];
 	gchar *filename = (gchar *)s_filename.c_str();
 
-	GtkWidget *ret = gtk_image_new_from_file (filename);
+	gpointer *ret = (gpointer *)gtk_image_new_from_file (filename);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_icon_set(Php::Parameters &parameters)
@@ -64,11 +66,13 @@ void GtkImage_::get_icon_set(Php::Parameters &parameters)
 
 Php::Value GtkImage_::get_pixbuf()
 {
-	GdkPixbuf *ret = gtk_image_get_pixbuf (GTK_IMAGE(instance));
+	gpointer *ret = (gpointer *)gtk_image_get_pixbuf (GTK_IMAGE(instance));
 
-	GdkPixbuf_ *return_parsed = new GdkPixbuf_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GdkPixbuf", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GdkPixbuf_ *return_parsed = new GdkPixbuf_();
+	// return_parsed->set_instance(ret);
+	// return Php::Object("GdkPixbuf", return_parsed);
 }
 
 void GtkImage_::get_stock(Php::Parameters &parameters)
@@ -137,11 +141,13 @@ Php::Value GtkImage_::new_from_pixbuf(Php::Parameters &parameters)
 		pixbuf = phpgtk_pixbuf->get_instance();
 	}
 
-	GtkWidget *ret = gtk_image_new_from_pixbuf (pixbuf);
+	gpointer *ret = (gpointer *)gtk_image_new_from_pixbuf (pixbuf);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkImage", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_stock(Php::Parameters &parameters)
@@ -180,11 +186,13 @@ Php::Value GtkImage_::new_from_icon_name(Php::Parameters &parameters)
 	int int_size = (int)parameters[1];
 	GtkIconSize size = (GtkIconSize)int_size;
 
-	GtkWidget *ret = gtk_image_new_from_icon_name (icon_name, size);
+	gpointer *ret = (gpointer *)gtk_image_new_from_icon_name (icon_name, size);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkImage", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_gicon(Php::Parameters &parameters)
@@ -207,11 +215,13 @@ Php::Value GtkImage_::new_from_resource(Php::Parameters &parameters)
 	std::string s_resource_path = parameters[0];
 	gchar *resource_path = (gchar *)s_resource_path.c_str();
 
-	GtkWidget *ret = gtk_image_new_from_resource (resource_path);
+	gpointer *ret = (gpointer *)gtk_image_new_from_resource (resource_path);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkImage", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkImage", return_parsed);
 }
 
 Php::Value GtkImage_::new_from_surface()

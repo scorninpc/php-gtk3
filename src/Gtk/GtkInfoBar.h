@@ -7,6 +7,8 @@
 
 	#include "GtkBox.h"
 	#include "GtkWidget.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkInfoBar_

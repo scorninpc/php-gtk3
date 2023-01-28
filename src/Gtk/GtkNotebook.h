@@ -6,6 +6,8 @@
     #include <gtk/gtk.h>
 
 	#include "GtkContainer.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkNotebook_

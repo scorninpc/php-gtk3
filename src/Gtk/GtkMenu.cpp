@@ -267,11 +267,13 @@ void GtkMenu_::reposition()
 
 Php::Value GtkMenu_::get_active()
 {
-	GtkWidget *ret = gtk_menu_get_active (GTK_MENU(instance));
+	gpointer *ret = (gpointer *)gtk_menu_get_active (GTK_MENU(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+
+	return cobject_to_phpobject(ret);
 }
 
 void GtkMenu_::set_active(Php::Parameters &parameters)
@@ -312,11 +314,12 @@ void GtkMenu_::detach()
 
 Php::Value GtkMenu_::get_attach_widget()
 {
-	GtkWidget *ret = gtk_menu_get_attach_widget (GTK_MENU(instance));
+	gpointer *ret = (gpointer *)gtk_menu_get_attach_widget (GTK_MENU(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 Php::Value GtkMenu_::get_for_attach_widget()

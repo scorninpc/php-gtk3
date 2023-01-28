@@ -25,17 +25,19 @@ Php::Value GtkInfoBar_::new_with_buttons(Php::Parameters &parameters)
          throw Php::Exception("parameters expect one button with response");
     }
 
-	GtkWidget *instance_a = gtk_info_bar_new_with_buttons (arr[0], (int)arr[1], NULL);
+	gpointer *ret = (gpointer *)gtk_info_bar_new_with_buttons (arr[0], (int)arr[1], NULL);
 
 	// Add buttons
     for(int index=2; index < (int)arr.size(); index+=2) {
-        gtk_info_bar_add_button(GTK_INFO_BAR(instance_a), arr[index], (int)arr[index+1]);
+        gtk_info_bar_add_button(GTK_INFO_BAR(ret), arr[index], (int)arr[index+1]);
         
     }
 
-	GtkInfoBar_ *return_parsed = new GtkInfoBar_();
-	return_parsed->set_instance((gpointer *)instance_a);
-	return Php::Object("GtkInfoBar", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkInfoBar_ *return_parsed = new GtkInfoBar_();
+	// return_parsed->set_instance((gpointer *)instance_a);
+	// return Php::Object("GtkInfoBar", return_parsed);
 }
 
 void GtkInfoBar_::add_action_widget(Php::Parameters &parameters)
@@ -60,11 +62,13 @@ Php::Value GtkInfoBar_::add_button(Php::Parameters &parameters)
 
 	gint response_id = (gint)parameters[1];
 
-	GtkWidget *ret = gtk_info_bar_add_button (GTK_INFO_BAR(instance), button_text, response_id);
+	gpointer *ret = (gpointer *)gtk_info_bar_add_button (GTK_INFO_BAR(instance), button_text, response_id);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkInfoBar_::add_buttons(Php::Parameters &parameters)
@@ -125,20 +129,24 @@ Php::Value GtkInfoBar_::get_message_type()
 
 Php::Value GtkInfoBar_::get_action_area()
 {
-	GtkWidget *ret = gtk_info_bar_get_action_area (GTK_INFO_BAR(instance));
+	gpointer *ret = (gpointer *)gtk_info_bar_get_action_area (GTK_INFO_BAR(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkInfoBar_::get_content_area()
 {
-	GtkWidget *ret = gtk_info_bar_get_content_area (GTK_INFO_BAR(instance));
+	gpointer *ret = (gpointer *)gtk_info_bar_get_content_area (GTK_INFO_BAR(instance));
 
-	GtkContainer_ *return_parsed = new GtkContainer_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkContainer", return_parsed);
+	return cobject_to_phpobject(ret);
+	
+	// GtkContainer_ *return_parsed = new GtkContainer_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkContainer", return_parsed);
 }
 
 Php::Value GtkInfoBar_::get_show_close_button()

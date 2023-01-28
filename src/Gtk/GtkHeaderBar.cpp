@@ -79,11 +79,12 @@ void GtkHeaderBar_::set_custom_title(Php::Parameters &parameters)
 
 Php::Value GtkHeaderBar_::get_custom_title()
 {
-	GtkWidget *ret = gtk_header_bar_get_custom_title (GTK_HEADER_BAR(instance));
+	gpointer *ret = (gpointer *)gtk_header_bar_get_custom_title (GTK_HEADER_BAR(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkHeaderBar_::pack_start(Php::Parameters &parameters)

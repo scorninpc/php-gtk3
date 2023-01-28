@@ -142,28 +142,34 @@ Php::Value GtkDialog_::get_widget_for_response(Php::Parameters &parameters)
 {
     gint response_id = (gint)parameters[0];
 
-    GtkWidget *ret = gtk_dialog_get_widget_for_response (GTK_DIALOG(instance), response_id);
+    gpointer *ret = (gpointer *)gtk_dialog_get_widget_for_response (GTK_DIALOG(instance), response_id);
 
-    GtkWidget_ *return_parsed = new GtkWidget_();
-    return_parsed->set_instance((gpointer *)ret);
-    return Php::Object("GtkWidget", return_parsed);
+    // GtkWidget_ *return_parsed = new GtkWidget_();
+    // return_parsed->set_instance((gpointer *)ret);
+    // return Php::Object("GtkWidget", return_parsed);
+
+    return cobject_to_phpobject(ret);
 }
 
 Php::Value GtkDialog_::get_content_area()
 {
-    GtkWidget *ret = gtk_dialog_get_content_area (GTK_DIALOG(instance));
+    gpointer *ret = (gpointer *)gtk_dialog_get_content_area (GTK_DIALOG(instance));
 
-    GtkBox_ *return_parsed = new GtkBox_();
-    return_parsed->set_instance((gpointer *)ret);
-    return Php::Object("GtkBox", return_parsed);
+    // GtkBox_ *return_parsed = new GtkBox_();
+    // return_parsed->set_instance((gpointer *)ret);
+    // return Php::Object("GtkBox", return_parsed);
+
+    return cobject_to_phpobject(ret);
 }
 
 Php::Value GtkDialog_::get_header_bar()
 {
-    GtkWidget *ret = gtk_dialog_get_header_bar (GTK_DIALOG(instance));
+    gpointer *ret = (gpointer *)gtk_dialog_get_header_bar (GTK_DIALOG(instance));
 
-    GtkWidget_ *return_parsed = new GtkWidget_();
-    return_parsed->set_instance((gpointer *)ret);
-    return Php::Object("GtkWidget", return_parsed);
+    return cobject_to_phpobject(ret);
+
+    // GtkWidget_ *return_parsed = new GtkWidget_();
+    // return_parsed->set_instance((gpointer *)ret);
+    // return Php::Object("GtkWidget", return_parsed);
 }
 

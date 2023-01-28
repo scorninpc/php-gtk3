@@ -7,6 +7,8 @@
 
 	#include "GtkToolItem.h"
 	#include "GtkWidget.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkToolButton_

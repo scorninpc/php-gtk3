@@ -6,6 +6,8 @@
     #include <gtk/gtk.h>
 
 	#include "GtkDialog.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkMessageDialog_

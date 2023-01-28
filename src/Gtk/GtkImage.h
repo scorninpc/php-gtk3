@@ -9,6 +9,8 @@
 	#include "GtkWidget.h"
     #include "../Gdk/GdkPixbuf.h"
 
+    #include "../../php-gtk.h"
+
     /**
      * GtkImage_
      * 

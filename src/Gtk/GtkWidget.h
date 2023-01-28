@@ -11,6 +11,8 @@
       #include "../Gdk/GdkVisual.h"
 	#include "GtkWidgetPath.h"
 	#include "GtkStyleContext.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkWidget_

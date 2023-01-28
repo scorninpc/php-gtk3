@@ -227,11 +227,13 @@ Php::Value GtkLabel_::get_lines()
 
 Php::Value GtkLabel_::get_mnemonic_widget()
 {
-	GtkWidget *ret = gtk_label_get_mnemonic_widget (GTK_LABEL(instance));
+	gpointer *ret = (gpointer *)gtk_label_get_mnemonic_widget (GTK_LABEL(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkLabel_::get_use_markup()

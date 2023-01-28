@@ -289,9 +289,10 @@ void GtkBuilder_::connect_signals_full_callback(GtkBuilder *builder, GObject *in
     struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
     memset(callback_object, 0, sizeof(struct st_callback));
     
-    GtkWidget_ *php_object = new GtkWidget_();
-	php_object->set_instance((gpointer *)instance);
-    callback_object->self_widget = Php::Object("GtkWidget", php_object);
+    // GtkWidget_ *php_object = new GtkWidget_();
+	// php_object->set_instance((gpointer *)instance);
+    // callback_object->self_widget = Php::Object("GtkWidget", php_object);
+	callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
 
     callback_object->callback_name = handler_name;
 

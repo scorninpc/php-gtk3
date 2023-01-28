@@ -56,11 +56,13 @@ Php::Value GtkAppChooserDialog_::new_for_content_type(Php::Parameters &parameter
 
 Php::Value GtkAppChooserDialog_::get_widget()
 {
-	GtkWidget *ret = gtk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG(instance));
+	gpointer *ret = (gpointer *)gtk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+
+	return cobject_to_phpobject(ret);
 }
 
 void GtkAppChooserDialog_::set_heading(Php::Parameters &parameters)

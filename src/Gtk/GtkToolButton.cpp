@@ -83,11 +83,14 @@ void GtkToolButton_::set_icon_widget(Php::Parameters &parameters)
 
 Php::Value GtkToolButton_::get_icon_widget()
 {
-	GtkWidget *ret = gtk_tool_button_get_icon_widget (GTK_TOOL_BUTTON(instance));
+	gpointer *ret = (gpointer *)gtk_tool_button_get_icon_widget (GTK_TOOL_BUTTON(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkToolButton_::set_label_widget(Php::Parameters &parameters)
@@ -105,10 +108,11 @@ void GtkToolButton_::set_label_widget(Php::Parameters &parameters)
 
 Php::Value GtkToolButton_::get_label_widget()
 {
-	GtkWidget *ret = gtk_tool_button_get_label_widget (GTK_TOOL_BUTTON(instance));
+	gpointer *ret = (gpointer *)gtk_tool_button_get_label_widget (GTK_TOOL_BUTTON(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 

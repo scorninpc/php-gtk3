@@ -185,14 +185,15 @@ Php::Value GtkTreeViewColumn_::get_reorderable()
 Php::Value GtkTreeViewColumn_::get_widget()
 {
     // Create the gtk button
-    GtkWidget *widget = gtk_tree_view_column_get_widget(GTK_TREE_VIEW_COLUMN(instance));
+    gpointer *ret = (gpointer *)gtk_tree_view_column_get_widget(GTK_TREE_VIEW_COLUMN(instance));
     
     // Create the PHP-GTK object and set GTK object
-    GtkWidget_ *widget_ = new GtkWidget_();
-    widget_->set_instance((gpointer *)widget);
+    // GtkWidget_ *widget_ = new GtkWidget_();
+    // widget_->set_instance((gpointer *)widget);
 
-    // Return PHP-GTK object
-    return Php::Object("GtkWidget", widget_);
+    // // Return PHP-GTK object
+    // return Php::Object("GtkWidget", widget_);
+    return cobject_to_phpobject(ret);
 }
 
 /**

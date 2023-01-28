@@ -118,10 +118,11 @@ void GtkMessageDialog_::format_secondary_markup(Php::Parameters &parameters)
 
 Php::Value GtkMessageDialog_::get_message_area()
 {
-	GtkWidget *ret = gtk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG(instance));
+	gpointer *ret = (gpointer *)gtk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 

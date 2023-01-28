@@ -365,12 +365,14 @@ void GtkWindow_::set_focus(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_focus()
 {
-    GtkWidget *returnedWidget = gtk_window_get_focus(GTK_WINDOW(instance));
+    gpointer *ret = (gpointer *)gtk_window_get_focus(GTK_WINDOW(instance));
 
-    GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_instance((gpointer *)returnedWidget);
+    return cobject_to_phpobject(ret);
 
-    return Php::Object("GtkWidget", returnWidget);
+    // GtkWidget_ *returnWidget = new GtkWidget_();
+    // returnWidget->set_instance((gpointer *)returnedWidget);
+
+    // return Php::Object("GtkWidget", returnWidget);
 }
 
 /**
@@ -395,12 +397,14 @@ void GtkWindow_::set_default(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_default_widget()
 {
-    GtkWidget *returnedWidget = gtk_window_get_default_widget(GTK_WINDOW(instance));
+    gpointer *ret = (gpointer *)gtk_window_get_default_widget(GTK_WINDOW(instance));
 
-    GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_instance((gpointer *)returnedWidget);
+    return cobject_to_phpobject(ret);
 
-    return Php::Object("GtkWidget", returnWidget);
+    // GtkWidget_ *returnWidget = new GtkWidget_();
+    // returnWidget->set_instance((gpointer *)returnedWidget);
+
+    // return Php::Object("GtkWidget", returnWidget);
 }
 
 /**
@@ -929,12 +933,14 @@ void GtkWindow_::set_titlebar(Php::Parameters &parameters)
  */
 Php::Value GtkWindow_::get_titlebar()
 {
-    GtkWidget *returnedWidget = gtk_window_get_titlebar(GTK_WINDOW(instance));
+    gpointer *ret = (gpointer *)gtk_window_get_titlebar(GTK_WINDOW(instance));
 
-    GtkWidget_ *returnWidget = new GtkWidget_();
-    returnWidget->set_instance((gpointer *)returnedWidget);
+    return cobject_to_phpobject(ret);
 
-    return Php::Object("GtkWidget", returnWidget);
+    // GtkWidget_ *returnWidget = new GtkWidget_();
+    // returnWidget->set_instance((gpointer *)returnedWidget);
+
+    // return Php::Object("GtkWidget", returnWidget);
 }
 
 /**
@@ -970,9 +976,11 @@ Php::Value GtkWindow_::list_toplevels()
 
     for(int index=0; GList *item=g_list_nth(ret, index); index++) {
         
-        GtkWindow_ *widget_ = new GtkWindow_();
-        widget_->set_instance((gpointer *)item->data);
-        ret_arr[index] = Php::Object("GtkWindow", widget_);
+        // GtkWindow_ *widget_ = new GtkWindow_();
+        // widget_->set_instance((gpointer *)item->data);
+        // ret_arr[index] = Php::Object("GtkWindow", widget_);
+        ret_arr[index] = cobject_to_phpobject((gpointer *)item->data);
+        
     }
 
     return ret_arr;

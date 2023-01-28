@@ -58,11 +58,9 @@ Php::Value GtkStack_::get_child_by_name(Php::Parameters &parameters)
 	std::string s_name = parameters[0];
 	gchar *name = (gchar *)s_name.c_str();
 
-	GtkWidget *ret = gtk_stack_get_child_by_name (GTK_STACK(instance), name);
+	gpointer *ret = (gpointer *)gtk_stack_get_child_by_name (GTK_STACK(instance), name);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 void GtkStack_::set_visible_child(Php::Parameters &parameters)
@@ -80,11 +78,9 @@ void GtkStack_::set_visible_child(Php::Parameters &parameters)
 
 Php::Value GtkStack_::get_visible_child()
 {
-	GtkWidget *ret = gtk_stack_get_visible_child (GTK_STACK(instance));
+	gpointer *ret = (gpointer *)gtk_stack_get_visible_child (GTK_STACK(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 void GtkStack_::set_visible_child_name(Php::Parameters &parameters)

@@ -6,6 +6,8 @@
     #include <gtk/gtk.h>
 
 	#include "GtkBox.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkStatusbar_

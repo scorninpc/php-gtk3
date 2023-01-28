@@ -8,6 +8,8 @@
 	#include "GtkWidget.h"
 	#include "GtkWidgetPath.h"
     #include "GtkAdjustment.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkContainer_

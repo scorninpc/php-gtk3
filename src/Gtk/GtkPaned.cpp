@@ -111,14 +111,16 @@ void GtkPaned_::pack2(Php::Parameters &parameters)
 Php::Value GtkPaned_::get_child1()
 {
     // Create the gtk button
-    GtkWidget *widget = gtk_paned_get_child1(GTK_PANED(instance));
+    gpointer *ret = (gpointer *)gtk_paned_get_child1(GTK_PANED(instance));
     
-    // Create the PHP-GTK object and set GTK object
-    GtkWidget_ *widget_ = new GtkWidget_();
-    widget_->set_instance((gpointer *)widget);
+    return cobject_to_phpobject(ret);
 
-    // Return PHP-GTK object
-    return Php::Object("GtkWidget", widget_);
+    // // Create the PHP-GTK object and set GTK object
+    // GtkWidget_ *widget_ = new GtkWidget_();
+    // widget_->set_instance((gpointer *)widget);
+
+    // // Return PHP-GTK object
+    // return Php::Object("GtkWidget", widget_);
 }
 
 /**
@@ -129,14 +131,16 @@ Php::Value GtkPaned_::get_child1()
 Php::Value GtkPaned_::get_child2()
 {
     // Create the gtk button
-    GtkWidget *widget = gtk_paned_get_child2(GTK_PANED(instance));
+    gpointer *ret = (gpointer *) gtk_paned_get_child2(GTK_PANED(instance));
     
-    // Create the PHP-GTK object and set GTK object
-    GtkWidget_ *widget_ = new GtkWidget_();
-    widget_->set_instance((gpointer *)widget);
+    return cobject_to_phpobject(ret);
 
-    // Return PHP-GTK object
-    return Php::Object("GtkWidget", widget_);
+    // // Create the PHP-GTK object and set GTK object
+    // GtkWidget_ *widget_ = new GtkWidget_();
+    // widget_->set_instance((gpointer *)widget);
+
+    // // Return PHP-GTK object
+    // return Php::Object("GtkWidget", widget_);
 }
 
 /**

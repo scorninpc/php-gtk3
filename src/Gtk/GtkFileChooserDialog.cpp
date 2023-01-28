@@ -307,11 +307,12 @@ void GtkFileChooserDialog_::set_preview_widget(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_preview_widget()
 {
-	GtkWidget *ret = gtk_file_chooser_get_preview_widget (GTK_FILE_CHOOSER(instance));
+	gpointer *ret = (gpointer *)gtk_file_chooser_get_preview_widget (GTK_FILE_CHOOSER(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 void GtkFileChooserDialog_::set_preview_widget_active(Php::Parameters &parameters)
@@ -366,11 +367,12 @@ void GtkFileChooserDialog_::set_extra_widget(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_extra_widget()
 {
-	GtkWidget *ret = gtk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER(instance));
+	gpointer *ret = (gpointer *) gtk_file_chooser_get_extra_widget (GTK_FILE_CHOOSER(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkFileChooserDialog_::add_filter(Php::Parameters &parameters)

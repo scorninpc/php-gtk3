@@ -169,11 +169,13 @@ Php::Value GtkToolItem_::get_text_orientation()
 
 Php::Value GtkToolItem_::retrieve_proxy_menu_item()
 {
-	GtkWidget *ret = gtk_tool_item_retrieve_proxy_menu_item (GTK_TOOL_ITEM(instance));
+	gpointer *ret = (gpointer *)gtk_tool_item_retrieve_proxy_menu_item (GTK_TOOL_ITEM(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+
+	return cobject_to_phpobject(ret);
 }
 
 void GtkToolItem_::set_proxy_menu_item(Php::Parameters &parameters)
@@ -197,11 +199,13 @@ Php::Value GtkToolItem_::get_proxy_menu_item(Php::Parameters &parameters)
 	std::string s_menu_item_id = parameters[0];
 	gchar *menu_item_id = (gchar *)s_menu_item_id.c_str();
 
-	GtkWidget *ret = gtk_tool_item_get_proxy_menu_item (GTK_TOOL_ITEM(instance), menu_item_id);
+	gpointer *ret = (gpointer *)gtk_tool_item_get_proxy_menu_item (GTK_TOOL_ITEM(instance), menu_item_id);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+
+	return cobject_to_phpobject(ret);
 }
 
 void GtkToolItem_::rebuild_menu()

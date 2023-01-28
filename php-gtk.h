@@ -4,11 +4,14 @@
     #include <phpcpp.h>
     #include <iostream>
     #include <gtk/gtk.h>
+    
+	#include "src/Gtk/GtkWidget.h"
 
 
 	bool phpgtk_check_parameter(Php::Parameters &parameters, int param, Php::Type expected_type, bool required, const char *object_type);
 	char *phpgtk_wrong_type_message(int param, Php::Type type_passed, Php::Type type_expected);
 	std::string phpgtk_type_to_string(Php::Type type);
+	Php::Value cobject_to_phpobject(gpointer *cobject);
 
 
 #endif

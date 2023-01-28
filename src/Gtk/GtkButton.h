@@ -6,6 +6,8 @@
     #include <gtk/gtk.h>
 
 	#include "GtkBin.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkButton_

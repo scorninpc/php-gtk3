@@ -22,14 +22,16 @@ Php::Value GtkMenuItem_::new_with_label(Php::Parameters &parameters)
 	std::string s_label = parameters[0];
 	gchar *label = (gchar *)s_label.c_str();
 
-	GtkWidget *menuitem = gtk_menu_item_new_with_label (label);
+	gpointer *ret = (gpointer *)gtk_menu_item_new_with_label (label);
+
+	return cobject_to_phpobject(ret);
 
 	// Create the PHP-GTK object and set GTK object
-	GtkMenuItem_ *menuitem_ = new GtkMenuItem_();
-	menuitem_->set_instance((gpointer *)menuitem);
+	// GtkMenuItem_ *menuitem_ = new GtkMenuItem_();
+	// menuitem_->set_instance((gpointer *)menuitem);
 
-	// Return PHP-GTK object
-	return Php::Object("GtkMenuItem", menuitem_);
+	// // Return PHP-GTK object
+	// return Php::Object("GtkMenuItem", menuitem_);
 }
 
 Php::Value GtkMenuItem_::new_with_mnemonic(Php::Parameters &parameters)
@@ -37,14 +39,15 @@ Php::Value GtkMenuItem_::new_with_mnemonic(Php::Parameters &parameters)
 	std::string s_label = parameters[0];
 	gchar *label = (gchar *)s_label.c_str();
 
-	GtkWidget *menuitem = gtk_menu_item_new_with_mnemonic (label);
+	gpointer *ret = (gpointer *)gtk_menu_item_new_with_mnemonic (label);
 
-	// Create the PHP-GTK object and set GTK object
-	GtkMenuItem_ *menuitem_ = new GtkMenuItem_();
-	menuitem_->set_instance((gpointer *)menuitem);
+	return cobject_to_phpobject(ret);
+	// // Create the PHP-GTK object and set GTK object
+	// GtkMenuItem_ *menuitem_ = new GtkMenuItem_();
+	// menuitem_->set_instance((gpointer *)menuitem);
 
-	// Return PHP-GTK object
-	return Php::Object("GtkMenuItem", menuitem_);
+	// // Return PHP-GTK object
+	// return Php::Object("GtkMenuItem", menuitem_);
 }
 
 Php::Value GtkMenuItem_::get_label()
@@ -93,11 +96,13 @@ void GtkMenuItem_::set_submenu(Php::Parameters &parameters)
 
 Php::Value GtkMenuItem_::get_submenu()
 {
-	GtkWidget *ret = gtk_menu_item_get_submenu (GTK_MENU_ITEM(instance));
+	gpointer *ret = (gpointer *)gtk_menu_item_get_submenu (GTK_MENU_ITEM(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkMenuItem_::set_accel_path(Php::Parameters &parameters)

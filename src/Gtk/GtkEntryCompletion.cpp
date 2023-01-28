@@ -31,11 +31,12 @@ Php::Value GtkEntryCompletion_::new_with_area()
 
 Php::Value GtkEntryCompletion_::get_entry()
 {
-	GtkWidget *ret = gtk_entry_completion_get_entry (GTK_ENTRY_COMPLETION(instance));
+	gpointer *ret = (gpointer *)gtk_entry_completion_get_entry (GTK_ENTRY_COMPLETION(instance));
 
-	GtkEntry_ *return_parsed = new GtkEntry_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkEntry", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkEntry_ *return_parsed = new GtkEntry_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkEntry", return_parsed);
 }
 
 void GtkEntryCompletion_::set_model(Php::Parameters &parameters)

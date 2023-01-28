@@ -71,11 +71,13 @@ Php::Value GtkGrid_::get_child_at(Php::Parameters &parameters)
 
 	gint top = (gint)parameters[1];
 
-	GtkWidget *ret = gtk_grid_get_child_at (GTK_GRID(instance), left, top);
+	gpointer *ret = (gpointer *)gtk_grid_get_child_at (GTK_GRID(instance), left, top);
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkGrid_::insert_row(Php::Parameters &parameters)

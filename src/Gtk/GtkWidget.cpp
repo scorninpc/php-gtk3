@@ -584,11 +584,13 @@ Php::Value GtkWidget_::get_device_enabled(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_toplevel()
 {
-	GtkWidget *ret = gtk_widget_get_toplevel (GTK_WIDGET(instance));
+	gpointer *ret = (gpointer *)gtk_widget_get_toplevel (GTK_WIDGET(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkWidget_::get_ancestor(Php::Parameters &parameters)
@@ -1387,7 +1389,7 @@ Php::Value GtkWidget_::get_child_visible()
 
 Php::Value GtkWidget_::get_parent()
 {
-	GtkWidget *ret = gtk_widget_get_parent (GTK_WIDGET(instance));
+	gpointer *ret = (gpointer *)gtk_widget_get_parent (GTK_WIDGET(instance));
 
 
 
@@ -1395,10 +1397,10 @@ Php::Value GtkWidget_::get_parent()
 	// g_print("<Widget>: %s\n", g_type_name(t));
 
 
-
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkWidget_::get_settings()

@@ -67,10 +67,12 @@ void GtkStatusbar_::remove_all(Php::Parameters &parameters)
 
 Php::Value GtkStatusbar_::get_message_area()
 {
-	GtkWidget *ret = gtk_statusbar_get_message_area (GTK_STATUSBAR(instance));
+	gpointer *ret = (gpointer *)gtk_statusbar_get_message_area (GTK_STATUSBAR(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 

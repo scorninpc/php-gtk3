@@ -7,6 +7,8 @@
 
 	#include "GtkBin.h"
 	#include "GtkWidget.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkFrame_

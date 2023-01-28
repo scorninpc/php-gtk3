@@ -123,20 +123,23 @@ Php::Value GtkMenuShell_::get_take_focus()
 
 Php::Value GtkMenuShell_::get_selected_item()
 {
-	GtkWidget *ret = gtk_menu_shell_get_selected_item (GTK_MENU_SHELL(instance));
+	gpointer *ret = (gpointer *)gtk_menu_shell_get_selected_item (GTK_MENU_SHELL(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 Php::Value GtkMenuShell_::get_parent_shell()
 {
-	GtkWidget *ret = gtk_menu_shell_get_parent_shell (GTK_MENU_SHELL(instance));
+	gpointer *ret = (gpointer *)gtk_menu_shell_get_parent_shell (GTK_MENU_SHELL(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
+
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
 }
 
 void GtkMenuShell_::bind_model(Php::Parameters &parameters)

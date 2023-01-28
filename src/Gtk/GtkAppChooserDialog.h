@@ -7,6 +7,8 @@
 
 	#include "GtkDialog.h"
 	#include "GtkWindow.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkAppChooserDialog_

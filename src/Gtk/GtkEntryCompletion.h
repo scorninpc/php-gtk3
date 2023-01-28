@@ -8,6 +8,8 @@
 	#include "../G/GObject.h"
 	#include "GtkEntry.h"
 	#include "GtkTreeModel.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkEntryCompletion_

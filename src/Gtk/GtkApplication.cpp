@@ -61,9 +61,7 @@ Php::Value GtkApplication_::get_windows()
 
 	for(int index=0; GList *item=g_list_nth(ret, index); index++) {
 		
-		GtkWindow_ *widget_ = new GtkWindow_();
-		widget_->set_instance((gpointer *)item->data);
-		ret_arr[index] = Php::Object("GtkWindow", widget_);
+		ret_arr[index] = cobject_to_phpobject((gpointer *)item->data);
 	}
 
 	return ret_arr;

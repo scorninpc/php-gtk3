@@ -88,11 +88,12 @@ Php::Value GtkFrame_::get_label_align(Php::Parameters &parameters)
 
 Php::Value GtkFrame_::get_label_widget()
 {
-	GtkWidget *ret = gtk_frame_get_label_widget (GTK_FRAME(instance));
+	gpointer *ret = (gpointer *)gtk_frame_get_label_widget (GTK_FRAME(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 Php::Value GtkFrame_::get_shadow_type()

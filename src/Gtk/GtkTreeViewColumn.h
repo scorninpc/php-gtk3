@@ -10,6 +10,8 @@
     #include "GtkWidget.h"
     #include "GtkButton.h"
     #include "GtkTreeView.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkTreeViewColumn_

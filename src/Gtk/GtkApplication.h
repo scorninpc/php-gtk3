@@ -7,6 +7,8 @@
 
 	#include "../G/GApplication.h"
 	#include "GtkWindow.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkApplication_

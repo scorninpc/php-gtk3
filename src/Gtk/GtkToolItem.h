@@ -8,6 +8,8 @@
 	#include "GtkBin.h"
 	#include "GtkWidget.h"
 	#include "GtkSizeGroup.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkToolItem_

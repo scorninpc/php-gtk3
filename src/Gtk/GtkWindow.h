@@ -9,6 +9,8 @@
     #include "../Gdk/GdkPixbuf.h"
     #include "../Gdk/GdkScreen.h"
     #include "GtkBin.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      *  

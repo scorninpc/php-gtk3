@@ -222,11 +222,12 @@ void GtkButton_::set_image(Php::Parameters &parameters)
 
 Php::Value GtkButton_::get_image()
 {
-	GtkWidget *ret = gtk_button_get_image (GTK_BUTTON(instance));
+	gpointer *ret = (gpointer *)gtk_button_get_image (GTK_BUTTON(instance));
 
-	GtkWidget_ *return_parsed = new GtkWidget_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkWidget", return_parsed);
+	// GtkWidget_ *return_parsed = new GtkWidget_();
+	// return_parsed->set_instance((gpointer *)ret);
+	// return Php::Object("GtkWidget", return_parsed);
+	return cobject_to_phpobject(ret);
 }
 
 void GtkButton_::set_image_position(Php::Parameters &parameters)

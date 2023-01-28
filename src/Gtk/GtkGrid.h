@@ -7,6 +7,8 @@
 
 	#include "GtkContainer.h"
 	#include "GtkWidget.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkGrid_

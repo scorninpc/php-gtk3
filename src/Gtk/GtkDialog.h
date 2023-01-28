@@ -7,6 +7,8 @@
 
 	#include "GtkWindow.h"
     #include "GtkBox.h"
+    
+	#include "../../php-gtk.h"
 
     /**
      * GtkDialog_
