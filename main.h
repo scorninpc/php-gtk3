@@ -45,6 +45,7 @@
 	#include "src/Gtk/GtkBin.h"
 	#include "src/Gtk/GtkEventBox.h"
 	#include "src/Gtk/GtkWindow.h"
+	#include "src/Gtk/GtkApplicationWindow.h"
 	#include "src/Gtk/GtkButton.h"
 	#include "src/Gtk/GtkColorButton.h"
 	#include "src/Gtk/GtkFontButton.h"

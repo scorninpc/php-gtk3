@@ -1192,6 +1192,10 @@ extern "C"
             gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
             gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
         
+        Php::Class<GtkApplicationWindow_> gtkapplicationwindow("GtkApplicationWindow");
+            gtkapplicationwindow.extends(gtkwindow);
+            gtkapplicationwindow.method<&GtkApplicationWindow_::set_show_menubar>("set_show_menubar");
+            gtkapplicationwindow.method<&GtkApplicationWindow_::get_show_menubar>("get_show_menubar");
 
         // GtkDialog
         Php::Class<GtkDialog_> gtkdialog("GtkDialog");
@@ -3846,6 +3850,7 @@ extern "C"
         extension.add(std::move(gtkeventbox));
         extension.add(std::move(gtkpaned));
         extension.add(std::move(gtkwindow));
+        extension.add(std::move(gtkapplicationwindow));
         extension.add(std::move(gtkdialog));
         extension.add(std::move(gtkappchooserdialog));
         extension.add(std::move(gtkfilechooserdialog));
