@@ -112,6 +112,10 @@ std::string phpgtk_type_to_string(Php::Type type)
 
 Php::Value cobject_to_phpobject(gpointer *cobject)
 {
+	if(cobject == NULL) {
+		return NULL;
+	}
+
 	GtkWidget_ *return_parsed = new GtkWidget_();
 	return_parsed->set_instance((gpointer *)cobject);
 	return Php::Object(g_type_name(G_TYPE_FROM_INSTANCE((gpointer *)cobject)), return_parsed);
