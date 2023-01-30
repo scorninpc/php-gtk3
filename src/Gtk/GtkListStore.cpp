@@ -349,3 +349,33 @@ void GtkListStore_::move_after(Php::Parameters &parameters)
 
 }
 
+void GtkListStore_::set_sort_func(Php::Parameters& parameters)
+{
+	gint sort_column_id = (gint)parameters[0];
+
+	int int_order = parameters[1];
+	GtkSortType order = (GtkSortType)int_order;
+
+	int int_sort_func = parameters[2];
+	GtkTreeIterCompareFunc sort_func = (GtkTreeIterCompareFunc)int_sort_func;
+
+	int int_user_data = parameters[3];
+	gpointer user_data = (gpointer)int_user_data;
+
+	int int_destroy = parameters[4];
+	GDestroyNotify destroy = (GDestroyNotify)int_destroy;
+
+	gtk_tree_sortable_set_sort_func(GTK_TREE_SORTABLE(model), sort_column_id, sort_func, user_data, destroy);
+}
+
+
+void GtkListStore_::set_sort_column_id(Php::Parameters& parameters)
+{
+	gint sort_column_id = (gint)parameters[0];
+
+	int int_order = parameters[1];
+	GtkSortType order = (GtkSortType)int_order;
+
+	gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(model), sort_column_id, order);
+}
+

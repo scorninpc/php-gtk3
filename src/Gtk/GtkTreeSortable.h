@@ -18,6 +18,7 @@
 			Php::Value get_sort_column_id(Php::Parameters &parameters);
 			void set_sort_column_id(Php::Parameters &parameters);
 			Php::Value has_default_sort_func();
+			void set_sort_func(Php::Parameters& parameters);
 
 
 	};
