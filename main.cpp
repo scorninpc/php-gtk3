@@ -37,7 +37,6 @@ extern "C"
         // GObject
         Php::Class<GObject_> gobject("GObject");
             gobject.method<&GObject_::connect>("connect");
-            // gobject.method<&GObject_::connect_simple>("connect_simple");
             gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.method<&GObject_::get_property>("get_property");
@@ -1610,6 +1609,7 @@ extern "C"
             gtkentry.method<&GtkEntry_::get_progress_fraction>("get_progress_fraction");
             gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
             gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
+            gtkentry.method<&GtkEntry_::set_editable>("set_editable");
             // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
         
 
@@ -2651,6 +2651,8 @@ extern "C"
             gtkliststore.method<&GtkListStore_::swap>("swap");
             gtkliststore.method<&GtkListStore_::move_before>("move_before");
             gtkliststore.method<&GtkListStore_::move_after>("move_after");
+            gtkliststore.method<&GtkListStore_::set_sort_func>("set_sort_func");
+            gtkliststore.method<&GtkListStore_::set_sort_column_id>("set_sort_column_id");
         
 
         

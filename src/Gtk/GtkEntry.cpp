@@ -328,3 +328,12 @@ void GtkEntry_::progress_pulse()
 {
 	return gtk_entry_progress_pulse(GTK_ENTRY(instance));
 }
+
+
+void GtkEntry_::set_editable(Php::Parameters& parameters)
+{
+	gboolean setting = (gboolean)parameters[0];
+
+	gtk_editable_set_editable(GTK_EDITABLE(instance), setting);
+
+}

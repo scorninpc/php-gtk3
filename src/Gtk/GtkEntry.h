@@ -258,6 +258,8 @@
              * https://developer.gnome.org/gtk3/stable/GtkEntry.html#gtk-entry-progress-pulse
              */
             void progress_pulse();
+
+            void set_editable(Php::Parameters& parameters);
     };
 
 #endif
