@@ -839,7 +839,7 @@ void GtkWidget_::override_background_color(Php::Parameters &parameters)
 
  	gtk_widget_override_background_color (GTK_WIDGET(instance), state, &color);
 
-	 //Php::deprecated << "GtkWidget_::override_background_color  is deprecated on Gtk 3.16";
+	// Php::deprecated << "GtkWidget_::override_background_color  is deprecated on Gtk 3.16";
 }
 
 void GtkWidget_::override_color(Php::Parameters &parameters)
@@ -856,7 +856,7 @@ void GtkWidget_::override_color(Php::Parameters &parameters)
 
  	gtk_widget_override_color (GTK_WIDGET(instance), state, &color);
 
-//	 Php::deprecated << "GtkWidget_::override_color  is deprecated on Gtk 3.16";
+    // Php::deprecated << "GtkWidget_::override_color  is deprecated on Gtk 3.16";
 }
 
 void GtkWidget_::override_font(Php::Parameters &parameters)

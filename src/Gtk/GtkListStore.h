@@ -66,7 +66,7 @@
             void move_before(Php::Parameters &parameters);
 
             void move_after(Php::Parameters &parameters);
-
+            
             void set_sort_func(Php::Parameters& parameters);
 
             void set_sort_column_id(Php::Parameters& parameters);
