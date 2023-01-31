@@ -1,6 +1,11 @@
 
 #include "GtkListStore.h"
 
+struct GtkListStore_::st_request_callback {
+	Php::Parameters user_parameters;
+	Php::Object self_widget;
+};
+
 /**
  * Constructor
  */
@@ -348,24 +353,61 @@ void GtkListStore_::move_after(Php::Parameters &parameters)
 	gtk_list_store_move_after (GTK_LIST_STORE(model), &iter, &position);
 
 }
-
+/**
+ * 1. sort_column_id
+ * 2. sort_func
+ * 3. *user_data
+ */
 void GtkListStore_::set_sort_func(Php::Parameters& parameters)
 {
 	gint sort_column_id = (gint)parameters[0];
 
-	int int_order = parameters[1];
-	GtkSortType order = (GtkSortType)int_order;
+    // Create gpointer user data
+    struct st_request_callback *callback_object = (struct st_request_callback *)malloc(sizeof(struct st_request_callback));
+    memset(callback_object, 0, sizeof(struct st_request_callback));
+    callback_object->user_parameters = parameters;
+    callback_object->self_widget = Php::Object("GtkListStore", this);
 
-	int int_sort_func = parameters[2];
-	GtkTreeIterCompareFunc sort_func = (GtkTreeIterCompareFunc)int_sort_func;
+	gtk_tree_sortable_set_sort_func(GTK_TREE_SORTABLE(model), sort_column_id, set_sort_func_callback, (gpointer)callback_object, NULL);
+}
 
-	int int_user_data = parameters[3];
-	gpointer user_data = (gpointer)int_user_data;
 
-	int int_destroy = parameters[4];
-	GDestroyNotify destroy = (GDestroyNotify)int_destroy;
+gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data)
+{
+	// Return to st_callback
+    struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
 
-	gtk_tree_sortable_set_sort_func(GTK_TREE_SORTABLE(model), sort_column_id, sort_func, user_data, destroy);
+    // Callback_name
+    Php::Value callback_name = callback_object->user_parameters[1];
+	//Php::call("var_dump", callback_name);
+
+    // Create internal params (GtkTreeModel, GtkTreeIter, GtkTreeIter, user_data)
+    Php::Value internal_parameters;
+
+    // GtkTreeModel model
+    GtkTreeModel_ *model_ = new GtkTreeModel_();
+    model_->set_model((GtkTreeModel*)model);
+    internal_parameters[0] = Php::Object("GtkTreeModel", model_);
+
+    // GtkTreeIter a
+    GtkTreeIter_ *iter_a_ = new GtkTreeIter_();
+	iter_a_->set_instance(*a);
+    internal_parameters[1] = Php::Object("GtkTreeIter", iter_a_);
+
+    // GtkTreeIter b
+    GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
+	iter_b_->set_instance(*b);
+    internal_parameters[2] = Php::Object("GtkTreeIter", iter_b_);
+
+    // user data
+    for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
+    	internal_parameters[i+1] = callback_object->user_parameters[i];
+    }
+
+	// Call php function with parameters
+    gint ret =  Php::call("call_user_func_array", callback_name, internal_parameters);
+
+	return ret;
 }
 
 

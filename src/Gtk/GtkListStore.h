@@ -16,6 +16,9 @@
      */
     class GtkListStore_ : public GtkTreeModel_
     {
+        private:
+            struct st_request_callback;
+
         /**
          * Publics
          */
@@ -68,6 +71,8 @@
             void move_after(Php::Parameters &parameters);
             
             void set_sort_func(Php::Parameters& parameters);
+
+            static gint set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b,  gpointer user_data);
 
             void set_sort_column_id(Php::Parameters& parameters);
     };
