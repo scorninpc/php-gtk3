@@ -173,8 +173,7 @@ void GtkButton_::set_focus_on_click(Php::Parameters &parameters)
 
 	gtk_button_set_focus_on_click (GTK_BUTTON(instance), focus_on_click);
 
-	Php::deprecated << "set_focus_on_click is deprecated on Gtk 3.20" << std::endl;
-
+	// Php::deprecated << "set_focus_on_click is deprecated on Gtk 3.20" << std::endl;
 }
 
 Php::Value GtkButton_::get_focus_on_click()
