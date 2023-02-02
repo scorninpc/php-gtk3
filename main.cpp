@@ -1517,6 +1517,7 @@ extern "C"
             gtkscrolledwindow.extends(gtkcontainer);
             gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
             gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
+            gtkscrolledwindow.method<&GtkScrolledWindow_::set_shadow_type>("set_shadow_type");
         
             
 
