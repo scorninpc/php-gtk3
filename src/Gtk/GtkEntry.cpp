@@ -356,3 +356,14 @@ Php::Value GtkEntry_::get_selection_bounds(Php::Parameters &parameters)
 
 	return arr;
 }
+
+
+void GtkEntry_::set_position(Php::Parameters& parameters)
+{
+	// Cast GtkAlign param
+	int a = parameters[0];
+	GtkWindowPosition passedCasted = (GtkWindowPosition)a;
+
+	//
+	gtk_editable_set_position(GTK_EDITABLE(instance), passedCasted);
+}
