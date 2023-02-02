@@ -260,6 +260,8 @@
             void progress_pulse();
             
             void set_editable(Php::Parameters& parameters);
+
+            Php::Value get_selection_bounds(Php::Parameters& parameters);
     };
 
 #endif
