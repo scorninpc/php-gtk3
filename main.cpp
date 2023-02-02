@@ -1611,6 +1611,7 @@ extern "C"
             gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
             gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
             gtkentry.method<&GtkEntry_::set_editable>("set_editable");
+            gtkentry.method<&GtkEntry_::get_selection_bounds>("get_selection_bounds");
             // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
         
 
