@@ -109,7 +109,15 @@ Php::Value GtkTreeSelection_::get_selected(Php::Parameters &parameters)
 
 	GtkTreeIter_ *return_parsed = new GtkTreeIter_();
     return_parsed->set_instance(iter);
-    return Php::Object("GtkTreeIter", return_parsed);
+
+	GtkTreeModel_* return_parsed_model = new GtkTreeModel_();
+	return_parsed_model->set_model(model);
+
+	Php::Value result;
+	result[0] = Php::Object("GtkTreeModel", return_parsed_model);
+	result[1] = Php::Object("GtkTreeIter", return_parsed);
+
+    return result;
 }
 
 Php::Value GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
