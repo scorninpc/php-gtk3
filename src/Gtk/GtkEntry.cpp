@@ -337,3 +337,33 @@ void GtkEntry_::set_editable(Php::Parameters& parameters)
 	gtk_editable_set_editable(GTK_EDITABLE(instance), setting);
 
 }
+
+Php::Value GtkEntry_::get_selection_bounds(Php::Parameters &parameters)
+{
+
+	gint start_pos = (gint)0;
+	gint end_pos = (gint)0;
+
+	gboolean ret = gtk_editable_get_selection_bounds (GTK_EDITABLE(instance), &start_pos, &end_pos);
+
+	if (!ret)
+		return ret;
+
+	Php::Value arr;
+
+	arr[0] = start_pos;
+	arr[1] = end_pos;
+
+	return arr;
+}
+
+
+void GtkEntry_::set_position(Php::Parameters& parameters)
+{
+	// Cast GtkAlign param
+	int a = parameters[0];
+	GtkWindowPosition passedCasted = (GtkWindowPosition)a;
+
+	//
+	gtk_editable_set_position(GTK_EDITABLE(instance), passedCasted);
+}
