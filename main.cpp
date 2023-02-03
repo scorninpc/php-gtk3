@@ -4197,17 +4197,30 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
         }
         case G_TYPE_LONG:
         {
-            throw Php::Exception("G_TYPE_LONG not implemented");
+            // Cast
+            int b = (int64_t)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_LONG);
+            g_value_set_long(&gtk_value, b);
             break;
         }
         case G_TYPE_ULONG:
         {
-            throw Php::Exception("G_TYPE_ULONG not implemented");
+            // Cast
+            //int b = (int64_t)phpgtk_value;
+
+            //g_value_init(&gtk_value, G_TYPE_ULONG);
+            //g_value_set_ulong(&gtk_value, b);
             break;
         }
         case G_TYPE_UINT:
         {
-            throw Php::Exception("G_TYPE_UINT not implemented");
+            // Cast
+            //int b = (int32_t)phpgtk_value;
+
+            //g_value_init(&gtk_value, G_TYPE_UINT);
+            //g_value_set_uint(&gtk_value, b);
+            throw Php::Exception("G_TYPE_UCHAR not implemented");
             break;
         }
         case G_TYPE_UCHAR:
