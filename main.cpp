@@ -1089,6 +1089,18 @@ extern "C"
             gtkbin.extends(gtkcontainer);
             gtkbin.method<&GtkBin_::test3>("test3");
 
+        Php::Class<GtkViewport_> gtkviewport("GtkViewport");
+            gtkviewport.extends(gtkbin);
+            gtkviewport.method<&GtkViewport_::get_hadjustment>("get_hadjustment");
+            gtkviewport.method<&GtkViewport_::get_vadjustment>("get_vadjustment");
+            gtkviewport.method<&GtkViewport_::set_hadjustment>("set_hadjustment");
+            gtkviewport.method<&GtkViewport_::set_vadjustment>("set_vadjustment");
+            gtkviewport.method<&GtkViewport_::set_shadow_type>("set_shadow_type");
+            gtkviewport.method<&GtkViewport_::get_shadow_type>("get_shadow_type");
+            gtkviewport.method<&GtkViewport_::get_bin_window>("get_bin_window");
+            gtkviewport.method<&GtkViewport_::get_view_window>("get_view_window");
+            gtkviewport.method<&GtkViewport_::__construct>("__construct");
+            
         // GtkEventBox
         Php::Class<GtkEventBox_> gtkeventbox("GtkEventBox");
             gtkeventbox.extends(gtkbin);
@@ -3853,6 +3865,7 @@ extern "C"
         extension.add(std::move(gtkhbox));
         extension.add(std::move(gtkvbox));
         extension.add(std::move(gtkbin));
+        extension.add(std::move(gtkviewport));
         extension.add(std::move(gtkeventbox));
         extension.add(std::move(gtkpaned));
         extension.add(std::move(gtkwindow));
