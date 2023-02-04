@@ -34,3 +34,12 @@ void GtkScrolledWindow_::set_policy(Php::Parameters &parameters)
 
     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(instance), hscrollbar_policy, vscrollbar_policy);
 }
+
+void GtkScrolledWindow_::set_shadow_type(Php::Parameters &parameters)
+{
+	int int_type = (int)parameters[0];
+	GtkShadowType type = (GtkShadowType)int_type;
+
+    gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(instance), type);
+
+}

@@ -36,6 +36,8 @@
              * https://developer.gnome.org/gtk3/stable/GtkScrolledWindow.html#gtk-scrolled-window-set-policy
              */
             void set_policy(Php::Parameters &parameters);
+            
+            void set_shadow_type(Php::Parameters &parameters);
     };
 
 #endif

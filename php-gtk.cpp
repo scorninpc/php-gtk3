@@ -74,9 +74,9 @@ char *phpgtk_wrong_type_message(int param, Php::Type type_passed, Php::Type type
 	
 	// Save into buffer
 	snprintf(buffer, len+1, "Expected parameter %d to be an %s, %s given", param, phpgtk_type_to_string(type_expected).c_str(), phpgtk_type_to_string(type_passed).c_str());
-
-	Php::call("var_dump", phpgtk_type_to_string(type_passed).c_str());
-	Php::call("var_dump", phpgtk_type_to_string(type_expected).c_str());
+	Php::call("echo", buffer);
+	//Php::call("var_dump", phpgtk_type_to_string(type_passed).c_str());
+	//Php::call("var_dump", phpgtk_type_to_string(type_expected).c_str());
 
 	// throw
 	return buffer;

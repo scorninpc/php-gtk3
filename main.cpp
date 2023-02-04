@@ -37,7 +37,6 @@ extern "C"
         // GObject
         Php::Class<GObject_> gobject("GObject");
             gobject.method<&GObject_::connect>("connect");
-            // gobject.method<&GObject_::connect_simple>("connect_simple");
             gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
             gobject.method<&GObject_::get_property>("get_property");
@@ -690,6 +689,8 @@ extern "C"
             gtk.constant("WIN_POS_MOUSE", GTK_WIN_POS_MOUSE);
             gtk.constant("WIN_POS_CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
             gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
+
+            gtk.constant("STOCK_OK", GTK_STOCK_OK);
         
         
         // GtkOrientation
@@ -1518,6 +1519,7 @@ extern "C"
             gtkscrolledwindow.extends(gtkcontainer);
             gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
             gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
+            gtkscrolledwindow.method<&GtkScrolledWindow_::set_shadow_type>("set_shadow_type");
         
             
 
@@ -1610,6 +1612,9 @@ extern "C"
             gtkentry.method<&GtkEntry_::get_progress_fraction>("get_progress_fraction");
             gtkentry.method<&GtkEntry_::set_progress_pulse_step>("set_progress_pulse_step");
             gtkentry.method<&GtkEntry_::get_progress_pulse_step>("get_progress_pulse_step");
+            gtkentry.method<&GtkEntry_::set_editable>("set_editable");
+            gtkentry.method<&GtkEntry_::get_selection_bounds>("get_selection_bounds");
+            gtkentry.method<&GtkEntry_::set_position>("set_position");
             // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
         
 
@@ -2651,7 +2656,8 @@ extern "C"
             gtkliststore.method<&GtkListStore_::swap>("swap");
             gtkliststore.method<&GtkListStore_::move_before>("move_before");
             gtkliststore.method<&GtkListStore_::move_after>("move_after");
-        
+            gtkliststore.method<&GtkListStore_::set_sort_func>("set_sort_func");
+            gtkliststore.method<&GtkListStore_::set_sort_column_id>("set_sort_column_id");
 
         
         // GtkSelectionMode
@@ -4191,17 +4197,30 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
         }
         case G_TYPE_LONG:
         {
-            throw Php::Exception("G_TYPE_LONG not implemented");
+            // Cast
+            int b = (int64_t)phpgtk_value;
+
+            g_value_init(&gtk_value, G_TYPE_LONG);
+            g_value_set_long(&gtk_value, b);
             break;
         }
         case G_TYPE_ULONG:
         {
-            throw Php::Exception("G_TYPE_ULONG not implemented");
+            // Cast
+            //int b = (int64_t)phpgtk_value;
+
+            //g_value_init(&gtk_value, G_TYPE_ULONG);
+            //g_value_set_ulong(&gtk_value, b);
             break;
         }
         case G_TYPE_UINT:
         {
-            throw Php::Exception("G_TYPE_UINT not implemented");
+            // Cast
+            //int b = (int32_t)phpgtk_value;
+
+            //g_value_init(&gtk_value, G_TYPE_UINT);
+            //g_value_set_uint(&gtk_value, b);
+            throw Php::Exception("G_TYPE_UCHAR not implemented");
             break;
         }
         case G_TYPE_UCHAR:

@@ -41,4 +41,3 @@ Php::Value GtkTreeSortable_::has_default_sort_func()
 }
 
 
-

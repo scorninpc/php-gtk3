@@ -765,7 +765,7 @@ Php::Value GtkTextBuffer_::get_selection_bounds(Php::Parameters &parameters)
 	arr[0] = arr["start"];
 
 	GtkTextIter_ *return_parsed_end = new GtkTextIter_();
-	return_parsed_end->set_instance(start);
+	return_parsed_end->set_instance(end);
 	arr["end"] = Php::Object("GtkTextIter", return_parsed_end);
 	arr[1] = arr["end"];
 
