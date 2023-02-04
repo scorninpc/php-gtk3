@@ -140,21 +140,16 @@ Php::Value GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
 	throw Php::Exception("GtkTreeSelection_->selected_foreach() not implemented yet");
 }
 
-Php::Value GtkTreeSelection_::get_selected_rows(Php::Parameters &parameters)
+Php::Value GtkTreeSelection_::get_selected_rows()
 {
 	GtkTreeModel *model;
-	if(parameters.size() > 0) {
-		Php::Value object_model = parameters[0];
-		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
-		model = GTK_TREE_MODEL(phpgtk_model->get_model());
-	}
 
 	GList *ret = gtk_tree_selection_get_selected_rows (GTK_TREE_SELECTION(instance), &model);
 
 	Php::Value ret_arr;
 
 	for(int index=0; GList *item=g_list_nth(ret, index); index++) {
-		ret_arr[index] = (char *) item->data;
+		ret_arr[index] = gtk_tree_path_to_string((GtkTreePath*)item->data);
 	}
 
 	return ret_arr;

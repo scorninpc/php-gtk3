@@ -44,7 +44,7 @@
 
             Php::Value selected_foreach(Php::Parameters &parameters);
 
-            Php::Value get_selected_rows(Php::Parameters &parameters);
+            Php::Value get_selected_rows();
 
             Php::Value count_selected_rows();
 

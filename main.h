@@ -43,6 +43,7 @@
 	#include "src/Gtk/GtkHBox.h"
 	#include "src/Gtk/GtkVBox.h"
 	#include "src/Gtk/GtkBin.h"
+	#include "src/Gtk/GtkViewport.h"
 	#include "src/Gtk/GtkEventBox.h"
 	#include "src/Gtk/GtkWindow.h"
 	#include "src/Gtk/GtkApplicationWindow.h"
