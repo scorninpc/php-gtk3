@@ -261,7 +261,7 @@
             
             void set_editable(Php::Parameters& parameters);
 
-            Php::Value get_selection_bounds(Php::Parameters& parameters);
+            Php::Value get_selection_bounds();
 
             void set_position(Php::Parameters& parameters);
     };
