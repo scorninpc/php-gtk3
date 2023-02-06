@@ -397,7 +397,6 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
     // GtkTreeIter b
     GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
 	if(!gtk_tree_store_iter_is_valid(GTK_TREE_STORE(model), b)) {
-	// if(b == NULL) {
 		internal_parameters[2] = Php::Value();
 	}
 	else {
@@ -409,9 +408,6 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
     for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
     	internal_parameters[i+1] = callback_object->user_parameters[i];
     }
-
-	Php::call("var_dump", callback_name);
-	
 
 	// Call php function with parameters
     gint ret =  Php::call("call_user_func_array", callback_name, internal_parameters);
