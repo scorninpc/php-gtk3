@@ -39,6 +39,7 @@ extern "C"
             gobject.method<&GObject_::connect>("connect");
             gobject.method<&GObject_::connect_after>("connect_after");
             gobject.method<&GObject_::handler_disconnect>("handler_disconnect");
+            gobject.method<&GObject_::is_connected>("is_connected");
             gobject.method<&GObject_::get_property>("get_property");
             gobject.method<&GObject_::set_property>("set_property");
             gobject.method<&GObject_::signal_handler_block>("signal_handler_block");
@@ -4211,7 +4212,7 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
         case G_TYPE_LONG:
         {
             // Cast
-            int b = (int64_t)phpgtk_value;
+            long b = (long long)phpgtk_value;
 
             g_value_init(&gtk_value, G_TYPE_LONG);
             g_value_set_long(&gtk_value, b);
