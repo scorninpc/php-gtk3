@@ -57,6 +57,7 @@
              */
             void handler_disconnect(Php::Parameters &parameters);
 
+            Php::Value is_connected(Php::Parameters& parameters);
 
             Php::Value get_property(Php::Parameters &parameters);
             void set_property(Php::Parameters &parameters);
