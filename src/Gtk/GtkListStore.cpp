@@ -21,17 +21,17 @@ void GtkListStore_::__construct(Php::Parameters &parameters)
 
 	gint n_columns = (gint) parameters.size();
 
-    GType *types;
-    types = g_new(GType, n_columns);
-    
-    for(int index=0; index < (int)parameters.size(); index++) {
-        int a = parameters[index];
+	GType *types;
+	types = g_new(GType, n_columns);
+	
+	for(int index=0; index < (int)parameters.size(); index++) {
+		int a = parameters[index];
 
-        types[index] = (GType)a;
-    }
+		types[index] = (GType)a;
+	}
 
-    // Create the store
-    model = GTK_TREE_MODEL(gtk_list_store_newv(n_columns, types));
+	// Create the store
+	model = GTK_TREE_MODEL(gtk_list_store_newv(n_columns, types));
 
 }
 
@@ -82,21 +82,21 @@ void GtkListStore_::set_value(Php::Parameters &parameters)
 {
 
 	GtkTreeIter iter;
-    Php::Value object_iter = parameters[0];
-    GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
-    iter = phpgtk_iter->get_instance();
+	Php::Value object_iter = parameters[0];
+	GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
+	iter = phpgtk_iter->get_instance();
 
-    gint column = (int)parameters[1];
+	gint column = (int)parameters[1];
 
 
-    // Get column type
-    GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), column);
+	// Get column type
+	GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), column);
 
-    // Populate the column var with correct type
-    GValue value = phpgtk_get_gvalue(parameters[2], type_column);
+	// Populate the column var with correct type
+	GValue value = phpgtk_get_gvalue(parameters[2], type_column);
 
-    // Add the value
-    gtk_list_store_set_value(GTK_LIST_STORE(model), &iter, column, &value);
+	// Add the value
+	gtk_list_store_set_value(GTK_LIST_STORE(model), &iter, column, &value);
 
 
 
@@ -211,24 +211,24 @@ Php::Value GtkListStore_::prepend(Php::Parameters &parameters)
 {
 	
 	// Add new line
-    GtkTreeIter localIter;
-    gtk_list_store_prepend(GTK_LIST_STORE(model), &localIter);
+	GtkTreeIter localIter;
+	gtk_list_store_prepend(GTK_LIST_STORE(model), &localIter);
 
-    // Get param
-    Php::Value arr = parameters[0];
+	// Get param
+	Php::Value arr = parameters[0];
 
-    // Loop columns of param
-    for(int index=0; index < (int)arr.size(); index++) {
+	// Loop columns of param
+	for(int index=0; index < (int)arr.size(); index++) {
 
-        // Get column type
-        GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
+		// Get column type
+		GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
 
-        // Populate the column var with correct type
-        GValue a = phpgtk_get_gvalue(arr[index], type_column);
+		// Populate the column var with correct type
+		GValue a = phpgtk_get_gvalue(arr[index], type_column);
 
-        // Set the value
-        gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
-    }
+		// Set the value
+		gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
+	}
 
 	GtkTreeIter_ *return_parsed = new GtkTreeIter_();
 	return_parsed->set_instance(localIter);
@@ -239,24 +239,24 @@ Php::Value GtkListStore_::prepend(Php::Parameters &parameters)
 Php::Value GtkListStore_::append(Php::Parameters &parameters)
 {
 	// Add new line
-    GtkTreeIter localIter;
-    gtk_list_store_append(GTK_LIST_STORE(model), &localIter);
+	GtkTreeIter localIter;
+	gtk_list_store_append(GTK_LIST_STORE(model), &localIter);
 
-    // Get param
-    Php::Value arr = parameters[0];
+	// Get param
+	Php::Value arr = parameters[0];
 
-    // Loop columns of param
-    for(int index=0; index < (int)arr.size(); index++) {
+	// Loop columns of param
+	for(int index=0; index < (int)arr.size(); index++) {
 
-        // Get column type
-        GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
+		// Get column type
+		GType type_column = gtk_tree_model_get_column_type(GTK_TREE_MODEL(model), index);
 
-        // Populate the column var with correct type
-        GValue a = phpgtk_get_gvalue(arr[index], type_column);
+		// Populate the column var with correct type
+		GValue a = phpgtk_get_gvalue(arr[index], type_column);
 
-        // Set the value
-        gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
-    }
+		// Set the value
+		gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
+	}
 
 	GtkTreeIter_ *return_parsed = new GtkTreeIter_();
 	return_parsed->set_instance(localIter);
@@ -362,11 +362,11 @@ void GtkListStore_::set_sort_func(Php::Parameters& parameters)
 {
 	gint sort_column_id = (gint)parameters[0];
 
-    // Create gpointer user data
-    struct st_request_callback *callback_object = (struct st_request_callback *)malloc(sizeof(struct st_request_callback));
-    memset(callback_object, 0, sizeof(struct st_request_callback));
-    callback_object->user_parameters = parameters;
-    callback_object->self_widget = Php::Object("GtkListStore", this);
+	// Create gpointer user data
+	struct st_request_callback *callback_object = (struct st_request_callback *)malloc(sizeof(struct st_request_callback));
+	memset(callback_object, 0, sizeof(struct st_request_callback));
+	callback_object->user_parameters = parameters;
+	callback_object->self_widget = Php::Object("GtkListStore", this);
 
 	gtk_tree_sortable_set_sort_func(GTK_TREE_SORTABLE(model), sort_column_id, set_sort_func_callback, (gpointer)callback_object, NULL);
 }
@@ -375,27 +375,27 @@ void GtkListStore_::set_sort_func(Php::Parameters& parameters)
 gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data)
 {
 	// Return to st_callback
-    struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
+	struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
 
-    // Callback_name
-    Php::Value callback_name = callback_object->user_parameters[1];
+	// Callback_name
+	Php::Value callback_name = callback_object->user_parameters[1];
 	//Php::call("var_dump", callback_name);
 
-    // Create internal params (GtkTreeModel, GtkTreeIter, GtkTreeIter, user_data)
-    Php::Value internal_parameters;
+	// Create internal params (GtkTreeModel, GtkTreeIter, GtkTreeIter, user_data)
+	Php::Value internal_parameters;
 
-    // GtkTreeModel model
-    GtkTreeModel_ *model_ = new GtkTreeModel_();
-    model_->set_model((GtkTreeModel*)model);
-    internal_parameters[0] = Php::Object("GtkTreeModel", model_);
+	// GtkTreeModel model
+	GtkTreeModel_ *model_ = new GtkTreeModel_();
+	model_->set_model((GtkTreeModel*)model);
+	internal_parameters[0] = Php::Object("GtkTreeModel", model_);
 
-    // GtkTreeIter a
-    GtkTreeIter_ *iter_a_ = new GtkTreeIter_();
+	// GtkTreeIter a
+	GtkTreeIter_ *iter_a_ = new GtkTreeIter_();
 	iter_a_->set_instance(*a);
-    internal_parameters[1] = Php::Object("GtkTreeIter", iter_a_);
+	internal_parameters[1] = Php::Object("GtkTreeIter", iter_a_);
 
-    // GtkTreeIter b
-    GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
+	// GtkTreeIter b
+	GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
 	if(!gtk_tree_store_iter_is_valid(GTK_TREE_STORE(model), b)) {
 		internal_parameters[2] = Php::Value();
 	}
@@ -404,13 +404,13 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 		internal_parameters[2] = Php::Object("GtkTreeIter", iter_b_);
 	}
 
-    // user data
-    for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
-    	internal_parameters[i+1] = callback_object->user_parameters[i];
-    }
+	// user data
+	for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
+		internal_parameters[i+1] = callback_object->user_parameters[i];
+	}
 
 	// Call php function with parameters
-    gint ret =  Php::call("call_user_func_array", callback_name, internal_parameters);
+	gint ret =  Php::call("call_user_func_array", callback_name, internal_parameters);
 
 	return ret;
 }
