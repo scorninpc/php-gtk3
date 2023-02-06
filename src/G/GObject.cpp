@@ -298,6 +298,16 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 }
 
 
+Php::Value  GObject_::is_connected(Php::Parameters& parameters)
+{
+    Php::Value callback_handle = parameters[0];
+
+    gboolean ret = g_signal_handler_is_connected(instance, (int)callback_handle);
+
+    return ret;
+}
+
+
 Php::Value GObject_::get_property(Php::Parameters &parameters)
 {
     std::string s_property_name = parameters[0];
