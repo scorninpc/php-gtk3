@@ -4222,11 +4222,12 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
         case G_TYPE_ULONG:
         {
             // Cast
-            // unsigned long long b = (unsigned long long)phpgtk_value;
-
-            // g_value_init(&gtk_value, G_TYPE_ULONG);
-            // g_value_set_ulong(&gtk_value, b);
-           // throw Php::Exception("G_TYPE_ULONG not implemented");
+            //unsigned long long b = (int64_t)phpgtk_value;
+            //Php::call("var_dump", "G_TYPE_ULONG");
+            //Php::call("var_dump", (int64_t)phpgtk_value);
+            //g_value_init(&gtk_value, G_TYPE_ULONG);
+            //g_value_set_ulong(&gtk_value, b);
+            throw Php::Exception("G_TYPE_ULONG not implemented");
             break;
         }
         case G_TYPE_UINT:

@@ -152,7 +152,14 @@ Php::Value GtkTreeSelection_::get_selected_rows()
 		ret_arr[index] = gtk_tree_path_to_string((GtkTreePath*)item->data);
 	}
 
-	return ret_arr;
+	GtkTreeModel_* return_parsed_model = new GtkTreeModel_();
+	return_parsed_model->set_model(model);
+
+	Php::Value result;
+	result[0] = Php::Object("GtkTreeModel", return_parsed_model);
+	result[1] = ret_arr;
+
+	return result;
 }
 
 Php::Value GtkTreeSelection_::count_selected_rows()
