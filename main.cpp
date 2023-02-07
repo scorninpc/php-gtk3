@@ -4213,7 +4213,7 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
         {
             // Cast
 
-            long long b = (long long)phpgtk_value;
+            long b = (long)phpgtk_value;
 
             g_value_init(&gtk_value, G_TYPE_LONG);
             g_value_set_long(&gtk_value, b);
