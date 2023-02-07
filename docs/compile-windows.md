@@ -74,6 +74,11 @@ Following the [PHP-SDK-Binary-Tools] (https://github.com/Microsoft/php-sdk-binar
 Version must follow your intended compilation type.
 Once done, copy "config.w32.h" from "php-sdk\phpmaster\vc15\x64\php-src\main" to "php-7.4.33-src\main"
 
+`note¹:` follow this steps to compile php https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2
+`note²:` visual studio need `C++ desktop development tools installed;`. Today this install version 2022, but with `c++ 2017 version v141 tools`. So install 2022 as default, and manualy add 2017 version
+
+
+
 ## Fix PHP-CPP for Visual Studio
 
 We have a file named `zend\string.h` in the PHP-CPP folder. So on Windows there is a conflict because the `string.h` is already in the System File, so we have to rename it. I took `strings.h`, so rename `zend\string.h` to `zend\strings.h` with the `s`.
