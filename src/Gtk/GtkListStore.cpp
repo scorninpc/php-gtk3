@@ -396,7 +396,7 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 
 	// GtkTreeIter b
 	GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
-	if(!gtk_tree_store_iter_is_valid(GTK_TREE_STORE(model), b)) {
+	if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), b)) {
 		internal_parameters[2] = Php::Value();
 	}
 	else {

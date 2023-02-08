@@ -38,12 +38,10 @@ void GtkTreeModel_::__construct(Php::Parameters &parameters)
 Php::Value GtkTreeModel_::get_iter(Php::Parameters &parameters)
 {
     std::string param_path = parameters[0];
-
     GtkTreeIter iter;
     GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
-    gtk_tree_model_get_iter(model, &iter, path);
 
-    bool ret = gtk_tree_model_get_iter(model, &iter, path);
+    bool ret = gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path);
     if(!ret) {
         return false;
     }
@@ -84,6 +82,10 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
             return g_value_get_double(&value);
         }
         case G_TYPE_LONG:
+        {
+            return g_value_get_long(&value);
+        }
+        case G_TYPE_ULONG:
         {
             return g_value_get_long(&value);
         }
