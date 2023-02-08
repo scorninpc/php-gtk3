@@ -2374,6 +2374,7 @@ extern "C"
         gtkalignment.method<&GtkAlignment_::set>("set");
         gtkalignment.method<&GtkAlignment_::set_padding>("set_padding");
         gtkalignment.method<&GtkAlignment_::get_padding>("get_padding");
+        gtkalignment.method<&GtkAlignment_::get_child>("get_child");
         gtkalignment.method<&GtkAlignment_::__construct>("__construct");
 
         // GtkToolItem
