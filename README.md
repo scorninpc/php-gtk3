@@ -49,6 +49,7 @@ $win->show_all();
 
 - [@scorninpc](https://www.github.com/scorninpc) - Main dev
 - [@subabrain](https://www.github.com/subabrain) - Thank you for your hard work to compile on Windows
+- [@apss-pohl](https://github.com/apss-pohl) - A lot fixes and improvements
 
 ## Screenshots
 
