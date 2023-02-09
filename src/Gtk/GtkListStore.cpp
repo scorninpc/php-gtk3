@@ -244,7 +244,7 @@ Php::Value GtkListStore_::append(Php::Parameters &parameters)
 
 	// Get param
 	Php::Value arr = parameters[0];
-
+	// Php::call("var_dump", arr);
 	// Loop columns of param
 	for(int index=0; index < (int)arr.size(); index++) {
 
@@ -254,6 +254,8 @@ Php::Value GtkListStore_::append(Php::Parameters &parameters)
 		// Populate the column var with correct type
 		GValue a = phpgtk_get_gvalue(arr[index], type_column);
 
+		//Php::call("var_dump", g_value_get_long(&a));
+		//printf("%lld", g_value_get_long(&a));
 		// Set the value
 		gtk_list_store_set_value(GTK_LIST_STORE(model), &localIter, index, &a);
 	}
@@ -396,7 +398,7 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 
 	// GtkTreeIter b
 	GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
-	if(!gtk_tree_store_iter_is_valid(GTK_TREE_STORE(model), b)) {
+	if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), b)) {
 		internal_parameters[2] = Php::Value();
 	}
 	else {
