@@ -83,11 +83,11 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
         }
         case G_TYPE_LONG:
         {
-            return g_value_get_long(&value);
+            return (long long) g_value_get_long(&value);
         }
         case G_TYPE_ULONG:
         {
-            return g_value_get_long(&value);
+            return (int64_t)g_value_get_int64(&value);
         }
         case G_TYPE_FLOAT:
         {

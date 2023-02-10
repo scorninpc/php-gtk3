@@ -193,6 +193,8 @@ Php::Value GtkTreeStore_::append(Php::Parameters &parameters)
         // Populate the column var with correct type
         GValue value = phpgtk_get_gvalue(arr[index], type_column);
 
+		//Php::call("var_dump", g_value_get_long(&value));
+		//printf("%lld", g_value_get_long(&value));
         // Set the value
         gtk_tree_store_set_value(GTK_TREE_STORE(model), &localIter, index, &value);
     }

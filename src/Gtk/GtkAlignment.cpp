@@ -79,5 +79,11 @@ void GtkAlignment_::__construct(Php::Parameters &parameters)
 	instance = (gpointer *)gtk_alignment_new(xalign, yalign, xscale, yscale);
 }
 
+Php::Value GtkAlignment_::get_child()
+{
+	gpointer* ret = (gpointer*)gtk_bin_get_child(GTK_BIN(instance));
+
+	return cobject_to_phpobject(ret);
+}
 
 
