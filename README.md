@@ -51,6 +51,10 @@ $win->show_all();
 - [@subabrain](https://www.github.com/subabrain) - Thank you for your hard work to compile on Windows
 - [@apss-pohl](https://github.com/apss-pohl) - A lot fixes and improvements
 
+## PHP-GTK 3 Cookbook
+
+You can find a cookbook of codes compiled and organized in http://andor.com.br/php-gtk/cookbook
+
 ## Screenshots
 
 ![GTKTreeview](https://i.imgur.com/zrO87QV.jpg)
