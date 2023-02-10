@@ -428,3 +428,20 @@ void GtkListStore_::set_sort_column_id(Php::Parameters& parameters)
 	gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(model), sort_column_id, order);
 }
 
+Php::Value GtkListStore_::iter_n_children(Php::Parameters& parameters)
+{
+	if (parameters.size() > 1) {
+		//Php::call("var_dump", "iter_n_children NOT NULL");
+		GtkTreeIter iter;
+		Php::Value object_iter = parameters[0];
+		GtkTreeIter_* phpgtk_iter = (GtkTreeIter_*)object_iter.implementation();
+		iter = phpgtk_iter->get_instance();
+		gint ret = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model), &iter);
+		return ret;
+	}
+	else {
+		gint ret = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+
+		return ret;
+	}
+}

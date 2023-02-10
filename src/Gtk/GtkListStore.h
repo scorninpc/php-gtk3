@@ -75,6 +75,8 @@
             static gint set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b,  gpointer user_data);
 
             void set_sort_column_id(Php::Parameters& parameters);
+
+            Php::Value iter_n_children(Php::Parameters& parameters);
     };
 
 #endif
