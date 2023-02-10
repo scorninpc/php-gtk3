@@ -20,6 +20,10 @@ See [issues](https://github.com/scorninpc/php-gtk3/issues) for problems and impr
 
 PHP-GTK3 work with a middleway of [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP). In addition to making work faster, syntax and how to program closely resemble PHP, so more people can contribute to the project. Another strong point, perhaps the most important are the updates of Zend.h. In the migration from PHP5 to PHP7 for example, every bind was lost. In that way, there is a nice community working on PHP-CPP to make this updated
 
+## PHP-GTK 3 Cookbook
+
+You can find a cookbook of codes compiled and organized in http://andor.com.br/php-gtk/cookbook
+
 ## Example
 
 ```php
@@ -50,10 +54,6 @@ $win->show_all();
 - [@scorninpc](https://www.github.com/scorninpc) - Main dev
 - [@subabrain](https://www.github.com/subabrain) - Thank you for your hard work to compile on Windows
 - [@apss-pohl](https://github.com/apss-pohl) - A lot fixes and improvements
-
-## PHP-GTK 3 Cookbook
-
-You can find a cookbook of codes compiled and organized in http://andor.com.br/php-gtk/cookbook
 
 ## Screenshots
 
