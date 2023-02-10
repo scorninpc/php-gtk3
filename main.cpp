@@ -1421,6 +1421,7 @@ extern "C"
         gtkbutton.method<&GtkButton_::set_always_show_image>("set_always_show_image");
         gtkbutton.method<&GtkButton_::get_always_show_image>("get_always_show_image");
         gtkbutton.method<&GtkButton_::get_event_window>("get_event_window");
+        gtkbutton.method<&GtkButton_::get_child>("get_child");
 
         // GtkColorButton
         Php::Class<GtkColorButton_> gtkcolorbutton("GtkColorButton");
