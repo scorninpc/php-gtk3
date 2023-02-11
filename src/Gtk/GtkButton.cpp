@@ -270,9 +270,4 @@ Php::Value GtkButton_::get_event_window()
 	return 0;
 }
 
-Php::Value GtkButton_::get_child()
-{
-	gpointer* ret = (gpointer*)gtk_bin_get_child(GTK_BIN(instance));
 
-	return cobject_to_phpobject(ret);
-}

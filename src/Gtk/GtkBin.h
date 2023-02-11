@@ -24,6 +24,8 @@
             virtual ~GtkBin_();
 
             void test3();
+
+            Php::Value get_child();
     };
 
 #endif

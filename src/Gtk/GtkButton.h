@@ -84,8 +84,6 @@
             Php::Value get_always_show_image();
 
             Php::Value get_event_window();
-
-            Php::Value get_child();
     };
 
 #endif

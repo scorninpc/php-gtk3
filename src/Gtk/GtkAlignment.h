@@ -19,8 +19,6 @@
 			Php::Value get_padding();
 			void __construct(Php::Parameters &parameters);
 
-			Php::Value get_child();
-
 	};
 
 #endif

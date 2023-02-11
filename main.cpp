@@ -1071,6 +1071,7 @@ extern "C"
         Php::Class<GtkBin_> gtkbin("GtkBin");
         gtkbin.extends(gtkcontainer);
         gtkbin.method<&GtkBin_::test3>("test3");
+        gtkbin.method<&GtkBin_::get_child>("get_child");
 
         Php::Class<GtkViewport_> gtkviewport("GtkViewport");
         gtkviewport.extends(gtkbin);
@@ -1421,7 +1422,7 @@ extern "C"
         gtkbutton.method<&GtkButton_::set_always_show_image>("set_always_show_image");
         gtkbutton.method<&GtkButton_::get_always_show_image>("get_always_show_image");
         gtkbutton.method<&GtkButton_::get_event_window>("get_event_window");
-        gtkbutton.method<&GtkButton_::get_child>("get_child");
+        
 
         // GtkColorButton
         Php::Class<GtkColorButton_> gtkcolorbutton("GtkColorButton");
@@ -2375,7 +2376,6 @@ extern "C"
         gtkalignment.method<&GtkAlignment_::set>("set");
         gtkalignment.method<&GtkAlignment_::set_padding>("set_padding");
         gtkalignment.method<&GtkAlignment_::get_padding>("get_padding");
-        gtkalignment.method<&GtkAlignment_::get_child>("get_child");
         gtkalignment.method<&GtkAlignment_::__construct>("__construct");
 
         // GtkToolItem
