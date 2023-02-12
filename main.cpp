@@ -4029,7 +4029,7 @@ Php::Value phpgtk_get_phpvalue(GValue *gvalue)
         return g_value_get_long(gvalue);
         break;
     case G_TYPE_ULONG:
-        return g_value_get_int64(gvalue);
+        return (int64_t)g_value_get_int64(gvalue);
         break;
     case G_TYPE_UCHAR:
         return g_value_get_uchar(gvalue);
