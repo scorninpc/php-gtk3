@@ -267,7 +267,7 @@
 
 2. Dependent libs
 
-	Copy these files from `C:\msys2\mingw64\bin` to the root directory of your ``C:\php-dev\php-8.1.14-nts-Win32-vs16-x64` folder:
+	Copy these files from `C:\msys2\mingw64\bin` to the root directory of your `C:\php-dev\php-8.1.14-nts-Win32-vs16-x64` folder:
 
 	```
 	libatk-1.0-0.dll
