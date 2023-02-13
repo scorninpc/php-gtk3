@@ -20,22 +20,22 @@
 
 4. Create your first PHP script on Desktop called `simple.php`;
 
-```php
-<?php
+	```php
+	<?php
 
-Gtk::init();
+	Gtk::init();
 
-$window = new \GtkWindow();
-$window->show_all();
+	$window = new \GtkWindow();
+	$window->show_all();
 
-Gtk::main();
-```
+	Gtk::main();
+	```
 
 5. Open cmd.exe and run your script;
 
-```bash
-C:\PHP-GTK\php.exe Desktop\simple.php
-```
+	```bash
+	C:\PHP-GTK\php.exe Desktop\simple.php
+	```
 
 # How to Build PHP-GTK on Windows
 
