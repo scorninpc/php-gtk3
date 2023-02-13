@@ -43,15 +43,15 @@ C:\PHP-GTK\php.exe Desktop\simple.php
 
 1. Determining the Visual Studio version
 
-First of all, you need to know what version of Visual Studio do you need. Go to URL https://windows.php.net/downloads/php-sdk/deps/series/ and see what version of PHP are compiled on what version of Visual Studio. For example, you can see that PHP 8.2 can be compiled on VS16 only, because the file called `packages-8.2-vs16-x64-stable.txt`
+	First of all, you need to know what version of Visual Studio do you need. Go to URL https://windows.php.net/downloads/php-sdk/deps/series/ and see what version of PHP are compiled on what version of Visual Studio. For example, you can see that PHP 8.2 can be compiled on VS16 only, because the file called `packages-8.2-vs16-x64-stable.txt`
 
 2. Downloading and installing Visual Studio
 
-For PHP 8.1, all you need is install VS16 too, wich are included on VS 2019. So you can download Visual Studio 2019 from [here](https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&rel=16&src=myvs&utm_medium=microsoft&utm_source=my.visualstudio.com&utm_campaign=download&utm_content=vs+community+2019)
+	For PHP 8.1, all you need is install VS16 too, wich are included on VS 2019. So you can download Visual Studio 2019 from [here](https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&rel=16&src=myvs&utm_medium=microsoft&utm_source=my.visualstudio.com&utm_campaign=download&utm_content=vs+community+2019)
 
-Open the installer, and install Visual Studio Community 2019 and "C++ Desktop Development"
+	Open the installer, and install Visual Studio Community 2019 and "C++ Desktop Development"
 
-If when you are reading that you cannot install Visual Studio 2019, try to install the current version of "C++ Desktop Development" and after that, click in modify "Visual Studio Community", and on "Individual Componentes" tab, look for "Build Tools MSVC v142 (VS 2019 C++)" and "Windows 10 SDK".
+	If when you are reading that you cannot install Visual Studio 2019, try to install the current version of "C++ Desktop Development" and after that, click in modify "Visual Studio Community", and on "Individual Componentes" tab, look for "Build Tools MSVC v142 (VS 2019 C++)" and "Windows 10 SDK".
 
 3. Install [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe);
 
