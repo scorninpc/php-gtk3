@@ -1481,6 +1481,9 @@ extern "C"
         gtkcheckbutton.method<&GtkCheckButton_::__construct>("__construct");
         gtkcheckbutton.method<&GtkCheckButton_::new_with_label>("new_with_label");
         gtkcheckbutton.method<&GtkCheckButton_::new_with_mnemonic>("new_with_mnemonic");
+        gtkcheckbutton.method<&GtkCheckButton_::get_active>("get_active");
+        gtkcheckbutton.method<&GtkCheckButton_::set_active>("set_active");
+        gtkcheckbutton.method<&GtkCheckButton_::toggled>("toggled");
 
         // GtkRadioButton
         Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
