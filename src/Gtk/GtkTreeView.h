@@ -76,6 +76,10 @@
             Php::Value get_n_columns();
 
             void set_headers_visible(Php::Parameters &parameters);
+
+            void select_all();
+
+            void unselect_all();
     };
 
 #endif

@@ -1630,6 +1630,8 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::expand_all>("expand_all");
         gtktreeview.method<&GtkTreeView_::get_n_columns>("get_n_columns");
         gtktreeview.method<&GtkTreeView_::set_headers_visible>("set_headers_visible");
+        gtktreeview.method<&GtkTreeView_::unselect_all>("unselect_all");
+        gtktreeview.method<&GtkTreeView_::select_all>("select_all");
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");
