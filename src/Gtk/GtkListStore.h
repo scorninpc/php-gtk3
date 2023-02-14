@@ -77,6 +77,8 @@
             void set_sort_column_id(Php::Parameters& parameters);
 
             Php::Value iter_n_children(Php::Parameters& parameters);
+
+            Php::Value get_iter_first(Php::Parameters& parameters);
     };
 
 #endif

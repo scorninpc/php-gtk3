@@ -2595,6 +2595,7 @@ extern "C"
         gtkliststore.method<&GtkListStore_::set_sort_func>("set_sort_func");
         gtkliststore.method<&GtkListStore_::set_sort_column_id>("set_sort_column_id");
         gtkliststore.method<&GtkListStore_::iter_n_children>("iter_n_children");
+        gtkliststore.method<&GtkListStore_::get_iter_first>("get_iter_first");
 
         // GtkSelectionMode
         Php::Class<Php::Base> gtkselectionmode("GtkSelectionMode");
