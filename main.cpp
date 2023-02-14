@@ -70,6 +70,12 @@ extern "C"
         gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
 
         // ----- ENUMS
+        // GtkAttachOptions
+        Php::Class<Php::Base> gtkattachoptions("GtkAttachOptions");
+        gtkattachoptions.constant("EXPAND", GTK_EXPAND);
+        gtkattachoptions.constant("SHRINK", GTK_SHRINK);
+        gtkattachoptions.constant("FILL", GTK_FILL);
+
         // GdkByteOrder
         Php::Class<Php::Base> gdkbyteorder("GdkByteOrder");
         gdkbyteorder.constant("LSB_FIRST", GDK_LSB_FIRST);
@@ -1006,6 +1012,24 @@ extern "C"
         gtkcontainer.method<&GtkContainer_::class_install_child_properties>("class_install_child_properties");
         gtkcontainer.method<&GtkContainer_::class_list_child_properties>("class_list_child_properties");
         gtkcontainer.method<&GtkContainer_::class_handle_border_width>("class_handle_border_width");
+
+        Php::Class<GtkTable_> gtktable("GtkTable");
+            gtktable.extends(gtkcontainer);
+            gtktable.method<&GtkTable_::resize>("resize");
+            gtktable.method<&GtkTable_::attach>("attach");
+            gtktable.method<&GtkTable_::attach_defaults>("attach_defaults");
+            gtktable.method<&GtkTable_::set_row_spacing>("set_row_spacing");
+            gtktable.method<&GtkTable_::get_row_spacing>("get_row_spacing");
+            gtktable.method<&GtkTable_::set_col_spacing>("set_col_spacing");
+            gtktable.method<&GtkTable_::get_col_spacing>("get_col_spacing");
+            gtktable.method<&GtkTable_::set_row_spacings>("set_row_spacings");
+            gtktable.method<&GtkTable_::get_default_row_spacing>("get_default_row_spacing");
+            gtktable.method<&GtkTable_::set_col_spacings>("set_col_spacings");
+            gtktable.method<&GtkTable_::get_default_col_spacing>("get_default_col_spacing");
+            gtktable.method<&GtkTable_::set_homogeneous>("set_homogeneous");
+            gtktable.method<&GtkTable_::get_homogeneous>("get_homogeneous");
+            gtktable.method<&GtkTable_::get_size>("get_size");
+            gtktable.method<&GtkTable_::__construct>("__construct");
 
         // GtkBox
         Php::Class<GtkBox_> gtkbox("GtkBox");
@@ -3704,6 +3728,7 @@ extern "C"
 
         extension.add(std::move(gdkwindow));
         extension.add(std::move(gdkbyteorder));
+        extension.add(std::move(gtkattachoptions));
         extension.add(std::move(gdkvisualtype));
         extension.add(std::move(gdkwindowtype));
         extension.add(std::move(gdkwindowwindowclass));
@@ -3728,6 +3753,7 @@ extern "C"
         extension.add(std::move(gtkwidget));
         extension.add(std::move(gtkmisc));
         extension.add(std::move(gtkcontainer));
+        extension.add(std::move(gtktable));
         extension.add(std::move(gtkbox));
         extension.add(std::move(gtkgrid));
         extension.add(std::move(gtkfixed));

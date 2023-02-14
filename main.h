@@ -35,6 +35,7 @@
 	#include "src/Gtk/GtkEntry.h"
 	#include "src/Gtk/GtkEntryCompletion.h"
 	#include "src/Gtk/GtkContainer.h"
+	#include "src/Gtk/GtkTable.h"
 	#include "src/Gtk/GtkCssProvider.h"
 	#include "src/Gtk/GtkStyleContext.h"
 	#include "src/Gtk/GtkBox.h"
