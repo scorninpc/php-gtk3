@@ -214,3 +214,15 @@ void GtkTreeView_::set_headers_visible(Php::Parameters &parameters)
 
 	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(instance), enabled);
 }
+
+void GtkTreeView_::select_all()
+{
+	gtk_tree_selection_select_all(GTK_TREE_SELECTION(instance));
+
+}
+
+void GtkTreeView_::unselect_all()
+{
+	gtk_tree_selection_unselect_all(GTK_TREE_SELECTION(instance));
+
+}

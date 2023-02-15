@@ -41,3 +41,23 @@ Php::Value GtkCheckButton_::new_with_mnemonic(Php::Parameters &parameters)
 	return Php::Object("GtkCheckButton", return_parsed);
 }
 
+Php::Value GtkCheckButton_::get_active()
+{
+	gboolean ret = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(instance));
+
+	return ret;
+}
+
+void GtkCheckButton_::set_active(Php::Parameters& parameters)
+{
+	gboolean is_active = (gboolean)parameters[0];
+
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(instance), is_active);
+
+}
+
+void GtkCheckButton_::toggled()
+{
+	gtk_toggle_button_toggled(GTK_TOGGLE_BUTTON(instance));
+
+}

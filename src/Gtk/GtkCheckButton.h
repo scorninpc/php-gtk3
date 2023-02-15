@@ -30,6 +30,12 @@
             static Php::Value new_with_label(Php::Parameters &parameters);
 
             static Php::Value new_with_mnemonic(Php::Parameters &parameters);
+
+            Php::Value get_active();
+
+            void set_active(Php::Parameters& parameters);
+
+            void toggled();
     };
 
 #endif

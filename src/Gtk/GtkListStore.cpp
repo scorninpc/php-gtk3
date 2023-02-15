@@ -445,3 +445,13 @@ Php::Value GtkListStore_::iter_n_children(Php::Parameters& parameters)
 		return ret;
 	}
 }
+
+Php::Value GtkListStore_::get_iter_first(Php::Parameters& parameters)
+{
+
+	GtkTreeIter iter;
+
+	gboolean ret = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(model), &iter);
+
+	return ret;
+}
