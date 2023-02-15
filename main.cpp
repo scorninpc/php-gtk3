@@ -1505,6 +1505,9 @@ extern "C"
         gtkcheckbutton.method<&GtkCheckButton_::__construct>("__construct");
         gtkcheckbutton.method<&GtkCheckButton_::new_with_label>("new_with_label");
         gtkcheckbutton.method<&GtkCheckButton_::new_with_mnemonic>("new_with_mnemonic");
+        gtkcheckbutton.method<&GtkCheckButton_::get_active>("get_active");
+        gtkcheckbutton.method<&GtkCheckButton_::set_active>("set_active");
+        gtkcheckbutton.method<&GtkCheckButton_::toggled>("toggled");
 
         // GtkRadioButton
         Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
@@ -1651,6 +1654,8 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::expand_all>("expand_all");
         gtktreeview.method<&GtkTreeView_::get_n_columns>("get_n_columns");
         gtktreeview.method<&GtkTreeView_::set_headers_visible>("set_headers_visible");
+        gtktreeview.method<&GtkTreeView_::unselect_all>("unselect_all");
+        gtktreeview.method<&GtkTreeView_::select_all>("select_all");
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");
@@ -2614,6 +2619,7 @@ extern "C"
         gtkliststore.method<&GtkListStore_::set_sort_func>("set_sort_func");
         gtkliststore.method<&GtkListStore_::set_sort_column_id>("set_sort_column_id");
         gtkliststore.method<&GtkListStore_::iter_n_children>("iter_n_children");
+        gtkliststore.method<&GtkListStore_::get_iter_first>("get_iter_first");
 
         // GtkSelectionMode
         Php::Class<Php::Base> gtkselectionmode("GtkSelectionMode");
