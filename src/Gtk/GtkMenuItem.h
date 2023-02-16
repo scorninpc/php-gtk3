@@ -63,6 +63,8 @@
             Php::Value get_reserve_indicator();
 
             void set_reserve_indicator(Php::Parameters &parameters);
+
+            void set_right_justified(Php::Parameters& parameters);
     };
 
 #endif

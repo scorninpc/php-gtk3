@@ -2661,3 +2661,19 @@ void GtkWidget_::class_set_connect_func(Php::Parameters &parameters)
 	 throw Php::Exception("GtkWidget_::class_set_connect_func not implemented");
 }
 
+
+Php::Value GtkWidget_::scroll_event(Php::Parameters& parameters)
+{
+	// // 	GdkEvent *event;
+	// 	if(parameters.size() > 0) {
+	// 		Php::Value object_event = parameters[0];
+	// 		GdkEvent_ *phpgtk_event = (GdkEvent_ *)object_event.implementation();
+	// 		event = GDK_EVENT(phpgtk_event->get_instance());
+	// 	}
+
+	 //	gboolean ret = gtk_widget_event (GTK_WIDGET(instance), event);
+
+	// 	return ret;
+	throw Php::Exception("GtkWidget_::scroll_event not implemented");
+
+}

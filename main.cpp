@@ -962,6 +962,7 @@ extern "C"
         gtkwidget.method<&GtkWidget_::class_bind_template_child_full>("class_bind_template_child_full");
         gtkwidget.method<&GtkWidget_::class_bind_template_callback_full>("class_bind_template_callback_full");
         gtkwidget.method<&GtkWidget_::class_set_connect_func>("class_set_connect_func");
+        gtkwidget.method<&GtkWidget_::scroll_event>("scroll_event");
 
         Php::Class<GtkSeparator_> gtkseparator("GtkSeparator");
         gtkseparator.extends(gtkwidget);
@@ -1624,6 +1625,7 @@ extern "C"
         gtkentry.method<&GtkEntry_::get_selection_bounds>("get_selection_bounds");
         gtkentry.method<&GtkEntry_::set_position>("set_position");
         // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
+        gtkentry.method<&GtkEntry_::select_region>("select_region");
 
         // GtkSortType
         Php::Class<Php::Base> gtksorttype("GtkSortType");
@@ -2736,6 +2738,7 @@ extern "C"
         gtkmenuitem.method<&GtkMenuItem_::size_allocate>("size_allocate");
         gtkmenuitem.method<&GtkMenuItem_::get_reserve_indicator>("get_reserve_indicator");
         gtkmenuitem.method<&GtkMenuItem_::set_reserve_indicator>("set_reserve_indicator");
+        gtkmenuitem.method<&GtkMenuItem_::set_right_justified>("set_right_justified");
 
         // GtkSeparatorMenuItem
         Php::Class<GtkSeparatorMenuItem_> gtkseparatormenuitem("GtkSeparatorMenuItem");
