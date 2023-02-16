@@ -366,3 +366,11 @@ void GtkEntry_::set_position(Php::Parameters& parameters)
 	//
 	gtk_editable_set_position(GTK_EDITABLE(instance), passedCasted);
 }
+
+void GtkEntry_::select_region(Php::Parameters& parameters)
+{
+	gint start_pos = parameters[0]; 
+	gint end_pos = parameters[1];
+
+	gtk_editable_select_region(GTK_EDITABLE(instance), start_pos, end_pos);
+}
