@@ -2738,6 +2738,7 @@ extern "C"
         gtkmenuitem.method<&GtkMenuItem_::size_allocate>("size_allocate");
         gtkmenuitem.method<&GtkMenuItem_::get_reserve_indicator>("get_reserve_indicator");
         gtkmenuitem.method<&GtkMenuItem_::set_reserve_indicator>("set_reserve_indicator");
+        gtkmenuitem.method<&GtkMenuItem_::set_right_justified>("set_right_justified");
 
         // GtkSeparatorMenuItem
         Php::Class<GtkSeparatorMenuItem_> gtkseparatormenuitem("GtkSeparatorMenuItem");

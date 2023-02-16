@@ -172,3 +172,11 @@ void GtkMenuItem_::set_reserve_indicator(Php::Parameters &parameters)
 
 }
 
+void GtkMenuItem_::set_right_justified(Php::Parameters& parameters)
+{
+	gboolean right_justified = (gboolean)parameters[0];
+
+	gtk_menu_item_set_right_justified(GTK_MENU_ITEM(instance), right_justified);
+}
+
+
