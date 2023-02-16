@@ -13,9 +13,10 @@ GdkEventKey_::GdkEventKey_()
 
 void GdkEventKey_::populate(GdkEventKey event)
 {
-   // get self reference as Php::Value object
-    Php::Value self(this);
+    // Php::call("var_dump", "OK");
 
+    // get self reference as Php::Value object
+    Php::Value self(this);
     // initialize a public property
     self["type"] = (int)event.type;
     // self["window"] = (int)event.window;  // GdkWindow
@@ -24,7 +25,12 @@ void GdkEventKey_::populate(GdkEventKey event)
     self["state"] = (int)event.state;
     self["keyval"] = (int)event.keyval;
     self["length"] = (int)event.length;
-    self["string"] = event.string;
+
+    if(event.string != NULL) {
+        const gchar *event_string = event.string;
+        self["string"] = &event_string;
+    }
+
     self["hardware_keycode"] = (int)event.hardware_keycode;
     self["keycode"] = (int)event.hardware_keycode;
     self["group"] = (int)event.group;
