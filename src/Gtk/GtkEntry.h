@@ -264,6 +264,8 @@
             Php::Value get_selection_bounds();
 
             void set_position(Php::Parameters& parameters);
+
+            void select_region(Php::Parameters& parameters);
     };
 
 #endif

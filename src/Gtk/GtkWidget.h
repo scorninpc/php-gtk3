@@ -543,6 +543,8 @@
             void class_bind_template_callback_full(Php::Parameters &parameters);
 
             void class_set_connect_func(Php::Parameters &parameters);
+
+            Php::Value scroll_event(Php::Parameters& parameters);
     };
 
 #endif
