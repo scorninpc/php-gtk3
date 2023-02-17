@@ -162,14 +162,8 @@ void GtkMenu_::popup_at_pointer (Php::Parameters &parameters)
 	Php::Value object_trigger_event = parameters[0];
 	GdkEvent_ *phpgtk_trigger_event = (GdkEvent_ *)object_trigger_event.implementation();
 	trigger_event = phpgtk_trigger_event->get_instance();
-	try {
-		gtk_menu_popup_at_pointer(GTK_MENU(instance), trigger_event);
-	}
-	catch (const int& e) {
-		(void)e;
-		Php::call("var_dump", "popup_at_pointer33333");
-		throw;
-	}
+
+	gtk_menu_popup_at_pointer(GTK_MENU(instance), trigger_event);
 }
 
 void GtkMenu_::set_accel_group(Php::Parameters &parameters)

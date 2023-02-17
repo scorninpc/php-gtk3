@@ -48,6 +48,10 @@ void GtkListStore_::set_column_types(Php::Parameters &parameters)
 
 void GtkListStore_::set(Php::Parameters &parameters)
 {
+	throw Php::Exception("GtkListStore_::set not implemented yet");
+
+	// Still not working..
+	
 	GtkTreeIter iter;
 	Php::Value object_iter = parameters[0];
 	GtkTreeIter_* phpgtk_iter = (GtkTreeIter_*)object_iter.implementation();
@@ -62,6 +66,8 @@ void GtkListStore_::set(Php::Parameters &parameters)
 	GValue value = phpgtk_get_gvalue(parameters[2], type_column);
 
 	gtk_list_store_set (GTK_LIST_STORE(model), &iter, column, &value, -1);
+
+
 }
 
 void GtkListStore_::set_valist(Php::Parameters &parameters)
