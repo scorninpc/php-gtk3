@@ -1626,6 +1626,7 @@ extern "C"
         gtkentry.method<&GtkEntry_::set_position>("set_position");
         // gtkentry.method<&GtkEntry_::progress_pulse>("progress_pulse");
         gtkentry.method<&GtkEntry_::select_region>("select_region");
+        gtkentry.method<&GtkEntry_::delete_selection>("delete_selection");
 
         // GtkSortType
         Php::Class<Php::Base> gtksorttype("GtkSortType");
@@ -1658,6 +1659,7 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::set_headers_visible>("set_headers_visible");
         gtktreeview.method<&GtkTreeView_::unselect_all>("unselect_all");
         gtktreeview.method<&GtkTreeView_::select_all>("select_all");
+        gtktreeview.method<&GtkTreeView_::scroll_to_cell>("scroll_to_cell");
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");
