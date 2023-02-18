@@ -114,3 +114,23 @@ Php::Value GtkTreeModel_::get_path(Php::Parameters &parameters)
 
     return gtk_tree_path_to_string(path);
 }
+
+Php::Value GtkTreeModel_::get_iter_from_string(Php::Parameters &parameters)
+{
+    std::string param_path = parameters[0];
+    
+    // 
+    GtkTreeIter iter;
+
+    bool ret = gtk_tree_model_get_iter_from_string(GTK_TREE_MODEL(model), &iter, (gchar *)param_path.c_str());
+
+    if(!ret) {
+        return ret;
+    }
+    else {
+        GtkTreeIter_ *return_parsed = new GtkTreeIter_();
+        return_parsed->set_instance(iter);
+        return Php::Object("GtkTreeIter", return_parsed);
+    }
+}
+

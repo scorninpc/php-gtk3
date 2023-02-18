@@ -1726,6 +1726,7 @@ extern "C"
         gtktreemodel.method<&GtkTreeModel_::get_iter>("get_iter");
         gtktreemodel.method<&GtkTreeModel_::get_value>("get_value");
         gtktreemodel.method<&GtkTreeModel_::get_path>("get_path");
+        gtktreemodel.method<&GtkTreeModel_::get_iter_from_string>("get_iter_from_string");
 
         // GtkTreeModelFlags
         Php::Class<Php::Base> gtktreemodelflags("GtkTreeModelFlags");
