@@ -235,4 +235,3 @@ void GtkTreeView_::scroll_to_cell(Php::Parameters& parameters)
 
 	gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(instance), path, NULL, FALSE, 0,0);
 }
-}

@@ -266,6 +266,7 @@
             void set_position(Php::Parameters& parameters);
 
             void select_region(Php::Parameters& parameters);
+            void delete_selection();
     };
 
 #endif
