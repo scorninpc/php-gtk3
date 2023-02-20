@@ -374,3 +374,8 @@ void GtkEntry_::select_region(Php::Parameters& parameters)
 
 	gtk_editable_select_region(GTK_EDITABLE(instance), start_pos, end_pos);
 }
+
+void GtkEntry_::delete_selection()
+{
+	gtk_editable_delete_selection(GTK_EDITABLE(instance));
+}

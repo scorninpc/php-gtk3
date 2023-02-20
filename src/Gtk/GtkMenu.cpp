@@ -163,7 +163,7 @@ void GtkMenu_::popup_at_pointer (Php::Parameters &parameters)
 	GdkEvent_ *phpgtk_trigger_event = (GdkEvent_ *)object_trigger_event.implementation();
 	trigger_event = phpgtk_trigger_event->get_instance();
 
-	gtk_menu_popup_at_pointer (GTK_MENU(instance), trigger_event);
+	gtk_menu_popup_at_pointer(GTK_MENU(instance), trigger_event);
 }
 
 void GtkMenu_::set_accel_group(Php::Parameters &parameters)
