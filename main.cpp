@@ -4064,7 +4064,7 @@ Php::Value phpgtk_get_phpvalue(GValue *gvalue)
         return g_value_get_char(gvalue);
         break;
     case G_TYPE_LONG:
-        return g_value_get_long(gvalue);
+        return (int64_t)g_value_get_int64(gvalue);
         break;
     case G_TYPE_ULONG:
         return (int64_t)g_value_get_int64(gvalue);
