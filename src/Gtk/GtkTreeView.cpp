@@ -226,3 +226,13 @@ void GtkTreeView_::unselect_all()
 	gtk_tree_selection_unselect_all(GTK_TREE_SELECTION(instance));
 
 }
+
+// Basic implementaion
+void GtkTreeView_::scroll_to_cell(Php::Parameters& parameters)
+{
+	std::string param_path = parameters[0];
+	GtkTreePath* path = gtk_tree_path_new_from_string(param_path.c_str());
+
+	gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(instance), path, NULL, FALSE, 0,0);
+}
+}
