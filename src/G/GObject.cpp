@@ -322,17 +322,20 @@ Php::Value GObject_::get_property(Php::Parameters &parameters)
 
 }
 
-void GObject_::set_property(Php::Parameters &parameters)
+Php::Value GObject_::set_property(Php::Parameters &parameters)
 {
     std::string s_property_name = parameters[0];
-    gchar *property_name = (gchar *)s_property_name.c_str();
+    const gchar *property_name = (const gchar *)s_property_name.c_str();
 
     // get interface of instance
     gpointer iface = g_type_default_interface_peek (G_OBJECT_TYPE(instance));
     
     // get the property spec
-    GParamSpec* prop = g_object_class_find_property(G_OBJECT_GET_CLASS(instance), "editable");
-
+    GParamSpec* prop = g_object_class_find_property(G_OBJECT_GET_CLASS(instance), property_name);
+    if(!prop) {
+        return FALSE;
+    }
+    
     // parse the param by the gtype
     GValue value = phpgtk_get_gvalue(parameters[1], G_TYPE_FUNDAMENTAL(prop->value_type));
     

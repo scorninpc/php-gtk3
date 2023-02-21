@@ -80,7 +80,6 @@
             void select_all();
 
             void unselect_all();
-
             void scroll_to_cell(Php::Parameters& parameters);
     };
 
