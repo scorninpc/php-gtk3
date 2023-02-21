@@ -1663,6 +1663,10 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::get_columns>("get_columns");
         gtktreeview.method<&GtkTreeView_::get_column>("get_column");
         gtktreeview.method<&GtkTreeView_::move_column_after>("move_column_after");
+        gtktreeview.method<&GtkTreeView_::get_path_at_pos>("get_path_at_pos");
+
+        Php::Class<GtkTreePath_> gtktreepath("GtkTreePath");
+        //gtktreepath.method<&GtkTreePath_::get_indices>("get_indices");
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");

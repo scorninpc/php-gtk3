@@ -274,5 +274,41 @@ void GtkTreeView_::move_column_after(Php::Parameters& parameters)
 	GtkTreeViewColumn_* baseColumn = (GtkTreeViewColumn_*)phpBaseColumn.implementation();
 
 	gtk_tree_view_move_column_after(GTK_TREE_VIEW(instance), GTK_TREE_VIEW_COLUMN(column->get_instance()), GTK_TREE_VIEW_COLUMN(baseColumn->get_instance()));
+}
 
+Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
+{
+	gint x = (gint)parameters[0];
+	gint y = (gint)parameters[1];
+
+	GtkTreePath* path = gtk_tree_path_new();
+	GtkTreeViewColumn* column = new GtkTreeViewColumn();
+	gint cell_x = NULL;
+	gint cell_y = NULL;
+
+	bool ret = gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(instance), x, y, &path, &column, &cell_x, &cell_y);
+
+	gint depth = gtk_tree_path_get_depth(path);
+	gint* pathArray = NULL;
+	pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
+
+	Php::Value phpPathArray;
+	//Php::call("var_dump", (int)depth);
+
+	for (int index = 0; index < (int)depth; index++) {
+		//Php::call("var_dump", index);
+		phpPathArray[index] = pathArray[index];
+	}
+
+	GtkTreeViewColumn_* return_parsed = new GtkTreeViewColumn_();
+	return_parsed->set_instance((gpointer*)column);
+
+	// TODO: Implement GtkTreePath and return instead of array (but will break PHP-GTK2 compatibility)
+	Php::Value ret_arr;
+	ret_arr[0] = phpPathArray;
+	ret_arr[1] = Php::Object("GtkTreeViewColumn", return_parsed);
+	ret_arr[2] = (int)cell_x;
+	ret_arr[3] = (int)cell_y;
+
+	return ret_arr;
 }
