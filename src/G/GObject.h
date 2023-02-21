@@ -60,7 +60,7 @@
             Php::Value is_connected(Php::Parameters& parameters);
 
             Php::Value get_property(Php::Parameters &parameters);
-            Php::Value set_property(Php::Parameters &parameters);
+            void set_property(Php::Parameters &parameters);
             void signal_handler_block(Php::Parameters &parameters);
             void signal_handler_unblock(Php::Parameters &parameters);
 

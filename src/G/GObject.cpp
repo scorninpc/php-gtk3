@@ -322,7 +322,7 @@ Php::Value GObject_::get_property(Php::Parameters &parameters)
 
 }
 
-Php::Value GObject_::set_property(Php::Parameters &parameters)
+void GObject_::set_property(Php::Parameters &parameters)
 {
     std::string s_property_name = parameters[0];
     const gchar *property_name = (const gchar *)s_property_name.c_str();
@@ -333,14 +333,16 @@ Php::Value GObject_::set_property(Php::Parameters &parameters)
     // get the property spec
     GParamSpec* prop = g_object_class_find_property(G_OBJECT_GET_CLASS(instance), property_name);
     if(!prop) {
-        return FALSE;
+        std::string error("");
+        throw Php::Exception(error + "there is no property " + property_name + " on object " + g_type_name(G_OBJECT_TYPE(instance)));
     }
-    
-    // parse the param by the gtype
-    GValue value = phpgtk_get_gvalue(parameters[1], G_TYPE_FUNDAMENTAL(prop->value_type));
-    
-    // set property
-    g_object_set_property(G_OBJECT(instance), property_name, &value);
+    else {
+        // parse the param by the gtype
+        GValue value = phpgtk_get_gvalue(parameters[1], G_TYPE_FUNDAMENTAL(prop->value_type));
+
+        // set property
+        g_object_set_property(G_OBJECT(instance), property_name, &value);
+    }
 }
 
 void GObject_::signal_handler_block(Php::Parameters &parameters)
