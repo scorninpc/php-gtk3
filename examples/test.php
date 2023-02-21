@@ -2,7 +2,7 @@
 
 Gtk::init();
 
-function GtkWindowDestroy($widget=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkWindowDestroy($widget = NULL, $param1 = NULL, $param2 = NULL, $param3 = NULL, $param4 = NULL)
 {
 	echo "\n------ GtkWindowDestroy\n";
 	// Gtk::main_quit();
@@ -13,7 +13,7 @@ function GtkWindowDestroy($widget=NULL, $param1=NULL, $param2=NULL, $param3=NULL
 	var_dump($param4);
 }
 
-function GtkWindowDelete($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkWindowDelete($widget = NULL, $event = NULL, $param1 = NULL, $param2 = NULL, $param3 = NULL, $param4 = NULL)
 {
 	// global $win;
 	// $dialog = GtkMessageDialog::new_with_markup($win, GtkDialogFlags::MODAL, GtkMessageType::INFO, GtkButtonsType::YES_NO, "Want close PHP-GTK3 test program?");
@@ -21,18 +21,17 @@ function GtkWindowDelete($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, 
 	// $dialog->destroy();
 
 	// if($a == GtkResponseType::YES) {
-		Gtk::main_quit();
+	Gtk::main_quit();
 	// }
 
 	// return TRUE;
 }
 
-function GtkWindowFocus($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkWindowFocus($widget = NULL, $event = NULL, $param1 = NULL, $param2 = NULL, $param3 = NULL, $param4 = NULL)
 {
-
 }
 
-function GtkButton2Released($widget=NULL, $event=NULL, $param1=NULL, $param2=NULL, $param3=NULL, $param4=NULL)
+function GtkButton2Released($widget = NULL, $event = NULL, $param1 = NULL, $param2 = NULL, $param3 = NULL, $param4 = NULL)
 {
 	echo "\n------ GtkButton2Released\n";
 	var_dump($widget);
@@ -42,22 +41,22 @@ function GtkButton2Released($widget=NULL, $event=NULL, $param1=NULL, $param2=NUL
 	// var_dump($param4);
 }
 
-function GtkTreeViewButtonPressed($widget=NULL, $event=NULL)
+function GtkTreeViewButtonPressed($widget = NULL, $event = NULL)
 {
 	global $popupmenu;
 
 	// var_dump($widget);
-	if($event->button->button == 3) {
+	if ($event->button->button == 3) {
 		$popupmenu->popup_at_pointer($event);
 	}
 }
 
-function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
+function GtkWindowButton1Clicked($widget = NULL, $param1 = NULL)
 {
 	global $win;
 
 	echo "\n------ GtkWindowButton1Clicked\n";
-	
+
 	// 
 	$dialog = new GtkColorChooserDialog("color", $win);
 
@@ -67,11 +66,11 @@ function GtkWindowButton1Clicked($widget=NULL, $param1=NULL)
 	$dialog->run();
 	$rgba = $dialog->get_rgba();
 	$dialog->destroy();
-	
+
 	var_dump($rgba->to_string());
 }
 
-function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
+function GtkWindowButton2Clicked($widget = NULL, $event = NULL)
 {
 	global $model, $tree;
 
@@ -80,19 +79,19 @@ function GtkWindowButton2Clicked($widget=NULL, $event=NULL)
 	//$tree->set_model($model);
 }
 
-function GtkWindowButton3Clicked($widget=NULL, $event=NULL)
+function GtkWindowButton3Clicked($widget = NULL, $event = NULL)
 {
 	// var_dump($widget);
 	// var_dump($event);
 }
 
-function GtkCellRendererToggled($renderer=NULL, $path=NULL)
+function GtkCellRendererToggled($renderer = NULL, $path = NULL)
 {
 	// echo "\n------ GtkCellRendererToggled\n";
 	global $model, $tree;
 
 	$iter = $model->get_iter($path);
-	if($iter) {
+	if ($iter) {
 		$value = $model->get_value($iter, 1);
 		var_dump($value);
 		$model->set_value($iter, 1, !$value);
@@ -118,7 +117,7 @@ function grid_2x4($widget)
 	global $cml, $txt1;
 
 	$text = $txt1->get_text();
-	
+
 	$cml->append([$text]);
 }
 
@@ -129,36 +128,43 @@ $vbox = new GtkBox(GtkOrientation::VERTICAL);
 
 // ----------------------
 // Menu
-$vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkMenuBar"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $menubar = new GtkMenuBar();
 $vbox->pack_start($menubar, FALSE, FALSE, 0);
-	
-	$mnuFile = GtkMenuItem::new_with_mnemonic("_File");
-		
-		$menu = new GtkMenu();
-			$mnuFile1 = GtkMenuItem::new_with_label("New File"); $menu->append($mnuFile1);
-			$mnuFile2 = GtkMenuItem::new_with_label("Open File"); $menu->append($mnuFile2);
-			$mnuFile3 = new GtkSeparatorMenuItem(); $menu->append($mnuFile3);
-			$mnuFile4 = GtkMenuItem::new_with_label("Quit"); $menu->append($mnuFile4); 
-			
-			$mnuFile4->connect("activate", function($widget) {
-				Gtk::main_quit();
-			});
-			
-			$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?"); $menu->append($mnuFile5); 
 
-			$mnuFile->set_submenu($menu);
+$mnuFile = GtkMenuItem::new_with_mnemonic("_File");
 
-		$mnuAbout = GtkMenuItem::new_with_label("About"); 
-		
+$menu = new GtkMenu();
+$mnuFile1 = GtkMenuItem::new_with_label("New File");
+$menu->append($mnuFile1);
+$mnuFile2 = GtkMenuItem::new_with_label("Open File");
+$menu->append($mnuFile2);
+$mnuFile3 = new GtkSeparatorMenuItem();
+$menu->append($mnuFile3);
+$mnuFile4 = GtkMenuItem::new_with_label("Quit");
+$menu->append($mnuFile4);
 
-	$menubar->append($mnuFile);
-	$menubar->append($mnuAbout);
+$mnuFile4->connect("activate", function ($widget) {
+	Gtk::main_quit();
+});
+
+$mnuFile5 = GtkCheckMenuItem::new_with_label("hello?");
+$menu->append($mnuFile5);
+
+$mnuFile->set_submenu($menu);
+
+$mnuAbout = GtkMenuItem::new_with_label("About");
+
+
+$menubar->append($mnuFile);
+$menubar->append($mnuAbout);
 
 // ----------------------
 // Infor Bar
-$vbox->pack_start($hlbl = new GtkLabel("- GtkToolbar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkToolbar"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $tb = new GtkToolbar();
 $tb->set_show_arrow(FALSE);
@@ -168,8 +174,8 @@ $toolbutton1 = new GtkToolButton("");
 $toolbutton1->set_icon_name("gtk-refresh", GtkIconSize::SMALL_TOOLBAR);
 
 $lbl = new GtkLabel("");
-$lbl->set_markup( '<span underline="single">U</span>pdate' );
-$toolbutton1->set_label_widget( $lbl );
+$lbl->set_markup('<span underline="single">U</span>pdate');
+$toolbutton1->set_label_widget($lbl);
 
 $tb->insert($toolbutton1, -1);
 
@@ -182,7 +188,8 @@ $vbox->pack_start($separator, TRUE, TRUE, 3);
 // ----------------------
 // Infor Bar
 $infobar = new GtkInfoBar();
-$vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkInfoBar (click on Grid 2x2 button)"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 $vbox->pack_start($infobar, TRUE, TRUE, 1);
 
 $infobar->set_message_type(GtkMessageType::ERROR);
@@ -191,7 +198,7 @@ $infobar->set_show_close_button(TRUE);
 $area = $infobar->get_content_area();
 $area->add(new GtkLabel("My Message area"));
 $area->show_all();
-$infobar->connect("response", function($widget, $response) {
+$infobar->connect("response", function ($widget, $response) {
 	$widget->hide();
 });
 
@@ -202,7 +209,8 @@ $hbox = new GtkBox(GtkOrientation::HORIZONTAL, 1);
 
 // ----------------------
 // Button 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkButton"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 // $btn1 = new GtkButton();
 // $btn1->set_label("Button 1");
@@ -221,20 +229,27 @@ $hbox->pack_start($btn3, TRUE, TRUE, 1);
 
 // Button 4
 $btn4 = GtkCheckButton::new_with_label("Button 4");
+$btn4->connect("clicked", function ($widget) {
+	var_dump($widget->get_active());
+	var_dump($widget->toggled());
+	var_dump($widget->get_inconsistent());
+});
 $hbox->pack_start($btn4, TRUE, TRUE, 1);
 
 $vbox->pack_start($hbox, FALSE, FALSE, 1);
 
 // ----------------------
 // Entry 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkEntry"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkEntry"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $txt1 = new GtkEntry();
 $vbox->pack_start($txt1, FALSE, FALSE, 1);
 
 // ----------------------
 // GtkComboBox 1
-$vbox->pack_start($hlbl = new GtkLabel("- GtkComboBox"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkComboBox"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $cml = new GtkListStore(GObject::TYPE_STRING);
 $cml->append(["Test 1"]);
@@ -264,56 +279,57 @@ $cmb1->set_active(2);
 
 // ----------------------
 // Treeview
-$vbox->pack_start($hlbl = new GtkLabel("- GtkTreeView"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkTreeView"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $tree = new GtkTreeView();
 $vbox->pack_start($tree, TRUE, TRUE, 1);
 
-	// Column 0
-	$renderer0 = new GtkCellRendererPixbuf();
-	$column0 = new GtkTreeViewColumn("", $renderer0, "pixbuf", 0);
-	$tree->append_column($column0, TRUE);
+// Column 0
+$renderer0 = new GtkCellRendererPixbuf();
+$column0 = new GtkTreeViewColumn("", $renderer0, "pixbuf", 0);
+$tree->append_column($column0, TRUE);
 
 
-	// Column 1
-	$renderer1 = new GtkCellRendererToggle();
-	$column1 = new GtkTreeViewColumn("", $renderer1, "active", 1);
-	$renderer1->set_activatable(TRUE);
-	$tree->append_column($column1);
-	$column1->set_fixed_width(30);
+// Column 1
+$renderer1 = new GtkCellRendererToggle();
+$column1 = new GtkTreeViewColumn("", $renderer1, "active", 1);
+$renderer1->set_activatable(TRUE);
+$tree->append_column($column1);
+$column1->set_fixed_width(30);
 
-	$renderer1->connect('toggled', "GtkCellRendererToggled");
+$renderer1->connect('toggled', "GtkCellRendererToggled");
 
-	// Column 2
-	$renderer2 = new GtkCellRendererText();
-	$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 2);
-	$tree->append_column($column2);
-	$renderer2->set_alignment(0.5, 0.1);
-	$column2->set_alignment(0.5, 0.1);
-	$column2->set_resizable(TRUE);
+// Column 2
+$renderer2 = new GtkCellRendererText();
+$column2 = new GtkTreeViewColumn("Column 2", $renderer2, "text", 2);
+$tree->append_column($column2);
+$renderer2->set_alignment(0.5, 0.1);
+$column2->set_alignment(0.5, 0.1);
+$column2->set_resizable(TRUE);
 
-	$column2->set_sort_column_id(1);
+$column2->set_sort_column_id(1);
 
-	// Column 3
-	$renderer3 = new GtkCellRendererText();
-	$column3 = new GtkTreeViewColumn("Column 3", $renderer3, "text", 3);
-	$tree->append_column($column3, TRUE);
+// Column 3
+$renderer3 = new GtkCellRendererText();
+$column3 = new GtkTreeViewColumn("Column 3", $renderer3, "text", 3);
+$tree->append_column($column3, TRUE);
 
 
-	// Column 4
-	$renderer4 = new GtkCellRendererText();
-	$column4 = new GtkTreeViewColumn("Column 4", $renderer4, "text", 4);
-	$tree->append_column($column4, TRUE);
+// Column 4
+$renderer4 = new GtkCellRendererText();
+$column4 = new GtkTreeViewColumn("Column 4", $renderer4, "text", 4);
+$tree->append_column($column4, TRUE);
 
 
 $model = new GtkListStore(GObject::TYPE_OBJECT, GObject::TYPE_BOOLEAN, GObject::TYPE_INT, GObject::TYPE_DOUBLE, GObject::TYPE_STRING);
 $pixbuf = GdkPixbuf::new_from_file_at_size(dirname(realpath(__FILE__)) . "/logo.png", 15, -1);
 
 $tree->set_reorderable(TRUE);
-$model->connect("row-inserted", function($model, $path, $iter) {
+$model->connect("row-inserted", function ($model, $path, $iter) {
 	echo "\ninseriu\n";
 });
-$model->connect("row-deleted", function($model, $path) {
+$model->connect("row-deleted", function ($model, $path) {
 	echo "\nremoveu\n";
 });
 $tree->set_model($model);
@@ -332,34 +348,34 @@ $model->append([$pixbuf, FALSE, 2, 92.2, "line 2"]);
 // ----------------------
 // Menu for treeview
 $popupmenu = new GtkMenu();
-	$menuitem1 = GtkMenuItem::new_with_label("Menu Item 1"); 
-	$popupmenu->append($menuitem1);
-	
-	$menuitem1->connect('activate', function($widget, $tree) {
-		
-		$model = $tree->get_model();
-		$selection = $tree->get_selection();
-		$iter = $selection->get_selected($model);
-		
-		$value = $model->get_value($iter, 1);
-		var_dump($value);
-		$value = $model->get_value($iter, 2);
-		var_dump($value);
-		$value = $model->get_value($iter, 3);
-		var_dump($value);
-		$value = $model->get_value($iter, 4);
-		var_dump($value);
+$menuitem1 = GtkMenuItem::new_with_label("Menu Item 1");
+$popupmenu->append($menuitem1);
 
-	}, $tree);
-	
-	$menuitem2 = GtkMenuItem::new_with_label("Menu Item 2"); 
-	$popupmenu->append($menuitem2);
-	$popupmenu->show_all();
-	
+$menuitem1->connect('activate', function ($widget, $tree) {
+
+	$model = $tree->get_model();
+	$selection = $tree->get_selection();
+	$iter = $selection->get_selected($model);
+
+	$value = $model->get_value($iter, 1);
+	var_dump($value);
+	$value = $model->get_value($iter, 2);
+	var_dump($value);
+	$value = $model->get_value($iter, 3);
+	var_dump($value);
+	$value = $model->get_value($iter, 4);
+	var_dump($value);
+}, $tree);
+
+$menuitem2 = GtkMenuItem::new_with_label("Menu Item 2");
+$popupmenu->append($menuitem2);
+$popupmenu->show_all();
+
 
 // ----------------------
 // ProgressBar
-$vbox->pack_start($hlbl = new GtkLabel("- GtkProgressBar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkProgressBar"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $progress = new GtkProgressBar();
 $progress->set_text("0%");
@@ -371,7 +387,8 @@ $vbox->pack_start($progress, TRUE, TRUE, 1);
 
 // ----------------------
 // ListBox
-$vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkListBox"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 
 $ltb = new GtkListBox();
@@ -382,41 +399,49 @@ $scroll->set_policy(GtkPolicyType::AUTOMATIC, GtkPolicyType::AUTOMATIC);
 $vbox->pack_start($scroll, TRUE, TRUE, 1);
 
 $row = new GtkListBoxRow();
-	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
-	$lhbox->pack_start(new GtkLabel("Cell 1x1"), TRUE, TRUE);
-	$lhbox->pack_start(new GtkLabel("Cell 1x2"), TRUE, TRUE);
-	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
+$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
+$lhbox->pack_start(new GtkLabel("Cell 1x1"), TRUE, TRUE);
+$lhbox->pack_start(new GtkLabel("Cell 1x2"), TRUE, TRUE);
+$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
 $row->add($lhbox, TRUE, TRUE);
 $ltb->insert($row, -1);
 
 $row = new GtkListBoxRow();
-	$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
-	$lhbox->pack_start(new GtkLabel("Cell 2x1"), TRUE, TRUE);
-	$lhbox->pack_start(new GtkLabel("Cell 2x2"), TRUE, TRUE);
-	$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
+$lhbox = new GtkBox(GtkOrientation::HORIZONTAL);
+$lhbox->pack_start(new GtkLabel("Cell 2x1"), TRUE, TRUE);
+$lhbox->pack_start(new GtkLabel("Cell 2x2"), TRUE, TRUE);
+$lhbox->pack_start(GtkCheckButton::new_with_label(""), FALSE, FALSE);
 $row->add($lhbox, TRUE, TRUE);
 $ltb->insert($row, -1);
 
 // ----------------------
 // Grid
-$vbox->pack_start($hlbl = new GtkLabel("- GtkGrid"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkGrid"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 $grid = new GtkGrid();
 $vbox->pack_start($grid, TRUE, TRUE);
 
-$grid->attach($a=GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1); $a->connect("clicked", "grid_1x1");
-$grid->attach($a=GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1); $a->connect("clicked", "grid_1x3");
+$grid->attach($a = GtkButton::new_with_label("Grid 1x1"), 0, 0, 2, 1);
+$a->connect("clicked", "grid_1x1");
+$grid->attach($a = GtkButton::new_with_label("Grid 1x3"), 2, 0, 1, 1);
+$a->connect("clicked", "grid_1x3");
 $grid->attach(GtkButton::new_with_label("Grid 1x4"), 3, 0, 2, 1);
 
-$grid->attach($s=new GtkSpinner(), 0, 1, 1, 1); $s->start();
-$grid->attach($a=GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1); $a->connect("clicked", "grid_2x2");
-$grid->attach($a=GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1); $a->connect("clicked", "grid_2x3");
-$grid->attach($a=GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1); $a->connect("clicked", "grid_2x4");
+$grid->attach($s = new GtkSpinner(), 0, 1, 1, 1);
+$s->start();
+$grid->attach($a = GtkButton::new_with_label("Grid 2x2"), 1, 1, 1, 1);
+$a->connect("clicked", "grid_2x2");
+$grid->attach($a = GtkButton::new_with_label("Grid 2x3"), 2, 1, 1, 1);
+$a->connect("clicked", "grid_2x3");
+$grid->attach($a = GtkButton::new_with_label("Grid 2x4"), 3, 1, 1, 1);
+$a->connect("clicked", "grid_2x4");
 $grid->attach(GtkButton::new_with_label("Grid 2x5"), 4, 1, 1, 1);
 
 $grid->attach(new GtkColorButton(), 0, 2, 1, 1);
 $grid->attach(GtkButton::new_with_label("Grid 3x3"), 1, 2, 1, 1);
 $grid->attach(new GtkFontButton(), 2, 2, 2, 1);
-$grid->attach($a = GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1); $a->connect("clicked", function($widget) {
+$grid->attach($a = GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1);
+$a->connect("clicked", function ($widget) {
 
 	global $tree;
 
@@ -424,9 +449,10 @@ $grid->attach($a = GtkButton::new_with_label("Grid 3x5"), 4, 2, 1, 1); $a->conne
 	$model->clear();
 });
 
-$grid->attach($a = new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1); $a->connect("changed", "grid_5x1");
+$grid->attach($a = new GtkAppChooserButton("image/jpeg"), 0, 3, 5, 1);
+$a->connect("changed", "grid_5x1");
 
-function grid_1x1($widget) 
+function grid_1x1($widget)
 {
 	global $win;
 
@@ -438,7 +464,7 @@ function grid_1x1($widget)
 	$dialog->destroy();
 }
 
-function grid_1x3($widget) 
+function grid_1x3($widget)
 {
 	global $win;
 
@@ -451,7 +477,7 @@ function grid_1x3($widget)
 	$dialog->destroy();
 }
 
-function grid_5x1($widget) 
+function grid_5x1($widget)
 {
 	var_dump($widget->get_app_info());
 }
@@ -460,7 +486,8 @@ function grid_5x1($widget)
 
 // ----------------------
 // Status
-$vbox->pack_start($hlbl = new GtkLabel("- GtkStatusbar"), TRUE, TRUE, 1); $hlbl->set_xalign(0);
+$vbox->pack_start($hlbl = new GtkLabel("- GtkStatusbar"), TRUE, TRUE, 1);
+$hlbl->set_xalign(0);
 
 $stt1 = new GtkStatusbar();
 $vbox->pack_start($stt1, FALSE, TRUE, 0);
@@ -503,27 +530,27 @@ $win->show_all();
 
 
 // Use blocks but iterate main_loop method for show progress bar (see that can be a little freezes)
-	// this way is not the best way to do that, it's only example to show how dont stop GKT painting and user actions
-for($i=0; $i<=1; $i+=0.05) {
+// this way is not the best way to do that, it's only example to show how dont stop GKT painting and user actions
+for ($i = 0; $i <= 1; $i += 0.05) {
 
 	$progress->set_fraction($i);
 	$progress->set_text(($i * 100) . "%");
 
 	// Look if there is some event freezing, and add some iteration to main_loop of GTK
-	while(Gtk::events_pending()) 
+	while (Gtk::events_pending())
 		Gtk::main_iteration();
-	
+
 	// Freeze for 0.25s (note that sleep free PHP, so do some freezes on GTK too)
 	usleep(250000);
 }
 
 // Use for non-block way to update progressbar example
 $progress_percent = 0;
-Gtk::timeout_add(500, function() {
+Gtk::timeout_add(500, function () {
 	global $progress, $progress_percent;
 
 	// Verify if all finished and stop propagation
-	if($progress_percent >= 1) {
+	if ($progress_percent >= 1) {
 		return FALSE;
 	}
 
