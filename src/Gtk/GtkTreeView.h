@@ -85,6 +85,8 @@
             Php::Value get_columns();
 
             Php::Value get_column(Php::Parameters& parameters);
+
+            void move_column_after(Php::Parameters& parameters);
     };
 
 #endif

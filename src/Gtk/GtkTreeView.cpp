@@ -236,7 +236,7 @@ void GtkTreeView_::scroll_to_cell(Php::Parameters& parameters)
 	gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(instance), path, NULL, FALSE, 0,0);
 }
 
-// Basic implementaion
+
 Php::Value GtkTreeView_::get_columns()
 {
 	GList* ret = gtk_tree_view_get_columns(GTK_TREE_VIEW(instance));
@@ -253,7 +253,6 @@ Php::Value GtkTreeView_::get_columns()
 	return ret_arr;
 }
 
-// Basic implementaion
 Php::Value GtkTreeView_::get_column(Php::Parameters& parameters)
 {
 
@@ -264,4 +263,16 @@ Php::Value GtkTreeView_::get_column(Php::Parameters& parameters)
 	GtkTreeViewColumn_* column_ = new GtkTreeViewColumn_();
 	column_->set_instance((gpointer*) ret);
 	return Php::Object("GtkTreeViewColumn", column_);
+}
+
+void GtkTreeView_::move_column_after(Php::Parameters& parameters)
+{
+	Php::Value phpColumn = parameters[0];
+	Php::Value phpBaseColumn = parameters[1];
+
+	GtkTreeViewColumn_* column = (GtkTreeViewColumn_*)phpColumn.implementation();
+	GtkTreeViewColumn_* baseColumn = (GtkTreeViewColumn_*)phpBaseColumn.implementation();
+
+	gtk_tree_view_move_column_after(GTK_TREE_VIEW(instance), GTK_TREE_VIEW_COLUMN(column->get_instance()), GTK_TREE_VIEW_COLUMN(baseColumn->get_instance()));
+
 }
