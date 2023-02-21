@@ -235,3 +235,33 @@ void GtkTreeView_::scroll_to_cell(Php::Parameters& parameters)
 
 	gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(instance), path, NULL, FALSE, 0,0);
 }
+
+// Basic implementaion
+Php::Value GtkTreeView_::get_columns()
+{
+	GList* ret = gtk_tree_view_get_columns(GTK_TREE_VIEW(instance));
+
+	Php::Value ret_arr;
+
+	for (int index = 0; GList * item = g_list_nth(ret, index); index++) {
+
+		GtkTreeViewColumn_* column_ = new GtkTreeViewColumn_();
+		column_->set_instance((gpointer*)item->data);
+		ret_arr[index] = Php::Object("GtkTreeViewColumn", column_);
+	}
+
+	return ret_arr;
+}
+
+// Basic implementaion
+Php::Value GtkTreeView_::get_column(Php::Parameters& parameters)
+{
+
+	gint number_column = (gint)parameters[0];
+
+	GtkTreeViewColumn* ret = gtk_tree_view_get_column(GTK_TREE_VIEW(instance), number_column);
+
+	GtkTreeViewColumn_* column_ = new GtkTreeViewColumn_();
+	column_->set_instance((gpointer*) ret);
+	return Php::Object("GtkTreeViewColumn", column_);
+}
