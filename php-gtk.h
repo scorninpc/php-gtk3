@@ -13,5 +13,20 @@
 	std::string phpgtk_type_to_string(Php::Type type);
 	Php::Value cobject_to_phpobject(gpointer *cobject);
 
+	/**
+	 * Struct for generic callback
+	 */
+	struct generic_st_callback {
+		Php::Value callback_name;
+		Php::Object self_widget;
+		Php::Parameters parameters;
+
+		GType return_type;
+		int n_params;
+		GType *param_types;
+	};
+
+	void generic_callback(gpointer *self, ...);
+
 
 #endif
