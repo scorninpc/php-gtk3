@@ -120,3 +120,130 @@ Php::Value cobject_to_phpobject(gpointer *cobject)
 	return_parsed->set_instance((gpointer *)cobject);
 	return Php::Object(g_type_name(G_TYPE_FROM_INSTANCE((gpointer *)cobject)), return_parsed);
 }
+
+
+
+
+/**
+ * generict callback
+ * 
+ * Assume that all functions pass self widget as first param
+ */
+void generic_callback(gpointer *self, ...)
+{
+	/**
+	 *  This will loop all vargs after *self, max to 5 times, casting to generic_st_callback 
+	 *  	if the generic_st_callback.callback_name is a php land user function, this will be callable, so 
+	 *  	we know that this param is the userdata
+	 */
+	struct generic_st_callback *callback_object;
+
+	va_list ap;
+    va_start(ap, self);
+	bool test = false;
+	for (int i=0; i<5; i++) {
+		callback_object = (struct generic_st_callback *) va_arg(ap, generic_st_callback*);
+		if(callback_object->callback_name.isCallable()) {
+			va_end(ap);
+			test = true;
+			break;
+		}
+	}
+	va_end(ap);
+
+	if(!test) {
+		std::string error("");
+        throw Php::Exception(error + "cannot find callable method");
+	}
+
+	// create internal params
+    Php::Value internal_parameters;
+
+	// add self widget
+	internal_parameters[0] = cobject_to_phpobject((gpointer *)self);
+
+	// Loop into param_types of GSignalQuery from g_signal_query
+	va_start(ap, self);
+	for (int i=1; i<callback_object->n_params; i++) {
+		switch (G_TYPE_FUNDAMENTAL(callback_object->param_types[i])) {
+            case G_TYPE_CHAR:
+                // Php::call("var_dump", "char");
+                break;
+                
+            case G_TYPE_UCHAR:
+                // Php::call("var_dump", "uchar");
+                break;
+
+            case G_TYPE_STRING:
+            // Php::call("var_dump", "string");
+                internal_parameters[i] = va_arg(ap, char *);
+                break;
+
+            case G_TYPE_BOOLEAN:
+            // Php::call("var_dump", "boolean");
+                internal_parameters[i] = va_arg(ap, gboolean);
+                break;
+
+            case G_TYPE_INT:
+                // Php::call("var_dump", "int");
+                internal_parameters[i] = va_arg(ap, gint);
+                break;
+
+            case G_TYPE_UINT:
+                // Php::call("var_dump", "int");
+                internal_parameters[i] = (int)va_arg(ap, guint);
+                break;
+                
+            case G_TYPE_OBJECT:
+            {
+                // Php::call("var_dump", "object");
+                gpointer *e = va_arg(ap, gpointer *);
+                internal_parameters[i] = cobject_to_phpobject(e);
+                
+                break;
+            }
+            case G_TYPE_POINTER:
+                // Php::call("var_dump", "pointer");
+                break;
+            case G_TYPE_INTERFACE: 
+                // Php::call("var_dump", "interface");
+                break;
+            case G_TYPE_PARAM:
+                // Php::call("var_dump", "param");
+                break;
+            case G_TYPE_BOXED:
+            {
+				// ----------------
+				// GtkTreePath *e =  va_arg(ap, GtkTreePath *);
+				// Php::call("var_dump", gtk_tree_path_to_string(e));
+				// internal_parameters[i] = cobject_to_phpobject((gpointer *)e);
+
+				// ----------------
+				// gpointer *e = va_arg(ap, gpointer *);
+				
+				// Php::call("var_dump", g_type_name(G_TYPE_FROM_CLASS((gpointer *)e)));
+
+
+
+				// ----------------
+				// GdkEvent *e =  va_arg(ap, GdkEvent *);
+
+                // // Create event from callback
+                // GdkEvent_ *event_ = new GdkEvent_();
+                // Php::Value gdkevent = Php::Object("GdkEvent", event_);
+                // event_->populate(e);
+
+                // internal_parameters[i] = gdkevent;
+
+                break;
+            }
+
+            default:
+                std::string error ("[generic_callback] Internal error: unsupported type ");
+                throw Php::Exception(error + g_type_name(callback_object->param_types[i]));
+        }
+	}
+
+	// call php function with parameters
+    Php::Value ret = Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
+}

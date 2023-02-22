@@ -137,7 +137,70 @@ Php::Value GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
 	// return_parsed->set_instance((gpointer *)ret);
 	// return Php::Object("GtkTreeIter", return_parsed);
 
-	throw Php::Exception("GtkTreeSelection_->selected_foreach() not implemented yet");
+
+
+	/**
+	 * on the caller
+	 * 
+	 * - create a struct with CALLBACK_SPEC, SELF_OBJECT, PHP_FUNCTION_TO_CALL, USER_PARAMETERS
+	 * - fetch specs from callback function, and store it on struct
+	 * - call the default callback
+	 * 
+	 * on the default callback
+	 * 
+	 * - start create Php::parameters, add self object
+	 * - read CALLBACK_SPEC and loop between paramters and parse to Php::value
+	 * - append user parameters
+	 * - call PHP_FUNCTION_TO_CALL
+	 * - return the result of PHP_FUNCTION_TO_CALL
+	 */
+
+	// Php::call("var_dump", "OK 1.0");
+
+	// create a object to populate and pass to generic callback
+    struct generic_st_callback *callback_object = (struct generic_st_callback *)malloc(sizeof(struct generic_st_callback));
+    memset(callback_object, 0, sizeof(struct generic_st_callback));
+
+	callback_object->callback_name = parameters[0];
+
+// Php::call("var_dump", "OK 1.1");
+
+	// add paramters
+	callback_object->parameters = parameters;
+
+// Php::call("var_dump", "OK 1.2");
+
+	// add self object
+	callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
+
+// Php::call("var_dump", "OK 1.3");
+
+	// mount the function params, like showed ini https://docs.gtk.org/gtk3/callback.TreeSelectionForeachFunc.html
+	callback_object->n_params = 3;
+	callback_object->return_type = NULL;
+
+// Php::call("var_dump", "OK 1.4");
+
+	// // add type of each param
+	callback_object->param_types = (GType *) malloc(sizeof(GType) * callback_object->n_params);
+// Php::call("var_dump", "OK 1.5");
+	callback_object->param_types[0] = g_type_from_name("GtkTreeModel");
+// Php::call("var_dump", "OK 1.6");
+	callback_object->param_types[1] = g_type_from_name("GtkTreePath");
+// Php::call("var_dump", "OK 1.7");
+	callback_object->param_types[2] = g_type_from_name("GtkTreeIter");
+// Php::call("var_dump", "OK 1.8");
+
+// Php::call("var_dump", "OK 1.9");
+
+	// GClosure  *closure;
+    // closure = g_cclosure_new_swap (G_CALLBACK (generic_callback), callback_object, NULL);
+
+	// // test
+	
+
+	gtk_tree_selection_selected_foreach(GTK_TREE_SELECTION(instance), (GtkTreeSelectionForeachFunc)generic_callback, callback_object);
+	// Php::call("var_dump", "OK 1.10");
 }
 
 Php::Value GtkTreeSelection_::get_selected_rows()
