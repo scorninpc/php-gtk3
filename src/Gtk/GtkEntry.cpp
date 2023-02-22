@@ -68,7 +68,8 @@ Php::Value GtkEntry_::get_text()
  */
 void GtkEntry_::set_text(Php::Parameters &parameters)
 {
-	gtk_entry_set_text(GTK_ENTRY(instance), parameters[0]);
+	std::string filename = parameters[0];
+	gtk_entry_set_text(GTK_ENTRY(instance), filename.c_str());
 }
 
 /**
