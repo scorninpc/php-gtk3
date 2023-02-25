@@ -120,7 +120,7 @@ Php::Value GtkTreeSelection_::get_selected(Php::Parameters &parameters)
     return result;
 }
 
-Php::Value GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
+void GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
 {
 	// GtkTreeIter *parent;
 	// if(parameters.size() > 0) {

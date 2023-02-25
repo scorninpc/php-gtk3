@@ -42,7 +42,7 @@
 
             Php::Value get_selected(Php::Parameters &parameters);
 
-            Php::Value selected_foreach(Php::Parameters &parameters);
+            void selected_foreach(Php::Parameters &parameters);
 
             Php::Value get_selected_rows();
 

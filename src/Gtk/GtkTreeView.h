@@ -81,6 +81,13 @@
 
             void unselect_all();
             void scroll_to_cell(Php::Parameters& parameters);
+
+            Php::Value get_columns();
+            Php::Value get_column(Php::Parameters& parameters);
+
+            void move_column_after(Php::Parameters& parameters);
+
+            Php::Value get_path_at_pos(Php::Parameters& parameters);
     };
 
 #endif
