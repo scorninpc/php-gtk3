@@ -94,12 +94,6 @@ Php::Value GtkTreeSelection_::get_tree_view()
 Php::Value GtkTreeSelection_::get_selected(Php::Parameters &parameters)
 {
 	GtkTreeModel *model;
-	if(parameters.size() > 0) {
-		Php::Value object_model = parameters[0];
-		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
-		model = GTK_TREE_MODEL(phpgtk_model->get_model());
-	}
-
 	GtkTreeIter iter;
 
 	gboolean ret = gtk_tree_selection_get_selected (GTK_TREE_SELECTION(instance), &model, &iter);
