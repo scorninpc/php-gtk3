@@ -500,6 +500,35 @@ extern "C"
         // gdkevent.method<&GdkEvent_::__construct>("__construct");
         // gdkevent.property("type", 0);
 
+        // GdkEventMask
+        Php::Class<Php::Base> gdkeventmask("GdkEventMask");
+        gdkeventmask.constant("EXPOSURE_MASK", (int)GDK_EXPOSURE_MASK);
+        gdkeventmask.constant("POINTER_MOTION_MASK", (int)GDK_POINTER_MOTION_MASK);
+        gdkeventmask.constant("POINTER_MOTION_HINT_MASK", (int)GDK_POINTER_MOTION_HINT_MASK);
+        gdkeventmask.constant("BUTTON_MOTION_MASK", (int)GDK_BUTTON_MOTION_MASK);
+        gdkeventmask.constant("BUTTON1_MOTION_MASK", (int)GDK_BUTTON1_MOTION_MASK);
+        gdkeventmask.constant("BUTTON2_MOTION_MASK", (int)GDK_BUTTON2_MOTION_MASK);
+        gdkeventmask.constant("BUTTON3_MOTION_MASK", (int)GDK_BUTTON3_MOTION_MASK);
+        gdkeventmask.constant("BUTTON_PRESS_MASK", (int)GDK_BUTTON_PRESS_MASK);
+        gdkeventmask.constant("BUTTON_RELEASE_MASK", (int)GDK_BUTTON_RELEASE_MASK);
+        gdkeventmask.constant("KEY_PRESS_MASK", (int)GDK_KEY_PRESS_MASK);
+        gdkeventmask.constant("KEY_RELEASE_MASK", (int)GDK_KEY_RELEASE_MASK);
+        gdkeventmask.constant("ENTER_NOTIFY_MASK", (int)GDK_ENTER_NOTIFY_MASK);
+        gdkeventmask.constant("LEAVE_NOTIFY_MASK", (int)GDK_LEAVE_NOTIFY_MASK);
+        gdkeventmask.constant("FOCUS_CHANGE_MASK", (int)GDK_FOCUS_CHANGE_MASK);
+        gdkeventmask.constant("STRUCTURE_MASK", (int)GDK_STRUCTURE_MASK);
+        gdkeventmask.constant("PROPERTY_CHANGE_MASK", (int)GDK_PROPERTY_CHANGE_MASK);
+        gdkeventmask.constant("VISIBILITY_NOTIFY_MASK", (int)GDK_VISIBILITY_NOTIFY_MASK);
+        gdkeventmask.constant("PROXIMITY_IN_MASK", (int)GDK_PROXIMITY_IN_MASK);
+        gdkeventmask.constant("PROXIMITY_OUT_MASK", (int)GDK_PROXIMITY_OUT_MASK);
+        gdkeventmask.constant("SUBSTRUCTURE_MASK", (int)GDK_SUBSTRUCTURE_MASK);
+        gdkeventmask.constant("SCROLL_MASK", (int)GDK_SCROLL_MASK);
+        gdkeventmask.constant("TOUCH_MASK", (int)GDK_TOUCH_MASK);
+        gdkeventmask.constant("SMOOTH_SCROLL_MASK", (int)GDK_SMOOTH_SCROLL_MASK);
+        gdkeventmask.constant("TOUCHPAD_GESTURE_MASK", (int)GDK_TOUCHPAD_GESTURE_MASK);
+        gdkeventmask.constant("TABLET_PAD_MASK", (int)GDK_TABLET_PAD_MASK);
+        gdkeventmask.constant("ALL_EVENTS_MASK", (int)GDK_ALL_EVENTS_MASK);
+     
         // GdkScreen
         Php::Class<GdkScreen_> gdkscreen("GdkScreen");
         // gdkevent.method<&GdkEvent_::__construct>("__construct");
@@ -3729,6 +3758,7 @@ extern "C"
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventtype));
+        extension.add(std::move(gdkeventmask));
         extension.add(std::move(gdkpixbuf));
         extension.add(std::move(gdkdrawable));
         extension.add(std::move(gdkinterptype));

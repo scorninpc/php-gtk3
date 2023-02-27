@@ -21,6 +21,8 @@ void GtkColorChooserDialog_::__construct(Php::Parameters &parameters)
 		Php::Value object_parent = parameters[1];
 		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
 		parent = GTK_WINDOW(phpgtk_parent->get_instance());
+	} else {
+		parent = NULL;
 	}
 
 	instance = (gpointer *)gtk_color_chooser_dialog_new (title, parent);
