@@ -9,7 +9,6 @@
     #include "GtkTreeViewColumn.h"
     #include "GtkTreeModel.h"
     #include "GtkTreeSelection.h"
-    #include "GtkTreePath.h"
 
     /**
      * GtkTreeView_
@@ -84,7 +83,6 @@
             void scroll_to_cell(Php::Parameters& parameters);
 
             Php::Value get_columns();
-
             Php::Value get_column(Php::Parameters& parameters);
 
             void move_column_after(Php::Parameters& parameters);
