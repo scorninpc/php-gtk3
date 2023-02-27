@@ -501,7 +501,7 @@ extern "C"
         // gdkevent.property("type", 0);
 
         // GdkEventMask
-        Php::Class<Php::Base> gdkeventmask("GdkEventMask");
+        Php::Class<Php::Base> gdkeventmask("GdkEventMask"); 
         gdkeventmask.constant("EXPOSURE_MASK", (int)GDK_EXPOSURE_MASK);
         gdkeventmask.constant("POINTER_MOTION_MASK", (int)GDK_POINTER_MOTION_MASK);
         gdkeventmask.constant("POINTER_MOTION_HINT_MASK", (int)GDK_POINTER_MOTION_HINT_MASK);
