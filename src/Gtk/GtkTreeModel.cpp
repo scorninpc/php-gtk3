@@ -65,6 +65,11 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
 {
     // Cast iter back
     Php::Value object_iter = parameters[0];
+
+    if (object_iter == false) {
+        return false;
+    }
+
     GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
     GtkTreeIter iter = phpgtk_iter->get_instance();
 
