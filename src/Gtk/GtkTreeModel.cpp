@@ -37,7 +37,16 @@ void GtkTreeModel_::__construct(Php::Parameters &parameters)
 
 Php::Value GtkTreeModel_::get_iter(Php::Parameters &parameters)
 {
+
     std::string param_path = parameters[0];
+    gchar* data = (gchar*)param_path.c_str();
+
+    gssize length = param_path.length();
+
+    if (length == 0) {
+        return false;
+    }
+
     GtkTreeIter iter;
     GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
 
