@@ -43,7 +43,7 @@
 			 */
 			static void main_quit();
 
-			static void timeout_add(Php::Parameters &parameters);
+			static Php::Value timeout_add(Php::Parameters &parameters);
 			static gint timeout_add_callback(gpointer data);
 
 			static Php::Value events_pending();
