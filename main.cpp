@@ -70,6 +70,16 @@ extern "C"
         gobject.constant("TYPE_CHECKSUM", (int)G_TYPE_CHECKSUM);
 
         // ----- ENUMS
+        // GtkStateType
+        Php::Class<Php::Base> gtkstatetype("GtkStateType");
+        gtkstatetype.constant("NORMAL", GTK_STATE_NORMAL);
+        gtkstatetype.constant("ACTIVE", GTK_STATE_ACTIVE);
+        gtkstatetype.constant("PRELIGHT", GTK_STATE_PRELIGHT);
+        gtkstatetype.constant("SELECTED", GTK_STATE_SELECTED);
+        gtkstatetype.constant("INSENSITIVE", GTK_STATE_INSENSITIVE);
+        gtkstatetype.constant("INCONSISTENT", GTK_STATE_INCONSISTENT);
+        gtkstatetype.constant("FOCUSED", GTK_STATE_FOCUSED);
+
         // GtkAttachOptions
         Php::Class<Php::Base> gtkattachoptions("GtkAttachOptions");
         gtkattachoptions.constant("EXPAND", GTK_EXPAND);
@@ -3774,6 +3784,7 @@ extern "C"
 
         extension.add(std::move(gdkwindow));
         extension.add(std::move(gdkbyteorder));
+        extension.add(std::move(gtkstatetype));
         extension.add(std::move(gtkattachoptions));
         extension.add(std::move(gdkvisualtype));
         extension.add(std::move(gdkwindowtype));

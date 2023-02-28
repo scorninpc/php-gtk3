@@ -827,15 +827,11 @@ Php::Value GtkWidget_::get_composite_name()
 void GtkWidget_::override_background_color(Php::Parameters &parameters)
 {
  	int int_state = (int)parameters[0];
- 	GtkStateFlags state = (GtkStateFlags)int_state;
-	// GtkWidget* color;
-	GdkRGBA color;
+	GtkStateFlags state = (GtkStateFlags)int_state;
 
- 	if(parameters.size() > 1) {
- 		Php::Value object_color = parameters[1];
- 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
- 		color = phpgtk_color->get_instance();
- 	}
+	std::string s_color = parameters[1];
+ 	GdkRGBA color;
+	gdk_rgba_parse(&color, s_color.c_str());
 
  	gtk_widget_override_background_color (GTK_WIDGET(instance), state, &color);
 
@@ -847,16 +843,11 @@ void GtkWidget_::override_color(Php::Parameters &parameters)
  	int int_state = (int)parameters[0];
 	GtkStateFlags state = (GtkStateFlags)int_state;
 
+	std::string s_color = parameters[1];
  	GdkRGBA color;
-	if(parameters.size() > 1) {
-		Php::Value object_color = parameters[1];
- 		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
- 		color = phpgtk_color->get_instance();
- 	}
+	gdk_rgba_parse(&color, s_color.c_str());
 
- 	gtk_widget_override_color (GTK_WIDGET(instance), state, &color);
-
-    // Php::deprecated << "GtkWidget_::override_color  is deprecated on Gtk 3.16";
+ 	gtk_widget_override_color (GTK_WIDGET(instance),  state, &color);
 }
 
 void GtkWidget_::override_font(Php::Parameters &parameters)
@@ -1016,10 +1007,11 @@ void GtkWidget_::modify_base(Php::Parameters &parameters)
 
 void GtkWidget_::modify_font(Php::Parameters &parameters)
 {
-// 
-// 	gtk_widget_modify_font (GTK_WIDGET(instance), font_desc);
+	std::string s_font_desc = parameters[0];
 
-	 Php::deprecated << "GtkWidget_::modify_font  is deprecated on Gtk 3.0";
+	PangoFontDescription *font_desc = pango_font_description_from_string(s_font_desc.c_str());
+
+	gtk_widget_modify_font (GTK_WIDGET(instance), font_desc);
 }
 
 void GtkWidget_::modify_cursor(Php::Parameters &parameters)
@@ -2214,10 +2206,9 @@ Php::Value GtkWidget_::class_get_css_name()
 
 void GtkWidget_::class_set_css_name(Php::Parameters &parameters)
 {
-	// std::string s_text = parameters[0];
-	// gchar *text = (gchar *)s_text.c_str();
+	std::string s_text = parameters[0];
 
- // 	gtk_widget_class_set_css_name (GTK_WIDGET(instance), text);
+ 	gtk_widget_class_set_css_name (GTK_WIDGET_GET_CLASS(instance), s_text.c_str());
 }
 
 Php::Value GtkWidget_::gtk_requisition_new()
