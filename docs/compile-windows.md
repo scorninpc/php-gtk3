@@ -249,6 +249,7 @@
 	libglib-2.0.dll.a
 	libgladeui-2.dll.a
 	libgtksourceview-3.0.dll.a
+	libpango-1.0.dll.a
 	```
 
 4. Build everything
