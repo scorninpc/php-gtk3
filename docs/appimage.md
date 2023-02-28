@@ -13,14 +13,27 @@ You can find all PHP + GTK extension in AppImage package on [releases](https://g
 Just download the last release, make it executable and run your PHP scripts
 
 ```sh
-:$ chmod +x php-gtk3-x86_64-0.12-beta.AppImage
-:$ sudo ln -s ~/Downloads/php-gtk3-x86_64-0.12-beta.AppImage /usr/bin/php-gtk
+:$ chmod +x php-gtk3-x86_64-0.14-beta.AppImage
+:$ sudo ln -s ~/Downloads/php-gtk3-x86_64-0.14-beta.AppImage /usr/bin/php-gtk
 :$ php-gtk myapp.php
 ```
 
 ## Tested on
 
 _Please, let we know if this appimage run fine on your system openning a [issue](https://github.com/scorninpc/php-gtk3/issues)._
+
+
+
+AppImage 0.14
+
+- [x] Deepin Linux 20
+- [x] Debian 11
+- [x] Ubuntu 22.04
+
+AppImage 0.13
+
+- [x] Deepin Linux 20
+- [x] Debian 11
 
 AppImage 0.12
 
