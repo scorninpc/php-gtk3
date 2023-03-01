@@ -329,20 +329,30 @@ void GObject_::set_property(Php::Parameters &parameters)
 
     // get interface of instance
     gpointer iface = g_type_default_interface_peek (G_OBJECT_TYPE(instance));
-    
-    // get the property spec
-    GParamSpec* prop = g_object_class_find_property(G_OBJECT_GET_CLASS(instance), property_name);
-    if(!prop) {
-        std::string error("");
-        throw Php::Exception(error + "there is no property " + property_name + " on object " + g_type_name(G_OBJECT_TYPE(instance)));
+
+    // verify if property is "model", to set the instance, and not GValue
+    if(strcmp(property_name, "model") == 0) {
+        Php::Value a_object = parameters[1];
+        GtkTreeModel_ *o_object = (GtkTreeModel_ *)a_object.implementation();
+        
+        g_object_set(G_OBJECT(instance), "model", o_object->get_model(), (char *)NULL); 
     }
     else {
-        // parse the param by the gtype
-        GValue value = phpgtk_get_gvalue(parameters[1], G_TYPE_FUNDAMENTAL(prop->value_type));
+        // get the property spec
+        GParamSpec* prop = g_object_class_find_property(G_OBJECT_GET_CLASS(instance), property_name);
+        if(!prop) {
+            std::string error("");
+            throw Php::Exception(error + "there is no property " + property_name + " on object " + g_type_name(G_OBJECT_TYPE(instance)));
+        }
+        else {
+            // parse the param by the gtype
+            GValue value = phpgtk_get_gvalue(parameters[1], G_TYPE_FUNDAMENTAL(prop->value_type));
 
-        // set property
-        g_object_set_property(G_OBJECT(instance), property_name, &value);
+            // set property
+            g_object_set_property(G_OBJECT(instance), property_name, &value);
+        }
     }
+    
 }
 
 void GObject_::signal_handler_block(Php::Parameters &parameters)
