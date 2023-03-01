@@ -1748,6 +1748,11 @@ extern "C"
         gtkcellrenderertext.method<&GtkCellRendererText_::__construct>("__construct");
         gtkcellrenderertext.method<&GtkCellRendererText_::set_fixed_height_from_font>("set_fixed_height_from_font");
 
+        // GtkCellRendererCombo
+        Php::Class<GtkCellRendererCombo_> gtkcellrenderercombo("GtkCellRendererCombo");
+            gtkcellrenderercombo.extends(gtkcellrenderertext);
+			gtkcellrenderercombo.method<&GtkCellRendererCombo_::__construct>("__construct");
+
         // GtkCellRendererToggle
         Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
         gtkcellrenderertoggle.extends(gtkcellrenderer);
@@ -3856,6 +3861,7 @@ extern "C"
         extension.add(std::move(gtktreeviewcolumn));
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
+        extension.add(std::move(gtkcellrenderercombo));
         extension.add(std::move(gtkcellrenderertoggle));
         extension.add(std::move(gtkcellrendererpixbuf));
         extension.add(std::move(gtktreemodel));

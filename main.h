@@ -62,6 +62,7 @@
 	#include "src/Gtk/GtkNotebook.h"
 	#include "src/Gtk/GtkCellRenderer.h"
 	#include "src/Gtk/GtkCellRendererText.h"
+	#include "src/Gtk/GtkCellRendererCombo.h"
 	#include "src/Gtk/GtkCellRendererToggle.h"
 	#include "src/Gtk/GtkCellRendererPixbuf.h"
 	#include "src/Gtk/GtkTreeModel.h"
