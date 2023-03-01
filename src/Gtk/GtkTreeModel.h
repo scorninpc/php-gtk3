@@ -7,12 +7,14 @@
 
     #include "GtkTreeIter.h"
 
+    #include "../G/GObject.h"
+
     /**
      * GtkTreeModel_
      * 
      * https://developer.gnome.org/gtk3/stable/GtkTreeModel.html
      */
-    class GtkTreeModel_ : public Php::Base
+    class GtkTreeModel_ : public GObject_
     {
         
         /**
