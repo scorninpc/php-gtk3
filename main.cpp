@@ -4260,14 +4260,7 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
     }
     case G_TYPE_INTERFACE:
     {
-        g_value_init(&gtk_value, G_TYPE_OBJECT);
-
-        Php::Value a_object = phpgtk_value;
-        GtkTreeModel_ *o_object = (GtkTreeModel_ *)a_object.implementation();
-        g_value_set_object(&gtk_value, GTK_LIST_STORE(o_object->get_model()));
-
-        throw Php::Exception("G_TYPE_INTERFACE not implemented on phpgtk_get_gvalue");
-
+        throw Php::Exception("G_TYPE_INTERFACE not implemented");
         break;
     }
     case G_TYPE_PARAM:
