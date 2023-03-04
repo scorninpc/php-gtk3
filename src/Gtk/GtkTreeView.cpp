@@ -290,23 +290,21 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 
 	bool ret = gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(instance), x, y, &path, &column, &cell_x, &cell_y);
 
-	gint depth = gtk_tree_path_get_depth(path);
-	gint* pathArray = NULL;
-	pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
-
 	Php::Value phpPathArray;
-	//Php::call("var_dump", (int)depth);
 
+	if(path != NULL) {
+		gint depth = gtk_tree_path_get_depth(path);
+		gint* pathArray = NULL;
+		pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
 
-	for (int index = 0; index < (int)depth; index++) {
-		//Php::call("var_dump", index);
-		phpPathArray[index] = pathArray[index];
+		for (int index = 0; index < (int)depth; index++) {
+			phpPathArray[index] = pathArray[index];
+		}
 	}
 
 	GtkTreeViewColumn_* return_parsed = new GtkTreeViewColumn_();
 	return_parsed->set_instance((gpointer*)column);
 
-	// TODO: Implement GtkTreePath and return instead of array (but will break PHP-GTK2 compatibility)
 	Php::Value ret_arr;
 	ret_arr[0] = phpPathArray;
 	ret_arr[1] = Php::Object("GtkTreeViewColumn", return_parsed);

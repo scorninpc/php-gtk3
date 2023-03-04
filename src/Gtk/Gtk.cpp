@@ -34,7 +34,7 @@ void Gtk_::main_quit()
 }
 
 
-void Gtk_::timeout_add(Php::Parameters &parameters)
+Php::Value Gtk_::timeout_add(Php::Parameters &parameters)
 {
 	guint interval = (int)parameters[0];
 	Php::Array callback_params = parameters;
@@ -48,7 +48,8 @@ void Gtk_::timeout_add(Php::Parameters &parameters)
     callback_object->callback_params = callback_params;
 
     // Call
-	g_timeout_add(interval, timeout_add_callback, callback_object);
+	gint ret = g_timeout_add(interval, timeout_add_callback, callback_object);
+    return ret;
 }
 
 gint Gtk_::timeout_add_callback(gpointer data)
