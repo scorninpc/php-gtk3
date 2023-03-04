@@ -829,9 +829,16 @@ void GtkWidget_::override_background_color(Php::Parameters &parameters)
  	int int_state = (int)parameters[0];
 	GtkStateFlags state = (GtkStateFlags)int_state;
 
-	std::string s_color = parameters[1];
- 	GdkRGBA color;
-	gdk_rgba_parse(&color, s_color.c_str());
+	GdkRGBA color;
+	if(parameters[1].isString()) {
+		std::string s_color = parameters[1];
+		gdk_rgba_parse(&color, s_color.c_str());
+	}
+	else {
+		Php::Value object_color = parameters[1];
+		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
+		color = phpgtk_color->get_instance();
+	}
 
  	gtk_widget_override_background_color (GTK_WIDGET(instance), state, &color);
 
@@ -843,9 +850,16 @@ void GtkWidget_::override_color(Php::Parameters &parameters)
  	int int_state = (int)parameters[0];
 	GtkStateFlags state = (GtkStateFlags)int_state;
 
-	std::string s_color = parameters[1];
- 	GdkRGBA color;
-	gdk_rgba_parse(&color, s_color.c_str());
+	GdkRGBA color;
+	if(parameters[1].isString()) {
+		std::string s_color = parameters[1];
+		gdk_rgba_parse(&color, s_color.c_str());
+	}
+	else {
+		Php::Value object_color = parameters[1];
+		GdkRGBA_ *phpgtk_color = (GdkRGBA_ *)object_color.implementation();
+		color = phpgtk_color->get_instance();
+	}
 
  	gtk_widget_override_color (GTK_WIDGET(instance),  state, &color);
 }
