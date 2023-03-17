@@ -370,3 +370,27 @@ void GObject_::signal_handler_unblock(Php::Parameters &parameters)
 
     g_signal_handler_unblock(G_OBJECT(instance), handler_id);
 }
+
+Php::Value GObject_::get_data(Php::Parameters& parameters)
+{
+    std::string s_key = parameters[0];
+    gchar* key = (gchar*)s_key.c_str();
+
+    gpointer value = g_object_get_data(G_OBJECT(instance), key);
+
+    return (gchar)value;
+}
+
+
+void GObject_::set_data(Php::Parameters& parameters)
+{
+    std::string s_key = parameters[0];
+    gchar* key = (gchar*)s_key.c_str();
+
+    std::string s_value = parameters[1];
+    gpointer* value = (gpointer*)s_value.c_str();
+
+    printf("%p", value);
+
+    g_object_set_data(G_OBJECT(instance), key, value);
+}

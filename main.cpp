@@ -41,6 +41,8 @@ extern "C"
         gobject.method<&GObject_::is_connected>("is_connected");
         gobject.method<&GObject_::get_property>("get_property");
         gobject.method<&GObject_::set_property>("set_property");
+        gobject.method<&GObject_::get_data>("get_data");
+        gobject.method<&GObject_::set_data>("set_data");
         gobject.method<&GObject_::signal_handler_block>("signal_handler_block");
         gobject.method<&GObject_::signal_handler_unblock>("signal_handler_unblock");
         gobject.constant("TYPE_INVALID", (int)G_TYPE_INVALID);
@@ -511,7 +513,7 @@ extern "C"
         // gdkevent.property("type", 0);
 
         // GdkEventMask
-        Php::Class<Php::Base> gdkeventmask("GdkEventMask"); 
+        Php::Class<Php::Base> gdkeventmask("GdkEventMask");
         gdkeventmask.constant("EXPOSURE_MASK", (int)GDK_EXPOSURE_MASK);
         gdkeventmask.constant("POINTER_MOTION_MASK", (int)GDK_POINTER_MOTION_MASK);
         gdkeventmask.constant("POINTER_MOTION_HINT_MASK", (int)GDK_POINTER_MOTION_HINT_MASK);
@@ -538,7 +540,11 @@ extern "C"
         gdkeventmask.constant("TOUCHPAD_GESTURE_MASK", (int)GDK_TOUCHPAD_GESTURE_MASK);
         gdkeventmask.constant("TABLET_PAD_MASK", (int)GDK_TABLET_PAD_MASK);
         gdkeventmask.constant("ALL_EVENTS_MASK", (int)GDK_ALL_EVENTS_MASK);
-     
+
+        // GdkThreads
+        // Php::Class<Php::GdkThreads_> gdkthreads("GdkThreads");
+        // gdkthreads.method<&GdkThreads_::add_idle>("add_idle");
+
         // GdkScreen
         Php::Class<GdkScreen_> gdkscreen("GdkScreen");
         // gdkevent.method<&GdkEvent_::__construct>("__construct");
@@ -563,7 +569,7 @@ extern "C"
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
 
-        // GdkEventKey
+        // GdkEventType
         Php::Class<Php::Base> gdkeventtype("GdkEventType");
         gdkeventtype.constant("NOTHING", (int)GDK_NOTHING);
         gdkeventtype.constant("DELETE", (int)GDK_DELETE);
@@ -637,7 +643,7 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::get_from_drawable>("get_from_drawable");
         gdkpixbuf.method<&GdkPixbuf_::scale_simple>("scale_simple");
 
-        // GdkEventKey
+        // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");
         gdkinterptype.constant("NEAREST", (int)GDK_INTERP_NEAREST);
         gdkinterptype.constant("TILES", (int)GDK_INTERP_TILES);
@@ -1054,22 +1060,22 @@ extern "C"
         gtkcontainer.method<&GtkContainer_::class_handle_border_width>("class_handle_border_width");
 
         Php::Class<GtkTable_> gtktable("GtkTable");
-            gtktable.extends(gtkcontainer);
-            gtktable.method<&GtkTable_::resize>("resize");
-            gtktable.method<&GtkTable_::attach>("attach");
-            gtktable.method<&GtkTable_::attach_defaults>("attach_defaults");
-            gtktable.method<&GtkTable_::set_row_spacing>("set_row_spacing");
-            gtktable.method<&GtkTable_::get_row_spacing>("get_row_spacing");
-            gtktable.method<&GtkTable_::set_col_spacing>("set_col_spacing");
-            gtktable.method<&GtkTable_::get_col_spacing>("get_col_spacing");
-            gtktable.method<&GtkTable_::set_row_spacings>("set_row_spacings");
-            gtktable.method<&GtkTable_::get_default_row_spacing>("get_default_row_spacing");
-            gtktable.method<&GtkTable_::set_col_spacings>("set_col_spacings");
-            gtktable.method<&GtkTable_::get_default_col_spacing>("get_default_col_spacing");
-            gtktable.method<&GtkTable_::set_homogeneous>("set_homogeneous");
-            gtktable.method<&GtkTable_::get_homogeneous>("get_homogeneous");
-            gtktable.method<&GtkTable_::get_size>("get_size");
-            gtktable.method<&GtkTable_::__construct>("__construct");
+        gtktable.extends(gtkcontainer);
+        gtktable.method<&GtkTable_::resize>("resize");
+        gtktable.method<&GtkTable_::attach>("attach");
+        gtktable.method<&GtkTable_::attach_defaults>("attach_defaults");
+        gtktable.method<&GtkTable_::set_row_spacing>("set_row_spacing");
+        gtktable.method<&GtkTable_::get_row_spacing>("get_row_spacing");
+        gtktable.method<&GtkTable_::set_col_spacing>("set_col_spacing");
+        gtktable.method<&GtkTable_::get_col_spacing>("get_col_spacing");
+        gtktable.method<&GtkTable_::set_row_spacings>("set_row_spacings");
+        gtktable.method<&GtkTable_::get_default_row_spacing>("get_default_row_spacing");
+        gtktable.method<&GtkTable_::set_col_spacings>("set_col_spacings");
+        gtktable.method<&GtkTable_::get_default_col_spacing>("get_default_col_spacing");
+        gtktable.method<&GtkTable_::set_homogeneous>("set_homogeneous");
+        gtktable.method<&GtkTable_::get_homogeneous>("get_homogeneous");
+        gtktable.method<&GtkTable_::get_size>("get_size");
+        gtktable.method<&GtkTable_::__construct>("__construct");
 
         // GtkBox
         Php::Class<GtkBox_> gtkbox("GtkBox");
@@ -1134,7 +1140,6 @@ extern "C"
         // GtkBin
         Php::Class<GtkBin_> gtkbin("GtkBin");
         gtkbin.extends(gtkcontainer);
-        gtkbin.method<&GtkBin_::test3>("test3");
         gtkbin.method<&GtkBin_::get_child>("get_child");
 
         Php::Class<GtkViewport_> gtkviewport("GtkViewport");
@@ -1486,7 +1491,6 @@ extern "C"
         gtkbutton.method<&GtkButton_::set_always_show_image>("set_always_show_image");
         gtkbutton.method<&GtkButton_::get_always_show_image>("get_always_show_image");
         gtkbutton.method<&GtkButton_::get_event_window>("get_event_window");
-        
 
         // GtkColorButton
         Php::Class<GtkColorButton_> gtkcolorbutton("GtkColorButton");
@@ -1569,10 +1573,13 @@ extern "C"
 
         // GtkScrolledWindow
         Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
-        gtkscrolledwindow.extends(gtkcontainer);
+        gtkscrolledwindow.extends(gtkbin);
         gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_shadow_type>("set_shadow_type");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_propagate_natural_height>("set_propagate_natural_height");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_max_content_height>("set_max_content_height");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_height>("set_min_content_height");
 
         // GtkRequisition
         // Php::Class<GtkRequisition_> gtkrequisition("GtkRequisition");
@@ -1750,8 +1757,8 @@ extern "C"
 
         // GtkCellRendererCombo
         Php::Class<GtkCellRendererCombo_> gtkcellrenderercombo("GtkCellRendererCombo");
-            gtkcellrenderercombo.extends(gtkcellrenderertext);
-			gtkcellrenderercombo.method<&GtkCellRendererCombo_::__construct>("__construct");
+        gtkcellrenderercombo.extends(gtkcellrenderertext);
+        gtkcellrenderercombo.method<&GtkCellRendererCombo_::__construct>("__construct");
 
         // GtkCellRendererToggle
         Php::Class<GtkCellRendererToggle_> gtkcellrenderertoggle("GtkCellRendererToggle");
@@ -1836,6 +1843,7 @@ extern "C"
         gtknotebook.extends(gtkcontainer);
         gtknotebook.method<&GtkNotebook_::__construct>("__construct");
         gtknotebook.method<&GtkNotebook_::append_page>("append_page");
+        gtknotebook.method<&GtkNotebook_::prepend_page>("prepend_page");
         gtknotebook.method<&GtkNotebook_::insert_page>("insert_page");
         gtknotebook.method<&GtkNotebook_::remove_page>("remove_page");
         gtknotebook.method<&GtkNotebook_::detach_tab>("detach_tab");
@@ -3774,6 +3782,7 @@ extern "C"
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkeventmask));
+        // extension.add(std::move(gdkthreads));
         extension.add(std::move(gdkpixbuf));
         extension.add(std::move(gdkdrawable));
         extension.add(std::move(gdkinterptype));
@@ -4219,7 +4228,7 @@ GValue phpgtk_get_gvalue(Php::Value phpgtk_value, GType type_column)
     {
         // Cast
         int64_t b = (int64_t)phpgtk_value;
-        //Php::call("var_dump", b);
+        // Php::call("var_dump", b);
         g_value_init(&gtk_value, G_TYPE_LONG);
         g_value_set_long(&gtk_value, b);
         break;
