@@ -43,3 +43,27 @@ void GtkScrolledWindow_::set_shadow_type(Php::Parameters &parameters)
     gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(instance), type);
 
 }
+
+void GtkScrolledWindow_::set_propagate_natural_height(Php::Parameters& parameters)
+{
+    gboolean natural_height = (gboolean)parameters[0];
+
+    gtk_scrolled_window_set_propagate_natural_height(GTK_SCROLLED_WINDOW(instance), natural_height);
+
+}
+
+
+void GtkScrolledWindow_::set_max_content_height(Php::Parameters& parameters)
+{
+    int height = (int)parameters[0];
+
+    gtk_scrolled_window_set_max_content_height(GTK_SCROLLED_WINDOW(instance), height);
+}
+
+
+void GtkScrolledWindow_::set_min_content_height(Php::Parameters& parameters)
+{
+    int height = (int)parameters[0];
+
+    gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(instance), height);
+}
