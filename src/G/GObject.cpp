@@ -378,7 +378,8 @@ Php::Value GObject_::get_data(Php::Parameters& parameters)
 
     gpointer value = g_object_get_data(G_OBJECT(instance), key);
 
-    return (gchar)value;
+    // this will return the pointer, so if not a natural type, it's will crash
+    return value;
 }
 
 
