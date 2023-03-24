@@ -38,6 +38,12 @@
             void set_policy(Php::Parameters &parameters);
             
             void set_shadow_type(Php::Parameters &parameters);
+
+            void set_propagate_natural_height(Php::Parameters& parameters);
+
+            void set_max_content_height(Php::Parameters& parameters);
+
+            void set_min_content_height(Php::Parameters& parameters);
     };
 
 #endif

@@ -38,6 +38,27 @@ Php::Value GtkNotebook_::append_page(Php::Parameters &parameters)
 	return ret;
 }
 
+Php::Value GtkNotebook_::prepend_page(Php::Parameters& parameters)
+{
+	GtkWidget* child;
+	if (parameters.size() > 0) {
+		Php::Value object_child = parameters[0];
+		GtkWidget_* phpgtk_child = (GtkWidget_*)object_child.implementation();
+		child = GTK_WIDGET(phpgtk_child->get_instance());
+	}
+
+	GtkWidget* tab_label;
+	if (parameters.size() > 1) {
+		Php::Value object_tab_label = parameters[1];
+		GtkWidget_* phpgtk_tab_label = (GtkWidget_*)object_tab_label.implementation();
+		tab_label = GTK_WIDGET(phpgtk_tab_label->get_instance());
+	}
+
+	gint ret = gtk_notebook_prepend_page(GTK_NOTEBOOK(instance), child, tab_label);
+
+	return ret;
+}
+
 Php::Value GtkNotebook_::insert_page(Php::Parameters &parameters)
 {
 	GtkWidget *child;

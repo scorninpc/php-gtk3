@@ -64,6 +64,8 @@
             void signal_handler_block(Php::Parameters &parameters);
             void signal_handler_unblock(Php::Parameters &parameters);
 
+            Php::Value get_data(Php::Parameters& parameters);
+            void set_data(Php::Parameters& parameters);
 
             void __clone();
     };

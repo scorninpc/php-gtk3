@@ -31,6 +31,8 @@
 
             Php::Value append_page(Php::Parameters &parameters);
 
+            Php::Value prepend_page(Php::Parameters& parameters);
+
             Php::Value insert_page(Php::Parameters &parameters);
 
             void remove_page(Php::Parameters &parameters);
