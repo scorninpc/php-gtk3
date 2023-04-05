@@ -1578,6 +1578,7 @@ extern "C"
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_shadow_type>("set_shadow_type");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_propagate_natural_height>("set_propagate_natural_height");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_propagate_natural_width>("set_propagate_natural_width");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_max_content_height>("set_max_content_height");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_height>("set_min_content_height");
 
