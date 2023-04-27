@@ -285,8 +285,8 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 
 	GtkTreePath* path = gtk_tree_path_new();
 	GtkTreeViewColumn* column = new GtkTreeViewColumn();
-	gint cell_x = NULL;
-	gint cell_y = NULL;
+	gint cell_x = 0;
+	gint cell_y = 0;
 
 	bool ret = gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(instance), x, y, &path, &column, &cell_x, &cell_y);
 
