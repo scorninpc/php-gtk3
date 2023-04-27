@@ -298,9 +298,14 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 }
 
 
-Php::Value  GObject_::is_connected(Php::Parameters& parameters)
+Php::Value GObject_::is_connected(Php::Parameters& parameters)
 {
     Php::Value callback_handle = parameters[0];
+
+    if ((int)callback_handle < 1)
+    {
+        return false;
+    }
 
     gboolean ret = g_signal_handler_is_connected(instance, (int)callback_handle);
 
