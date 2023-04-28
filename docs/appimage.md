@@ -70,3 +70,23 @@ libphpcpp.so.2.3
 ```
 
 `appimagetool-x86_64.AppImage php-gtk3.AppDir`
+
+
+- References to test
+
+download:
+
+> wget -c "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh"
+> wget -c "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
+> chmod +x linuxdeploy-x86_64.AppImage linuxdeploy-plugin-gtk.sh
+
+```
+DEPLOY_GTK_VERSION=3 ./linuxdeploy-x86_64.AppImage  \
+	--appdir AppDir \
+	--plugin gtk \
+	--library /usr/lib/x86_64-linux-gnu/libreadline.so.7 \
+	--library /usr/lib/x86_64-linux-gnu/libonig.so.5 \
+	--library /usr/lib/x86_64-linux-gnu/libncurses.so.6 \
+	--library /usr/lib/x86_64-linux-gnu/libgladeui-2.so.6 \
+	--library /usr/lib/libphpcpp.so.2.3
+```
