@@ -59,8 +59,10 @@ This will create php-gtk3.so php module
 
 Get GTK dependencies, on deb systems, like:
 ```sh
-:$ sudo apt-get install pkg-config libgtk-3-dev libgladeui-dev libgtksourceview-3.0-dev libwnck-dev
+:$ sudo apt-get install libgtk-3-dev libgladeui-dev libgtksourceview-3.0-dev libwnck-dev
 ```
+
+If you are compiling from repository version, install `pkg-config` too. If you are compiling from source, use `/usr/local/php-gtk3/bin/php-config` on Makefile
 
 Clone source
 ```sh
@@ -84,10 +86,13 @@ You can test with
 
 ## Make a manual instalation
 
-Copy module to compiled PHP
+Copy `php-gtk3.so` created to php library dir
+
 ```sh
-:$ sudo cp php-gtk3.so /opt/php/php-8.1.14/lib/php/extensions/no-debug-non-zts-20210902/php-gtk3.so
+:$ sudo cp php-gtk3.so `/usr/local/php-gtk3/bin/php-config --extension-dir`
 ```
+
+Add `php-gtk3.so` extension to `/usr/local/php-gtk3/lib/php.ini`. Create the file if needed.
 
 Create a script that will execute all
 ```sh
