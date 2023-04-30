@@ -41,17 +41,9 @@ This will create and install libphpcpp.so.2.3
 
 Clone source
 ```sh
-:$ git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
+:$ git clone https://github.com/fast-debug/PHP-CPP.git
 :$ cd PHP-CPP
 ```
-
-Merge PR 497 for PHP 8.1 support
-```sh
-:$ git fetch origin pull/497/head:MASTER
-```
-
-If you compiling on PHP7.4, maybe occur some errors on thoweble.h, so look that [issue](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pull/440/commits/86d3624857a4d6a5ca8f760bb233ed083079e462) appear to be fix it
-
 Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.1.14/bin/php-config`.
 
 `NOTE:` this path can be changed when you compile PHP-SRC.
