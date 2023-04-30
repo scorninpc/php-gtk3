@@ -74,6 +74,8 @@ libphpcpp.so.2.3
 
 - References to test
 
+Compile PHP to /usr/local/php-gtk3
+
 download:
 
 > wget -c "https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh"
