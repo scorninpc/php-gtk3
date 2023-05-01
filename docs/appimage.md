@@ -75,7 +75,9 @@ or
 
 - Add this libs to in `./usr/lib/` with
 
-`cp ``readlink -f /usr/lib/x86_64-linux-gnu/librt.so.1`` usr/lib/librt.so.1`
+```
+cp `readlink -f /usr/lib/x86_64-linux-gnu/librt.so.1` usr/lib/librt.so.1
+```
 
 - Create AppImage with
 
