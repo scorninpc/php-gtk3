@@ -23,6 +23,18 @@ Just download the last release, make it executable and run your PHP scripts
 _Please, let we know if this appimage run fine on your system openning a [issue](https://github.com/scorninpc/php-gtk3/issues)._
 
 
+AppImage 0.16
+
+- [x] Deepin Linux 20.9
+- [x] Debian 11.6 (stable)
+- [x] Debian 12.0 (sid)
+- [x] Ubuntu 22.04
+
+AppImage 0.15
+
+- [x] Deepin Linux 20
+- [x] Debian 11
+- [x] Ubuntu 22.04
 
 AppImage 0.14
 
@@ -52,29 +64,24 @@ AppImage 0.11
 
 _This is for my reference only._
 
-add libs to PHP in ./lib
+- Compile PHP to the prefix `/usr/local/php-gtk3`
+- Create dir like `AppDir` and copy this to same path  like `AppDir/usr/local/php-gtk3`
+- Create lib dir like `AppDir/lib`
+- Find the dependency libs with
 
-- PHP
-```
-libldap_r-2.4.so.2
-liblber-2.4.so.2
-libonig.so.5
-libffi.so.7
-libcrypto.so.1.1
-libssl.so.1.1
-```
+`ldd usr/local/php-gtk3/bin/php`
+or
+`LD_DEBUG=libs usr/local/php-gtk3/bin/php`
 
-- PHP-GTK
-```
-libphpcpp.so.2.3
-```
+- Add this libs to in `./usr/lib/` with
+
+`cp ``readlink -f /usr/lib/x86_64-linux-gnu/librt.so.1`` usr/lib/librt.so.1`
+
+- Create AppImage with
 
 `appimagetool-x86_64.AppImage php-gtk3.AppDir`
 
-
-- References to test
-
-Compile PHP to /usr/local/php-gtk3
+- References to test with linuxdeploy and gtk plugin
 
 download:
 
