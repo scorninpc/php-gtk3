@@ -66,3 +66,12 @@ Php::Value GdkWindow_::get_height()
 {
 	return gdk_window_get_height(GDK_WINDOW(instance));
 }
+
+void GdkWindow_::set_cursor(Php::Parameters &parameters)
+{
+	Php::Value object_cursor = parameters[0];
+    GdkCursor_ *phpgtk_cursor = (GdkCursor_ *)object_cursor.implementation();
+    GdkCursor *cursor = (GdkCursor *)phpgtk_cursor->get_instance();
+
+	gdk_window_set_cursor(GDK_WINDOW(instance), cursor);
+}

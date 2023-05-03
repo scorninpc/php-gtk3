@@ -226,6 +226,7 @@ extern "C"
         gdkwindow.method<&GdkWindow_::get_children>("get_children");
         gdkwindow.method<&GdkWindow_::get_width>("get_width");
         gdkwindow.method<&GdkWindow_::get_height>("get_height");
+        gdkwindow.method<&GdkWindow_::set_cursor>("set_cursor");
 
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");
@@ -511,6 +512,101 @@ extern "C"
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
         // gdkevent.method<&GdkEvent_::__construct>("__construct");
         // gdkevent.property("type", 0);
+
+        // GdkCursor
+        Php::Class<GdkCursor_> gdkcursor("GdkCursor");
+        gdkcursor.extends(gobject);
+        gdkcursor.method<&GdkCursor_::__construct>("__construct");
+        gdkcursor.method<&GdkCursor_::new_for_display>("new_for_display");
+        gdkcursor.method<&GdkCursor_::new_from_name>("new_from_name");
+        gdkcursor.method<&GdkCursor_::new_from_pixbuf>("new_from_pixbuf");
+        gdkcursor.method<&GdkCursor_::get_cursor_type>("get_cursor_type");
+        gdkcursor.method<&GdkCursor_::get_display>("get_display");
+        gdkcursor.method<&GdkCursor_::get_image>("get_image");
+
+
+        // GdkCursorType
+        Php::Class<Php::Base> gdkcursortype("GdkCursorType");
+        gdkcursortype.constant("X_CURSOR", (int)GDK_X_CURSOR);
+        gdkcursortype.constant("ARROW", (int)GDK_ARROW);
+        gdkcursortype.constant("BASED_ARROW_DOWN", (int)GDK_BASED_ARROW_DOWN);
+        gdkcursortype.constant("BASED_ARROW_UP", (int)GDK_BASED_ARROW_UP);
+        gdkcursortype.constant("BOAT", (int)GDK_BOAT);
+        gdkcursortype.constant("BOGOSITY", (int)GDK_BOGOSITY);
+        gdkcursortype.constant("BOTTOM_LEFT_CORNER", (int)GDK_BOTTOM_LEFT_CORNER);
+        gdkcursortype.constant("BOTTOM_RIGHT_CORNER", (int)GDK_BOTTOM_RIGHT_CORNER);
+        gdkcursortype.constant("BOTTOM_SIDE", (int)GDK_BOTTOM_SIDE);
+        gdkcursortype.constant("BOTTOM_TEE", (int)GDK_BOTTOM_TEE);
+        gdkcursortype.constant("BOX_SPIRAL", (int)GDK_BOX_SPIRAL);
+        gdkcursortype.constant("CENTER_PTR", (int)GDK_CENTER_PTR);
+        gdkcursortype.constant("CIRCLE", (int)GDK_CIRCLE);
+        gdkcursortype.constant("CLOCK", (int)GDK_CLOCK);
+        gdkcursortype.constant("COFFEE_MUG", (int)GDK_COFFEE_MUG);
+        gdkcursortype.constant("CROSS", (int)GDK_CROSS);
+        gdkcursortype.constant("CROSS_REVERSE", (int)GDK_CROSS_REVERSE);
+        gdkcursortype.constant("CROSSHAIR", (int)GDK_CROSSHAIR);
+        gdkcursortype.constant("DIAMOND_CROSS", (int)GDK_DIAMOND_CROSS);
+        gdkcursortype.constant("DOT", (int)GDK_DOT);
+        gdkcursortype.constant("DOTBOX", (int)GDK_DOTBOX);
+        gdkcursortype.constant("DOUBLE_ARROW", (int)GDK_DOUBLE_ARROW);
+        gdkcursortype.constant("DRAFT_LARGE", (int)GDK_DRAFT_LARGE);
+        gdkcursortype.constant("DRAFT_SMALL", (int)GDK_DRAFT_SMALL);
+        gdkcursortype.constant("DRAPED_BOX", (int)GDK_DRAPED_BOX);
+        gdkcursortype.constant("EXCHANGE", (int)GDK_EXCHANGE);
+        gdkcursortype.constant("FLEUR", (int)GDK_FLEUR);
+        gdkcursortype.constant("GOBBLER", (int)GDK_GOBBLER);
+        gdkcursortype.constant("GUMBY", (int)GDK_GUMBY);
+        gdkcursortype.constant("HAND1", (int)GDK_HAND1);
+        gdkcursortype.constant("HAND2", (int)GDK_HAND2);
+        gdkcursortype.constant("HEART", (int)GDK_HEART);
+        gdkcursortype.constant("ICON", (int)GDK_ICON);
+        gdkcursortype.constant("IRON_CROSS", (int)GDK_IRON_CROSS);
+        gdkcursortype.constant("LEFT_PTR", (int)GDK_LEFT_PTR);
+        gdkcursortype.constant("LEFT_SIDE", (int)GDK_LEFT_SIDE);
+        gdkcursortype.constant("LEFT_TEE", (int)GDK_LEFT_TEE);
+        gdkcursortype.constant("LEFTBUTTON", (int)GDK_LEFTBUTTON);
+        gdkcursortype.constant("LL_ANGLE", (int)GDK_LL_ANGLE);
+        gdkcursortype.constant("LR_ANGLE", (int)GDK_LR_ANGLE);
+        gdkcursortype.constant("MAN", (int)GDK_MAN);
+        gdkcursortype.constant("MIDDLEBUTTON", (int)GDK_MIDDLEBUTTON);
+        gdkcursortype.constant("MOUSE", (int)GDK_MOUSE);
+        gdkcursortype.constant("PENCIL", (int)GDK_PENCIL);
+        gdkcursortype.constant("PIRATE", (int)GDK_PIRATE);
+        gdkcursortype.constant("PLUS", (int)GDK_PLUS);
+        gdkcursortype.constant("QUESTION_ARROW", (int)GDK_QUESTION_ARROW);
+        gdkcursortype.constant("RIGHT_PTR", (int)GDK_RIGHT_PTR);
+        gdkcursortype.constant("RIGHT_SIDE", (int)GDK_RIGHT_SIDE);
+        gdkcursortype.constant("RIGHT_TEE", (int)GDK_RIGHT_TEE);
+        gdkcursortype.constant("RIGHTBUTTON", (int)GDK_RIGHTBUTTON);
+        gdkcursortype.constant("RTL_LOGO", (int)GDK_RTL_LOGO);
+        gdkcursortype.constant("SAILBOAT", (int)GDK_SAILBOAT);
+        gdkcursortype.constant("SB_DOWN_ARROW", (int)GDK_SB_DOWN_ARROW);
+        gdkcursortype.constant("SB_H_DOUBLE_ARROW", (int)GDK_SB_H_DOUBLE_ARROW);
+        gdkcursortype.constant("SB_LEFT_ARROW", (int)GDK_SB_LEFT_ARROW);
+        gdkcursortype.constant("SB_RIGHT_ARROW", (int)GDK_SB_RIGHT_ARROW);
+        gdkcursortype.constant("SB_UP_ARROW", (int)GDK_SB_UP_ARROW);
+        gdkcursortype.constant("SB_V_DOUBLE_ARROW", (int)GDK_SB_V_DOUBLE_ARROW);
+        gdkcursortype.constant("SHUTTLE", (int)GDK_SHUTTLE);
+        gdkcursortype.constant("SIZING", (int)GDK_SIZING);
+        gdkcursortype.constant("SPIDER", (int)GDK_SPIDER);
+        gdkcursortype.constant("SPRAYCAN", (int)GDK_SPRAYCAN);
+        gdkcursortype.constant("STAR", (int)GDK_STAR);
+        gdkcursortype.constant("TARGET", (int)GDK_TARGET);
+        gdkcursortype.constant("TCROSS", (int)GDK_TCROSS);
+        gdkcursortype.constant("TOP_LEFT_ARROW", (int)GDK_TOP_LEFT_ARROW);
+        gdkcursortype.constant("TOP_LEFT_CORNER", (int)GDK_TOP_LEFT_CORNER);
+        gdkcursortype.constant("TOP_RIGHT_CORNER", (int)GDK_TOP_RIGHT_CORNER);
+        gdkcursortype.constant("TOP_SIDE", (int)GDK_TOP_SIDE);
+        gdkcursortype.constant("TOP_TEE", (int)GDK_TOP_TEE);
+        gdkcursortype.constant("TREK", (int)GDK_TREK);
+        gdkcursortype.constant("UL_ANGLE", (int)GDK_UL_ANGLE);
+        gdkcursortype.constant("UMBRELLA", (int)GDK_UMBRELLA);
+        gdkcursortype.constant("UR_ANGLE", (int)GDK_UR_ANGLE);
+        gdkcursortype.constant("WATCH", (int)GDK_WATCH);
+        gdkcursortype.constant("XTERM", (int)GDK_XTERM);
+        gdkcursortype.constant("LAST_CURSOR", (int)GDK_LAST_CURSOR);
+        gdkcursortype.constant("BLANK_CURSOR", (int)GDK_BLANK_CURSOR);
+        gdkcursortype.constant("CURSOR_IS_PIXMAP", (int)GDK_CURSOR_IS_PIXMAP);
 
         // GdkEventMask
         Php::Class<Php::Base> gdkeventmask("GdkEventMask");
@@ -3782,6 +3878,8 @@ extern "C"
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventtype));
+        extension.add(std::move(gdkcursor));
+        extension.add(std::move(gdkcursortype));
         extension.add(std::move(gdkeventmask));
         // extension.add(std::move(gdkthreads));
         extension.add(std::move(gdkpixbuf));

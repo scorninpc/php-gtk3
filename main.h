@@ -16,6 +16,7 @@
 	// GDK
 	#include "src/Gdk/Gdk.h"
 	#include "src/Gdk/GdkEvent.h"
+	#include "src/Gdk/GdkCursor.h"
 	#include "src/Gdk/GdkEventButton.h"
 	#include "src/Gdk/GdkEventKey.h"
 	#include "src/Gdk/GdkPixbuf.h"

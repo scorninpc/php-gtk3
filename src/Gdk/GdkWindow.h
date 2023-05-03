@@ -6,6 +6,7 @@
     #include <gtk/gtk.h>
 
 	#include "../G/GObject.h"
+	#include "GdkCursor.h"
 
     /**
      * GdkWindow_
@@ -32,6 +33,7 @@
             Php::Value get_children();
             Php::Value get_width();
             Php::Value get_height();
+            void set_cursor(Php::Parameters &parameters);
     };
 
 #endif
