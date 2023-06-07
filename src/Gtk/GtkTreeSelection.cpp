@@ -171,7 +171,7 @@ void GtkTreeSelection_::selected_foreach(Php::Parameters &parameters)
 
 	// mount the function params, like showed ini https://docs.gtk.org/gtk3/callback.TreeSelectionForeachFunc.html
 	callback_object->n_params = 3;
-	callback_object->return_type = NULL;
+	callback_object->return_type = 0;
 
 // Php::call("var_dump", "OK 1.4");
 
