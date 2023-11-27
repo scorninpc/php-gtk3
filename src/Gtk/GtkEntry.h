@@ -267,6 +267,8 @@
 
             void select_region(Php::Parameters& parameters);
             void delete_selection();
+
+            void insert_text(Php::Parameters& parameters);
     };
 
 #endif
