@@ -380,3 +380,17 @@ void GtkEntry_::delete_selection()
 {
 	gtk_editable_delete_selection(GTK_EDITABLE(instance));
 }
+
+
+/**
+ * Inserts new_text_length bytes of new_text into the contents of the widget, at position position.
+ * 
+ * Note that the position is in characters, not in bytes. The function updates position to point after the newly inserted text.
+ */
+void GtkEntry_::insert_text(Php::Parameters& parameters)
+{
+	std::string new_text = parameters[0];
+	gint new_text_length = parameters[1];
+	gint position = parameters[2];
+	gtk_editable_insert_text(GTK_EDITABLE(instance), new_text.c_str(), new_text_length, &position);
+}

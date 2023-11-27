@@ -1736,6 +1736,7 @@ extern "C"
         gtkentry.method<&GtkEntry_::set_buffer>("set_buffer");
         gtkentry.method<&GtkEntry_::get_text>("get_text");
         gtkentry.method<&GtkEntry_::set_text>("set_text");
+        gtkentry.method<&GtkEntry_::insert_text>("insert_text");
         gtkentry.method<&GtkEntry_::get_text_length>("get_text_length");
         gtkentry.method<&GtkEntry_::set_visibility>("set_visibility");
         gtkentry.method<&GtkEntry_::get_visibility>("get_visibility");
