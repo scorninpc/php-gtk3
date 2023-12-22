@@ -41,7 +41,7 @@ NAME                =   php-gtk3
 #   instead of a conf.d directory. In 16.04 the directory changed yet again.
 #   This has to be checked.
 #
-INI_DIR     =   /etc/php/7.4/mods-available/
+INI_DIR     =   /etc/php/8.1/mods-available/
 
 #
 #   The extension dirs
