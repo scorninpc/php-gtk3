@@ -63,6 +63,11 @@ gint Gtk_::timeout_add_callback(gpointer data)
     // Call php function with parameters
     Php::Value ret = Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
 
+    // verify return type
+    if(ret.type() != Php::Type::False) {
+        ret = Php::Type::True;
+    }
+
     return ret;
 }
 
