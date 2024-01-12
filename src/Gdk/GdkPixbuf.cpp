@@ -109,6 +109,49 @@ Php::Value GdkPixbuf_::new_from_file_at_scale(Php::Parameters &parameters)
 	return Php::Object("GdkPixbuf", pixbuf_);
 }
 
+void GdkPixbuf_::set_data(Php::Parameters& parameters)
+{
+	std::string s_key = parameters[0];
+	gchar* key = (gchar*)s_key.c_str();
+
+	std::string s_value = parameters[1];
+	// Duplicate the string and store it
+	gchar* value = g_strdup(s_value.c_str());
+
+	// Store the duplicated string in the GObject, with g_free as the destroy notifier
+	g_object_set_data_full(G_OBJECT(instance), key, value, (GDestroyNotify)g_free);
+}
+
+Php::Value GdkPixbuf_::get_data(Php::Parameters& parameters)
+{
+	std::string s_key = parameters[0];
+	gchar* key = (gchar*)s_key.c_str();
+
+	gpointer value = g_object_get_data(G_OBJECT(instance), key);
+
+	if (value != NULL) {
+		// Assuming the data is a string
+		return Php::Value((char*)value);
+	}
+	else {
+		return nullptr; // or return Php::Value(); to return NULL in PHP
+	}
+}
+
+Php::Value GdkPixbuf_::get_byte_length()
+{
+	// Ensure the instance is not NULL
+	if (instance == NULL) {
+		throw Php::Exception("GdkPixbuf instance is NULL");
+	}
+
+	// Get the byte length of the pixbuf
+	gsize length = gdk_pixbuf_get_byte_length(instance);
+
+	// Return the length as an unsigned integer
+	return Php::Value((int64_t)length);
+}
+
 Php::Value GdkPixbuf_::get_file_info(Php::Parameters &parameters)
 {
 	throw Php::Exception("Use PHP methods to get file info");

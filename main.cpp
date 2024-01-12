@@ -738,6 +738,10 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::save>("save");
         gdkpixbuf.method<&GdkPixbuf_::get_from_drawable>("get_from_drawable");
         gdkpixbuf.method<&GdkPixbuf_::scale_simple>("scale_simple");
+        gdkpixbuf.method<&GdkPixbuf_::set_data>("set_data");
+        gdkpixbuf.method<&GdkPixbuf_::get_data>("get_data");
+        gdkpixbuf.method<&GdkPixbuf_::get_byte_length>("get_byte_length");
+        
 
         // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");

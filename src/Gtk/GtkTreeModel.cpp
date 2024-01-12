@@ -112,6 +112,18 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
             std::string ret = g_value_get_string(&value);
             return ret;
         }
+        case G_TYPE_OBJECT:
+        {
+            GObject* object = G_OBJECT(g_value_get_object(&value));
+
+            // Get name of gType
+            std::string gtype_name = g_type_name(G_TYPE_FROM_INSTANCE(object));
+
+            // Return PHPGTK Object
+            GObject_* phpgtk_widget = new GObject_();
+            phpgtk_widget->set_instance((gpointer*)object);
+            return Php::Object(gtype_name.c_str(), phpgtk_widget);
+        }
     }
 
     return false;

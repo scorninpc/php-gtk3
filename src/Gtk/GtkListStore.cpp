@@ -416,6 +416,7 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 	// }
 
 
+
 	// user data
 	for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
 		internal_parameters[i+1] = callback_object->user_parameters[i];
