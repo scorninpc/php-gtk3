@@ -406,13 +406,16 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 
 	// GtkTreeIter b
 	GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
-	if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), b)) {
-		internal_parameters[2] = Php::Value();
-	}
-	else {
+	// if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), b)) {
+	// 	Php::call("var_dump", "NOT OK");
+	// 	internal_parameters[2] = Php::Value();
+	// }
+	// else {
+		Php::call("var_dump", "OK");
 		iter_b_->set_instance(*b);
 		internal_parameters[2] = Php::Object("GtkTreeIter", iter_b_);
-	}
+	// }
+
 
 	// user data
 	for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
