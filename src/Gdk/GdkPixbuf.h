@@ -79,6 +79,11 @@
             
             Php::Value scale_simple(Php::Parameters &parameters);
 
+            Php::Value get_data(Php::Parameters& parameters);
+
+            Php::Value get_byte_length();
+
+            void set_data(Php::Parameters& parameters);
 
     };
 
