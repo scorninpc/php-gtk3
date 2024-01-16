@@ -134,7 +134,7 @@ Php::Value GdkPixbuf_::get_data(Php::Parameters& parameters)
 		return Php::Value((char*)value);
 	}
 	else {
-		return nullptr; // or return Php::Value(); to return NULL in PHP
+		return Php::Value();
 	}
 }
 
