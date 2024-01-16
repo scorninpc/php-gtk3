@@ -109,14 +109,23 @@ Php::Value GtkTreeModel_::get_value(Php::Parameters &parameters)
         }
         case G_TYPE_STRING:
         {
-            std::string ret = g_value_get_string(&value);
-            return ret;
+            const gchar* cstr = g_value_get_string(&value);
+            if (cstr != nullptr) {
+                std::string ret = std::string(cstr);
+                return ret;
+            } else {
+                return Php::Value(nullptr);
+            }
         }
         case G_TYPE_OBJECT:
         {
             GObject* object = G_OBJECT(g_value_get_object(&value));
+            // Check if the object is NULL
+            if (!object) {
+                return Php::Value(nullptr);
+            }
 
-            // Get name of gType
+            // Proceed with non-NULL object
             std::string gtype_name = g_type_name(G_TYPE_FROM_INSTANCE(object));
 
             // Return PHPGTK Object

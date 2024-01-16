@@ -382,14 +382,16 @@ void GtkListStore_::set_sort_func(Php::Parameters& parameters)
 }
 
 
-gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data)
-{
-	// Return to st_callback
-	struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
+gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data) {
+    // Return to st_callback
+    struct st_request_callback *callback_object = (struct st_request_callback *)user_data;
 
-	// Callback_name
-	Php::Value callback_name = callback_object->user_parameters[1];
-	//Php::call("var_dump", callback_name);
+    // Check if callback name is valid
+    if (callback_object->user_parameters.size() < 2 || callback_object->user_parameters[1].isNull()) {
+        std::cerr << "Invalid callback name" << std::endl;
+        return 0;
+    }
+    Php::Value callback_name = callback_object->user_parameters[1];
 
 	// Create internal params (GtkTreeModel, GtkTreeIter, GtkTreeIter, user_data)
 	Php::Value internal_parameters;
@@ -403,29 +405,34 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 	GtkTreeIter_ *iter_a_ = new GtkTreeIter_();
 	iter_a_->set_instance(*a);
 	internal_parameters[1] = Php::Object("GtkTreeIter", iter_a_);
+	// if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), a)) {
+	// 	Php::call("var_dump", "ITER A NOT OK");
+	// 	internal_parameters[2] = Php::Value();
+	// }
 
 	// GtkTreeIter b
 	GtkTreeIter_ *iter_b_ = new GtkTreeIter_();
+	iter_b_->set_instance(*b);
+	internal_parameters[2] = Php::Object("GtkTreeIter", iter_b_);
 	// if(!gtk_list_store_iter_is_valid(GTK_LIST_STORE(model), b)) {
-	// 	Php::call("var_dump", "NOT OK");
+	// 	Php::call("var_dump", "ITER B NOT OK");
 	// 	internal_parameters[2] = Php::Value();
 	// }
-	// else {
-		iter_b_->set_instance(*b);
-		internal_parameters[2] = Php::Object("GtkTreeIter", iter_b_);
-	// }
-
-
+    // Value
 
 	// user data
 	for(int i=2; i<(int)callback_object->user_parameters.size(); i++) {
 		internal_parameters[i+1] = callback_object->user_parameters[i];
 	}
 
-	// Call php function with parameters
-	gint ret =  Php::call("call_user_func_array", callback_name, internal_parameters);
-
-	return ret;
+    // Try to call the PHP function
+    try {
+        gint ret = Php::call("call_user_func_array", callback_name, internal_parameters);
+        return ret;
+    } catch (const std::exception& e) {
+        std::cerr << "Exception caught in sort function callback: " << e.what() << std::endl;
+        return 0;
+    }
 }
 
 
