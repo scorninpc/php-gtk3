@@ -36,10 +36,15 @@ void Gtk_::main_quit()
 
 Php::Value Gtk_::timeout_add(Php::Parameters &parameters)
 {
-	guint interval = (int)parameters[0];
-	Php::Array callback_params = parameters;
+    guint interval = (int)parameters[0];
+    
+    // Exclude the first two parameters: They are interval and function name
+    Php::Array callback_params;
+    for (size_t i = 2; i < parameters.size(); i++) {
+        callback_params[i - 2] = parameters[i];
+    }
 
-	// Create gpointer user data
+    // Create gpointer user data
     struct st_timeout_add *callback_object = (struct st_timeout_add *)malloc(sizeof(struct st_timeout_add));
     memset(callback_object, 0, sizeof(struct st_timeout_add));
 
@@ -48,17 +53,17 @@ Php::Value Gtk_::timeout_add(Php::Parameters &parameters)
     callback_object->callback_params = callback_params;
 
     // Call
-	gint ret = g_timeout_add(interval, timeout_add_callback, callback_object);
+    gint ret = g_timeout_add(interval, timeout_add_callback, callback_object);
     return ret;
 }
 
 gint Gtk_::timeout_add_callback(gpointer data)
 {
-	// Return to st_timeout_add
+    // Return to st_timeout_add
     struct st_timeout_add *callback_object = (struct st_timeout_add *) data;
 
-    // Create internal params, GtkWidget + GdkEvent
-    Php::Array internal_parameters;
+    // Use the prepared callback_params directly
+    Php::Array internal_parameters = callback_object->callback_params;
 
     // Call php function with parameters
     Php::Value ret = Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
