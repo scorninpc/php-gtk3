@@ -43,8 +43,10 @@ public:
     void set_propagate_natural_width(Php::Parameters &parameters);
 
     void set_max_content_height(Php::Parameters &parameters);
-
     void set_min_content_height(Php::Parameters &parameters);
+
+    void set_max_content_width(Php::Parameters &parameters);
+    void set_min_content_width(Php::Parameters &parameters);
 };
 
 #endif

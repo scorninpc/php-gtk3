@@ -70,3 +70,17 @@ void GtkScrolledWindow_::set_min_content_height(Php::Parameters &parameters)
 
     gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(instance), height);
 }
+
+void GtkScrolledWindow_::set_max_content_width(Php::Parameters &parameters)
+{
+    int width = (int)parameters[0];
+
+    gtk_scrolled_window_set_max_content_width(GTK_SCROLLED_WINDOW(instance), width);
+}
+
+void GtkScrolledWindow_::set_min_content_width(Php::Parameters &parameters)
+{
+    int width = (int)parameters[0];
+
+    gtk_scrolled_window_set_min_content_width(GTK_SCROLLED_WINDOW(instance), width);
+}

@@ -1681,6 +1681,8 @@ extern "C"
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_propagate_natural_width>("set_propagate_natural_width");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_max_content_height>("set_max_content_height");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_height>("set_min_content_height");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_max_content_width>("set_max_content_width");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_width>("set_min_content_width");
 
         // GtkRequisition
         // Php::Class<GtkRequisition_> gtkrequisition("GtkRequisition");
