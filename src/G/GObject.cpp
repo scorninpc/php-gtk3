@@ -127,15 +127,21 @@ Php::Value GObject_::connect_internal(Php::Parameters &parameters, bool after)
     callback_object->param_types = signal_info.param_types;
 
     // Create the CPP callback
-    // int ret = g_signal_connect(instance, callback_event, G_CALLBACK (connect_callback), callback_object);
-
     GClosure  *closure;
-    closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, NULL);
+    closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, (GClosureNotify)destroy_notify);
     int ret = g_signal_connect_closure (instance, callback_event, closure, after);
 
     // Return handler id
-    // return ret;
     return ret;
+}
+
+void GObject_::destroy_notify(gpointer user_data, GClosure *closure)
+{
+    // return to st_callback
+    struct st_callback *callback_object = (struct st_callback *) user_data;
+
+    // delete references;
+    delete callback_object;
 }
 
 /**
@@ -295,6 +301,8 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
     Php::Value callback_handle = parameters[0];
 
     g_signal_handler_disconnect(instance, (int)callback_handle);
+
+    g_object_remove_weak_pointer(G_OBJECT(instance), instance);
 }
 
 

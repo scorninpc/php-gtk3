@@ -49,6 +49,7 @@
              * Class to abstract php callback for connect method, to call PHP function
              */
             static bool connect_callback(gpointer user_data, ...);
+            static void destroy_notify(gpointer user_data, GClosure *closure);
 
             /**
              * Disconnect signal by handle
