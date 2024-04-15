@@ -45,6 +45,10 @@ public:
     void set_max_content_height(Php::Parameters &parameters);
     void set_min_content_height(Php::Parameters &parameters);
 
+    Php::Value get_hadjustment();
+
+    Php::Value get_vadjustment();
+
     void set_max_content_width(Php::Parameters &parameters);
     void set_min_content_width(Php::Parameters &parameters);
 };

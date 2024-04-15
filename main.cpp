@@ -1670,6 +1670,8 @@ extern "C"
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
         gtkadjustment.extends(gobject);
         gtkadjustment.method<&GtkAdjustment_::__construct>("__construct");
+        gtkadjustment.method<&GtkAdjustment_::set_value>("set_value");
+        gtkadjustment.method<&GtkAdjustment_::get_value>("get_value");
 
         // GtkScrolledWindow
         Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
@@ -1683,6 +1685,8 @@ extern "C"
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_height>("set_min_content_height");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_max_content_width>("set_max_content_width");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_min_content_width>("set_min_content_width");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::get_hadjustment>("get_hadjustment");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::get_vadjustment>("get_vadjustment");
 
         // GtkRequisition
         // Php::Class<GtkRequisition_> gtkrequisition("GtkRequisition");

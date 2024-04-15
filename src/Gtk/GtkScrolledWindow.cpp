@@ -71,6 +71,20 @@ void GtkScrolledWindow_::set_min_content_height(Php::Parameters &parameters)
     gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(instance), height);
 }
 
+Php::Value GtkScrolledWindow_::get_vadjustment()
+{
+    gpointer* ret = (gpointer*)gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(instance));
+
+    return cobject_to_phpobject(ret);
+}
+
+Php::Value GtkScrolledWindow_::get_hadjustment()
+{
+    gpointer* ret = (gpointer*)gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(instance));
+
+    return cobject_to_phpobject(ret);
+}
+
 void GtkScrolledWindow_::set_max_content_width(Php::Parameters &parameters)
 {
     int width = (int)parameters[0];

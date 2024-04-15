@@ -54,3 +54,16 @@ void GtkAdjustment_::__construct(Php::Parameters &parameters)
 
 	instance = (gpointer *)gtk_adjustment_new(value, lower, upper, step_increment, page_increment, page_size);
 }
+
+
+Php::Value GtkAdjustment_::get_value()
+{
+    return gtk_adjustment_get_value(GTK_ADJUSTMENT(instance));
+}
+
+void GtkAdjustment_::set_value(Php::Parameters& parameters)
+{
+    double value = 0;
+    value = (double)parameters[0];
+    gtk_adjustment_set_value(GTK_ADJUSTMENT(instance), value);
+}
