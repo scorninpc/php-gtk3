@@ -29,6 +29,10 @@
              * PHP Construct
              */
             void __construct(Php::Parameters &parameters);
+
+            void set_value(Php::Parameters& parameters);
+
+            Php::Value get_value();
     };
 
 #endif
