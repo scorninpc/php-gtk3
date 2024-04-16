@@ -258,8 +258,11 @@ void GtkBuilder_::connect_signals_full(Php::Parameters &parameters)
  * Struct for callback gpointer
  */
 struct GtkBuilder_::st_callback {
-	Php::Object self_widget;
 	Php::Value callback_name;
+    Php::Array callback_params;
+    Php::Object self_widget;
+    Php::Parameters parameters;
+
 
     guint signal_id;
     const gchar *signal_name;
@@ -273,6 +276,18 @@ struct GtkBuilder_::st_callback {
 void GtkBuilder_::connect_signals_full_callback(GtkBuilder *builder, GObject *instance, const gchar *signal_name, const char *handler_name, GObject *object, GConnectFlags flags, gpointer data)
 {
 
+	
+	// Create gpoint param
+    struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
+    memset(callback_object, 0, sizeof(struct st_callback));
+
+
+	// Add my internal parameters
+    callback_object->callback_name = handler_name;
+    // callback_object->callback_params = callback_params;
+    callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
+    // callback_object->parameters = parameters;
+	
 	// Retriave and store signal query parameters , to be used on callback
     GSignalQuery signal_info;
 
@@ -283,19 +298,7 @@ void GtkBuilder_::connect_signals_full_callback(GtkBuilder *builder, GObject *in
     if(G_IS_OBJECT_CLASS(instance)) {
         g_signal_query(g_signal_lookup (signal_name, G_OBJECT_CLASS_TYPE (instance)), &signal_info);
     }
-
-
-    // Create gpoint param
-    struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
-    memset(callback_object, 0, sizeof(struct st_callback));
-    
-    // GtkWidget_ *php_object = new GtkWidget_();
-	// php_object->set_instance((gpointer *)instance);
-    // callback_object->self_widget = Php::Object("GtkWidget", php_object);
-	callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
-
-    callback_object->callback_name = handler_name;
-
+	
     callback_object->signal_id = signal_info.signal_id;
     callback_object->signal_name = signal_info.signal_name;
     callback_object->itype = signal_info.itype;
@@ -320,9 +323,102 @@ void GtkBuilder_::connect_signals_full_callback1(gpointer user_data, ...)
 	// Return to st_callback
     struct st_callback *callback_object = (struct st_callback *) user_data;
 
-    // Create the params
+    // Create internal params, GtkWidget + GdkEvent
     Php::Value internal_parameters;
     internal_parameters[0] = callback_object->self_widget;
+
+    // Get param counter from g_signal_query, to loop casting types and store into internal_parameters
+    int param_count = callback_object->n_params;
+    va_list ap;
+    va_start(ap, user_data);
+
+    // Loop into param_types of GSignalQuery from g_signal_query
+    for (int i=0; i<param_count; i++) {
+
+        // Php::call("var_dump", g_type_name(callback_object->param_types[i]));
+
+        switch (G_TYPE_FUNDAMENTAL(callback_object->param_types[i])) {
+            case G_TYPE_CHAR:
+                // Php::call("var_dump", "char");
+                break;
+                
+            case G_TYPE_UCHAR:
+                // Php::call("var_dump", "uchar");
+                break;
+
+            case G_TYPE_STRING:
+            // Php::call("var_dump", "string");
+                internal_parameters[i+1] = va_arg(ap, char *);
+                break;
+
+            case G_TYPE_BOOLEAN:
+            // Php::call("var_dump", "boolean");
+                internal_parameters[i+1] = va_arg(ap, gboolean);
+                break;
+
+            case G_TYPE_INT:
+                // Php::call("var_dump", "int");
+                internal_parameters[i+1] = va_arg(ap, gint);
+                break;
+
+            case G_TYPE_UINT:
+                // Php::call("var_dump", "int");
+                internal_parameters[i+1] = (int)va_arg(ap, guint);
+                break;
+                
+            case G_TYPE_OBJECT:
+            {
+                // Php::call("var_dump", "object");
+                gpointer *e = va_arg(ap, gpointer *);
+
+                // Create event from callback
+                GObject_ *event_ = new GObject_();
+                event_->set_instance(e);
+                Php::Value gobject_ = Php::Object(g_type_name(callback_object->param_types[i]), event_);
+                internal_parameters[i+1] = gobject_;
+                
+                break;
+            }
+            case G_TYPE_POINTER:
+                // Php::call("var_dump", "pointer");
+                break;
+            case G_TYPE_INTERFACE: 
+                // Php::call("var_dump", "interface");
+                break;
+            case G_TYPE_PARAM:
+                // Php::call("var_dump", "param");
+                break;
+            case G_TYPE_BOXED:
+            {
+                // Php::call("var_dump", "boxed");
+
+                GdkEvent *e = va_arg(ap, GdkEvent *);
+
+                // Create event from callback
+                GdkEvent_ *event_ = new GdkEvent_();
+                Php::Value gdkevent = Php::Object("GdkEvent", event_);
+                event_->populate(e);
+
+                internal_parameters[i+1] = gdkevent;
+
+                break;
+            }
+
+            default:
+                std::string error ("[GObject_::connect_callback] Internal error: unsupported type ");
+                throw Php::Exception(error + g_type_name(callback_object->param_types[i]));
+        }
+        
+    }
+
+    va_end(ap);
+
+    // Add user extra param
+    int parameters_count = callback_object->parameters.size();
+    for(int i=2; i<parameters_count; i++) {
+        internal_parameters[internal_parameters.size()+i-1] = callback_object->parameters[i];
+    }
+
 
     // Call php function with parameters
     Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
