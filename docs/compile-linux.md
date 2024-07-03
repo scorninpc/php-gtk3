@@ -102,7 +102,7 @@ Create a script that will execute all
 With content
 ```
 #!/bin/bash
-/opt/php/phpPHP-8.1.14/bin/php -dextension=php-gtk3.so $@
+/opt/php/php-8.1.14/bin/php -dextension=php-gtk3.so $@
 ```
 
 Make it executable
