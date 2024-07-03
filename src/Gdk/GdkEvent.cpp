@@ -2,13 +2,13 @@
 #include "GdkEvent.h"
 
 
-// 
+//
 GdkEvent *GdkEvent_::get_instance()
 {
     return instance;
 }
 
-// 
+//
 void GdkEvent_::set_instance(GdkEvent *event)
 {
     instance = event;
@@ -18,25 +18,9 @@ void GdkEvent_::set_instance(GdkEvent *event)
 void GdkEvent_::populate(GdkEvent *event)
 {
     instance = event;
-    
+
    // get self reference as Php::Value object
     Php::Value self(this);
-
-    // GdkEventType
-    self["type"] = event->type;
-    
-    // GtkEventButton
-    GdkEventButton_ *eventbutton_ = new GdkEventButton_();
-    Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
-    eventbutton_->populate(event->button);
-    self["button"] = eventbutton_;
-
-    // GtkEventKey
-    GdkEventKey_ *eventkey_ = new GdkEventKey_();
-    Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
-    eventkey_->populate(event->key);
-    self["key"] = eventkey_;
-
 
     /**
 
@@ -64,5 +48,5 @@ void GdkEvent_::populate(GdkEvent *event)
     };
 
     */
-    
+
 }
