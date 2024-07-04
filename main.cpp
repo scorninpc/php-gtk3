@@ -504,14 +504,25 @@ extern "C"
 
         // GdkEvent
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
-        // gdkevent.method<&GdkEvent_::__construct>("__construct");
+        gdkevent.method<&GdkEvent_::__construct>("__construct");
         // gdkevent.method<&GdkEvent_::__get>("__get");
-        // gdkevent.property("type", 0);
+        gdkevent.property("type", NULL);
+        gdkevent.property("button", NULL);
+        gdkevent.property("key", NULL);
 
         // GdkEventButton
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
-        // gdkevent.method<&GdkEvent_::__construct>("__construct");
-        // gdkevent.property("type", 0);
+        gdkeventbutton.method<&GdkEventButton_::__construct>("__construct");
+        gdkeventbutton.property("type", NULL);
+        gdkeventbutton.property("send_event", NULL);
+        gdkeventbutton.property("time", NULL);
+        gdkeventbutton.property("x", NULL);
+        gdkeventbutton.property("y", NULL);
+        gdkeventbutton.property("axes", NULL);
+        gdkeventbutton.property("state", NULL);
+        gdkeventbutton.property("button", NULL);
+        gdkeventbutton.property("x_root", NULL);
+        gdkeventbutton.property("y_root", NULL);
 
         // GdkCursor
         Php::Class<GdkCursor_> gdkcursor("GdkCursor");
@@ -664,6 +675,18 @@ extern "C"
 
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
+        gdkeventkey.method<&GdkEventKey_::__construct>("__construct");
+        gdkeventkey.property("type", NULL);
+        gdkeventkey.property("send_event", NULL);
+        gdkeventkey.property("time", NULL);
+        gdkeventkey.property("state", NULL);
+        gdkeventkey.property("keyval", NULL);
+        gdkeventkey.property("length", NULL);
+        gdkeventkey.property("string", NULL);
+        gdkeventkey.property("hardware_keycode", NULL);
+        gdkeventkey.property("keycode", NULL);
+        gdkeventkey.property("group", NULL);
+        gdkeventkey.property("is_modifier", NULL);
 
         // GdkEventType
         Php::Class<Php::Base> gdkeventtype("GdkEventType");
@@ -741,7 +764,7 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::set_data>("set_data");
         gdkpixbuf.method<&GdkPixbuf_::get_data>("get_data");
         gdkpixbuf.method<&GdkPixbuf_::get_byte_length>("get_byte_length");
-        
+
 
         // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");
