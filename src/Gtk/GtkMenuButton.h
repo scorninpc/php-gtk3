@@ -28,6 +28,8 @@
             ~GtkMenuButton_();
 
             void __construct();
+
+            void set_popup(Php::Parameters& parameters);
     };
 
 #endif

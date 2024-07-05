@@ -1657,6 +1657,7 @@ extern "C"
         Php::Class<GtkMenuButton_> gtkmenubutton("GtkMenuButton");
         gtkmenubutton.extends(gtktogglebutton);
         gtkmenubutton.method<&GtkMenuButton_::__construct>("__construct");
+        gtkmenubutton.method<&GtkMenuButton_::set_popup>("set_popup");
 
         // GtkRadioButton
         Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
