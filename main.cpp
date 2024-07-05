@@ -741,7 +741,7 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::set_data>("set_data");
         gdkpixbuf.method<&GdkPixbuf_::get_data>("get_data");
         gdkpixbuf.method<&GdkPixbuf_::get_byte_length>("get_byte_length");
-        
+
 
         // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");
@@ -1652,6 +1652,11 @@ extern "C"
         gtkcheckbutton.method<&GtkCheckButton_::get_active>("get_active");
         gtkcheckbutton.method<&GtkCheckButton_::set_active>("set_active");
         gtkcheckbutton.method<&GtkCheckButton_::toggled>("toggled");
+
+        // GtkMenuButton
+        Php::Class<GtkMenuButton_> gtkmenubutton("GtkMenuButton");
+        gtkmenubutton.extends(gtktogglebutton);
+        gtkmenubutton.method<&GtkMenuButton_::__construct>("__construct");
 
         // GtkRadioButton
         Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
@@ -3968,6 +3973,7 @@ extern "C"
         extension.add(std::move(gtkfontbutton));
         extension.add(std::move(gtkcolorbutton));
         extension.add(std::move(gtktogglebutton));
+        extension.add(std::move(gtkmenubutton));
         extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkradiobutton));
         extension.add(std::move(gtkadjustment));
