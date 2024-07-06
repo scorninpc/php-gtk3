@@ -19,6 +19,13 @@ void GtkScrolledWindow_::__construct(Php::Parameters &parameters)
     instance = (gpointer *)gtk_scrolled_window_new(NULL, NULL);
 }
 
+void GtkScrolledWindow_::set_overlay_scrolling(Php::Parameters &parameters)
+{
+    gboolean overlay_scrolling = (gboolean)parameters[0];
+
+    gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(instance), overlay_scrolling);
+}
+
 /**
  * Sets the scrollbar policy for the horizontal and vertical scrollbars.
  */

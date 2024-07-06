@@ -29,6 +29,8 @@ public:
      */
     void __construct(Php::Parameters &parameters);
 
+    void set_overlay_scrolling(Php::Parameters &parameters);
+
     /**
      * Sets the scrollbar policy for the horizontal and vertical scrollbars.
      *

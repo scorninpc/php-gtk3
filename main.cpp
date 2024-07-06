@@ -741,7 +741,7 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::set_data>("set_data");
         gdkpixbuf.method<&GdkPixbuf_::get_data>("get_data");
         gdkpixbuf.method<&GdkPixbuf_::get_byte_length>("get_byte_length");
-        
+
 
         // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");
@@ -1677,6 +1677,7 @@ extern "C"
         Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
         gtkscrolledwindow.extends(gtkbin);
         gtkscrolledwindow.method<&GtkScrolledWindow_::__construct>("__construct");
+        gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_overlay_scrolling");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_policy>("set_policy");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_shadow_type>("set_shadow_type");
         gtkscrolledwindow.method<&GtkScrolledWindow_::set_propagate_natural_height>("set_propagate_natural_height");
