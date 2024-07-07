@@ -53,6 +53,7 @@
 	#include "src/Gtk/GtkColorButton.h"
 	#include "src/Gtk/GtkFontButton.h"
 	#include "src/Gtk/GtkToggleButton.h"
+	#include "src/Gtk/GtkMenuButton.h"
 	#include "src/Gtk/GtkCheckButton.h"
 	#include "src/Gtk/GtkRadioButton.h"
 	#include "src/Gtk/GtkAdjustment.h"

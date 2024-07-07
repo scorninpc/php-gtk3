@@ -1653,6 +1653,12 @@ extern "C"
         gtkcheckbutton.method<&GtkCheckButton_::set_active>("set_active");
         gtkcheckbutton.method<&GtkCheckButton_::toggled>("toggled");
 
+        // GtkMenuButton
+        Php::Class<GtkMenuButton_> gtkmenubutton("GtkMenuButton");
+        gtkmenubutton.extends(gtktogglebutton);
+        gtkmenubutton.method<&GtkMenuButton_::__construct>("__construct");
+        gtkmenubutton.method<&GtkMenuButton_::set_popup>("set_popup");
+
         // GtkRadioButton
         Php::Class<GtkRadioButton_> gtkradiobutton("GtkRadioButton");
         gtkradiobutton.extends(gtkcheckbutton);
@@ -3969,6 +3975,7 @@ extern "C"
         extension.add(std::move(gtkfontbutton));
         extension.add(std::move(gtkcolorbutton));
         extension.add(std::move(gtktogglebutton));
+        extension.add(std::move(gtkmenubutton));
         extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkradiobutton));
         extension.add(std::move(gtkadjustment));
