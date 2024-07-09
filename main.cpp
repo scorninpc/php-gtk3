@@ -377,6 +377,14 @@ extern "C"
         gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
         gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
 
+        // GtkStyleProviderPriority
+        Php::Class<Php::Base> gtkstyleproviderpriority("GtkStyleProviderPriority");
+        gtkstyleproviderpriority.constant("APPLICATION", GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        gtkstyleproviderpriority.constant("FALLBACK", GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
+        gtkstyleproviderpriority.constant("SETTINGS", GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
+        gtkstyleproviderpriority.constant("THEME", GTK_STYLE_PROVIDER_PRIORITY_THEME);
+        gtkstyleproviderpriority.constant("USER", GTK_STYLE_PROVIDER_PRIORITY_USER);
+
         // ----- ENUMS
         extension.add(std::move(gtkwidgethelptype));
         extension.add(std::move(gtktextdirection));
@@ -386,6 +394,7 @@ extern "C"
         extension.add(std::move(gtkjunctionsides));
         extension.add(std::move(gtkregionflags));
         extension.add(std::move(gtkstylecontextprintflags));
+        extension.add(std::move(gtkstyleproviderpriority));
 
         // ----- GDK
         // Gdk
