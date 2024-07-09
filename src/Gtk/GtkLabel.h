@@ -6,12 +6,12 @@
     #include <gtk/gtk.h>
 
 	#include "GtkWidget.h"
-    
+
 	#include "../../php-gtk.h"
 
     /**
      * GtkLabel_
-     * 
+     *
      * https://developer.gnome.org/gtk3/stable/GtkLabel.html
      */
     class GtkLabel_ : public GtkWidget_
@@ -48,6 +48,8 @@
             void set_max_width_chars(Php::Parameters &parameters);
 
             void set_line_wrap(Php::Parameters &parameters);
+
+            void set_line_wrap_mode(Php::Parameters &parameters);
 
             void set_lines(Php::Parameters &parameters);
 

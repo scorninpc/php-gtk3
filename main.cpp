@@ -1922,6 +1922,7 @@ extern "C"
         gtklabel.method<&GtkLabel_::set_width_chars>("set_width_chars");
         gtklabel.method<&GtkLabel_::set_max_width_chars>("set_max_width_chars");
         gtklabel.method<&GtkLabel_::set_line_wrap>("set_line_wrap");
+        gtklabel.method<&GtkLabel_::set_line_wrap_mode>("set_line_wrap_mode");
         gtklabel.method<&GtkLabel_::set_lines>("set_lines");
         gtklabel.method<&GtkLabel_::get_mnemonic_keyval>("get_mnemonic_keyval");
         gtklabel.method<&GtkLabel_::get_selectable>("get_selectable");
@@ -3822,6 +3823,12 @@ extern "C"
         gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
         gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+        // PangoWrapMode
+        Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
+        pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
+        pangowrapmode.constant("CHAR", (int)PANGO_WRAP_CHAR);
+        pangowrapmode.constant("WORD_CHAR", (int)PANGO_WRAP_WORD_CHAR);
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -4127,6 +4134,8 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        extension.add(std::move(pangowrapmode));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));

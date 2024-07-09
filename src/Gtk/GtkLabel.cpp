@@ -110,6 +110,15 @@ void GtkLabel_::set_line_wrap(Php::Parameters &parameters)
 
 }
 
+void GtkLabel_::set_line_wrap_mode(Php::Parameters &parameters)
+{
+	int int_wrap_mode = (int)parameters[0];
+	PangoWrapMode wrap_mode = (PangoWrapMode)int_wrap_mode;
+
+	gtk_label_set_line_wrap_mode (GTK_LABEL(instance), wrap_mode);
+
+}
+
 void GtkLabel_::set_lines(Php::Parameters &parameters)
 {
 	gint lines = (gint)parameters[0];
@@ -342,4 +351,3 @@ Php::Value GtkLabel_::get_ellipsize()
 
 	return ret;
 }
-
