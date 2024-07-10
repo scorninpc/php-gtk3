@@ -3827,6 +3827,8 @@ extern "C"
         gtkdrawingarea.extends(gtkwidget);
         gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
 
+        extension.add(std::move(gtkdrawingarea));
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -4132,8 +4134,6 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
-
-        extension.add(std::move(gtkdrawingarea));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
