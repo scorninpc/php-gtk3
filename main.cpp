@@ -3827,7 +3827,6 @@ extern "C"
         gtkdrawingarea.extends(gtkwidget);
         gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
 
-        extension.add(std::move(gtkdrawingarea));
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
@@ -3966,6 +3965,7 @@ extern "C"
         extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtkprintsettings));
         extension.add(std::move(gtkseparator));
+        extension.add(std::move(gtkdrawingarea));
 
         // extension.add(std::move(gtkpagesetupunixdialog));
         extension.add(std::move(gtkpagesetup));
