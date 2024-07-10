@@ -3822,6 +3822,11 @@ extern "C"
         gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
         gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+        // GtkDrawingArea
+        Php::Class<GtkDrawingArea_> gtkdrawingarea("GtkDrawingArea");
+        gtkdrawingarea.extends(gtkwidget);
+        gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -4127,6 +4132,8 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        extension.add(std::move(gtkdrawingarea));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
