@@ -3832,8 +3832,6 @@ extern "C"
         pangocontext.extends(gobject);
         pangocontext.method<&PangoContext_::__construct>("__construct");
 
-        extension.add(std::move(pangocontext));
-
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -4140,6 +4138,8 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        extension.add(std::move(pangocontext));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
