@@ -3827,6 +3827,12 @@ extern "C"
         gtkdrawingarea.extends(gtkwidget);
         gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
 
+        // PangoContext
+        Php::Class<PangoContext_> pangocontext("PangoContext");
+        pangocontext.extends(gobject);
+        pangocontext.method<&PangoContext_::__construct>("__construct");
+
+        extension.add(std::move(pangocontext));
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication

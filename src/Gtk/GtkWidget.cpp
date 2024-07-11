@@ -109,7 +109,7 @@ void GtkWidget_::unrealize()
 
 void GtkWidget_::draw(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_draw (GTK_WIDGET(instance), cr);
 
 	 throw Php::Exception("GtkWidget_::draw not implemented");
@@ -165,7 +165,7 @@ Php::Value GtkWidget_::add_tick_callback(Php::Parameters &parameters)
 
 // // 	gpointer user_data = (gpointer)parameters[1];
 
-// 
+//
 // 	int ret = gtk_widget_add_tick_callback (GTK_WIDGET(instance), callback, user_data, notify);
 
 // 	return ret;
@@ -771,7 +771,7 @@ Php::Value GtkWidget_::get_default_direction()
 
 void GtkWidget_::shape_combine_region(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_shape_combine_region (GTK_WIDGET(instance), region);
 
 	 throw Php::Exception("GtkWidget_::shape_combine_region not implemented");
@@ -779,7 +779,7 @@ void GtkWidget_::shape_combine_region(Php::Parameters &parameters)
 
 void GtkWidget_::input_shape_combine_region(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_input_shape_combine_region (GTK_WIDGET(instance), region);
 
 	 throw Php::Exception("GtkWidget_::input_shape_combine_region not implemented");
@@ -866,7 +866,7 @@ void GtkWidget_::override_color(Php::Parameters &parameters)
 
 void GtkWidget_::override_font(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_override_font (GTK_WIDGET(instance), font_desc);
 
 	 Php::deprecated << "GtkWidget_::override_font  is deprecated on Gtk 3.16";
@@ -1051,10 +1051,11 @@ void GtkWidget_::modify_cursor(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::create_pango_context()
 {
-// 	PangoContext ret = gtk_widget_create_pango_context (GTK_WIDGET(instance));
+	PangoContext *ret = gtk_widget_create_pango_context (GTK_WIDGET(instance));
 
-// 	return ret;
-	 throw Php::Exception("GtkWidget_::create_pango_context not implemented");
+	PangoContext_ *return_parsed = new PangoContext_();
+	return_parsed->set_instance((gpointer *)ret);
+	return Php::Object("PangoContext", return_parsed);
 }
 
 Php::Value GtkWidget_::get_pango_context()
@@ -1067,7 +1068,7 @@ Php::Value GtkWidget_::get_pango_context()
 
 void GtkWidget_::set_font_options(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_set_font_options (GTK_WIDGET(instance), options);
 
 	 throw Php::Exception("GtkWidget_::set_font_options not implemented");
@@ -1075,7 +1076,7 @@ void GtkWidget_::set_font_options(Php::Parameters &parameters)
 
 void GtkWidget_::set_font_map(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_set_font_map (GTK_WIDGET(instance), font_map);
 
 	 throw Php::Exception("GtkWidget_::set_font_map not implemented");
@@ -1171,7 +1172,7 @@ void GtkWidget_::queue_draw_area(Php::Parameters &parameters)
 
 void GtkWidget_::queue_draw_region(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_queue_draw_region (GTK_WIDGET(instance), region);
 
 	 throw Php::Exception("GtkWidget_::queue_draw_region not implemented");
@@ -1223,7 +1224,7 @@ Php::Value GtkWidget_::mnemonic_activate(Php::Parameters &parameters)
 
 void GtkWidget_::class_install_style_property(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_class_install_style_property (GTK_WIDGET(instance), pspec);
 
 	 throw Php::Exception("GtkWidget_::class_install_style_property not implemented");
@@ -1231,7 +1232,7 @@ void GtkWidget_::class_install_style_property(Php::Parameters &parameters)
 
 void GtkWidget_::class_install_style_property_parser(Php::Parameters &parameters)
 {
-// 
+//
 // // 	GtkRcPropertyParser *parser;
 // 	if(parameters.size() > 1) {
 // 		Php::Value object_parser = parameters[1];
@@ -1324,7 +1325,7 @@ void GtkWidget_::style_get_valist(Php::Parameters &parameters)
 // // 	std::string s_first_property_name = parameters[0];
 // 	gchar *first_property_name = (gchar *)s_first_property_name.c_str();
 
-// 
+//
 // 	gtk_widget_style_get_valist (GTK_WIDGET(instance), first_property_name, var_args);
 
 	 throw Php::Exception("GtkWidget_::style_get_valist not implemented");
@@ -1339,7 +1340,7 @@ void GtkWidget_::style_attach()
 
 void GtkWidget_::class_set_accessible_type(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_class_set_accessible_type (GTK_WIDGET(instance), type);
 
 	 throw Php::Exception("GtkWidget_::class_set_accessible_type not implemented");
@@ -1347,7 +1348,7 @@ void GtkWidget_::class_set_accessible_type(Php::Parameters &parameters)
 
 void GtkWidget_::class_set_accessible_role(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_class_set_accessible_role (GTK_WIDGET(instance), role);
 
 	 throw Php::Exception("GtkWidget_::class_set_accessible_role not implemented");
@@ -1789,7 +1790,7 @@ void GtkWidget_::get_allocated_size(Php::Parameters &parameters)
 // 		allocation = GTK_WIDGET(phpgtk_allocation->get_instance());
 // 	}
 
-// 
+//
 // 	gtk_widget_get_allocated_size (GTK_WIDGET(instance), allocation, baseline);
 
 	 throw Php::Exception("GtkWidget_::get_allocated_size not implemented");
@@ -2144,7 +2145,7 @@ void GtkWidget_::insert_action_group(Php::Parameters &parameters)
 // // 	std::string s_name = parameters[0];
 // 	gchar *name = (gchar *)s_name.c_str();
 
-// 
+//
 // 	gtk_widget_insert_action_group (GTK_WIDGET(instance), name, group);
 
 	 throw Php::Exception("GtkWidget_::insert_action_group not implemented");
@@ -2595,7 +2596,7 @@ void GtkWidget_::init_template()
 
 void GtkWidget_::class_set_template(Php::Parameters &parameters)
 {
-// 
+//
 // 	gtk_widget_class_set_template (GTK_WIDGET(instance), template_bytes);
 
 	 throw Php::Exception("GtkWidget_::class_set_template not implemented");
@@ -2614,7 +2615,7 @@ void GtkWidget_::class_set_template_from_resource(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_template_child(Php::Parameters &parameters)
 {
-// 
+//
 // // 	std::string s_name = parameters[1];
 // 	gchar *name = (gchar *)s_name.c_str();
 
@@ -2643,7 +2644,7 @@ void GtkWidget_::class_bind_template_callback_full(Php::Parameters &parameters)
 // // 	std::string s_callback_name = parameters[0];
 // 	gchar *callback_name = (gchar *)s_callback_name.c_str();
 
-// 
+//
 // 	gtk_widget_class_bind_template_callback_full (GTK_WIDGET(instance), callback_name, callback_symbol);
 
 	 throw Php::Exception("GtkWidget_::class_bind_template_callback_full not implemented");
@@ -2660,7 +2661,7 @@ void GtkWidget_::class_set_connect_func(Php::Parameters &parameters)
 
 // // 	gpointer connect_data = (gpointer)parameters[1];
 
-// 
+//
 // 	gtk_widget_class_set_connect_func (GTK_WIDGET(instance), connect_func, connect_data, connect_data_destroy);
 
 	 throw Php::Exception("GtkWidget_::class_set_connect_func not implemented");

@@ -151,6 +151,9 @@
 	#include "src/Glade/GladePalette.h"
 	#include "src/Glade/GladeWidget.h"
 
+	// Pango
+	#include "src/Pango/PangoContext.h"
+
 #ifdef WITH_MAC_INTEGRATION
 	// GtkosxApplication
 	#include "src/Gtk/GtkosxApplication.h"

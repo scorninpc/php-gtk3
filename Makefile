@@ -1,6 +1,6 @@
 # Params:
 #
-# WITH_MAC_INTEGRATION=1 
+# WITH_MAC_INTEGRATION=1
 #	create a mac integration with lib gtk-mac-integration-gtk3
 #
 # WITH_LIBWNCK=1
@@ -11,7 +11,7 @@
 #   Makefile template
 #
 #   This is an example Makefile that can be used by anyone who is building
-#   his or her own PHP extensions using the PHP-CPP library. 
+#   his or her own PHP extensions using the PHP-CPP library.
 #
 #   In the top part of this file we have included variables that can be
 #   altered to fit your configuration, near the bottom the instructions and
@@ -46,8 +46,8 @@ INI_DIR     =   /etc/php/8.1/mods-available/
 #
 #   The extension dirs
 #
-#   This is normally a directory like /usr/lib/php5/20121221 (based on the 
-#   PHP version that you use. We make use of the command line '/opt/php/php7.4.29/bin/php-config' 
+#   This is normally a directory like /usr/lib/php5/20121221 (based on the
+#   PHP version that you use. We make use of the command line '/opt/php/php7.4.29/bin/php-config'
 #   instruction to find out what the extension directory is, you can override
 #   this with a different fixed directory
 #
@@ -68,7 +68,7 @@ INI                 =   ${NAME}.ini
 #   Compiler
 #
 #   By default, the GNU C++ compiler is used. If you want to use a different
-#   compiler, you can change that here. You can change this for both the 
+#   compiler, you can change that here. You can change this for both the
 #   compiler (the program that turns the c++ files into object files) and for
 #   the linker (the program that links all object files into the single .so
 #   library file. By default, g++ (the GNU C++ compiler) is used for both.
@@ -117,7 +117,7 @@ LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS}
 #
 #   Command to remove files, copy files and create directories.
 #
-#   I've never encountered a *nix environment in which these commands do not work. 
+#   I've never encountered a *nix environment in which these commands do not work.
 #   So you can probably leave this as it is
 #
 
@@ -128,15 +128,15 @@ MKDIR               =   mkdir -p
 #
 #   All source files are simply all *.cpp files found in the current directory
 #
-#   A built-in Makefile macro is used to scan the current directory and find 
+#   A built-in Makefile macro is used to scan the current directory and find
 #   all source files. The object files are all compiled versions of the source
 #   file, with the .cpp extension being replaced by .o.
 #
 
 ifdef WITH_MAC_INTEGRATION
-	SOURCES = $(wildcard *.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/libwnck/*.cpp)
+	SOURCES = $(wildcard *.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/libwnck/*.cpp src/Pango/*.cpp)
 else
-	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard *.cpp src/*.cpp src/libwnck/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp))
+	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard *.cpp src/*.cpp src/libwnck/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/Pango/*.cpp))
 endif
 
 OBJECTS         = $(SOURCES:%.cpp=%.o)
@@ -152,9 +152,9 @@ ${EXTENSION}:           ${OBJECTS}
 						${LINKER} ${LINKER_FLAGS} -o $@ ${OBJECTS} ${LINKER_DEPENDENCIES}
 
 ${OBJECTS}:
-						${COMPILER} ${GTKFLAGS} ${COMPILER_FLAGS} $@ ${@:%.o=%.cpp} 
+						${COMPILER} ${GTKFLAGS} ${COMPILER_FLAGS} $@ ${@:%.o=%.cpp}
 
-install:        
+install:
 						${CP} ${EXTENSION} ${EXTENSION_DIR}
 						${CP} ${INI} ${INI_DIR}
 
