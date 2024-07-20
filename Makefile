@@ -52,7 +52,7 @@ INI_DIR     =   /etc/php/8.1/mods-available/
 #   this with a different fixed directory
 #
 
-EXTENSION_DIR       =   $(shell /opt/php/php-8.1.14/bin/php-config --extension-dir)
+EXTENSION_DIR       =   $(shell php-config --extension-dir)
 
 #
 #   The name of the extension and the name of the .ini file
