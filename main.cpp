@@ -3822,6 +3822,16 @@ extern "C"
         gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
         gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+        // GtkDrawingArea
+        Php::Class<GtkDrawingArea_> gtkdrawingarea("GtkDrawingArea");
+        gtkdrawingarea.extends(gtkwidget);
+        gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
+
+        // PangoContext
+        Php::Class<PangoContext_> pangocontext("PangoContext");
+        pangocontext.extends(gobject);
+        pangocontext.method<&PangoContext_::__construct>("__construct");
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -3959,6 +3969,7 @@ extern "C"
         extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtkprintsettings));
         extension.add(std::move(gtkseparator));
+        extension.add(std::move(gtkdrawingarea));
 
         // extension.add(std::move(gtkpagesetupunixdialog));
         extension.add(std::move(gtkpagesetup));
@@ -4127,6 +4138,8 @@ extern "C"
         extension.add(std::move(gtkrecentchooserdialog));
 
         extension.add(std::move(gtkarrowtype));
+
+        extension.add(std::move(pangocontext));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
