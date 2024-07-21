@@ -34,7 +34,7 @@ void GtkWidget_::destroy()
 
 Php::Value GtkWidget_::in_destruction()
 {
-	gboolean ret = gtk_widget_in_destruction (GTK_WIDGET(instance));
+	bool ret = gtk_widget_in_destruction (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -289,7 +289,7 @@ Php::Value GtkWidget_::remove_accelerator(Php::Parameters &parameters)
 // 		accel_mods = GTK_WIDGET(phpgtk_accel_mods->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_remove_accelerator (GTK_WIDGET(instance), accel_group, accel_key, accel_mods);
+// 	bool ret = gtk_widget_remove_accelerator (GTK_WIDGET(instance), accel_group, accel_key, accel_mods);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::remove_accelerator not implemented");
@@ -324,7 +324,7 @@ Php::Value GtkWidget_::can_activate_accel(Php::Parameters &parameters)
 {
 	guint signal_id = (int)parameters[0];
 
-	gboolean ret = gtk_widget_can_activate_accel (GTK_WIDGET(instance), signal_id);
+	bool ret = gtk_widget_can_activate_accel (GTK_WIDGET(instance), signal_id);
 
 	return ret;
 }
@@ -338,7 +338,7 @@ Php::Value GtkWidget_::event(Php::Parameters &parameters)
 // 		event = GDK_EVENT(phpgtk_event->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_event (GTK_WIDGET(instance), event);
+// 	bool ret = gtk_widget_event (GTK_WIDGET(instance), event);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::event not implemented");
@@ -346,7 +346,7 @@ Php::Value GtkWidget_::event(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::activate()
 {
-	gboolean ret = gtk_widget_activate (GTK_WIDGET(instance));
+	bool ret = gtk_widget_activate (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -381,7 +381,7 @@ Php::Value GtkWidget_::intersect(Php::Parameters &parameters)
 // 		intersection = GTK_WIDGET(phpgtk_intersection->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_intersect (GTK_WIDGET(instance), area, intersection);
+// 	bool ret = gtk_widget_intersect (GTK_WIDGET(instance), area, intersection);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::intersect not implemented");
@@ -389,7 +389,7 @@ Php::Value GtkWidget_::intersect(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::is_focus()
 {
-	gboolean ret = gtk_widget_is_focus (GTK_WIDGET(instance));
+	bool ret = gtk_widget_is_focus (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -576,7 +576,7 @@ Php::Value GtkWidget_::get_device_enabled(Php::Parameters &parameters)
 // 		device = GTK_WIDGET(phpgtk_device->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_get_device_enabled (GTK_WIDGET(instance), device);
+// 	bool ret = gtk_widget_get_device_enabled (GTK_WIDGET(instance), device);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::get_device_enabled not implemented");
@@ -646,7 +646,7 @@ Php::Value GtkWidget_::is_ancestor(Php::Parameters &parameters)
 		ancestor = GTK_WIDGET(phpgtk_ancestor->get_instance());
 	}
 
-	gboolean ret = gtk_widget_is_ancestor (GTK_WIDGET(instance), ancestor);
+	bool ret = gtk_widget_is_ancestor (GTK_WIDGET(instance), ancestor);
 
 	return ret;
 }
@@ -668,7 +668,7 @@ Php::Value GtkWidget_::translate_coordinates(Php::Parameters &parameters)
 
 	gint dest_y;
 
-	gboolean ret = gtk_widget_translate_coordinates (GTK_WIDGET(instance), dest_widget, src_x, src_y, &dest_x, &dest_y);
+	bool ret = gtk_widget_translate_coordinates (GTK_WIDGET(instance), dest_widget, src_x, src_y, &dest_x, &dest_y);
 	if(!ret) {
 		return ret;
 	}
@@ -682,7 +682,7 @@ Php::Value GtkWidget_::translate_coordinates(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::hide_on_delete()
 {
-	gboolean ret = gtk_widget_hide_on_delete (GTK_WIDGET(instance));
+	bool ret = gtk_widget_hide_on_delete (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1217,7 +1217,7 @@ Php::Value GtkWidget_::mnemonic_activate(Php::Parameters &parameters)
 {
 	gboolean group_cycling = (gboolean)parameters[0];
 
-	gboolean ret = gtk_widget_mnemonic_activate (GTK_WIDGET(instance), group_cycling);
+	bool ret = gtk_widget_mnemonic_activate (GTK_WIDGET(instance), group_cycling);
 
 	return ret;
 }
@@ -1290,7 +1290,7 @@ Php::Value GtkWidget_::send_focus_change(Php::Parameters &parameters)
 // 		event = GDK_EVENT(phpgtk_event->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_send_focus_change (GTK_WIDGET(instance), event);
+// 	bool ret = gtk_widget_send_focus_change (GTK_WIDGET(instance), event);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::send_focus_change not implemented");
@@ -1367,7 +1367,7 @@ Php::Value GtkWidget_::child_focus(Php::Parameters &parameters)
 	int int_direction = (int)parameters[0];
 	GtkDirectionType direction = (GtkDirectionType)int_direction;
 
-	gboolean ret = gtk_widget_child_focus (GTK_WIDGET(instance), direction);
+	bool ret = gtk_widget_child_focus (GTK_WIDGET(instance), direction);
 
 	return ret;
 }
@@ -1389,7 +1389,7 @@ void GtkWidget_::freeze_child_notify()
 
 Php::Value GtkWidget_::get_child_visible()
 {
-	gboolean ret = gtk_widget_get_child_visible (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_child_visible (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1464,7 +1464,7 @@ Php::Value GtkWidget_::get_screen()
 
 Php::Value GtkWidget_::has_screen()
 {
-	gboolean ret = gtk_widget_has_screen (GTK_WIDGET(instance));
+	bool ret = gtk_widget_has_screen (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1519,7 +1519,7 @@ void GtkWidget_::set_no_show_all(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_no_show_all()
 {
-	gboolean ret = gtk_widget_get_no_show_all (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_no_show_all (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1563,7 +1563,7 @@ void GtkWidget_::remove_mnemonic_label(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::is_composited()
 {
-// 	gboolean ret = gtk_widget_is_composited (GTK_WIDGET(instance));
+// 	bool ret = gtk_widget_is_composited (GTK_WIDGET(instance));
 
 // 	return ret;
 	 Php::deprecated << "GtkWidget_::is_composited  is deprecated on Gtk 3.22";
@@ -1581,7 +1581,7 @@ Php::Value GtkWidget_::keynav_failed(Php::Parameters &parameters)
 	int int_direction = (int)parameters[0];
 	GtkDirectionType direction = (GtkDirectionType)int_direction;
 
-	gboolean ret = gtk_widget_keynav_failed (GTK_WIDGET(instance), direction);
+	bool ret = gtk_widget_keynav_failed (GTK_WIDGET(instance), direction);
 
 	return ret;
 }
@@ -1642,7 +1642,7 @@ void GtkWidget_::set_tooltip_window(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_has_tooltip()
 {
-	gboolean ret = gtk_widget_get_has_tooltip (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_has_tooltip (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1705,7 +1705,7 @@ Php::Value GtkWidget_::gtk_cairo_should_draw_window(Php::Parameters &parameters)
 // 		window = GTK_WIDGET(phpgtk_window->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_cairo_should_draw_window (GTK_WIDGET(instance), window);
+// 	bool ret = gtk_cairo_should_draw_window (GTK_WIDGET(instance), window);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::gtk_cairo_should_draw_window not implemented");
@@ -1826,14 +1826,14 @@ void GtkWidget_::set_clip(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_app_paintable()
 {
-	gboolean ret = gtk_widget_get_app_paintable (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_app_paintable (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::get_can_default()
 {
-	gboolean ret = gtk_widget_get_can_default (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_can_default (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1848,7 +1848,7 @@ void GtkWidget_::set_can_default(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_can_focus()
 {
-	gboolean ret = gtk_widget_get_can_focus (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_can_focus (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1863,7 +1863,7 @@ void GtkWidget_::set_can_focus(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_focus_on_click()
 {
-	gboolean ret = gtk_widget_get_focus_on_click (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_focus_on_click (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1878,7 +1878,7 @@ void GtkWidget_::set_focus_on_click(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_double_buffered()
 {
-// 	gboolean ret = gtk_widget_get_double_buffered (GTK_WIDGET(instance));
+// 	bool ret = gtk_widget_get_double_buffered (GTK_WIDGET(instance));
 
 // 	return ret;
 	 Php::deprecated << "GtkWidget_::get_double_buffered  is deprecated on Gtk 3.0";
@@ -1887,7 +1887,7 @@ Php::Value GtkWidget_::get_double_buffered()
 
 Php::Value GtkWidget_::get_has_window()
 {
-	gboolean ret = gtk_widget_get_has_window (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_has_window (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1902,14 +1902,14 @@ void GtkWidget_::set_has_window(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_sensitive()
 {
-	gboolean ret = gtk_widget_get_sensitive (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_sensitive (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::is_sensitive()
 {
-	gboolean ret = gtk_widget_is_sensitive (GTK_WIDGET(instance));
+	bool ret = gtk_widget_is_sensitive (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1925,14 +1925,14 @@ Php::Value GtkWidget_::get_state()
 
 Php::Value GtkWidget_::get_visible()
 {
-	gboolean ret = gtk_widget_get_visible (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_visible (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::is_visible()
 {
-	gboolean ret = gtk_widget_is_visible (GTK_WIDGET(instance));
+	bool ret = gtk_widget_is_visible (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -1974,35 +1974,35 @@ Php::Value GtkWidget_::get_state_flags()
 
 Php::Value GtkWidget_::has_default()
 {
-	gboolean ret = gtk_widget_has_default (GTK_WIDGET(instance));
+	bool ret = gtk_widget_has_default (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::has_focus()
 {
-	gboolean ret = gtk_widget_has_focus (GTK_WIDGET(instance));
+	bool ret = gtk_widget_has_focus (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::has_visible_focus()
 {
-	gboolean ret = gtk_widget_has_visible_focus (GTK_WIDGET(instance));
+	bool ret = gtk_widget_has_visible_focus (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::has_grab()
 {
-	gboolean ret = gtk_widget_has_grab (GTK_WIDGET(instance));
+	bool ret = gtk_widget_has_grab (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::has_rc_style()
 {
-// 	gboolean ret = gtk_widget_has_rc_style (GTK_WIDGET(instance));
+// 	bool ret = gtk_widget_has_rc_style (GTK_WIDGET(instance));
 
 // 	return ret;
 	 Php::deprecated << "GtkWidget_::has_rc_style  is deprecated on Gtk 3.0";
@@ -2011,14 +2011,14 @@ Php::Value GtkWidget_::has_rc_style()
 
 Php::Value GtkWidget_::is_drawable()
 {
-	gboolean ret = gtk_widget_is_drawable (GTK_WIDGET(instance));
+	bool ret = gtk_widget_is_drawable (GTK_WIDGET(instance));
 
 	return ret;
 }
 
 Php::Value GtkWidget_::is_toplevel()
 {
-	gboolean ret = gtk_widget_is_toplevel (GTK_WIDGET(instance));
+	bool ret = gtk_widget_is_toplevel (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2046,7 +2046,7 @@ void GtkWidget_::set_receives_default(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_receives_default()
 {
-	gboolean ret = gtk_widget_get_receives_default (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_receives_default (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2061,7 +2061,7 @@ void GtkWidget_::set_support_multidevice(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_support_multidevice()
 {
-	gboolean ret = gtk_widget_get_support_multidevice (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_support_multidevice (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2076,7 +2076,7 @@ void GtkWidget_::set_realized(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_realized()
 {
-	gboolean ret = gtk_widget_get_realized (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_realized (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2091,7 +2091,7 @@ void GtkWidget_::set_mapped(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_mapped()
 {
-	gboolean ret = gtk_widget_get_mapped (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_mapped (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2119,7 +2119,7 @@ Php::Value GtkWidget_::device_is_shadowed(Php::Parameters &parameters)
 // 		device = GTK_WIDGET(phpgtk_device->get_instance());
 // 	}
 
-// 	gboolean ret = gtk_widget_device_is_shadowed (GTK_WIDGET(instance), device);
+// 	bool ret = gtk_widget_device_is_shadowed (GTK_WIDGET(instance), device);
 
 // 	return ret;
 	 throw Php::Exception("GtkWidget_::device_is_shadowed not implemented");
@@ -2514,7 +2514,7 @@ void GtkWidget_::set_margin_bottom(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_hexpand()
 {
-	gboolean ret = gtk_widget_get_hexpand (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_hexpand (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2529,7 +2529,7 @@ void GtkWidget_::set_hexpand(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_hexpand_set()
 {
-	gboolean ret = gtk_widget_get_hexpand_set (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_hexpand_set (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2544,7 +2544,7 @@ void GtkWidget_::set_hexpand_set(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_vexpand()
 {
-	gboolean ret = gtk_widget_get_vexpand (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_vexpand (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2559,7 +2559,7 @@ void GtkWidget_::set_vexpand(Php::Parameters &parameters)
 
 Php::Value GtkWidget_::get_vexpand_set()
 {
-	gboolean ret = gtk_widget_get_vexpand_set (GTK_WIDGET(instance));
+	bool ret = gtk_widget_get_vexpand_set (GTK_WIDGET(instance));
 
 	return ret;
 }
@@ -2583,7 +2583,7 @@ Php::Value GtkWidget_::compute_expand(Php::Parameters &parameters)
 	int int_orientation = (int)parameters[0];
 	GtkOrientation orientation = (GtkOrientation)int_orientation;
 
-	gboolean ret = gtk_widget_compute_expand (GTK_WIDGET(instance), orientation);
+	bool ret = gtk_widget_compute_expand (GTK_WIDGET(instance), orientation);
 
 	return ret;
 }
@@ -2677,7 +2677,7 @@ Php::Value GtkWidget_::scroll_event(Php::Parameters& parameters)
 	// 		event = GDK_EVENT(phpgtk_event->get_instance());
 	// 	}
 
-	 //	gboolean ret = gtk_widget_event (GTK_WIDGET(instance), event);
+	 //	bool ret = gtk_widget_event (GTK_WIDGET(instance), event);
 
 	// 	return ret;
 	throw Php::Exception("GtkWidget_::scroll_event not implemented");
