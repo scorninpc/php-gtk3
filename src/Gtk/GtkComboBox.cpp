@@ -166,7 +166,7 @@ void GtkComboBox_::set_active(Php::Parameters &parameters)
 Php::Value GtkComboBox_::get_active_iter()
 {
 	GtkTreeIter iter;
-	gboolean ret = gtk_combo_box_get_active_iter (GTK_COMBO_BOX(instance), &iter);
+	bool ret = gtk_combo_box_get_active_iter (GTK_COMBO_BOX(instance), &iter);
 	if(!ret) 
 		return (bool)ret;
 
@@ -330,7 +330,7 @@ Php::Value GtkComboBox_::get_button_sensitivity()
 
 Php::Value GtkComboBox_::get_has_entry()
 {
-	gboolean ret = gtk_combo_box_get_has_entry (GTK_COMBO_BOX(instance));
+	bool ret = gtk_combo_box_get_has_entry (GTK_COMBO_BOX(instance));
 
 	return ret;
 }
@@ -352,7 +352,7 @@ void GtkComboBox_::set_entry_text_column(Php::Parameters &parameters)
 
 Php::Value GtkComboBox_::get_popup_fixed_width()
 {
-	gboolean ret = gtk_combo_box_get_popup_fixed_width (GTK_COMBO_BOX(instance));
+	bool ret = gtk_combo_box_get_popup_fixed_width (GTK_COMBO_BOX(instance));
 
 	return ret;
 }

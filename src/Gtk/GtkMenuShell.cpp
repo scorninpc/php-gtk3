@@ -116,7 +116,7 @@ void GtkMenuShell_::set_take_focus(Php::Parameters &parameters)
 
 Php::Value GtkMenuShell_::get_take_focus()
 {
-	gboolean ret = gtk_menu_shell_get_take_focus (GTK_MENU_SHELL(instance));
+	bool ret = gtk_menu_shell_get_take_focus (GTK_MENU_SHELL(instance));
 
 	return ret;
 }

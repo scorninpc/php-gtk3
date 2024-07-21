@@ -343,7 +343,7 @@ Php::Value GtkEntry_::get_selection_bounds()
 {
 	gint start_pos, end_pos;;
 
-	gboolean ret = gtk_editable_get_selection_bounds (GTK_EDITABLE(instance), &start_pos, &end_pos);
+	bool ret = gtk_editable_get_selection_bounds (GTK_EDITABLE(instance), &start_pos, &end_pos);
 
 	if(!ret) {
 		return ret;

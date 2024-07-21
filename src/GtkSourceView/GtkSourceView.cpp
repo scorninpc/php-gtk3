@@ -52,7 +52,7 @@ void GtkSourceView_::set_show_line_numbers(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_show_line_numbers()
 {
-	gboolean ret = gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -67,7 +67,7 @@ void GtkSourceView_::set_show_right_margin(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_show_right_margin()
 {
-	gboolean ret = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -97,7 +97,7 @@ void GtkSourceView_::set_highlight_current_line(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_highlight_current_line()
 {
-	gboolean ret = gtk_source_view_get_highlight_current_line (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_highlight_current_line (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -112,7 +112,7 @@ void GtkSourceView_::set_auto_indent(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_auto_indent()
 {
-	gboolean ret = gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -127,7 +127,7 @@ void GtkSourceView_::set_indent_on_tab(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_indent_on_tab()
 {
-	gboolean ret = gtk_source_view_get_indent_on_tab (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_indent_on_tab (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -172,7 +172,7 @@ void GtkSourceView_::set_insert_spaces_instead_of_tabs(Php::Parameters &paramete
 
 Php::Value GtkSourceView_::get_insert_spaces_instead_of_tabs()
 {
-	gboolean ret = gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -241,7 +241,7 @@ void GtkSourceView_::set_smart_backspace(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_smart_backspace()
 {
-	gboolean ret = gtk_source_view_get_smart_backspace (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_smart_backspace (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }
@@ -304,7 +304,7 @@ void GtkSourceView_::set_show_line_marks(Php::Parameters &parameters)
 
 Php::Value GtkSourceView_::get_show_line_marks()
 {
-	gboolean ret = gtk_source_view_get_show_line_marks (GTK_SOURCE_VIEW(instance));
+	bool ret = gtk_source_view_get_show_line_marks (GTK_SOURCE_VIEW(instance));
 
 	return ret;
 }

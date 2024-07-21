@@ -80,7 +80,7 @@ Php::Value Gtk_::source_remove(Php::Parameters &parameters)
 {
     guint tag = (int)parameters[0];
     
-    gboolean ret = g_source_remove(tag);
+    bool ret = g_source_remove(tag);
     
     return ret;
 }

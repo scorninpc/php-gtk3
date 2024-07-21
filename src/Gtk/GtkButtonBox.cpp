@@ -36,7 +36,7 @@ Php::Value GtkButtonBox_::get_child_secondary(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean ret = gtk_button_box_get_child_secondary (GTK_BUTTON_BOX(instance), child);
+	bool ret = gtk_button_box_get_child_secondary (GTK_BUTTON_BOX(instance), child);
 
 	return ret;
 }
@@ -50,7 +50,7 @@ Php::Value GtkButtonBox_::get_child_non_homogeneous(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean ret = gtk_button_box_get_child_non_homogeneous (GTK_BUTTON_BOX(instance), child);
+	bool ret = gtk_button_box_get_child_non_homogeneous (GTK_BUTTON_BOX(instance), child);
 
 	return ret;
 }

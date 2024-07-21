@@ -132,7 +132,7 @@ void GtkColorButton_::set_use_alpha(Php::Parameters &parameters)
 
 Php::Value GtkColorButton_::get_use_alpha()
 {
-	gboolean ret = gtk_color_chooser_get_use_alpha (GTK_COLOR_CHOOSER(instance));
+	bool ret = gtk_color_chooser_get_use_alpha (GTK_COLOR_CHOOSER(instance));
 
 	return ret;
 }

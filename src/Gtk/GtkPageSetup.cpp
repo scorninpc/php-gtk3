@@ -237,7 +237,7 @@ Php::Value GtkPageSetup_::load_file(Php::Parameters &parameters)
 	gchar *file_name = (gchar *)s_file_name.c_str();
 
 	GError *error;
-	gboolean ret = gtk_page_setup_load_file (GTK_PAGE_SETUP(instance), file_name, &error);
+	bool ret = gtk_page_setup_load_file (GTK_PAGE_SETUP(instance), file_name, &error);
 
 	return ret;
 }
@@ -263,7 +263,7 @@ Php::Value GtkPageSetup_::to_file(Php::Parameters &parameters)
 	gchar *file_name = (gchar *)s_file_name.c_str();
 
 	GError *error;
-	gboolean ret = gtk_page_setup_to_file (GTK_PAGE_SETUP(instance), file_name, &error);
+	bool ret = gtk_page_setup_to_file (GTK_PAGE_SETUP(instance), file_name, &error);
 
 	return ret;
 }

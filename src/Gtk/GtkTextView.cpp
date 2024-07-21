@@ -118,14 +118,14 @@ Php::Value GtkTextView_::move_mark_onscreen(Php::Parameters &parameters)
 		mark = GTK_TEXT_MARK(phpgtk_mark->get_instance());
 	}
 
-	gboolean ret = gtk_text_view_move_mark_onscreen (GTK_TEXT_VIEW(instance), mark);
+	bool ret = gtk_text_view_move_mark_onscreen (GTK_TEXT_VIEW(instance), mark);
 
 	return ret;
 }
 
 Php::Value GtkTextView_::place_cursor_onscreen()
 {
-	gboolean ret = gtk_text_view_place_cursor_onscreen (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_place_cursor_onscreen (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }
@@ -193,7 +193,7 @@ Php::Value GtkTextView_::get_iter_at_position(Php::Parameters &parameters)
 	gint y = (gint)parameters[1];
 	GtkTextIter target_iter;
 
-	gboolean ret = gtk_text_view_get_iter_at_position (GTK_TEXT_VIEW(instance), &target_iter, NULL, x, y);
+	bool ret = gtk_text_view_get_iter_at_position (GTK_TEXT_VIEW(instance), &target_iter, NULL, x, y);
 	if(!ret)
 		return ret;
 
@@ -298,7 +298,7 @@ Php::Value GtkTextView_::forward_display_line(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
 	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_forward_display_line (GTK_TEXT_VIEW(instance), &type);
+	bool ret = gtk_text_view_forward_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
@@ -310,7 +310,7 @@ Php::Value GtkTextView_::backward_display_line(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
 	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_backward_display_line (GTK_TEXT_VIEW(instance), &type);
+	bool ret = gtk_text_view_backward_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
@@ -322,7 +322,7 @@ Php::Value GtkTextView_::forward_display_line_end(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
 	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_forward_display_line_end (GTK_TEXT_VIEW(instance), &type);
+	bool ret = gtk_text_view_forward_display_line_end (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
@@ -334,7 +334,7 @@ Php::Value GtkTextView_::backward_display_line_start(Php::Parameters &parameters
 	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
 	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_backward_display_line_start (GTK_TEXT_VIEW(instance), &type);
+	bool ret = gtk_text_view_backward_display_line_start (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
@@ -346,7 +346,7 @@ Php::Value GtkTextView_::starts_display_line(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_type = (GtkTextIter_ *)object_type.implementation();
 	GtkTextIter type = (phpgtk_type->get_instance());
 
-	gboolean ret = gtk_text_view_starts_display_line (GTK_TEXT_VIEW(instance), &type);
+	bool ret = gtk_text_view_starts_display_line (GTK_TEXT_VIEW(instance), &type);
 
 	return ret;
 }
@@ -360,7 +360,7 @@ Php::Value GtkTextView_::move_visually(Php::Parameters &parameters)
 
 	gint count = (gint)parameters[1];
 
-	gboolean ret = gtk_text_view_move_visually (GTK_TEXT_VIEW(instance), &type, count);
+	bool ret = gtk_text_view_move_visually (GTK_TEXT_VIEW(instance), &type, count);
 
 	return ret;
 }
@@ -428,7 +428,7 @@ void GtkTextView_::set_editable(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_editable()
 {
-	gboolean ret = gtk_text_view_get_editable (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_get_editable (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }
@@ -443,7 +443,7 @@ void GtkTextView_::set_cursor_visible(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_cursor_visible()
 {
-	gboolean ret = gtk_text_view_get_cursor_visible (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_get_cursor_visible (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }
@@ -458,7 +458,7 @@ void GtkTextView_::overwrite(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_overwrite()
 {
-	gboolean ret = gtk_text_view_get_overwrite (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_get_overwrite (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }
@@ -609,14 +609,14 @@ void GtkTextView_::set_accepts_tab(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_accepts_tab()
 {
-	gboolean ret = gtk_text_view_get_accepts_tab (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_get_accepts_tab (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }
 
 Php::Value GtkTextView_::im_context_filter_keypress(Php::Parameters &parameters)
 {
-	// gboolean ret = gtk_text_view_im_context_filter_keypress (GTK_TEXT_VIEW(instance), event);
+	// bool ret = gtk_text_view_im_context_filter_keypress (GTK_TEXT_VIEW(instance), event);
 	// return ret;
 
 	throw Php::Exception("GtkTextView_::im_context_filter_keypress not implemented");
@@ -671,7 +671,7 @@ void GtkTextView_::set_monospace(Php::Parameters &parameters)
 
 Php::Value GtkTextView_::get_monospace()
 {
-	gboolean ret = gtk_text_view_get_monospace (GTK_TEXT_VIEW(instance));
+	bool ret = gtk_text_view_get_monospace (GTK_TEXT_VIEW(instance));
 
 	return ret;
 }

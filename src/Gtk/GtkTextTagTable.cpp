@@ -26,7 +26,7 @@ Php::Value GtkTextTagTable_::add(Php::Parameters &parameters)
 		tag = (phpgtk_tag->get_tag());
 	}
 
-	gboolean ret = gtk_text_tag_table_add (GTK_TEXT_TAG_TABLE(instance), tag);
+	bool ret = gtk_text_tag_table_add (GTK_TEXT_TAG_TABLE(instance), tag);
 
 	return ret;
 }

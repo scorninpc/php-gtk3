@@ -368,21 +368,21 @@ Php::Value GtkNotebook_::get_menu_label_text(Php::Parameters &parameters)
 
 Php::Value GtkNotebook_::get_scrollable()
 {
-	gboolean ret = gtk_notebook_get_scrollable (GTK_NOTEBOOK(instance));
+	bool ret = gtk_notebook_get_scrollable (GTK_NOTEBOOK(instance));
 
 	return ret;
 }
 
 Php::Value GtkNotebook_::get_show_border()
 {
-	gboolean ret = gtk_notebook_get_show_border (GTK_NOTEBOOK(instance));
+	bool ret = gtk_notebook_get_show_border (GTK_NOTEBOOK(instance));
 
 	return ret;
 }
 
 Php::Value GtkNotebook_::get_show_tabs()
 {
-	gboolean ret = gtk_notebook_get_show_tabs (GTK_NOTEBOOK(instance));
+	bool ret = gtk_notebook_get_show_tabs (GTK_NOTEBOOK(instance));
 
 	return ret;
 }
@@ -417,7 +417,7 @@ Php::Value GtkNotebook_::get_tab_reorderable(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean ret = gtk_notebook_get_tab_reorderable (GTK_NOTEBOOK(instance), child);
+	bool ret = gtk_notebook_get_tab_reorderable (GTK_NOTEBOOK(instance), child);
 
 	return ret;
 }
@@ -431,7 +431,7 @@ Php::Value GtkNotebook_::get_tab_detachable(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	gboolean ret = gtk_notebook_get_tab_detachable (GTK_NOTEBOOK(instance), child);
+	bool ret = gtk_notebook_get_tab_detachable (GTK_NOTEBOOK(instance), child);
 
 	return ret;
 }

@@ -19,7 +19,7 @@ void GtkRevealer_::__construct()
 
 Php::Value GtkRevealer_::get_reveal_child()
 {
-	gboolean ret = gtk_revealer_get_reveal_child (GTK_REVEALER(instance));
+	bool ret = gtk_revealer_get_reveal_child (GTK_REVEALER(instance));
 
 	return ret;
 }
@@ -34,7 +34,7 @@ void GtkRevealer_::set_reveal_child(Php::Parameters &parameters)
 
 Php::Value GtkRevealer_::get_child_revealed()
 {
-	gboolean ret = gtk_revealer_get_child_revealed (GTK_REVEALER(instance));
+	bool ret = gtk_revealer_get_child_revealed (GTK_REVEALER(instance));
 
 	return ret;
 }

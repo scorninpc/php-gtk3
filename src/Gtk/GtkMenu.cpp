@@ -248,7 +248,7 @@ void GtkMenu_::set_reserve_toggle_size(Php::Parameters &parameters)
 
 Php::Value GtkMenu_::get_reserve_toggle_size()
 {
-	gboolean ret = gtk_menu_get_reserve_toggle_size (GTK_MENU(instance));
+	bool ret = gtk_menu_get_reserve_toggle_size (GTK_MENU(instance));
 
 	return ret;
 }

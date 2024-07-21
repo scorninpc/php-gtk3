@@ -35,7 +35,7 @@ void GtkTreeSortable_::set_sort_column_id(Php::Parameters &parameters)
 
 Php::Value GtkTreeSortable_::has_default_sort_func()
 {
-	gboolean ret = gtk_tree_sortable_has_default_sort_func(GTK_TREE_SORTABLE(instance));
+	bool ret = gtk_tree_sortable_has_default_sort_func(GTK_TREE_SORTABLE(instance));
 
 	return ret;
 }

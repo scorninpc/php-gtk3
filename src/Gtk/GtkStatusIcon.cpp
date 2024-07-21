@@ -162,21 +162,21 @@ void GtkStatusIcon_::set_visible(Php::Parameters &parameters)
 
 Php::Value GtkStatusIcon_::get_visible()
 {
-	gboolean ret = gtk_status_icon_get_visible(GTK_STATUS_ICON(instance));
+	bool ret = gtk_status_icon_get_visible(GTK_STATUS_ICON(instance));
 
 	return ret;
 }
 
 Php::Value GtkStatusIcon_::is_embedded()
 {
-	gboolean ret = gtk_status_icon_is_embedded(GTK_STATUS_ICON(instance));
+	bool ret = gtk_status_icon_is_embedded(GTK_STATUS_ICON(instance));
 
 	return ret;
 }
 
 Php::Value GtkStatusIcon_::get_has_tooltip()
 {
-	gboolean ret = gtk_status_icon_get_has_tooltip(GTK_STATUS_ICON(instance));
+	bool ret = gtk_status_icon_get_has_tooltip(GTK_STATUS_ICON(instance));
 
 	return ret;
 }

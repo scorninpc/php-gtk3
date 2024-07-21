@@ -303,7 +303,7 @@ Php::Value GtkClipboard_::wait_for_uris()
 
 Php::Value GtkClipboard_::wait_is_text_available()
 {
-	gboolean ret = gtk_clipboard_wait_is_text_available (GTK_CLIPBOARD(instance));
+	bool ret = gtk_clipboard_wait_is_text_available (GTK_CLIPBOARD(instance));
 
 	return ret;
 }
@@ -317,14 +317,14 @@ Php::Value GtkClipboard_::wait_is_image_available(Php::Parameters &parameters)
 		buffer = GTK_TEXT_BUFFER(phpgtk_buffer->get_instance());
 	}
 
-	gboolean ret = gtk_clipboard_wait_is_rich_text_available (GTK_CLIPBOARD(instance), buffer);
+	bool ret = gtk_clipboard_wait_is_rich_text_available (GTK_CLIPBOARD(instance), buffer);
 
 	return ret;
 }
 
 Php::Value GtkClipboard_::wait_is_uris_available()
 {
-	gboolean ret = gtk_clipboard_wait_is_uris_available (GTK_CLIPBOARD(instance));
+	bool ret = gtk_clipboard_wait_is_uris_available (GTK_CLIPBOARD(instance));
 
 	return ret;
 }

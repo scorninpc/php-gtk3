@@ -81,7 +81,7 @@ Php::Value GtkTextBuffer_::insert_interactive(Php::Parameters &parameters)
 
 	gboolean default_editable = (gboolean)parameters[3];
 
-	gboolean ret = gtk_text_buffer_insert_interactive (GTK_TEXT_BUFFER(instance), &iter, text, len, default_editable);
+	bool ret = gtk_text_buffer_insert_interactive (GTK_TEXT_BUFFER(instance), &iter, text, len, default_editable);
 
 	return ret;
 }
@@ -95,7 +95,7 @@ Php::Value GtkTextBuffer_::insert_interactive_at_cursor(Php::Parameters &paramet
 
 	gboolean default_editable = (gboolean)parameters[2];
 
-	gboolean ret = gtk_text_buffer_insert_interactive_at_cursor (GTK_TEXT_BUFFER(instance), text, len, default_editable);
+	bool ret = gtk_text_buffer_insert_interactive_at_cursor (GTK_TEXT_BUFFER(instance), text, len, default_editable);
 
 	return ret;
 }
@@ -138,7 +138,7 @@ Php::Value GtkTextBuffer_::insert_range_interactive(Php::Parameters &parameters)
 
 	gboolean default_editable = (gboolean)parameters[3];
 
-	gboolean ret = gtk_text_buffer_insert_range_interactive (GTK_TEXT_BUFFER(instance), &iter, &start, &end, default_editable);
+	bool ret = gtk_text_buffer_insert_range_interactive (GTK_TEXT_BUFFER(instance), &iter, &start, &end, default_editable);
 
 	return ret;
 }
@@ -232,7 +232,7 @@ Php::Value GtkTextBuffer_::delete_interactive(Php::Parameters &parameters)
 
 	gboolean default_editable = (gboolean)parameters[2];
 
-	gboolean ret = gtk_text_buffer_delete_interactive (GTK_TEXT_BUFFER(instance), &start, &end, default_editable);
+	bool ret = gtk_text_buffer_delete_interactive (GTK_TEXT_BUFFER(instance), &start, &end, default_editable);
 
 	return ret;
 }
@@ -249,7 +249,7 @@ Php::Value GtkTextBuffer_::backspace(Php::Parameters &parameters)
 
 	gboolean default_editable = (gboolean)parameters[2];
 
-	gboolean ret = gtk_text_buffer_backspace (GTK_TEXT_BUFFER(instance), &iter, interactive, default_editable);
+	bool ret = gtk_text_buffer_backspace (GTK_TEXT_BUFFER(instance), &iter, interactive, default_editable);
 
 	return ret;
 }
@@ -441,7 +441,7 @@ Php::Value GtkTextBuffer_::get_selection_bound(Php::Parameters &parameters)
 
 Php::Value GtkTextBuffer_::get_has_selection(Php::Parameters &parameters)
 {
-	gboolean ret = gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER(instance));
+	bool ret = gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER(instance));
 
 	return ret;
 }
@@ -709,7 +709,7 @@ Php::Value GtkTextBuffer_::get_bounds()
 
 Php::Value GtkTextBuffer_::get_modified()
 {
-	gboolean ret = gtk_text_buffer_get_modified (GTK_TEXT_BUFFER(instance));
+	bool ret = gtk_text_buffer_get_modified (GTK_TEXT_BUFFER(instance));
 
 	return ret;
 }
@@ -728,7 +728,7 @@ Php::Value GtkTextBuffer_::delete_selection(Php::Parameters &parameters)
 
 	gboolean default_editable = (gboolean)parameters[1];
 
-	gboolean ret = gtk_text_buffer_delete_selection (GTK_TEXT_BUFFER(instance), interactive, default_editable);
+	bool ret = gtk_text_buffer_delete_selection (GTK_TEXT_BUFFER(instance), interactive, default_editable);
 
 	return ret;
 }
@@ -753,7 +753,7 @@ Php::Value GtkTextBuffer_::get_selection_bounds(Php::Parameters &parameters)
 	GtkTextIter start;
 	GtkTextIter end;
 
-	gboolean ret = gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER(instance), &start, &end);
+	bool ret = gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER(instance), &start, &end);
 	if(!ret) 
 		return ret;
 

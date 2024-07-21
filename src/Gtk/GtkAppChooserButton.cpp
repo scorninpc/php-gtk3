@@ -51,7 +51,7 @@ void GtkAppChooserButton_::set_active_custom_item(Php::Parameters &parameters)
 
 Php::Value GtkAppChooserButton_::get_show_default_item()
 {
-	gboolean ret = gtk_app_chooser_button_get_show_default_item (GTK_APP_CHOOSER_BUTTON(instance));
+	bool ret = gtk_app_chooser_button_get_show_default_item (GTK_APP_CHOOSER_BUTTON(instance));
 
 	return ret;
 }
@@ -66,7 +66,7 @@ void GtkAppChooserButton_::set_show_default_item(Php::Parameters &parameters)
 
 Php::Value GtkAppChooserButton_::get_show_dialog_item()
 {
-	gboolean ret = gtk_app_chooser_button_get_show_dialog_item (GTK_APP_CHOOSER_BUTTON(instance));
+	bool ret = gtk_app_chooser_button_get_show_dialog_item (GTK_APP_CHOOSER_BUTTON(instance));
 
 	return ret;
 }

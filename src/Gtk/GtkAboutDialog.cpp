@@ -99,7 +99,7 @@ void GtkAboutDialog_::set_license(Php::Parameters &parameters)
 
 Php::Value GtkAboutDialog_::get_wrap_license()
 {
-	gboolean ret = gtk_about_dialog_get_wrap_license (GTK_ABOUT_DIALOG(instance));
+	bool ret = gtk_about_dialog_get_wrap_license (GTK_ABOUT_DIALOG(instance));
 
 	return ret;
 }

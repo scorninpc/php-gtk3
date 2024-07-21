@@ -136,7 +136,7 @@ Php::Value GtkLabel_::get_mnemonic_keyval()
 
 Php::Value GtkLabel_::get_selectable()
 {
-	gboolean ret = gtk_label_get_selectable (GTK_LABEL(instance));
+	bool ret = gtk_label_get_selectable (GTK_LABEL(instance));
 
 	return ret;
 }
@@ -222,7 +222,7 @@ Php::Value GtkLabel_::get_label()
 
 Php::Value GtkLabel_::get_line_wrap()
 {
-	gboolean ret = gtk_label_get_line_wrap (GTK_LABEL(instance));
+	bool ret = gtk_label_get_line_wrap (GTK_LABEL(instance));
 
 	return ret;
 }
@@ -247,21 +247,21 @@ Php::Value GtkLabel_::get_mnemonic_widget()
 
 Php::Value GtkLabel_::get_use_markup()
 {
-	gboolean ret = gtk_label_get_use_markup (GTK_LABEL(instance));
+	bool ret = gtk_label_get_use_markup (GTK_LABEL(instance));
 
 	return ret;
 }
 
 Php::Value GtkLabel_::get_use_underline()
 {
-	gboolean ret = gtk_label_get_use_underline (GTK_LABEL(instance));
+	bool ret = gtk_label_get_use_underline (GTK_LABEL(instance));
 
 	return ret;
 }
 
 Php::Value GtkLabel_::get_single_line_mode()
 {
-	gboolean ret = gtk_label_get_single_line_mode (GTK_LABEL(instance));
+	bool ret = gtk_label_get_single_line_mode (GTK_LABEL(instance));
 
 	return ret;
 }
@@ -331,7 +331,7 @@ void GtkLabel_::set_track_visited_links(Php::Parameters &parameters)
 
 Php::Value GtkLabel_::get_track_visited_links()
 {
-	gboolean ret = gtk_label_get_track_visited_links (GTK_LABEL(instance));
+	bool ret = gtk_label_get_track_visited_links (GTK_LABEL(instance));
 
 	return ret;
 }

@@ -44,7 +44,7 @@ void GtkExpander_::set_expanded(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_expanded()
 {
-	gboolean ret = gtk_expander_get_expanded (GTK_EXPANDER(instance));
+	bool ret = gtk_expander_get_expanded (GTK_EXPANDER(instance));
 
 	return ret;
 }
@@ -90,7 +90,7 @@ void GtkExpander_::set_use_underline(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_use_underline()
 {
-	gboolean ret = gtk_expander_get_use_underline (GTK_EXPANDER(instance));
+	bool ret = gtk_expander_get_use_underline (GTK_EXPANDER(instance));
 
 	return ret;
 }
@@ -105,7 +105,7 @@ void GtkExpander_::set_use_markup(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_use_markup()
 {
-	gboolean ret = gtk_expander_get_use_markup (GTK_EXPANDER(instance));
+	bool ret = gtk_expander_get_use_markup (GTK_EXPANDER(instance));
 
 	return ret;
 }
@@ -143,7 +143,7 @@ void GtkExpander_::set_label_fill(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_label_fill()
 {
-	gboolean ret = gtk_expander_get_label_fill (GTK_EXPANDER(instance));
+	bool ret = gtk_expander_get_label_fill (GTK_EXPANDER(instance));
 
 	return ret;
 }
@@ -158,7 +158,7 @@ void GtkExpander_::set_resize_toplevel(Php::Parameters &parameters)
 
 Php::Value GtkExpander_::get_resize_toplevel()
 {
-	gboolean ret = gtk_expander_get_resize_toplevel (GTK_EXPANDER(instance));
+	bool ret = gtk_expander_get_resize_toplevel (GTK_EXPANDER(instance));
 
 	return ret;
 }

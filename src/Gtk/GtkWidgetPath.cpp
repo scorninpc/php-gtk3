@@ -115,7 +115,7 @@ Php::Value GtkWidgetPath_::has_parent(Php::Parameters &parameters)
 	int int_type = (int)parameters[0];
 	GType type = (GType)int_type;
 
-	gboolean ret = gtk_widget_path_has_parent (instance, type);
+	bool ret = gtk_widget_path_has_parent (instance, type);
 
 	return ret;
 }
@@ -125,7 +125,7 @@ Php::Value GtkWidgetPath_::is_type(Php::Parameters &parameters)
 	int int_type = (int)parameters[0];
 	GType type = (GType)int_type;
 
-	gboolean ret = gtk_widget_path_is_type (instance, type);
+	bool ret = gtk_widget_path_is_type (instance, type);
 
 	return ret;
 }
@@ -240,7 +240,7 @@ Php::Value GtkWidgetPath_::iter_has_class(Php::Parameters &parameters)
 	std::string s_name = parameters[1];
 	gchar *name = (gchar *)s_name.c_str();
 
-	gboolean ret = gtk_widget_path_iter_has_class (instance, pos, name);
+	bool ret = gtk_widget_path_iter_has_class (instance, pos, name);
 
 	return ret;
 }
@@ -252,7 +252,7 @@ Php::Value GtkWidgetPath_::iter_has_name(Php::Parameters &parameters)
 	std::string s_name = parameters[1];
 	gchar *name = (gchar *)s_name.c_str();
 
-	gboolean ret = gtk_widget_path_iter_has_name (instance, pos, name);
+	bool ret = gtk_widget_path_iter_has_name (instance, pos, name);
 
 	return ret;
 }
@@ -261,7 +261,7 @@ Php::Value GtkWidgetPath_::iter_has_qclass(Php::Parameters &parameters)
 {
 	// gint pos = (gint)parameters[0];
 
-	// gboolean ret = gtk_widget_path_iter_has_qclass (instance, pos, qname);
+	// bool ret = gtk_widget_path_iter_has_qclass (instance, pos, qname);
 
 	// return ret;
 
@@ -274,7 +274,7 @@ Php::Value GtkWidgetPath_::iter_has_qname(Php::Parameters &parameters)
 	// gint pos = (gint)parameters[0];
 
 
-	// gboolean ret = gtk_widget_path_iter_has_qname (instance, pos, qname);
+	// bool ret = gtk_widget_path_iter_has_qname (instance, pos, qname);
 
 	// return ret;
 
@@ -290,7 +290,7 @@ Php::Value GtkWidgetPath_::iter_has_qregion(Php::Parameters &parameters)
 	// int int_flags = (int)parameters[2];
 	// GtkRegionFlags flags = (GtkRegionFlags)int_flags;
 
-	// gboolean ret = gtk_widget_path_iter_has_qregion (instance, pos, qname, flags);
+	// bool ret = gtk_widget_path_iter_has_qregion (instance, pos, qname, flags);
 
 	// return ret;
 
@@ -308,7 +308,7 @@ Php::Value GtkWidgetPath_::iter_has_region(Php::Parameters &parameters)
 	// int int_flags = (int)parameters[2];
 	// GtkRegionFlags flags = (GtkRegionFlags)int_flags;
 
-	// gboolean ret = gtk_widget_path_iter_has_region (instance, pos, name, flags);
+	// bool ret = gtk_widget_path_iter_has_region (instance, pos, name, flags);
 
 	// return ret;
 

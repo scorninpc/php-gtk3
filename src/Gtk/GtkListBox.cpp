@@ -139,7 +139,7 @@ void GtkListBox_::set_activate_on_single_click(Php::Parameters &parameters)
 
 Php::Value GtkListBox_::get_activate_on_single_click()
 {
-	gboolean ret = gtk_list_box_get_activate_on_single_click (GTK_LIST_BOX(instance));
+	bool ret = gtk_list_box_get_activate_on_single_click (GTK_LIST_BOX(instance));
 
 	return ret;
 }

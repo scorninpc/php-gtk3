@@ -54,7 +54,7 @@ Php::Value GtkOverlay_::get_overlay_pass_through(Php::Parameters &parameters)
 		widget = GTK_WIDGET(phpgtk_widget->get_instance());
 	}
 
-	gboolean ret = gtk_overlay_get_overlay_pass_through (GTK_OVERLAY(instance), widget);
+	bool ret = gtk_overlay_get_overlay_pass_through (GTK_OVERLAY(instance), widget);
 
 	return ret;
 }

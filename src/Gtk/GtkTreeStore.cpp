@@ -69,7 +69,7 @@ Php::Value GtkTreeStore_::remove(Php::Parameters &parameters)
 	GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
 	iter = phpgtk_iter->get_instance();
 
-	gboolean ret = gtk_tree_store_remove (GTK_TREE_STORE(model), &iter);
+	bool ret = gtk_tree_store_remove (GTK_TREE_STORE(model), &iter);
 
 	return ret;
 }
@@ -217,7 +217,7 @@ Php::Value GtkTreeStore_::is_ancestor(Php::Parameters &parameters)
 	GtkTreeIter descendant = phpgtk_descendant->get_instance();
 	
 
-	gboolean ret = gtk_tree_store_is_ancestor (GTK_TREE_STORE(model), &iter, &descendant);
+	bool ret = gtk_tree_store_is_ancestor (GTK_TREE_STORE(model), &iter, &descendant);
 
 	return ret;
 }

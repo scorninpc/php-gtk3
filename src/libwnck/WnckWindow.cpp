@@ -94,7 +94,7 @@ Php::Value WnckWindow_::get_class_group()
  */
 Php::Value WnckWindow_::is_active()
 {
-	gboolean ret = wnck_window_is_active(WNCK_WINDOW(instance));
+	bool ret = wnck_window_is_active(WNCK_WINDOW(instance));
 
 	return ret;
 }

@@ -154,7 +154,7 @@ void GtkButton_::set_use_stock(Php::Parameters &parameters)
 
 Php::Value GtkButton_::get_use_underline()
 {
-	gboolean ret = gtk_button_get_use_underline (GTK_BUTTON(instance));
+	bool ret = gtk_button_get_use_underline (GTK_BUTTON(instance));
 
 	return ret;
 }
@@ -255,7 +255,7 @@ void GtkButton_::set_always_show_image(Php::Parameters &parameters)
 
 Php::Value GtkButton_::get_always_show_image()
 {
-	gboolean ret = gtk_button_get_always_show_image (GTK_BUTTON(instance));
+	bool ret = gtk_button_get_always_show_image (GTK_BUTTON(instance));
 
 	return ret;
 }

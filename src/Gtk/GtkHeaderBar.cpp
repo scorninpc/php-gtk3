@@ -59,7 +59,7 @@ void GtkHeaderBar_::set_has_subtitle(Php::Parameters &parameters)
 
 Php::Value GtkHeaderBar_::get_has_subtitle()
 {
-	gboolean ret = gtk_header_bar_get_has_subtitle (GTK_HEADER_BAR(instance));
+	bool ret = gtk_header_bar_get_has_subtitle (GTK_HEADER_BAR(instance));
 
 	return ret;
 }
@@ -123,7 +123,7 @@ void GtkHeaderBar_::set_show_close_button(Php::Parameters &parameters)
 
 Php::Value GtkHeaderBar_::get_show_close_button()
 {
-	gboolean ret = gtk_header_bar_get_show_close_button (GTK_HEADER_BAR(instance));
+	bool ret = gtk_header_bar_get_show_close_button (GTK_HEADER_BAR(instance));
 
 	return ret;
 }

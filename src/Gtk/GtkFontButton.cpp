@@ -34,7 +34,7 @@ Php::Value GtkFontButton_::set_font_name(Php::Parameters &parameters)
 	// std::string s_fontname = parameters[0];
 	// gchar *fontname = (gchar *)s_fontname.c_str();
 
-	// gboolean ret = gtk_font_chooser_set_font (GTK_FONT_BUTTON(instance), fontname);
+	// bool ret = gtk_font_chooser_set_font (GTK_FONT_BUTTON(instance), fontname);
 
 	// return ret;
 
@@ -76,7 +76,7 @@ void GtkFontButton_::set_show_style(Php::Parameters &parameters)
 
 Php::Value GtkFontButton_::get_show_style()
 {
-	gboolean ret = gtk_font_button_get_show_style (GTK_FONT_BUTTON(instance));
+	bool ret = gtk_font_button_get_show_style (GTK_FONT_BUTTON(instance));
 
 	return ret;
 }
@@ -91,7 +91,7 @@ void GtkFontButton_::set_show_size(Php::Parameters &parameters)
 
 Php::Value GtkFontButton_::get_show_size()
 {
-	gboolean ret = gtk_font_button_get_show_size (GTK_FONT_BUTTON(instance));
+	bool ret = gtk_font_button_get_show_size (GTK_FONT_BUTTON(instance));
 
 	return ret;
 }
@@ -106,7 +106,7 @@ void GtkFontButton_::set_use_font(Php::Parameters &parameters)
 
 Php::Value GtkFontButton_::get_use_font()
 {
-	gboolean ret = gtk_font_button_get_use_font (GTK_FONT_BUTTON(instance));
+	bool ret = gtk_font_button_get_use_font (GTK_FONT_BUTTON(instance));
 
 	return ret;
 }
@@ -121,7 +121,7 @@ void GtkFontButton_::set_use_size(Php::Parameters &parameters)
 
 Php::Value GtkFontButton_::get_use_size()
 {
-	gboolean ret = gtk_font_button_get_use_size (GTK_FONT_BUTTON(instance));
+	bool ret = gtk_font_button_get_use_size (GTK_FONT_BUTTON(instance));
 
 	return ret;
 }

@@ -48,7 +48,7 @@ void GtkProgressBar_::set_inverted(Php::Parameters &parameters)
 
 Php::Value GtkProgressBar_::get_inverted()
 {
-	gboolean ret = gtk_progress_bar_get_inverted (GTK_PROGRESS_BAR(instance));
+	bool ret = gtk_progress_bar_get_inverted (GTK_PROGRESS_BAR(instance));
 
 	return ret;
 }
@@ -63,7 +63,7 @@ void GtkProgressBar_::set_show_text(Php::Parameters &parameters)
 
 Php::Value GtkProgressBar_::get_show_text()
 {
-	gboolean ret = gtk_progress_bar_get_show_text (GTK_PROGRESS_BAR(instance));
+	bool ret = gtk_progress_bar_get_show_text (GTK_PROGRESS_BAR(instance));
 
 	return ret;
 }

@@ -25,7 +25,7 @@ Php::Value GtkFlowBoxChild_::get_index()
 
 Php::Value GtkFlowBoxChild_::is_selected()
 {
-	gboolean ret = gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD(instance));
+	bool ret = gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD(instance));
 
 	return ret;
 }

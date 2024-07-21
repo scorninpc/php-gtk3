@@ -42,7 +42,7 @@ void GtkosxApplication_::ready()
 
 Php::Value GtkosxApplication_::use_quartz_accelerators()
 {
-	gboolean ret = gtkosx_application_use_quartz_accelerators (GTKOSX_APPLICATION(instance));
+	bool ret = gtkosx_application_use_quartz_accelerators (GTKOSX_APPLICATION(instance));
 
 	return ret;
 }

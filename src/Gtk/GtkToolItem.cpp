@@ -27,7 +27,7 @@ void GtkToolItem_::set_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_homogeneous()
 {
-	gboolean ret = gtk_tool_item_get_homogeneous (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_homogeneous (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }
@@ -42,7 +42,7 @@ void GtkToolItem_::set_expand(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_expand()
 {
-	gboolean ret = gtk_tool_item_get_expand (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_expand (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }
@@ -75,7 +75,7 @@ void GtkToolItem_::set_use_drag_window(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_use_drag_window()
 {
-	gboolean ret = gtk_tool_item_get_use_drag_window (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_use_drag_window (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }
@@ -90,7 +90,7 @@ void GtkToolItem_::set_visible_horizontal(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_visible_horizontal()
 {
-	gboolean ret = gtk_tool_item_get_visible_horizontal (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_visible_horizontal (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }
@@ -105,7 +105,7 @@ void GtkToolItem_::set_visible_vertical(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_visible_vertical()
 {
-	gboolean ret = gtk_tool_item_get_visible_vertical (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_visible_vertical (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }
@@ -120,7 +120,7 @@ void GtkToolItem_::set_is_important(Php::Parameters &parameters)
 
 Php::Value GtkToolItem_::get_is_important()
 {
-	gboolean ret = gtk_tool_item_get_is_important (GTK_TOOL_ITEM(instance));
+	bool ret = gtk_tool_item_get_is_important (GTK_TOOL_ITEM(instance));
 
 	return ret;
 }

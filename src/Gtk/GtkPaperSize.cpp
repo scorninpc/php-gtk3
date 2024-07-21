@@ -118,7 +118,7 @@ Php::Value GtkPaperSize_::is_equal(Php::Parameters &parameters)
 		size2 = (phpgtk_size2->get_instance());
 	}
 
-	gboolean ret = gtk_paper_size_is_equal (instance, size2);
+	bool ret = gtk_paper_size_is_equal (instance, size2);
 
 	return ret;
 }
@@ -176,14 +176,14 @@ Php::Value GtkPaperSize_::get_height(Php::Parameters &parameters)
 
 Php::Value GtkPaperSize_::is_ipp()
 {
-	gboolean ret = gtk_paper_size_is_ipp (instance);
+	bool ret = gtk_paper_size_is_ipp (instance);
 
 	return ret;
 }
 
 Php::Value GtkPaperSize_::is_custom()
 {
-	gboolean ret = gtk_paper_size_is_custom (instance);
+	bool ret = gtk_paper_size_is_custom (instance);
 
 	return ret;
 }

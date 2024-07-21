@@ -145,7 +145,7 @@ void GtkTable_::set_homogeneous(Php::Parameters &parameters)
 Php::Value GtkTable_::get_homogeneous()
 {
 	
-	gboolean ret = gtk_table_get_homogeneous(GTK_TABLE(instance));
+	bool ret = gtk_table_get_homogeneous(GTK_TABLE(instance));
 
 	return ret;
 }

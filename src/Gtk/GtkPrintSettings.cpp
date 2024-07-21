@@ -64,7 +64,7 @@ Php::Value GtkPrintSettings_::has_key(Php::Parameters &parameters)
 	std::string s_key = parameters[0];
 	gchar *key = (gchar *)s_key.c_str();
 
-	gboolean ret = gtk_print_settings_has_key (GTK_PRINT_SETTINGS(instance), key);
+	bool ret = gtk_print_settings_has_key (GTK_PRINT_SETTINGS(instance), key);
 
 	return ret;
 }
@@ -122,7 +122,7 @@ Php::Value GtkPrintSettings_::get_bool(Php::Parameters &parameters)
 	std::string s_key = parameters[0];
 	gchar *key = (gchar *)s_key.c_str();
 
-	gboolean ret = gtk_print_settings_get_bool (GTK_PRINT_SETTINGS(instance), key);
+	bool ret = gtk_print_settings_get_bool (GTK_PRINT_SETTINGS(instance), key);
 
 	return ret;
 }
@@ -329,7 +329,7 @@ void GtkPrintSettings_::set_paper_height(Php::Parameters &parameters)
 
 Php::Value GtkPrintSettings_::get_use_color()
 {
-	gboolean ret = gtk_print_settings_get_use_color (GTK_PRINT_SETTINGS(instance));
+	bool ret = gtk_print_settings_get_use_color (GTK_PRINT_SETTINGS(instance));
 
 	return ret;
 }
@@ -344,7 +344,7 @@ void GtkPrintSettings_::set_use_color(Php::Parameters &parameters)
 
 Php::Value GtkPrintSettings_::get_collate()
 {
-	gboolean ret = gtk_print_settings_get_collate (GTK_PRINT_SETTINGS(instance));
+	bool ret = gtk_print_settings_get_collate (GTK_PRINT_SETTINGS(instance));
 
 	return ret;
 }
@@ -359,7 +359,7 @@ void GtkPrintSettings_::set_collate(Php::Parameters &parameters)
 
 Php::Value GtkPrintSettings_::get_reverse()
 {
-	gboolean ret = gtk_print_settings_get_reverse (GTK_PRINT_SETTINGS(instance));
+	bool ret = gtk_print_settings_get_reverse (GTK_PRINT_SETTINGS(instance));
 
 	return ret;
 }
@@ -663,7 +663,7 @@ Php::Value GtkPrintSettings_::load_file(Php::Parameters &parameters)
 	gchar *file_name = (gchar *)s_file_name.c_str();
 
 	GError *error;
-	gboolean ret = gtk_print_settings_load_file (GTK_PRINT_SETTINGS(instance), file_name, &error);
+	bool ret = gtk_print_settings_load_file (GTK_PRINT_SETTINGS(instance), file_name, &error);
 
 	return ret;
 }
@@ -675,7 +675,7 @@ Php::Value GtkPrintSettings_::load_key_file(Php::Parameters &parameters)
 	// gchar *group_name = (gchar *)s_group_name.c_str();
 
 
-	// gboolean ret = gtk_print_settings_load_key_file (GTK_PRINT_SETTINGS(instance), key_file, group_name, &error);
+	// bool ret = gtk_print_settings_load_key_file (GTK_PRINT_SETTINGS(instance), key_file, group_name, &error);
 
 	// return ret;
 
@@ -689,7 +689,7 @@ Php::Value GtkPrintSettings_::to_file(Php::Parameters &parameters)
 	gchar *file_name = (gchar *)s_file_name.c_str();
 
 	GError *error;
-	gboolean ret = gtk_print_settings_to_file (GTK_PRINT_SETTINGS(instance), file_name, &error);
+	bool ret = gtk_print_settings_to_file (GTK_PRINT_SETTINGS(instance), file_name, &error);
 
 	return ret;
 }

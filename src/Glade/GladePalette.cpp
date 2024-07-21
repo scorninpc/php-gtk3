@@ -40,7 +40,7 @@ void GladePalette_::set_item_appearance(Php::Parameters &parameters)
 
 Php::Value GladePalette_::get_use_small_item_icons()
 {
-	gboolean ret = glade_palette_get_use_small_item_icons (GLADE_PALETTE(instance));
+	bool ret = glade_palette_get_use_small_item_icons (GLADE_PALETTE(instance));
 
 	return ret;
 }
@@ -55,7 +55,7 @@ void GladePalette_::set_use_small_item_icons(Php::Parameters &parameters)
 
 Php::Value GladePalette_::get_show_selector_button()
 {
-	gboolean ret = glade_palette_get_show_selector_button (GLADE_PALETTE(instance));
+	bool ret = glade_palette_get_show_selector_button (GLADE_PALETTE(instance));
 
 	return ret;
 }

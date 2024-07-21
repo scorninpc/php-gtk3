@@ -186,7 +186,7 @@ void GtkEntryCompletion_::set_inline_completion(Php::Parameters &parameters)
 
 Php::Value GtkEntryCompletion_::get_inline_completion()
 {
-	gboolean ret = gtk_entry_completion_get_inline_completion (GTK_ENTRY_COMPLETION(instance));
+	bool ret = gtk_entry_completion_get_inline_completion (GTK_ENTRY_COMPLETION(instance));
 
 	return ret;
 }
@@ -201,7 +201,7 @@ void GtkEntryCompletion_::set_inline_selection(Php::Parameters &parameters)
 
 Php::Value GtkEntryCompletion_::get_inline_selection()
 {
-	gboolean ret = gtk_entry_completion_get_inline_selection (GTK_ENTRY_COMPLETION(instance));
+	bool ret = gtk_entry_completion_get_inline_selection (GTK_ENTRY_COMPLETION(instance));
 
 	return ret;
 }
@@ -216,7 +216,7 @@ void GtkEntryCompletion_::set_popup_completion(Php::Parameters &parameters)
 
 Php::Value GtkEntryCompletion_::get_popup_completion()
 {
-	gboolean ret = gtk_entry_completion_get_popup_completion (GTK_ENTRY_COMPLETION(instance));
+	bool ret = gtk_entry_completion_get_popup_completion (GTK_ENTRY_COMPLETION(instance));
 
 	return ret;
 }
@@ -231,7 +231,7 @@ void GtkEntryCompletion_::set_popup_set_width(Php::Parameters &parameters)
 
 Php::Value GtkEntryCompletion_::get_popup_set_width()
 {
-	gboolean ret = gtk_entry_completion_get_popup_set_width (GTK_ENTRY_COMPLETION(instance));
+	bool ret = gtk_entry_completion_get_popup_set_width (GTK_ENTRY_COMPLETION(instance));
 
 	return ret;
 }
@@ -246,7 +246,7 @@ void GtkEntryCompletion_::set_popup_single_match(Php::Parameters &parameters)
 
 Php::Value GtkEntryCompletion_::get_popup_single_match()
 {
-	gboolean ret = gtk_entry_completion_get_popup_single_match (GTK_ENTRY_COMPLETION(instance));
+	bool ret = gtk_entry_completion_get_popup_single_match (GTK_ENTRY_COMPLETION(instance));
 
 	return ret;
 }

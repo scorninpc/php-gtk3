@@ -32,14 +32,14 @@ void GtkTextMark_::set_visible(Php::Parameters &parameters)
 
 Php::Value GtkTextMark_::set_buffer()
 {
-	gboolean ret = gtk_text_mark_get_visible (GTK_TEXT_MARK(instance));
+	bool ret = gtk_text_mark_get_visible (GTK_TEXT_MARK(instance));
 
 	return ret;
 }
 
 Php::Value GtkTextMark_::get_deleted()
 {
-	gboolean ret = gtk_text_mark_get_deleted (GTK_TEXT_MARK(instance));
+	bool ret = gtk_text_mark_get_deleted (GTK_TEXT_MARK(instance));
 
 	return ret;
 }
@@ -62,7 +62,7 @@ Php::Value GtkTextMark_::get_buffer()
 
 Php::Value GtkTextMark_::get_left_gravity()
 {
-	gboolean ret = gtk_text_mark_get_left_gravity (GTK_TEXT_MARK(instance));
+	bool ret = gtk_text_mark_get_left_gravity (GTK_TEXT_MARK(instance));
 
 	return ret;
 }

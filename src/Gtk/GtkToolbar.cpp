@@ -106,7 +106,7 @@ void GtkToolbar_::unset_icon_size()
 
 Php::Value GtkToolbar_::get_show_arrow()
 {
-	gboolean ret = gtk_toolbar_get_show_arrow (GTK_TOOLBAR(instance));
+	bool ret = gtk_toolbar_get_show_arrow (GTK_TOOLBAR(instance));
 
 	return ret;
 }

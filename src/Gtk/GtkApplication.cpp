@@ -120,14 +120,14 @@ Php::Value GtkApplication_::is_inhibited(Php::Parameters &parameters)
 	int int_flags = (int)parameters[0];
 	GtkApplicationInhibitFlags flags = (GtkApplicationInhibitFlags)int_flags;
 
-	gboolean ret = gtk_application_is_inhibited (GTK_APPLICATION(instance), flags);
+	bool ret = gtk_application_is_inhibited (GTK_APPLICATION(instance), flags);
 
 	return ret;
 }
 
 Php::Value GtkApplication_::prefers_app_menu()
 {
-	gboolean ret = gtk_application_prefers_app_menu (GTK_APPLICATION(instance));
+	bool ret = gtk_application_prefers_app_menu (GTK_APPLICATION(instance));
 
 	return ret;
 }

@@ -27,7 +27,7 @@ void GtkSeparatorToolItem_::set_draw(Php::Parameters &parameters)
 
 Php::Value GtkSeparatorToolItem_::get_draw()
 {
-	gboolean ret = gtk_separator_tool_item_get_draw (GTK_SEPARATOR_TOOL_ITEM(instance));
+	bool ret = gtk_separator_tool_item_get_draw (GTK_SEPARATOR_TOOL_ITEM(instance));
 
 	return ret;
 }

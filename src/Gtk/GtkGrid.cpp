@@ -138,7 +138,7 @@ void GtkGrid_::set_row_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkGrid_::get_row_homogeneous()
 {
-	gboolean ret = gtk_grid_get_row_homogeneous (GTK_GRID(instance));
+	bool ret = gtk_grid_get_row_homogeneous (GTK_GRID(instance));
 
 	return ret;
 }
@@ -168,7 +168,7 @@ void GtkGrid_::set_column_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkGrid_::get_column_homogeneous()
 {
-	gboolean ret = gtk_grid_get_column_homogeneous (GTK_GRID(instance));
+	bool ret = gtk_grid_get_column_homogeneous (GTK_GRID(instance));
 
 	return ret;
 }

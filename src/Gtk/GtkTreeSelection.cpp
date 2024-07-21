@@ -96,7 +96,7 @@ Php::Value GtkTreeSelection_::get_selected(Php::Parameters &parameters)
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 
-	gboolean ret = gtk_tree_selection_get_selected (GTK_TREE_SELECTION(instance), &model, &iter);
+	bool ret = gtk_tree_selection_get_selected (GTK_TREE_SELECTION(instance), &model, &iter);
 	if(!ret) {
 		return false;
 	}
@@ -249,7 +249,7 @@ Php::Value GtkTreeSelection_::path_is_selected(Php::Parameters &parameters)
 	std::string param_path = parameters[0];
 	GtkTreePath *path = gtk_tree_path_new_from_string(param_path.c_str());
 
-	gboolean ret = gtk_tree_selection_path_is_selected (GTK_TREE_SELECTION(instance), path);
+	bool ret = gtk_tree_selection_path_is_selected (GTK_TREE_SELECTION(instance), path);
 
 	return ret;
 }
@@ -280,7 +280,7 @@ Php::Value GtkTreeSelection_::iter_is_selected(Php::Parameters &parameters)
 	GtkTreeIter_ *phpgtk_iter = (GtkTreeIter_ *)object_iter.implementation();
 	GtkTreeIter iter = phpgtk_iter->get_instance();
 
-	gboolean ret = gtk_tree_selection_iter_is_selected (GTK_TREE_SELECTION(instance), &iter);
+	bool ret = gtk_tree_selection_iter_is_selected (GTK_TREE_SELECTION(instance), &iter);
 
 	return ret;
 }

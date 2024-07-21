@@ -54,7 +54,7 @@ void GtkToggleButton_::set_mode(Php::Parameters &parameters)
 
 Php::Value GtkToggleButton_::get_mode()
 {
-	gboolean ret = gtk_toggle_button_get_mode (GTK_TOGGLE_BUTTON(instance));
+	bool ret = gtk_toggle_button_get_mode (GTK_TOGGLE_BUTTON(instance));
 
 	return ret;
 }
@@ -67,7 +67,7 @@ void GtkToggleButton_::toggled()
 
 Php::Value GtkToggleButton_::get_active()
 {
-	gboolean ret = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(instance));
+	bool ret = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(instance));
 
 	return ret;
 }
@@ -82,7 +82,7 @@ void GtkToggleButton_::set_active(Php::Parameters &parameters)
 
 Php::Value GtkToggleButton_::get_inconsistent()
 {
-	gboolean ret = gtk_toggle_button_get_inconsistent (GTK_TOGGLE_BUTTON(instance));
+	bool ret = gtk_toggle_button_get_inconsistent (GTK_TOGGLE_BUTTON(instance));
 
 	return ret;
 }

@@ -14,7 +14,7 @@ void GtkApplicationWindow_::set_show_menubar(Php::Parameters &parameters)
 
 Php::Value GtkApplicationWindow_::get_show_menubar()
 {
-	gboolean ret = gtk_application_window_get_show_menubar(GTK_APPLICATION_WINDOW(instance));
+	bool ret = gtk_application_window_get_show_menubar(GTK_APPLICATION_WINDOW(instance));
 
 	return ret;
 }

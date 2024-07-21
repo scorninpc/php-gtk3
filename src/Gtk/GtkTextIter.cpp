@@ -195,7 +195,7 @@ Php::Value GtkTextIter_::starts_tag(Php::Parameters &parameters)
 		tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
 	}
 
-	gboolean ret = gtk_text_iter_starts_tag (&instance, tag);
+	bool ret = gtk_text_iter_starts_tag (&instance, tag);
 
 	return ret;
 }
@@ -209,7 +209,7 @@ Php::Value GtkTextIter_::ends_tag(Php::Parameters &parameters)
 		tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
 	}
 
-	gboolean ret = gtk_text_iter_ends_tag (&instance, tag);
+	bool ret = gtk_text_iter_ends_tag (&instance, tag);
 
 	return ret;
 }
@@ -223,7 +223,7 @@ Php::Value GtkTextIter_::toggles_tag(Php::Parameters &parameters)
 		tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
 	}
 
-	gboolean ret = gtk_text_iter_toggles_tag (&instance, tag);
+	bool ret = gtk_text_iter_toggles_tag (&instance, tag);
 
 	return ret;
 }
@@ -237,7 +237,7 @@ Php::Value GtkTextIter_::has_tag(Php::Parameters &parameters)
 		tag = GTK_TEXT_TAG(phpgtk_tag->get_instance());
 	}
 
-	gboolean ret = gtk_text_iter_has_tag (&instance, tag);
+	bool ret = gtk_text_iter_has_tag (&instance, tag);
 
 	return ret;
 }
@@ -262,7 +262,7 @@ Php::Value GtkTextIter_::editable(Php::Parameters &parameters)
 {
 	gboolean default_setting = (gboolean)parameters[0];
 
-	gboolean ret = gtk_text_iter_editable (&instance, default_setting);
+	bool ret = gtk_text_iter_editable (&instance, default_setting);
 
 	return ret;
 }
@@ -271,70 +271,70 @@ Php::Value GtkTextIter_::can_insert(Php::Parameters &parameters)
 {
 	gboolean default_editability = (gboolean)parameters[0];
 
-	gboolean ret = gtk_text_iter_can_insert (&instance, default_editability);
+	bool ret = gtk_text_iter_can_insert (&instance, default_editability);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::starts_word()
 {
-	gboolean ret = gtk_text_iter_starts_word (&instance);
+	bool ret = gtk_text_iter_starts_word (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::ends_word()
 {
-	gboolean ret = gtk_text_iter_ends_word (&instance);
+	bool ret = gtk_text_iter_ends_word (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::inside_word()
 {
-	gboolean ret = gtk_text_iter_inside_word (&instance);
+	bool ret = gtk_text_iter_inside_word (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::starts_line()
 {
-	gboolean ret = gtk_text_iter_starts_line (&instance);
+	bool ret = gtk_text_iter_starts_line (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::ends_line()
 {
-	gboolean ret = gtk_text_iter_ends_line (&instance);
+	bool ret = gtk_text_iter_ends_line (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::starts_sentence()
 {
-	gboolean ret = gtk_text_iter_starts_sentence (&instance);
+	bool ret = gtk_text_iter_starts_sentence (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::ends_sentence()
 {
-	gboolean ret = gtk_text_iter_ends_sentence (&instance);
+	bool ret = gtk_text_iter_ends_sentence (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::inside_sentence()
 {
-	gboolean ret = gtk_text_iter_inside_sentence (&instance);
+	bool ret = gtk_text_iter_inside_sentence (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::is_cursor_position()
 {
-	gboolean ret = gtk_text_iter_is_cursor_position (&instance);
+	bool ret = gtk_text_iter_is_cursor_position (&instance);
 
 	return ret;
 }
@@ -355,28 +355,28 @@ Php::Value GtkTextIter_::get_bytes_in_line()
 
 Php::Value GtkTextIter_::is_end()
 {
-	gboolean ret = gtk_text_iter_is_end (&instance);
+	bool ret = gtk_text_iter_is_end (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::is_start()
 {
-	gboolean ret = gtk_text_iter_is_start (&instance);
+	bool ret = gtk_text_iter_is_start (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_char()
 {
-	gboolean ret = gtk_text_iter_forward_char (&instance);
+	bool ret = gtk_text_iter_forward_char (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_char()
 {
-	gboolean ret = gtk_text_iter_backward_char (&instance);
+	bool ret = gtk_text_iter_backward_char (&instance);
 
 	return ret;
 }
@@ -385,7 +385,7 @@ Php::Value GtkTextIter_::forward_chars(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_chars (&instance, count);
+	bool ret = gtk_text_iter_forward_chars (&instance, count);
 
 	return ret;
 }
@@ -394,21 +394,21 @@ Php::Value GtkTextIter_::backward_chars(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_chars (&instance, count);
+	bool ret = gtk_text_iter_backward_chars (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_line()
 {
-	gboolean ret = gtk_text_iter_forward_line (&instance);
+	bool ret = gtk_text_iter_forward_line (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_line()
 {
-	gboolean ret = gtk_text_iter_backward_line (&instance);
+	bool ret = gtk_text_iter_backward_line (&instance);
 
 	return ret;
 }
@@ -417,7 +417,7 @@ Php::Value GtkTextIter_::forward_lines(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_lines (&instance, count);
+	bool ret = gtk_text_iter_forward_lines (&instance, count);
 
 	return ret;
 }
@@ -426,7 +426,7 @@ Php::Value GtkTextIter_::backward_lines(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_lines (&instance, count);
+	bool ret = gtk_text_iter_backward_lines (&instance, count);
 
 	return ret;
 }
@@ -435,7 +435,7 @@ Php::Value GtkTextIter_::forward_word_ends(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_word_ends (&instance, count);
+	bool ret = gtk_text_iter_forward_word_ends (&instance, count);
 
 	return ret;
 }
@@ -444,35 +444,35 @@ Php::Value GtkTextIter_::backward_word_starts(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_word_starts (&instance, count);
+	bool ret = gtk_text_iter_backward_word_starts (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_word_end()
 {
-	gboolean ret = gtk_text_iter_forward_word_end (&instance);
+	bool ret = gtk_text_iter_forward_word_end (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_word_start()
 {
-	gboolean ret = gtk_text_iter_backward_word_start (&instance);
+	bool ret = gtk_text_iter_backward_word_start (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_cursor_position()
 {
-	gboolean ret = gtk_text_iter_forward_cursor_position (&instance);
+	bool ret = gtk_text_iter_forward_cursor_position (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_cursor_position()
 {
-	gboolean ret = gtk_text_iter_backward_cursor_position (&instance);
+	bool ret = gtk_text_iter_backward_cursor_position (&instance);
 
 	return ret;
 }
@@ -481,7 +481,7 @@ Php::Value GtkTextIter_::forward_cursor_positions(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_cursor_positions (&instance, count);
+	bool ret = gtk_text_iter_forward_cursor_positions (&instance, count);
 
 	return ret;
 }
@@ -490,14 +490,14 @@ Php::Value GtkTextIter_::backward_cursor_positions(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_cursor_positions (&instance, count);
+	bool ret = gtk_text_iter_backward_cursor_positions (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_sentence_start()
 {
-	gboolean ret = gtk_text_iter_backward_sentence_start (&instance);
+	bool ret = gtk_text_iter_backward_sentence_start (&instance);
 
 	return ret;
 }
@@ -506,14 +506,14 @@ Php::Value GtkTextIter_::backward_sentence_starts(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_sentence_starts (&instance, count);
+	bool ret = gtk_text_iter_backward_sentence_starts (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_sentence_end()
 {
-	gboolean ret = gtk_text_iter_forward_sentence_end (&instance);
+	bool ret = gtk_text_iter_forward_sentence_end (&instance);
 
 	return ret;
 }
@@ -522,7 +522,7 @@ Php::Value GtkTextIter_::forward_sentence_ends(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_sentence_ends (&instance, count);
+	bool ret = gtk_text_iter_forward_sentence_ends (&instance, count);
 
 	return ret;
 }
@@ -531,7 +531,7 @@ Php::Value GtkTextIter_::forward_visible_word_ends(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_visible_word_ends (&instance, count);
+	bool ret = gtk_text_iter_forward_visible_word_ends (&instance, count);
 
 	return ret;
 }
@@ -540,35 +540,35 @@ Php::Value GtkTextIter_::backward_visible_word_starts(Php::Parameters &parameter
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_visible_word_starts (&instance, count);
+	bool ret = gtk_text_iter_backward_visible_word_starts (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_visible_word_end()
 {
-	gboolean ret = gtk_text_iter_forward_visible_word_end (&instance);
+	bool ret = gtk_text_iter_forward_visible_word_end (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_visible_word_start()
 {
-	gboolean ret = gtk_text_iter_backward_visible_word_start (&instance);
+	bool ret = gtk_text_iter_backward_visible_word_start (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_visible_cursor_position()
 {
-	gboolean ret = gtk_text_iter_forward_visible_cursor_position (&instance);
+	bool ret = gtk_text_iter_forward_visible_cursor_position (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_visible_cursor_position()
 {
-	gboolean ret = gtk_text_iter_backward_visible_cursor_position (&instance);
+	bool ret = gtk_text_iter_backward_visible_cursor_position (&instance);
 
 	return ret;
 }
@@ -577,7 +577,7 @@ Php::Value GtkTextIter_::forward_visible_cursor_positions(Php::Parameters &param
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_visible_cursor_positions (&instance, count);
+	bool ret = gtk_text_iter_forward_visible_cursor_positions (&instance, count);
 
 	return ret;
 }
@@ -586,21 +586,21 @@ Php::Value GtkTextIter_::backward_visible_cursor_positions(Php::Parameters &para
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_visible_cursor_positions (&instance, count);
+	bool ret = gtk_text_iter_backward_visible_cursor_positions (&instance, count);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::forward_visible_line()
 {
-	gboolean ret = gtk_text_iter_forward_visible_line (&instance);
+	bool ret = gtk_text_iter_forward_visible_line (&instance);
 
 	return ret;
 }
 
 Php::Value GtkTextIter_::backward_visible_line()
 {
-	gboolean ret = gtk_text_iter_backward_visible_line (&instance);
+	bool ret = gtk_text_iter_backward_visible_line (&instance);
 
 	return ret;
 }
@@ -609,7 +609,7 @@ Php::Value GtkTextIter_::forward_visible_lines(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_forward_visible_lines (&instance, count);
+	bool ret = gtk_text_iter_forward_visible_lines (&instance, count);
 
 	return ret;
 }
@@ -618,7 +618,7 @@ Php::Value GtkTextIter_::backward_visible_lines(Php::Parameters &parameters)
 {
 	gint count = (gint)parameters[0];
 
-	gboolean ret = gtk_text_iter_backward_visible_lines (&instance, count);
+	bool ret = gtk_text_iter_backward_visible_lines (&instance, count);
 
 	return ret;
 }
@@ -679,7 +679,7 @@ void GtkTextIter_::forward_to_end()
 
 Php::Value GtkTextIter_::forward_to_line_end()
 {
-	gboolean ret = gtk_text_iter_forward_to_line_end (&instance);
+	bool ret = gtk_text_iter_forward_to_line_end (&instance);
 
 	return ret;
 }
@@ -690,7 +690,7 @@ Php::Value GtkTextIter_::forward_to_tag_toggle(Php::Parameters &parameters)
 	GtkTextTag_ *phpgtk_tag = (GtkTextTag_ *)object_tag.implementation();
 	GtkTextTag *tag = phpgtk_tag->get_tag();
 	
-	gboolean ret = gtk_text_iter_forward_to_tag_toggle (&instance, tag);
+	bool ret = gtk_text_iter_forward_to_tag_toggle (&instance, tag);
 
 	return ret;
 }
@@ -704,7 +704,7 @@ Php::Value GtkTextIter_::backward_to_tag_toggle(Php::Parameters &parameters)
 		tag = phpgtk_tag->get_tag();
 	}
 
-	gboolean ret = gtk_text_iter_backward_to_tag_toggle (&instance, tag);
+	bool ret = gtk_text_iter_backward_to_tag_toggle (&instance, tag);
 
 	return ret;
 }
@@ -715,7 +715,7 @@ Php::Value GtkTextIter_::iter_equal(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_rhs = (GtkTextIter_ *)object_rhs.implementation();
 	GtkTextIter rhs = phpgtk_rhs->get_instance();
 
-	gboolean ret = gtk_text_iter_equal (&instance, &rhs);
+	bool ret = gtk_text_iter_equal (&instance, &rhs);
 
 	return ret;
 }
@@ -727,7 +727,7 @@ Php::Value GtkTextIter_::iter_compare(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_rhs = (GtkTextIter_ *)object_rhs.implementation();
 	GtkTextIter rhs = phpgtk_rhs->get_instance();
 
-	gboolean ret = gtk_text_iter_compare (&instance, &rhs);
+	bool ret = gtk_text_iter_compare (&instance, &rhs);
 
 	return ret;
 }
@@ -742,7 +742,7 @@ Php::Value GtkTextIter_::in_range(Php::Parameters &parameters)
 	GtkTextIter_ *phpgtk_end = (GtkTextIter_ *)object_end.implementation();
 	GtkTextIter end = phpgtk_end->get_instance();
 
-	gboolean ret = gtk_text_iter_in_range (&instance, &start, &end);
+	bool ret = gtk_text_iter_in_range (&instance, &start, &end);
 
 	return ret;
 }

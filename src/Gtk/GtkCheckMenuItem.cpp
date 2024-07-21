@@ -43,7 +43,7 @@ Php::Value GtkCheckMenuItem_::new_with_mnemonic(Php::Parameters &parameters)
 
 Php::Value GtkCheckMenuItem_::get_active()
 {
-	gboolean ret = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(instance));
+	bool ret = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM(instance));
 
 	return ret;
 }
@@ -64,7 +64,7 @@ void GtkCheckMenuItem_::toggled()
 
 Php::Value GtkCheckMenuItem_::get_inconsistent()
 {
-	gboolean ret = gtk_check_menu_item_get_inconsistent (GTK_CHECK_MENU_ITEM(instance));
+	bool ret = gtk_check_menu_item_get_inconsistent (GTK_CHECK_MENU_ITEM(instance));
 
 	return ret;
 }
@@ -79,7 +79,7 @@ void GtkCheckMenuItem_::set_inconsistent(Php::Parameters &parameters)
 
 Php::Value GtkCheckMenuItem_::get_draw_as_radio()
 {
-	gboolean ret = gtk_check_menu_item_get_draw_as_radio (GTK_CHECK_MENU_ITEM(instance));
+	bool ret = gtk_check_menu_item_get_draw_as_radio (GTK_CHECK_MENU_ITEM(instance));
 
 	return ret;
 }

@@ -55,7 +55,7 @@ Php::Value GtkCalendar_::get_day_is_marked(Php::Parameters &parameters)
 {
 	guint day = (int)parameters[0];
 
-	gboolean ret = gtk_calendar_get_day_is_marked (GTK_CALENDAR(instance), day);
+	bool ret = gtk_calendar_get_day_is_marked (GTK_CALENDAR(instance), day);
 
 	return ret;
 }

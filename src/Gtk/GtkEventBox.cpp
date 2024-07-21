@@ -20,7 +20,7 @@ void GtkEventBox_::__construct()
 
 Php::Value GtkEventBox_::get_visible_window()
 {
-	gboolean ret = gtk_event_box_get_visible_window(GTK_EVENT_BOX(instance));
+	bool ret = gtk_event_box_get_visible_window(GTK_EVENT_BOX(instance));
 
 	return ret;
 }
@@ -34,7 +34,7 @@ void GtkEventBox_::set_visible_window(Php::Parameters &parameters)
 
 Php::Value GtkEventBox_::get_above_child()
 {
-	gboolean ret = gtk_event_box_get_above_child(GTK_EVENT_BOX(instance));
+	bool ret = gtk_event_box_get_above_child(GTK_EVENT_BOX(instance));
 
 	return ret;
 }

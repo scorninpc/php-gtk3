@@ -139,7 +139,7 @@ Php::Value GtkListStore_::remove(Php::Parameters &parameters)
 		iter = phpgtk_iter->get_instance();
 	}
 
-	gboolean ret = gtk_list_store_remove (GTK_LIST_STORE(model), &iter);
+	bool ret = gtk_list_store_remove (GTK_LIST_STORE(model), &iter);
 
 	return ret;
 }
@@ -289,7 +289,7 @@ Php::Value GtkListStore_::iter_is_valid(Php::Parameters &parameters)
 		iter = phpgtk_iter->get_instance();
 	}
 
-	gboolean ret = gtk_list_store_iter_is_valid (GTK_LIST_STORE(model), &iter);
+	bool ret = gtk_list_store_iter_is_valid (GTK_LIST_STORE(model), &iter);
 
 	return ret;
 }
@@ -469,7 +469,7 @@ Php::Value GtkListStore_::get_iter_first(Php::Parameters& parameters)
 
 	GtkTreeIter iter;
 
-	gboolean ret = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(model), &iter);
+	bool ret = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(model), &iter);
 
 	return ret;
 }

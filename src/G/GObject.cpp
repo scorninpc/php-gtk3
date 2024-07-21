@@ -315,7 +315,7 @@ Php::Value GObject_::is_connected(Php::Parameters& parameters)
         return false;
     }
 
-    gboolean ret = g_signal_handler_is_connected(instance, (int)callback_handle);
+    bool ret = g_signal_handler_is_connected(instance, (int)callback_handle);
 
     return ret;
 }

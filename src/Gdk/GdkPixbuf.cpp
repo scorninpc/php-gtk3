@@ -227,7 +227,7 @@ Php::Value GdkPixbuf_::save(Php::Parameters &parameters)
 	std::string filename = parameters[0];
 	std::string type = parameters[1];
 
-	gboolean ret = gdk_pixbuf_save(instance, filename.c_str(), type.c_str(), NULL, NULL);
+	bool ret = gdk_pixbuf_save(instance, filename.c_str(), type.c_str(), NULL, NULL);
 
 	return (bool)ret;
 }

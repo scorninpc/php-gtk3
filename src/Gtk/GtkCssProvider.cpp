@@ -31,7 +31,7 @@ Php::Value GtkCssProvider_::load_from_data(Php::Parameters &parameters)
 
 	GError *error = NULL;
 
-	gboolean ret = gtk_css_provider_load_from_data (GTK_CSS_PROVIDER(instance), data, length, &error);
+	bool ret = gtk_css_provider_load_from_data (GTK_CSS_PROVIDER(instance), data, length, &error);
 
 	return ret;
 }
@@ -45,7 +45,7 @@ Php::Value GtkCssProvider_::load_from_file(Php::Parameters &parameters)
 
 	GError *error = NULL;
 
-	gboolean ret = gtk_css_provider_load_from_file (GTK_CSS_PROVIDER(instance), file, &error);
+	bool ret = gtk_css_provider_load_from_file (GTK_CSS_PROVIDER(instance), file, &error);
 
 	return ret;
 }
@@ -57,7 +57,7 @@ Php::Value GtkCssProvider_::load_from_path(Php::Parameters &parameters)
 
 	GError *error = NULL;
 
-	gboolean ret = gtk_css_provider_load_from_path (GTK_CSS_PROVIDER(instance), path, &error);
+	bool ret = gtk_css_provider_load_from_path (GTK_CSS_PROVIDER(instance), path, &error);
 
 	return ret;
 }

@@ -121,7 +121,7 @@ void GtkStack_::set_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkStack_::get_homogeneous()
 {
-	gboolean ret = gtk_stack_get_homogeneous (GTK_STACK(instance));
+	bool ret = gtk_stack_get_homogeneous (GTK_STACK(instance));
 
 	return ret;
 }
@@ -136,7 +136,7 @@ void GtkStack_::set_hhomogeneous(Php::Parameters &parameters)
 
 Php::Value GtkStack_::get_hhomogeneous()
 {
-	gboolean ret = gtk_stack_get_hhomogeneous (GTK_STACK(instance));
+	bool ret = gtk_stack_get_hhomogeneous (GTK_STACK(instance));
 
 	return ret;
 }
@@ -151,7 +151,7 @@ void GtkStack_::set_vhomogeneous(Php::Parameters &parameters)
 
 Php::Value GtkStack_::get_vhomogeneous()
 {
-	gboolean ret = gtk_stack_get_vhomogeneous (GTK_STACK(instance));
+	bool ret = gtk_stack_get_vhomogeneous (GTK_STACK(instance));
 
 	return ret;
 }
@@ -189,14 +189,14 @@ Php::Value GtkStack_::get_transition_type()
 
 Php::Value GtkStack_::get_transition_running()
 {
-	gboolean ret = gtk_stack_get_transition_running (GTK_STACK(instance));
+	bool ret = gtk_stack_get_transition_running (GTK_STACK(instance));
 
 	return ret;
 }
 
 Php::Value GtkStack_::get_interpolate_size()
 {
-	gboolean ret = gtk_stack_get_interpolate_size (GTK_STACK(instance));
+	bool ret = gtk_stack_get_interpolate_size (GTK_STACK(instance));
 
 	return ret;
 }

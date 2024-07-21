@@ -81,7 +81,7 @@ void GtkRecentChooserDialog_::set_show_private(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_show_private()
 {
-	gboolean ret = gtk_recent_chooser_get_show_private (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_show_private (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -96,7 +96,7 @@ void GtkRecentChooserDialog_::set_show_not_found(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_show_not_found()
 {
-	gboolean ret = gtk_recent_chooser_get_show_not_found (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_show_not_found (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -111,7 +111,7 @@ void GtkRecentChooserDialog_::set_show_icons(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_show_icons()
 {
-	gboolean ret = gtk_recent_chooser_get_show_icons (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_show_icons (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -126,7 +126,7 @@ void GtkRecentChooserDialog_::set_select_multiple(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_select_multiple()
 {
-	gboolean ret = gtk_recent_chooser_get_select_multiple (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_select_multiple (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -141,7 +141,7 @@ void GtkRecentChooserDialog_::set_local_only(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_local_only()
 {
-	gboolean ret = gtk_recent_chooser_get_local_only (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_local_only (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -171,7 +171,7 @@ void GtkRecentChooserDialog_::set_show_tips(Php::Parameters &parameters)
 
 Php::Value GtkRecentChooserDialog_::get_show_tips()
 {
-	gboolean ret = gtk_recent_chooser_get_show_tips (GTK_RECENT_CHOOSER(instance));
+	bool ret = gtk_recent_chooser_get_show_tips (GTK_RECENT_CHOOSER(instance));
 
 	return ret;
 }
@@ -217,7 +217,7 @@ Php::Value GtkRecentChooserDialog_::set_current_uri(Php::Parameters &parameters)
 
 	GError *error = NULL;
 
-	gboolean ret = gtk_recent_chooser_set_current_uri (GTK_RECENT_CHOOSER(instance), uri, &error);
+	bool ret = gtk_recent_chooser_set_current_uri (GTK_RECENT_CHOOSER(instance), uri, &error);
 
 	return ret;
 }
@@ -250,7 +250,7 @@ Php::Value GtkRecentChooserDialog_::select_uri(Php::Parameters &parameters)
 
 	GError *error = NULL;
 
-	gboolean ret = gtk_recent_chooser_select_uri (GTK_RECENT_CHOOSER(instance), uri, &error);
+	bool ret = gtk_recent_chooser_select_uri (GTK_RECENT_CHOOSER(instance), uri, &error);
 
 	return ret;
 }

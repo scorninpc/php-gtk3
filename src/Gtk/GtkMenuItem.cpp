@@ -68,7 +68,7 @@ void GtkMenuItem_::set_label(Php::Parameters &parameters)
 
 Php::Value GtkMenuItem_::get_use_underline()
 {
-	gboolean ret = gtk_menu_item_get_use_underline (GTK_MENU_ITEM(instance));
+	bool ret = gtk_menu_item_get_use_underline (GTK_MENU_ITEM(instance));
 
 	return ret;
 }
@@ -159,7 +159,7 @@ void GtkMenuItem_::size_allocate(Php::Parameters &parameters)
 
 Php::Value GtkMenuItem_::get_reserve_indicator()
 {
-	gboolean ret = gtk_menu_item_get_reserve_indicator (GTK_MENU_ITEM(instance));
+	bool ret = gtk_menu_item_get_reserve_indicator (GTK_MENU_ITEM(instance));
 
 	return ret;
 }

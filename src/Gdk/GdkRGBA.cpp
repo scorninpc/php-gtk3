@@ -36,7 +36,7 @@ Php::Value GdkRGBA_::parse(Php::Parameters &parameters)
 
     GdkRGBA rgba;
 
-    gboolean ret = gdk_rgba_parse(&rgba, spec);
+    bool ret = gdk_rgba_parse(&rgba, spec);
     if(!ret) {
         return ret;
     }

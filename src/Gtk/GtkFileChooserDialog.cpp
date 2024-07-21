@@ -67,7 +67,7 @@ void GtkFileChooserDialog_::set_local_only(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_local_only()
 {
-	gboolean ret = gtk_file_chooser_get_local_only (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_local_only (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -82,7 +82,7 @@ void GtkFileChooserDialog_::set_select_multiple(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_select_multiple()
 {
-	gboolean ret = gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -96,7 +96,7 @@ void GtkFileChooserDialog_::set_show_hidden(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_show_hidden()
 {
-	gboolean ret = gtk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_show_hidden (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -111,7 +111,7 @@ void GtkFileChooserDialog_::set_do_overwrite_confirmation(Php::Parameters &param
 
 Php::Value GtkFileChooserDialog_::get_do_overwrite_confirmation()
 {
-	gboolean ret = gtk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_do_overwrite_confirmation (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -126,7 +126,7 @@ void GtkFileChooserDialog_::set_create_folders(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_create_folders()
 {
-	gboolean ret = gtk_file_chooser_get_create_folders (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_create_folders (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -152,7 +152,7 @@ Php::Value GtkFileChooserDialog_::set_filename(Php::Parameters &parameters)
 	std::string s_name = parameters[0];
 	gchar *name = (gchar *)s_name.c_str();
 
-	gboolean ret = gtk_file_chooser_set_filename (GTK_FILE_CHOOSER(instance), name);
+	bool ret = gtk_file_chooser_set_filename (GTK_FILE_CHOOSER(instance), name);
 
 	return ret;
 }
@@ -169,7 +169,7 @@ Php::Value GtkFileChooserDialog_::select_filename(Php::Parameters &parameters)
 	std::string s_filename = parameters[0];
 	gchar *filename = (gchar *)s_filename.c_str();
 
-	gboolean ret = gtk_file_chooser_select_filename (GTK_FILE_CHOOSER(instance), filename);
+	bool ret = gtk_file_chooser_select_filename (GTK_FILE_CHOOSER(instance), filename);
 
 	return ret;
 }
@@ -213,7 +213,7 @@ Php::Value GtkFileChooserDialog_::set_current_folder(Php::Parameters &parameters
 	std::string s_filename = parameters[0];
 	gchar *filename = (gchar *)s_filename.c_str();
 
-	gboolean ret = gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(instance), filename);
+	bool ret = gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(instance), filename);
 
 	return ret;
 }
@@ -237,7 +237,7 @@ Php::Value GtkFileChooserDialog_::set_uri(Php::Parameters &parameters)
 	std::string s_uri = parameters[0];
 	gchar *uri = (gchar *)s_uri.c_str();
 
-	gboolean ret = gtk_file_chooser_set_uri (GTK_FILE_CHOOSER(instance), uri);
+	bool ret = gtk_file_chooser_set_uri (GTK_FILE_CHOOSER(instance), uri);
 
 	return ret;
 }
@@ -247,7 +247,7 @@ Php::Value GtkFileChooserDialog_::select_uri(Php::Parameters &parameters)
 	std::string s_uri = parameters[0];
 	gchar *uri = (gchar *)s_uri.c_str();
 
-	gboolean ret = gtk_file_chooser_select_uri (GTK_FILE_CHOOSER(instance), uri);
+	bool ret = gtk_file_chooser_select_uri (GTK_FILE_CHOOSER(instance), uri);
 
 	return ret;
 }
@@ -279,7 +279,7 @@ Php::Value GtkFileChooserDialog_::set_current_folder_uri(Php::Parameters &parame
 	std::string s_uri = parameters[0];
 	gchar *uri = (gchar *)s_uri.c_str();
 
-	gboolean ret = gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER(instance), uri);
+	bool ret = gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER(instance), uri);
 
 	return ret;
 }
@@ -325,7 +325,7 @@ void GtkFileChooserDialog_::set_preview_widget_active(Php::Parameters &parameter
 
 Php::Value GtkFileChooserDialog_::get_preview_widget_active()
 {
-	gboolean ret = gtk_file_chooser_get_preview_widget_active (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_preview_widget_active (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }
@@ -340,7 +340,7 @@ void GtkFileChooserDialog_::set_use_preview_label(Php::Parameters &parameters)
 
 Php::Value GtkFileChooserDialog_::get_use_preview_label()
 {
-	gboolean ret = gtk_file_chooser_get_use_preview_label (GTK_FILE_CHOOSER(instance));
+	bool ret = gtk_file_chooser_get_use_preview_label (GTK_FILE_CHOOSER(instance));
 
 	return ret;
 }

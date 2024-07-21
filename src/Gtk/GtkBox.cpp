@@ -107,7 +107,7 @@ void GtkBox_::pack_end(Php::Parameters &parameters)
 
 Php::Value GtkBox_::get_homogeneous()
 {
-	gboolean ret = gtk_box_get_homogeneous (GTK_BOX(instance));
+	bool ret = gtk_box_get_homogeneous (GTK_BOX(instance));
 
 	return ret;
 }
@@ -124,7 +124,7 @@ void GtkBox_::set_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkBox_::get_spacing()
 {
-	gboolean ret = gtk_box_get_spacing (GTK_BOX(instance));
+	bool ret = gtk_box_get_spacing (GTK_BOX(instance));
 
 	return ret;
 }

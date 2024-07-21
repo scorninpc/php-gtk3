@@ -79,7 +79,7 @@ void GtkFlowBox_::set_homogeneous(Php::Parameters &parameters)
 
 Php::Value GtkFlowBox_::get_homogeneous()
 {
-	gboolean ret = gtk_flow_box_get_homogeneous (GTK_FLOW_BOX(instance));
+	bool ret = gtk_flow_box_get_homogeneous (GTK_FLOW_BOX(instance));
 
 	return ret;
 }
@@ -154,7 +154,7 @@ void GtkFlowBox_::set_activate_on_single_click(Php::Parameters &parameters)
 
 Php::Value GtkFlowBox_::get_activate_on_single_click()
 {
-	gboolean ret = gtk_flow_box_get_activate_on_single_click (GTK_FLOW_BOX(instance));
+	bool ret = gtk_flow_box_get_activate_on_single_click (GTK_FLOW_BOX(instance));
 
 	return ret;
 }

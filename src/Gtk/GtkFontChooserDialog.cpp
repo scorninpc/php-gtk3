@@ -59,7 +59,7 @@ void GtkFontChooserDialog_::set_preview_text(Php::Parameters &parameters)
 
 Php::Value GtkFontChooserDialog_::get_show_preview_entry()
 {
-	gboolean ret = gtk_font_chooser_get_show_preview_entry (GTK_FONT_CHOOSER(instance));
+	bool ret = gtk_font_chooser_get_show_preview_entry (GTK_FONT_CHOOSER(instance));
 
 	return ret;
 }

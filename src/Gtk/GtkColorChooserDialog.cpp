@@ -55,7 +55,7 @@ void GtkColorChooserDialog_::set_rgba(Php::Parameters &parameters)
 
 Php::Value GtkColorChooserDialog_::get_use_alpha()
 {
-	gboolean ret = gtk_color_chooser_get_use_alpha (GTK_COLOR_CHOOSER(instance));
+	bool ret = gtk_color_chooser_get_use_alpha (GTK_COLOR_CHOOSER(instance));
 
 	return ret;
 }

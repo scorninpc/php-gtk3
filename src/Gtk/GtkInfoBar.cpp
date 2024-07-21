@@ -151,7 +151,7 @@ Php::Value GtkInfoBar_::get_content_area()
 
 Php::Value GtkInfoBar_::get_show_close_button()
 {
-	gboolean ret = gtk_info_bar_get_show_close_button (GTK_INFO_BAR(instance));
+	bool ret = gtk_info_bar_get_show_close_button (GTK_INFO_BAR(instance));
 
 	return ret;
 }

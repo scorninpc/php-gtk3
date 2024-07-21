@@ -47,7 +47,7 @@ void GtkToolButton_::set_use_underline(Php::Parameters &parameters)
 
 Php::Value GtkToolButton_::get_use_underline()
 {
-	gboolean ret = gtk_tool_button_get_use_underline (GTK_TOOL_BUTTON(instance));
+	bool ret = gtk_tool_button_get_use_underline (GTK_TOOL_BUTTON(instance));
 
 	return ret;
 }
