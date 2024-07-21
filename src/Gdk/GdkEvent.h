@@ -9,7 +9,7 @@
     #include "GdkEventKey.h"
 
     /**
-     * 
+     *
      */
     class GdkEvent_ : public Php::Base
     {
@@ -24,9 +24,14 @@
              */
             GdkEvent_() = default;
             virtual ~GdkEvent_() = default;
-            // 
+            //
             GdkEvent *get_instance();
             void set_instance(GdkEvent *event);
+
+            /**
+             * PHP Construct
+             */
+            void __construct(Php::Parameters &parameters);
 
             /**
              * Populate GdkEvent to PHPGTK::GDKEVENT

@@ -6,7 +6,7 @@
     #include <gtk/gtk.h>
 
     /**
-     * 
+     *
      */
     class GdkEventButton_ : public Php::Base
     {
@@ -19,6 +19,11 @@
              *  C++ constructor and destructor
              */
             GdkEventButton_();
+
+            /**
+             * PHP Construct
+             */
+            void __construct(Php::Parameters &parameters);
 
             /**
              * Populate GdkEventButton to PHPGTK::GdkEventButton
