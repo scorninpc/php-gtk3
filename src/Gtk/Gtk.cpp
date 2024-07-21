@@ -76,6 +76,16 @@ gint Gtk_::timeout_add_callback(gpointer data)
     return ret;
 }
 
+Php::Value Gtk_::source_remove(Php::Parameters &parameters)
+{
+    guint tag = (int)parameters[0];
+    
+    gboolean ret = g_source_remove(tag);
+    
+    return ret;
+}
+
+
 Php::Value Gtk_::events_pending()
 {
 	return gtk_events_pending();

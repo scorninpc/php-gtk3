@@ -44,6 +44,7 @@
 			static void main_quit();
 
 			static Php::Value timeout_add(Php::Parameters &parameters);
+			static Php::Value source_remove(Php::Parameters &parameters);
 			static gint timeout_add_callback(gpointer data);
 
 			static Php::Value events_pending();
