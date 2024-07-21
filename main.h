@@ -138,6 +138,7 @@
 	#include "src/Gtk/GtkSeparator.h"
 	#include "src/Gtk/GtkAlignment.h"
 	#include "src/Gtk/GtkStatusIcon.h"
+	#include "src/Gtk/GtkDrawingArea.h"
 
 	// GtkSourceView
 	#include "src/GtkSourceView/GtkSourceView.h"
@@ -149,6 +150,9 @@
 	#include "src/Glade/GladeEditor.h"
 	#include "src/Glade/GladePalette.h"
 	#include "src/Glade/GladeWidget.h"
+
+	// Pango
+	#include "src/Pango/PangoContext.h"
 
 #ifdef WITH_MAC_INTEGRATION
 	// GtkosxApplication

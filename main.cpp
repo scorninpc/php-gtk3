@@ -377,6 +377,14 @@ extern "C"
         gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
         gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
 
+        // GtkStyleProviderPriority
+        Php::Class<Php::Base> gtkstyleproviderpriority("GtkStyleProviderPriority");
+        gtkstyleproviderpriority.constant("APPLICATION", GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        gtkstyleproviderpriority.constant("FALLBACK", GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
+        gtkstyleproviderpriority.constant("SETTINGS", GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
+        gtkstyleproviderpriority.constant("THEME", GTK_STYLE_PROVIDER_PRIORITY_THEME);
+        gtkstyleproviderpriority.constant("USER", GTK_STYLE_PROVIDER_PRIORITY_USER);
+
         // ----- ENUMS
         extension.add(std::move(gtkwidgethelptype));
         extension.add(std::move(gtktextdirection));
@@ -386,6 +394,7 @@ extern "C"
         extension.add(std::move(gtkjunctionsides));
         extension.add(std::move(gtkregionflags));
         extension.add(std::move(gtkstylecontextprintflags));
+        extension.add(std::move(gtkstyleproviderpriority));
 
         // ----- GDK
         // Gdk
@@ -3823,11 +3832,21 @@ extern "C"
         gtkarrowtype.constant("RIGHT", (int)GTK_ARROW_RIGHT);
         gtkarrowtype.constant("NONE", (int)GTK_ARROW_NONE);
 
+        // GtkDrawingArea
+        Php::Class<GtkDrawingArea_> gtkdrawingarea("GtkDrawingArea");
+        gtkdrawingarea.extends(gtkwidget);
+        gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
+
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
         pangowrapmode.constant("CHAR", (int)PANGO_WRAP_CHAR);
         pangowrapmode.constant("WORD_CHAR", (int)PANGO_WRAP_WORD_CHAR);
+      
+        // PangoContext
+        Php::Class<PangoContext_> pangocontext("PangoContext");
+        pangocontext.extends(gobject);
+        pangocontext.method<&PangoContext_::__construct>("__construct");
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
@@ -3966,6 +3985,7 @@ extern "C"
         extension.add(std::move(gtkcolorchooserdialog));
         extension.add(std::move(gtkprintsettings));
         extension.add(std::move(gtkseparator));
+        extension.add(std::move(gtkdrawingarea));
 
         // extension.add(std::move(gtkpagesetupunixdialog));
         extension.add(std::move(gtkpagesetup));
@@ -4136,6 +4156,7 @@ extern "C"
         extension.add(std::move(gtkarrowtype));
 
         extension.add(std::move(pangowrapmode));
+        extension.add(std::move(pangocontext));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));

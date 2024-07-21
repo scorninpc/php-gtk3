@@ -8,15 +8,16 @@
 	#include "../G/GObject.h"
 	#include "../Gdk/GdkEvent.h"
 	#include "../Gdk/GdkWindow.h"
-      #include "../Gdk/GdkVisual.h"
+	#include "../Gdk/GdkVisual.h"
+	#include "../Pango/PangoContext.h"
 	#include "GtkWidgetPath.h"
 	#include "GtkStyleContext.h"
-    
+
 	#include "../../php-gtk.h"
 
     /**
      * GtkWidget_
-     * 
+     *
      * https://developer.gnome.org/gtk3/stable/GtkWidget.html
      */
     class GtkWidget_ : public GObject_
