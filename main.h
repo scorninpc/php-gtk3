@@ -32,6 +32,7 @@
 	// GTK
 	#include "src/Gtk/Gtk.h"
 	#include "src/Gtk/GtkApplication.h"
+	#include "src/Gtk/GtkIconTheme.h"
 	#include "src/Gtk/GtkWidget.h"
 	#include "src/Gtk/GtkEntry.h"
 	#include "src/Gtk/GtkEntryCompletion.h"

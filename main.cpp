@@ -254,6 +254,18 @@ extern "C"
         gtkapplication.method<&GtkApplication_::get_actions_for_accel>("get_actions_for_accel");
         gtkapplication.method<&GtkApplication_::window_new>("window_new");
 
+        // GtkIconTheme
+        Php::Class<GtkIconTheme_> gtkicontheme("GtkIconTheme");
+        gtkicontheme.extends(gobject);
+        gtkicontheme.method<&GtkIconTheme_::__construct>("__construct");
+        gtkicontheme.method<&GtkIconTheme_::get_default>("get_default");
+        gtkicontheme.method<&GtkIconTheme_::get_for_screen>("get_for_screen");
+        gtkicontheme.method<&GtkIconTheme_::has_icon>("has_icon");
+        gtkicontheme.method<&GtkIconTheme_::list_icons>("list_icons");
+        gtkicontheme.method<&GtkIconTheme_::add_resource_path>("add_resource_path");
+        gtkicontheme.method<&GtkIconTheme_::append_search_path>("append_search_path");
+        gtkicontheme.method<&GtkIconTheme_::prepend_search_path>("prepend_search_path");
+
         // GApplication
         Php::Class<GApplication_> gapplication("GApplication");
         gapplication.extends(gobject);
@@ -3985,6 +3997,7 @@ extern "C"
 
         extension.add(std::move(gtk));
         extension.add(std::move(gtkapplication));
+        extension.add(std::move(gtkicontheme));
         extension.add(std::move(gtkapplicationinhibitflag));
         extension.add(std::move(gtkorientation));
         extension.add(std::move(gtkpolicytype));
