@@ -389,13 +389,13 @@ extern "C"
         gtkstylecontextprintflags.constant("RECURSE", GTK_STYLE_CONTEXT_PRINT_RECURSE);
         gtkstylecontextprintflags.constant("SHOW_STYLE", GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
 
-        // GtkStyleProviderPriority
-        Php::Class<Php::Base> gtkstyleproviderpriority("GtkStyleProviderPriority");
-        gtkstyleproviderpriority.constant("APPLICATION", GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-        gtkstyleproviderpriority.constant("FALLBACK", GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
-        gtkstyleproviderpriority.constant("SETTINGS", GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
-        gtkstyleproviderpriority.constant("THEME", GTK_STYLE_PROVIDER_PRIORITY_THEME);
-        gtkstyleproviderpriority.constant("USER", GTK_STYLE_PROVIDER_PRIORITY_USER);
+        // GtkStyleProvider
+        Php::Class<Php::Base> gtkstyleprovider("GtkStyleProvider");
+        gtkstyleprovider.constant("PRIORITY_APPLICATION", GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        gtkstyleprovider.constant("PRIORITY_FALLBACK", GTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
+        gtkstyleprovider.constant("PRIORITY_SETTINGS", GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
+        gtkstyleprovider.constant("PRIORITY_THEME", GTK_STYLE_PROVIDER_PRIORITY_THEME);
+        gtkstyleprovider.constant("PRIORITY_USER", GTK_STYLE_PROVIDER_PRIORITY_USER);
 
         // ----- ENUMS
         extension.add(std::move(gtkwidgethelptype));
@@ -406,7 +406,7 @@ extern "C"
         extension.add(std::move(gtkjunctionsides));
         extension.add(std::move(gtkregionflags));
         extension.add(std::move(gtkstylecontextprintflags));
-        extension.add(std::move(gtkstyleproviderpriority));
+        extension.add(std::move(gtkstyleprovider));
 
         // ----- GDK
         // Gdk
@@ -3878,7 +3878,7 @@ extern "C"
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
         pangowrapmode.constant("CHAR", (int)PANGO_WRAP_CHAR);
         pangowrapmode.constant("WORD_CHAR", (int)PANGO_WRAP_WORD_CHAR);
-      
+
         // PangoContext
         Php::Class<PangoContext_> pangocontext("PangoContext");
         pangocontext.extends(gobject);
