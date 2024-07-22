@@ -1,0 +1,17 @@
+#!/bin/sh
+
+export APPDIR="$(dirname "$(readlink -f "${0}")")"
+
+${APPDIR}/apprun-hooks/linuxdeploy-plugin-gtk.sh
+
+# Paths
+export LD_LIBRARY_PATH=${APPDIR}/usr/lib:${APPDIR}/usr/local/php-gtk3/lib:${APPDIR}/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders:${LD_LIBRARY_PATH}
+export PATH=${PATH}:${APPDIR}/usr/local/php-gtk3/bin:${APPDIR}/usr/lib:${APPDIR}/usr/local/php-gtk3/lib:${APPDIR}/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+
+# export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:${APPDIR}/usr/local/share:${APPDIR}/usr/share
+
+# Run PHP with custom ini and custom modules extension dir
+${APPDIR}/usr/local/php-gtk3/bin/php \
+	-c ${APPDIR}/usr/local/php-gtk3/lib/php.ini \
+	-dextension_dir=${APPDIR}/usr/local/php-gtk3/lib/php/extensions \
+	$@
