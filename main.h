@@ -154,6 +154,9 @@
 
 	// Pango
 	#include "src/Pango/PangoContext.h"
+	#include "src/Pango/PangoLayout.h"
+	#include "src/Pango/PangoLayoutLine.h"
+	#include "src/Pango/PangoWrapMode.h"
 
 #ifdef WITH_MAC_INTEGRATION
 	// GtkosxApplication
