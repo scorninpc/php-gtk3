@@ -302,7 +302,7 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 
     g_signal_handler_disconnect(instance, (int)callback_handle);
 
-    g_object_remove_weak_pointer(G_OBJECT(instance), instance);
+    //g_object_remove_weak_pointer(G_OBJECT(instance), instance);
 }
 
 
