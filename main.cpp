@@ -3884,6 +3884,10 @@ extern "C"
         pangocontext.extends(gobject);
         pangocontext.method<&PangoContext_::__construct>("__construct");
 
+        // GLib
+        Php::Class<Glib_> glib("Glib");
+        glib.method<&Glib_::markup_escape_text>("markup_escape_text");
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -3951,6 +3955,7 @@ extern "C"
         /**
          * Add classes to extension
          */
+        extension.add(std::move(glib));
         extension.add(std::move(gobject));
         extension.add(std::move(gdk));
         extension.add(std::move(gdkvisual));

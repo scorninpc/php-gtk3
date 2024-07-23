@@ -134,9 +134,9 @@ MKDIR               =   mkdir -p
 #
 
 ifdef WITH_MAC_INTEGRATION
-	SOURCES = $(wildcard *.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/libwnck/*.cpp src/Pango/*.cpp)
+	SOURCES = $(wildcard *.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/Glib/*.cpp src/GtkSourceView/*.cpp src/libwnck/*.cpp src/Pango/*.cpp)
 else
-	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard *.cpp src/*.cpp src/libwnck/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/GtkSourceView/*.cpp src/Pango/*.cpp))
+	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard *.cpp src/*.cpp src/libwnck/*.cpp src/G/*.cpp src/Gdk/*.cpp src/Gtk/*.cpp src/Glade/*.cpp src/Glib/*.cpp src/GtkSourceView/*.cpp src/Pango/*.cpp))
 endif
 
 OBJECTS         = $(SOURCES:%.cpp=%.o)

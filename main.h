@@ -152,6 +152,9 @@
 	#include "src/Glade/GladePalette.h"
 	#include "src/Glade/GladeWidget.h"
 
+	// Glib
+	#include "src/Glib/Glib.h"
+
 	// Pango
 	#include "src/Pango/PangoContext.h"
 
