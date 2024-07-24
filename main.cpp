@@ -3873,6 +3873,10 @@ extern "C"
         gtkdrawingarea.extends(gtkwidget);
         gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
 
+        // Pango
+        Php::Class<Php::Base> pango("Pango");
+        pango.constant("SCALE", (int)PANGO_SCALE);
+
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
@@ -3883,6 +3887,20 @@ extern "C"
         Php::Class<PangoContext_> pangocontext("PangoContext");
         pangocontext.extends(gobject);
         pangocontext.method<&PangoContext_::__construct>("__construct");
+
+        // PangoLayout
+        Php::Class<PangoLayout_> pangolayout("PangoLayout");
+        pangolayout.extends(gobject);
+        pangolayout.method<&PangoLayout_::__construct>("__construct");
+        pangolayout.method<&PangoLayout_::set_text>("set_text");
+        pangolayout.method<&PangoLayout_::set_width>("set_width");
+        pangolayout.method<&PangoLayout_::get_line>("get_line");
+        pangolayout.method<&PangoLayout_::get_text>("get_text");
+        pangolayout.method<&PangoLayout_::get_width>("get_width");
+
+        // PangoLayoutLine
+        Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");
+        pangolayoutline.extends(gobject);
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
@@ -4192,8 +4210,11 @@ extern "C"
 
         extension.add(std::move(gtkarrowtype));
 
+        extension.add(std::move(pango));
         extension.add(std::move(pangowrapmode));
         extension.add(std::move(pangocontext));
+        extension.add(std::move(pangolayout));
+        extension.add(std::move(pangolayoutline));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
