@@ -128,13 +128,22 @@ Php::Value GObject_::connect_internal(Php::Parameters &parameters, bool after)
 
     // Create the CPP callback
     GClosure  *closure;
-    closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, (GClosureNotify)destroy_notify);
+    
+    // this method are removed, since leak memory does not happen anymore
+    // https://github.com/scorninpc/php-gtk3/issues/81
+    // closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, (GClosureNotify)destroy_notify);
+    
+    closure = g_cclosure_new_swap (G_CALLBACK (connect_callback), callback_object, NULL);
     int ret = g_signal_connect_closure (instance, callback_event, closure, after);
 
     // Return handler id
     return ret;
 }
 
+/**
+ * this method are removed, since leak memory does not happen anymore
+ * https://github.com/scorninpc/php-gtk3/issues/81
+ */
 void GObject_::destroy_notify(gpointer user_data, GClosure *closure)
 {
     // return to st_callback
@@ -302,7 +311,9 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 
     g_signal_handler_disconnect(instance, (int)callback_handle);
 
-    g_object_remove_weak_pointer(G_OBJECT(instance), instance);
+    // this method are removed, since leak memory does not happen anymore
+    // https://github.com/scorninpc/php-gtk3/issues/81
+    // g_object_remove_weak_pointer(G_OBJECT(instance), instance);
 }
 
 
