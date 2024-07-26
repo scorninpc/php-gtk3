@@ -1998,6 +1998,7 @@ extern "C"
         gtklabel.method<&GtkLabel_::get_track_visited_links>("get_track_visited_links");
         gtklabel.method<&GtkLabel_::set_ellipsize>("set_ellipsize");
         gtklabel.method<&GtkLabel_::get_ellipsize>("get_ellipsize");
+        gtklabel.method<&GtkLabel_::get_layout>("get_layout");
 
         // GtkNotebook
         Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
