@@ -55,3 +55,45 @@ Php::Value PangoLayout_::get_width()
 {
 	return pango_layout_get_width(PANGO_LAYOUT(instance));
 }
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_extents.html
+*/
+
+Php::Value PangoLayout_::get_extents()
+{
+	/**
+	* https://docs.gtk.org/Pango/struct.Rectangle.html
+	*/
+	PangoRectangle ink_rect;
+	PangoRectangle logical_rect;
+
+	pango_layout_get_extents(
+		PANGO_LAYOUT(
+			instance
+		),
+		&ink_rect,
+		&logical_rect
+	);
+
+	Php::Array ret_ink_rect_arr;
+
+		ret_ink_rect_arr["x"] = (int) ink_rect.x;
+		ret_ink_rect_arr["y"] = (int) ink_rect.y;
+		ret_ink_rect_arr["width"] = (int) ink_rect.width;
+		ret_ink_rect_arr["height"] = (int) ink_rect.height;
+
+	Php::Array ret_logical_rect_arr;
+
+		ret_logical_rect_arr["x"] = (int) logical_rect.x;
+		ret_logical_rect_arr["y"] = (int) logical_rect.y;
+		ret_logical_rect_arr["width"] = (int) logical_rect.width;
+		ret_logical_rect_arr["height"] = (int) logical_rect.height;
+
+	Php::Array ret_arr;
+
+		ret_arr["ink_rect"] = ret_ink_rect_arr;
+		ret_arr["logical_rect"] = ret_logical_rect_arr;
+
+	return ret_arr;
+}

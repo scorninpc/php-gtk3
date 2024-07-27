@@ -33,6 +33,8 @@
             Php::Value get_text();
 
             Php::Value get_width();
+
+            Php::Value get_extents();
     };
 
 #endif
