@@ -70,10 +70,6 @@ Php::Value PangoLayout_::xy_to_index(Php::Parameters &parameters)
 
 	if (result) {
 
-		// @TODO wanted canonical implementation
-		// where params return as generated parameters 2,3 and method return Php::Type::True;
-		// https://docs.gtk.org/Pango/method.Layout.xy_to_index.html #143
-
 		Php::Array params;
 
 		params["index_"] = (int) index_;
