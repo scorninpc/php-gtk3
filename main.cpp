@@ -3881,6 +3881,12 @@ extern "C"
         Php::Class<Php::Base> pango("Pango");
         pango.constant("SCALE", (int)PANGO_SCALE);
 
+        // PangoAttrList
+        Php::Class<PangoAttrList_> pangoattrlist("PangoAttrList");
+        pangoattrlist.extends(gobject);
+        pangoattrlist.method<&PangoAttrList_::__construct>("__construct");
+        pangoattrlist.method<&PangoAttrList_::get_attributes>("get_attributes");
+
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
@@ -4215,6 +4221,7 @@ extern "C"
         extension.add(std::move(gtkarrowtype));
 
         extension.add(std::move(pango));
+        extension.add(std::move(pangoattrlist));
         extension.add(std::move(pangowrapmode));
         extension.add(std::move(pangocontext));
         extension.add(std::move(pangolayout));
