@@ -421,6 +421,9 @@ extern "C"
         gdk.constant("MOD3_MASK", GDK_MOD3_MASK);
         gdk.constant("MOD4_MASK", GDK_MOD4_MASK);
         gdk.constant("MOD5_MASK", GDK_MOD5_MASK);
+        gdk.constant("BUTTON_MIDDLE", GDK_BUTTON_MIDDLE);
+        gdk.constant("BUTTON_PRIMARY", GDK_BUTTON_PRIMARY);
+        gdk.constant("BUTTON_SECONDARY", GDK_BUTTON_SECONDARY);
         gdk.constant("BUTTON1_MASK", GDK_BUTTON1_MASK);
         gdk.constant("BUTTON2_MASK", GDK_BUTTON2_MASK);
         gdk.constant("BUTTON3_MASK", GDK_BUTTON3_MASK);
