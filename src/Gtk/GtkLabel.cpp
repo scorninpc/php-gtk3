@@ -351,3 +351,14 @@ Php::Value GtkLabel_::get_ellipsize()
 
 	return ret;
 }
+
+Php::Value GtkLabel_::get_layout()
+{
+	PangoLayout *ret = gtk_label_get_layout (GTK_LABEL(instance));
+
+	PangoLayout_ *return_parsed = new PangoLayout_();
+
+	return_parsed->set_instance((gpointer *)ret);
+
+	return Php::Object("PangoLayout", return_parsed);
+}
