@@ -106,12 +106,15 @@
 	This is the poor part of this processes, becase there is alot PR unmerged on this repo. So, what you need is verify this [pull requests](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pulls) looking for changes to work on windows, and do some changes manualy. ex: clone repository, and look for PR to make that work on php 8.1 and look for PR to make this work on windows, and do some changes manualy
 
 	After do the changes, put this code into folder that we are using to store sources, to be like `C:\php-dev\php-cpp`
+	
+ 	Important: you have to rename the "string.h" in the folder "zend" to "strings.h" - because there is a Problem when using Windows. And then you have to change all dependencies from
+	#include "string.h" to #include "strings.h" - but not this `<string>` - otherwise you get problems with the standard windows header files.
 
-2. Preparing PHP-GTK
+3. Preparing PHP-GTK
 
 	Get the last source of [php-gtk](https://github.com/scorninpc/php-gtk3), and extract it on the same folder, to be like `C:\php-dev\php-gtk3`
 
-3. Preparing PHP
+4. Preparing PHP
 
 	Download the [PHP binary](https://windows.php.net/downloads/releases) of the same version of source code, if you want to use another versions, go to [archives](https://windows.php.net/downloads/releases/archives/) to get the binaries. Pay attention to versions with NTS (non-threaed safe) or with out NTS according with your configure options
 
