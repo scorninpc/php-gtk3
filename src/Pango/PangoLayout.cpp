@@ -55,3 +55,31 @@ Php::Value PangoLayout_::get_width()
 {
 	return pango_layout_get_width(PANGO_LAYOUT(instance));
 }
+
+Php::Value PangoLayout_::xy_to_index(Php::Parameters &parameters)
+{
+	gint x = (gint) parameters[0]; // * Pango::SCALE
+	gint y = (gint) parameters[1]; // * Pango::SCALE
+
+	gint index_;
+	gint trailing;
+
+	gboolean result = pango_layout_xy_to_index(
+		PANGO_LAYOUT(instance), x, y, &index_, &trailing
+	);
+
+	if (result) {
+
+		// @TODO wanted canonical implementation
+		// where params returned as generated arguments and return Php::Type::True;
+		// https://docs.gtk.org/Pango/method.Layout.xy_to_index.html #143
+
+		Php::Array params;
+
+		params["index_"] = index_;
+		params["trailing"] = trailing;
+
+		return params;
+
+	} else return Php::Type::False;
+}

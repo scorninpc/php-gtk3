@@ -3901,6 +3901,7 @@ extern "C"
         pangolayout.method<&PangoLayout_::get_line>("get_line");
         pangolayout.method<&PangoLayout_::get_text>("get_text");
         pangolayout.method<&PangoLayout_::get_width>("get_width");
+        pangolayout.method<&PangoLayout_::xy_to_index>("xy_to_index");
 
         // PangoLayoutLine
         Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");

@@ -33,6 +33,8 @@
             Php::Value get_text();
 
             Php::Value get_width();
+
+            Php::Value xy_to_index(Php::Parameters &parameters);
     };
 
 #endif
