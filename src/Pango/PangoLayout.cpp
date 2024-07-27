@@ -81,5 +81,7 @@ Php::Value PangoLayout_::xy_to_index(Php::Parameters &parameters)
 
 		return params;
 
-	} else return Php::Type::False;
+	}
+
+	return Php::Type::False;
 }
