@@ -164,3 +164,53 @@ Php::Value PangoLayout_::get_extents()
 
 	return ret_arr;
 }
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_size.html
+*/
+
+Php::Value PangoLayout_::get_size()
+{
+	gint width;
+	gint height;
+
+	pango_layout_get_size(
+		PANGO_LAYOUT(
+			instance
+		),
+		&width,
+		&height
+	);
+
+	Php::Array ret_arr;
+
+		ret_arr["width"] = (int) width;
+		ret_arr["height"] = (int) height;
+
+	return ret_arr;
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_pixel_size.html
+*/
+
+Php::Value PangoLayout_::get_pixel_size()
+{
+	gint width;
+	gint height;
+	
+	pango_layout_get_pixel_size(
+		PANGO_LAYOUT(
+			instance
+		),
+		&width,
+		&height
+	);
+
+	Php::Array ret_arr;
+
+		ret_arr["width"] = (int) width;
+		ret_arr["height"] = (int) height;
+
+	return ret_arr;
+}

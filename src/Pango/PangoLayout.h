@@ -37,6 +37,10 @@
             Php::Value xy_to_index(Php::Parameters &parameters);
 
             Php::Value get_extents();
+
+            Php::Value get_size();
+            
+            Php::Value get_pixel_size();
     };
 
 #endif
