@@ -3910,6 +3910,7 @@ extern "C"
         pangolayout.extends(gobject);
         pangolayout.method<&PangoLayout_::__construct>("__construct");
         pangolayout.method<&PangoLayout_::set_text>("set_text");
+        pangolayout.method<&PangoLayout_::set_markup>("set_markup");
         pangolayout.method<&PangoLayout_::set_width>("set_width");
         pangolayout.method<&PangoLayout_::get_line>("get_line");
         pangolayout.method<&PangoLayout_::get_text>("get_text");

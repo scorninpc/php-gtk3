@@ -26,6 +26,8 @@
 
             void set_text(Php::Parameters &parameters);
 
+            void set_markup(Php::Parameters &parameters);
+
             void set_width(Php::Parameters &parameters);
 
             Php::Value get_line(Php::Parameters &parameters);
@@ -39,7 +41,7 @@
             Php::Value get_extents();
 
             Php::Value get_size();
-            
+
             Php::Value get_pixel_size();
     };
 
