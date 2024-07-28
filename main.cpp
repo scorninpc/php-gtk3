@@ -3914,6 +3914,7 @@ extern "C"
         pangolayout.method<&PangoLayout_::get_line>("get_line");
         pangolayout.method<&PangoLayout_::get_text>("get_text");
         pangolayout.method<&PangoLayout_::get_width>("get_width");
+        pangolayout.method<&PangoLayout_::xy_to_index>("xy_to_index");
         pangolayout.method<&PangoLayout_::get_extents>("get_extents");
 
         // PangoLayoutLine

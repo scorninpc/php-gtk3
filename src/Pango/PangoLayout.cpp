@@ -98,10 +98,35 @@ Php::Value PangoLayout_::get_width()
 	return pango_layout_get_width(PANGO_LAYOUT(instance));
 }
 
+Php::Value PangoLayout_::xy_to_index(Php::Parameters &parameters)
+{
+	gint x = (gint) parameters[0]; // * Pango::SCALE
+	gint y = (gint) parameters[1]; // * Pango::SCALE
+
+	gint index_;
+	gint trailing;
+
+	gboolean result = pango_layout_xy_to_index(
+		PANGO_LAYOUT(instance), x, y, &index_, &trailing
+	);
+
+	if (result) {
+
+		Php::Array params;
+
+		params["index_"] = (int) index_;
+		params["trailing"] = (int) trailing;
+
+		return params;
+
+	}
+
+	return Php::Type::False;
+}
+
 /**
 * https://docs.gtk.org/Pango/method.Layout.get_extents.html
 */
-
 Php::Value PangoLayout_::get_extents()
 {
 	/**
