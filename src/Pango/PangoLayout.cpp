@@ -35,15 +35,57 @@ void PangoLayout_::set_width(Php::Parameters &parameters)
 	pango_layout_set_width(PANGO_LAYOUT(instance), width);
 }
 
+/**
+ * https://docs.gtk.org/Pango/method.Layout.get_line.html
+ */
 Php::Value PangoLayout_::get_line(Php::Parameters &parameters)
 {
-	throw Php::Exception("PangoLayout::get_line not implemented");
-
-	/* @TODO 
 	gint line = (gint) parameters[0];
 
-	return pango_layout_get_line(PANGO_LAYOUT(instance), line);
-	*/
+	PangoLayoutLine* ret = pango_layout_get_line(
+		PANGO_LAYOUT(instance), line
+	);
+
+	if (ret)
+	{
+		/**
+		 * Build PangoLayoutLine
+		 * https://docs.gtk.org/Pango/struct.LayoutLine.html
+		 */
+
+		Php::Array ret_arr;
+
+		PangoLayout_ *return_parsed = new PangoLayout_();
+
+		return_parsed->set_instance(
+			(gpointer *)PANGO_LAYOUT(ret->layout)
+		);
+
+		ret_arr["layout"] = Php::Object("PangoLayout", return_parsed);
+		ret_arr["start_index"] = (int) ret->start_index;
+		ret_arr["length"] = (int) ret->length;
+
+		// @TODO
+		// ret_arr["runs"] = Php::Object("GSList", ret->runs);
+
+		/**
+		 * TRUE if this is the first line of the paragraph (by documentation)
+		 */
+		if (ret->is_paragraph_start == true) {
+			ret_arr["is_paragraph_start"] = Php::Type::True;
+		} else {
+			ret_arr["is_paragraph_start"] = (int) ret->is_paragraph_start;
+		}
+
+		/**
+		 * https://docs.gtk.org/Pango/enum.Direction.html
+		 */
+		ret_arr["resolved_dir"] = (int) ret->resolved_dir;
+
+		return ret_arr;
+	}
+
+	return Php::Type::Null;
 }
 
 Php::Value PangoLayout_::get_text()
