@@ -153,6 +153,7 @@
 	#include "src/Glade/GladeWidget.h"
 
 	// Pango
+	#include "src/Pango/PangoAttrList.h"
 	#include "src/Pango/PangoContext.h"
 	#include "src/Pango/PangoLayout.h"
 	#include "src/Pango/PangoLayoutLine.h"

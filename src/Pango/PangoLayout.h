@@ -35,6 +35,8 @@
             Php::Value get_width();
 
             Php::Value xy_to_index(Php::Parameters &parameters);
+
+            Php::Value get_extents();
     };
 
 #endif

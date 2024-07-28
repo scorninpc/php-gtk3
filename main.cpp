@@ -3880,6 +3880,19 @@ extern "C"
         // Pango
         Php::Class<Php::Base> pango("Pango");
         pango.constant("SCALE", (int)PANGO_SCALE);
+        pango.constant("DIRECTION_LTR", (int)PANGO_DIRECTION_LTR);
+        pango.constant("DIRECTION_RTL", (int)PANGO_DIRECTION_RTL);
+        pango.constant("DIRECTION_TTB_LTR", (int)PANGO_DIRECTION_TTB_LTR);
+        pango.constant("DIRECTION_TTB_RTL", (int)PANGO_DIRECTION_TTB_RTL);
+        pango.constant("DIRECTION_WEAK_LTR", (int)PANGO_DIRECTION_WEAK_LTR);
+        pango.constant("DIRECTION_WEAK_RTL", (int)PANGO_DIRECTION_WEAK_RTL);
+        pango.constant("DIRECTION_NEUTRAL", (int)PANGO_DIRECTION_NEUTRAL);
+
+        // PangoAttrList
+        Php::Class<PangoAttrList_> pangoattrlist("PangoAttrList");
+        pangoattrlist.extends(gobject);
+        pangoattrlist.method<&PangoAttrList_::__construct>("__construct");
+        pangoattrlist.method<&PangoAttrList_::get_attributes>("get_attributes");
 
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
@@ -3902,6 +3915,7 @@ extern "C"
         pangolayout.method<&PangoLayout_::get_text>("get_text");
         pangolayout.method<&PangoLayout_::get_width>("get_width");
         pangolayout.method<&PangoLayout_::xy_to_index>("xy_to_index");
+        pangolayout.method<&PangoLayout_::get_extents>("get_extents");
 
         // PangoLayoutLine
         Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");
@@ -4216,6 +4230,7 @@ extern "C"
         extension.add(std::move(gtkarrowtype));
 
         extension.add(std::move(pango));
+        extension.add(std::move(pangoattrlist));
         extension.add(std::move(pangowrapmode));
         extension.add(std::move(pangocontext));
         extension.add(std::move(pangolayout));
