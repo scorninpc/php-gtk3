@@ -3888,6 +3888,12 @@ extern "C"
         pango.constant("DIRECTION_WEAK_RTL", (int)PANGO_DIRECTION_WEAK_RTL);
         pango.constant("DIRECTION_NEUTRAL", (int)PANGO_DIRECTION_NEUTRAL);
 
+        // PangoAttrList
+        Php::Class<PangoAttrList_> pangoattrlist("PangoAttrList");
+        pangoattrlist.extends(gobject);
+        pangoattrlist.method<&PangoAttrList_::__construct>("__construct");
+        pangoattrlist.method<&PangoAttrList_::get_attributes>("get_attributes");
+
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
@@ -4223,6 +4229,7 @@ extern "C"
         extension.add(std::move(gtkarrowtype));
 
         extension.add(std::move(pango));
+        extension.add(std::move(pangoattrlist));
         extension.add(std::move(pangowrapmode));
         extension.add(std::move(pangocontext));
         extension.add(std::move(pangolayout));
