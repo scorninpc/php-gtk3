@@ -43,6 +43,14 @@
             Php::Value get_size();
 
             Php::Value get_pixel_size();
+
+            void set_spacing(Php::Parameters &parameters);
+
+            Php::Value get_spacing();
+
+            void set_line_spacing(Php::Parameters &parameters);
+
+            Php::Value get_line_spacing();
     };
 
 #endif
