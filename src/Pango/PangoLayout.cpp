@@ -28,6 +28,25 @@ void PangoLayout_::set_text(Php::Parameters &parameters)
 	pango_layout_set_text(PANGO_LAYOUT(instance), text, length);
 }
 
+/**
+ * https://docs.gtk.org/Pango/method.Layout.set_markup.html
+ */
+void PangoLayout_::set_markup(Php::Parameters &parameters)
+{
+	std::string s_markup = parameters[0];
+	gchar* markup = (gchar*) s_markup.c_str();
+
+	gint length = (gint) parameters[1];
+
+	pango_layout_set_markup(
+		PANGO_LAYOUT(
+			instance
+		),
+		markup,
+		length
+	);
+}
+
 void PangoLayout_::set_width(Php::Parameters &parameters)
 {
 	gint width = (gint) parameters[0];
@@ -161,6 +180,56 @@ Php::Value PangoLayout_::get_extents()
 
 		ret_arr["ink_rect"] = ink_rect_arr;
 		ret_arr["logical_rect"] = logical_rect_arr;
+
+	return ret_arr;
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_size.html
+*/
+
+Php::Value PangoLayout_::get_size()
+{
+	gint width;
+	gint height;
+
+	pango_layout_get_size(
+		PANGO_LAYOUT(
+			instance
+		),
+		&width,
+		&height
+	);
+
+	Php::Array ret_arr;
+
+		ret_arr["width"] = (int) width;
+		ret_arr["height"] = (int) height;
+
+	return ret_arr;
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_pixel_size.html
+*/
+
+Php::Value PangoLayout_::get_pixel_size()
+{
+	gint width;
+	gint height;
+	
+	pango_layout_get_pixel_size(
+		PANGO_LAYOUT(
+			instance
+		),
+		&width,
+		&height
+	);
+
+	Php::Array ret_arr;
+
+		ret_arr["width"] = (int) width;
+		ret_arr["height"] = (int) height;
 
 	return ret_arr;
 }

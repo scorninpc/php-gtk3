@@ -3910,12 +3910,15 @@ extern "C"
         pangolayout.extends(gobject);
         pangolayout.method<&PangoLayout_::__construct>("__construct");
         pangolayout.method<&PangoLayout_::set_text>("set_text");
+        pangolayout.method<&PangoLayout_::set_markup>("set_markup");
         pangolayout.method<&PangoLayout_::set_width>("set_width");
         pangolayout.method<&PangoLayout_::get_line>("get_line");
         pangolayout.method<&PangoLayout_::get_text>("get_text");
         pangolayout.method<&PangoLayout_::get_width>("get_width");
         pangolayout.method<&PangoLayout_::xy_to_index>("xy_to_index");
         pangolayout.method<&PangoLayout_::get_extents>("get_extents");
+        pangolayout.method<&PangoLayout_::get_size>("get_size");
+        pangolayout.method<&PangoLayout_::get_pixel_size>("get_pixel_size");
 
         // PangoLayoutLine
         Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");
