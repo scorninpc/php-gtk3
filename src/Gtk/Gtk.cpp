@@ -122,6 +122,36 @@ Php::Value Gtk_::main_iteration()
 	return gtk_main_iteration();
 }
 
+/**
+ * https://docs.gtk.org/gtk3/func.get_major_version.html
+ */
+Php::Value Gtk_::get_major_version()
+{
+    guint ret = gtk_get_major_version();
+
+    return (int) ret;
+}
+
+/**
+ * https://docs.gtk.org/gtk3/func.get_micro_version.html
+ */
+Php::Value Gtk_::get_micro_version()
+{
+    guint ret = gtk_get_micro_version();
+
+    return (int) ret;
+}
+
+/**
+ * https://docs.gtk.org/gtk3/func.get_minor_version.html
+ */
+Php::Value Gtk_::get_minor_version()
+{
+    guint ret = gtk_get_minor_version();
+
+    return (int) ret;
+}
+
 void Gtk_::init()
 {
     gtk_init(0, NULL);
