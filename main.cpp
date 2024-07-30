@@ -868,6 +868,10 @@ extern "C"
         gtk.method<&Gtk_::get_micro_version>("get_micro_version");
         gtk.method<&Gtk_::get_minor_version>("get_minor_version");
 
+        gtk.constant("MAJOR_VERSION", GTK_MAJOR_VERSION);
+        gtk.constant("MICRO_VERSION", GTK_MICRO_VERSION);
+        gtk.constant("MINOR_VERSION", GTK_MINOR_VERSION);
+
         gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
         gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
 
