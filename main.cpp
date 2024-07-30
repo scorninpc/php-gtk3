@@ -861,6 +861,7 @@ extern "C"
         gtk.method<&Gtk_::main_quit>("main_quit");
         gtk.method<&Gtk_::timeout_add>("timeout_add");
         gtk.method<&Gtk_::source_remove>("source_remove");
+        gtk.method<&Gtk_::show_uri_on_window>("show_uri_on_window");
         gtk.method<&Gtk_::events_pending>("events_pending");
         gtk.method<&Gtk_::main_iteration>("main_iteration");
 
