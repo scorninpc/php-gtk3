@@ -3927,6 +3927,10 @@ extern "C"
         pangolayout.method<&PangoLayout_::get_extents>("get_extents");
         pangolayout.method<&PangoLayout_::get_size>("get_size");
         pangolayout.method<&PangoLayout_::get_pixel_size>("get_pixel_size");
+        pangolayout.method<&PangoLayout_::set_spacing>("set_spacing");
+        pangolayout.method<&PangoLayout_::get_spacing>("get_spacing");
+        pangolayout.method<&PangoLayout_::set_line_spacing>("set_line_spacing");
+        pangolayout.method<&PangoLayout_::get_line_spacing>("get_line_spacing");
 
         // PangoLayoutLine
         Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");

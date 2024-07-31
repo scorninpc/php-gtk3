@@ -233,3 +233,59 @@ Php::Value PangoLayout_::get_pixel_size()
 
 	return ret_arr;
 }
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.set_spacing.html
+*/
+void PangoLayout_::set_spacing(Php::Parameters &parameters)
+{
+	gint spacing = (gint) parameters[0];
+
+	pango_layout_set_spacing(
+		PANGO_LAYOUT(
+			instance
+		), 
+		spacing
+	);
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_spacing.html
+*/
+Php::Value PangoLayout_::get_spacing()
+{
+	return pango_layout_get_spacing(
+		PANGO_LAYOUT(
+			instance
+		)
+	);
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.set_line_spacing.html
+*/
+void PangoLayout_::set_line_spacing(Php::Parameters &parameters)
+{
+	double d_factor = parameters[0];
+
+	gfloat factor = (float) d_factor;
+
+	pango_layout_set_line_spacing(
+		PANGO_LAYOUT(
+			instance
+		), 
+		factor
+	);
+}
+
+/**
+* https://docs.gtk.org/Pango/method.Layout.get_line_spacing.html
+*/
+Php::Value PangoLayout_::get_line_spacing()
+{
+	return pango_layout_get_line_spacing(
+		PANGO_LAYOUT(
+			instance
+		)
+	);
+}
