@@ -85,6 +85,32 @@ Php::Value Gtk_::source_remove(Php::Parameters &parameters)
     return ret;
 }
 
+/**
+ * https://docs.gtk.org/gtk3/func.show_uri_on_window.html
+ */
+Php::Value Gtk_::show_uri_on_window(Php::Parameters &parameters)
+{
+    // Init parent object
+    Php::Value object_parent = parameters[0];
+    GtkWindow *parent = NULL;
+
+    if (object_parent.instanceOf("GtkWindow")) {
+        GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
+        parent = GTK_WINDOW(phpgtk_parent->get_instance());
+    }
+
+    // Init URI
+    std::string s_uri = parameters[1];
+    char* uri = (char*)s_uri.c_str();
+
+    // @TODO
+    guint32 timestamp;
+    GError** error;
+    
+    gboolean ret = gtk_show_uri_on_window(parent, uri, timestamp, error);
+
+    return ret;
+}
 
 Php::Value Gtk_::events_pending()
 {
@@ -94,6 +120,36 @@ Php::Value Gtk_::events_pending()
 Php::Value Gtk_::main_iteration()
 {
 	return gtk_main_iteration();
+}
+
+/**
+ * https://docs.gtk.org/gtk3/func.get_major_version.html
+ */
+Php::Value Gtk_::get_major_version()
+{
+    guint ret = gtk_get_major_version();
+
+    return (int) ret;
+}
+
+/**
+ * https://docs.gtk.org/gtk3/func.get_micro_version.html
+ */
+Php::Value Gtk_::get_micro_version()
+{
+    guint ret = gtk_get_micro_version();
+
+    return (int) ret;
+}
+
+/**
+ * https://docs.gtk.org/gtk3/func.get_minor_version.html
+ */
+Php::Value Gtk_::get_minor_version()
+{
+    guint ret = gtk_get_minor_version();
+
+    return (int) ret;
 }
 
 void Gtk_::init()

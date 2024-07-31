@@ -861,8 +861,16 @@ extern "C"
         gtk.method<&Gtk_::main_quit>("main_quit");
         gtk.method<&Gtk_::timeout_add>("timeout_add");
         gtk.method<&Gtk_::source_remove>("source_remove");
+        gtk.method<&Gtk_::show_uri_on_window>("show_uri_on_window");
         gtk.method<&Gtk_::events_pending>("events_pending");
         gtk.method<&Gtk_::main_iteration>("main_iteration");
+        gtk.method<&Gtk_::get_major_version>("get_major_version");
+        gtk.method<&Gtk_::get_micro_version>("get_micro_version");
+        gtk.method<&Gtk_::get_minor_version>("get_minor_version");
+
+        gtk.constant("MAJOR_VERSION", GTK_MAJOR_VERSION);
+        gtk.constant("MICRO_VERSION", GTK_MICRO_VERSION);
+        gtk.constant("MINOR_VERSION", GTK_MINOR_VERSION);
 
         gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
         gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
