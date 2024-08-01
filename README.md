@@ -47,6 +47,9 @@ $win->connect("destroy", "GtkWindowDestroy");
 
 // Show window
 $win->show_all();
+
+// Start
+Gtk::main();
 ```
 
 ## Involved

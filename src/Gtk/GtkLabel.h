@@ -7,6 +7,8 @@
 
 	#include "GtkWidget.h"
 
+	#include "../Pango/PangoLayout.h"
+
 	#include "../../php-gtk.h"
 
     /**
@@ -110,6 +112,8 @@
             void set_ellipsize(Php::Parameters &parameters);
 
             Php::Value get_ellipsize();
+
+            Php::Value get_layout();
 
     };
 

@@ -7,6 +7,12 @@
 	#include <gtk/gtk.h>
 
 	/**
+	 * Dependency:
+	 *  show_uri_on_window
+	 */
+	#include "GtkWindow.h" 
+
+	/**
 	 *  
 	 */
 	class Gtk_ : public Php::Base
@@ -45,10 +51,14 @@
 
 			static Php::Value timeout_add(Php::Parameters &parameters);
 			static Php::Value source_remove(Php::Parameters &parameters);
+			static Php::Value show_uri_on_window(Php::Parameters &parameters);
 			static gint timeout_add_callback(gpointer data);
 
 			static Php::Value events_pending();
 			static Php::Value main_iteration();
+			static Php::Value get_major_version();
+			static Php::Value get_micro_version();
+			static Php::Value get_minor_version();
 			static void init();
 
 	};

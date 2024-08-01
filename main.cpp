@@ -421,6 +421,9 @@ extern "C"
         gdk.constant("MOD3_MASK", GDK_MOD3_MASK);
         gdk.constant("MOD4_MASK", GDK_MOD4_MASK);
         gdk.constant("MOD5_MASK", GDK_MOD5_MASK);
+        gdk.constant("BUTTON_MIDDLE", GDK_BUTTON_MIDDLE);
+        gdk.constant("BUTTON_PRIMARY", GDK_BUTTON_PRIMARY);
+        gdk.constant("BUTTON_SECONDARY", GDK_BUTTON_SECONDARY);
         gdk.constant("BUTTON1_MASK", GDK_BUTTON1_MASK);
         gdk.constant("BUTTON2_MASK", GDK_BUTTON2_MASK);
         gdk.constant("BUTTON3_MASK", GDK_BUTTON3_MASK);
@@ -858,8 +861,16 @@ extern "C"
         gtk.method<&Gtk_::main_quit>("main_quit");
         gtk.method<&Gtk_::timeout_add>("timeout_add");
         gtk.method<&Gtk_::source_remove>("source_remove");
+        gtk.method<&Gtk_::show_uri_on_window>("show_uri_on_window");
         gtk.method<&Gtk_::events_pending>("events_pending");
         gtk.method<&Gtk_::main_iteration>("main_iteration");
+        gtk.method<&Gtk_::get_major_version>("get_major_version");
+        gtk.method<&Gtk_::get_micro_version>("get_micro_version");
+        gtk.method<&Gtk_::get_minor_version>("get_minor_version");
+
+        gtk.constant("MAJOR_VERSION", GTK_MAJOR_VERSION);
+        gtk.constant("MICRO_VERSION", GTK_MICRO_VERSION);
+        gtk.constant("MINOR_VERSION", GTK_MINOR_VERSION);
 
         gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
         gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
@@ -1998,6 +2009,7 @@ extern "C"
         gtklabel.method<&GtkLabel_::get_track_visited_links>("get_track_visited_links");
         gtklabel.method<&GtkLabel_::set_ellipsize>("set_ellipsize");
         gtklabel.method<&GtkLabel_::get_ellipsize>("get_ellipsize");
+        gtklabel.method<&GtkLabel_::get_layout>("get_layout");
 
         // GtkNotebook
         Php::Class<GtkNotebook_> gtknotebook("GtkNotebook");
@@ -3873,6 +3885,23 @@ extern "C"
         gtkdrawingarea.extends(gtkwidget);
         gtkdrawingarea.method<&GtkDrawingArea_::__construct>("__construct");
 
+        // Pango
+        Php::Class<Php::Base> pango("Pango");
+        pango.constant("SCALE", (int)PANGO_SCALE);
+        pango.constant("DIRECTION_LTR", (int)PANGO_DIRECTION_LTR);
+        pango.constant("DIRECTION_RTL", (int)PANGO_DIRECTION_RTL);
+        pango.constant("DIRECTION_TTB_LTR", (int)PANGO_DIRECTION_TTB_LTR);
+        pango.constant("DIRECTION_TTB_RTL", (int)PANGO_DIRECTION_TTB_RTL);
+        pango.constant("DIRECTION_WEAK_LTR", (int)PANGO_DIRECTION_WEAK_LTR);
+        pango.constant("DIRECTION_WEAK_RTL", (int)PANGO_DIRECTION_WEAK_RTL);
+        pango.constant("DIRECTION_NEUTRAL", (int)PANGO_DIRECTION_NEUTRAL);
+
+        // PangoAttrList
+        Php::Class<PangoAttrList_> pangoattrlist("PangoAttrList");
+        pangoattrlist.extends(gobject);
+        pangoattrlist.method<&PangoAttrList_::__construct>("__construct");
+        pangoattrlist.method<&PangoAttrList_::get_attributes>("get_attributes");
+
         // PangoWrapMode
         Php::Class<Php::Base> pangowrapmode("PangoWrapMode");
         pangowrapmode.constant("WORD", (int)PANGO_WRAP_WORD);
@@ -3887,6 +3916,29 @@ extern "C"
         // GLib
         Php::Class<Glib_> glib("Glib");
         glib.method<&Glib_::markup_escape_text>("markup_escape_text");
+
+        // PangoLayout
+        Php::Class<PangoLayout_> pangolayout("PangoLayout");
+        pangolayout.extends(gobject);
+        pangolayout.method<&PangoLayout_::__construct>("__construct");
+        pangolayout.method<&PangoLayout_::set_text>("set_text");
+        pangolayout.method<&PangoLayout_::set_markup>("set_markup");
+        pangolayout.method<&PangoLayout_::set_width>("set_width");
+        pangolayout.method<&PangoLayout_::get_line>("get_line");
+        pangolayout.method<&PangoLayout_::get_text>("get_text");
+        pangolayout.method<&PangoLayout_::get_width>("get_width");
+        pangolayout.method<&PangoLayout_::xy_to_index>("xy_to_index");
+        pangolayout.method<&PangoLayout_::get_extents>("get_extents");
+        pangolayout.method<&PangoLayout_::get_size>("get_size");
+        pangolayout.method<&PangoLayout_::get_pixel_size>("get_pixel_size");
+        pangolayout.method<&PangoLayout_::set_spacing>("set_spacing");
+        pangolayout.method<&PangoLayout_::get_spacing>("get_spacing");
+        pangolayout.method<&PangoLayout_::set_line_spacing>("set_line_spacing");
+        pangolayout.method<&PangoLayout_::get_line_spacing>("get_line_spacing");
+
+        // PangoLayoutLine
+        Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");
+        pangolayoutline.extends(gobject);
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
@@ -4197,8 +4249,12 @@ extern "C"
 
         extension.add(std::move(gtkarrowtype));
 
+        extension.add(std::move(pango));
+        extension.add(std::move(pangoattrlist));
         extension.add(std::move(pangowrapmode));
         extension.add(std::move(pangocontext));
+        extension.add(std::move(pangolayout));
+        extension.add(std::move(pangolayoutline));
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
