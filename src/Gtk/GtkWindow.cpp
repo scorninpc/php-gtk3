@@ -14,7 +14,8 @@ GtkWindow_::~GtkWindow_() = default;
 void GtkWindow_::__construct(Php::Parameters &parameters)
 {
     // Verify if has window type parameter
-    int int_window_type = 0;
+    int int_window_type = GTK_WINDOW_TOPLEVEL;
+
     if(parameters.size() >= 1) {
         int_window_type = parameters[0];
     }
