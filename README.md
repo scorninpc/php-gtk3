@@ -24,6 +24,10 @@ PHP-GTK3 work with a middleway of [PHP-CPP](https://github.com/CopernicaMarketin
 
 You can find a cookbook of codes compiled and organized in http://andor.com.br/php-gtk/cookbook
 
+## VSCode
+
+This is [VSCode extension](https://marketplace.visualstudio.com/items?itemName=RobertBeran.PHPGTK3Syntax) (not official) written by [subabrain](https://github.com/subabrain)
+
 ## Example
 
 ```php
