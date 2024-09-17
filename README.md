@@ -8,6 +8,7 @@ PHP-GTK is a bind of GTK 3 to create desktop applications with PHP
  - [Compile for window](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md)
  - [Compile for linux](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md)
  - [Compile for mac](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-mac.md)
+ - [Compile source with docker](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-docker.md)
  - [Appimage](https://github.com/scorninpc/php-gtk3/blob/master/docs/appimage.md)
 
 ## Contributing

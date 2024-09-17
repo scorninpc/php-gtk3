@@ -37,7 +37,7 @@ ENV PATH=${PATH}:/usr/local/php-gtk3/bin
 
 # php-cpp
 WORKDIR /php-gtk-build
-RUN git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
+RUN git clone https://github.com/fast-debug/PHP-CPP.git 
 WORKDIR /php-gtk-build/PHP-CPP
 RUN make -j 4 && make install
 

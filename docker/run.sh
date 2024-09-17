@@ -18,8 +18,6 @@ if [ "$1" == "php-copy" ]; then
 	mkdir /app/usr/local/php-gtk3 -p
 	cp /lib/libphpcpp.so.2.3 /app
 	cp /lib/x86_64-linux-gnu/libgtksourceview-3.0.so.1 /app
-	cp /app/php-gtk3-source/php-gtk3.so /usr/local/php-gtk3/lib/php/extensions/
-	echo "extension=php-gtk3.so" >> $(php-config --ini-path)/php.ini
 	cp /usr/local/php-gtk3 "/app/usr/local/" -r
 fi
 
@@ -30,7 +28,9 @@ fi
 if [ "$1" == "build" ]; then
 	shift
 	cd /app/php-gtk3-source && make clean && make -j "$@"
-	cp /app/php-gtk3-source/php-gtk3.so /app/usr/local/php-gtk3/lib/php/extensions
+	
+	cp /app/php-gtk3-source/php-gtk3.so $(php-config --extension-dir)/
+	echo "extension=php-gtk3.so" >> $(php-config --ini-path)/php.ini
 fi
 
 # tests to copy dependencies
