@@ -10,6 +10,13 @@ GdkEventButton_::GdkEventButton_()
     
 }
 
+/**
+ *  PHP Constructor
+ */
+void GdkEventButton_::__construct(Php::Parameters& parameters)
+{
+
+}
 
 void GdkEventButton_::populate(GdkEventButton event)
 {

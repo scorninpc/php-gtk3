@@ -8,6 +8,14 @@ GdkEvent *GdkEvent_::get_instance()
     return instance;
 }
 
+/**
+ *  PHP Constructor
+ */
+void GdkEvent_::__construct(Php::Parameters& parameters)
+{
+
+}
+
 // 
 void GdkEvent_::set_instance(GdkEvent *event)
 {
