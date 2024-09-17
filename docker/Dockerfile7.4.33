@@ -1,0 +1,48 @@
+# 
+# start creating the docker container (use --no-cache if need to recreate)
+# $ docker build -t php7.4.33-gtk3 . 
+# 
+# clone php-gtk3 repository to php-gtk3-source
+# $ git clone git@github.com:scorninpc/php-gtk3.git php-gtk3-source
+#
+# build php-gtk3
+# $ docker run --name php74-gtk3 --rm -v $PWD:/app php7.4.33-gtk3 build
+#
+# test build
+# $ docker run --name php74-gtk3 --rm -v $PWD:/app php7.4.33-gtk3 php -m
+#
+# copy compiled php to install
+# $ docker run --name php74-gtk3 --rm -v $PWD:/app php7.4.33-gtk3 php-copy
+# $ sudo chown $USER:$USER -R $PWD/usr/local/php-gtk3
+# $ sudo cp libphpcpp.so.2.3 /lib/
+# $ sudo cp libgladeui-2.so.13 /lib/
+# $ sudo cp libgtksourceview-3.0.so.1 /lib/
+# $ sudo mv $PWD/usr/local/php-gtk3 /usr/local/
+# $ sudo ls -s /usr/local/php-gtk3/bin/php /usr/bin/php-gtk3
+#
+FROM debian:stable-slim
+
+# git
+RUN apt-get update && apt-get install -y libssl-dev libpq-dev bison libreadline-dev git build-essential autoconf automake libtool re2c libxml2-dev libcurl4-openssl-dev libssl-dev libbz2-dev  libjpeg-dev libpng-dev libxpm-dev libfreetype6-dev libzip-dev libsqlite3-dev libonig-dev libxslt1-dev libgtk-3-dev libgladeui-dev libgtksourceview-3.0-dev libwnck-dev
+
+# php-src
+WORKDIR /php-gtk-build
+RUN git clone -b PHP-7.4.33 https://github.com/php/php-src.git PHP-7.4.33
+
+WORKDIR /php-gtk-build/PHP-7.4.33
+RUN ./buildconf --force
+RUN ./configure --prefix=/usr/local/php-gtk3 --disable-cgi --disable-shared --enable-static --with-pgsql --with-pdo-mysql --with-pdo-pgsql --with-pgsql --with-ffi --with-readline --enable-soap --enable-sockets --with-bz2 --with-zlib --enable-mbstring --with-curl --with-xsl
+RUN make -j 4 && make install 
+ENV PATH=${PATH}:/usr/local/php-gtk3/bin
+
+# php-cpp
+WORKDIR /php-gtk-build
+RUN git clone https://github.com/fast-debug/PHP-CPP.git 
+WORKDIR /php-gtk-build/PHP-CPP
+RUN make -j 4 && make install
+
+# exports
+ENV PATH=${PATH}:/php-gtk-build
+WORKDIR /php-gtk-build
+COPY run.sh ./
+ENTRYPOINT ["run.sh"]

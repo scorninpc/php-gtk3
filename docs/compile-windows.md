@@ -41,25 +41,11 @@
 
 ## Preparing Visual Studio;
 
-1. Determining the Visual Studio version
+1. Downloading and installing Visual Studio 2022
 
-	First of all, you need to know what version of Visual Studio do you need. Go to URL https://windows.php.net/downloads/php-sdk/deps/series/ and see what version of PHP are compiled on what version of Visual Studio. For example, you can see that PHP 8.2 can be compiled on VS16 only, because the file called `packages-8.2-vs16-x64-stable.txt`
-
-2. Downloading and installing Visual Studio
-
-	2.1. Using Visual Studio 2022
-	
 	Just download Visual Studio 2022 community, and install
 
 	ON Visual Studio 2022 Installer, Just check "C++ Desktop Development"
-
-	2.2 Using Visual Studio 2019
-
-	For PHP 8.1, all you need is install VS16 too, wich are included on VS 2019. So you can download Visual Studio 2019 from [here](https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&rel=16&src=myvs&utm_medium=microsoft&utm_source=my.visualstudio.com&utm_campaign=download&utm_content=vs+community+2019)
-
-	Open the installer, and install Visual Studio Community 2019 and "C++ Desktop Development"
-
-	If when you are reading that you cannot install Visual Studio 2019, try to install the current version of `C++ Desktop Development` and after that, click in modify `Visual Studio Community`, and on `Individual Componentes` tab, look for `Build Tools MSVC v142` and `Windows 10 SDK`.
 
 ## Compiling PHP on Windows;
 
@@ -77,7 +63,7 @@
 
 	Open `cmd.exe` as admin, and go to `c:\php-dev\php-sdk`
 
-	Run `phpsdk-vs17-x64.bat` to prepare PHP environment. If you are running vs16, change to `phpsdk-vs16-x64.bat`, and keeping follow this doc using `vs16` instead `vs17`
+	Run `phpsdk-vs17-x64.bat` to prepare PHP environment
 
 	Build tree source dir running `bin\phpsdk_buildtree phpdev`
 
@@ -85,46 +71,55 @@
 
 4. Preparing the PHP source
 
-	Now download the [PHP source](https://windows.php.net/downloads/releases), if you want to use another versions, go to [archives](https://windows.php.net/downloads/releases/archives/)
+	Now download the [PHP source](https://github.com/php/php-src), and choose a branch
 
-	Extract the source code inside de `C:\php-dev\php-sdk\phpdev\vs17\x64`, and rename it to be like `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.20-src`
+	Extract the source code inside de `C:\php-dev\php-sdk\phpdev\vs17\x64`, and rename it to be like `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.22-src`
 
 5. Downloading dependencies
 
-	Back to the `cmd.exe` opend, go to `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.20-src`, and run the command `phpsdk_deps --update --branch master` to download dependencies
+	Back to the `cmd.exe` opened, go to `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.22-src`, and run the command `phpsdk_deps --update --branch master` to download dependencies
 
 6. Build and compile PHP from source code
 
-	Inside the source code `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.20-src`, run `buildconf`
+	Inside the source code `C:\php-dev\php-sdk\phpdev\vs17\x64\php-8.2.22-src`, run `buildconf`
 
 	Now you can create the config running `configure --disable-all --enable-cli --disable-zts`. You may want to run `configure --help` to see options and what you need to enable
 
+	<!-- Compile with some useful extension with `configure --enable-cli --disable-zts --disable-cgi --disable-shared --enable-static --enable-pdo --with-pgsql --with-pdo-mysql --with-pdo-pgsql --with-pgsql --with-ffi --with-readline --with-openssl --enable-soap --enable-sockets --with-bz2 --with-zlib --enable-mbstring --with-curl --with-xsl` -->
+
 	So now you can build with `nmake`
 
-	It will compile PHP on `C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src\x64\Release`. You can run `x64\Release\php.exe -m` to confirm that is working
+	It will compile PHP on `C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.22-src\x64\Release`. You can run `x64\Release\php.exe -m` to confirm that is working
+
+7. Rebuild after first one
+
+	if you need to rebuild after reboot or close `cmd`, run `phpsdk-vs17-x64.bat`, `configure` and `make` steeps again
 
 ## Preparing PHP, PHP-CPP and PHP-GTK code;
 
 1. Preparing PHP-CPP
 
-	This is the poor part of this processes, becase there is alot PR unmerged on this repo. So, what you need is verify this [pull requests](https://github.com/CopernicaMarketingSoftware/PHP-CPP/pulls) looking for changes to work on windows, and do some changes manualy. ex: clone repository, and look for PR to make that work on php 8.1 and look for PR to make this work on windows, and do some changes manualy
+	Install git client like https://git-scm.com/download/win
 
-	After do the changes, put this code into folder that we are using to store sources, to be like `C:\php-dev\php-cpp`
-	
- 	Important: you have to rename the "string.h" in the folder "zend" to "strings.h" - because there is a Problem when using Windows. And then you have to change all dependencies from
-	#include "string.h" to #include "strings.h" - but not this `<string>` - otherwise you get problems with the standard windows header files.
+	Clone repository of [PHP-CPP-win](https://github.com/apss-pohl/PHP-CPP-win) to some folder like `C:\php-dev\php-cpp`
+
+	<!-- Important: you have to rename the `php-cpp\zend\string.h` in the folder to `php-cpp\zend\strings.h` - because there is a Problem when using Windows. Now you need to find every file that use `string.h` and change to `strings.h`. Use some editor like `sublime text` to find over all files to make it ease. -->
 
 3. Preparing PHP-GTK
 
-	Get the last source of [php-gtk](https://github.com/scorninpc/php-gtk3), and extract it on the same folder, to be like `C:\php-dev\php-gtk3`
+	Get the last source of [php-gtk](https://github.com/scorninpc/php-gtk3), and extract or clone repository on the same folder, to be like `C:\php-dev\php-gtk3`
 
 4. Preparing PHP
 
-	Download the [PHP binary](https://windows.php.net/downloads/releases) of the same version of source code, if you want to use another versions, go to [archives](https://windows.php.net/downloads/releases/archives/) to get the binaries. Pay attention to versions with NTS (non-threaed safe) or with out NTS according with your configure options
+	To prevent you install all extensions dependencies, we will use PHP binary ready to run. So download the [PHP binary](https://windows.php.net/downloads/releases) of the same version of source code
 
-	Extract it inside our working folder to be like `C:\php-dev\php-8.1.14-nts-Win32-vs16-x64`
+	Pay attention to versions with NTS (non-threaed safe) or with out NTS according with your `configure` options
+
+	Extract it inside our working folder to be like `C:\php-dev\php-8.2.22-nts-Win32-vs16-x86`
 
 ## Downloading GTK on windows;
+
+now we need to download gtk libs and dependencies
 
 1. Download MSYS2
 
@@ -185,20 +180,23 @@
 
 	- Additional Include Directories:
 	```
-	C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src
-	C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src\TSRM
-	C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src\Zend
-	C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src\main
-	C:\php-dev\php-cpp
-	C:\msys2\mingw64\include\libgladeui-2.0
-	C:\msys2\mingw64\include\harfbuzz
-	C:\msys2\mingw64\include\gtk-3.0
-	C:\msys2\mingw64\include\cairo
-	C:\msys2\mingw64\include\gtksourceview-3.0
-	C:\msys2\mingw64\include\glib-2.0
-	C:\msys2\mingw64\include\gdk-pixbuf-3.0
-	C:\msys2\mingw64\include\atk-1.0
-	C:\msys2\mingw64\include\pango-1.0
+		C:\php-dev\php-sdk-binary-tools-master\phpdev\vs17\x64\php-8.2.22-src;
+		C:\php-dev\php-sdk-binary-tools-master\phpdev\vs17\x64\php-8.2.22-src\TSRM;
+		C:\php-dev\php-sdk-binary-tools-master\phpdev\vs17\x64\php-8.2.22-src\Zend;
+		C:\php-dev\php-sdk-binary-tools-master\phpdev\vs17\x64\php-8.2.22-src\main;
+		C:\php-dev\php-cpp;
+		C:\php-dev\php-cpp\zend;
+		C:\php-dev\php-cpp\include;
+		C:\php-dev\php-cpp\common;
+		C:\msys64\mingw64\include\libgladeui-2.0;
+		C:\msys64\mingw64\include\harfbuzz;
+		C:\msys64\mingw64\include\gtk-3.0;
+		C:\msys64\mingw64\include\cairo;
+		C:\msys64\mingw64\include\gtksourceview-3.0;
+		C:\msys64\mingw64\include\glib-2.0;
+		C:\msys64\mingw64\include\gdk-pixbuf-2.0;
+		C:\msys64\mingw64\include\atk-1.0;
+		C:\msys64\mingw64\include\pango-1.0;
 	```
 	- Warning Level: Turn Off All Warnings (/W0)
 	- SDL checks: No (/sdl-)
@@ -228,7 +226,7 @@
 	G_PLATFORM_WIN32
 	GIO_COMPILATION
 	BUILDING_PHPCPP
-	PHP_VERSION_ID=80114 	(Following your PHP version of choice, you can find on C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.20-src\main\php_version.h)
+	PHP_VERSION_ID=80222 	(Following your PHP version of choice, you can find on C:\php-gtk3\php-sdk\phpdev\vs17\x64\php-8.2.22-src\main\php_version.h)
 	GDK_PIXBUF_COMPILATION
 	GDK_COMPILATION
 	GTK_COMPILATION
@@ -239,7 +237,7 @@
 
 	- Additional Library Directories:
 	```
-	C:\php-dev\php-8.1.14-nts-Win32-vs16-x64\dev
+	C:\php-dev\php-8.2.22-nts-Win32-vs16-x86\dev
 	C:\msys2\mingw64\lib
 	```
 

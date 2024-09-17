@@ -1,3 +1,25 @@
+# 
+# start creating the docker container (use --no-cache if need to recreate)
+# $ docker build -t php8.2.22-gtk3 . 
+# 
+# clone php-gtk3 repository to php-gtk3-source
+# $ git clone git@github.com:scorninpc/php-gtk3.git php-gtk3-source
+#
+# build php-gtk3
+# $ docker run --name php82-gtk3 --rm -v $PWD:/app php8.2.22-gtk3 build
+#
+# test build
+# $ docker run --name php82-gtk3 --rm -v $PWD:/app php8.2.22-gtk3 php -m
+#
+# copy compiled php to install
+# $ docker run --name php82-gtk3 --rm -v $PWD:/app php8.2.22-gtk3 php-copy
+# $ sudo chown $USER:$USER -R $PWD/usr/local/php-gtk3
+# $ sudo cp libphpcpp.so.2.3 /lib/
+# $ sudo cp libgladeui-2.so.13 /lib/
+# $ sudo cp libgtksourceview-3.0.so.1 /lib/
+# $ sudo mv $PWD/usr/local/php-gtk3 /usr/local/
+# $ sudo ls -s /usr/local/php-gtk3/bin/php /usr/bin/php-gtk3
+#
 FROM debian:stable-slim
 
 # git
@@ -5,9 +27,9 @@ RUN apt-get update && apt-get install -y libpq-dev bison libreadline-dev git bui
 
 # php-src
 WORKDIR /php-gtk-build
-RUN git clone -b PHP-8.2.18 https://github.com/php/php-src.git PHP-8.2.18
+RUN git clone -b PHP-8.2.22 https://github.com/php/php-src.git PHP-8.2.22
 
-WORKDIR /php-gtk-build/PHP-8.2.18
+WORKDIR /php-gtk-build/PHP-8.2.22
 RUN ./buildconf --force
 RUN ./configure --prefix=/usr/local/php-gtk3 --disable-cgi --disable-shared --enable-static --with-pgsql --with-pdo-mysql --with-pdo-pgsql --with-pgsql --with-ffi --with-readline --with-openssl --enable-soap --enable-sockets --with-bz2 --with-zlib --enable-mbstring --with-curl --with-xsl
 RUN make -j 4 && make install 
@@ -15,7 +37,7 @@ ENV PATH=${PATH}:/usr/local/php-gtk3/bin
 
 # php-cpp
 WORKDIR /php-gtk-build
-RUN git clone https://github.com/fast-debug/PHP-CPP.git 
+RUN git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
 WORKDIR /php-gtk-build/PHP-CPP
 RUN make -j 4 && make install
 

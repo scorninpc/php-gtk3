@@ -14,11 +14,13 @@ fi
 # give user permission back on host with 
 # $ chwon user:user -R ~/Desktop/php-gtk3/usr/local/php-gtk3
 if [ "$1" == "php-copy" ]; then
-	#cp /lib/libgladeui-2.so.13 /app
+	cp /lib/x86_64-linux-gnu/libgladeui-2.so.13 /app
+	mkdir /app/usr/local/php-gtk3 -p
 	cp /lib/libphpcpp.so.2.3 /app
+	cp /lib/x86_64-linux-gnu/libgtksourceview-3.0.so.1 /app
 	cp /app/php-gtk3-source/php-gtk3.so /usr/local/php-gtk3/lib/php/extensions/
 	echo "extension=php-gtk3.so" >> $(php-config --ini-path)/php.ini
-	cp /usr/local/php-gtk3 "/app/usr/local/php-gtk3" -r
+	cp /usr/local/php-gtk3 "/app/usr/local/" -r
 fi
 
 # compile php-gtk3 source. checkout PHP-GTK3 source on ~/Desktop before compile
