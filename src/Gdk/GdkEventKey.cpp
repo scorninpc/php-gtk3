@@ -10,6 +10,13 @@ GdkEventKey_::GdkEventKey_()
     
 }
 
+/**
+ *  PHP Constructor
+ */
+void GdkEventKey_::__construct(Php::Parameters& parameters)
+{
+
+}
 
 void GdkEventKey_::populate(GdkEventKey event)
 {
