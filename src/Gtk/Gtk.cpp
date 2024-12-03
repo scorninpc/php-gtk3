@@ -117,6 +117,37 @@ Php::Value Gtk_::events_pending()
 	return gtk_events_pending();
 }
 
+Php::Value Gtk_::main_do_event(Php::Parameters& parameters)
+{
+    if (parameters.size() == 0) {
+        throw Php::Exception("Gtk::main_do_event requires a GdkEvent as a parameter.");
+    }
+
+    // Ensure the parameter is an object
+    if (!parameters[0].isObject()) {
+        throw Php::Exception("Expected a GdkEvent object as the first parameter.");
+    }
+
+    Php::Value object_event = parameters[0];
+
+    // Validate and cast to GdkEvent_
+    GdkEvent_* phpgtk_event = dynamic_cast<GdkEvent_*>(object_event.implementation());
+    if (!phpgtk_event) {
+        throw Php::Exception("Invalid GdkEvent object.");
+    }
+
+    // Retrieve the native GdkEvent instance
+    GdkEvent* event = phpgtk_event->get_instance();
+    if (!event) {
+        throw Php::Exception("GdkEvent instance is null.");
+    }
+
+    // Call gtk_main_do_event
+    gtk_main_do_event(event);
+
+    return nullptr;
+}
+
 Php::Value Gtk_::main_iteration()
 {
 	return gtk_main_iteration();

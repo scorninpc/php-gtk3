@@ -863,6 +863,7 @@ extern "C"
         gtk.method<&Gtk_::source_remove>("source_remove");
         gtk.method<&Gtk_::show_uri_on_window>("show_uri_on_window");
         gtk.method<&Gtk_::events_pending>("events_pending");
+        gtk.method<&Gtk_::main_do_event>("main_do_event");
         gtk.method<&Gtk_::main_iteration>("main_iteration");
         gtk.method<&Gtk_::get_major_version>("get_major_version");
         gtk.method<&Gtk_::get_micro_version>("get_micro_version");
@@ -2890,6 +2891,7 @@ extern "C"
         gtktreeselection.method<&GtkTreeSelection_::select_all>("select_all");
         gtktreeselection.method<&GtkTreeSelection_::unselect_all>("unselect_all");
         gtktreeselection.method<&GtkTreeSelection_::unselect_range>("unselect_range");
+        gtktreeselection.method<&GtkTreeSelection_::select_range>("select_range");
 
         // GtkMenuShell
         Php::Class<GtkMenuShell_> gtkmenushell("GtkMenuShell");

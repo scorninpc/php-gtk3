@@ -55,6 +55,7 @@
 			static gint timeout_add_callback(gpointer data);
 
 			static Php::Value events_pending();
+			static Php::Value main_do_event(Php::Parameters& parameters);
 			static Php::Value main_iteration();
 			static Php::Value get_major_version();
 			static Php::Value get_micro_version();
