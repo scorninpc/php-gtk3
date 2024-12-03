@@ -65,6 +65,8 @@
             void unselect_all();
 
             void unselect_range(Php::Parameters &parameters);
+
+            void select_range(Php::Parameters& parameters);
     };
 
 #endif

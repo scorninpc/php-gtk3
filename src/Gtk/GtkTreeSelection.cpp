@@ -308,4 +308,14 @@ void GtkTreeSelection_::unselect_range(Php::Parameters &parameters)
 	gtk_tree_selection_unselect_range (GTK_TREE_SELECTION(instance), start_path, end_path);
 
 }
+void GtkTreeSelection_::select_range(Php::Parameters& parameters)
+{
+	std::string param_start_path = parameters[0];
+	GtkTreePath* start_path = gtk_tree_path_new_from_string(param_start_path.c_str());
+
+	std::string param_end_path = parameters[0];
+	GtkTreePath* end_path = gtk_tree_path_new_from_string(param_end_path.c_str());
+
+	gtk_tree_selection_select_range(GTK_TREE_SELECTION(instance), start_path, end_path);
+}
 
