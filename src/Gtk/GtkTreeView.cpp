@@ -290,16 +290,21 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 
 	bool ret = gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(instance), x, y, &path, &column, &cell_x, &cell_y);
 
-	Php::Value phpPathArray;
+	if (!ret || column == NULL) {
+		// Ensure we return NULL for header clicks
+		return Php::Value();
+	}
 
+	Php::Value phpPathArray;
 	if(path != NULL) {
 		gint depth = gtk_tree_path_get_depth(path);
-		gint* pathArray = NULL;
-		pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
+		gint* pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
 
 		for (int index = 0; index < (int)depth; index++) {
 			phpPathArray[index] = pathArray[index];
 		}
+
+		gtk_tree_path_free(path);
 	}
 
 	GtkTreeViewColumn_* return_parsed = new GtkTreeViewColumn_();
@@ -316,17 +321,133 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 
 Php::Value GtkTreeView_::get_bin_window()
 {
-	gpointer *ret =(gpointer *)gtk_tree_view_get_bin_window(GTK_VIEWPORT(instance));
+	gpointer *ret =(gpointer *)gtk_tree_view_get_bin_window(GTK_TREE_VIEW(instance));
 
 
-	return cobject_to_phpobject(ret);
+	return Php::Object("GdkWindow", ret);
+}
+
+Php::Value GtkTreeView_::get_visible_rect()
+{
+    GdkRectangle rect;
+    gtk_tree_view_get_visible_rect(GTK_TREE_VIEW(instance), &rect);
+
+    Php::Value result;
+    result["x"] = rect.x;
+    result["y"] = rect.y;
+    result["width"] = rect.width;
+    result["height"] = rect.height;
+
+    return result;
 }
 
 
-Php::Value GtkTreeView_::convert_widget_to_bin_window_coords()
+Php::Value GtkTreeView_::convert_widget_to_bin_window_coords(Php::Parameters& parameters)
 {
-	gpointer *ret =(gpointer *)convert_widget_to_bin_window_coords(GTK_VIEWPORT(instance));
+	if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: widget_x, widget_y");
+    }
 
+	gint widget_x = (gint)parameters[0];
+	gint widget_y = (gint)parameters[1];
+	gint bin_x = 0;
+	gint bin_y = 0;
 
-	return cobject_to_phpobject(ret);
+	gtk_tree_view_convert_widget_to_bin_window_coords(GTK_TREE_VIEW(instance), widget_x, widget_y, &bin_x, &bin_y);
+
+	Php::Value ret;
+	ret["x"] = (int)bin_x;
+	ret["y"] = (int)bin_y;
+
+	return ret;
+}
+
+Php::Value GtkTreeView_::convert_widget_to_tree_coords(Php::Parameters& parameters)
+{
+    if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: widget_x, widget_y");
+    }
+
+    gint widget_x = (gint)parameters[0];
+    gint widget_y = (gint)parameters[1];
+    gint tree_x = 0, tree_y = 0;
+
+    gtk_tree_view_convert_widget_to_tree_coords(GTK_TREE_VIEW(instance), widget_x, widget_y, &tree_x, &tree_y);
+
+    Php::Value ret;
+    ret["x"] = (int)tree_x;
+    ret["y"] = (int)tree_y;
+    return ret;
+}
+
+Php::Value GtkTreeView_::convert_tree_to_widget_coords(Php::Parameters& parameters)
+{
+    if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: tree_x, tree_y");
+    }
+
+    gint tree_x = (gint)parameters[0];
+    gint tree_y = (gint)parameters[1];
+    gint widget_x = 0, widget_y = 0;
+
+    gtk_tree_view_convert_tree_to_widget_coords(GTK_TREE_VIEW(instance), tree_x, tree_y, &widget_x, &widget_y);
+
+    Php::Value ret;
+    ret["x"] = (int)widget_x;
+    ret["y"] = (int)widget_y;
+    return ret;
+}
+
+Php::Value GtkTreeView_::convert_tree_to_bin_window_coords(Php::Parameters& parameters)
+{
+    if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: tree_x, tree_y");
+    }
+
+    gint tree_x = (gint)parameters[0];
+    gint tree_y = (gint)parameters[1];
+    gint bin_x = 0, bin_y = 0;
+
+    gtk_tree_view_convert_tree_to_bin_window_coords(GTK_TREE_VIEW(instance), tree_x, tree_y, &bin_x, &bin_y);
+
+    Php::Value ret;
+    ret["x"] = (int)bin_x;
+    ret["y"] = (int)bin_y;
+    return ret;
+}
+
+Php::Value GtkTreeView_::convert_bin_window_to_widget_coords(Php::Parameters& parameters)
+{
+    if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: bin_x, bin_y");
+    }
+
+    gint bin_x = (gint)parameters[0];
+    gint bin_y = (gint)parameters[1];
+    gint widget_x = 0, widget_y = 0;
+
+    gtk_tree_view_convert_bin_window_to_widget_coords(GTK_TREE_VIEW(instance), bin_x, bin_y, &widget_x, &widget_y);
+
+    Php::Value ret;
+    ret["x"] = (int)widget_x;
+    ret["y"] = (int)widget_y;
+    return ret;
+}
+
+Php::Value GtkTreeView_::convert_bin_window_to_tree_coords(Php::Parameters& parameters)
+{
+    if (parameters.size() < 2) {
+        throw Php::Exception("Expected two parameters: bin_x, bin_y");
+    }
+
+    gint bin_x = (gint)parameters[0];
+    gint bin_y = (gint)parameters[1];
+    gint tree_x = 0, tree_y = 0;
+
+    gtk_tree_view_convert_bin_window_to_tree_coords(GTK_TREE_VIEW(instance), bin_x, bin_y, &tree_x, &tree_y);
+
+    Php::Value ret;
+    ret["x"] = (int)tree_x;
+    ret["y"] = (int)tree_y;
+    return ret;
 }

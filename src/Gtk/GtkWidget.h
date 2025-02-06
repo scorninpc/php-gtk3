@@ -347,7 +347,7 @@
 
             Php::Value get_allocated_height();
 
-            void get_allocation(Php::Parameters &parameters);
+            Php::Value get_allocation(Php::Parameters &parameters);
 
             void set_allocation(Php::Parameters &parameters);
 

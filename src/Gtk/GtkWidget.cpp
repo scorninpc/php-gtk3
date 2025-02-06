@@ -1746,18 +1746,18 @@ Php::Value GtkWidget_::get_allocated_height()
 	return ret;
 }
 
-void GtkWidget_::get_allocation(Php::Parameters &parameters)
+Php::Value GtkWidget_::get_allocation(Php::Parameters &parameters)
 {
-// // 	GtkAllocation *allocation;
-// 	if(parameters.size() > 0) {
-// 		Php::Value object_allocation = parameters[0];
-// 		GtkAllocation_ *phpgtk_allocation = (GtkAllocation_ *)object_allocation.implementation();
-// 		allocation = GTK_WIDGET(phpgtk_allocation->get_instance());
-// 	}
+    GtkAllocation allocation;
+    gtk_widget_get_allocation(GTK_WIDGET(instance), &allocation);
 
-// 	gtk_widget_get_allocation (GTK_WIDGET(instance), allocation);
+    Php::Value result;
+    result["x"] = allocation.x;
+    result["y"] = allocation.y;
+    result["width"] = allocation.width;
+    result["height"] = allocation.height;
 
-	 throw Php::Exception("GtkWidget_::get_allocation not implemented");
+    return result;
 }
 
 void GtkWidget_::set_allocation(Php::Parameters &parameters)
