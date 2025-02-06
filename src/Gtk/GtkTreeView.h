@@ -88,6 +88,10 @@
             void move_column_after(Php::Parameters& parameters);
 
             Php::Value get_path_at_pos(Php::Parameters& parameters);
+
+            Php::Value get_bin_window();
+
+            Php::Value convert_widget_to_bin_window_coords();
     };
 
 #endif

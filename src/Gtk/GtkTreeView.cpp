@@ -313,3 +313,20 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 
 	return ret_arr;
 }
+
+Php::Value GtkTreeView_::get_bin_window()
+{
+	gpointer *ret =(gpointer *)gtk_tree_view_get_bin_window(GTK_VIEWPORT(instance));
+
+
+	return cobject_to_phpobject(ret);
+}
+
+
+Php::Value GtkTreeView_::convert_widget_to_bin_window_coords()
+{
+	gpointer *ret =(gpointer *)convert_widget_to_bin_window_coords(GTK_VIEWPORT(instance));
+
+
+	return cobject_to_phpobject(ret);
+}

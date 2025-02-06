@@ -85,6 +85,15 @@ Php::Value Gtk_::source_remove(Php::Parameters &parameters)
     return ret;
 }
 
+Php::Value Gtk_::is_destroyed(Php::Parameters &parameters)
+{
+    guint tag = (int)parameters[0];
+    
+    bool ret = g_source_is_destroyed(tag);
+    
+    return ret;
+}
+
 /**
  * https://docs.gtk.org/gtk3/func.show_uri_on_window.html
  */
