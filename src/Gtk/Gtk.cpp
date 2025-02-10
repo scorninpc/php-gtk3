@@ -85,6 +85,26 @@ Php::Value Gtk_::source_remove(Php::Parameters &parameters)
     return ret;
 }
 
+Php::Value Gtk_::is_destroyed(Php::Parameters& parameters)
+{
+    if (parameters.size() < 1) {
+        throw Php::Exception("is_destroyed requires exactly 1 argument.");
+    }
+
+    guint tag = (guint)parameters[0].numericValue(); // Get the source ID (tag)
+
+    GSource* source = g_main_context_find_source_by_id(nullptr, tag); // Get source from default main context
+
+    if (!source) {
+        return true; // If no source is found, it means it was already destroyed
+    }
+
+    gboolean result = g_source_is_destroyed(source);
+
+    return result ? true : false;
+}
+
+
 /**
  * https://docs.gtk.org/gtk3/func.show_uri_on_window.html
  */

@@ -48,16 +48,18 @@ Php::Value GdkMonitor_::get_height_mm()
  */
 Php::Value GdkMonitor_::get_workarea()
 {
-	GdkRectangle *workarea;
+    // Allocate a GdkRectangle on the stack
+    GdkRectangle workarea;
     
-    gdk_monitor_get_workarea(GDK_MONITOR(instance), workarea);
+    // Fill in the workarea details
+    gdk_monitor_get_workarea(GDK_MONITOR(instance), &workarea);
 
-    // Cria o retorno
+    // Create the return array
     Php::Value arr;
-    arr["x"] = workarea->x;
-    arr["y"] = workarea->y;
-    arr["width"] = workarea->width;
-    arr["height"] = workarea->height;
+    arr["x"] = workarea.x;
+    arr["y"] = workarea.y;
+    arr["width"] = workarea.width;
+    arr["height"] = workarea.height;
 
     return arr;
 }

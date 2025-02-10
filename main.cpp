@@ -227,6 +227,7 @@ extern "C"
         gdkwindow.method<&GdkWindow_::get_width>("get_width");
         gdkwindow.method<&GdkWindow_::get_height>("get_height");
         gdkwindow.method<&GdkWindow_::set_cursor>("set_cursor");
+        gdkwindow.method<&GdkWindow_::get_position>("get_position");
 
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");
@@ -861,6 +862,7 @@ extern "C"
         gtk.method<&Gtk_::main_quit>("main_quit");
         gtk.method<&Gtk_::timeout_add>("timeout_add");
         gtk.method<&Gtk_::source_remove>("source_remove");
+        gtk.method<&Gtk_::is_destroyed>("is_destroyed");
         gtk.method<&Gtk_::show_uri_on_window>("show_uri_on_window");
         gtk.method<&Gtk_::events_pending>("events_pending");
         gtk.method<&Gtk_::main_do_event>("main_do_event");
@@ -1888,6 +1890,14 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::get_column>("get_column");
         gtktreeview.method<&GtkTreeView_::move_column_after>("move_column_after");
         gtktreeview.method<&GtkTreeView_::get_path_at_pos>("get_path_at_pos");
+        gtktreeview.method<&GtkTreeView_::get_bin_window>("get_bin_window");
+        gtktreeview.method<&GtkTreeView_::get_visible_rect>("get_visible_rect");
+        gtktreeview.method<&GtkTreeView_::convert_widget_to_bin_window_coords>("convert_widget_to_bin_window_coords");
+        gtktreeview.method<&GtkTreeView_::convert_widget_to_tree_coords>("convert_widget_to_tree_coords");
+        gtktreeview.method<&GtkTreeView_::convert_tree_to_widget_coords>("convert_tree_to_widget_coords");
+        gtktreeview.method<&GtkTreeView_::convert_tree_to_bin_window_coords>("convert_tree_to_bin_window_coords");
+        gtktreeview.method<&GtkTreeView_::convert_bin_window_to_widget_coords>("convert_bin_window_to_widget_coords");
+        gtktreeview.method<&GtkTreeView_::convert_bin_window_to_tree_coords>("convert_bin_window_to_tree_coords");
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");

@@ -33,6 +33,7 @@
             Php::Value get_children();
             Php::Value get_width();
             Php::Value get_height();
+            Php::Value get_position();
             void set_cursor(Php::Parameters &parameters);
     };
 

@@ -51,6 +51,7 @@
 
 			static Php::Value timeout_add(Php::Parameters &parameters);
 			static Php::Value source_remove(Php::Parameters &parameters);
+			static Php::Value is_destroyed(Php::Parameters &parameters);
 			static Php::Value show_uri_on_window(Php::Parameters &parameters);
 			static gint timeout_add_callback(gpointer data);
 

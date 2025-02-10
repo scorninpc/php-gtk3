@@ -88,6 +88,23 @@
             void move_column_after(Php::Parameters& parameters);
 
             Php::Value get_path_at_pos(Php::Parameters& parameters);
+
+            Php::Value get_bin_window();
+
+            Php::Value get_visible_rect();
+
+
+            Php::Value convert_widget_to_bin_window_coords(Php::Parameters& parameters);
+
+            Php::Value convert_widget_to_tree_coords(Php::Parameters& parameters);
+
+            Php::Value convert_tree_to_widget_coords(Php::Parameters& parameters);
+
+            Php::Value convert_tree_to_bin_window_coords(Php::Parameters& parameters);
+
+            Php::Value convert_bin_window_to_widget_coords(Php::Parameters& parameters);
+
+            Php::Value convert_bin_window_to_tree_coords(Php::Parameters& parameters);
     };
 
 #endif
