@@ -227,6 +227,7 @@ extern "C"
         gdkwindow.method<&GdkWindow_::get_width>("get_width");
         gdkwindow.method<&GdkWindow_::get_height>("get_height");
         gdkwindow.method<&GdkWindow_::set_cursor>("set_cursor");
+        gdkwindow.method<&GdkWindow_::get_position>("get_position");
 
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");

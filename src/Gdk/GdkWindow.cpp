@@ -67,6 +67,22 @@ Php::Value GdkWindow_::get_height()
 	return gdk_window_get_height(GDK_WINDOW(instance));
 }
 
+Php::Value GdkWindow_::get_position()
+{
+	    // Verify sizes
+    int x = -1;
+    int y = -1;
+
+    gdk_window_get_position(GDK_WINDOW(instance), &x, &y);
+
+    // Cria o retorno
+    Php::Value arr;
+    arr[0] = arr["x"] = x;
+    arr[1] = arr["y"] = y;
+
+    return arr;
+}
+
 void GdkWindow_::set_cursor(Php::Parameters &parameters)
 {
 	Php::Value object_cursor = parameters[0];
