@@ -15,7 +15,7 @@
 			~GtkTreeSortable_();
 
 			void sort_column_changed();
-			Php::Value get_sort_column_id(Php::Parameters &parameters);
+			Php::Value get_sort_column_id();
 			void set_sort_column_id(Php::Parameters &parameters);
 			Php::Value has_default_sort_func();
 

@@ -446,6 +446,26 @@ void GtkListStore_::set_sort_column_id(Php::Parameters& parameters)
 	gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(model), sort_column_id, order);
 }
 
+Php::Value GtkListStore_::get_sort_column_id()
+{
+    gint sort_column_id;
+    GtkSortType order;
+
+    gtk_tree_sortable_get_sort_column_id(GTK_TREE_SORTABLE(model), &sort_column_id, &order);
+
+    Php::Value ret;
+
+    ret["sort_column_id"] = sort_column_id;
+    ret["order"] = (int)order;
+
+    ret[0] = sort_column_id;
+    ret[1] = (int)order;
+
+    return ret;
+}
+
+
+
 Php::Value GtkListStore_::iter_n_children(Php::Parameters& parameters)
 {
 	if (parameters.size() > 1) {
