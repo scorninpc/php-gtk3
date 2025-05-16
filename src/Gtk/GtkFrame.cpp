@@ -13,10 +13,12 @@ GtkFrame_::~GtkFrame_() = default;
 
 void GtkFrame_::__construct(Php::Parameters &parameters)
 {
-	std::string s_label = parameters[0];
-	gchar *label = (gchar *)s_label.c_str();
+	std::string s_str = "";
+	if(parameters.size() > 0) {
+		s_str.assign((const char *)parameters[0]);
+	}
 
-	instance = (gpointer *)gtk_frame_new (label);
+	instance = (gpointer *)gtk_frame_new (s_str.c_str());
 
 }
 

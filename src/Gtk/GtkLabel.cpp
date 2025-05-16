@@ -14,7 +14,6 @@ GtkLabel_::~GtkLabel_() = default;
 void GtkLabel_::__construct(Php::Parameters &parameters)
 {
 	std::string s_str = "";
-	;
 	if(parameters.size() > 0) {
 		s_str.assign((const char *)parameters[0]);
 	}
