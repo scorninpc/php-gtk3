@@ -100,20 +100,19 @@ void GtkContainer_::foreach(Php::Parameters &parameters)
 
 Php::Value GtkContainer_::get_children()
 {
-	GList *ret = gtk_container_get_children (GTK_CONTAINER(instance));
+    GList* ret = gtk_container_get_children(GTK_CONTAINER(instance));
+    if (!ret) {
+        return Php::Array();               // ← immediately return empty array
+    }
 
-	Php::Value ret_arr;
-
-	for(int index=0; GList *item=g_list_nth(ret, index); index++) {
-		
-		// GtkWidget_ *widget_ = new GtkWidget_();
-		// widget_->set_instance((gpointer *)item->data);
-		// ret_arr[index] = Php::Object("GtkWidget", widget_);
-		ret_arr[index] = cobject_to_phpobject((gpointer *)item->data);
-	}
-
-	return ret_arr;
+    Php::Array ret_arr;
+    for (int i = 0; GList* item = g_list_nth(ret, i); ++i) {
+        ret_arr[i] = cobject_to_phpobject((gpointer*)item->data);
+    }
+    g_list_free(ret);
+    return ret_arr;
 }
+
 
 Php::Value GtkContainer_::get_path_for_child(Php::Parameters &parameters)
 {

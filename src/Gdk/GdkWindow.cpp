@@ -43,18 +43,20 @@ Php::Value GdkWindow_::get_window_type()
  */
 Php::Value GdkWindow_::get_children()
 {
-    GList *ret = gdk_window_get_children(GDK_WINDOW(instance));
+    GList* ret = gdk_window_get_children(GDK_WINDOW(instance));
+    if (!ret) {
+        return Php::Array();            // ← instant empty array
+    }
 
-	Php::Value ret_arr;
+    Php::Array ret_arr;
+    for (int i = 0; GList* item = g_list_nth(ret, i); ++i) {
+        GdkWindow_* win = new GdkWindow_();
+        win->set_instance((gpointer*)item->data);
+        ret_arr[i] = Php::Object("GdkWindow", win);
+    }
 
-	for(int index=0; GList *item=g_list_nth(ret, index); index++) {
-		
-		GdkWindow_ *widget_ = new GdkWindow_();
-		widget_->set_instance((gpointer *)item->data);
-		ret_arr[index] = Php::Object("GdkWindow", widget_);
-	}
-
-	return ret_arr;
+    g_list_free(ret);
+    return ret_arr;
 }
 
 Php::Value GdkWindow_::get_width()
