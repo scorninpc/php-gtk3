@@ -110,7 +110,7 @@ endif
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONFLAGS} ${LIBWNCKFLAGS}`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONLIBS} ${LIBWNCKLIBS}`
 
-COMPILER_FLAGS      +=   -Wall -Woverloaded-virtual -c -std=c++11 -fpic -o
+COMPILER_FLAGS      +=   -Wall -Wdeprecated-declarations -Woverloaded-virtual -c -std=c++11 -fpic -o
 LINKER_FLAGS        =   -shared ${GTKLIBS}
 LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS}
 

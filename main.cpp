@@ -307,7 +307,14 @@ extern "C"
         gapplication.method<&GApplication_::get_is_busy>("get_is_busy");
         gapplication.method<&GApplication_::bind_busy_property>("bind_busy_property");
         gapplication.method<&GApplication_::unbind_busy_property>("unbind_busy_property");
-        gapplication.constant("FLAGS_NONE", G_APPLICATION_FLAGS_NONE);
+
+        #if GLIB_CHECK_VERSION(2, 74, 0)
+            gapplication.constant("DEFAULT_FLAGS", G_APPLICATION_DEFAULT_FLAGS);
+        #else
+            gapplication.constant("FLAGS_NONE", G_APPLICATION_FLAGS_NONE);
+        #endif
+
+        
         gapplication.constant("IS_SERVICE", G_APPLICATION_IS_SERVICE);
         gapplication.constant("IS_LAUNCHER", G_APPLICATION_IS_LAUNCHER);
         gapplication.constant("HANDLES_OPEN", G_APPLICATION_HANDLES_OPEN);
@@ -531,23 +538,23 @@ extern "C"
         Php::Class<GdkEvent_> gdkevent("GdkEvent");
         gdkevent.method<&GdkEvent_::__construct>("__construct");
         // gdkevent.method<&GdkEvent_::__get>("__get");
-        gdkevent.property("type", NULL);
-        gdkevent.property("button", NULL);
-        gdkevent.property("key", NULL);
+        gdkevent.property("type", nullptr);
+        gdkevent.property("button", nullptr);
+        gdkevent.property("key", nullptr);
 
         // GdkEventButton
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
         gdkeventbutton.method<&GdkEventButton_::__construct>("__construct");
-        gdkeventbutton.property("type", NULL);
-        gdkeventbutton.property("send_event", NULL);
-        gdkeventbutton.property("time", NULL);
-        gdkeventbutton.property("x", NULL);
-        gdkeventbutton.property("y", NULL);
-        gdkeventbutton.property("axes", NULL);
-        gdkeventbutton.property("state", NULL);
-        gdkeventbutton.property("button", NULL);
-        gdkeventbutton.property("x_root", NULL);
-        gdkeventbutton.property("y_root", NULL);
+        gdkeventbutton.property("type", nullptr);
+        gdkeventbutton.property("send_event", nullptr);
+        gdkeventbutton.property("time", nullptr);
+        gdkeventbutton.property("x", nullptr);
+        gdkeventbutton.property("y", nullptr);
+        gdkeventbutton.property("axes", nullptr);
+        gdkeventbutton.property("state", nullptr);
+        gdkeventbutton.property("button", nullptr);
+        gdkeventbutton.property("x_root", nullptr);
+        gdkeventbutton.property("y_root", nullptr);
 
         // GdkCursor
         Php::Class<GdkCursor_> gdkcursor("GdkCursor");
@@ -701,17 +708,17 @@ extern "C"
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
         gdkeventkey.method<&GdkEventKey_::__construct>("__construct");
-        gdkeventkey.property("type", NULL);
-        gdkeventkey.property("send_event", NULL);
-        gdkeventkey.property("time", NULL);
-        gdkeventkey.property("state", NULL);
-        gdkeventkey.property("keyval", NULL);
-        gdkeventkey.property("length", NULL);
-        gdkeventkey.property("string", NULL);
-        gdkeventkey.property("hardware_keycode", NULL);
-        gdkeventkey.property("keycode", NULL);
-        gdkeventkey.property("group", NULL);
-        gdkeventkey.property("is_modifier", NULL);
+        gdkeventkey.property("type", nullptr);
+        gdkeventkey.property("send_event", nullptr);
+        gdkeventkey.property("time", nullptr);
+        gdkeventkey.property("state", nullptr);
+        gdkeventkey.property("keyval", nullptr);
+        gdkeventkey.property("length", nullptr);
+        gdkeventkey.property("string", nullptr);
+        gdkeventkey.property("hardware_keycode", nullptr);
+        gdkeventkey.property("keycode", nullptr);
+        gdkeventkey.property("group", nullptr);
+        gdkeventkey.property("is_modifier", nullptr);
 
         // GdkEventType
         Php::Class<Php::Base> gdkeventtype("GdkEventType");
