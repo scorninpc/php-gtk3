@@ -48,11 +48,16 @@ Php::Value GtkAlignment_::get_padding()
 
 	gtk_alignment_get_padding(GTK_ALIGNMENT(instance), top, bottom, left, right);
 
+	int64_t utop = (int64_t)&top;
+	int64_t ubottom = (int64_t)&bottom;
+	int64_t uleft = (int64_t)&left;
+	int64_t uright = (int64_t)&right;
+
     Php::Value arr;
-    arr["top"] = top;
-    arr["bottom"] = bottom;
-    arr["left"] = left;
-    arr["right"] = right;
+    arr["top"] = utop;
+    arr["bottom"] = ubottom;
+    arr["left"] = uleft;
+    arr["right"] = uright;
 
     return arr;
 

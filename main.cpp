@@ -4393,9 +4393,11 @@ Php::Value phpgtk_get_phpvalue(GValue *gvalue)
     case G_TYPE_UCHAR:
         return g_value_get_uchar(gvalue);
         break;
-    case G_TYPE_OBJECT:
-        return g_value_get_object(gvalue);
+    case G_TYPE_OBJECT: {
+        gpointer *ret = (gpointer *)g_value_get_object(gvalue);
+        return cobject_to_phpobject(ret);
         break;
+    }
     case G_TYPE_INTERFACE:
         throw Php::Exception("G_TYPE_INTERFACE not implemented");
         break;

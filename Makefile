@@ -41,7 +41,7 @@ NAME                =   php-gtk3
 #   instead of a conf.d directory. In 16.04 the directory changed yet again.
 #   This has to be checked.
 #
-INI_DIR     =   /etc/php/8.1/mods-available/
+INI_DIR     =   /opt/php/php-8.2.22/mods-available/
 
 #
 #   The extension dirs
@@ -52,7 +52,7 @@ INI_DIR     =   /etc/php/8.1/mods-available/
 #   this with a different fixed directory
 #
 
-EXTENSION_DIR       =   $(shell php-config --extension-dir)
+EXTENSION_DIR       =   $(shell /opt/php/php-8.2.22/bin/php-config --extension-dir)
 
 #
 #   The name of the extension and the name of the .ini file
@@ -110,7 +110,7 @@ endif
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONFLAGS} ${LIBWNCKFLAGS}`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.0 ${MAC_INTEGRATIONLIBS} ${LIBWNCKLIBS}`
 
-COMPILER_FLAGS      +=   -Wall -Wno-inconsistent-missing-override -c -std=c++11 -fpic -o
+COMPILER_FLAGS      +=   -Wall -Woverloaded-virtual -c -std=c++11 -fpic -o
 LINKER_FLAGS        =   -shared ${GTKLIBS}
 LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS}
 

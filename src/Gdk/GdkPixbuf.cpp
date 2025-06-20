@@ -119,7 +119,7 @@ void GdkPixbuf_::set_data(Php::Parameters& parameters)
 	gchar* value = g_strdup(s_value.c_str());
 
 	// Store the duplicated string in the GObject, with g_free as the destroy notifier
-	g_object_set_data_full(G_OBJECT(instance), key, value, (GDestroyNotify)g_free);
+	g_object_set_data_full(G_OBJECT(instance), key, value, (GDestroyNotify)free);
 }
 
 Php::Value GdkPixbuf_::get_data(Php::Parameters& parameters)
@@ -197,7 +197,8 @@ Php::Value GdkPixbuf_::get_has_alpha()
 
 Php::Value GdkPixbuf_::get_pixels()
 {
-	return gdk_pixbuf_get_pixels(instance);
+	gpointer *ret = (gpointer *)gdk_pixbuf_get_pixels(instance);
+	return cobject_to_phpobject(ret); 
 }
 
 Php::Value GdkPixbuf_::get_width()

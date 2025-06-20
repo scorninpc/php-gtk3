@@ -324,7 +324,7 @@ Php::Value GtkTreeView_::get_bin_window()
 	gpointer *ret =(gpointer *)gtk_tree_view_get_bin_window(GTK_TREE_VIEW(instance));
 
 
-	return Php::Object("GdkWindow", ret);
+	return Php::Object("GdkWindow", cobject_to_phpobject(ret));
 }
 
 Php::Value GtkTreeView_::get_visible_rect()

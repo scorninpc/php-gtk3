@@ -278,9 +278,12 @@ Php::Value GtkStatusIcon_::position_menu(Php::Parameters &parameters)
 
 	gtk_status_icon_position_menu(menu, x, y, push_in, GTK_STATUS_ICON(instance));
 
+	int64_t ux = (int64_t)&x;
+	int64_t uy = (int64_t)&y;
+
     Php::Value arr;
-    arr["x"] = x;
-    arr["y"] = y;
+    arr["x"] = ux;
+    arr["y"] = uy;
 
     return arr;
 }

@@ -35,7 +35,7 @@ void GdkEventKey_::populate(GdkEventKey event)
 
     if(event.string != NULL) {
         const gchar *event_string = event.string;
-        self["string"] = &event_string;
+        self["string"] = (char *)&event_string;
     }
 
     self["hardware_keycode"] = (int)event.hardware_keycode;

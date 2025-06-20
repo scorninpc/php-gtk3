@@ -164,7 +164,7 @@ Php::Value GtkAboutDialog_::get_authors()
 {
 	const gchar * const * c_ret = gtk_about_dialog_get_authors (GTK_ABOUT_DIALOG(instance));
 
-	return c_ret;
+	return (const char *)c_ret;
 }
 
 void GtkAboutDialog_::set_authors(Php::Parameters &parameters)
@@ -181,7 +181,7 @@ Php::Value GtkAboutDialog_::get_artists()
 {
 	const gchar * const * c_ret = gtk_about_dialog_get_artists (GTK_ABOUT_DIALOG(instance));
 
-	return c_ret;
+	return (const char *)c_ret;
 }
 
 void GtkAboutDialog_::set_artists(Php::Parameters &parameters)
@@ -200,7 +200,7 @@ Php::Value GtkAboutDialog_::get_documenters()
 {
 	const gchar * const * c_ret = gtk_about_dialog_get_documenters (GTK_ABOUT_DIALOG(instance));
 
-	return c_ret;
+	return (const char *)c_ret;
 }
 
 void GtkAboutDialog_::set_documenters(Php::Parameters &parameters)

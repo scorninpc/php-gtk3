@@ -154,14 +154,16 @@ Php::Value GtkTable_::get_size(Php::Parameters &parameters)
 {
 	
 	guint* rows;
-
 	guint* columns;
 
 	gtk_table_get_size(GTK_TABLE(instance), rows, columns);
 
+	int64_t urows = (int64_t)&rows;
+	int64_t ucolumns = (int64_t)&columns;
+
 	Php::Value arr;
-	arr["rows"] = rows;
-	arr["columns"] = columns;
+	arr["rows"] = urows;
+	arr["columns"] = ucolumns;
 
 	return arr;
 }
