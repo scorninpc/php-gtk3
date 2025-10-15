@@ -14,7 +14,7 @@ GtkFrame_::~GtkFrame_() = default;
 void GtkFrame_::__construct(Php::Parameters &parameters)
 {
 	std::string s_str = "";
-	if(parameters.size() > 0) {
+	 if (parameters.size() > 0 && ! parameters[0].isNull()) {
 		s_str.assign((const char *)parameters[0]);
 	}
 
