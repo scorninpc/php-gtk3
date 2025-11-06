@@ -33,23 +33,33 @@ void GdkEvent_::populate(GdkEvent *event)
     // GdkEventType
     self["type"] = event->type;
     
-    // GtkEventButton
-    GdkEventButton_ *eventbutton_ = new GdkEventButton_();
-    Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
-    eventbutton_->populate(event->button);
-    self["button"] = eventbutton_;
+    // Only populate the relevant event structure based on event type
+    // to avoid accessing invalid union members
+    
+    // GtkEventButton - for button press/release events
+    if (event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE ||
+        event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS) {
+        GdkEventButton_ *eventbutton_ = new GdkEventButton_();
+        Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
+        eventbutton_->populate(event->button);
+        self["button"] = eventbutton_;
+    }
 
-    // GtkEventKey
-    GdkEventKey_ *eventkey_ = new GdkEventKey_();
-    Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
-    eventkey_->populate(event->key);
-    self["key"] = eventkey_;
+    // GtkEventKey - for key press/release events
+    if (event->type == GDK_KEY_PRESS || event->type == GDK_KEY_RELEASE) {
+        GdkEventKey_ *eventkey_ = new GdkEventKey_();
+        Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
+        eventkey_->populate(event->key);
+        self["key"] = eventkey_;
+    }
 
-    // GtkEventFocus
-    GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
-    Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
-    eventfocus_->populate(event->focus_change);
-    self["focus_change"] = eventfocus_;
+    // GtkEventFocus - for focus change events
+    if (event->type == GDK_FOCUS_CHANGE) {
+        GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
+        Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
+        eventfocus_->populate(event->focus_change);
+        self["focus_change"] = eventfocus_;
+    }
 
 
     /**
