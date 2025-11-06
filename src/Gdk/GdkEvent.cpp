@@ -38,7 +38,8 @@ void GdkEvent_::populate(GdkEvent *event)
     
     // GtkEventButton - for button press/release events
     if (event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE ||
-        event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS) {
+        event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS ||
+        event->type == GDK_PAD_BUTTON_PRESS || event->type == GDK_PAD_BUTTON_RELEASE) {
         GdkEventButton_ *eventbutton_ = new GdkEventButton_();
         Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
         eventbutton_->populate(event->button);
