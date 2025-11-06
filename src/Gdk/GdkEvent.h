@@ -7,6 +7,7 @@
 
     #include "GdkEventButton.h"
     #include "GdkEventKey.h"
+    #include "GdkEventFocus.h"
 
     /**
      *

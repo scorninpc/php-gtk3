@@ -45,6 +45,12 @@ void GdkEvent_::populate(GdkEvent *event)
     eventkey_->populate(event->key);
     self["key"] = eventkey_;
 
+    // GtkEventFocus
+    GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
+    Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
+    eventfocus_->populate(event->focus_change);
+    self["focus_change"] = eventfocus_;
+
 
     /**
 
