@@ -541,6 +541,7 @@ extern "C"
         gdkevent.property("type", nullptr);
         gdkevent.property("button", nullptr);
         gdkevent.property("key", nullptr);
+        gdkevent.property("focus_change", nullptr);
 
         // GdkEventButton
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
@@ -719,6 +720,13 @@ extern "C"
         gdkeventkey.property("keycode", nullptr);
         gdkeventkey.property("group", nullptr);
         gdkeventkey.property("is_modifier", nullptr);
+
+        // GdkEventFocus
+        Php::Class<GdkEventFocus_> gdkeventfocus("GdkEventFocus");
+        gdkeventfocus.method<&GdkEventFocus_::__construct>("__construct");
+        gdkeventfocus.property("type", nullptr);
+        gdkeventfocus.property("send_event", nullptr);
+        gdkeventfocus.property("in", nullptr);
 
         // GdkEventType
         Php::Class<Php::Base> gdkeventtype("GdkEventType");
@@ -4035,6 +4043,7 @@ extern "C"
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkeventkey));
+        extension.add(std::move(gdkeventfocus));
         extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkcursor));
         extension.add(std::move(gdkcursortype));
