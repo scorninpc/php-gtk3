@@ -8,6 +8,9 @@
     #include "GdkEventButton.h"
     #include "GdkEventKey.h"
     #include "GdkEventFocus.h"
+    #include "GdkEventScroll.h"
+    #include "GdkEventMotion.h"
+    #include "GdkEventCrossing.h"
 
     /**
      *
