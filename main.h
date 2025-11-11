@@ -172,6 +172,7 @@
 #ifdef WITH_WEBKIT
 	// WebKit
 	#include "src/WebKit/WebKitWebView.h"
+	#include "src/Gtk/GtkWebView.h"
 #endif
 
 #ifdef WITH_MAC_INTEGRATION

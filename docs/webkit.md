@@ -2,7 +2,19 @@
 
 ## Overview
 
-PHP-GTK3 includes optional WebKitWebView widget support for displaying web content within GTK windows. The widget automatically adapts to its parent container size.
+PHP-GTK3 includes optional WebView widget support for displaying web content within GTK windows. The widget automatically adapts to its parent container size.
+
+**Cross-Platform Support:**
+
+- **Linux/macOS**: Uses WebKit2GTK (WebKit rendering engine)
+- **Windows**: Uses Microsoft Edge WebView2 (Chromium/Edge rendering engine)
+
+Two widget classes are available:
+
+- **WebKitWebView** - The standard cross-platform WebView widget
+- **GtkWebView** - A convenient alias with GTK-style naming (same functionality)
+
+Both classes provide identical functionality across all platforms. Use whichever naming convention you prefer.
 
 ## Compilation
 
@@ -34,7 +46,11 @@ Gtk::init();
 $window = new GtkWindow();
 $window->set_default_size(800, 600);
 
-$webView = new WebKitWebView();
+// You can use either WebKitWebView or GtkWebView (they're identical)
+$webView = new GtkWebView();  // GTK-style naming
+// or
+// $webView = new WebKitWebView();  // WebKit-style naming
+
 $scrolled = new GtkScrolledWindow();
 $scrolled->add($webView);
 $window->add($scrolled);
@@ -75,14 +91,43 @@ Gtk::main();
 - `get_uri()` - Get the current URI
 - `get_title()` - Get the current page title
 - `is_loading()` - Check if page is loading
+- `set_user_data_folder($path)` - Set custom user data folder (Windows only)
+  - **Windows**: Sets the directory where WebView2 stores cache, cookies, and local storage
+  - **Must be called before widget is realized** (before window is shown)
+  - **Linux/macOS**: No-op (WebKit2GTK uses WebKitWebsiteDataManager)
+  - Default location on Windows: `./tmp` (relative to current directory)
 
 ## Examples
 
 See the `examples/` directory for working examples:
 
-- **webkit_simple.php** - Minimal example
-- **webkit_browser.php** - Full browser with navigation
-- **webkit_js_to_php.php** - Bidirectional JavaScript ↔ PHP communication
+- **webkit_simple.php** - Minimal WebKitWebView example
+- **webkit_browser.php** - Full browser with navigation controls
+- **webkit_communication.php** - Bidirectional JavaScript ↔ PHP communication
+- **webkit_custom_data_folder.php** - Custom user data folder (Windows) with bidirectional communication
+
+### Custom User Data Folder (Windows)
+
+```php
+<?php
+Gtk::init();
+
+$window = new GtkWindow();
+$webView = new WebKitWebView();
+
+// Set custom folder for WebView2 cache, cookies, etc.
+// Must be called BEFORE the widget is shown
+$webView->set_user_data_folder("C:/MyApp/WebViewData");
+
+$scrolled = new GtkScrolledWindow();
+$scrolled->add($webView);
+$window->add($scrolled);
+
+$webView->load_uri("https://www.example.com");
+
+$window->show_all();
+Gtk::main();
+```
 
 ## JavaScript ↔ PHP Communication
 
@@ -101,13 +146,15 @@ $webView->register_script_message_handler("phpApp", function($messageData) {
 
 ```javascript
 // Send message to PHP
-window.webkit.messageHandlers.phpApp.postMessage('Hello from JavaScript!');
+window.webkit.messageHandlers.phpApp.postMessage("Hello from JavaScript!");
 
 // Send structured data
-window.webkit.messageHandlers.phpApp.postMessage(JSON.stringify({
-    type: 'event',
-    data: 'value'
-}));
+window.webkit.messageHandlers.phpApp.postMessage(
+  JSON.stringify({
+    type: "event",
+    data: "value",
+  })
+);
 ```
 
 ### Execute JavaScript from PHP
@@ -129,6 +176,7 @@ $webView->enable_developer_extras();
 ```
 
 Then right-click in the web page and select "Inspect Element" to access:
+
 - Console (JavaScript errors and console.log output)
 - Elements (DOM inspection)
 - Network (HTTP requests)
@@ -163,10 +211,10 @@ In the Web Inspector Console:
 
 ```javascript
 // Should show an object, not undefined
-window.webkit.messageHandlers.phpApp
+window.webkit.messageHandlers.phpApp;
 
 // Test manually
-window.webkit.messageHandlers.phpApp.postMessage('test')
+window.webkit.messageHandlers.phpApp.postMessage("test");
 ```
 
 ### Signal Details
@@ -184,17 +232,35 @@ The implementation properly extracts message values using JavaScriptCore's `jsc_
 ## Architecture
 
 - **Inheritance**: WebKitWebView extends GtkWidget
-- **Initialization**: Creates UserContentManager before WebView
+- **Platform-Specific Implementation**:
+  - Linux/macOS: WebKit2GTK with UserContentManager
+  - Windows: Microsoft Edge WebView2 with COM interfaces
 - **Memory Management**: Properly unreferences resources in destructor
 - **Security**: Input validation and null checks on all methods
 
+## Platform-Specific Documentation
+
+- **Windows WebView2**: See [webview2-windows.md](webview2-windows.md) for Windows-specific compilation and features
+- **Unix WebKit2GTK**: This document covers Linux/macOS WebKit2GTK implementation
+
 ## Files
 
+### Widget Classes
+
+- **WebKitWebView** - Cross-platform WebView widget class
+- **GtkWebView** - GTK-style alias (identical functionality)
+
 ### Source Code
-- `src/WebKit/WebKitWebView.h`
-- `src/WebKit/WebKitWebView.cpp`
+
+- `src/WebKit/WebKitWebView.h` - Platform-aware header
+- `src/WebKit/WebKitWebView.cpp` - Platform dispatcher
+- `src/WebKit/WebKitWebView_Unix.cpp` - WebKit2GTK implementation
+- `src/WebKit/WebKitWebView_Windows.cpp` - WebView2 implementation
+- `src/Gtk/GtkWebView.h` - Alias header
+- `src/Gtk/GtkWebView.cpp` - Alias implementation
 
 ### Build Integration
+
 - `Makefile` - Optional compilation with `WITH_WEBKIT=1`
 - `main.h` - Conditional include
 - `main.cpp` - Conditional class registration

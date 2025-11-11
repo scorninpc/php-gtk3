@@ -227,7 +227,8 @@ install:
 
 clean:
 						${RM} ${EXTENSION}
-						find . -name "*.o" -type f -exec ${RM} {} +
+						${RM} ${OBJECTS}
+						${RM} src/WebKit/*.o
 
 						${RM} ${EXTENSION}
 						${RM} ${OBJECTS}
