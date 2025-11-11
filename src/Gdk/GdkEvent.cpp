@@ -62,6 +62,30 @@ void GdkEvent_::populate(GdkEvent *event)
         self["focus_change"] = eventfocus_;
     }
 
+    // GdkEventScroll - for scroll events
+    if (event->type == GDK_SCROLL) {
+        GdkEventScroll_ *eventscroll_ = new GdkEventScroll_();
+        Php::Value gdkeventscroll = Php::Object("GdkEventScroll", eventscroll_);
+        eventscroll_->populate(event->scroll);
+        self["scroll"] = eventscroll_;
+    }
+
+    // GdkEventMotion - for motion notify events
+    if (event->type == GDK_MOTION_NOTIFY) {
+        GdkEventMotion_ *eventmotion_ = new GdkEventMotion_();
+        Php::Value gdkeventmotion = Php::Object("GdkEventMotion", eventmotion_);
+        eventmotion_->populate(event->motion);
+        self["motion"] = eventmotion_;
+    }
+
+    // GdkEventCrossing - for enter/leave notify events
+    if (event->type == GDK_ENTER_NOTIFY || event->type == GDK_LEAVE_NOTIFY) {
+        GdkEventCrossing_ *eventcrossing_ = new GdkEventCrossing_();
+        Php::Value gdkeventcrossing = Php::Object("GdkEventCrossing", eventcrossing_);
+        eventcrossing_->populate(event->crossing);
+        self["crossing"] = eventcrossing_;
+    }
+
 
     /**
 
