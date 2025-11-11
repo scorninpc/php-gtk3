@@ -4038,6 +4038,13 @@ extern "C"
         webkitwebview.method<&WebKitWebView_::register_script_message_handler>("register_script_message_handler");
         webkitwebview.method<&WebKitWebView_::enable_developer_extras>("enable_developer_extras");
         webkitwebview.method<&WebKitWebView_::get_settings>("get_settings");
+        webkitwebview.method<&WebKitWebView_::set_user_data_folder>("set_user_data_folder");
+
+        // GtkWebView (convenience alias for WebKitWebView)
+        // Extends WebKitWebView to inherit all methods automatically
+        Php::Class<GtkWebView_> gtkwebview("GtkWebView");
+        gtkwebview.extends(webkitwebview);
+        // Note: __construct is inherited from WebKitWebView, no need to register
 #endif
 
 #ifdef WITH_MAC_INTEGRATION
@@ -4362,6 +4369,7 @@ extern "C"
 
 #ifdef WITH_WEBKIT
         extension.add(std::move(webkitwebview));
+        extension.add(std::move(gtkwebview));
 #endif
 
 #ifdef WITH_MAC_INTEGRATION

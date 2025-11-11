@@ -7,7 +7,12 @@
 #	create a libwnck bind
 #
 # WITH_WEBKIT=1
-#	create a WebKit2GTK bind for web browsing in GTK widgets
+#	create a WebView bind for web browsing in GTK widgets
+#	- Linux/macOS: Uses WebKit2GTK
+#	- Windows: Uses Microsoft Edge WebView2
+#
+# WEBVIEW2_SDK=C:/path/to/sdk (Windows only)
+#	specify custom WebView2 SDK location (default: C:/WebView2SDK)
 #
 
 #
@@ -94,15 +99,35 @@ ifdef WITH_LIBWNCK
 endif
 
 #
-# With WebKit2GTK
+# With WebKit2GTK / WebView2
+#
+# On Unix/Linux/macOS: Uses WebKit2GTK (pkg-config)
+# On Windows: Uses Microsoft Edge WebView2 SDK
 #
 
 ifdef WITH_WEBKIT
-	WEBKITFLAGS = webkit2gtk-4.1
-	WEBKITLIBS = webkit2gtk-4.1
-	WEBKITPATH = $(wildcard src/WebKit/*.cpp)
-
-	COMPILER_FLAGS += -DWITH_WEBKIT
+	# Detect platform
+	ifeq ($(OS),Windows_NT)
+		# Windows: Use WebView2 (no pkg-config needed)
+		WEBKITPATH = $(wildcard src/WebKit/*.cpp)
+		
+		# WebView2 SDK paths (can be overridden via environment variables)
+		WEBVIEW2_SDK ?= C:/WebView2SDK
+		WEBVIEW2_INCLUDE ?= $(WEBVIEW2_SDK)/build/native/include
+		WEBVIEW2_LIB ?= $(WEBVIEW2_SDK)/build/native/x64
+		
+		# Add WebView2 include and library paths
+		COMPILER_FLAGS += -DWITH_WEBKIT -I$(WEBVIEW2_INCLUDE)
+		WEBVIEW2_LDFLAGS = -L$(WEBVIEW2_LIB) -lWebView2LoaderStatic
+	else
+		# Unix/Linux/macOS: Use WebKit2GTK
+		WEBKITFLAGS = webkit2gtk-4.1
+		WEBKITLIBS = webkit2gtk-4.1
+		WEBKITPATH = $(wildcard src/WebKit/*.cpp)
+		
+		COMPILER_FLAGS += -DWITH_WEBKIT
+		WEBVIEW2_LDFLAGS =
+	endif
 endif
 
 #
@@ -127,7 +152,7 @@ GTKLIBS             =   `pkg-config --libs gtk+-3.0 gladeui-2.0 gtksourceview-3.
 
 COMPILER_FLAGS      +=   -Wall -Wdeprecated-declarations -Woverloaded-virtual -c -std=c++11 -fpic -o
 LINKER_FLAGS        =   -shared ${GTKLIBS}
-LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS}
+LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS} ${WEBVIEW2_LDFLAGS}
 
 #
 #   Command to remove files, copy files and create directories.
@@ -158,10 +183,13 @@ ifdef WITH_WEBKIT
 endif
 
 # Build final source list
+# Exclude platform-specific implementation files that are included directly in WebKitWebView.cpp
+PLATFORM_SPECIFIC_IMPLS = src/WebKit/WebKitWebView_Unix.cpp src/WebKit/WebKitWebView_Windows.cpp
+
 ifdef WITH_MAC_INTEGRATION
-	SOURCES = $(wildcard $(CORE_SOURCES))
+	SOURCES = $(filter-out $(PLATFORM_SPECIFIC_IMPLS), $(wildcard $(CORE_SOURCES)))
 else
-	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp, $(wildcard src/*.cpp $(CORE_SOURCES)))
+	SOURCES = $(filter-out src/Gtk/GtkosxApplication.cpp $(PLATFORM_SPECIFIC_IMPLS), $(wildcard src/*.cpp $(CORE_SOURCES)))
 endif
 
 OBJECTS         = $(SOURCES:%.cpp=%.o)
@@ -185,4 +213,5 @@ install:
 
 clean:
 						${RM} ${EXTENSION}
-						find . -name "*.o" -type f -exec ${RM} {} +
+						${RM} ${OBJECTS}
+						${RM} src/WebKit/*.o

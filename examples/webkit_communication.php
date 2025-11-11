@@ -65,6 +65,7 @@ $scrolledLog->add($logView);
 // Create WebKitWebView widget
 echo "[PHP] Creating WebKitWebView widget...\n";
 $webView = new WebKitWebView();
+$webView->set_user_data_folder('./tmp');
 echo "[PHP] WebKitWebView created successfully\n";
 
 // Enable developer extras for debugging

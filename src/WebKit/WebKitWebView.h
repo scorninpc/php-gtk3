@@ -4,8 +4,13 @@
 
     #include <phpcpp.h>
     #include <gtk/gtk.h>
-    #include <webkit2/webkit2.h>
-    #include <jsc/jsc.h>
+    
+    #ifndef _WIN32
+        // Unix/Linux/macOS: WebKit2GTK headers
+        #include <webkit2/webkit2.h>
+        #include <jsc/jsc.h>
+    #endif
+    
     #include <vector>
 
     #include "../Gtk/GtkWidget.h"
@@ -15,7 +20,12 @@
     /**
      * WebKitWebView_
      *
+     * Cross-platform WebView widget:
+     * - Unix/Linux/macOS: Uses WebKit2GTK
+     * - Windows: Uses Microsoft Edge WebView2
+     * 
      * https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html
+     * https://docs.microsoft.com/en-us/microsoft-edge/webview2/
      */
     class WebKitWebView_ : public GtkWidget_
     {
@@ -61,13 +71,24 @@
             void enable_developer_extras();
 
             Php::Value get_settings();
+            
+            void set_user_data_folder(Php::Parameters &parameters);
 
         /**
          * Private members
          */
         private:
-            WebKitUserContentManager *user_content_manager;
-            std::vector<gulong> signal_handler_ids;
+            #ifndef _WIN32
+                // Unix/Linux/macOS: WebKit2GTK specific members
+                WebKitUserContentManager *user_content_manager;
+                std::vector<gulong> signal_handler_ids;
+            #else
+                // Windows: WebView2 specific members
+                // Note: WebView2 state (controller, environment, etc.) is managed 
+                // in WebKitWebView_Windows.cpp via WebView2State structure
+                void *user_content_manager;  // Placeholder for compatibility
+                std::vector<unsigned long> signal_handler_ids;  // Placeholder
+            #endif
     };
 
 #endif

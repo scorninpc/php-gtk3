@@ -70,47 +70,47 @@ $contextId = $statusbar->get_context_id("status");
 $webView->load_uri($urlEntry->get_text());
 
 // Connect Go button
-$goButton->connect("clicked", function() use ($webView, $urlEntry) {
+$goButton->connect("clicked", function () use ($webView, $urlEntry) {
     $url = $urlEntry->get_text();
-    
+
     // Add http:// if no protocol specified
     if (!preg_match('/^https?:\/\//i', $url)) {
-        $url = 'http://' . $url;
+        $url = 'https://' . $url;
         $urlEntry->set_text($url);
     }
-    
+
     $webView->load_uri($url);
 });
 
 // Connect URL entry (press Enter to load)
-$urlEntry->connect("activate", function() use ($webView, $urlEntry) {
+$urlEntry->connect("activate", function () use ($webView, $urlEntry) {
     $url = $urlEntry->get_text();
-    
+
     // Add http:// if no protocol specified
     if (!preg_match('/^https?:\/\//i', $url)) {
-        $url = 'http://' . $url;
+        $url = 'https://' . $url;
         $urlEntry->set_text($url);
     }
-    
+
     $webView->load_uri($url);
 });
 
 // Connect Back button
-$backButton->connect("clicked", function() use ($webView, $backButton) {
+$backButton->connect("clicked", function () use ($webView) {
     if ($webView->can_go_back()) {
         $webView->go_back();
     }
 });
 
 // Connect Forward button
-$forwardButton->connect("clicked", function() use ($webView, $forwardButton) {
+$forwardButton->connect("clicked", function () use ($webView) {
     if ($webView->can_go_forward()) {
         $webView->go_forward();
     }
 });
 
 // Connect Reload button
-$reloadButton->connect("clicked", function() use ($webView) {
+$reloadButton->connect("clicked", function () use ($webView) {
     $webView->reload();
 });
 

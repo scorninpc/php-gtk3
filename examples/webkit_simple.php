@@ -26,6 +26,7 @@ $window->connect("destroy", "onWindowDestroy");
 
 // Create WebKitWebView widget
 $webView = new WebKitWebView();
+$webView->set_user_data_folder('./tmp');
 
 // Create a scrolled window to make the WebView scrollable
 // The WebView will automatically resize to fit its parent
