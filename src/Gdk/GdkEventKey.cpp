@@ -34,8 +34,7 @@ void GdkEventKey_::populate(GdkEventKey event)
     self["length"] = (int)event.length;
 
     if(event.string != NULL) {
-        const gchar *event_string = event.string;
-        self["string"] = (char *)&event_string;
+        self["string"] = event.string;
     }
 
     self["hardware_keycode"] = (int)event.hardware_keycode;
