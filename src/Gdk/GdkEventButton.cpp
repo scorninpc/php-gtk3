@@ -26,8 +26,10 @@ void GdkEventButton_::populate(GdkEventButton event)
     double *axes = (double *)event.axes;
 
     Php::Value arr_axes;
-	arr_axes[0] = (double)axes[0];
-	arr_axes[0] = (double)axes[1   ];
+    if (axes != NULL) {
+        arr_axes[0] = (double)axes[0];
+        arr_axes[1] = (double)axes[1];
+    }
 
 
     // initialize a public property
