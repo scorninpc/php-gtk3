@@ -43,7 +43,7 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventButton_ *eventbutton_ = new GdkEventButton_();
         Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
         eventbutton_->populate(event->button);
-        self["button"] = eventbutton_;
+        self["button"] = gdkeventbutton;
     }
 
     // GtkEventKey - for key press/release events
@@ -51,7 +51,7 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventKey_ *eventkey_ = new GdkEventKey_();
         Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
         eventkey_->populate(event->key);
-        self["key"] = eventkey_;
+        self["key"] = gdkeventkey;
     }
 
     // GtkEventFocus - for focus change events
@@ -59,7 +59,7 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
         Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
         eventfocus_->populate(event->focus_change);
-        self["focus_change"] = eventfocus_;
+        self["focus_change"] = gdkeventfocus;
     }
 
 
