@@ -43,7 +43,7 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventButton_ *eventbutton_ = new GdkEventButton_();
         Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
         eventbutton_->populate(event->button);
-        self["button"] = eventbutton_;
+        self["button"] = gdkeventbutton;
     }
 
     // GtkEventKey - for key press/release events
@@ -51,7 +51,7 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventKey_ *eventkey_ = new GdkEventKey_();
         Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
         eventkey_->populate(event->key);
-        self["key"] = eventkey_;
+        self["key"] = gdkeventkey;
     }
 
     // GtkEventFocus - for focus change events
@@ -59,7 +59,31 @@ void GdkEvent_::populate(GdkEvent *event)
         GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
         Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
         eventfocus_->populate(event->focus_change);
-        self["focus_change"] = eventfocus_;
+        self["focus_change"] = gdkeventfocus;
+    }
+
+    // GdkEventScroll - for scroll events
+    if (event->type == GDK_SCROLL) {
+        GdkEventScroll_ *eventscroll_ = new GdkEventScroll_();
+        Php::Value gdkeventscroll = Php::Object("GdkEventScroll", eventscroll_);
+        eventscroll_->populate(event->scroll);
+        self["scroll"] = gdkeventscroll;
+    }
+
+    // GdkEventMotion - for motion notify events
+    if (event->type == GDK_MOTION_NOTIFY) {
+        GdkEventMotion_ *eventmotion_ = new GdkEventMotion_();
+        Php::Value gdkeventmotion = Php::Object("GdkEventMotion", eventmotion_);
+        eventmotion_->populate(event->motion);
+        self["motion"] = gdkeventmotion;
+    }
+
+    // GdkEventCrossing - for enter/leave notify events
+    if (event->type == GDK_ENTER_NOTIFY || event->type == GDK_LEAVE_NOTIFY) {
+        GdkEventCrossing_ *eventcrossing_ = new GdkEventCrossing_();
+        Php::Value gdkeventcrossing = Php::Object("GdkEventCrossing", eventcrossing_);
+        eventcrossing_->populate(event->crossing);
+        self["crossing"] = gdkeventcrossing;
     }
 
 

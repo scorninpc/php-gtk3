@@ -728,6 +728,50 @@ extern "C"
         gdkeventfocus.property("send_event", nullptr);
         gdkeventfocus.property("in", nullptr);
 
+        // GdkEventScroll
+        Php::Class<GdkEventScroll_> gdkeventscroll("GdkEventScroll");
+        gdkeventscroll.method<&GdkEventScroll_::__construct>("__construct");
+        gdkeventscroll.property("type", nullptr);
+        gdkeventscroll.property("send_event", nullptr);
+        gdkeventscroll.property("time", nullptr);
+        gdkeventscroll.property("x", nullptr);
+        gdkeventscroll.property("y", nullptr);
+        gdkeventscroll.property("state", nullptr);
+        gdkeventscroll.property("direction", nullptr);
+        gdkeventscroll.property("x_root", nullptr);
+        gdkeventscroll.property("y_root", nullptr);
+        gdkeventscroll.property("delta_x", nullptr);
+        gdkeventscroll.property("delta_y", nullptr);
+
+        // GdkEventMotion
+        Php::Class<GdkEventMotion_> gdkeventmotion("GdkEventMotion");
+        gdkeventmotion.method<&GdkEventMotion_::__construct>("__construct");
+        gdkeventmotion.property("type", nullptr);
+        gdkeventmotion.property("send_event", nullptr);
+        gdkeventmotion.property("time", nullptr);
+        gdkeventmotion.property("x", nullptr);
+        gdkeventmotion.property("y", nullptr);
+        gdkeventmotion.property("axes", nullptr);
+        gdkeventmotion.property("state", nullptr);
+        gdkeventmotion.property("is_hint", nullptr);
+        gdkeventmotion.property("x_root", nullptr);
+        gdkeventmotion.property("y_root", nullptr);
+
+        // GdkEventCrossing
+        Php::Class<GdkEventCrossing_> gdkeventcrossing("GdkEventCrossing");
+        gdkeventcrossing.method<&GdkEventCrossing_::__construct>("__construct");
+        gdkeventcrossing.property("type", nullptr);
+        gdkeventcrossing.property("send_event", nullptr);
+        gdkeventcrossing.property("time", nullptr);
+        gdkeventcrossing.property("x", nullptr);
+        gdkeventcrossing.property("y", nullptr);
+        gdkeventcrossing.property("x_root", nullptr);
+        gdkeventcrossing.property("y_root", nullptr);
+        gdkeventcrossing.property("mode", nullptr);
+        gdkeventcrossing.property("detail", nullptr);
+        gdkeventcrossing.property("focus", nullptr);
+        gdkeventcrossing.property("state", nullptr);
+
         // GdkEventType
         Php::Class<Php::Base> gdkeventtype("GdkEventType");
         gdkeventtype.constant("NOTHING", (int)GDK_NOTHING);
@@ -4044,6 +4088,9 @@ extern "C"
         extension.add(std::move(gdkeventbutton));
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventfocus));
+        extension.add(std::move(gdkeventscroll));
+        extension.add(std::move(gdkeventmotion));
+        extension.add(std::move(gdkeventcrossing));
         extension.add(std::move(gdkeventtype));
         extension.add(std::move(gdkcursor));
         extension.add(std::move(gdkcursortype));
