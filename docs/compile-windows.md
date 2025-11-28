@@ -147,6 +147,16 @@
 
 	Copy the file `C:\msys2\mingw64\lib\glib-2.0\include\glibconfig.h` to the folder `C:\msys2\mingw64\include\glib-2.0`
 
+4. (Optional) Installing WebKit for web content support
+
+	If you want to compile PHP-GTK3 with WebKitWebView support for displaying web content in GTK windows, you need to install webkit2gtk:
+
+	```bash
+	$ pacman -S mingw-w64-x86_64-webkit2gtk
+	```
+
+	Note: This is optional. Only install if you need web content display capabilities in your GTK applications.
+
 ## Creating Visual Studio project;
 
 1. Creating project
@@ -171,9 +181,14 @@
 	C:\php-dev\php-gtk3\src\libwnck\*.cpp
 	```
 
+	**Note for WebKit support:** If you installed webkit2gtk in the previous step, also add:
+	```
+	C:\php-dev\php-gtk3\src\WebKit\*.cpp
+	```
+
 3. Configure VS project 
 
-	Rigth click on project name, and go to properties
+	Right click on project name, and go to properties
 
 	Configure to `Release` and `x64` platform
 
@@ -199,6 +214,13 @@
 	C:\msys2\mingw64\include\gdk-pixbuf-3.0
 	C:\msys2\mingw64\include\atk-1.0
 	C:\msys2\mingw64\include\pango-1.0
+	```
+
+	**For WebKit support, also add:**
+	```
+	C:\msys2\mingw64\include\webkitgtk-4.1
+	C:\msys2\mingw64\include\libsoup-3.0
+	C:\msys2\mingw64\include\javascriptcoregtk-4.1
 	```
 	- Warning Level: Turn Off All Warnings (/W0)
 	- SDL checks: No (/sdl-)
@@ -235,6 +257,11 @@
 	GLIB_COMPILATION
 	```
 
+	**For WebKit support, also add:**
+	```
+	WITH_WEBKIT
+	```
+
 	v. Under "Linker" -> "General"
 
 	- Additional Library Directories:
@@ -257,6 +284,12 @@
 	libgladeui-2.dll.a
 	libgtksourceview-3.0.dll.a
 	libpango-1.0.dll.a
+	```
+
+	**For WebKit support, also add:**
+	```
+	libwebkit2gtk-4.1.dll.a
+	libjavascriptcoregtk-4.1.dll.a
 	```
 
 4. Build everything
@@ -317,6 +350,16 @@
 	libwinpthread-1.dll
 	libxml2-2.dll
 	zlib1.dll
+	```
+
+	**For WebKit support, also copy:**
+	```
+	libwebkit2gtk-4.1-0.dll
+	libjavascriptcoregtk-4.1-0.dll
+	libsoup-3.0-0.dll
+	libnghttp2-14.dll
+	libpsl-5.dll
+	libsqlite3-0.dll
 	```
 
 3. Fixing GTK icons and themes

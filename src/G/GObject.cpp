@@ -29,7 +29,10 @@ struct GObject_::st_callback {
  *  
  */
 GObject_::GObject_() = default;
-GObject_::~GObject_() = default;
+
+GObject_::~GObject_()
+{
+}
 
 
 void GObject_::__clone()
@@ -201,6 +204,18 @@ bool GObject_::connect_callback(gpointer user_data, ...)
 
             case G_TYPE_UINT:
                 // Php::call("var_dump", "int");
+                internal_parameters[i+1] = (int)va_arg(ap, guint);
+                break;
+
+            case G_TYPE_ENUM:
+                // Php::call("var_dump", "enum");
+                // Enums are passed as integers (promoted to int in varargs)
+                internal_parameters[i+1] = (int)va_arg(ap, gint);
+                break;
+
+            case G_TYPE_FLAGS:
+                // Php::call("var_dump", "flags");
+                // Flags are passed as unsigned integers (promoted to unsigned int in varargs)
                 internal_parameters[i+1] = (int)va_arg(ap, guint);
                 break;
                 
