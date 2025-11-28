@@ -1,0 +1,52 @@
+name: PHP-GTK3 C++ CI (No-Build Checks)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cpp-static-analysis:
+    name: C++ static analysis (no build)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # C++ linting only; this does NOT build the extension.
+      # Restrict to C++ sources in this repo and use a reasonable set of checks.
+      - name: C++ Linter (clang-tidy/clang-format) – no-build
+        uses: cpp-linter/cpp-linter-action@v2
+        with:
+          # Limit analysis to actual C++ sources in this project
+          files: |
+            main.cpp
+            php-gtk.cpp
+            src/**/*.cpp
+          # Run clang-tidy with a focused set of checks; this keeps noise manageable
+          clang_tidy_checks: >
+            -*,
+            bugprone-*,
+            performance-*,
+            readability-*,
+            modernize-*,
+            cppcoreguidelines-*
+          # Only fail the check on more serious issues
+          fail_on: error
+          # Do not try to auto-fix code; just report
+          style: file
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  markdown-metadata:
+    name: Markdown metadata check (no build)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Basic Markdown presence
+        run: |
+          echo "Listing key Markdown files (if present):"
+          ls README.md || echo "README.md not found"
+          ls .github/copilot-instructions.md || echo ".github/copilot-instructions.md not found"
