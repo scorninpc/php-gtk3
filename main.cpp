@@ -4018,6 +4018,28 @@ extern "C"
         Php::Class<PangoLayoutLine_> pangolayoutline("PangoLayoutLine");
         pangolayoutline.extends(gobject);
 
+#ifdef WITH_WEBKIT
+        // WebKitWebView
+        Php::Class<WebKitWebView_> webkitwebview("WebKitWebView");
+        webkitwebview.extends(gtkwidget);
+        webkitwebview.method<&WebKitWebView_::__construct>("__construct");
+        webkitwebview.method<&WebKitWebView_::load_uri>("load_uri");
+        webkitwebview.method<&WebKitWebView_::get_uri>("get_uri");
+        webkitwebview.method<&WebKitWebView_::reload>("reload");
+        webkitwebview.method<&WebKitWebView_::stop_loading>("stop_loading");
+        webkitwebview.method<&WebKitWebView_::can_go_back>("can_go_back");
+        webkitwebview.method<&WebKitWebView_::go_back>("go_back");
+        webkitwebview.method<&WebKitWebView_::can_go_forward>("can_go_forward");
+        webkitwebview.method<&WebKitWebView_::go_forward>("go_forward");
+        webkitwebview.method<&WebKitWebView_::get_title>("get_title");
+        webkitwebview.method<&WebKitWebView_::is_loading>("is_loading");
+        webkitwebview.method<&WebKitWebView_::load_html>("load_html");
+        webkitwebview.method<&WebKitWebView_::run_javascript>("run_javascript");
+        webkitwebview.method<&WebKitWebView_::register_script_message_handler>("register_script_message_handler");
+        webkitwebview.method<&WebKitWebView_::enable_developer_extras>("enable_developer_extras");
+        webkitwebview.method<&WebKitWebView_::get_settings>("get_settings");
+#endif
+
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
         Php::Class<GtkosxApplication_> gtkosxapplication("GtkosxApplication");
@@ -4337,6 +4359,10 @@ extern "C"
         extension.add(std::move(pangocontext));
         extension.add(std::move(pangolayout));
         extension.add(std::move(pangolayoutline));
+
+#ifdef WITH_WEBKIT
+        extension.add(std::move(webkitwebview));
+#endif
 
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));

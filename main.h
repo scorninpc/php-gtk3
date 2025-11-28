@@ -163,6 +163,11 @@
 	#include "src/Pango/PangoLayoutLine.h"
 	#include "src/Pango/PangoWrapMode.h"
 
+#ifdef WITH_WEBKIT
+	// WebKit
+	#include "src/WebKit/WebKitWebView.h"
+#endif
+
 #ifdef WITH_MAC_INTEGRATION
 	// GtkosxApplication
 	#include "src/Gtk/GtkosxApplication.h"
