@@ -53,6 +53,12 @@ void GtkTreeView_::set_model(Php::Parameters &parameters)
 {
 	// Get the column
 	Php::Value object = parameters[0];
+	// Allow NULL to clear the model
+	if(object.isNull()) {
+		gtk_tree_view_set_model(GTK_TREE_VIEW(instance), NULL);
+		liststore_type = false;
+		return;
+	}
 	// if (!object.instanceOf("GtkTreeModel")) throw Php::Exception("parameter expect GtkTreeModel instance");
 	GtkTreeModel_ *passedModel = (GtkTreeModel_ *)object.implementation();
 
@@ -199,6 +205,19 @@ Php::Value GtkTreeView_::get_enable_search()
 {
     // 
     return gtk_tree_view_get_enable_search(GTK_TREE_VIEW(instance));
+}
+
+void GtkTreeView_::set_fixed_height_mode(Php::Parameters &parameters)
+{
+	bool enabled = (bool)parameters[0];
+
+	gtk_tree_view_set_fixed_height_mode(GTK_TREE_VIEW(instance), enabled);
+}
+
+Php::Value GtkTreeView_::get_fixed_height_mode()
+{
+    // 
+    return gtk_tree_view_get_fixed_height_mode(GTK_TREE_VIEW(instance));
 }
 
 Php::Value GtkTreeView_::get_n_columns()

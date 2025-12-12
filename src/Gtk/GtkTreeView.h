@@ -72,6 +72,9 @@
 
             void set_enable_search(Php::Parameters &parameters);
             Php::Value get_enable_search();
+
+            void set_fixed_height_mode(Php::Parameters &parameters);
+            Php::Value get_fixed_height_mode();
             
             Php::Value get_n_columns();
 

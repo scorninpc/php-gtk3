@@ -1937,6 +1937,8 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::get_reorderable>("get_reorderable");
         gtktreeview.method<&GtkTreeView_::set_enable_search>("set_enable_search");
         gtktreeview.method<&GtkTreeView_::get_enable_search>("get_enable_search");
+        gtktreeview.method<&GtkTreeView_::set_fixed_height_mode>("set_fixed_height_mode");
+        gtktreeview.method<&GtkTreeView_::get_fixed_height_mode>("get_fixed_height_mode");
         gtktreeview.method<&GtkTreeView_::autosize>("autosize");
         gtktreeview.method<&GtkTreeView_::collapse_all>("collapse_all");
         gtktreeview.method<&GtkTreeView_::expand_all>("expand_all");
@@ -1974,6 +1976,8 @@ extern "C"
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_alignment>("get_alignment");
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_reorderable>("set_reorderable");
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_reorderable>("get_reorderable");
+        gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sizing>("set_sizing");
+        gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_sizing>("get_sizing");
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_widget>("set_widget");
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::get_widget>("get_widget");
         gtktreeviewcolumn.method<&GtkTreeViewColumn_::set_sort_column_id>("set_sort_column_id");
