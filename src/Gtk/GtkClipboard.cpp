@@ -186,7 +186,13 @@ void GtkClipboard_::request_text_callback(GtkClipboard *clipboard, const gchar *
     }
 
 	// Call php function with parameters
-    Php::call("call_user_func_array", callback_name, internal_parameters);
+    // Wrap in try-catch to properly handle exceptions from PHP callbacks
+    try {
+        Php::call("call_user_func_array", callback_name, internal_parameters);
+    } catch (Php::Exception &exception) {
+        // Re-throw to let PHP-CPP handle the exception properly
+        throw;
+    }
 }
 
 void GtkClipboard_::request_image(Php::Parameters &parameters)

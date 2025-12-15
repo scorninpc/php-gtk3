@@ -1,6 +1,31 @@
 
 #include "GtkAppChooserDialog.h"
 
+// Custom log handler to suppress GTK 3 bug with GLib 2.84+ GFileInfo warnings
+// GTK 3.24 queries GFile with only G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+// but then tries to access size and type attributes, causing critical warnings
+static void suppress_gfileinfo_warnings(const gchar *log_domain,
+                                        GLogLevelFlags log_level,
+                                        const gchar *message,
+                                        gpointer user_data)
+{
+	(void)log_domain;
+	(void)log_level;
+	(void)user_data;
+	
+	// Suppress specific GFileInfo attribute warnings that are GTK 3 bugs
+	if (g_str_has_prefix(message, "GFileInfo created without standard::size") ||
+	    g_str_has_prefix(message, "GFileInfo created without standard::type") ||
+	    g_strstr_len(message, -1, "g_file_info_get_size") ||
+	    g_strstr_len(message, -1, "g_file_info_get_file_type")) {
+		// Silently ignore these specific warnings
+		return;
+	}
+	
+	// For all other messages, use default handler
+	g_log_default_handler(log_domain, log_level, message, user_data);
+}
+
 /**
  * Constructor
  */
@@ -27,8 +52,20 @@ void GtkAppChooserDialog_::__construc(Php::Parameters &parameters)
 	gchar *path = (gchar *)s_file.c_str();
 
 	GFile *file = g_file_new_for_path(path);
+	
+	// Install custom log handler to suppress GTK 3 bug warnings with GLib 2.84+
+	guint handler_id = g_log_set_handler("GLib-GIO", 
+	                                     G_LOG_LEVEL_CRITICAL,
+	                                     suppress_gfileinfo_warnings,
+	                                     NULL);
 
 	instance = (gpointer *)gtk_app_chooser_dialog_new (parent, flags, file);
+	
+	// Remove the custom log handler
+	g_log_remove_handler("GLib-GIO", handler_id);
+	
+	// Release our reference to the GFile
+	g_object_unref(file);
 
 }
 

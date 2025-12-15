@@ -55,15 +55,29 @@ NAME                =   php-gtk3
 INI_DIR     =   /opt/php/php-8.2.22/mods-available/
 
 #
+#   PHP configuration
+#
+#   The path to php-config, used to get PHP include directories and extension directory.
+#   This should match your PHP installation. Common locations:
+#   - /opt/php/php-8.2.22/bin/php-config (custom installation)
+#   - /usr/bin/php-config (system installation)
+#
+PHP_CONFIG      =   /opt/php/php-8.2.22/bin/php-config
+
+# Try to use system php-config if the specified one doesn't exist
+ifeq (,$(wildcard $(PHP_CONFIG)))
+    PHP_CONFIG  =   php-config
+endif
+
+#
 #   The extension dirs
 #
 #   This is normally a directory like /usr/lib/php5/20121221 (based on the
-#   PHP version that you use. We make use of the command line '/opt/php/php7.4.29/bin/php-config'
-#   instruction to find out what the extension directory is, you can override
-#   this with a different fixed directory
+#   PHP version that you use. We make use of the php-config command
+#   to find out what the extension directory is.
 #
 
-EXTENSION_DIR       =   $(shell /opt/php/php-8.2.22/bin/php-config --extension-dir)
+EXTENSION_DIR       =   $(shell $(PHP_CONFIG) --extension-dir)
 
 #
 #   The name of the extension and the name of the .ini file
@@ -161,6 +175,7 @@ endif
 # All flags
 #
 
+PHPFLAGS            =   $(shell $(PHP_CONFIG) --includes)
 GTKFLAGS            =   `pkg-config --cflags gtk+-3.0 ${GLADEUIFLAGS} gtksourceview-3.0 ${MAC_INTEGRATIONFLAGS} ${LIBWNCKFLAGS} ${WEBKITFLAGS}`
 GTKLIBS             =   `pkg-config --libs gtk+-3.0 ${GLADEUILIBS} gtksourceview-3.0 ${MAC_INTEGRATIONLIBS} ${LIBWNCKLIBS} ${WEBKITLIBS}`
 
@@ -219,7 +234,7 @@ ${EXTENSION}:           ${OBJECTS}
 						${LINKER} ${LINKER_FLAGS} -o $@ ${OBJECTS} ${LINKER_DEPENDENCIES}
 
 ${OBJECTS}:
-						${COMPILER} ${GTKFLAGS} ${COMPILER_FLAGS} $@ ${@:%.o=%.cpp}
+						${COMPILER} ${PHPFLAGS} ${GTKFLAGS} ${COMPILER_FLAGS} $@ ${@:%.o=%.cpp}
 
 install:
 						${CP} ${EXTENSION} ${EXTENSION_DIR}

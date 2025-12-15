@@ -421,7 +421,13 @@ void GtkBuilder_::connect_signals_full_callback1(gpointer user_data, ...)
 
 
     // Call php function with parameters
-    Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
+    // Wrap in try-catch to properly handle exceptions from PHP callbacks
+    try {
+        Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
+    } catch (Php::Exception &exception) {
+        // Re-throw to let PHP-CPP handle the exception properly
+        throw;
+    }
 }
 
 void GtkBuilder_::set_translation_domain(Php::Parameters &parameters)

@@ -46,6 +46,8 @@ Php::Value GtkCssProvider_::load_from_file(Php::Parameters &parameters)
 	GError *error = NULL;
 
 	bool ret = gtk_css_provider_load_from_file (GTK_CSS_PROVIDER(instance), file, &error);
+	
+	g_object_unref(file);
 
 	return ret;
 }

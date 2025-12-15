@@ -361,5 +361,11 @@ void GtkTreeViewColumn_::set_cell_data_func_callback(GtkTreeViewColumn* tree_col
     }
 
 	// Call php function with parameters
-    Php::call("call_user_func_array", callback_name, internal_parameters);
+    // Wrap in try-catch to properly handle exceptions from PHP callbacks
+    try {
+        Php::call("call_user_func_array", callback_name, internal_parameters);
+    } catch (Php::Exception &exception) {
+        // Re-throw to let PHP-CPP handle the exception properly
+        throw;
+    }
 }
