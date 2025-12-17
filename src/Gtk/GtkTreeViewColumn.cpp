@@ -178,6 +178,23 @@ Php::Value GtkTreeViewColumn_::get_reorderable()
 }
 
 /**
+ * Sets the growth behavior of tree_column to type.
+ */
+void GtkTreeViewColumn_::set_sizing(Php::Parameters &parameters)
+{
+    int type = (int)parameters[0];
+    gtk_tree_view_column_set_sizing(GTK_TREE_VIEW_COLUMN(instance), (GtkTreeViewColumnSizing)type);
+}
+
+/**
+ * Returns the current type of tree_column.
+ */
+Php::Value GtkTreeViewColumn_::get_sizing()
+{
+    return (int)gtk_tree_view_column_get_sizing(GTK_TREE_VIEW_COLUMN(instance));
+}
+
+/**
  * Returns the GtkWidget in the button on the column header. If a custom widget has not been set then NULL is returned.
  *
  * @todo need to test

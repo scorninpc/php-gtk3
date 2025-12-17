@@ -235,18 +235,22 @@ Php::Value GtkComboBox_::get_model()
 
 void GtkComboBox_::set_model(Php::Parameters &parameters)
 {
-	GtkTreeModel *model;
+	GtkTreeModel *model = NULL;
 	Php::Value object_model;
 	if(parameters.size() > 0) {
 		object_model = parameters[0];
-		GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
-		model = phpgtk_model->get_model();
-	}
-
-	// Store the Model type
-	liststore_type = false;
-	if(object_model.instanceOf("GtkListStore")) {
-		liststore_type = true;
+		// Allow NULL to clear the model
+		if(!object_model.isNull()) {
+			GtkTreeModel_ *phpgtk_model = (GtkTreeModel_ *)object_model.implementation();
+			model = phpgtk_model->get_model();
+			// Store the Model type
+			liststore_type = false;
+			if(object_model.instanceOf("GtkListStore")) {
+				liststore_type = true;
+			}
+		} else {
+			liststore_type = false;
+		}
 	}
 
 	gtk_combo_box_set_model (GTK_COMBO_BOX(instance), model);
