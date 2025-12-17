@@ -29,6 +29,39 @@ You can find a cookbook of codes compiled and organized in http://andor.com.br/p
 
 This is [VSCode extension](https://marketplace.visualstudio.com/items?itemName=RobertBeran.PHPGTK3Syntax) (not official) written by [subabrain](https://github.com/subabrain)
 
+## Features
+
+### WebView Support (Cross-Platform)
+
+PHP-GTK3 includes optional WebView widget support for displaying web content within GTK windows:
+
+- **WebKitWebView** - Cross-platform web browser widget  
+- **GtkWebView** - Convenient alias with GTK-style naming
+
+**Platform implementations:**
+- Linux/macOS: WebKit2GTK
+- Windows: Microsoft Edge WebView2
+
+```php
+<?php
+Gtk::init();
+
+$window = new GtkWindow();
+$webView = new GtkWebView();  // or new WebKitWebView()
+$webView->load_uri("https://www.example.com");
+
+$scrolled = new GtkScrolledWindow();
+$scrolled->add($webView);
+$window->add($scrolled);
+
+$window->show_all();
+Gtk::main();
+```
+
+See [WebKit Documentation](docs/webkit.md) for full details and examples.
+
+To compile with WebKit support: `make WITH_WEBKIT=1`
+
 ## Example
 
 ```php
