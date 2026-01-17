@@ -16,8 +16,8 @@ Install dependencies for php and extensions. On deb packages for example:
 
 Clone php souce
 ```sh
-:$ git clone -b PHP-8.1.14 https://github.com/php/php-src.git PHP-8.1.14
-:$ cd PHP-8.1.14
+:$ git clone -b PHP-8.2.22 https://github.com/php/php-src.git PHP-8.2.22
+:$ cd PHP-8.2.22
 ```
 
 Build the config
@@ -27,7 +27,7 @@ Build the config
 
 Configure
 ```sh
-:$ ./configure --prefix=/opt/php/php-8.1.14 --disable-cgi --disable-shared --enable-static --with-pgsql --with-pdo-mysql --with-pdo-pgsql --with-pgsql --with-ffi --with-readline --with-openssl --enable-soap --enable-sockets --with-bz2 --with-zlib --enable-mbstring --with-curl --with-xsl
+:$ ./configure --prefix=/opt/php/php-8.2.22 --disable-cgi --disable-shared --enable-static --with-pdo-mysql --with-pdo-pgsql --with-ffi --with-readline --with-openssl --enable-soap --enable-sockets --with-bz2 --with-zlib --enable-mbstring --with-curl --with-xsl
 ```
 
 Compile and install
@@ -44,7 +44,7 @@ Clone source
 :$ git clone https://github.com/fast-debug/PHP-CPP.git
 :$ cd PHP-CPP
 ```
-Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.1.14/bin/php-config`.
+Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.2.22/bin/php-config`.
 
 `NOTE:` this path can be changed when you compile PHP-SRC.
 
@@ -59,7 +59,7 @@ This will create php-gtk3.so php module
 
 Get GTK dependencies, on deb systems, like:
 ```sh
-:$ sudo apt-get install libgtk-3-dev libgladeui-dev libgtksourceview-3.0-dev libwnck-dev
+:$ sudo apt-get install libgtk-3-dev libgtksourceview-3.0-dev libwnck-3-dev
 ```
 
 If you are compiling from repository version, install `pkg-config` too. If you are compiling from source, use `/usr/local/php-gtk3/bin/php-config` on Makefile
@@ -70,7 +70,7 @@ Clone source
 :$ cd PHP-GTK3
 ```
 
-Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.1.14/bin/php-config`.
+Edit `PHP-CPP/Makefile` to use `/opt/php/php-8.2.22/bin/php-config`.
 
 `NOTE:` this path can be changed when you compile PHP-SRC.
 
@@ -81,7 +81,7 @@ Compile
 
 You can test with
 ```sh
-:$ /opt/php/php-8.1.14/bin/php -dextension=./php-gtk3.so examples/test1.php 
+:$ /opt/php/php-8.2.22/bin/php -dextension=./php-gtk3.so examples/test1.php 
 ```
 
 ## Make a manual instalation
@@ -102,7 +102,7 @@ Create a script that will execute all
 With content
 ```
 #!/bin/bash
-/opt/php/phpPHP-8.1.14/bin/php -dextension=php-gtk3.so $@
+/opt/php/phpPHP-8.2.22/bin/php -dextension=php-gtk3.so $@
 ```
 
 Make it executable
