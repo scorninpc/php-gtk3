@@ -1,4 +1,4 @@
-
+#ifdef WITH_GLADEUI
 #include "GladeApp.h"
 
 /**
@@ -127,3 +127,4 @@ Php::Value GladeApp_::get_locale_dir()
 // 	return ret;
 	 throw Php::Exception("GladeApp_::get_locale_dir not implemented");}
 
+#endif

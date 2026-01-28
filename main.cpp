@@ -3344,63 +3344,64 @@ extern "C"
         gtkrevealer.method<&GtkRevealer_::get_transition_type>("get_transition_type");
         gtkrevealer.method<&GtkRevealer_::set_transition_type>("set_transition_type");
 
-        // // GladeApp
-        // Php::Class<GladeApp_> gladeapp("GladeApp");
-        // gladeapp.extends(gobject);
-        // gladeapp.method<&GladeApp_::__construct>("__construct");
-        // gladeapp.method<&GladeApp_::get>("get");
-        // gladeapp.method<&GladeApp_::set_window>("set_window");
-        // gladeapp.method<&GladeApp_::get_window>("get_window");
-        // gladeapp.method<&GladeApp_::get_clipboard>("get_clipboard");
-        // gladeapp.method<&GladeApp_::add_project>("add_project");
-        // gladeapp.method<&GladeApp_::remove_project>("remove_project");
-        // gladeapp.method<&GladeApp_::get_projects>("get_projects");
-        // gladeapp.method<&GladeApp_::get_config>("get_config");
-        // gladeapp.method<&GladeApp_::is_project_loaded>("is_project_loaded");
-        // gladeapp.method<&GladeApp_::get_project_by_path>("get_project_by_path");
-        // gladeapp.method<&GladeApp_::config_save>("config_save");
-        // gladeapp.method<&GladeApp_::set_accel_group>("set_accel_group");
-        // gladeapp.method<&GladeApp_::get_catalogs_dir>("get_catalogs_dir");
-        // gladeapp.method<&GladeApp_::get_modules_dir>("get_modules_dir");
-        // gladeapp.method<&GladeApp_::get_pixmaps_dir>("get_pixmaps_dir");
-        // gladeapp.method<&GladeApp_::get_locale_dir>("get_locale_dir");
+#ifdef WITH_GLADEUI
+        // GladeApp
+        Php::Class<GladeApp_> gladeapp("GladeApp");
+        gladeapp.extends(gobject);
+        gladeapp.method<&GladeApp_::__construct>("__construct");
+        gladeapp.method<&GladeApp_::get>("get");
+        gladeapp.method<&GladeApp_::set_window>("set_window");
+        gladeapp.method<&GladeApp_::get_window>("get_window");
+        gladeapp.method<&GladeApp_::get_clipboard>("get_clipboard");
+        gladeapp.method<&GladeApp_::add_project>("add_project");
+        gladeapp.method<&GladeApp_::remove_project>("remove_project");
+        gladeapp.method<&GladeApp_::get_projects>("get_projects");
+        gladeapp.method<&GladeApp_::get_config>("get_config");
+        gladeapp.method<&GladeApp_::is_project_loaded>("is_project_loaded");
+        gladeapp.method<&GladeApp_::get_project_by_path>("get_project_by_path");
+        gladeapp.method<&GladeApp_::config_save>("config_save");
+        gladeapp.method<&GladeApp_::set_accel_group>("set_accel_group");
+        gladeapp.method<&GladeApp_::get_catalogs_dir>("get_catalogs_dir");
+        gladeapp.method<&GladeApp_::get_modules_dir>("get_modules_dir");
+        gladeapp.method<&GladeApp_::get_pixmaps_dir>("get_pixmaps_dir");
+        gladeapp.method<&GladeApp_::get_locale_dir>("get_locale_dir");
 
-        // // GladeProject
-        // Php::Class<GladeProject_> gladeproject("GladeProject");
-        // gladeproject.extends(gobject);
-        // gladeproject.method<&GladeProject_::__construct>("__construct");
-        // gladeproject.method<&GladeProject_::selection_get>("selection_get");
+        // GladeProject
+        Php::Class<GladeProject_> gladeproject("GladeProject");
+        gladeproject.extends(gobject);
+        gladeproject.method<&GladeProject_::__construct>("__construct");
+        gladeproject.method<&GladeProject_::selection_get>("selection_get");
 
-        // // GladeWidget
-        // Php::Class<GladeWidget_> gladewidget("GladeWidget");
-        // gladewidget.extends(gobject);
-        // gladewidget.method<&GladeWidget_::__construct>("__construct");
+        // GladeWidget
+        Php::Class<GladeWidget_> gladewidget("GladeWidget");
+        gladewidget.extends(gobject);
+        gladewidget.method<&GladeWidget_::__construct>("__construct");
 
-        // // GladeDesignView
-        // Php::Class<GladeDesignView_> gladedesignview("GladeDesignView");
-        // gladedesignview.extends(gtkbox);
-        // gladedesignview.method<&GladeDesignView_::__construct>("__construct");
-        // gladedesignview.method<&GladeDesignView_::get_project>("get_project");
-        // gladedesignview.method<&GladeDesignView_::get_from_project>("get_from_project");
+        // GladeDesignView
+        Php::Class<GladeDesignView_> gladedesignview("GladeDesignView");
+        gladedesignview.extends(gtkbox);
+        gladedesignview.method<&GladeDesignView_::__construct>("__construct");
+        gladedesignview.method<&GladeDesignView_::get_project>("get_project");
+        gladedesignview.method<&GladeDesignView_::get_from_project>("get_from_project");
 
-        // // GladeEditor
-        // Php::Class<GladeEditor_> gladeeditor("GladeEditor");
-        // gladeeditor.extends(gtkbox);
-        // gladeeditor.method<&GladeEditor_::__construct>("__construct");
-        // gladeeditor.method<&GladeEditor_::load_widget>("load_widget");
-        // gladeeditor.method<&GladeEditor_::query_dialog>("query_dialog");
+        // GladeEditor
+        Php::Class<GladeEditor_> gladeeditor("GladeEditor");
+        gladeeditor.extends(gtkbox);
+        gladeeditor.method<&GladeEditor_::__construct>("__construct");
+        gladeeditor.method<&GladeEditor_::load_widget>("load_widget");
+        gladeeditor.method<&GladeEditor_::query_dialog>("query_dialog");
 
-        // // GladePalette
-        // Php::Class<GladePalette_> gladepalette("GladePalette");
-        // gladepalette.extends(gtkbox);
-        // gladepalette.method<&GladePalette_::__construct>("__construct");
-        // gladepalette.method<&GladePalette_::get_item_appearance>("get_item_appearance");
-        // gladepalette.method<&GladePalette_::set_item_appearance>("set_item_appearance");
-        // gladepalette.method<&GladePalette_::get_use_small_item_icons>("get_use_small_item_icons");
-        // gladepalette.method<&GladePalette_::set_use_small_item_icons>("set_use_small_item_icons");
-        // gladepalette.method<&GladePalette_::get_show_selector_button>("get_show_selector_button");
-        // gladepalette.method<&GladePalette_::set_show_selector_button>("set_show_selector_button");
-
+        // GladePalette
+        Php::Class<GladePalette_> gladepalette("GladePalette");
+        gladepalette.extends(gtkbox);
+        gladepalette.method<&GladePalette_::__construct>("__construct");
+        gladepalette.method<&GladePalette_::get_item_appearance>("get_item_appearance");
+        gladepalette.method<&GladePalette_::set_item_appearance>("set_item_appearance");
+        gladepalette.method<&GladePalette_::get_use_small_item_icons>("get_use_small_item_icons");
+        gladepalette.method<&GladePalette_::set_use_small_item_icons>("set_use_small_item_icons");
+        gladepalette.method<&GladePalette_::get_show_selector_button>("get_show_selector_button");
+        gladepalette.method<&GladePalette_::set_show_selector_button>("set_show_selector_button");
+#endif
         // GtkFlowBoxChild
         Php::Class<GtkFlowBoxChild_> gtkflowboxchild("GtkFlowBoxChild");
         gtkflowboxchild.extends(gtkbin);
@@ -4276,12 +4277,14 @@ extern "C"
         extension.add(std::move(gtkrevealertransitiontype));
         extension.add(std::move(gtkrevealer));
 
-        // extension.add(std::move(gladeapp));
-        // extension.add(std::move(gladedesignview));
-        // extension.add(std::move(gladeproject));
-        // extension.add(std::move(gladeeditor));
-        // extension.add(std::move(gladepalette));
-        // extension.add(std::move(gladewidget));
+#ifdef WITH_GLADEUI
+        extension.add(std::move(gladeapp));
+        extension.add(std::move(gladedesignview));
+        extension.add(std::move(gladeproject));
+        extension.add(std::move(gladeeditor));
+        extension.add(std::move(gladepalette));
+        extension.add(std::move(gladewidget));
+#endif
 
         extension.add(std::move(gtkflowboxchild));
         extension.add(std::move(gtkflowbox));

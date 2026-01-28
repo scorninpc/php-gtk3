@@ -148,13 +148,15 @@
 	// GtkSourceView
 	#include "src/GtkSourceView/GtkSourceView.h"
 
+#ifdef WITH_GLADEUI
 	// Glade
-	// #include "src/Glade/GladeProject.h"
-	// #include "src/Glade/GladeApp.h"
-	// #include "src/Glade/GladeDesignView.h"
-	// #include "src/Glade/GladeEditor.h"
-	// #include "src/Glade/GladePalette.h"
-	// #include "src/Glade/GladeWidget.h"
+	#include "src/Glade/GladeProject.h"
+	#include "src/Glade/GladeApp.h"
+	#include "src/Glade/GladeDesignView.h"
+	#include "src/Glade/GladeEditor.h"
+	#include "src/Glade/GladePalette.h"
+	#include "src/Glade/GladeWidget.h"
+#endif
 
 	// Pango
 	#include "src/Pango/PangoAttrList.h"

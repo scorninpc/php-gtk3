@@ -1,4 +1,4 @@
-
+#ifdef WITH_GLADEUI
 #include "GladeEditor.h"
 
 /**
@@ -38,3 +38,4 @@ Php::Value GladeEditor_::query_dialog(Php::Parameters &parameters)
 	return false;
 }
 
+#endif

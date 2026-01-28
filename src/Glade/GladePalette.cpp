@@ -1,4 +1,4 @@
-
+#ifdef WITH_GLADEUI
 #include "GladePalette.h"
 
 /**
@@ -68,3 +68,4 @@ void GladePalette_::set_show_selector_button(Php::Parameters &parameters)
 
 }
 
+#endif

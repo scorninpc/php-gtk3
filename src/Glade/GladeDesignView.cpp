@@ -1,4 +1,4 @@
-
+#ifdef WITH_GLADEUI
 #include "GladeDesignView.h"
 
 /**
@@ -44,3 +44,4 @@ Php::Value GladeDesignView_::get_from_project(Php::Parameters &parameters)
 	return Php::Object("GladeProject", project_ret);
 }
 
+#endif

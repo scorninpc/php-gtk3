@@ -1,3 +1,4 @@
+#ifdef WITH_GLADEUI
 #include "GladeProject.h"
 
 // void GladeProject_::set_project(GladeProject *passed_project)
@@ -39,3 +40,5 @@ Php::Value GladeProject_::selection_get()
 
 	return ret_arr;
 }
+
+#endif

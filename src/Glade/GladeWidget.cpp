@@ -1,4 +1,4 @@
-
+#ifdef WITH_GLADEUI
 #include "GladeWidget.h"
 
 /**
@@ -15,3 +15,4 @@ void GladeWidget_::__construct()
 {
 	
 }
+#endif
