@@ -13,34 +13,25 @@ GtkSourceView_::~GtkSourceView_() = default;
 
 void GtkSourceView_::__construct()
 {
-	// instance = (gpointer *)gtk_source_view_new ();
-
-	GtkSourceBuffer *buffer = gtk_source_buffer_new (NULL);
-	GtkSourceLanguageManager *langm = gtk_source_language_manager_new ();
-	GtkSourceLanguage *lang = gtk_source_language_manager_get_language (langm, "php");
-	gtk_source_buffer_set_language(buffer, lang);
-
-	instance = (gpointer *)gtk_source_view_new_with_buffer (buffer);
-
-
-
+	instance = (gpointer *)gtk_source_view_new ();
 }
 
 Php::Value GtkSourceView_::new_with_buffer(Php::Parameters &parameters)
 {
-// // 	GtkSourceBuffer *buffer;
-// 	if(parameters.size() > 0) {
-// 		Php::Value object_buffer = parameters[0];
-// 		GtkSourceBuffer_ *phpgtk_buffer = (GtkSourceBuffer_ *)object_buffer.implementation();
-// 		buffer = GTK_WIDGET(phpgtk_buffer->get_instance());
-// 	}
+	GtkSourceBuffer *buffer;
+	if(parameters.size() > 0) {
+		Php::Value object_buffer = parameters[0];
+		GtkSourceBuffer_ *phpgtk_buffer = (GtkSourceBuffer_ *)object_buffer.implementation();
+		buffer = GTK_SOURCE_BUFFER(phpgtk_buffer->get_instance());
+	}
 
-// 	GtkWidget *ret = gtk_source_view_new_with_buffer (buffer);
+	GtkSourceView *ret = (GtkSourceView *)gtk_source_view_new_with_buffer (buffer);
 
-// 	GtkWidget_ *return_parsed = new GtkWidget_();
-// 	return_parsed->set_instance((gpointer *)ret);
-// 	return Php::Object("GtkWidget", return_parsed);
-	 throw Php::Exception("GtkSourceView_::new_with_buffer not implemented");}
+	GtkSourceView_ *return_parsed = new GtkSourceView_();
+	return_parsed->set_instance((gpointer *)ret);
+	return Php::Object("GtkSourceView", return_parsed);
+
+}
 
 void GtkSourceView_::set_show_line_numbers(Php::Parameters &parameters)
 {

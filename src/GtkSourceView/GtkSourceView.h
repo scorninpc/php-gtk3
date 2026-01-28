@@ -8,6 +8,7 @@
 
 	#include "../Gtk/GtkTextView.h"
 	#include "../Gtk/GtkTextIter.h"
+	#include "GtkSourceBuffer.h"
 
     /**
      * GtkSourceView_

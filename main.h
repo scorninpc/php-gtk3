@@ -147,6 +147,9 @@
 
 	// GtkSourceView
 	#include "src/GtkSourceView/GtkSourceView.h"
+	#include "src/GtkSourceView/GtkSourceBuffer.h"
+	#include "src/GtkSourceView/GtkSourceLanguage.h"
+	#include "src/GtkSourceView/GtkSourceLanguageManager.h"
 
 #ifdef WITH_GLADEUI
 	// Glade

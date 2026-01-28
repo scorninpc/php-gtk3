@@ -4418,9 +4418,32 @@ extern "C"
         gtksourceview.method<&GtkSourceView_::set_background_pattern>("set_background_pattern");
         gtksourceview.method<&GtkSourceView_::get_background_pattern>("get_background_pattern");
 
+        // GtkSourceLanguage
+        Php::Class<GtkSourceLanguage_> gtksourcelanguage("GtkSourceLanguage");
+        gtksourcelanguage.extends(gobject);
+
+        // GtkSourceBuffer
+        Php::Class<GtkSourceBuffer_> gtksourcebuffer("GtkSourceBuffer");
+        gtksourcebuffer.extends(gtktextbuffer);
+        gtksourcebuffer.method<&GtkSourceBuffer_::__construct>("__construct");
+        gtksourcebuffer.method<&GtkSourceBuffer_::set_language>("set_language");
+
+        // GtkSourceLanguageManager
+        Php::Class<GtkSourceLanguageManager_> gtksourcelanguagemanager("GtkSourceLanguageManager");
+        gtksourcelanguagemanager.extends(gobject);
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::__construct>("__construct");
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::get_default>("get_default");
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::get_language>("get_language");
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::get_language_ids>("get_language_ids");
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::set_search_path>("set_search_path");
+        gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::get_search_path>("get_search_path");
+
         extension.add(std::move(gtksourcesmarthomeendtype));
         extension.add(std::move(gtksourcedrawspacesflags));
         extension.add(std::move(gtksourcebackgroundpatterntype));
+        extension.add(std::move(gtksourcebuffer));
+        extension.add(std::move(gtksourcelanguage));
+        extension.add(std::move(gtksourcelanguagemanager));
         extension.add(std::move(gtksourceview));
 
         // return the extension
