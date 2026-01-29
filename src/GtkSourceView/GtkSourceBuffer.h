@@ -27,6 +27,10 @@
             ~GtkSourceBuffer_();
 
             void __construct();
+            
+            static Php::Value new_with_language(Php::Parameters &parameters);
+            
+            void change_case(Php::Parameters &parameters);
 
             void set_language(Php::Parameters &parameters);
     };

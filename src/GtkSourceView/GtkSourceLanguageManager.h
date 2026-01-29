@@ -37,7 +37,7 @@
 
 			Php::Value get_language(Php::Parameters &parameters);
 
-			// Php::Value guess_language(Php::Parameters &parameters);
+			Php::Value guess_language(Php::Parameters &parameters);
     };
 
 #endif

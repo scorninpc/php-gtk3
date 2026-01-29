@@ -76,8 +76,6 @@ void GtkSourceLanguageManager_::set_search_path(Php::Parameters &parameters)
 		// convert to gchar and add to dirs
 		std::string s = arr[index];
 		dirs[index] = g_strdup(s.c_str());
-
-		g_print("Linguagem: %s\n", dirs[index]);
 	}
 
 	// finalize last post with null
@@ -88,4 +86,41 @@ void GtkSourceLanguageManager_::set_search_path(Php::Parameters &parameters)
 	// free pointers
 	for (int i = 0; i < arr.size(); i++)
 		g_free(dirs[i]);
+}
+
+Php::Value GtkSourceLanguageManager_::guess_language(Php::Parameters &parameters)
+{
+	// inicialize the C params
+	gchar* filename = NULL;
+	gchar* content_type = NULL;
+
+	// if has filename
+	if(parameters.size() > 0 && !parameters[0].isNull()) {
+		std::string s_filename = parameters[0];
+		filename = (gchar*)s_filename.c_str();
+	}
+
+	// if has content_type
+	if(parameters.size() > 1 && !parameters[1].isNull()) {
+		std::string s_content_type = parameters[1];
+		content_type = (gchar*)s_content_type.c_str();
+	}
+
+	// do the call
+	GtkSourceLanguage *ret = gtk_source_language_manager_guess_language(
+		GTK_SOURCE_LANGUAGE_MANAGER(instance),
+		filename,
+		content_type
+	);
+
+	// return null if not find
+	if(ret == NULL) {
+		return Php::Value();
+	}
+
+	// cast the object and return
+	GtkSourceLanguage_ *return_parsed = new GtkSourceLanguage_();
+	return_parsed->set_instance((gpointer *)ret);
+
+	return Php::Object("GtkSourceLanguage", return_parsed);
 }
