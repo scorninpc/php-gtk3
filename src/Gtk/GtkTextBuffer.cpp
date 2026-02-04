@@ -197,7 +197,7 @@ void GtkTextBuffer_::insert_with_tags_by_name(Php::Parameters &parameters)
 	const gchar *first_tag_name = NULL;
 	std::string s_first_tag_name;
 	if(parameters.size() >= 4) {
-		s_first_tag_name = parameters[3];
+		s_first_tag_name.assign((const char *)parameters[3]);
 		first_tag_name = s_first_tag_name.c_str();
 	}
 
