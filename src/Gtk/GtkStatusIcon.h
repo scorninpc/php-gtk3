@@ -7,6 +7,7 @@
     #include <gtk/gtk.h>
 
 	#include "../G/GObject.h"
+	#include "../G/GIcon.h"
 	#include "../Gdk/GdkPixbuf.h"
 	#include "GtkWidget.h"
 	#include "GtkMenu.h"
@@ -21,11 +22,12 @@
 			void set_from_file(Php::Parameters &parameters);
 			void set_from_stock(Php::Parameters &parameters);
 			void set_from_icon_name(Php::Parameters &parameters);
+			void set_from_gicon(Php::Parameters &parameters);
 			//Php::Value get_storage_type();
 			Php::Value get_pixbuf();
 			Php::Value get_stock();
 			Php::Value get_icon_name();
-			//Php::Value get_gicon();
+			Php::Value get_gicon();
 			Php::Value get_size();
 			Php::Value get_screen();
 			void set_has_tooltip(Php::Parameters &parameters);
@@ -46,6 +48,7 @@
 			static Php::Value new_from_file(Php::Parameters &parameters);
 			static Php::Value new_from_stock(Php::Parameters &parameters);
 			static Php::Value new_from_icon_name(Php::Parameters &parameters);
+			static Php::Value new_from_gicon(Php::Parameters &parameters);
 			Php::Value position_menu(Php::Parameters &parameters);
 
 
