@@ -34,6 +34,7 @@
             Php::Value get_width_mm();
             Php::Value get_height_mm();
             Php::Value get_workarea();
+            Php::Value get_geometry();
 
 
     };

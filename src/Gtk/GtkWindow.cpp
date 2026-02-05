@@ -986,3 +986,16 @@ Php::Value GtkWindow_::list_toplevels()
 
     return ret_arr;
 }
+
+void GtkWindow_::begin_resize_drag(Php::Parameters &parameters)
+{
+	if(parameters.size() < 5) throw Php::Exception("Expected 5 parameters: edge, button, root_x, root_y, timestamp");
+
+	int edge = parameters[0];
+	gint button = (gint)parameters[1];
+	gint root_x = (gint)parameters[2];
+	gint root_y = (gint)parameters[3];
+	guint32 timestamp = (gint)parameters[4];
+
+	gtk_window_begin_resize_drag(GTK_WINDOW(instance), (GdkWindowEdge)edge, button, root_x, root_y, timestamp);
+}

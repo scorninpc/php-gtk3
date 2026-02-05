@@ -86,6 +86,14 @@ void GdkEvent_::populate(GdkEvent *event)
         self["crossing"] = gdkeventcrossing;
     }
 
+     // GdkEventMotion - for motion notify events
+    if (event->type == GDK_CONFIGURE) {
+        GdkEventConfigure_ *eventconfigure_ = new GdkEventConfigure_();
+        Php::Value gdkeventconfigure = Php::Object("GdkEventConfigure", eventconfigure_);
+        eventconfigure_->populate(event->configure);
+        self["configure"] = gdkeventconfigure;
+    }
+
 
     /**
 

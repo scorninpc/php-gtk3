@@ -37,6 +37,7 @@
             static Php::Value get_default();
             Php::Value get_primary_monitor();
             Php::Value get_default_screen();
+            Php::Value get_monitor(Php::Parameters &parameters);
 
 
     };

@@ -63,3 +63,17 @@ Php::Value GdkMonitor_::get_workarea()
 
     return arr;
 }
+
+Php::Value GdkMonitor_::get_geometry()
+{
+	GdkRectangle rect;
+	gdk_monitor_get_geometry((GdkMonitor *)instance, &rect);
+
+	Php::Value arr;
+	arr["x"] = rect.x;
+	arr["y"] = rect.y;
+	arr["width"] = rect.width;
+	arr["height"] = rect.height;
+
+	return arr;
+}

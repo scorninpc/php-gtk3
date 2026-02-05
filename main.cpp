@@ -542,6 +542,7 @@ extern "C"
         gdkevent.property("button", nullptr);
         gdkevent.property("key", nullptr);
         gdkevent.property("focus_change", nullptr);
+        gdkevent.property("configure", nullptr);
 
         // GdkEventButton
         Php::Class<GdkEventButton_> gdkeventbutton("GdkEventButton");
@@ -556,6 +557,16 @@ extern "C"
         gdkeventbutton.property("button", nullptr);
         gdkeventbutton.property("x_root", nullptr);
         gdkeventbutton.property("y_root", nullptr);
+
+        // GdkEventConfigure
+        Php::Class<GdkEventConfigure_> gdkeventconfigure("GdkEventConfigure");
+        gdkeventconfigure.method<&GdkEventConfigure_::__construct>("__construct");
+        gdkeventconfigure.property("type", nullptr);
+        gdkeventconfigure.property("send_event", nullptr);
+        gdkeventconfigure.property("x", nullptr);
+        gdkeventconfigure.property("y", nullptr);
+        gdkeventconfigure.property("width", nullptr);
+        gdkeventconfigure.property("height", nullptr);
 
         // GdkCursor
         Php::Class<GdkCursor_> gdkcursor("GdkCursor");
@@ -698,6 +709,7 @@ extern "C"
         gdkdisplay.method<&GdkDisplay_::get_default>("get_default");
         gdkdisplay.method<&GdkDisplay_::get_primary_monitor>("get_primary_monitor");
         gdkdisplay.method<&GdkDisplay_::get_default_screen>("get_default_screen");
+        gdkdisplay.method<&GdkDisplay_::get_monitor>("get_monitor");
 
         // GdkMonitor
         Php::Class<GdkMonitor_> gdkmonitor("GdkMonitor");
@@ -705,6 +717,7 @@ extern "C"
         gdkmonitor.method<&GdkMonitor_::get_width_mm>("get_width_mm");
         gdkmonitor.method<&GdkMonitor_::get_height_mm>("get_height_mm");
         gdkmonitor.method<&GdkMonitor_::get_workarea>("get_workarea");
+        gdkmonitor.method<&GdkMonitor_::get_geometry>("get_geometry");
 
         // GdkEventKey
         Php::Class<GdkEventKey_> gdkeventkey("GdkEventKey");
@@ -1474,6 +1487,7 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_size>("get_size");
         gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
         gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
+        gtkwindow.method<&GtkWindow_::begin_resize_drag>("begin_resize_drag");
 
         // GtkWindowType
         Php::Class<Php::Base> gtkwindowtype("GtkWindowType");
@@ -4189,6 +4203,7 @@ extern "C"
         extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));
         extension.add(std::move(gdkeventbutton));
+        extension.add(std::move(gdkeventconfigure));
         extension.add(std::move(gdkeventkey));
         extension.add(std::move(gdkeventfocus));
         extension.add(std::move(gdkeventscroll));

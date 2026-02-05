@@ -20,6 +20,7 @@
 	#include "src/Gdk/GdkEventButton.h"
 	#include "src/Gdk/GdkEventKey.h"
 	#include "src/Gdk/GdkEventFocus.h"
+	#include "src/Gdk/GdkEventConfigure.h"
 	#include "src/Gdk/GdkEventScroll.h"
 	#include "src/Gdk/GdkEventMotion.h"
 	#include "src/Gdk/GdkEventCrossing.h"

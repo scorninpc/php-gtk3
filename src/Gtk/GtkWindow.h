@@ -573,7 +573,8 @@
              * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-interactive-debugging
              */
             void set_interactive_debugging(Php::Parameters &parameters);
-
+            
+            void begin_resize_drag(Php::Parameters &parameters);
             Php::Value get_size();
             Php::Value get_screen();
             static Php::Value list_toplevels();
