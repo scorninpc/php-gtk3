@@ -1396,9 +1396,15 @@ Php::Value GtkWidget_::get_child_visible()
 
 Php::Value GtkWidget_::get_parent()
 {
+	if (!instance || !GTK_IS_WIDGET(instance)) {
+		return nullptr;
+	}
+
 	gpointer *ret = (gpointer *)gtk_widget_get_parent (GTK_WIDGET(instance));
 
-
+	if (!ret) {
+		return nullptr;
+	}
 
 	// GType t = G_OBJECT_TYPE(ret);
 	// g_print("<Widget>: %s\n", g_type_name(t));
