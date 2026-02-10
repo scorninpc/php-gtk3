@@ -436,6 +436,8 @@ extern "C"
         // Gdk
         Php::Class<Gdk_> gdk("Gdk");
         gdk.method<&Gdk_::test_simulate_button>("test_simulate_button");
+        gdk.method<&Gdk_::cairo_set_source_pixbuf>("cairo_set_source_pixbuf");
+        gdk.method<&Gdk_::cairo_paint>("cairo_paint");
 
         gdk.constant("SHIFT_MASK", GDK_SHIFT_MASK);
         gdk.constant("LOCK_MASK", GDK_LOCK_MASK);

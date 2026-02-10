@@ -10,7 +10,7 @@ bool phpgtk_check_parameter(Php::Parameters &parameters, int param, Php::Type ex
 		
 		// ----
 		if(param_count < param) {
-			throw Php::Exception("parametro obrigatório");
+			throw Php::Exception(std::string("Missing required parameter ") + std::to_string(param));
 		}
 
 		// Test boolean individually cause True and False are different types
@@ -26,7 +26,7 @@ bool phpgtk_check_parameter(Php::Parameters &parameters, int param, Php::Type ex
 
 		// ----
 		if(parameters[param-1].type() != expected_type) {
-			throw Php::Exception("asd");
+			throw Php::Exception(phpgtk_wrong_type_message(param, parameters[param-1].type(), expected_type));
 		}
 
 	}
@@ -43,15 +43,15 @@ bool phpgtk_check_parameter(Php::Parameters &parameters, int param, Php::Type ex
 			return true;
 		}
 
-		// ----
-		if(parameters[param-1].type() != expected_type) {
-			Php::warning << phpgtk_wrong_type_message(param, Php::Type::Numeric, Php::Type::Bool) << std::flush;
+		// Test Object type before general type check
+		if((expected_type == Php::Type::Object) && (!Php::is_a(parameters[param-1], object_type))) {
+			Php::warning << "Invalid type for optional parameter " << param << std::flush;
 			return false;
 		}
 
-		// Text Object type
-		if((expected_type == Php::Type::Object) && (!Php::is_a(parameters[param-1], object_type))) {
-			Php::warning << "parametro nao obrigatório do tipo invalido" << std::flush;
+		// General type check
+		if(parameters[param-1].type() != expected_type) {
+			Php::warning << phpgtk_wrong_type_message(param, parameters[param-1].type(), expected_type) << std::flush;
 			return false;
 		}
 	}
