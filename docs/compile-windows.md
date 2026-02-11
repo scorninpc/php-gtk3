@@ -151,7 +151,6 @@
    **Microsoft Edge WebView2**
 
    For Windows compilation, use Microsoft Edge WebView2:
-
    1. Download WebView2 SDK from: https://www.nuget.org/packages/microsoft.web.webview2 (nuget file can be renamed to ZIP)
    2. Extract to `C:\WebView2SDK` (or set WEBVIEW2_SDK environment variable)
    3. WebView2 runtime is included in Windows 10/11 with Edge installed
@@ -181,7 +180,6 @@
    ```
 
    **Note for WebView support:** If you want to use WebView for web content:
-
    - **For WebView2:** WebView source files are included in `src\WebKit\WebKitWebView.cpp`. Also add `C:\WebView2SDK\build\native\include\WebView2.h`. Dont add platform specific files explicitly.
 
    Both use the same source files - platform detection happens at compile time.
@@ -193,11 +191,9 @@
    Configure to `Release` and `x64` platform
 
    i. Under "General":
-
    - Configuration Type: as dynamic library (.dll)
 
    ii. Under "C/C++" -> "General"
-
    - Additional Include Directories:
 
    ```
@@ -229,12 +225,10 @@
    - Runtime Library: Multi-threaded (/MT)
 
    iii. Under "C/C++" -> "Language"
-
    - C++ Language Standard: ISO C++17 Standard (/std:c++17)
    - C Language Standard: ISO C/17 Standard (/std:c17)
 
    iv. Under "C/C++" -> "Preprocessor"
-
    - Preprocessor definitions:
 
    ```
@@ -266,7 +260,6 @@
    ```
 
    v. Under "Linker" -> "General"
-
    - Additional Library Directories:
 
    ```
@@ -275,7 +268,6 @@
    ```
 
    vi. Under "Linker" -> "Input"
-
    - Additional Dependencies:
 
    ```
@@ -289,6 +281,8 @@
    libgladeui-2.dll.a
    libgtksourceview-3.0.dll.a
    libpango-1.0.dll.a
+   libcairo.dll.a
+   libcairo-gobject.dll.a
    ```
 
    **For WebView2 support, also add:**
@@ -298,7 +292,6 @@
    ```
 
    vii. Under "Linker" -> "General"
-
    - Additional Library Directories (for WebView2):
 
    ```

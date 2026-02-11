@@ -468,32 +468,39 @@ void GtkStyleContext_::scroll_animations(Php::Parameters &parameters)
 
 void GtkStyleContext_::remove_provider(Php::Parameters &parameters)
 {
-	// GtkStyleProvider *provider;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_provider = parameters[0];
-	// 	GtkStyleProvider_ *phpgtk_provider = (GtkStyleProvider_ *)object_provider.implementation();
-	// 	provider = GTK_WIDGET(phpgtk_provider->get_instance());
-	// }
+	GtkStyleProvider *provider = nullptr;
+	if(parameters.size() > 0) {
+		Php::Value object_provider = parameters[0];
+		GtkCssProvider_ *phpgtk_provider = (GtkCssProvider_ *)object_provider.implementation();
+		provider = GTK_STYLE_PROVIDER(phpgtk_provider->get_instance());
+	}
 
-	// gtk_style_context_remove_provider (GTK_STYLE_CONTEXT(instance), provider);
+	if (provider == nullptr) {
+		throw Php::Exception("GtkStyleContext::remove_provider requires a provider parameter");
+	}
 
-	throw Php::Exception("GtkStyleContext_::gtk_render_icon not implemented");
-
+	gtk_style_context_remove_provider (GTK_STYLE_CONTEXT(instance), provider);
 }
 
 void GtkStyleContext_::remove_provider_for_screen(Php::Parameters &parameters)
 {
-	// GtkStyleProvider *provider;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_provider = parameters[0];
-	// 	GtkStyleProvider_ *phpgtk_provider = (GtkStyleProvider_ *)object_provider.implementation();
-	// 	provider = GTK_WIDGET(phpgtk_provider->get_instance());
-	// }
+	GtkStyleProvider *provider = nullptr;
+	if(parameters.size() > 0) {
+		Php::Value object_provider = parameters[0];
+		GtkCssProvider_ *phpgtk_provider = (GtkCssProvider_ *)object_provider.implementation();
+		provider = GTK_STYLE_PROVIDER(phpgtk_provider->get_instance());
+	}
 
-	// gtk_style_context_remove_provider_for_screen (GTK_STYLE_CONTEXT(instance), provider);
+	if (provider == nullptr) {
+		throw Php::Exception("GtkStyleContext::remove_provider_for_screen requires a provider parameter");
+	}
 
-	throw Php::Exception("GtkStyleContext_::gtk_render_icon not implemented");
+	GdkScreen *screen = gdk_screen_get_default();
+	if (screen == nullptr) {
+		throw Php::Exception("GtkStyleContext::remove_provider_for_screen: no default screen available");
+	}
 
+	gtk_style_context_remove_provider_for_screen (screen, provider);
 }
 
 void GtkStyleContext_::reset_widgets()
