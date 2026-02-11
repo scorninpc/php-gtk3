@@ -6,6 +6,45 @@
 GtkStatusIcon_::GtkStatusIcon_() = default;
 GtkStatusIcon_::~GtkStatusIcon_() = default;
 
+/**
+ * Helper function to detect if running on Wayland backend
+ * GtkStatusIcon only works on X11, not on Wayland
+ */
+static bool is_wayland_backend()
+{
+	GdkDisplay *display = gdk_display_get_default();
+	if (!display) {
+		return false;
+	}
+	
+	// Check if the display is a Wayland display
+	// GDK_IS_WAYLAND_DISPLAY is available when compiled with Wayland support
+	#ifdef GDK_WINDOWING_WAYLAND
+	const char *backend = G_OBJECT_TYPE_NAME(display);
+	return (backend && g_str_has_prefix(backend, "GdkWayland"));
+	#else
+	return false;
+	#endif
+}
+
+/**
+ * Emit a warning about GtkStatusIcon limitations on Wayland
+ */
+static void warn_if_wayland()
+{
+	static bool warning_shown = false;
+	
+	if (!warning_shown && is_wayland_backend()) {
+		warning_shown = true;
+		Php::warning << "GtkStatusIcon is deprecated and does not work on Wayland. "
+		            << "The system tray icon will not be visible. "
+		            << "Possible workarounds: "
+		            << "(1) Set GDK_BACKEND=x11 to force X11 compatibility mode, or "
+		            << "(2) Use a desktop environment that supports XEmbed system tray protocol."
+		            << std::flush;
+	}
+}
+
 void GtkStatusIcon_::set_from_pixbuf(Php::Parameters &parameters)
 {
 	GdkPixbuf *pixbuf;
@@ -233,11 +272,14 @@ Php::Value GtkStatusIcon_::get_x11_window_id()
 
 void GtkStatusIcon_::__construct()
 {
+	warn_if_wayland();
 	instance = (gpointer *)gtk_status_icon_new();
 }
 
 Php::Value GtkStatusIcon_::new_from_pixbuf(Php::Parameters &parameters)
 {
+	warn_if_wayland();
+	
 	GdkPixbuf *pixbuf;
 	Php::Value object_pixbuf = parameters[0];
 	GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
@@ -254,6 +296,8 @@ Php::Value GtkStatusIcon_::new_from_pixbuf(Php::Parameters &parameters)
 
 Php::Value GtkStatusIcon_::new_from_file(Php::Parameters &parameters)
 {
+	warn_if_wayland();
+	
 	std::string c_filename = parameters[0];
 	gchar *filename = (gchar *)c_filename.c_str();
 
@@ -268,6 +312,8 @@ Php::Value GtkStatusIcon_::new_from_file(Php::Parameters &parameters)
 
 Php::Value GtkStatusIcon_::new_from_stock(Php::Parameters &parameters)
 {
+	warn_if_wayland();
+	
 	std::string c_stock_id = parameters[0];
 	gchar *stock_id = (gchar *)c_stock_id.c_str();
 
@@ -282,6 +328,8 @@ Php::Value GtkStatusIcon_::new_from_stock(Php::Parameters &parameters)
 
 Php::Value GtkStatusIcon_::new_from_icon_name(Php::Parameters &parameters)
 {
+	warn_if_wayland();
+	
 	std::string c_icon_name = parameters[0];
 	gchar *icon_name = (gchar *)c_icon_name.c_str();
 
@@ -296,6 +344,8 @@ Php::Value GtkStatusIcon_::new_from_icon_name(Php::Parameters &parameters)
 
 Php::Value GtkStatusIcon_::new_from_gicon(Php::Parameters &parameters)
 {
+	warn_if_wayland();
+	
 	GIcon *gicon;
 	Php::Value object_gicon = parameters[0];
 	GIcon_ *phpgtk_gicon = (GIcon_ *)object_gicon.implementation();
