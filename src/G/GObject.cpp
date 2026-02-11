@@ -29,6 +29,7 @@ struct GObject_::st_callback {
  *  
  */
 GObject_::GObject_() = default;
+
 GObject_::~GObject_() = default;
 
 
@@ -203,6 +204,18 @@ bool GObject_::connect_callback(gpointer user_data, ...)
                 // Php::call("var_dump", "int");
                 internal_parameters[i+1] = (int)va_arg(ap, guint);
                 break;
+
+            case G_TYPE_ENUM:
+                // Php::call("var_dump", "enum");
+                // Enums are passed as integers (promoted to int in varargs)
+                internal_parameters[i+1] = (int)va_arg(ap, gint);
+                break;
+
+            case G_TYPE_FLAGS:
+                // Php::call("var_dump", "flags");
+                // Flags are passed as unsigned integers (promoted to unsigned int in varargs)
+                internal_parameters[i+1] = (int)va_arg(ap, guint);
+                break;
                 
             case G_TYPE_OBJECT:
             {
@@ -309,7 +322,11 @@ void GObject_::handler_disconnect(Php::Parameters &parameters)
 {
     Php::Value callback_handle = parameters[0];
 
-    g_signal_handler_disconnect(instance, (int)callback_handle);
+    // Check if instance is valid before attempting to disconnect
+    // This prevents critical errors when the GObject has already been destroyed
+    if (instance != nullptr && G_IS_OBJECT(instance)) {
+        g_signal_handler_disconnect(instance, (int)callback_handle);
+    }
 
     // this method are removed, since leak memory does not happen anymore
     // https://github.com/scorninpc/php-gtk3/issues/81
@@ -323,6 +340,12 @@ Php::Value GObject_::is_connected(Php::Parameters& parameters)
 
     if ((int)callback_handle < 1)
     {
+        return false;
+    }
+
+    // Check if instance is valid before checking connection
+    // This prevents critical errors when the GObject has already been destroyed
+    if (instance == nullptr || !G_IS_OBJECT(instance)) {
         return false;
     }
 
@@ -384,7 +407,11 @@ void GObject_::signal_handler_block(Php::Parameters &parameters)
     double p_handler_id = parameters[0];
     gulong handler_id = (gulong) p_handler_id;
 
-    g_signal_handler_block(G_OBJECT(instance), handler_id);
+    // Check if instance is valid before blocking handler
+    // This prevents critical errors when the GObject has already been destroyed
+    if (instance != nullptr && G_IS_OBJECT(instance)) {
+        g_signal_handler_block(G_OBJECT(instance), handler_id);
+    }
 }
 
 void GObject_::signal_handler_unblock(Php::Parameters &parameters)
@@ -392,7 +419,11 @@ void GObject_::signal_handler_unblock(Php::Parameters &parameters)
     double p_handler_id = parameters[0];
     gulong handler_id = (gulong) p_handler_id;
 
-    g_signal_handler_unblock(G_OBJECT(instance), handler_id);
+    // Check if instance is valid before unblocking handler
+    // This prevents critical errors when the GObject has already been destroyed
+    if (instance != nullptr && G_IS_OBJECT(instance)) {
+        g_signal_handler_unblock(G_OBJECT(instance), handler_id);
+    }
 }
 
 Php::Value GObject_::get_data(Php::Parameters& parameters)
