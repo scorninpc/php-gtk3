@@ -61,11 +61,11 @@
 
             Php::Value get_section(Php::Parameters &parameters);
 
-            void get_color(Php::Parameters &parameters);
+            Php::Value get_color(Php::Parameters &parameters);
 
-            void get_background_color(Php::Parameters &parameters);
+            Php::Value get_background_color(Php::Parameters &parameters);
 
-            void get_border_color(Php::Parameters &parameters);
+            Php::Value get_border_color(Php::Parameters &parameters);
 
             void get_border(Php::Parameters &parameters);
 
