@@ -367,18 +367,29 @@ Php::Value GtkStatusIcon_::position_menu(Php::Parameters &parameters)
 	GtkMenu_ *phpgtk_menu = (GtkMenu_ *)object_menu.implementation();
 	menu = GTK_MENU(phpgtk_menu->get_instance());
 
-	gint *x;
-	gint *y;
-	gboolean *push_in;
+	// Use stack variables and pass their addresses to gtk_status_icon_position_menu
+	gint x = 0;
+	gint y = 0;
+	gboolean push_in = FALSE;
 
-	gtk_status_icon_position_menu(menu, x, y, push_in, GTK_STATUS_ICON(instance));
+	gtk_status_icon_position_menu(menu, &x, &y, &push_in, GTK_STATUS_ICON(instance));
 
-	int64_t ux = (int64_t)&x;
-	int64_t uy = (int64_t)&y;
-
+	// Return the computed coordinates as a PHP array
 	Php::Value arr;
-	arr["x"] = ux;
-	arr["y"] = uy;
+	arr["x"] = x;
+	arr["y"] = y;
+	arr["push_in"] = (bool)push_in;
 
 	return arr;
+}
+
+void GtkStatusIcon_::set_blinking(Php::Parameters &parameters)
+{
+	(void)parameters;  // Mark as intentionally unused
+	throw Php::Exception("GtkStatusIcon::set_blinking is not available in GTK 3. This function was removed in GTK 3.14. Consider using a timer to alternate icons for a blinking effect.");
+}
+
+Php::Value GtkStatusIcon_::get_blinking()
+{
+	throw Php::Exception("GtkStatusIcon::get_blinking is not available in GTK 3. This function was removed in GTK 3.14.");
 }

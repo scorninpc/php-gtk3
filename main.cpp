@@ -3145,6 +3145,8 @@ extern "C"
         gtkstatusicon.method<&GtkStatusIcon_::new_from_icon_name>("new_from_icon_name");
         gtkstatusicon.method<&GtkStatusIcon_::new_from_gicon>("new_from_gicon");
         gtkstatusicon.method<&GtkStatusIcon_::position_menu>("position_menu");
+        gtkstatusicon.method<&GtkStatusIcon_::set_blinking>("set_blinking");
+        gtkstatusicon.method<&GtkStatusIcon_::get_blinking>("get_blinking");
 
         // GdkSelection
         Php::Class<Php::Base> gdkselection("GdkSelection");
@@ -3330,6 +3332,7 @@ extern "C"
         gtkmenu.method<&GtkMenu_::popup_at_rect>("popup_at_rect");
         gtkmenu.method<&GtkMenu_::popup_at_widget>("popup_at_widget");
         gtkmenu.method<&GtkMenu_::popup_at_pointer>("popup_at_pointer");
+        gtkmenu.method<&GtkMenu_::popup>("popup");
         gtkmenu.method<&GtkMenu_::set_accel_group>("set_accel_group");
         gtkmenu.method<&GtkMenu_::get_accel_group>("get_accel_group");
         gtkmenu.method<&GtkMenu_::set_accel_path>("set_accel_path");

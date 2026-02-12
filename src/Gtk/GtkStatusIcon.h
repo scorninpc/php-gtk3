@@ -50,6 +50,8 @@
 			static Php::Value new_from_icon_name(Php::Parameters &parameters);
 			static Php::Value new_from_gicon(Php::Parameters &parameters);
 			Php::Value position_menu(Php::Parameters &parameters);
+			void set_blinking(Php::Parameters &parameters);
+			Php::Value get_blinking();
 
 
 	};
