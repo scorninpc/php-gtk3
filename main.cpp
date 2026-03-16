@@ -1746,6 +1746,7 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_size>("get_size");
         gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
         gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
+        gtkwindow.method<&GtkWindow_::begin_move_drag>("begin_move_drag");
         gtkwindow.method<&GtkWindow_::begin_resize_drag>("begin_resize_drag");
         gtkwindow.method<&GtkWindow_::add_accel_group>("add_accel_group");
 
@@ -4592,14 +4593,14 @@ extern "C"
          * Add classes to extension
          */
         extension.add(std::move(gobject));
-        
+
         // GIcon
         Php::Class<GIcon_> gicon("GIcon");
         gicon.method<&GIcon_::__construct>("__construct");
         gicon.method<&GIcon_::new_from_pixbuf>("new_from_pixbuf");
         gicon.method<&GIcon_::new_from_stock>("new_from_stock");
         extension.add(std::move(gicon));
-        
+
         extension.add(std::move(gdk));
         extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));
