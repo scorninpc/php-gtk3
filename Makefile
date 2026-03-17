@@ -229,3 +229,7 @@ clean:
 						${RM} ${EXTENSION}
 						${RM} ${OBJECTS}
 						${RM} src/WebKit/*.o
+
+						${RM} ${EXTENSION}
+						${RM} ${OBJECTS}
+						${RM} src/WebKit/*.o

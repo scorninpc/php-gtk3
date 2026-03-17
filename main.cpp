@@ -308,13 +308,12 @@ extern "C"
         gapplication.method<&GApplication_::bind_busy_property>("bind_busy_property");
         gapplication.method<&GApplication_::unbind_busy_property>("unbind_busy_property");
 
-        #if GLIB_CHECK_VERSION(2, 74, 0)
-            gapplication.constant("DEFAULT_FLAGS", G_APPLICATION_DEFAULT_FLAGS);
-        #else
-            gapplication.constant("FLAGS_NONE", G_APPLICATION_FLAGS_NONE);
-        #endif
+#if GLIB_CHECK_VERSION(2, 74, 0)
+        gapplication.constant("DEFAULT_FLAGS", G_APPLICATION_DEFAULT_FLAGS);
+#else
+        gapplication.constant("FLAGS_NONE", G_APPLICATION_FLAGS_NONE);
+#endif
 
-        
         gapplication.constant("IS_SERVICE", G_APPLICATION_IS_SERVICE);
         gapplication.constant("IS_LAUNCHER", G_APPLICATION_IS_LAUNCHER);
         gapplication.constant("HANDLES_OPEN", G_APPLICATION_HANDLES_OPEN);
@@ -578,7 +577,6 @@ extern "C"
         gdkcursor.method<&GdkCursor_::get_cursor_type>("get_cursor_type");
         gdkcursor.method<&GdkCursor_::get_display>("get_display");
         gdkcursor.method<&GdkCursor_::get_image>("get_image");
-
 
         // GdkCursorType
         Php::Class<Php::Base> gdkcursortype("GdkCursorType");
@@ -861,7 +859,6 @@ extern "C"
         gdkpixbuf.method<&GdkPixbuf_::set_data>("set_data");
         gdkpixbuf.method<&GdkPixbuf_::get_data>("get_data");
         gdkpixbuf.method<&GdkPixbuf_::get_byte_length>("get_byte_length");
-
 
         // GdkInterpType
         Php::Class<Php::Base> gdkinterptype("GdkInterpType");
@@ -4130,6 +4127,34 @@ extern "C"
         gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::get_search_path>("get_search_path");
         gtksourcelanguagemanager.method<&GtkSourceLanguageManager_::guess_language>("guess_language");
 
+#ifdef WITH_WEBKIT
+        // WebKitWebView
+        Php::Class<WebKitWebView_> webkitwebview("WebKitWebView");
+        webkitwebview.extends(gtkwidget);
+        webkitwebview.method<&WebKitWebView_::__construct>("__construct");
+        webkitwebview.method<&WebKitWebView_::load_uri>("load_uri");
+        webkitwebview.method<&WebKitWebView_::get_uri>("get_uri");
+        webkitwebview.method<&WebKitWebView_::reload>("reload");
+        webkitwebview.method<&WebKitWebView_::stop_loading>("stop_loading");
+        webkitwebview.method<&WebKitWebView_::can_go_back>("can_go_back");
+        webkitwebview.method<&WebKitWebView_::go_back>("go_back");
+        webkitwebview.method<&WebKitWebView_::can_go_forward>("can_go_forward");
+        webkitwebview.method<&WebKitWebView_::go_forward>("go_forward");
+        webkitwebview.method<&WebKitWebView_::get_title>("get_title");
+        webkitwebview.method<&WebKitWebView_::is_loading>("is_loading");
+        webkitwebview.method<&WebKitWebView_::load_html>("load_html");
+        webkitwebview.method<&WebKitWebView_::run_javascript>("run_javascript");
+        webkitwebview.method<&WebKitWebView_::register_script_message_handler>("register_script_message_handler");
+        webkitwebview.method<&WebKitWebView_::enable_developer_extras>("enable_developer_extras");
+        webkitwebview.method<&WebKitWebView_::get_settings>("get_settings");
+        webkitwebview.method<&WebKitWebView_::set_user_data_folder>("set_user_data_folder");
+
+        // GtkWebView (convenience alias for WebKitWebView)
+        // Extends WebKitWebView to inherit all methods automatically
+        Php::Class<GtkWebView_> gtkwebview("GtkWebView");
+        gtkwebview.extends(webkitwebview);
+        // Note: __construct is inherited from WebKitWebView, no need to register
+#endif
 
 #ifdef WITH_MAC_INTEGRATION
         // gtkosxapplication
@@ -4454,6 +4479,11 @@ extern "C"
         extension.add(std::move(pangolayout));
         extension.add(std::move(pangolayoutline));
 
+#ifdef WITH_WEBKIT
+        extension.add(std::move(webkitwebview));
+        extension.add(std::move(gtkwebview));
+#endif
+
 #ifdef WITH_MAC_INTEGRATION
         extension.add(std::move(gtkosxapplication));
 #endif
@@ -4514,7 +4544,8 @@ Php::Value phpgtk_get_phpvalue(GValue *gvalue)
     case G_TYPE_UCHAR:
         return g_value_get_uchar(gvalue);
         break;
-    case G_TYPE_OBJECT: {
+    case G_TYPE_OBJECT:
+    {
         gpointer *ret = (gpointer *)g_value_get_object(gvalue);
         return cobject_to_phpobject(ret);
         break;
