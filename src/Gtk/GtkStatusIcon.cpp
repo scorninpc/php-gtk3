@@ -2,6 +2,32 @@
 
 #include "GtkStatusIcon.h"
 
+// Custom log handler to suppress GTK 3 bug with gtk_widget_get_scale_factor
+// When loading icons from files, GTK internally calls gtk_widget_get_scale_factor
+// on the GtkStatusIcon, which is not a GtkWidget, causing a critical warning
+// This is a known GTK 3 issue and the warning is harmless
+static void suppress_scale_factor_warning(const gchar *log_domain,
+                                         GLogLevelFlags log_level,
+                                         const gchar *message,
+                                         gpointer user_data)
+{
+	(void)log_domain;
+	(void)log_level;
+	(void)user_data;
+	
+	// Suppress the specific gtk_widget_get_scale_factor warning for GtkStatusIcon
+	// Expected message format: "gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed"
+	// String matching is necessary as GTK doesn't provide error codes for log messages
+	if (g_strstr_len(message, -1, "gtk_widget_get_scale_factor") &&
+	    g_strstr_len(message, -1, "GTK_IS_WIDGET")) {
+		// Silently ignore this specific warning
+		return;
+	}
+	
+	// For all other messages, use default handler
+	g_log_default_handler(log_domain, log_level, message, user_data);
+}
+
 GtkStatusIcon_::GtkStatusIcon_() = default;
 GtkStatusIcon_::~GtkStatusIcon_() = default;
 
@@ -231,7 +257,18 @@ Php::Value GtkStatusIcon_::new_from_file(Php::Parameters &parameters)
 
 	gchar *filename = (gchar *)c_filename.c_str();
 
+	// Install custom log handler to suppress GTK 3 bug with gtk_widget_get_scale_factor
+	// GtkStatusIcon internally calls gtk_widget_get_scale_factor during icon loading,
+	// but GtkStatusIcon is not a GtkWidget, causing a harmless critical warning
+	guint handler_id = g_log_set_handler("Gtk", 
+	                                     G_LOG_LEVEL_CRITICAL,
+	                                     suppress_scale_factor_warning,
+	                                     NULL);
+
 	GtkStatusIcon* ret = gtk_status_icon_new_from_file(filename);
+	
+	// Remove the custom log handler
+	g_log_remove_handler("Gtk", handler_id);
 
 	GtkStatusIcon_ *phpgtk_ret = new GtkStatusIcon_();
 	phpgtk_ret->set_instance((gpointer *)ret);

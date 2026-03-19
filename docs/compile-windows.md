@@ -182,7 +182,7 @@
 
    **Note for WebView support:** If you want to use WebView for web content:
 
-   - **For WebView2:** WebView source files are included in `src\WebKit\WebKitWebView.cpp`. Dont add platform specific files explicitly.
+   - **For WebView2:** WebView source files are included in `src\WebKit\WebKitWebView.cpp`. Also add `C:\WebView2SDK\build\native\include\WebView2.h`. Dont add platform specific files explicitly.
 
    Both use the same source files - platform detection happens at compile time.
 

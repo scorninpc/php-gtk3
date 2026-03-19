@@ -426,12 +426,14 @@ gint GtkListStore_::set_sort_func_callback(GtkTreeModel* model, GtkTreeIter* a, 
 	}
 
     // Try to call the PHP function
+    // Wrap in try-catch to properly handle exceptions from PHP callbacks
     try {
         gint ret = Php::call("call_user_func_array", callback_name, internal_parameters);
         return ret;
-    } catch (const std::exception& e) {
-        std::cerr << "Exception caught in sort function callback: " << e.what() << std::endl;
-        return 0;
+    } catch (Php::Exception &exception) {
+        // Re-throw to let PHP-CPP handle the exception properly
+        // This allows PHP try-catch blocks to catch it and Xdebug to track it correctly
+        throw;
     }
 }
 

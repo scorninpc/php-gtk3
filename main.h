@@ -106,6 +106,7 @@
 	#include "src/Gtk/GtkClipboard.h"
 	#include "src/Gtk/GtkTreeStore.h"
 	#include "src/Gtk/GtkTreeSelection.h"
+	#include "src/Gtk/GtkTreeSortable.h"
 	#include "src/Gtk/GtkListStore.h"
 	#include "src/Gtk/GtkMenuShell.h"
 	#include "src/Gtk/GtkMenuBar.h"

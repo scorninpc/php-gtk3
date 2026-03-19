@@ -216,6 +216,23 @@ extern "C"
         gdkwmfunction.constant("MAXIMIZE", GDK_FUNC_MAXIMIZE);
         gdkwmfunction.constant("CLOSE", GDK_FUNC_CLOSE);
 
+        // GdkWindowTypeHint
+        Php::Class<Php::Base> gdkwindowtypehint("GdkWindowTypeHint");
+        gdkwindowtypehint.constant("NORMAL", GDK_WINDOW_TYPE_HINT_NORMAL);
+        gdkwindowtypehint.constant("DIALOG", GDK_WINDOW_TYPE_HINT_DIALOG);
+        gdkwindowtypehint.constant("MENU", GDK_WINDOW_TYPE_HINT_MENU);
+        gdkwindowtypehint.constant("TOOLBAR", GDK_WINDOW_TYPE_HINT_TOOLBAR);
+        gdkwindowtypehint.constant("SPLASHSCREEN", GDK_WINDOW_TYPE_HINT_SPLASHSCREEN);
+        gdkwindowtypehint.constant("UTILITY", GDK_WINDOW_TYPE_HINT_UTILITY);
+        gdkwindowtypehint.constant("DOCK", GDK_WINDOW_TYPE_HINT_DOCK);
+        gdkwindowtypehint.constant("DESKTOP", GDK_WINDOW_TYPE_HINT_DESKTOP);
+        gdkwindowtypehint.constant("DROPDOWN_MENU", GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
+        gdkwindowtypehint.constant("POPUP_MENU", GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+        gdkwindowtypehint.constant("TOOLTIP", GDK_WINDOW_TYPE_HINT_TOOLTIP);
+        gdkwindowtypehint.constant("NOTIFICATION", GDK_WINDOW_TYPE_HINT_NOTIFICATION);
+        gdkwindowtypehint.constant("COMBO", GDK_WINDOW_TYPE_HINT_COMBO);
+        gdkwindowtypehint.constant("DND", GDK_WINDOW_TYPE_HINT_DND);
+
         // GdkWindow
         Php::Class<GdkWindow_> gdkwindow("GdkWindow");
         gdkwindow.extends(gobject);
@@ -484,6 +501,206 @@ extern "C"
         gdk.constant("BUTTON_RELEASE", (int)GDK_BUTTON_RELEASE);
         gdk.constant("KEY_PRESS", (int)GDK_KEY_PRESS);
         gdk.constant("KEY_RELEASE", (int)GDK_KEY_RELEASE);
+
+        // GDK Key Constants - Special Keys
+        gdk.constant("KEY_Shift_L", GDK_KEY_Shift_L);
+        gdk.constant("KEY_Shift_R", GDK_KEY_Shift_R);
+        gdk.constant("KEY_Control_L", GDK_KEY_Control_L);
+        gdk.constant("KEY_Control_R", GDK_KEY_Control_R);
+        gdk.constant("KEY_Alt_L", GDK_KEY_Alt_L);
+        gdk.constant("KEY_Alt_R", GDK_KEY_Alt_R);
+        gdk.constant("KEY_Super_L", GDK_KEY_Super_L);
+        gdk.constant("KEY_Super_R", GDK_KEY_Super_R);
+        gdk.constant("KEY_Meta_L", GDK_KEY_Meta_L);
+        gdk.constant("KEY_Meta_R", GDK_KEY_Meta_R);
+        gdk.constant("KEY_Hyper_L", GDK_KEY_Hyper_L);
+        gdk.constant("KEY_Hyper_R", GDK_KEY_Hyper_R);
+        gdk.constant("KEY_ISO_Level3_Shift", GDK_KEY_ISO_Level3_Shift);
+        gdk.constant("KEY_ISO_Level5_Shift", GDK_KEY_ISO_Level5_Shift);
+
+        // Function Keys
+        gdk.constant("KEY_F1", GDK_KEY_F1);
+        gdk.constant("KEY_F2", GDK_KEY_F2);
+        gdk.constant("KEY_F3", GDK_KEY_F3);
+        gdk.constant("KEY_F4", GDK_KEY_F4);
+        gdk.constant("KEY_F5", GDK_KEY_F5);
+        gdk.constant("KEY_F6", GDK_KEY_F6);
+        gdk.constant("KEY_F7", GDK_KEY_F7);
+        gdk.constant("KEY_F8", GDK_KEY_F8);
+        gdk.constant("KEY_F9", GDK_KEY_F9);
+        gdk.constant("KEY_F10", GDK_KEY_F10);
+        gdk.constant("KEY_F11", GDK_KEY_F11);
+        gdk.constant("KEY_F12", GDK_KEY_F12);
+
+        // Navigation Keys
+        gdk.constant("KEY_Escape", GDK_KEY_Escape);
+        gdk.constant("KEY_Tab", GDK_KEY_Tab);
+        gdk.constant("KEY_ISO_Left_Tab", GDK_KEY_ISO_Left_Tab);
+        gdk.constant("KEY_BackSpace", GDK_KEY_BackSpace);
+        gdk.constant("KEY_Return", GDK_KEY_Return);
+        gdk.constant("KEY_Insert", GDK_KEY_Insert);
+        gdk.constant("KEY_Delete", GDK_KEY_Delete);
+        gdk.constant("KEY_Home", GDK_KEY_Home);
+        gdk.constant("KEY_End", GDK_KEY_End);
+        gdk.constant("KEY_Page_Up", GDK_KEY_Page_Up);
+        gdk.constant("KEY_Page_Down", GDK_KEY_Page_Down);
+        gdk.constant("KEY_Up", GDK_KEY_Up);
+        gdk.constant("KEY_Down", GDK_KEY_Down);
+        gdk.constant("KEY_Left", GDK_KEY_Left);
+        gdk.constant("KEY_Right", GDK_KEY_Right);
+
+        // Lock Keys
+        gdk.constant("KEY_Caps_Lock", GDK_KEY_Caps_Lock);
+        gdk.constant("KEY_Num_Lock", GDK_KEY_Num_Lock);
+        gdk.constant("KEY_Scroll_Lock", GDK_KEY_Scroll_Lock);
+
+        // Special Keys
+        gdk.constant("KEY_Print", GDK_KEY_Print);
+        gdk.constant("KEY_Pause", GDK_KEY_Pause);
+        gdk.constant("KEY_Menu", GDK_KEY_Menu);
+
+        // Alphanumeric Keys (0-9, a-z, A-Z)
+        gdk.constant("KEY_space", GDK_KEY_space);
+        gdk.constant("KEY_0", GDK_KEY_0);
+        gdk.constant("KEY_1", GDK_KEY_1);
+        gdk.constant("KEY_2", GDK_KEY_2);
+        gdk.constant("KEY_3", GDK_KEY_3);
+        gdk.constant("KEY_4", GDK_KEY_4);
+        gdk.constant("KEY_5", GDK_KEY_5);
+        gdk.constant("KEY_6", GDK_KEY_6);
+        gdk.constant("KEY_7", GDK_KEY_7);
+        gdk.constant("KEY_8", GDK_KEY_8);
+        gdk.constant("KEY_9", GDK_KEY_9);
+        gdk.constant("KEY_a", GDK_KEY_a);
+        gdk.constant("KEY_b", GDK_KEY_b);
+        gdk.constant("KEY_c", GDK_KEY_c);
+        gdk.constant("KEY_d", GDK_KEY_d);
+        gdk.constant("KEY_e", GDK_KEY_e);
+        gdk.constant("KEY_f", GDK_KEY_f);
+        gdk.constant("KEY_g", GDK_KEY_g);
+        gdk.constant("KEY_h", GDK_KEY_h);
+        gdk.constant("KEY_i", GDK_KEY_i);
+        gdk.constant("KEY_j", GDK_KEY_j);
+        gdk.constant("KEY_k", GDK_KEY_k);
+        gdk.constant("KEY_l", GDK_KEY_l);
+        gdk.constant("KEY_m", GDK_KEY_m);
+        gdk.constant("KEY_n", GDK_KEY_n);
+        gdk.constant("KEY_o", GDK_KEY_o);
+        gdk.constant("KEY_p", GDK_KEY_p);
+        gdk.constant("KEY_q", GDK_KEY_q);
+        gdk.constant("KEY_r", GDK_KEY_r);
+        gdk.constant("KEY_s", GDK_KEY_s);
+        gdk.constant("KEY_t", GDK_KEY_t);
+        gdk.constant("KEY_u", GDK_KEY_u);
+        gdk.constant("KEY_v", GDK_KEY_v);
+        gdk.constant("KEY_w", GDK_KEY_w);
+        gdk.constant("KEY_x", GDK_KEY_x);
+        gdk.constant("KEY_y", GDK_KEY_y);
+        gdk.constant("KEY_z", GDK_KEY_z);
+        gdk.constant("KEY_A", GDK_KEY_A);
+        gdk.constant("KEY_B", GDK_KEY_B);
+        gdk.constant("KEY_C", GDK_KEY_C);
+        gdk.constant("KEY_D", GDK_KEY_D);
+        gdk.constant("KEY_E", GDK_KEY_E);
+        gdk.constant("KEY_F", GDK_KEY_F);
+        gdk.constant("KEY_G", GDK_KEY_G);
+        gdk.constant("KEY_H", GDK_KEY_H);
+        gdk.constant("KEY_I", GDK_KEY_I);
+        gdk.constant("KEY_J", GDK_KEY_J);
+        gdk.constant("KEY_K", GDK_KEY_K);
+        gdk.constant("KEY_L", GDK_KEY_L);
+        gdk.constant("KEY_M", GDK_KEY_M);
+        gdk.constant("KEY_N", GDK_KEY_N);
+        gdk.constant("KEY_O", GDK_KEY_O);
+        gdk.constant("KEY_P", GDK_KEY_P);
+        gdk.constant("KEY_Q", GDK_KEY_Q);
+        gdk.constant("KEY_R", GDK_KEY_R);
+        gdk.constant("KEY_S", GDK_KEY_S);
+        gdk.constant("KEY_T", GDK_KEY_T);
+        gdk.constant("KEY_U", GDK_KEY_U);
+        gdk.constant("KEY_V", GDK_KEY_V);
+        gdk.constant("KEY_W", GDK_KEY_W);
+        gdk.constant("KEY_X", GDK_KEY_X);
+        gdk.constant("KEY_Y", GDK_KEY_Y);
+        gdk.constant("KEY_Z", GDK_KEY_Z);
+
+        // Punctuation and Symbols (Common across en_US, en_GB, de_DE)
+        gdk.constant("KEY_exclam", GDK_KEY_exclam);
+        gdk.constant("KEY_quotedbl", GDK_KEY_quotedbl);
+        gdk.constant("KEY_numbersign", GDK_KEY_numbersign);
+        gdk.constant("KEY_dollar", GDK_KEY_dollar);
+        gdk.constant("KEY_percent", GDK_KEY_percent);
+        gdk.constant("KEY_ampersand", GDK_KEY_ampersand);
+        gdk.constant("KEY_apostrophe", GDK_KEY_apostrophe);
+        gdk.constant("KEY_parenleft", GDK_KEY_parenleft);
+        gdk.constant("KEY_parenright", GDK_KEY_parenright);
+        gdk.constant("KEY_asterisk", GDK_KEY_asterisk);
+        gdk.constant("KEY_plus", GDK_KEY_plus);
+        gdk.constant("KEY_comma", GDK_KEY_comma);
+        gdk.constant("KEY_minus", GDK_KEY_minus);
+        gdk.constant("KEY_period", GDK_KEY_period);
+        gdk.constant("KEY_slash", GDK_KEY_slash);
+        gdk.constant("KEY_colon", GDK_KEY_colon);
+        gdk.constant("KEY_semicolon", GDK_KEY_semicolon);
+        gdk.constant("KEY_less", GDK_KEY_less);
+        gdk.constant("KEY_equal", GDK_KEY_equal);
+        gdk.constant("KEY_greater", GDK_KEY_greater);
+        gdk.constant("KEY_question", GDK_KEY_question);
+        gdk.constant("KEY_at", GDK_KEY_at);
+        gdk.constant("KEY_bracketleft", GDK_KEY_bracketleft);
+        gdk.constant("KEY_backslash", GDK_KEY_backslash);
+        gdk.constant("KEY_bracketright", GDK_KEY_bracketright);
+        gdk.constant("KEY_asciicircum", GDK_KEY_asciicircum);
+        gdk.constant("KEY_underscore", GDK_KEY_underscore);
+        gdk.constant("KEY_grave", GDK_KEY_grave);
+        gdk.constant("KEY_braceleft", GDK_KEY_braceleft);
+        gdk.constant("KEY_bar", GDK_KEY_bar);
+        gdk.constant("KEY_braceright", GDK_KEY_braceright);
+        gdk.constant("KEY_asciitilde", GDK_KEY_asciitilde);
+
+        // German-specific keys (de_DE)
+        gdk.constant("KEY_Adiaeresis", GDK_KEY_Adiaeresis);
+        gdk.constant("KEY_Odiaeresis", GDK_KEY_Odiaeresis);
+        gdk.constant("KEY_Udiaeresis", GDK_KEY_Udiaeresis);
+        gdk.constant("KEY_adiaeresis", GDK_KEY_adiaeresis);
+        gdk.constant("KEY_odiaeresis", GDK_KEY_odiaeresis);
+        gdk.constant("KEY_udiaeresis", GDK_KEY_udiaeresis);
+        gdk.constant("KEY_ssharp", GDK_KEY_ssharp);
+
+        // British Pound (en_GB)
+        gdk.constant("KEY_sterling", GDK_KEY_sterling);
+
+        // Euro sign (common in EU)
+        gdk.constant("KEY_EuroSign", GDK_KEY_EuroSign);
+
+        // Keypad Keys
+        gdk.constant("KEY_KP_0", GDK_KEY_KP_0);
+        gdk.constant("KEY_KP_1", GDK_KEY_KP_1);
+        gdk.constant("KEY_KP_2", GDK_KEY_KP_2);
+        gdk.constant("KEY_KP_3", GDK_KEY_KP_3);
+        gdk.constant("KEY_KP_4", GDK_KEY_KP_4);
+        gdk.constant("KEY_KP_5", GDK_KEY_KP_5);
+        gdk.constant("KEY_KP_6", GDK_KEY_KP_6);
+        gdk.constant("KEY_KP_7", GDK_KEY_KP_7);
+        gdk.constant("KEY_KP_8", GDK_KEY_KP_8);
+        gdk.constant("KEY_KP_9", GDK_KEY_KP_9);
+        gdk.constant("KEY_KP_Add", GDK_KEY_KP_Add);
+        gdk.constant("KEY_KP_Subtract", GDK_KEY_KP_Subtract);
+        gdk.constant("KEY_KP_Multiply", GDK_KEY_KP_Multiply);
+        gdk.constant("KEY_KP_Divide", GDK_KEY_KP_Divide);
+        gdk.constant("KEY_KP_Decimal", GDK_KEY_KP_Decimal);
+        gdk.constant("KEY_KP_Enter", GDK_KEY_KP_Enter);
+        gdk.constant("KEY_KP_Home", GDK_KEY_KP_Home);
+        gdk.constant("KEY_KP_End", GDK_KEY_KP_End);
+        gdk.constant("KEY_KP_Page_Up", GDK_KEY_KP_Page_Up);
+        gdk.constant("KEY_KP_Page_Down", GDK_KEY_KP_Page_Down);
+        gdk.constant("KEY_KP_Up", GDK_KEY_KP_Up);
+        gdk.constant("KEY_KP_Down", GDK_KEY_KP_Down);
+        gdk.constant("KEY_KP_Left", GDK_KEY_KP_Left);
+        gdk.constant("KEY_KP_Right", GDK_KEY_KP_Right);
+        gdk.constant("KEY_KP_Insert", GDK_KEY_KP_Insert);
+        gdk.constant("KEY_KP_Delete", GDK_KEY_KP_Delete);
+
         gdk.constant("ENTER_NOTIFY", (int)GDK_ENTER_NOTIFY);
         gdk.constant("LEAVE_NOTIFY", (int)GDK_LEAVE_NOTIFY);
         gdk.constant("FOCUS_CHANGE", (int)GDK_FOCUS_CHANGE);
@@ -943,6 +1160,8 @@ extern "C"
         gtk.constant("MAJOR_VERSION", GTK_MAJOR_VERSION);
         gtk.constant("MICRO_VERSION", GTK_MICRO_VERSION);
         gtk.constant("MINOR_VERSION", GTK_MINOR_VERSION);
+        gtk.constant("INTERFACE_AGE", GTK_INTERFACE_AGE);
+        gtk.constant("BINARY_AGE", GTK_BINARY_AGE);
 
         gtk.constant("ORIENTATION_HORIZONTAL", GTK_ORIENTATION_HORIZONTAL);
         gtk.constant("ORIENTATION_VERTICAL", GTK_ORIENTATION_VERTICAL);
@@ -963,6 +1182,47 @@ extern "C"
         gtk.constant("WIN_POS_CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
 
         gtk.constant("STOCK_OK", GTK_STOCK_OK);
+
+        // GTK Priority Constants
+        gtk.constant("PRIORITY_RESIZE", GTK_PRIORITY_RESIZE);
+        gtk.constant("TEXT_VIEW_PRIORITY_VALIDATE", GTK_TEXT_VIEW_PRIORITY_VALIDATE);
+
+        // GTK Compose Constants
+        gtk.constant("MAX_COMPOSE_LEN", GTK_MAX_COMPOSE_LEN);
+
+        // GTK Paper Name Constants
+        gtk.constant("PAPER_NAME_A3", GTK_PAPER_NAME_A3);
+        gtk.constant("PAPER_NAME_A4", GTK_PAPER_NAME_A4);
+        gtk.constant("PAPER_NAME_A5", GTK_PAPER_NAME_A5);
+        gtk.constant("PAPER_NAME_B5", GTK_PAPER_NAME_B5);
+        gtk.constant("PAPER_NAME_LETTER", GTK_PAPER_NAME_LETTER);
+        gtk.constant("PAPER_NAME_EXECUTIVE", GTK_PAPER_NAME_EXECUTIVE);
+        gtk.constant("PAPER_NAME_LEGAL", GTK_PAPER_NAME_LEGAL);
+
+        // GTK Level Bar Offset Constants
+        gtk.constant("LEVEL_BAR_OFFSET_LOW", GTK_LEVEL_BAR_OFFSET_LOW);
+        gtk.constant("LEVEL_BAR_OFFSET_HIGH", GTK_LEVEL_BAR_OFFSET_HIGH);
+        gtk.constant("LEVEL_BAR_OFFSET_FULL", GTK_LEVEL_BAR_OFFSET_FULL);
+
+        // GTK Path Priority Constants
+        gtk.constant("PATH_PRIO_LOWEST", GTK_PATH_PRIO_LOWEST);
+        gtk.constant("PATH_PRIO_GTK", GTK_PATH_PRIO_GTK);
+        gtk.constant("PATH_PRIO_APPLICATION", GTK_PATH_PRIO_APPLICATION);
+        gtk.constant("PATH_PRIO_THEME", GTK_PATH_PRIO_THEME);
+        gtk.constant("PATH_PRIO_RC", GTK_PATH_PRIO_RC);
+        gtk.constant("PATH_PRIO_HIGHEST", GTK_PATH_PRIO_HIGHEST);
+
+        // GTK Tree Sortable Constants
+        // Special value (-1): Used to indicate the default sort column in GtkTreeSortable.
+        gtk.constant("TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID", GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID);
+        // Special value (-2): Used to indicate that the model is not sorted in GtkTreeSortable.
+        gtk.constant("TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID", GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID);
+
+        // GTK Input Error Constant
+        gtk.constant("INPUT_ERROR", GTK_INPUT_ERROR);
+
+        // GTK Response Type Constants
+        gtk.constant("RESPONSE_NONE", GTK_RESPONSE_NONE);
 
         // GtkOrientation
         Php::Class<Php::Base> gtkorientation("GtkOrientation");
@@ -1491,6 +1751,14 @@ extern "C"
         gtkwindowtype.constant("TOPLEVEL", GTK_WINDOW_TOPLEVEL);
         gtkwindowtype.constant("POPUP", GTK_WINDOW_POPUP);
 
+        // GtkWindowPosition
+        Php::Class<Php::Base> gtkwindowposition("GtkWindowPosition");
+        gtkwindowposition.constant("NONE", GTK_WIN_POS_NONE);
+        gtkwindowposition.constant("CENTER", GTK_WIN_POS_CENTER);
+        gtkwindowposition.constant("MOUSE", GTK_WIN_POS_MOUSE);
+        gtkwindowposition.constant("CENTER_ALWAYS", GTK_WIN_POS_CENTER_ALWAYS);
+        gtkwindowposition.constant("CENTER_ON_PARENT", GTK_WIN_POS_CENTER_ON_PARENT);
+
         // GtkApplicationWindow
         Php::Class<GtkApplicationWindow_> gtkapplicationwindow("GtkApplicationWindow");
         gtkapplicationwindow.extends(gtkwindow);
@@ -1814,6 +2082,13 @@ extern "C"
         gtkadjustment.method<&GtkAdjustment_::set_value>("set_value");
         gtkadjustment.method<&GtkAdjustment_::get_value>("get_value");
 
+        // GtkCornerType
+        Php::Class<Php::Base> gtkcornertype("GtkCornerType");
+        gtkcornertype.constant("TOP_LEFT", GTK_CORNER_TOP_LEFT);
+        gtkcornertype.constant("BOTTOM_LEFT", GTK_CORNER_BOTTOM_LEFT);
+        gtkcornertype.constant("TOP_RIGHT", GTK_CORNER_TOP_RIGHT);
+        gtkcornertype.constant("BOTTOM_RIGHT", GTK_CORNER_BOTTOM_RIGHT);
+
         // GtkScrolledWindow
         Php::Class<GtkScrolledWindow_> gtkscrolledwindow("GtkScrolledWindow");
         gtkscrolledwindow.extends(gtkbin);
@@ -1970,6 +2245,12 @@ extern "C"
         gtktreeview.method<&GtkTreeView_::convert_tree_to_bin_window_coords>("convert_tree_to_bin_window_coords");
         gtktreeview.method<&GtkTreeView_::convert_bin_window_to_widget_coords>("convert_bin_window_to_widget_coords");
         gtktreeview.method<&GtkTreeView_::convert_bin_window_to_tree_coords>("convert_bin_window_to_tree_coords");
+
+        // GtkTreeViewColumnSizing
+        Php::Class<Php::Base> gtktreeviewcolumnsizing("GtkTreeViewColumnSizing");
+        gtktreeviewcolumnsizing.constant("GROW_ONLY", GTK_TREE_VIEW_COLUMN_GROW_ONLY);
+        gtktreeviewcolumnsizing.constant("AUTOSIZE", GTK_TREE_VIEW_COLUMN_AUTOSIZE);
+        gtktreeviewcolumnsizing.constant("FIXED", GTK_TREE_VIEW_COLUMN_FIXED);
 
         // GtkTreeViewColumn
         Php::Class<GtkTreeViewColumn_> gtktreeviewcolumn("GtkTreeViewColumn");
@@ -2440,16 +2721,16 @@ extern "C"
 
         // GtkInputPurpose
         Php::Class<Php::Base> gtkinputpurpose("GtkInputPurpose");
-        gtkinputhints.constant("FREE_FORM", (int)GTK_INPUT_PURPOSE_FREE_FORM);
-        gtkinputhints.constant("ALPHA", (int)GTK_INPUT_PURPOSE_ALPHA);
-        gtkinputhints.constant("DIGITS", (int)GTK_INPUT_PURPOSE_DIGITS);
-        gtkinputhints.constant("NUMBER", (int)GTK_INPUT_PURPOSE_NUMBER);
-        gtkinputhints.constant("PHONE", (int)GTK_INPUT_PURPOSE_PHONE);
-        gtkinputhints.constant("URL", (int)GTK_INPUT_PURPOSE_URL);
-        gtkinputhints.constant("EMAIL", (int)GTK_INPUT_PURPOSE_EMAIL);
-        gtkinputhints.constant("NAME", (int)GTK_INPUT_PURPOSE_NAME);
-        gtkinputhints.constant("PASSWORD", (int)GTK_INPUT_PURPOSE_PASSWORD);
-        gtkinputhints.constant("PIN", (int)GTK_INPUT_PURPOSE_PIN);
+        gtkinputpurpose.constant("FREE_FORM", (int)GTK_INPUT_PURPOSE_FREE_FORM);
+        gtkinputpurpose.constant("ALPHA", (int)GTK_INPUT_PURPOSE_ALPHA);
+        gtkinputpurpose.constant("DIGITS", (int)GTK_INPUT_PURPOSE_DIGITS);
+        gtkinputpurpose.constant("NUMBER", (int)GTK_INPUT_PURPOSE_NUMBER);
+        gtkinputpurpose.constant("PHONE", (int)GTK_INPUT_PURPOSE_PHONE);
+        gtkinputpurpose.constant("URL", (int)GTK_INPUT_PURPOSE_URL);
+        gtkinputpurpose.constant("EMAIL", (int)GTK_INPUT_PURPOSE_EMAIL);
+        gtkinputpurpose.constant("NAME", (int)GTK_INPUT_PURPOSE_NAME);
+        gtkinputpurpose.constant("PASSWORD", (int)GTK_INPUT_PURPOSE_PASSWORD);
+        gtkinputpurpose.constant("PIN", (int)GTK_INPUT_PURPOSE_PIN);
 
         // GtkTextMark
         Php::Class<GtkTextMark_> gtktextmark("GtkTextMark");
@@ -2977,6 +3258,14 @@ extern "C"
         gtktreeselection.method<&GtkTreeSelection_::unselect_all>("unselect_all");
         gtktreeselection.method<&GtkTreeSelection_::unselect_range>("unselect_range");
         gtktreeselection.method<&GtkTreeSelection_::select_range>("select_range");
+
+        // GtkTreeSortable
+        Php::Class<GtkTreeSortable_> gtktreesortable("GtkTreeSortable");
+        gtktreesortable.extends(gobject);
+        gtktreesortable.method<&GtkTreeSortable_::sort_column_changed>("sort_column_changed");
+        gtktreesortable.method<&GtkTreeSortable_::get_sort_column_id>("get_sort_column_id");
+        gtktreesortable.method<&GtkTreeSortable_::set_sort_column_id>("set_sort_column_id");
+        gtktreesortable.method<&GtkTreeSortable_::has_default_sort_func>("has_default_sort_func");
 
         // GtkMenuShell
         Php::Class<GtkMenuShell_> gtkmenushell("GtkMenuShell");
@@ -4002,6 +4291,65 @@ extern "C"
         pangowrapmode.constant("CHAR", (int)PANGO_WRAP_CHAR);
         pangowrapmode.constant("WORD_CHAR", (int)PANGO_WRAP_WORD_CHAR);
 
+        // PangoEllipsizeMode
+        Php::Class<Php::Base> pangoellipsizemode("PangoEllipsizeMode");
+        pangoellipsizemode.constant("NONE", (int)PANGO_ELLIPSIZE_NONE);
+        pangoellipsizemode.constant("START", (int)PANGO_ELLIPSIZE_START);
+        pangoellipsizemode.constant("MIDDLE", (int)PANGO_ELLIPSIZE_MIDDLE);
+        pangoellipsizemode.constant("END", (int)PANGO_ELLIPSIZE_END);
+
+        // PangoWeight
+        Php::Class<Php::Base> pangoweight("PangoWeight");
+        pangoweight.constant("THIN", (int)PANGO_WEIGHT_THIN);
+        pangoweight.constant("ULTRALIGHT", (int)PANGO_WEIGHT_ULTRALIGHT);
+        pangoweight.constant("LIGHT", (int)PANGO_WEIGHT_LIGHT);
+        pangoweight.constant("SEMILIGHT", (int)PANGO_WEIGHT_SEMILIGHT);
+        pangoweight.constant("BOOK", (int)PANGO_WEIGHT_BOOK);
+        pangoweight.constant("NORMAL", (int)PANGO_WEIGHT_NORMAL);
+        pangoweight.constant("MEDIUM", (int)PANGO_WEIGHT_MEDIUM);
+        pangoweight.constant("SEMIBOLD", (int)PANGO_WEIGHT_SEMIBOLD);
+        pangoweight.constant("BOLD", (int)PANGO_WEIGHT_BOLD);
+        pangoweight.constant("ULTRABOLD", (int)PANGO_WEIGHT_ULTRABOLD);
+        pangoweight.constant("HEAVY", (int)PANGO_WEIGHT_HEAVY);
+        pangoweight.constant("ULTRAHEAVY", (int)PANGO_WEIGHT_ULTRAHEAVY);
+
+        // PangoStyle
+        Php::Class<Php::Base> pangostyle("PangoStyle");
+        pangostyle.constant("NORMAL", (int)PANGO_STYLE_NORMAL);
+        pangostyle.constant("OBLIQUE", (int)PANGO_STYLE_OBLIQUE);
+        pangostyle.constant("ITALIC", (int)PANGO_STYLE_ITALIC);
+
+        // PangoStretch
+        Php::Class<Php::Base> pangostretch("PangoStretch");
+        pangostretch.constant("ULTRA_CONDENSED", (int)PANGO_STRETCH_ULTRA_CONDENSED);
+        pangostretch.constant("EXTRA_CONDENSED", (int)PANGO_STRETCH_EXTRA_CONDENSED);
+        pangostretch.constant("CONDENSED", (int)PANGO_STRETCH_CONDENSED);
+        pangostretch.constant("SEMI_CONDENSED", (int)PANGO_STRETCH_SEMI_CONDENSED);
+        pangostretch.constant("NORMAL", (int)PANGO_STRETCH_NORMAL);
+        pangostretch.constant("SEMI_EXPANDED", (int)PANGO_STRETCH_SEMI_EXPANDED);
+        pangostretch.constant("EXPANDED", (int)PANGO_STRETCH_EXPANDED);
+        pangostretch.constant("EXTRA_EXPANDED", (int)PANGO_STRETCH_EXTRA_EXPANDED);
+        pangostretch.constant("ULTRA_EXPANDED", (int)PANGO_STRETCH_ULTRA_EXPANDED);
+
+        // PangoVariant
+        Php::Class<Php::Base> pangovariant("PangoVariant");
+        pangovariant.constant("NORMAL", (int)PANGO_VARIANT_NORMAL);
+        pangovariant.constant("SMALL_CAPS", (int)PANGO_VARIANT_SMALL_CAPS);
+
+        // PangoUnderline
+        Php::Class<Php::Base> pangounderline("PangoUnderline");
+        pangounderline.constant("NONE", (int)PANGO_UNDERLINE_NONE);
+        pangounderline.constant("SINGLE", (int)PANGO_UNDERLINE_SINGLE);
+        pangounderline.constant("DOUBLE", (int)PANGO_UNDERLINE_DOUBLE);
+        pangounderline.constant("LOW", (int)PANGO_UNDERLINE_LOW);
+        pangounderline.constant("ERROR", (int)PANGO_UNDERLINE_ERROR);
+
+        // PangoAlignment
+        Php::Class<Php::Base> pangoalignment("PangoAlignment");
+        pangoalignment.constant("LEFT", (int)PANGO_ALIGN_LEFT);
+        pangoalignment.constant("CENTER", (int)PANGO_ALIGN_CENTER);
+        pangoalignment.constant("RIGHT", (int)PANGO_ALIGN_RIGHT);
+
         // PangoContext
         Php::Class<PangoContext_> pangocontext("PangoContext");
         pangocontext.extends(gobject);
@@ -4269,6 +4617,7 @@ extern "C"
         extension.add(std::move(gdkmodifierintent));
         extension.add(std::move(gdkwmdecoration));
         extension.add(std::move(gdkwmfunction));
+        extension.add(std::move(gdkwindowtypehint));
 
         extension.add(std::move(gapplication));
 
@@ -4293,6 +4642,7 @@ extern "C"
         extension.add(std::move(gtkpaned));
         extension.add(std::move(gtkwindow));
         extension.add(std::move(gtkwindowtype));
+        extension.add(std::move(gtkwindowposition));
         extension.add(std::move(gtkapplicationwindow));
         extension.add(std::move(gtkdialog));
         extension.add(std::move(gtkappchooserdialog));
@@ -4321,12 +4671,14 @@ extern "C"
         extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkradiobutton));
         extension.add(std::move(gtkadjustment));
+        extension.add(std::move(gtkcornertype));
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));
         extension.add(std::move(gtkentry));
         extension.add(std::move(gtkentrycompletion));
         extension.add(std::move(gtksorttype));
         extension.add(std::move(gtktreeview));
+        extension.add(std::move(gtktreeviewcolumnsizing));
         extension.add(std::move(gtktreeviewcolumn));
         extension.add(std::move(gtkcellrenderer));
         extension.add(std::move(gtkcellrenderertext));
@@ -4382,6 +4734,7 @@ extern "C"
 
         extension.add(std::move(gtkselectionmode));
         extension.add(std::move(gtktreeselection));
+        extension.add(std::move(gtktreesortable));
 
         extension.add(std::move(gtkmenushell));
         extension.add(std::move(gtkpackdirection));
@@ -4475,6 +4828,13 @@ extern "C"
         extension.add(std::move(pango));
         extension.add(std::move(pangoattrlist));
         extension.add(std::move(pangowrapmode));
+        extension.add(std::move(pangoellipsizemode));
+        extension.add(std::move(pangoweight));
+        extension.add(std::move(pangostyle));
+        extension.add(std::move(pangostretch));
+        extension.add(std::move(pangovariant));
+        extension.add(std::move(pangounderline));
+        extension.add(std::move(pangoalignment));
         extension.add(std::move(pangocontext));
         extension.add(std::move(pangolayout));
         extension.add(std::move(pangolayoutline));
