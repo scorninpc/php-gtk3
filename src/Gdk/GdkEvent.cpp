@@ -1,8 +1,7 @@
 
 #include "GdkEvent.h"
 
-
-// 
+//
 GdkEvent *GdkEvent_::get_instance()
 {
     return instance;
@@ -11,35 +10,34 @@ GdkEvent *GdkEvent_::get_instance()
 /**
  *  PHP Constructor
  */
-void GdkEvent_::__construct(Php::Parameters& parameters)
+void GdkEvent_::__construct(Php::Parameters &parameters)
 {
-
 }
 
-// 
+//
 void GdkEvent_::set_instance(GdkEvent *event)
 {
     instance = event;
 }
 
-
 void GdkEvent_::populate(GdkEvent *event)
 {
     instance = event;
-    
-   // get self reference as Php::Value object
+
+    // get self reference as Php::Value object
     Php::Value self(this);
 
     // GdkEventType
     self["type"] = event->type;
-    
+
     // Only populate the relevant event structure based on event type
     // to avoid accessing invalid union members
-    
+
     // GtkEventButton - for button press/release events
     if (event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE ||
         event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS ||
-        event->type == GDK_PAD_BUTTON_PRESS || event->type == GDK_PAD_BUTTON_RELEASE) {
+        event->type == GDK_PAD_BUTTON_PRESS || event->type == GDK_PAD_BUTTON_RELEASE)
+    {
         GdkEventButton_ *eventbutton_ = new GdkEventButton_();
         Php::Value gdkeventbutton = Php::Object("GdkEventButton", eventbutton_);
         eventbutton_->populate(event->button);
@@ -47,7 +45,8 @@ void GdkEvent_::populate(GdkEvent *event)
     }
 
     // GtkEventKey - for key press/release events
-    if (event->type == GDK_KEY_PRESS || event->type == GDK_KEY_RELEASE) {
+    if (event->type == GDK_KEY_PRESS || event->type == GDK_KEY_RELEASE)
+    {
         GdkEventKey_ *eventkey_ = new GdkEventKey_();
         Php::Value gdkeventkey = Php::Object("GdkEventKey", eventkey_);
         eventkey_->populate(event->key);
@@ -55,7 +54,8 @@ void GdkEvent_::populate(GdkEvent *event)
     }
 
     // GtkEventFocus - for focus change events
-    if (event->type == GDK_FOCUS_CHANGE) {
+    if (event->type == GDK_FOCUS_CHANGE)
+    {
         GdkEventFocus_ *eventfocus_ = new GdkEventFocus_();
         Php::Value gdkeventfocus = Php::Object("GdkEventFocus", eventfocus_);
         eventfocus_->populate(event->focus_change);
@@ -63,7 +63,8 @@ void GdkEvent_::populate(GdkEvent *event)
     }
 
     // GdkEventScroll - for scroll events
-    if (event->type == GDK_SCROLL) {
+    if (event->type == GDK_SCROLL)
+    {
         GdkEventScroll_ *eventscroll_ = new GdkEventScroll_();
         Php::Value gdkeventscroll = Php::Object("GdkEventScroll", eventscroll_);
         eventscroll_->populate(event->scroll);
@@ -71,7 +72,8 @@ void GdkEvent_::populate(GdkEvent *event)
     }
 
     // GdkEventMotion - for motion notify events
-    if (event->type == GDK_MOTION_NOTIFY) {
+    if (event->type == GDK_MOTION_NOTIFY)
+    {
         GdkEventMotion_ *eventmotion_ = new GdkEventMotion_();
         Php::Value gdkeventmotion = Php::Object("GdkEventMotion", eventmotion_);
         eventmotion_->populate(event->motion);
@@ -79,21 +81,32 @@ void GdkEvent_::populate(GdkEvent *event)
     }
 
     // GdkEventCrossing - for enter/leave notify events
-    if (event->type == GDK_ENTER_NOTIFY || event->type == GDK_LEAVE_NOTIFY) {
+    if (event->type == GDK_ENTER_NOTIFY || event->type == GDK_LEAVE_NOTIFY)
+    {
         GdkEventCrossing_ *eventcrossing_ = new GdkEventCrossing_();
         Php::Value gdkeventcrossing = Php::Object("GdkEventCrossing", eventcrossing_);
         eventcrossing_->populate(event->crossing);
         self["crossing"] = gdkeventcrossing;
     }
 
-     // GdkEventMotion - for motion notify events
-    if (event->type == GDK_CONFIGURE) {
+    // GdkEventTouch - for touch events
+    if (event->type == GDK_TOUCH_BEGIN || event->type == GDK_TOUCH_UPDATE ||
+        event->type == GDK_TOUCH_END || event->type == GDK_TOUCH_CANCEL)
+    {
+        GdkEventTouch_ *eventtouch_ = new GdkEventTouch_();
+        Php::Value gdkeventtouch = Php::Object("GdkEventTouch", eventtouch_);
+        eventtouch_->populate(event->touch);
+        self["touch"] = gdkeventtouch;
+    }
+
+    // GdkEventMotion - for motion notify events
+    if (event->type == GDK_CONFIGURE)
+    {
         GdkEventConfigure_ *eventconfigure_ = new GdkEventConfigure_();
         Php::Value gdkeventconfigure = Php::Object("GdkEventConfigure", eventconfigure_);
         eventconfigure_->populate(event->configure);
         self["configure"] = gdkeventconfigure;
     }
-
 
     /**
 
@@ -121,5 +134,4 @@ void GdkEvent_::populate(GdkEvent *event)
     };
 
     */
-    
 }

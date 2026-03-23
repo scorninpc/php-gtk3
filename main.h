@@ -25,6 +25,7 @@
 	#include "src/Gdk/GdkEventScroll.h"
 	#include "src/Gdk/GdkEventMotion.h"
 	#include "src/Gdk/GdkEventCrossing.h"
+	#include "src/Gdk/GdkEventTouch.h"
 	#include "src/Gdk/GdkPixbuf.h"
 	#include "src/Gdk/GdkDrawable.h"
 	#include "src/Gdk/GdkWindow.h"
