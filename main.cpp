@@ -3115,11 +3115,12 @@ extern "C"
         gtkstatusicon.method<&GtkStatusIcon_::set_from_file>("set_from_file");
         gtkstatusicon.method<&GtkStatusIcon_::set_from_stock>("set_from_stock");
         gtkstatusicon.method<&GtkStatusIcon_::set_from_icon_name>("set_from_icon_name");
+        gtkstatusicon.method<&GtkStatusIcon_::set_from_gicon>("set_from_gicon");
         // gtkstatusicon.method<&GtkStatusIcon_::get_storage_type>("get_storage_type");
         gtkstatusicon.method<&GtkStatusIcon_::get_pixbuf>("get_pixbuf");
         gtkstatusicon.method<&GtkStatusIcon_::get_stock>("get_stock");
         gtkstatusicon.method<&GtkStatusIcon_::get_icon_name>("get_icon_name");
-        // gtkstatusicon.method<&GtkStatusIcon_::get_gicon>("get_gicon");
+        gtkstatusicon.method<&GtkStatusIcon_::get_gicon>("get_gicon");
         gtkstatusicon.method<&GtkStatusIcon_::get_size>("get_size");
         gtkstatusicon.method<&GtkStatusIcon_::get_screen>("get_screen");
         gtkstatusicon.method<&GtkStatusIcon_::set_has_tooltip>("set_has_tooltip");
@@ -3140,6 +3141,7 @@ extern "C"
         gtkstatusicon.method<&GtkStatusIcon_::new_from_file>("new_from_file");
         gtkstatusicon.method<&GtkStatusIcon_::new_from_stock>("new_from_stock");
         gtkstatusicon.method<&GtkStatusIcon_::new_from_icon_name>("new_from_icon_name");
+        gtkstatusicon.method<&GtkStatusIcon_::new_from_gicon>("new_from_gicon");
         gtkstatusicon.method<&GtkStatusIcon_::position_menu>("position_menu");
 
         // GdkSelection
@@ -4585,6 +4587,14 @@ extern "C"
          * Add classes to extension
          */
         extension.add(std::move(gobject));
+        
+        // GIcon
+        Php::Class<GIcon_> gicon("GIcon");
+        gicon.method<&GIcon_::__construct>("__construct");
+        gicon.method<&GIcon_::new_from_pixbuf>("new_from_pixbuf");
+        gicon.method<&GIcon_::new_from_stock>("new_from_stock");
+        extension.add(std::move(gicon));
+        
         extension.add(std::move(gdk));
         extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));

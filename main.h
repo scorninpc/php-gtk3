@@ -12,6 +12,7 @@
 	// G
 	#include "src/G/GApplication.h"
 	#include "src/G/GObject.h"
+	#include "src/G/GIcon.h"
 
 	// GDK
 	#include "src/Gdk/Gdk.h"

@@ -50,7 +50,9 @@ void GtkTextBuffer_::insert(Php::Parameters &parameters)
 	std::string s_text = parameters[1];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[2];
+	gint len = -1;
+	if(parameters.size() >= 3)
+		len = (gint)parameters[2];
 
 	gtk_text_buffer_insert (GTK_TEXT_BUFFER(instance), &iter, text, len);
 
@@ -61,7 +63,9 @@ void GtkTextBuffer_::insert_at_cursor(Php::Parameters &parameters)
 	std::string s_text = parameters[0];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[1];
+	gint len = -1;
+	if(parameters.size() >= 2)
+		len = (gint)parameters[1];
 
 	gtk_text_buffer_insert_at_cursor (GTK_TEXT_BUFFER(instance), text, len);
 
@@ -77,9 +81,13 @@ Php::Value GtkTextBuffer_::insert_interactive(Php::Parameters &parameters)
 	std::string s_text = parameters[1];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[2];
+	gint len = -1;
+	if(parameters.size() >= 3)
+		len = (gint)parameters[2];
 
-	gboolean default_editable = (gboolean)parameters[3];
+	gboolean default_editable = TRUE;
+	if(parameters.size() >= 4)
+		default_editable = (gboolean)parameters[3];
 
 	bool ret = gtk_text_buffer_insert_interactive (GTK_TEXT_BUFFER(instance), &iter, text, len, default_editable);
 
@@ -91,9 +99,13 @@ Php::Value GtkTextBuffer_::insert_interactive_at_cursor(Php::Parameters &paramet
 	std::string s_text = parameters[0];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[1];
+	gint len = -1;
+	if(parameters.size() >= 2)
+		len = (gint)parameters[1];
 
-	gboolean default_editable = (gboolean)parameters[2];
+	gboolean default_editable = TRUE;
+	if(parameters.size() >= 3)
+		default_editable = (gboolean)parameters[2];
 
 	bool ret = gtk_text_buffer_insert_interactive_at_cursor (GTK_TEXT_BUFFER(instance), text, len, default_editable);
 
@@ -152,9 +164,11 @@ void GtkTextBuffer_::insert_with_tags(Php::Parameters &parameters)
 	std::string s_text = parameters[1];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[2];
+	gint len = -1;
+	if(parameters.size() >= 3)
+		len = (gint)parameters[2];
 
-	GtkTextTag *first_tag;
+	GtkTextTag *first_tag = NULL;
 	if(parameters.size() > 3) {
 		Php::Value object_first_tag = parameters[3];
 		GtkTextTag_ *phpgtk_first_tag = (GtkTextTag_ *)object_first_tag.implementation();
@@ -176,10 +190,16 @@ void GtkTextBuffer_::insert_with_tags_by_name(Php::Parameters &parameters)
 	std::string s_text = parameters[1];
 	gchar *text = (gchar *)s_text.c_str();
 
-	gint len = (gint)parameters[2];
+	gint len = -1;
+	if(parameters.size() >= 3)
+		len = (gint)parameters[2];
 
-	std::string s_first_tag_name = parameters[3];
-	const gchar *first_tag_name = s_first_tag_name.c_str();
+	const gchar *first_tag_name = NULL;
+	std::string s_first_tag_name;
+	if(parameters.size() >= 4) {
+		s_first_tag_name.assign((const char *)parameters[3]);
+		first_tag_name = s_first_tag_name.c_str();
+	}
 
 	gtk_text_buffer_insert_with_tags_by_name (GTK_TEXT_BUFFER(instance), &iter, text, len, first_tag_name, NULL);
 
@@ -196,7 +216,9 @@ void GtkTextBuffer_::insert_markup(Php::Parameters &parameters)
 	std::string s_markup = parameters[1];
 	gchar *markup = (gchar *)s_markup.c_str();
 
-	gint len = (gint)parameters[2];
+	gint len = -1;
+	if(parameters.size() >= 3)
+		len = (gint)parameters[2];
 
 	gtk_text_buffer_insert_markup (GTK_TEXT_BUFFER(instance), &iter, markup, len);
 
