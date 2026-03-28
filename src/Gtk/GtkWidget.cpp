@@ -240,35 +240,20 @@ void GtkWidget_::size_allocate_with_baseline(Php::Parameters &parameters)
 
 void GtkWidget_::add_accelerator(Php::Parameters &parameters)
 {
-// // 	std::string s_accel_signal = parameters[0];
-// 	gchar *accel_signal = (gchar *)s_accel_signal.c_str();
+	if(parameters.size() < 5) throw Php::Exception("Expected 5 parameters: accel_signal, accel_group, accel_key, accel_mods, accel_flags");
 
-// // 	GtkAccelGroup *accel_group;
-// 	if(parameters.size() > 1) {
-// 		Php::Value object_accel_group = parameters[1];
-// 		GtkAccelGroup_ *phpgtk_accel_group = (GtkAccelGroup_ *)object_accel_group.implementation();
-// 		accel_group = GTK_WIDGET(phpgtk_accel_group->get_instance());
-// 	}
+	std::string accel_signal_str = parameters[0];
+	const gchar* accel_signal = accel_signal_str.c_str();
 
-// // 	guint accel_key = (int)parameters[2];
+	Php::Value object_accel_group = parameters[1];
+	GtkAccelGroup_ *phpgtk_accel_group = (GtkAccelGroup_ *)object_accel_group.implementation();
+	GtkAccelGroup *accel_group = (GtkAccelGroup *)phpgtk_accel_group->get_instance();
 
-// // 	GdkModifierType *accel_mods;
-// 	if(parameters.size() > 3) {
-// 		Php::Value object_accel_mods = parameters[3];
-// 		GdkModifierType_ *phpgtk_accel_mods = (GdkModifierType_ *)object_accel_mods.implementation();
-// 		accel_mods = GTK_WIDGET(phpgtk_accel_mods->get_instance());
-// 	}
+	guint accel_key = (int)parameters[2];
+	GdkModifierType accel_mods = (GdkModifierType)(int)parameters[3];
+	GtkAccelFlags accel_flags = (GtkAccelFlags)(int)parameters[4];
 
-// // 	GtkAccelFlags *accel_flags;
-// 	if(parameters.size() > 4) {
-// 		Php::Value object_accel_flags = parameters[4];
-// 		GtkAccelFlags_ *phpgtk_accel_flags = (GtkAccelFlags_ *)object_accel_flags.implementation();
-// 		accel_flags = GTK_WIDGET(phpgtk_accel_flags->get_instance());
-// 	}
-
-// 	gtk_widget_add_accelerator (GTK_WIDGET(instance), accel_signal, accel_group, accel_key, accel_mods, accel_flags);
-
-	 throw Php::Exception("GtkWidget_::add_accelerator not implemented");
+	gtk_widget_add_accelerator(GTK_WIDGET(instance), accel_signal, accel_group, accel_key, accel_mods, accel_flags);
 }
 
 Php::Value GtkWidget_::remove_accelerator(Php::Parameters &parameters)

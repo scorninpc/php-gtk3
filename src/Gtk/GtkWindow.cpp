@@ -999,3 +999,15 @@ void GtkWindow_::begin_resize_drag(Php::Parameters &parameters)
 
 	gtk_window_begin_resize_drag(GTK_WINDOW(instance), (GdkWindowEdge)edge, button, root_x, root_y, timestamp);
 }
+
+// https://docs.gtk.org/gtk3/method.Window.add_accel_group.html
+void GtkWindow_::add_accel_group(Php::Parameters &parameters)
+{
+	if(parameters.size() < 1) throw Php::Exception("Expected 1 parameter: accel_group");
+
+	Php::Value object_accel_group = parameters[0];
+	GtkAccelGroup_ *phpgtk_accel_group = (GtkAccelGroup_ *)object_accel_group.implementation();
+	GtkAccelGroup *accel_group = (GtkAccelGroup *)phpgtk_accel_group->get_instance();
+
+	gtk_window_add_accel_group(GTK_WINDOW(instance), accel_group);
+}

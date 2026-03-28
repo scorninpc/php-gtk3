@@ -62,6 +62,7 @@
 	#include "src/Gtk/GtkMenuButton.h"
 	#include "src/Gtk/GtkCheckButton.h"
 	#include "src/Gtk/GtkRadioButton.h"
+	#include "src/Gtk/GtkAccelGroup.h"
 	#include "src/Gtk/GtkAdjustment.h"
 	#include "src/Gtk/GtkScrolledWindow.h"
 	#include "src/Gtk/GtkPaned.h"

@@ -9,6 +9,7 @@
     #include "../Gdk/GdkPixbuf.h"
     #include "../Gdk/GdkScreen.h"
     #include "GtkBin.h"
+    #include "GtkAccelGroup.h"
     
 	#include "../../php-gtk.h"
 
@@ -578,6 +579,9 @@
             Php::Value get_size();
             Php::Value get_screen();
             static Php::Value list_toplevels();
+
+            // https://docs.gtk.org/gtk3/method.Window.add_accel_group.html
+            void add_accel_group(Php::Parameters &parameters);
     };
 
 #endif

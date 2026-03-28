@@ -1745,6 +1745,7 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
         gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
         gtkwindow.method<&GtkWindow_::begin_resize_drag>("begin_resize_drag");
+        gtkwindow.method<&GtkWindow_::add_accel_group>("add_accel_group");
 
         // GtkWindowType
         Php::Class<Php::Base> gtkwindowtype("GtkWindowType");
@@ -2074,6 +2075,18 @@ extern "C"
         gtkradiobutton.method<&GtkRadioButton_::set_group>("set_group");
         gtkradiobutton.method<&GtkRadioButton_::get_group>("get_group");
         gtkradiobutton.method<&GtkRadioButton_::join_group>("join_group");
+
+        // GtkAccelGroup
+        Php::Class<GtkAccelGroup_> gtkaccelgroup("GtkAccelGroup");
+        gtkaccelgroup.extends(gobject);
+        gtkaccelgroup.method<&GtkAccelGroup_::__construct>("__construct");
+
+        
+        // GtkAccelFlags
+        Php::Class<Php::Base> gtkacceslflags("GtkAccelFlags");
+        gtkacceslflags.constant("VISIBLE", GTK_ACCEL_VISIBLE);
+        gtkacceslflags.constant("LOCKED", GTK_ACCEL_LOCKED);
+        gtkacceslflags.constant("MASK", GTK_ACCEL_MASK);
 
         // GtkAdjustment
         Php::Class<GtkAdjustment_> gtkadjustment("GtkAdjustment");
@@ -4670,8 +4683,10 @@ extern "C"
         extension.add(std::move(gtkmenubutton));
         extension.add(std::move(gtkcheckbutton));
         extension.add(std::move(gtkradiobutton));
+        extension.add(std::move(gtkaccelgroup));
         extension.add(std::move(gtkadjustment));
         extension.add(std::move(gtkcornertype));
+        extension.add(std::move(gtkacceslflags));
         extension.add(std::move(gtkscrolledwindow));
         extension.add(std::move(gtkentrybuffer));
         extension.add(std::move(gtkentry));
