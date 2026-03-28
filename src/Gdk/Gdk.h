@@ -24,6 +24,8 @@
 			virtual ~Gdk_();
 
 			static Php::Value test_simulate_button(Php::Parameters &parameters);
+			static void cairo_set_source_pixbuf(Php::Parameters &parameters);
+			static void cairo_paint(Php::Parameters &parameters);
 	};
 
 #endif

@@ -450,7 +450,7 @@ Php::Value GObject_::get_data(Php::Parameters &parameters)
     gpointer value = g_object_get_data(G_OBJECT(instance), key);
 
     // this will return the pointer, so if not a natural type, it's will crash
-    return cobject_to_phpobject(&value);
+    return cobject_to_phpobject((gpointer *)value);
 }
 
 void GObject_::set_data(Php::Parameters &parameters)
