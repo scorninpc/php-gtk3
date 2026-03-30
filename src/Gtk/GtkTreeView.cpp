@@ -302,29 +302,30 @@ Php::Value GtkTreeView_::get_path_at_pos(Php::Parameters& parameters)
 	gint x = (gint)parameters[0];
 	gint y = (gint)parameters[1];
 
-	GtkTreePath* path = gtk_tree_path_new();
-	GtkTreeViewColumn* column = new GtkTreeViewColumn();
+	GtkTreePath* path = NULL;
+	GtkTreeViewColumn* column = NULL;
 	gint cell_x = 0;
 	gint cell_y = 0;
 
 	bool ret = gtk_tree_view_get_path_at_pos(GTK_TREE_VIEW(instance), x, y, &path, &column, &cell_x, &cell_y);
 
-	if (!ret || column == NULL) {
-		// Ensure we return NULL for header clicks
+	if (!ret || path == NULL || column == NULL) {
+		// Return NULL for header clicks or invalid coordinates
+		if (path != NULL) {
+			gtk_tree_path_free(path);
+		}
 		return Php::Value();
 	}
 
 	Php::Value phpPathArray;
-	if(path != NULL) {
-		gint depth = gtk_tree_path_get_depth(path);
-		gint* pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
+	gint depth = gtk_tree_path_get_depth(path);
+	gint* pathArray = gtk_tree_path_get_indices_with_depth(path, &depth);
 
-		for (int index = 0; index < (int)depth; index++) {
-			phpPathArray[index] = pathArray[index];
-		}
-
-		gtk_tree_path_free(path);
+	for (int index = 0; index < (int)depth; index++) {
+		phpPathArray[index] = pathArray[index];
 	}
+
+	gtk_tree_path_free(path);
 
 	GtkTreeViewColumn_* return_parsed = new GtkTreeViewColumn_();
 	return_parsed->set_instance((gpointer*)column);
@@ -342,8 +343,13 @@ Php::Value GtkTreeView_::get_bin_window()
 {
 	gpointer *ret =(gpointer *)gtk_tree_view_get_bin_window(GTK_TREE_VIEW(instance));
 
+	if (ret == NULL) {
+		return Php::Value();
+	}
 
-	return Php::Object("GdkWindow", cobject_to_phpobject(ret));
+	GdkWindow_ *return_parsed = new GdkWindow_();
+	return_parsed->set_instance((gpointer *)ret);
+	return Php::Object("GdkWindow", return_parsed);
 }
 
 Php::Value GtkTreeView_::get_visible_rect()

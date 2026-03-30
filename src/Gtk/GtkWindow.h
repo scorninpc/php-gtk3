@@ -120,6 +120,14 @@ public:
     Php::Value get_position();
 
     /**
+     * This function returns the position you need to pass to gtk_window_move()
+     * to keep window in its current position.
+     *
+     * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-get-origin
+     */
+    Php::Value get_origin();
+
+    /**
      * Dialog windows should be set transient for the main application window they were spawned from
      *
      * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-transient-for

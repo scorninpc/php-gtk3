@@ -181,6 +181,35 @@ Php::Value GtkWindow_::get_position()
 }
 
 /**
+ * This function returns the position you need to pass to gtk_window_move()
+ * to keep window in its current position.
+ */
+Php::Value GtkWindow_::get_origin()
+{
+    int root_x = -1;
+    int root_y = -1;
+
+    // Get the GdkWindow from the GtkWindow
+    GdkWindow* gdk_window = gtk_widget_get_window(GTK_WIDGET(instance));
+
+    if (gdk_window == NULL) {
+        return Php::Value();
+    }
+
+    gboolean result = gdk_window_get_origin(gdk_window, &root_x, &root_y);
+
+    if (!result) {
+        return Php::Value();
+    }
+
+    Php::Value arr;
+    arr[0] = arr["x"] = root_x;
+    arr[1] = arr["y"] = root_y;
+
+    return arr;
+}
+
+/**
  * Dialog windows should be set transient for the main application window they were spawned from
  *
  */

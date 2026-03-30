@@ -1697,6 +1697,7 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_modal>("get_modal");
         gtkwindow.method<&GtkWindow_::set_position>("set_position");
         gtkwindow.method<&GtkWindow_::get_position>("get_position");
+        gtkwindow.method<&GtkWindow_::get_origin>("get_origin");
         gtkwindow.method<&GtkWindow_::set_transient_for>("set_transient_for");
         gtkwindow.method<&GtkWindow_::get_transient_for>("get_transient_for");
         gtkwindow.method<&GtkWindow_::set_destroy_with_parent>("set_destroy_with_parent");
