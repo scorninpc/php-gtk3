@@ -1746,6 +1746,7 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_size>("get_size");
         gtkwindow.method<&GtkWindow_::get_screen>("get_screen");
         gtkwindow.method<&GtkWindow_::list_toplevels>("list_toplevels");
+        gtkwindow.method<&GtkWindow_::begin_move_drag>("begin_move_drag");
         gtkwindow.method<&GtkWindow_::begin_resize_drag>("begin_resize_drag");
         gtkwindow.method<&GtkWindow_::add_accel_group>("add_accel_group");
 
@@ -3145,6 +3146,8 @@ extern "C"
         gtkstatusicon.method<&GtkStatusIcon_::new_from_icon_name>("new_from_icon_name");
         gtkstatusicon.method<&GtkStatusIcon_::new_from_gicon>("new_from_gicon");
         gtkstatusicon.method<&GtkStatusIcon_::position_menu>("position_menu");
+        gtkstatusicon.method<&GtkStatusIcon_::set_blinking>("set_blinking");
+        gtkstatusicon.method<&GtkStatusIcon_::get_blinking>("get_blinking");
 
         // GdkSelection
         Php::Class<Php::Base> gdkselection("GdkSelection");
@@ -3330,6 +3333,7 @@ extern "C"
         gtkmenu.method<&GtkMenu_::popup_at_rect>("popup_at_rect");
         gtkmenu.method<&GtkMenu_::popup_at_widget>("popup_at_widget");
         gtkmenu.method<&GtkMenu_::popup_at_pointer>("popup_at_pointer");
+        gtkmenu.method<&GtkMenu_::popup>("popup");
         gtkmenu.method<&GtkMenu_::set_accel_group>("set_accel_group");
         gtkmenu.method<&GtkMenu_::get_accel_group>("get_accel_group");
         gtkmenu.method<&GtkMenu_::set_accel_path>("set_accel_path");
@@ -4589,14 +4593,14 @@ extern "C"
          * Add classes to extension
          */
         extension.add(std::move(gobject));
-        
+
         // GIcon
         Php::Class<GIcon_> gicon("GIcon");
         gicon.method<&GIcon_::__construct>("__construct");
         gicon.method<&GIcon_::new_from_pixbuf>("new_from_pixbuf");
         gicon.method<&GIcon_::new_from_stock>("new_from_stock");
         extension.add(std::move(gicon));
-        
+
         extension.add(std::move(gdk));
         extension.add(std::move(gdkvisual));
         extension.add(std::move(gdkevent));

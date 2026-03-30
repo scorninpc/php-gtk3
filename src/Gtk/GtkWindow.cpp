@@ -967,6 +967,45 @@ Php::Value GtkWindow_::get_screen()
 
 
 /**
+ * Starts moving a window.
+ *
+ * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-begin-move-drag
+ */
+void GtkWindow_::begin_move_drag(Php::Parameters &parameters)
+{
+    if (parameters.size() != 4) {
+        throw Php::Exception("begin_move_drag expects 4 parameters: button, root_x, root_y, timestamp");
+    }
+
+    int button        = parameters[0];
+    int root_x        = parameters[1];
+    int root_y        = parameters[2];
+    guint32 timestamp = (guint32)(int)parameters[3];
+
+    gtk_window_begin_move_drag(GTK_WINDOW(instance), button, root_x, root_y, timestamp);
+}
+
+/**
+ * Starts resizing a window.
+ *
+ * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-begin-resize-drag
+ */
+void GtkWindow_::begin_resize_drag(Php::Parameters &parameters)
+{
+    if (parameters.size() != 5) {
+        throw Php::Exception("begin_resize_drag expects 5 parameters: edge, button, root_x, root_y, timestamp");
+    }
+
+    GdkWindowEdge edge = (GdkWindowEdge)(int)parameters[0];
+    int button         = parameters[1];
+    int root_x         = parameters[2];
+    int root_y         = parameters[3];
+    guint32 timestamp  = (guint32)(int)parameters[4];
+
+    gtk_window_begin_resize_drag(GTK_WINDOW(instance), edge, button, root_x, root_y, timestamp);
+}
+
+/**
  * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-list-toplevels
  */
 Php::Value GtkWindow_::list_toplevels()

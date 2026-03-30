@@ -18,6 +18,14 @@
     class GtkMenu_ : public GtkMenuShell_
     {
         /**
+         * Privates
+         */
+        private:
+            struct st_popup_callback;
+            static void popup_position_callback(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
+            static void popup_callback_destroy(gpointer data);
+
+        /**
          * Publics
          */
         public:
@@ -43,6 +51,8 @@
             void popup_at_widget(Php::Parameters &parameters);
 
             void popup_at_pointer (Php::Parameters &parameters);
+
+            void popup(Php::Parameters &parameters);
 
             void set_accel_group(Php::Parameters &parameters);
 

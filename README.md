@@ -1,15 +1,14 @@
-
 # PHP-GTK3
 
 PHP-GTK is a bind of GTK 3 to create desktop applications with PHP
 
-## Acknowledgements
+## Documentation
 
- - [Compile for window](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md)
- - [Compile for linux](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md)
- - [Compile for mac](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-mac.md)
- - [Compile source with docker](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-docker.md)
- - [Appimage](https://github.com/scorninpc/php-gtk3/blob/master/docs/appimage.md)
+- [Compile for window](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-windows.md)
+- [Compile for linux](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-linux.md)
+- [Compile for mac](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-mac.md)
+- [Compile source with docker](https://github.com/scorninpc/php-gtk3/blob/master/docs/compile-docker.md)
+- [Appimage](https://github.com/scorninpc/php-gtk3/blob/master/docs/appimage.md)
 
 ## Contributing
 
@@ -23,7 +22,7 @@ PHP-GTK3 work with a middleway of [PHP-CPP](https://github.com/CopernicaMarketin
 
 ## PHP-GTK 3 Cookbook
 
-You can find a cookbook of codes compiled and organized in http://andor.com.br/php-gtk/cookbook
+You can find a cookbook of codes compiled and organized in <http://andor.com.br/php-gtk/cookbook>
 
 ## VSCode
 
@@ -35,10 +34,11 @@ This is [VSCode extension](https://marketplace.visualstudio.com/items?itemName=R
 
 PHP-GTK3 includes optional WebView widget support for displaying web content within GTK windows:
 
-- **WebKitWebView** - Cross-platform web browser widget  
+- **WebKitWebView** - Cross-platform web browser widget
 - **GtkWebView** - Convenient alias with GTK-style naming
 
 **Platform implementations:**
+
 - Linux/macOS: WebKit2GTK
 - Windows: Microsoft Edge WebView2
 
@@ -62,6 +62,23 @@ See [WebKit Documentation](docs/webkit.md) for full details and examples.
 
 To compile with WebKit support: `make WITH_WEBKIT=1`
 
+### System Tray Icons (GtkStatusIcon)
+
+PHP-GTK3 includes `GtkStatusIcon` for creating system tray icons:
+
+**Platform Support:**
+
+- ✅ **Windows** - Full support using native system tray
+- ✅ **Linux (X11)** - Full support
+- ⚠️ **Linux (Wayland)** - **Not supported**
+
+**Quick Workaround for Wayland:**
+
+```bash
+# Force X11 compatibility mode
+GDK_BACKEND=x11 php your_app.php
+```
+
 ## Example
 
 ```php
@@ -73,7 +90,7 @@ Gtk::init();
 // Callback for when window is closed
 function GtkWindowDestroy($widget=NULL, $event=NULL)
 {
-	Gtk::main_quit();
+ Gtk::main_quit();
 }
 
 // Create a window
@@ -109,4 +126,3 @@ Gtk::main();
 ![Widgets](https://i.imgur.com/UpBIYQB.jpg)
 
 ![Tooltips](https://i.imgur.com/cGECrWu.jpg)
-
