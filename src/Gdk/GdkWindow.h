@@ -34,6 +34,7 @@
             Php::Value get_width();
             Php::Value get_height();
             Php::Value get_position();
+            Php::Value get_origin();
             void set_cursor(Php::Parameters &parameters);
     };
 
