@@ -85,6 +85,24 @@ Php::Value GdkWindow_::get_position()
     return arr;
 }
 
+Php::Value GdkWindow_::get_origin()
+{
+    int root_x = -1;
+    int root_y = -1;
+
+    gboolean result = gdk_window_get_origin(GDK_WINDOW(instance), &root_x, &root_y);
+
+    if (!result) {
+        return Php::Value();
+    }
+
+    Php::Value arr;
+    arr[0] = arr["x"] = root_x;
+    arr[1] = arr["y"] = root_y;
+
+    return arr;
+}
+
 void GdkWindow_::set_cursor(Php::Parameters &parameters)
 {
 	Php::Value object_cursor = parameters[0];

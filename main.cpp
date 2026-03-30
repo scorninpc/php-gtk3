@@ -245,6 +245,7 @@ extern "C"
         gdkwindow.method<&GdkWindow_::get_height>("get_height");
         gdkwindow.method<&GdkWindow_::set_cursor>("set_cursor");
         gdkwindow.method<&GdkWindow_::get_position>("get_position");
+        gdkwindow.method<&GdkWindow_::get_origin>("get_origin");
 
         // GtkApplication
         Php::Class<GtkApplication_> gtkapplication("GtkApplication");
@@ -1697,7 +1698,6 @@ extern "C"
         gtkwindow.method<&GtkWindow_::get_modal>("get_modal");
         gtkwindow.method<&GtkWindow_::set_position>("set_position");
         gtkwindow.method<&GtkWindow_::get_position>("get_position");
-        gtkwindow.method<&GtkWindow_::get_origin>("get_origin");
         gtkwindow.method<&GtkWindow_::set_transient_for>("set_transient_for");
         gtkwindow.method<&GtkWindow_::get_transient_for>("get_transient_for");
         gtkwindow.method<&GtkWindow_::set_destroy_with_parent>("set_destroy_with_parent");
