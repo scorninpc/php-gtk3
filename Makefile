@@ -181,7 +181,11 @@ GTKLIBS             =   `pkg-config --libs gtk+-3.0 ${GLADEUILIBS} gtksourceview
 
 COMPILER_FLAGS      +=   -Wall -Wdeprecated-declarations -Woverloaded-virtual -c -std=c++11 -fpic -o
 LINKER_FLAGS        =   -shared ${GTKLIBS}
+ifdef PHPCPP_STATIC
+LINKER_DEPENDENCIES =   ${PHPCPP_STATIC} ${GTKLIBS} ${WEBVIEW2_LDFLAGS}
+else
 LINKER_DEPENDENCIES =   -lphpcpp ${GTKLIBS} ${WEBVIEW2_LDFLAGS}
+endif
 
 #
 #   Command to remove files, copy files and create directories.
@@ -240,11 +244,10 @@ install:
 						${CP} ${EXTENSION} ${EXTENSION_DIR}
 						${CP} ${INI} ${INI_DIR}
 
-clean:
-						${RM} ${EXTENSION}
-						${RM} ${OBJECTS}
-						${RM} src/WebKit/*.o
+compile_commands:
+						bear -- $(MAKE) all
 
+clean:
 						${RM} ${EXTENSION}
 						${RM} ${OBJECTS}
 						${RM} src/WebKit/*.o

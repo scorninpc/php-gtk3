@@ -1,0 +1,8 @@
+CompileFlags:
+  # System include directories should be discovered via the compiler or
+  # provided by a compile_commands.json database rather than hard-coded
+  # absolute paths, to remain portable across different systems.
+  #
+  # Generate a compile_commands.json (e.g. via CMake or bear) and point
+  # clangd at it for full IntelliSense support.
+  Add: []
