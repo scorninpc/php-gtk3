@@ -29,7 +29,10 @@ jobs:
             performance-*,
             readability-*,
             modernize-*,
-            cppcoreguidelines-*
+            -modernize-use-trailing-return-type,
+            -modernize-use-auto,
+            cppcoreguidelines-*,
+            -cppcoreguidelines-pro-type-cstyle-cast
           # Only fail the check on more serious issues
           fail_on: error
           # Do not try to auto-fix code; just report

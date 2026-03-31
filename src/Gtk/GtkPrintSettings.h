@@ -38,7 +38,7 @@
 
             void unset(Php::Parameters &parameters);
 
-            void foreach(Php::Parameters &parameters);
+            static void foreach(Php::Parameters &parameters);
 
             Php::Value get_bool(Php::Parameters &parameters);
 
@@ -134,9 +134,9 @@
 
             void set_print_pages(Php::Parameters &parameters);
 
-            Php::Value get_page_ranges(Php::Parameters &parameters);
+            static Php::Value get_page_ranges(Php::Parameters &parameters);
 
-            void set_page_ranges(Php::Parameters &parameters);
+            static void set_page_ranges(Php::Parameters &parameters);
 
             Php::Value get_page_set();
 
@@ -162,17 +162,17 @@
 
             void set_output_bin(Php::Parameters &parameters);
 
-            Php::Value new_from_file(Php::Parameters &parameters);
+            static Php::Value new_from_file(Php::Parameters &parameters);
 
-            Php::Value new_from_key_file(Php::Parameters &parameters);
+            static Php::Value new_from_key_file(Php::Parameters &parameters);
 
             Php::Value load_file(Php::Parameters &parameters);
 
-            Php::Value load_key_file(Php::Parameters &parameters);
+            static Php::Value load_key_file(Php::Parameters &parameters);
 
             Php::Value to_file(Php::Parameters &parameters);
 
-            void to_key_file(Php::Parameters &parameters);
+            static void to_key_file(Php::Parameters &parameters);
     };
 
 #endif

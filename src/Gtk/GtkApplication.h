@@ -48,27 +48,27 @@
 
             Php::Value prefers_app_menu();
 
-            Php::Value get_app_menu();
+            static Php::Value get_app_menu();
 
-            void set_app_menu(Php::Parameters &parameters);
+            static void set_app_menu(Php::Parameters &parameters);
 
-            Php::Value get_menubar();
+            static Php::Value get_menubar();
 
-            void set_menubar(Php::Parameters &parameters);
+            static void set_menubar(Php::Parameters &parameters);
 
-            Php::Value get_menu_by_id(Php::Parameters &parameters);
+            static Php::Value get_menu_by_id(Php::Parameters &parameters);
 
-            void add_accelerator(Php::Parameters &parameters);
+            static void add_accelerator(Php::Parameters &parameters);
 
-            void remove_accelerator(Php::Parameters &parameters);
+            static void remove_accelerator(Php::Parameters &parameters);
 
             Php::Value list_action_descriptions();
 
             Php::Value get_accels_for_action(Php::Parameters &parameters);
 
-            void set_accels_for_action(Php::Parameters &parameters);
+            static void set_accels_for_action(Php::Parameters &parameters);
 
-            Php::Value get_actions_for_accel(Php::Parameters &parameters);
+            static Php::Value get_actions_for_accel(Php::Parameters &parameters);
 
 
 

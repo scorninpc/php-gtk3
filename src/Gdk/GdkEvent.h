@@ -31,7 +31,7 @@
             GdkEvent_() = default;
             virtual ~GdkEvent_() = default;
             //
-            GdkEvent *get_instance();
+            GdkEvent *get_instance() const;
             void set_instance(GdkEvent *event);
 
             /**

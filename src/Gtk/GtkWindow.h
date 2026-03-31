@@ -500,24 +500,24 @@ public:
     /**
      * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_icon() called on them from a pixbuf.
      */
-    void set_default_icon(Php::Parameters &parameters);
+    static void set_default_icon(Php::Parameters &parameters);
 
     /*
      * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a file on disk
      */
-    Php::Value set_default_icon_from_file(Php::Parameters &parameters);
+    static Php::Value set_default_icon_from_file(Php::Parameters &parameters);
 
     /**
      * Sets an icon to be used as fallback for windows that haven't had gtk_window_set_default_icon_list() called on them from a named themed icon, see gtk_window_set_default_icon_name().
      */
-    void set_default_icon_name(Php::Parameters &parameters);
+    static void set_default_icon_name(Php::Parameters &parameters);
 
     /**
      * By default, after showing the first GtkWindow, GTK+ calls gdk_notify_startup_complete()
      *
      * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-auto-startup-notification
      */
-    void set_auto_startup_notification(Php::Parameters &parameters);
+    static void set_auto_startup_notification(Php::Parameters &parameters);
 
     /**
      * Sets the “mnemonics-visible” property.
@@ -573,7 +573,7 @@ public:
      *
      * https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-interactive-debugging
      */
-    void set_interactive_debugging(Php::Parameters &parameters);
+    static void set_interactive_debugging(Php::Parameters &parameters);
 
     /**
      * Starts moving a window. This function is used if an application has window move implemented as a pressed-button handler.

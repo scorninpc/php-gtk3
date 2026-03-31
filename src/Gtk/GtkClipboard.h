@@ -37,15 +37,15 @@
 
             void __construct(Php::Parameters &parameters);
 
-            Php::Value get_for_display(Php::Parameters &parameters);
+            static Php::Value get_for_display(Php::Parameters &parameters);
 
-            Php::Value get_display();
+            static Php::Value get_display();
 
-            Php::Value set_with_data(Php::Parameters &parameters);
+            static Php::Value set_with_data(Php::Parameters &parameters);
 
-            Php::Value set_with_owner(Php::Parameters &parameters);
+            static Php::Value set_with_owner(Php::Parameters &parameters);
 
-            Php::Value get_owner();
+            static Php::Value get_owner();
 
             void clear();
 
@@ -53,27 +53,27 @@
 
             void set_image(Php::Parameters &parameters);
 
-            void request_contents(Php::Parameters &parameters);
+            static void request_contents(Php::Parameters &parameters);
 
             void request_text(Php::Parameters &parameters);
 
-            void request_image(Php::Parameters &parameters);
+            static void request_image(Php::Parameters &parameters);
 
-            void request_targets(Php::Parameters &parameters);
+            static void request_targets(Php::Parameters &parameters);
 
-            void request_rich_text(Php::Parameters &parameters);
+            static void request_rich_text(Php::Parameters &parameters);
 
-            void request_uris(Php::Parameters &parameters);
+            static void request_uris(Php::Parameters &parameters);
 
-            Php::Value wait_for_contents(Php::Parameters &parameters);
+            static Php::Value wait_for_contents(Php::Parameters &parameters);
 
             Php::Value wait_for_text();
 
             Php::Value wait_for_image();
 
-            Php::Value wait_for_rich_text(Php::Parameters &parameters);
+            static Php::Value wait_for_rich_text(Php::Parameters &parameters);
 
-            Php::Value wait_for_uris();
+            static Php::Value wait_for_uris();
 
             Php::Value wait_is_text_available();
 
@@ -81,7 +81,7 @@
 
             Php::Value wait_is_uris_available();
 
-            Php::Value wait_is_target_available(Php::Parameters &parameters);
+            static Php::Value wait_is_target_available(Php::Parameters &parameters);
 
             void set_can_store();
 

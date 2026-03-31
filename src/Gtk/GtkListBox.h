@@ -45,9 +45,9 @@
 
             Php::Value get_selected_row();
 
-            void selected_foreach(Php::Parameters &parameters);
+            static void selected_foreach(Php::Parameters &parameters);
 
-            Php::Value get_selected_rows();
+            static Php::Value get_selected_rows();
 
             void set_selection_mode(Php::Parameters &parameters);
 
@@ -73,17 +73,17 @@
 
             void invalidate_sort();
 
-            void set_filter_func(Php::Parameters &parameters);
+            static void set_filter_func(Php::Parameters &parameters);
 
-            void set_header_func(Php::Parameters &parameters);
+            static void set_header_func(Php::Parameters &parameters);
 
-            void set_sort_func(Php::Parameters &parameters);
+            static void set_sort_func(Php::Parameters &parameters);
 
             void drag_highlight_row(Php::Parameters &parameters);
 
             void drag_unhighlight_row();
 
-            void bind_model(Php::Parameters &parameters);
+            static void bind_model(Php::Parameters &parameters);
     };
 
 #endif

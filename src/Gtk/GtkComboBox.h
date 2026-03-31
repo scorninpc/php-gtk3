@@ -23,7 +23,7 @@
          */
         public:
 
-            bool liststore_type;
+            bool liststore_type{};
 
             /**
              *  C++ constructor and destructor
@@ -75,17 +75,17 @@
 
             void set_model(Php::Parameters &parameters);
 
-            void popup_for_device(Php::Parameters &parameters);
+            static void popup_for_device(Php::Parameters &parameters);
 
             void popup();
 
             void popdown();
 
-            Php::Value get_popup_accessible();
+            static Php::Value get_popup_accessible();
 
-            Php::Value get_row_separator_func();
+            static Php::Value get_row_separator_func();
 
-            void set_row_separator_func(Php::Parameters &parameters);
+            static void set_row_separator_func(Php::Parameters &parameters);
 
             void set_button_sensitivity(Php::Parameters &parameters);
 

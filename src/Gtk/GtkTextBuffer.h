@@ -127,11 +127,11 @@
 
             Php::Value delete_selection(Php::Parameters &parameters);
 
-            void paste_clipboard(Php::Parameters &parameters);
+            static void paste_clipboard(Php::Parameters &parameters);
 
-            void copy_clipboard(Php::Parameters &parameters);
+            static void copy_clipboard(Php::Parameters &parameters);
 
-            void cut_clipboard(Php::Parameters &parameters);
+            static void cut_clipboard(Php::Parameters &parameters);
 
             Php::Value get_selection_bounds(Php::Parameters &parameters);
 
@@ -139,33 +139,33 @@
 
             void end_user_action();
 
-            void remove_selection_clipboard(Php::Parameters &parameters);
+            static void remove_selection_clipboard(Php::Parameters &parameters);
 
-            Php::Value deserialize(Php::Parameters &parameters);
+            static Php::Value deserialize(Php::Parameters &parameters);
 
-            Php::Value deserialize_get_can_create_tags(Php::Parameters &parameters);
+            static Php::Value deserialize_get_can_create_tags(Php::Parameters &parameters);
 
-            Php::Value deserialize_set_can_create_tags(Php::Parameters &parameters);
+            static Php::Value deserialize_set_can_create_tags(Php::Parameters &parameters);
 
-            Php::Value get_copy_target_list(Php::Parameters &parameters);
+            static Php::Value get_copy_target_list(Php::Parameters &parameters);
 
-            Php::Value get_deserialize_formats(Php::Parameters &parameters);
+            static Php::Value get_deserialize_formats(Php::Parameters &parameters);
 
-            Php::Value get_paste_target_list(Php::Parameters &parameters);
+            static Php::Value get_paste_target_list(Php::Parameters &parameters);
 
-            Php::Value get_serialize_formats(Php::Parameters &parameters);
+            static Php::Value get_serialize_formats(Php::Parameters &parameters);
 
-            Php::Value register_deserialize_format(Php::Parameters &parameters);
+            static Php::Value register_deserialize_format(Php::Parameters &parameters);
 
-            Php::Value register_serialize_format(Php::Parameters &parameters);
+            static Php::Value register_serialize_format(Php::Parameters &parameters);
 
-            Php::Value register_serialize_tagset(Php::Parameters &parameters);
+            static Php::Value register_serialize_tagset(Php::Parameters &parameters);
 
-            Php::Value serialize(Php::Parameters &parameters);
+            static Php::Value serialize(Php::Parameters &parameters);
 
-            Php::Value unregister_deserialize_format(Php::Parameters &parameters);
+            static Php::Value unregister_deserialize_format(Php::Parameters &parameters);
 
-            Php::Value unregister_serialize_format(Php::Parameters &parameters);
+            static Php::Value unregister_serialize_format(Php::Parameters &parameters);
     };
 
 #endif

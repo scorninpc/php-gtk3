@@ -21,7 +21,7 @@ public:
      */
     GdkThreads_() = default;
 
-    void add_idle(Php::Parameters &parameters);
+    static void add_idle(Php::Parameters &parameters);
 };
 
 #endif

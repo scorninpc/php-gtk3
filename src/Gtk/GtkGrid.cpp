@@ -11,215 +11,180 @@ GtkGrid_::GtkGrid_() = default;
  */
 GtkGrid_::~GtkGrid_() = default;
 
-void GtkGrid_::__construct()
-{
-	instance = (gpointer *)gtk_grid_new ();
+void GtkGrid_::__construct() { instance = (gpointer *)gtk_grid_new(); }
 
+void GtkGrid_::attach(Php::Parameters &parameters) {
+  GtkWidget *child = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_child = parameters[0];
+    GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+    child = GTK_WIDGET(phpgtk_child->get_instance());
+  }
+
+  gint left = (gint)parameters[1];
+
+  gint top = (gint)parameters[2];
+
+  gint width = (gint)parameters[3];
+
+  gint height = (gint)parameters[4];
+
+  gtk_grid_attach(GTK_GRID(instance), child, left, top, width, height);
 }
 
-void GtkGrid_::attach(Php::Parameters &parameters)
-{
-	GtkWidget *child;
-	if(parameters.size() > 0) {
-		Php::Value object_child = parameters[0];
-		GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
-		child = GTK_WIDGET(phpgtk_child->get_instance());
-	}
+void GtkGrid_::attach_next_to(Php::Parameters &parameters) {
+  GtkWidget *child = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_child = parameters[0];
+    GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
+    child = GTK_WIDGET(phpgtk_child->get_instance());
+  }
 
-	gint left = (gint)parameters[1];
+  GtkWidget *sibling = nullptr;
+  if (parameters.size() > 1) {
+    Php::Value object_sibling = parameters[1];
+    GtkWidget_ *phpgtk_sibling = (GtkWidget_ *)object_sibling.implementation();
+    sibling = GTK_WIDGET(phpgtk_sibling->get_instance());
+  }
 
-	gint top = (gint)parameters[2];
+  int int_side = (int)parameters[2];
+  GtkPositionType side = (GtkPositionType)int_side;
 
-	gint width = (gint)parameters[3];
+  gint width = (gint)parameters[3];
 
-	gint height = (gint)parameters[4];
+  gint height = (gint)parameters[4];
 
-	gtk_grid_attach (GTK_GRID(instance), child, left, top, width, height);
-
+  gtk_grid_attach_next_to(GTK_GRID(instance), child, sibling, side, width,
+                          height);
 }
 
-void GtkGrid_::attach_next_to(Php::Parameters &parameters)
-{
-	GtkWidget *child;
-	if(parameters.size() > 0) {
-		Php::Value object_child = parameters[0];
-		GtkWidget_ *phpgtk_child = (GtkWidget_ *)object_child.implementation();
-		child = GTK_WIDGET(phpgtk_child->get_instance());
-	}
+Php::Value GtkGrid_::get_child_at(Php::Parameters &parameters) {
+  gint left = (gint)parameters[0];
 
-	GtkWidget *sibling;
-	if(parameters.size() > 1) {
-		Php::Value object_sibling = parameters[1];
-		GtkWidget_ *phpgtk_sibling = (GtkWidget_ *)object_sibling.implementation();
-		sibling = GTK_WIDGET(phpgtk_sibling->get_instance());
-	}
+  gint top = (gint)parameters[1];
 
-	int int_side = (int)parameters[2];
-	GtkPositionType side = (GtkPositionType)int_side;
+  gpointer *ret =
+      (gpointer *)gtk_grid_get_child_at(GTK_GRID(instance), left, top);
 
-	gint width = (gint)parameters[3];
+  return cobject_to_phpobject(ret);
 
-	gint height = (gint)parameters[4];
-
-	gtk_grid_attach_next_to (GTK_GRID(instance), child, sibling, side, width, height);
-
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 }
 
-Php::Value GtkGrid_::get_child_at(Php::Parameters &parameters)
-{
-	gint left = (gint)parameters[0];
+void GtkGrid_::insert_row(Php::Parameters &parameters) {
+  gint position = (gint)parameters[0];
 
-	gint top = (gint)parameters[1];
-
-	gpointer *ret = (gpointer *)gtk_grid_get_child_at (GTK_GRID(instance), left, top);
-
-	return cobject_to_phpobject(ret);
-
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  gtk_grid_insert_row(GTK_GRID(instance), position);
 }
 
-void GtkGrid_::insert_row(Php::Parameters &parameters)
-{
-	gint position = (gint)parameters[0];
+void GtkGrid_::insert_column(Php::Parameters &parameters) {
+  gint position = (gint)parameters[0];
 
-	gtk_grid_insert_row (GTK_GRID(instance), position);
-
+  gtk_grid_insert_column(GTK_GRID(instance), position);
 }
 
-void GtkGrid_::insert_column(Php::Parameters &parameters)
-{
-	gint position = (gint)parameters[0];
+void GtkGrid_::remove_row(Php::Parameters &parameters) {
+  gint position = (gint)parameters[0];
 
-	gtk_grid_insert_column (GTK_GRID(instance), position);
-
+  gtk_grid_remove_row(GTK_GRID(instance), position);
 }
 
-void GtkGrid_::remove_row(Php::Parameters &parameters)
-{
-	gint position = (gint)parameters[0];
+void GtkGrid_::remove_column(Php::Parameters &parameters) {
+  gint position = (gint)parameters[0];
 
-	gtk_grid_remove_row (GTK_GRID(instance), position);
-
+  gtk_grid_remove_column(GTK_GRID(instance), position);
 }
 
-void GtkGrid_::remove_column(Php::Parameters &parameters)
-{
-	gint position = (gint)parameters[0];
+void GtkGrid_::insert_next_to(Php::Parameters &parameters) {
+  GtkWidget *sibling = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_sibling = parameters[0];
+    GtkWidget_ *phpgtk_sibling = (GtkWidget_ *)object_sibling.implementation();
+    sibling = GTK_WIDGET(phpgtk_sibling->get_instance());
+  }
 
-	gtk_grid_remove_column (GTK_GRID(instance), position);
+  int int_side = (int)parameters[1];
+  GtkPositionType side = (GtkPositionType)int_side;
 
+  gtk_grid_insert_next_to(GTK_GRID(instance), sibling, side);
 }
 
-void GtkGrid_::insert_next_to(Php::Parameters &parameters)
-{
-	GtkWidget *sibling;
-	if(parameters.size() > 0) {
-		Php::Value object_sibling = parameters[0];
-		GtkWidget_ *phpgtk_sibling = (GtkWidget_ *)object_sibling.implementation();
-		sibling = GTK_WIDGET(phpgtk_sibling->get_instance());
-	}
+void GtkGrid_::set_row_homogeneous(Php::Parameters &parameters) {
+  gboolean homogeneous = (gboolean)parameters[0];
 
-	int int_side = (int)parameters[1];
-	GtkPositionType side = (GtkPositionType)int_side;
-
-	gtk_grid_insert_next_to (GTK_GRID(instance), sibling, side);
-
+  gtk_grid_set_row_homogeneous(GTK_GRID(instance), homogeneous);
 }
 
-void GtkGrid_::set_row_homogeneous(Php::Parameters &parameters)
-{
-	gboolean homogeneous = (gboolean)parameters[0];
+Php::Value GtkGrid_::get_row_homogeneous() {
+  bool ret = gtk_grid_get_row_homogeneous(GTK_GRID(instance)) != 0;
 
-	gtk_grid_set_row_homogeneous (GTK_GRID(instance), homogeneous);
-
+  return ret;
 }
 
-Php::Value GtkGrid_::get_row_homogeneous()
-{
-	bool ret = gtk_grid_get_row_homogeneous (GTK_GRID(instance));
+void GtkGrid_::set_row_spacing(Php::Parameters &parameters) {
+  guint spacing = (int)parameters[0];
 
-	return ret;
+  gtk_grid_set_row_spacing(GTK_GRID(instance), spacing);
 }
 
-void GtkGrid_::set_row_spacing(Php::Parameters &parameters)
-{
-	guint spacing = (int)parameters[0];
+Php::Value GtkGrid_::get_row_spacing() {
+  int ret = gtk_grid_get_row_spacing(GTK_GRID(instance));
 
-	gtk_grid_set_row_spacing (GTK_GRID(instance), spacing);
-
+  return ret;
 }
 
-Php::Value GtkGrid_::get_row_spacing()
-{
-	int ret = gtk_grid_get_row_spacing (GTK_GRID(instance));
+void GtkGrid_::set_column_homogeneous(Php::Parameters &parameters) {
+  gboolean homogeneous = (gboolean)parameters[0];
 
-	return ret;
+  gtk_grid_set_column_homogeneous(GTK_GRID(instance), homogeneous);
 }
 
-void GtkGrid_::set_column_homogeneous(Php::Parameters &parameters)
-{
-	gboolean homogeneous = (gboolean)parameters[0];
+Php::Value GtkGrid_::get_column_homogeneous() {
+  bool ret = gtk_grid_get_column_homogeneous(GTK_GRID(instance)) != 0;
 
-	gtk_grid_set_column_homogeneous (GTK_GRID(instance), homogeneous);
-
+  return ret;
 }
 
-Php::Value GtkGrid_::get_column_homogeneous()
-{
-	bool ret = gtk_grid_get_column_homogeneous (GTK_GRID(instance));
+void GtkGrid_::set_column_spacing(Php::Parameters &parameters) {
+  guint spacing = (int)parameters[0];
 
-	return ret;
+  gtk_grid_set_column_spacing(GTK_GRID(instance), spacing);
 }
 
-void GtkGrid_::set_column_spacing(Php::Parameters &parameters)
-{
-	guint spacing = (int)parameters[0];
+Php::Value GtkGrid_::get_column_spacing() {
+  int ret = gtk_grid_get_column_spacing(GTK_GRID(instance));
 
-	gtk_grid_set_column_spacing (GTK_GRID(instance), spacing);
-
+  return ret;
 }
 
-Php::Value GtkGrid_::get_column_spacing()
-{
-	int ret = gtk_grid_get_column_spacing (GTK_GRID(instance));
+void GtkGrid_::set_baseline_row(Php::Parameters &parameters) {
+  gint row = (gint)parameters[0];
 
-	return ret;
+  gtk_grid_set_baseline_row(GTK_GRID(instance), row);
 }
 
-void GtkGrid_::set_baseline_row(Php::Parameters &parameters)
-{
-	gint row = (gint)parameters[0];
+Php::Value GtkGrid_::get_baseline_row() {
+  gint ret = gtk_grid_get_baseline_row(GTK_GRID(instance));
 
-	gtk_grid_set_baseline_row (GTK_GRID(instance), row);
-
+  return ret;
 }
 
-Php::Value GtkGrid_::get_baseline_row()
-{
-	gint ret = gtk_grid_get_baseline_row (GTK_GRID(instance));
+void GtkGrid_::set_row_baseline_position(Php::Parameters &parameters) {
+  gint row = (gint)parameters[0];
 
-	return ret;
+  int int_pos = (int)parameters[1];
+  GtkBaselinePosition pos = (GtkBaselinePosition)int_pos;
+
+  gtk_grid_set_row_baseline_position(GTK_GRID(instance), row, pos);
 }
 
-void GtkGrid_::set_row_baseline_position(Php::Parameters &parameters)
-{
-	gint row = (gint)parameters[0];
+Php::Value GtkGrid_::get_row_baseline_position(Php::Parameters &parameters) {
+  gint row = (gint)parameters[0];
 
-	int int_pos = (int)parameters[1];
-	GtkBaselinePosition pos = (GtkBaselinePosition)int_pos;
+  GtkBaselinePosition ret =
+      gtk_grid_get_row_baseline_position(GTK_GRID(instance), row);
 
-	gtk_grid_set_row_baseline_position (GTK_GRID(instance), row, pos);
-
+  return ret;
 }
-
-Php::Value GtkGrid_::get_row_baseline_position(Php::Parameters &parameters)
-{
-	gint row = (gint)parameters[0];
-
-	GtkBaselinePosition ret = gtk_grid_get_row_baseline_position (GTK_GRID(instance), row);
-
-	return ret;
-}
-

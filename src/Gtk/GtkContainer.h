@@ -33,21 +33,21 @@
 
             void remove(Php::Parameters &parameters);
 
-            void add_with_properties(Php::Parameters &parameters);
+            static void add_with_properties(Php::Parameters &parameters);
 
-            Php::Value get_resize_mode();
+            static Php::Value get_resize_mode();
 
-            void set_resize_mode(Php::Parameters &parameters);
+            static void set_resize_mode(Php::Parameters &parameters);
 
             void check_resize();
 
-            void foreach(Php::Parameters &parameters);
+            static void foreach(Php::Parameters &parameters);
 
             Php::Value get_children();
 
             Php::Value get_path_for_child(Php::Parameters &parameters);
 
-            void set_reallocate_redraws(Php::Parameters &parameters);
+            static void set_reallocate_redraws(Php::Parameters &parameters);
 
             Php::Value get_focus_child();
 
@@ -61,49 +61,49 @@
 
             void set_focus_hadjustment(Php::Parameters &parameters);
 
-            void resize_children();
+            static void resize_children();
 
             Php::Value child_type();
 
-            void child_get(Php::Parameters &parameters);
+            static void child_get(Php::Parameters &parameters);
 
-            void child_set(Php::Parameters &parameters);
+            static void child_set(Php::Parameters &parameters);
 
-            void child_get_property(Php::Parameters &parameters);
+            static void child_get_property(Php::Parameters &parameters);
 
-            void child_set_property(Php::Parameters &parameters);
+            static void child_set_property(Php::Parameters &parameters);
 
-            void child_get_valist(Php::Parameters &parameters);
+            static void child_get_valist(Php::Parameters &parameters);
 
-            void child_set_valist(Php::Parameters &parameters);
+            static void child_set_valist(Php::Parameters &parameters);
 
             void child_notify(Php::Parameters &parameters);
 
-            void child_notify_by_pspec(Php::Parameters &parameters);
+            static void child_notify_by_pspec(Php::Parameters &parameters);
 
-            void forall(Php::Parameters &parameters);
+            static void forall(Php::Parameters &parameters);
 
             Php::Value get_border_width();
 
             void set_border_width(Php::Parameters &parameters);
 
-            void propagate_draw(Php::Parameters &parameters);
+            static void propagate_draw(Php::Parameters &parameters);
 
-            Php::Value get_focus_chain(Php::Parameters &parameters);
+            static Php::Value get_focus_chain(Php::Parameters &parameters);
 
-            void set_focus_chain(Php::Parameters &parameters);
+            static void set_focus_chain(Php::Parameters &parameters);
 
-            void unset_focus_chain();
+            static void unset_focus_chain();
 
-            Php::Value class_find_child_property(Php::Parameters &parameters);
+            static Php::Value class_find_child_property(Php::Parameters &parameters);
 
-            void class_install_child_property(Php::Parameters &parameters);
+            static void class_install_child_property(Php::Parameters &parameters);
 
-            void class_install_child_properties(Php::Parameters &parameters);
+            static void class_install_child_properties(Php::Parameters &parameters);
 
-            Php::Value class_list_child_properties(Php::Parameters &parameters);
+            static Php::Value class_list_child_properties(Php::Parameters &parameters);
 
-            void class_handle_border_width();
+            static void class_handle_border_width();
     };
 
 #endif

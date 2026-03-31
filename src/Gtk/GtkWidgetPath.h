@@ -19,8 +19,8 @@
          */
         public:
 
-            GtkWidgetPath *instance;
-            GtkWidgetPath *get_instance();
+            GtkWidgetPath *instance{};
+            GtkWidgetPath *get_instance() const;
             void set_instance(GtkWidgetPath *pased_instance);
 
             /**
@@ -31,79 +31,79 @@
 
             void __construct();
 
-            Php::Value append_type(Php::Parameters &parameters);
+            Php::Value append_type(Php::Parameters &parameters) const;
 
-            Php::Value append_with_siblings(Php::Parameters &parameters);
+            Php::Value append_with_siblings(Php::Parameters &parameters) const;
 
-            Php::Value append_for_widget(Php::Parameters &parameters);
+            Php::Value append_for_widget(Php::Parameters &parameters) const;
 
-            Php::Value copy();
+            Php::Value copy() const;
 
-            Php::Value ref();
+            Php::Value ref() const;
 
-            void unref();
+            void unref() const;
 
-            void free();
+            void free() const;
 
-            Php::Value get_object_type();
+            Php::Value get_object_type() const;
 
-            Php::Value has_parent(Php::Parameters &parameters);
+            Php::Value has_parent(Php::Parameters &parameters) const;
 
-            Php::Value is_type(Php::Parameters &parameters);
+            Php::Value is_type(Php::Parameters &parameters) const;
 
-            void iter_add_class(Php::Parameters &parameters);
+            void iter_add_class(Php::Parameters &parameters) const;
 
-            void iter_add_region(Php::Parameters &parameters);
+            static void iter_add_region(Php::Parameters &parameters);
 
-            void iter_clear_classes(Php::Parameters &parameters);
+            void iter_clear_classes(Php::Parameters &parameters) const;
 
-            void iter_clear_regions(Php::Parameters &parameters);
+            static void iter_clear_regions(Php::Parameters &parameters);
 
-            Php::Value iter_get_name(Php::Parameters &parameters);
+            Php::Value iter_get_name(Php::Parameters &parameters) const;
 
-            Php::Value iter_get_object_name(Php::Parameters &parameters);
+            Php::Value iter_get_object_name(Php::Parameters &parameters) const;
 
-            Php::Value iter_get_object_type(Php::Parameters &parameters);
+            Php::Value iter_get_object_type(Php::Parameters &parameters) const;
 
-            Php::Value iter_get_siblings(Php::Parameters &parameters);
+            static Php::Value iter_get_siblings(Php::Parameters &parameters);
 
-            Php::Value iter_get_sibling_index(Php::Parameters &parameters);
+            Php::Value iter_get_sibling_index(Php::Parameters &parameters) const;
 
-            Php::Value iter_get_state(Php::Parameters &parameters);
+            Php::Value iter_get_state(Php::Parameters &parameters) const;
 
-            Php::Value iter_has_class(Php::Parameters &parameters);
+            Php::Value iter_has_class(Php::Parameters &parameters) const;
 
-            Php::Value iter_has_name(Php::Parameters &parameters);
+            Php::Value iter_has_name(Php::Parameters &parameters) const;
 
-            Php::Value iter_has_qclass(Php::Parameters &parameters);
+            static Php::Value iter_has_qclass(Php::Parameters &parameters);
 
-            Php::Value iter_has_qname(Php::Parameters &parameters);
+            static Php::Value iter_has_qname(Php::Parameters &parameters);
 
-            Php::Value iter_has_qregion(Php::Parameters &parameters);
+            static Php::Value iter_has_qregion(Php::Parameters &parameters);
 
-            Php::Value iter_has_region(Php::Parameters &parameters);
+            static Php::Value iter_has_region(Php::Parameters &parameters);
 
-            Php::Value iter_list_classes(Php::Parameters &parameters);
+            static Php::Value iter_list_classes(Php::Parameters &parameters);
 
-            Php::Value iter_list_regions(Php::Parameters &parameters);
+            static Php::Value iter_list_regions(Php::Parameters &parameters);
 
-            void iter_remove_class(Php::Parameters &parameters);
+            void iter_remove_class(Php::Parameters &parameters) const;
 
-            void iter_remove_region(Php::Parameters &parameters);
+            static void iter_remove_region(Php::Parameters &parameters);
 
-            void iter_set_name(Php::Parameters &parameters);
+            void iter_set_name(Php::Parameters &parameters) const;
 
-            void iter_set_object_name(Php::Parameters &parameters);
+            void iter_set_object_name(Php::Parameters &parameters) const;
 
-            void iter_set_object_type(Php::Parameters &parameters);
+            void iter_set_object_type(Php::Parameters &parameters) const;
 
-            void iter_set_state(Php::Parameters &parameters);
+            void iter_set_state(Php::Parameters &parameters) const;
 
-            Php::Value length();
+            Php::Value length() const;
 
-            void prepend_type(Php::Parameters &parameters);
+            void prepend_type(Php::Parameters &parameters) const;
 
-            Php::Value to_string();
+            Php::Value to_string() const;
     };
 
 #endif

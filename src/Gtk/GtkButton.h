@@ -37,15 +37,15 @@
 
             static Php::Value new_from_stock();
 
-            void pressed();
+            static void pressed();
 
-            void released();
+            static void released();
 
             void clicked();
 
-            void enter();
+            static void enter();
 
-            void leave();
+            static void leave();
 
             void set_relief(Php::Parameters &parameters);
 
@@ -55,9 +55,9 @@
 
             void set_label(Php::Parameters &parameters);
 
-            Php::Value get_use_stock();
+            static Php::Value get_use_stock();
 
-            void set_use_stock(Php::Parameters &parameters);
+            static void set_use_stock(Php::Parameters &parameters);
 
             Php::Value get_use_underline();
 
@@ -65,11 +65,11 @@
 
             void set_focus_on_click(Php::Parameters &parameters);
 
-            Php::Value get_focus_on_click();
+            static Php::Value get_focus_on_click();
 
-            void set_alignment(Php::Parameters &parameters);
+            static void set_alignment(Php::Parameters &parameters);
 
-            void get_alignment(Php::Parameters &parameters);
+            static void get_alignment(Php::Parameters &parameters);
 
             void set_image(Php::Parameters &parameters);
 
@@ -83,7 +83,7 @@
 
             Php::Value get_always_show_image();
 
-            Php::Value get_event_window();
+            static Php::Value get_event_window();
     };
 
 #endif

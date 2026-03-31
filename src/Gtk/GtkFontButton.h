@@ -29,10 +29,10 @@
 
             static Php::Value new_with_font(Php::Parameters &parameters);
 
-            Php::Value set_font_name(Php::Parameters &parameters);
+            static Php::Value set_font_name(Php::Parameters &parameters);
             void set_font(Php::Parameters &parameters);
 
-            Php::Value get_font_name();
+            static Php::Value get_font_name();
             Php::Value get_font();
 
             void set_show_style(Php::Parameters &parameters);

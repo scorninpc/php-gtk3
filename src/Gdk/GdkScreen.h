@@ -22,7 +22,7 @@
          */
         public:
 
-            GdkScreen *instance;
+            GdkScreen *instance{};
 
             /**
              *  C++ constructor and destructor
@@ -33,14 +33,14 @@
             /**
              * Return original GdkScreen
              */
-            GdkScreen *get_instance();
+            GdkScreen *get_instance() const;
 
             /**
              * Set the original GdkScreen
              */
             void set_instance(GdkScreen *screen);
-            Php::Value get_rgba_visual();
-            Php::Value get_window_stack();
+            Php::Value get_rgba_visual() const;
+            Php::Value get_window_stack() const;
             static Php::Value get_default();
 
 

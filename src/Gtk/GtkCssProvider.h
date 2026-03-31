@@ -39,23 +39,23 @@
 
             Php::Value to_string();
 
-            Php::Value gtk_css_section_get_end_line();
+            static Php::Value gtk_css_section_get_end_line();
 
-            Php::Value gtk_css_section_get_end_position();
+            static Php::Value gtk_css_section_get_end_position();
 
-            Php::Value gtk_css_section_get_file();
+            static Php::Value gtk_css_section_get_file();
 
-            Php::Value gtk_css_section_get_parent();
+            static Php::Value gtk_css_section_get_parent();
 
-            Php::Value gtk_css_section_get_section_type();
+            static Php::Value gtk_css_section_get_section_type();
 
-            Php::Value gtk_css_section_get_start_line();
+            static Php::Value gtk_css_section_get_start_line();
 
-            Php::Value gtk_css_section_get_start_position();
+            static Php::Value gtk_css_section_get_start_position();
 
-            Php::Value gtk_css_section_ref();
+            static Php::Value gtk_css_section_ref();
 
-            void gtk_css_section_unref();
+            static void gtk_css_section_unref();
     };
 
 #endif

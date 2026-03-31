@@ -20,7 +20,7 @@
          * Publics
          */
         public:
-            GdkPixbuf *instance;
+            GdkPixbuf *instance{};
 
             /**
              *  C++ constructor and destructor
@@ -31,7 +31,7 @@
             /**
              * Return original GdkPixbuf
              */
-            GdkPixbuf *get_instance();
+            GdkPixbuf *get_instance() const;
 
             /**
              * Set the original GdkPixbuf
@@ -57,33 +57,33 @@
 
             static Php::Value get_file_info(Php::Parameters &parameters);
 
-            Php::Value get_colorspace();
+            Php::Value get_colorspace() const;
 
-            Php::Value get_n_channels();
+            Php::Value get_n_channels() const;
 
-            Php::Value get_has_alpha();
+            Php::Value get_has_alpha() const;
 
-            Php::Value get_pixels();
+            Php::Value get_pixels() const;
 
-            Php::Value get_width();
+            Php::Value get_width() const;
 
-            Php::Value get_height();
+            Php::Value get_height() const;
 
-            Php::Value get_rowstride();
+            Php::Value get_rowstride() const;
 
-            Php::Value get_option(Php::Parameters &parameters);
+            Php::Value get_option(Php::Parameters &parameters) const;
 
-            Php::Value save(Php::Parameters &parameters);
+            Php::Value save(Php::Parameters &parameters) const;
             
-            Php::Value get_from_drawable(Php::Parameters &parameters);
+            static Php::Value get_from_drawable(Php::Parameters &parameters);
             
-            Php::Value scale_simple(Php::Parameters &parameters);
+            Php::Value scale_simple(Php::Parameters &parameters) const;
 
-            Php::Value get_data(Php::Parameters& parameters);
+            Php::Value get_data(Php::Parameters& parameters) const;
 
-            Php::Value get_byte_length();
+            Php::Value get_byte_length() const;
 
-            void set_data(Php::Parameters& parameters);
+            void set_data(Php::Parameters& parameters) const;
 
     };
 

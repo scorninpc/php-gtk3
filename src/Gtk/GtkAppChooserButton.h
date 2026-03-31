@@ -27,7 +27,7 @@
 
             void __construct(Php::Parameters &parameters);
 
-            void append_custom_item(Php::Parameters &parameters);
+            static void append_custom_item(Php::Parameters &parameters);
 
             void append_separator();
 

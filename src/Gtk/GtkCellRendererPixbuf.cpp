@@ -11,9 +11,6 @@ GtkCellRendererPixbuf_::GtkCellRendererPixbuf_() = default;
  */
 GtkCellRendererPixbuf_::~GtkCellRendererPixbuf_() = default;
 
-void GtkCellRendererPixbuf_::__construct()
-{
-	instance = (gpointer *)gtk_cell_renderer_pixbuf_new ();
-
+void GtkCellRendererPixbuf_::__construct() {
+  instance = (gpointer *)gtk_cell_renderer_pixbuf_new();
 }
-

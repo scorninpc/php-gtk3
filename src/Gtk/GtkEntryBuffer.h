@@ -18,7 +18,7 @@
          * Publics
          */
         public:
-            GtkEntryBuffer *buffer;
+            GtkEntryBuffer *buffer{};
 
             /**
              *  C++ constructor and destructor
@@ -29,7 +29,7 @@
             /**
              * Return original GtkEntryBuffer
              */
-            GtkEntryBuffer *get_buffer();
+            GtkEntryBuffer *get_buffer() const;
 
             /**
              * Set the original GtkEntryBuffer

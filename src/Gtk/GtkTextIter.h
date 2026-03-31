@@ -21,12 +21,12 @@
          */
         public:
 
-            GtkTextIter instance;
+            GtkTextIter instance{};
 
             /**
              * Set/Get original GtkTextIter
              */
-            GtkTextIter get_instance();
+            GtkTextIter get_instance() const;
             void set_instance(GtkTextIter pased_instance);
 
             /**

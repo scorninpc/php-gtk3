@@ -37,15 +37,15 @@
 
             Php::Value get_size(Php::Parameters &parameters);
 
-            Php::Value get_hadjustment();
+            static Php::Value get_hadjustment();
 
-            Php::Value get_vadjustment();
+            static Php::Value get_vadjustment();
 
-            void set_hadjustment(Php::Parameters &parameters);
+            static void set_hadjustment(Php::Parameters &parameters);
 
-            void set_vadjustment(Php::Parameters &parameters);
+            static void set_vadjustment(Php::Parameters &parameters);
 
-            Php::Value get_bin_window();
+            static Php::Value get_bin_window();
     };
 
 #endif

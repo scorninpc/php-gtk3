@@ -36,7 +36,7 @@
 
             void set_use_alpha(Php::Parameters &parameters);
 
-            void add_palette(Php::Parameters &parameters);
+            static void add_palette(Php::Parameters &parameters);
     };
 
 #endif

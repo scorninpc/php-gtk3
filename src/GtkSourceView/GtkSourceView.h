@@ -82,21 +82,21 @@
 
             Php::Value get_smart_home_end();
 
-            void set_mark_attributes(Php::Parameters &parameters);
+            static void set_mark_attributes(Php::Parameters &parameters);
 
-            Php::Value get_mark_attributes(Php::Parameters &parameters);
+            static Php::Value get_mark_attributes(Php::Parameters &parameters);
 
             void set_show_line_marks(Php::Parameters &parameters);
 
             Php::Value get_show_line_marks();
 
-            void set_draw_spaces(Php::Parameters &parameters);
+            static void set_draw_spaces(Php::Parameters &parameters);
 
-            Php::Value get_draw_spaces();
+            static Php::Value get_draw_spaces();
 
-            Php::Value get_completion();
+            static Php::Value get_completion();
 
-            Php::Value get_gutter(Php::Parameters &parameters);
+            static Php::Value get_gutter(Php::Parameters &parameters);
 
             void set_background_pattern(Php::Parameters &parameters);
 

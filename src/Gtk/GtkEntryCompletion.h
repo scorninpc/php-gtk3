@@ -23,7 +23,7 @@
          */
         public:
 
-            bool liststore_type;
+            bool liststore_type{};
 
             /**
              *  C++ constructor and destructor
@@ -41,7 +41,7 @@
 
             Php::Value get_model();
 
-            void set_match_func(Php::Parameters &parameters);
+            static void set_match_func(Php::Parameters &parameters);
 
             void set_minimum_key_length(Php::Parameters &parameters);
 

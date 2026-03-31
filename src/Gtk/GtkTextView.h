@@ -58,9 +58,9 @@
 
             Php::Value window_to_buffer_coords(Php::Parameters &parameters);
 
-            Php::Value get_window(Php::Parameters &parameters);
+            static Php::Value get_window(Php::Parameters &parameters);
 
-            Php::Value get_window_type(Php::Parameters &parameters);
+            static Php::Value get_window_type(Php::Parameters &parameters);
 
             void set_border_window_size(Php::Parameters &parameters);
 
@@ -138,7 +138,7 @@
 
             Php::Value get_accepts_tab();
 
-            Php::Value im_context_filter_keypress(Php::Parameters &parameters);
+            static Php::Value im_context_filter_keypress(Php::Parameters &parameters);
 
             void reset_im_context();
 

@@ -26,7 +26,7 @@
             /**
              * PHP Construct
              */
-            void __construct(Php::Parameters &params);
+            static void __construct(Php::Parameters &params);
     };
 
 #endif

@@ -54,7 +54,7 @@
 
             Php::Value get_parent_shell();
 
-            void bind_model(Php::Parameters &parameters);
+            static void bind_model(Php::Parameters &parameters);
     };
 
 #endif

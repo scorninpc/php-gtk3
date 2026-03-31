@@ -17,7 +17,7 @@
          */
         public:
 
-            GtkTreeIter instance;
+            GtkTreeIter instance{};
 
             /**
              *  C++ constructor and destructor
@@ -28,7 +28,7 @@
             /**
              * Return original GtkTreeIter
              */
-            GtkTreeIter get_instance();
+            GtkTreeIter get_instance() const;
 
             /**
              * Set the original GtkTreeIter

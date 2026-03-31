@@ -22,7 +22,7 @@
          */
         public:
 
-            GtkTreeModel *model;
+            GtkTreeModel *model{};
 
             /**
              *  C++ constructor and destructor
@@ -33,7 +33,7 @@
             /**
              * Return original GtkTreeModel
              */
-            GtkTreeModel *get_model();
+            GtkTreeModel *get_model() const;
 
             /**
              * Set the original GtkTreeModel
@@ -46,10 +46,10 @@
             void __construct(Php::Parameters &parameters);
 
             
-            Php::Value get_iter(Php::Parameters &parameters);
-            Php::Value get_value(Php::Parameters &parameters);
-            Php::Value get_path(Php::Parameters &parameters);
-            Php::Value get_iter_from_string(Php::Parameters &parameters);
+            Php::Value get_iter(Php::Parameters &parameters) const;
+            Php::Value get_value(Php::Parameters &parameters) const;
+            Php::Value get_path(Php::Parameters &parameters) const;
+            Php::Value get_iter_from_string(Php::Parameters &parameters) const;
     };
 
 #endif

@@ -28,7 +28,7 @@
 
             void __construct(Php::Parameters &parameters);
 
-            Php::Value new_for_manager(Php::Parameters &parameters);
+            static Php::Value new_for_manager(Php::Parameters &parameters);
 
             void set_show_private(Php::Parameters &parameters);
 
@@ -62,13 +62,13 @@
 
             Php::Value get_sort_type();
 
-            void set_sort_func(Php::Parameters &parameters);
+            static void set_sort_func(Php::Parameters &parameters);
 
             Php::Value set_current_uri(Php::Parameters &parameters);
 
             Php::Value get_current_uri();
 
-            Php::Value get_current_item();
+            static Php::Value get_current_item();
 
             Php::Value select_uri(Php::Parameters &parameters);
 
@@ -82,15 +82,15 @@
 
             Php::Value get_uris(Php::Parameters &parameters);
 
-            void add_filter(Php::Parameters &parameters);
+            static void add_filter(Php::Parameters &parameters);
 
-            void remove_filter(Php::Parameters &parameters);
+            static void remove_filter(Php::Parameters &parameters);
 
             Php::Value list_filters();
 
-            void set_filter(Php::Parameters &parameters);
+            static void set_filter(Php::Parameters &parameters);
 
-            Php::Value get_filter();
+            static Php::Value get_filter();
     };
 
 #endif

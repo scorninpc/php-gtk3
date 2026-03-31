@@ -11,103 +11,88 @@ GdkWindow_::GdkWindow_() = default;
  */
 GdkWindow_::~GdkWindow_() = default;
 
-void GdkWindow_::beep()
-{
-	gdk_window_beep (GDK_WINDOW(instance));
+void GdkWindow_::beep() { gdk_window_beep(GDK_WINDOW(instance)); }
 
+void GdkWindow_::maximize() { gdk_window_maximize(GDK_WINDOW(instance)); }
+
+Php::Value GdkWindow_::get_default_root_window() {
+  GdkWindow *ret = gdk_get_default_root_window();
+
+  // Create the PHP-GTK object and set GTK object
+  GdkWindow_ *widget_ = new GdkWindow_();
+  widget_->set_instance((gpointer *)ret);
+  return Php::Object("GdkWindow", widget_);
 }
 
-void GdkWindow_::maximize()
-{
-	gdk_window_maximize (GDK_WINDOW(instance));
-
-}
-
-Php::Value GdkWindow_::get_default_root_window()
-{
-	GdkWindow *ret = gdk_get_default_root_window();
-
-	// Create the PHP-GTK object and set GTK object
-	GdkWindow_ *widget_ = new GdkWindow_();
-	widget_->set_instance((gpointer *)ret);
-	return Php::Object("GdkWindow", widget_);
-}
-
-Php::Value GdkWindow_::get_window_type()
-{
-	return gdk_window_get_window_type(GDK_WINDOW(instance));
+Php::Value GdkWindow_::get_window_type() {
+  return gdk_window_get_window_type(GDK_WINDOW(instance));
 }
 
 /**
  * https://developer.gnome.org/gdk3/stable/gdk3-Windows.html#gdk-window-get-children
  */
-Php::Value GdkWindow_::get_children()
-{
-    GList* ret = gdk_window_get_children(GDK_WINDOW(instance));
-    if (!ret) {
-        return Php::Array();            // ← instant empty array
-    }
+Php::Value GdkWindow_::get_children() {
+  GList *ret = gdk_window_get_children(GDK_WINDOW(instance));
+  if (ret == nullptr) {
+    return Php::Array(); // ← instant empty array
+  }
 
-    Php::Array ret_arr;
-    for (int i = 0; GList* item = g_list_nth(ret, i); ++i) {
-        GdkWindow_* win = new GdkWindow_();
-        win->set_instance((gpointer*)item->data);
-        ret_arr[i] = Php::Object("GdkWindow", win);
-    }
+  Php::Array ret_arr;
+  for (int i = 0; GList *item != nullptr = g_list_nth(ret, i); ++i) {
+    GdkWindow_ *win = new GdkWindow_();
+    win->set_instance((gpointer *)item->data);
+    ret_arr[i] = Php::Object("GdkWindow", win);
+  }
 
-    g_list_free(ret);
-    return ret_arr;
+  g_list_free(ret);
+  return ret_arr;
 }
 
-Php::Value GdkWindow_::get_width()
-{
-	return gdk_window_get_width(GDK_WINDOW(instance));
+Php::Value GdkWindow_::get_width() {
+  return gdk_window_get_width(GDK_WINDOW(instance));
 }
 
-Php::Value GdkWindow_::get_height()
-{
-	return gdk_window_get_height(GDK_WINDOW(instance));
+Php::Value GdkWindow_::get_height() {
+  return gdk_window_get_height(GDK_WINDOW(instance));
 }
 
-Php::Value GdkWindow_::get_position()
-{
-	    // Verify sizes
-    int x = -1;
-    int y = -1;
+Php::Value GdkWindow_::get_position() {
+  // Verify sizes
+  int x = -1;
+  int y = -1;
 
-    gdk_window_get_position(GDK_WINDOW(instance), &x, &y);
+  gdk_window_get_position(GDK_WINDOW(instance), &x, &y);
 
-    // Cria o retorno
-    Php::Value arr;
-    arr[0] = arr["x"] = x;
-    arr[1] = arr["y"] = y;
+  // Cria o retorno
+  Php::Value arr;
+  arr[0] = arr["x"] = x;
+  arr[1] = arr["y"] = y;
 
-    return arr;
+  return arr;
 }
 
-Php::Value GdkWindow_::get_origin()
-{
-    int root_x = -1;
-    int root_y = -1;
+Php::Value GdkWindow_::get_origin() {
+  int root_x = -1;
+  int root_y = -1;
 
-    gboolean result = gdk_window_get_origin(GDK_WINDOW(instance), &root_x, &root_y);
+  gboolean result =
+      gdk_window_get_origin(GDK_WINDOW(instance), &root_x, &root_y);
 
-    if (!result) {
-        return Php::Value();
-    }
+  if (result == 0) {
+    return {};
+  }
 
-    Php::Value arr;
-    arr[0] = arr["x"] = root_x;
-    arr[1] = arr["y"] = root_y;
+  Php::Value arr;
+  arr[0] = arr["x"] = root_x;
+  arr[1] = arr["y"] = root_y;
 
-    return arr;
+  return arr;
 }
 
-void GdkWindow_::set_cursor(Php::Parameters &parameters)
-{
-	Php::Value object_cursor = parameters[0];
-    GdkCursor_ *phpgtk_cursor = (GdkCursor_ *)object_cursor.implementation();
-    GdkCursor *cursor = (GdkCursor *)phpgtk_cursor->get_instance();
+void GdkWindow_::set_cursor(Php::Parameters &parameters) {
+  Php::Value object_cursor = parameters[0];
+  GdkCursor_ *phpgtk_cursor = (GdkCursor_ *)object_cursor.implementation();
+  GdkCursor *cursor = (GdkCursor *)phpgtk_cursor->get_instance();
 
-	gdk_window_set_cursor(GDK_WINDOW(instance), cursor);
+  gdk_window_set_cursor(GDK_WINDOW(instance), cursor);
 }

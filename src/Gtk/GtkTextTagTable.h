@@ -34,7 +34,7 @@
 
             Php::Value lookup(Php::Parameters &parameters);
 
-            Php::Value foreach(Php::Parameters &parameters);
+            static Php::Value foreach(Php::Parameters &parameters);
 
             Php::Value get_size();
     };

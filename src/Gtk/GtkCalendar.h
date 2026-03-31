@@ -45,7 +45,7 @@
 
             Php::Value get_date(Php::Parameters &parameters);
 
-            void set_detail_func(Php::Parameters &parameters);
+            static void set_detail_func(Php::Parameters &parameters);
 
             Php::Value get_detail_width_chars();
 

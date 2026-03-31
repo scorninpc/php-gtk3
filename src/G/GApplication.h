@@ -25,79 +25,79 @@
             GApplication_();
             ~GApplication_();
 
-            Php::Value id_is_valid();
+            static Php::Value id_is_valid();
 
-            Php::Value __construct(Php::Parameters &parameters);
+            static Php::Value __construct(Php::Parameters &parameters);
 
-            Php::Value get_application_id();
+            static Php::Value get_application_id();
 
-            void set_application_id(Php::Parameters &parameters);
+            static void set_application_id(Php::Parameters &parameters);
 
-            Php::Value get_inactivity_timeout();
+            static Php::Value get_inactivity_timeout();
 
-            void set_inactivity_timeout(Php::Parameters &parameters);
+            static void set_inactivity_timeout(Php::Parameters &parameters);
 
-            Php::Value get_flags();
+            static Php::Value get_flags();
 
-            void set_flags(Php::Parameters &parameters);
+            static void set_flags(Php::Parameters &parameters);
 
-            Php::Value get_resource_base_path();
+            static Php::Value get_resource_base_path();
 
-            void set_resource_base_path(Php::Parameters &parameters);
+            static void set_resource_base_path(Php::Parameters &parameters);
 
-            Php::Value get_dbus_connection();
+            static Php::Value get_dbus_connection();
 
-            Php::Value get_dbus_object_path();
+            static Php::Value get_dbus_object_path();
 
-            void set_action_group(Php::Parameters &parameters);
+            static void set_action_group(Php::Parameters &parameters);
 
-            Php::Value get_is_registered();
+            static Php::Value get_is_registered();
 
-            Php::Value get_is_remote();
+            static Php::Value get_is_remote();
 
-            Php::Value _register(Php::Parameters &parameters);
+            static Php::Value _register(Php::Parameters &parameters);
 
-            void hold();
+            static void hold();
 
-            void release();
+            static void release();
 
-            void quit();
+            static void quit();
 
-            void activate();
+            static void activate();
 
-            void open(Php::Parameters &parameters);
+            static void open(Php::Parameters &parameters);
 
-            void send_notification(Php::Parameters &parameters);
+            static void send_notification(Php::Parameters &parameters);
 
-            void withdraw_notification(Php::Parameters &parameters);
+            static void withdraw_notification(Php::Parameters &parameters);
 
             static Php::Value run(Php::Parameters &parameters);
 
-            void add_main_option_entries(Php::Parameters &parameters);
+            static void add_main_option_entries(Php::Parameters &parameters);
 
-            void add_main_option(Php::Parameters &parameters);
+            static void add_main_option(Php::Parameters &parameters);
 
-            void add_option_group(Php::Parameters &parameters);
+            static void add_option_group(Php::Parameters &parameters);
 
-            void set_option_context_parameter_string(Php::Parameters &parameters);
+            static void set_option_context_parameter_string(Php::Parameters &parameters);
 
-            void set_option_context_summary(Php::Parameters &parameters);
+            static void set_option_context_summary(Php::Parameters &parameters);
 
-            void set_option_context_description(Php::Parameters &parameters);
+            static void set_option_context_description(Php::Parameters &parameters);
 
-            void set_default();
+            static void set_default();
 
-            Php::Value get_default();
+            static Php::Value get_default();
 
-            void mark_busy();
+            static void mark_busy();
 
-            void unmark_busy();
+            static void unmark_busy();
 
-            Php::Value get_is_busy();
+            static Php::Value get_is_busy();
 
-            void bind_busy_property(Php::Parameters &parameters);
+            static void bind_busy_property(Php::Parameters &parameters);
 
-            void unbind_busy_property(Php::Parameters &parameters);
+            static void unbind_busy_property(Php::Parameters &parameters);
     };
 
 #endif

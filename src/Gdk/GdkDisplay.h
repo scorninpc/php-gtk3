@@ -20,7 +20,7 @@
          */
         public:
 
-            GdkDisplay *instance;
+            GdkDisplay *instance{};
 
             /**
              *  C++ constructor and destructor
@@ -31,13 +31,13 @@
             /**
              * Return original GdkDisplay
              */
-            GdkDisplay *get_instance();
+            GdkDisplay *get_instance() const;
             void set_instance(GdkDisplay *screen);
 
             static Php::Value get_default();
-            Php::Value get_primary_monitor();
-            Php::Value get_default_screen();
-            Php::Value get_monitor(Php::Parameters &parameters);
+            Php::Value get_primary_monitor() const;
+            Php::Value get_default_screen() const;
+            Php::Value get_monitor(Php::Parameters &parameters) const;
 
 
     };

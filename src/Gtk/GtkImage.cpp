@@ -11,361 +11,315 @@ GtkImage_::GtkImage_() = default;
  */
 GtkImage_::~GtkImage_() = default;
 
-void GtkImage_::__construct()
-{
-	instance = (gpointer *)gtk_image_new ();
+void GtkImage_::__construct() { instance = (gpointer *)gtk_image_new(); }
 
+Php::Value GtkImage_::new_from_file(Php::Parameters &parameters) {
+  std::string s_filename = parameters[0];
+  gchar *filename = (gchar *)s_filename.c_str();
+
+  gpointer *ret = (gpointer *)gtk_image_new_from_file(filename);
+
+  return cobject_to_phpobject(ret);
+
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 }
 
-Php::Value GtkImage_::new_from_file(Php::Parameters &parameters)
-{
-	std::string s_filename = parameters[0];
-	gchar *filename = (gchar *)s_filename.c_str();
+Php::Value GtkImage_::new_from_icon_set(Php::Parameters &parameters) {
+  // int int_size = (int)parameters[0];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	gpointer *ret = (gpointer *)gtk_image_new_from_file (filename);
+  // GtkWidget *ret = gtk_image_new_from_icon_set (GTK_IMAGE(instance), size);
 
-	return cobject_to_phpobject(ret);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  Php::deprecated << "new_from_icon_set is deprecated on Gtk 3.10" << '\n';
+  return 0;
 }
 
-Php::Value GtkImage_::new_from_icon_set(Php::Parameters &parameters)
-{
-	// int int_size = (int)parameters[0];
-	// GtkIconSize size = (GtkIconSize)int_size;
+void GtkImage_::get_icon_set(Php::Parameters &parameters) {
+  // GtkIconSet *icon_set;
+  // if(parameters.size() > 0) {
+  // 	Php::Value object_icon_set = parameters[0];
+  // 	GtkIconSet_ *phpgtk_icon_set = (GtkIconSet_
+  // *)object_icon_set.implementation(); 	icon_set =
+  // GTK_WIDGET(phpgtk_icon_set->get_instance());
+  // }
 
-	// GtkWidget *ret = gtk_image_new_from_icon_set (GTK_IMAGE(instance), size);
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  // gtk_image_get_icon_set (GTK_IMAGE(instance), icon_set, size);
 
-	Php::deprecated << "new_from_icon_set is deprecated on Gtk 3.10" << std::endl;
-	return 0;
+  throw Php::Exception("GtkImage_::get_icon_set not implemented");
 }
 
-void GtkImage_::get_icon_set(Php::Parameters &parameters)
-{
-	// GtkIconSet *icon_set;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_icon_set = parameters[0];
-	// 	GtkIconSet_ *phpgtk_icon_set = (GtkIconSet_ *)object_icon_set.implementation();
-	// 	icon_set = GTK_WIDGET(phpgtk_icon_set->get_instance());
-	// }
+Php::Value GtkImage_::get_pixbuf() {
+  gpointer *ret = (gpointer *)gtk_image_get_pixbuf(GTK_IMAGE(instance));
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
+  return cobject_to_phpobject(ret);
 
-	// gtk_image_get_icon_set (GTK_IMAGE(instance), icon_set, size);
-
-	throw Php::Exception("GtkImage_::get_icon_set not implemented");
-
+  // GdkPixbuf_ *return_parsed = new GdkPixbuf_();
+  // return_parsed->set_instance(ret);
+  // return Php::Object("GdkPixbuf", return_parsed);
 }
 
-Php::Value GtkImage_::get_pixbuf()
-{
-	gpointer *ret = (gpointer *)gtk_image_get_pixbuf (GTK_IMAGE(instance));
+void GtkImage_::get_stock(Php::Parameters &parameters) {
+  // std::string s_stock_id = parameters[0];
+  // gchar *stock_id = (gchar *)s_stock_id.c_str();
 
-	return cobject_to_phpobject(ret);
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	// GdkPixbuf_ *return_parsed = new GdkPixbuf_();
-	// return_parsed->set_instance(ret);
-	// return Php::Object("GdkPixbuf", return_parsed);
+  // gtk_image_get_stock (GTK_IMAGE(instance), stock_id, size);
+
+  Php::deprecated << "get_stock is deprecated on Gtk 3.10" << '\n';
 }
 
-void GtkImage_::get_stock(Php::Parameters &parameters)
-{
-	// std::string s_stock_id = parameters[0];
-	// gchar *stock_id = (gchar *)s_stock_id.c_str();
+Php::Value GtkImage_::get_animation() {
+  // GdkPixbufAnimation ret = gtk_image_get_animation (GTK_IMAGE(instance));
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
+  // return ret;
 
-	// gtk_image_get_stock (GTK_IMAGE(instance), stock_id, size);
+  throw Php::Exception("GtkImage_::get_animation not implemented");
 
-	Php::deprecated << "get_stock is deprecated on Gtk 3.10" << std::endl;
-
+  return 0;
 }
 
-Php::Value GtkImage_::get_animation()
-{
-	// GdkPixbufAnimation ret = gtk_image_get_animation (GTK_IMAGE(instance));
+Php::Value GtkImage_::get_icon_name(Php::Parameters &parameters) {
+  // const gchar *icon_name;
 
-	// return ret;
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	throw Php::Exception("GtkImage_::get_animation not implemented");
+  // gtk_image_get_icon_name (GTK_IMAGE(instance), icon_name, size);
 
-	return 0;
+  throw Php::Exception("GtkImage_::get_icon_name not implemented");
+  return 0;
 }
 
-Php::Value GtkImage_::get_icon_name(Php::Parameters &parameters)
-{
-	// const gchar *icon_name;
+void GtkImage_::get_gicon(Php::Parameters &parameters) {
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	// gtk_image_get_icon_name (GTK_IMAGE(instance), icon_name, size);
+  // gtk_image_get_gicon (GTK_IMAGE(instance), gicon, size);
 
-	throw Php::Exception("GtkImage_::get_icon_name not implemented");
-	return 0;
+  throw Php::Exception("GtkImage_::get_gicon not implemented");
 }
 
-void GtkImage_::get_gicon(Php::Parameters &parameters)
-{
+Php::Value GtkImage_::get_storage_type() {
+  GtkImageType ret = gtk_image_get_storage_type(GTK_IMAGE(instance));
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
-
-	// gtk_image_get_gicon (GTK_IMAGE(instance), gicon, size);
-
-	throw Php::Exception("GtkImage_::get_gicon not implemented");
+  return ret;
 }
 
-Php::Value GtkImage_::get_storage_type()
-{
-	GtkImageType ret = gtk_image_get_storage_type (GTK_IMAGE(instance));
+Php::Value GtkImage_::new_from_pixbuf(Php::Parameters &parameters) {
 
-	return ret;
+  GdkPixbuf *pixbuf = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_pixbuf = parameters[0];
+    GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
+    pixbuf = phpgtk_pixbuf->get_instance();
+  }
+
+  gpointer *ret = (gpointer *)gtk_image_new_from_pixbuf(pixbuf);
+
+  return cobject_to_phpobject(ret);
+
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkImage", return_parsed);
 }
 
-Php::Value GtkImage_::new_from_pixbuf(Php::Parameters &parameters)
-{
+Php::Value GtkImage_::new_from_stock(Php::Parameters &parameters) {
+  // int int_size = (int)parameters[0];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	GdkPixbuf *pixbuf;
-	if(parameters.size() > 0) {
-		Php::Value object_pixbuf = parameters[0];
-		GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
-		pixbuf = phpgtk_pixbuf->get_instance();
-	}
+  // GtkWidget *ret = gtk_image_new_from_stock (GTK_IMAGE(instance), size);
 
-	gpointer *ret = (gpointer *)gtk_image_new_from_pixbuf (pixbuf);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 
-	return cobject_to_phpobject(ret);
-
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkImage", return_parsed);
+  Php::deprecated << "new_from_stock is deprecated on Gtk 3.10" << '\n';
+  return 0;
 }
 
-Php::Value GtkImage_::new_from_stock(Php::Parameters &parameters)
-{
-	// int int_size = (int)parameters[0];
-	// GtkIconSize size = (GtkIconSize)int_size;
+Php::Value GtkImage_::new_from_animation() {
+  // GtkWidget *ret = gtk_image_new_from_animation (GTK_IMAGE(instance));
 
-	// GtkWidget *ret = gtk_image_new_from_stock (GTK_IMAGE(instance), size);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  throw Php::Exception("GtkImage_::new_from_animation not implemented");
 
-	Php::deprecated << "new_from_stock is deprecated on Gtk 3.10" << std::endl;
-	return 0;
+  return 0;
 }
 
-Php::Value GtkImage_::new_from_animation()
-{
-	// GtkWidget *ret = gtk_image_new_from_animation (GTK_IMAGE(instance));
+Php::Value GtkImage_::new_from_icon_name(Php::Parameters &parameters) {
+  std::string s_icon_name = parameters[0];
+  gchar *icon_name = (gchar *)s_icon_name.c_str();
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  int int_size = (int)parameters[1];
+  GtkIconSize size = (GtkIconSize)int_size;
 
-	throw Php::Exception("GtkImage_::new_from_animation not implemented");
+  gpointer *ret = (gpointer *)gtk_image_new_from_icon_name(icon_name, size);
 
-	return 0;
+  return cobject_to_phpobject(ret);
+
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkImage", return_parsed);
 }
 
-Php::Value GtkImage_::new_from_icon_name(Php::Parameters &parameters)
-{
-	std::string s_icon_name = parameters[0];
-	gchar *icon_name = (gchar *)s_icon_name.c_str();
+Php::Value GtkImage_::new_from_gicon(Php::Parameters &parameters) {
+  throw Php::Exception("GtkImage_::new_from_gicon not implemented");
 
-	int int_size = (int)parameters[1];
-	GtkIconSize size = (GtkIconSize)int_size;
+  return 0;
+  // int int_size = (int)parameters[0];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	gpointer *ret = (gpointer *)gtk_image_new_from_icon_name (icon_name, size);
+  // GtkWidget *ret = gtk_image_new_from_gicon (GTK_IMAGE(instance), size);
 
-	return cobject_to_phpobject(ret);
-
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkImage", return_parsed);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 }
 
-Php::Value GtkImage_::new_from_gicon(Php::Parameters &parameters)
-{
-	throw Php::Exception("GtkImage_::new_from_gicon not implemented");
+Php::Value GtkImage_::new_from_resource(Php::Parameters &parameters) {
+  std::string s_resource_path = parameters[0];
+  gchar *resource_path = (gchar *)s_resource_path.c_str();
 
-	return 0;
-	// int int_size = (int)parameters[0];
-	// GtkIconSize size = (GtkIconSize)int_size;
+  gpointer *ret = (gpointer *)gtk_image_new_from_resource(resource_path);
 
-	// GtkWidget *ret = gtk_image_new_from_gicon (GTK_IMAGE(instance), size);
+  return cobject_to_phpobject(ret);
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkImage", return_parsed);
 }
 
-Php::Value GtkImage_::new_from_resource(Php::Parameters &parameters)
-{
-	std::string s_resource_path = parameters[0];
-	gchar *resource_path = (gchar *)s_resource_path.c_str();
+Php::Value GtkImage_::new_from_surface() {
+  // GtkWidget *ret = gtk_image_new_from_surface (GTK_IMAGE(instance));
 
-	gpointer *ret = (gpointer *)gtk_image_new_from_resource (resource_path);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
 
-	return cobject_to_phpobject(ret);
+  throw Php::Exception("GtkImage_::new_from_surface not implemented");
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkImage", return_parsed);
+  return 0;
 }
 
-Php::Value GtkImage_::new_from_surface()
-{
-	// GtkWidget *ret = gtk_image_new_from_surface (GTK_IMAGE(instance));
+void GtkImage_::set_from_file(Php::Parameters &parameters) {
+  std::string s_filename = parameters[0];
+  gchar *filename = (gchar *)s_filename.c_str();
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
-
-	throw Php::Exception("GtkImage_::new_from_surface not implemented");
-
-	return 0;
+  gtk_image_set_from_file(GTK_IMAGE(instance), filename);
 }
 
-void GtkImage_::set_from_file(Php::Parameters &parameters)
-{
-	std::string s_filename = parameters[0];
-	gchar *filename = (gchar *)s_filename.c_str();
+void GtkImage_::set_from_icon_set(Php::Parameters &parameters) {
+  // GtkIconSet *icon_set;
+  // if(parameters.size() > 0) {
+  // 	Php::Value object_icon_set = parameters[0];
+  // 	GtkIconSet_ *phpgtk_icon_set = (GtkIconSet_
+  // *)object_icon_set.implementation(); 	icon_set =
+  // GTK_WIDGET(phpgtk_icon_set->get_instance());
+  // }
 
-	gtk_image_set_from_file (GTK_IMAGE(instance), filename);
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
+  // gtk_image_set_from_icon_set (GTK_IMAGE(instance), icon_set, size);
+
+  Php::deprecated << "set_from_icon_set is deprecated on Gtk 3.10" << '\n';
 }
 
-void GtkImage_::set_from_icon_set(Php::Parameters &parameters)
-{
-	// GtkIconSet *icon_set;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_icon_set = parameters[0];
-	// 	GtkIconSet_ *phpgtk_icon_set = (GtkIconSet_ *)object_icon_set.implementation();
-	// 	icon_set = GTK_WIDGET(phpgtk_icon_set->get_instance());
-	// }
+void GtkImage_::set_from_pixbuf(Php::Parameters &parameters) {
+  GdkPixbuf *pixbuf = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_pixbuf = parameters[0];
+    GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
+    pixbuf = phpgtk_pixbuf->get_instance();
+  }
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
-
-	// gtk_image_set_from_icon_set (GTK_IMAGE(instance), icon_set, size);
-
-	Php::deprecated << "set_from_icon_set is deprecated on Gtk 3.10" << std::endl;
-
+  gtk_image_set_from_pixbuf(GTK_IMAGE(instance), pixbuf);
 }
 
-void GtkImage_::set_from_pixbuf(Php::Parameters &parameters)
-{
-	GdkPixbuf *pixbuf;
-	if(parameters.size() > 0) {
-		Php::Value object_pixbuf = parameters[0];
-		GdkPixbuf_ *phpgtk_pixbuf = (GdkPixbuf_ *)object_pixbuf.implementation();
-		pixbuf = phpgtk_pixbuf->get_instance();
-	}
+void GtkImage_::set_from_stock(Php::Parameters &parameters) {
+  // std::string s_stock_id = parameters[0];
+  // gchar *stock_id = (gchar *)s_stock_id.c_str();
 
-	gtk_image_set_from_pixbuf (GTK_IMAGE(instance), pixbuf);
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
+  // gtk_image_set_from_stock (GTK_IMAGE(instance), stock_id, size);
+  Php::deprecated << "set_from_stock is deprecated on Gtk 3.10" << '\n';
 }
 
-void GtkImage_::set_from_stock(Php::Parameters &parameters)
-{
-	// std::string s_stock_id = parameters[0];
-	// gchar *stock_id = (gchar *)s_stock_id.c_str();
+void GtkImage_::set_from_animation(Php::Parameters &parameters) {
+  // GdkPixbufAnimation *animation;
+  // if(parameters.size() > 0) {
+  // 	Php::Value object_animation = parameters[0];
+  // 	GdkPixbufAnimation_ *phpgtk_animation = (GdkPixbufAnimation_
+  // *)object_animation.implementation(); 	animation =
+  // GTK_WIDGET(phpgtk_animation->get_instance());
+  // }
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
+  // gtk_image_set_from_animation (GTK_IMAGE(instance), animation);
 
-	// gtk_image_set_from_stock (GTK_IMAGE(instance), stock_id, size);
-	Php::deprecated << "set_from_stock is deprecated on Gtk 3.10" << std::endl;
-
+  throw Php::Exception("GtkImage_::set_from_animation not implemented");
 }
 
-void GtkImage_::set_from_animation(Php::Parameters &parameters)
-{
-	// GdkPixbufAnimation *animation;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_animation = parameters[0];
-	// 	GdkPixbufAnimation_ *phpgtk_animation = (GdkPixbufAnimation_ *)object_animation.implementation();
-	// 	animation = GTK_WIDGET(phpgtk_animation->get_instance());
-	// }
+void GtkImage_::set_from_icon_name(Php::Parameters &parameters) {
+  std::string s_icon_name = parameters[0];
+  gchar *icon_name = (gchar *)s_icon_name.c_str();
 
-	// gtk_image_set_from_animation (GTK_IMAGE(instance), animation);
+  int int_size = (int)parameters[1];
+  GtkIconSize size = (GtkIconSize)int_size;
 
-
-	throw Php::Exception("GtkImage_::set_from_animation not implemented");
-
+  gtk_image_set_from_icon_name(GTK_IMAGE(instance), icon_name, size);
 }
 
-void GtkImage_::set_from_icon_name(Php::Parameters &parameters)
-{
-	std::string s_icon_name = parameters[0];
-	gchar *icon_name = (gchar *)s_icon_name.c_str();
+void GtkImage_::set_from_gicon(Php::Parameters &parameters) {
 
-	int int_size = (int)parameters[1];
-	GtkIconSize size = (GtkIconSize)int_size;
+  // int int_size = (int)parameters[1];
+  // GtkIconSize size = (GtkIconSize)int_size;
 
-	gtk_image_set_from_icon_name (GTK_IMAGE(instance), icon_name, size);
+  // gtk_image_set_from_gicon (GTK_IMAGE(instance), icon, size);
 
+  throw Php::Exception("GtkImage_::set_from_gicon not implemented");
 }
 
-void GtkImage_::set_from_gicon(Php::Parameters &parameters)
-{
+void GtkImage_::set_from_resource(Php::Parameters &parameters) {
+  std::string s_resource_path = parameters[0];
+  gchar *resource_path = (gchar *)s_resource_path.c_str();
 
-	// int int_size = (int)parameters[1];
-	// GtkIconSize size = (GtkIconSize)int_size;
-
-	// gtk_image_set_from_gicon (GTK_IMAGE(instance), icon, size);
-
-	throw Php::Exception("GtkImage_::set_from_gicon not implemented");
-
+  gtk_image_set_from_resource(GTK_IMAGE(instance), resource_path);
 }
 
-void GtkImage_::set_from_resource(Php::Parameters &parameters)
-{
-	std::string s_resource_path = parameters[0];
-	gchar *resource_path = (gchar *)s_resource_path.c_str();
+void GtkImage_::set_from_surface(Php::Parameters &parameters) {
 
-	gtk_image_set_from_resource (GTK_IMAGE(instance), resource_path);
+  // gtk_image_set_from_surface (GTK_IMAGE(instance), surface);
 
+  throw Php::Exception("GtkImage_::set_from_surface not implemented");
 }
 
-void GtkImage_::set_from_surface(Php::Parameters &parameters)
-{
+void GtkImage_::clear() { gtk_image_clear(GTK_IMAGE(instance)); }
 
-	// gtk_image_set_from_surface (GTK_IMAGE(instance), surface);
+void GtkImage_::set_pixel_size(Php::Parameters &parameters) {
+  gint pixel_size = (gint)parameters[0];
 
-	throw Php::Exception("GtkImage_::set_from_surface not implemented");
-
+  gtk_image_set_pixel_size(GTK_IMAGE(instance), pixel_size);
 }
 
-void GtkImage_::clear()
-{
-	gtk_image_clear (GTK_IMAGE(instance));
+Php::Value GtkImage_::get_pixel_size() {
+  gint ret = gtk_image_get_pixel_size(GTK_IMAGE(instance));
 
+  return ret;
 }
-
-void GtkImage_::set_pixel_size(Php::Parameters &parameters)
-{
-	gint pixel_size = (gint)parameters[0];
-
-	gtk_image_set_pixel_size (GTK_IMAGE(instance), pixel_size);
-
-}
-
-Php::Value GtkImage_::get_pixel_size()
-{
-	gint ret = gtk_image_get_pixel_size (GTK_IMAGE(instance));
-
-	return ret;
-}
-

@@ -27,7 +27,7 @@
 			/**
 			 * Return original GIcon
 			 */
-			GIcon *get_instance();
+			GIcon *get_instance() const;
 
 			/**
 			 * Set the original GIcon

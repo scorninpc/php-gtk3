@@ -4,17 +4,13 @@
 /**
  * Return original instance
  */
-GtkPaperSize *GtkPaperSize_::get_instance()
-{
-    return instance;
-}
+GtkPaperSize *GtkPaperSize_::get_instance() const { return instance; }
 
 /**
  * Set the original gpointer
  */
-void GtkPaperSize_::set_instance(GtkPaperSize *pased_instance)
-{
-    instance = pased_instance;
+void GtkPaperSize_::set_instance(GtkPaperSize *pased_instance) {
+  instance = pased_instance;
 }
 
 /**
@@ -27,250 +23,228 @@ GtkPaperSize_::GtkPaperSize_() = default;
  */
 GtkPaperSize_::~GtkPaperSize_() = default;
 
-void GtkPaperSize_::__construct(Php::Parameters &parameters)
-{
-	std::string s_name = parameters[0];
-	gchar *name = (gchar *)s_name.c_str();
+void GtkPaperSize_::__construct(Php::Parameters &parameters) {
+  std::string s_name = parameters[0];
+  gchar *name = (gchar *)s_name.c_str();
 
-	instance = gtk_paper_size_new (name);
-
+  instance = gtk_paper_size_new(name);
 }
 
-Php::Value GtkPaperSize_::new_from_ppd(Php::Parameters &parameters)
-{
-	std::string s_name = parameters[0];
-	gchar *name = (gchar *)s_name.c_str();
+Php::Value GtkPaperSize_::new_from_ppd(Php::Parameters &parameters) {
+  std::string s_name = parameters[0];
+  gchar *name = (gchar *)s_name.c_str();
 
-	std::string s_ppd_display_name = parameters[1];
-	gchar *ppd_display_name = (gchar *)s_ppd_display_name.c_str();
+  std::string s_ppd_display_name = parameters[1];
+  gchar *ppd_display_name = (gchar *)s_ppd_display_name.c_str();
 
-	gdouble width = (gdouble)parameters[2];
+  gdouble width = (gdouble)parameters[2];
 
-	gdouble height = (gdouble)parameters[3];
+  gdouble height = (gdouble)parameters[3];
 
-	GtkPaperSize *ret = gtk_paper_size_new_from_ppd (name, ppd_display_name, width, height);
+  GtkPaperSize *ret =
+      gtk_paper_size_new_from_ppd(name, ppd_display_name, width, height);
 
-	GtkPaperSize_ *return_parsed = new GtkPaperSize_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GtkPaperSize", return_parsed);
+  GtkPaperSize_ *return_parsed = new GtkPaperSize_();
+  return_parsed->set_instance(ret);
+  return Php::Object("GtkPaperSize", return_parsed);
 }
 
-Php::Value GtkPaperSize_::new_from_ipp(Php::Parameters &parameters)
-{
+Php::Value GtkPaperSize_::new_from_ipp(Php::Parameters &parameters) {
 
-	std::string s_name = parameters[0];
-	gchar *name = (gchar *)s_name.c_str();
+  std::string s_name = parameters[0];
+  gchar *name = (gchar *)s_name.c_str();
 
-	gdouble width = (gdouble)parameters[1];
+  gdouble width = (gdouble)parameters[1];
 
-	gdouble height = (gdouble)parameters[2];
+  gdouble height = (gdouble)parameters[2];
 
-	GtkPaperSize *ret = gtk_paper_size_new_from_ipp (name, width, height);
+  GtkPaperSize *ret = gtk_paper_size_new_from_ipp(name, width, height);
 
-	GtkPaperSize_ *return_parsed = new GtkPaperSize_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GtkPaperSize", return_parsed);
+  GtkPaperSize_ *return_parsed = new GtkPaperSize_();
+  return_parsed->set_instance(ret);
+  return Php::Object("GtkPaperSize", return_parsed);
 }
 
-Php::Value GtkPaperSize_::new_custom(Php::Parameters &parameters)
-{
-	std::string s_name = parameters[0];
-	gchar *name = (gchar *)s_name.c_str();
+Php::Value GtkPaperSize_::new_custom(Php::Parameters &parameters) {
+  std::string s_name = parameters[0];
+  gchar *name = (gchar *)s_name.c_str();
 
-	std::string s_display_name = parameters[1];
-	gchar *display_name = (gchar *)s_display_name.c_str();
+  std::string s_display_name = parameters[1];
+  gchar *display_name = (gchar *)s_display_name.c_str();
 
-	gdouble width = (gdouble)parameters[2];
+  gdouble width = (gdouble)parameters[2];
 
-	gdouble height = (gdouble)parameters[3];
+  gdouble height = (gdouble)parameters[3];
 
-	int int_unit = (int)parameters[4];
-	GtkUnit unit = (GtkUnit)int_unit;
+  int int_unit = (int)parameters[4];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	GtkPaperSize *ret = gtk_paper_size_new_custom (name, display_name, width, height, unit);
+  GtkPaperSize *ret =
+      gtk_paper_size_new_custom(name, display_name, width, height, unit);
 
-	GtkPaperSize_ *return_parsed = new GtkPaperSize_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GtkPaperSize", return_parsed);
+  GtkPaperSize_ *return_parsed = new GtkPaperSize_();
+  return_parsed->set_instance(ret);
+  return Php::Object("GtkPaperSize", return_parsed);
 }
 
-Php::Value GtkPaperSize_::copy()
-{
-	GtkPaperSize *ret = gtk_paper_size_copy (instance);
+Php::Value GtkPaperSize_::copy() const {
+  GtkPaperSize *ret = gtk_paper_size_copy(instance);
 
-	GtkPaperSize_ *return_parsed = new GtkPaperSize_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GtkPaperSize", return_parsed);
+  GtkPaperSize_ *return_parsed = new GtkPaperSize_();
+  return_parsed->set_instance(ret);
+  return Php::Object("GtkPaperSize", return_parsed);
 }
 
-void GtkPaperSize_::free()
-{
-	gtk_paper_size_free (instance);
+void GtkPaperSize_::free() const { gtk_paper_size_free(instance); }
 
+Php::Value GtkPaperSize_::is_equal(Php::Parameters &parameters) const {
+  GtkPaperSize *size2 = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_size2 = parameters[0];
+    GtkPaperSize_ *phpgtk_size2 =
+        (GtkPaperSize_ *)object_size2.implementation();
+    size2 = (phpgtk_size2->get_instance());
+  }
+
+  bool ret = gtk_paper_size_is_equal(instance, size2) != 0;
+
+  return ret;
 }
 
-Php::Value GtkPaperSize_::is_equal(Php::Parameters &parameters)
-{
-	GtkPaperSize *size2;
-	if(parameters.size() > 0) {
-		Php::Value object_size2 = parameters[0];
-		GtkPaperSize_ *phpgtk_size2 = (GtkPaperSize_ *)object_size2.implementation();
-		size2 = (phpgtk_size2->get_instance());
-	}
+Php::Value GtkPaperSize_::get_paper_sizes() {
+  // GList ret = gtk_paper_size_get_paper_sizes (instance);
 
-	bool ret = gtk_paper_size_is_equal (instance, size2);
+  // return ret;
 
-	return ret;
+  throw Php::Exception("GtkPaperSize_::get_paper_sizes not implemented");
+  return 1;
 }
 
-Php::Value GtkPaperSize_::get_paper_sizes()
-{
-	// GList ret = gtk_paper_size_get_paper_sizes (instance);
+Php::Value GtkPaperSize_::get_name() const {
+  std::string ret = gtk_paper_size_get_name(instance);
 
-	// return ret;
-
-	throw Php::Exception("GtkPaperSize_::get_paper_sizes not implemented");
-	return 1;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_name()
-{
-	std::string ret = gtk_paper_size_get_name (instance);
+Php::Value GtkPaperSize_::get_display_name() const {
+  std::string ret = gtk_paper_size_get_display_name(instance);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_display_name()
-{
-	std::string ret = gtk_paper_size_get_display_name (instance);
+Php::Value GtkPaperSize_::get_ppd_name() const {
+  std::string ret = gtk_paper_size_get_ppd_name(instance);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_ppd_name()
-{
-	std::string ret = gtk_paper_size_get_ppd_name (instance);
+Php::Value GtkPaperSize_::get_width(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	return ret;
+  gdouble ret = gtk_paper_size_get_width(instance, unit);
+
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_width(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value GtkPaperSize_::get_height(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	gdouble ret = gtk_paper_size_get_width (instance, unit);
+  gdouble ret = gtk_paper_size_get_height(instance, unit);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_height(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value GtkPaperSize_::is_ipp() const {
+  bool ret = gtk_paper_size_is_ipp(instance) != 0;
 
-	gdouble ret = gtk_paper_size_get_height (instance, unit);
-
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::is_ipp()
-{
-	bool ret = gtk_paper_size_is_ipp (instance);
+Php::Value GtkPaperSize_::is_custom() const {
+  bool ret = gtk_paper_size_is_custom(instance) != 0;
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::is_custom()
-{
-	bool ret = gtk_paper_size_is_custom (instance);
+void GtkPaperSize_::set_size(Php::Parameters &parameters) const {
+  gdouble width = (gdouble)parameters[0];
 
-	return ret;
+  gdouble height = (gdouble)parameters[1];
+
+  int int_unit = (int)parameters[2];
+  GtkUnit unit = (GtkUnit)int_unit;
+
+  gtk_paper_size_set_size(instance, width, height, unit);
 }
 
-void GtkPaperSize_::set_size(Php::Parameters &parameters)
-{
-	gdouble width = (gdouble)parameters[0];
+Php::Value
+GtkPaperSize_::get_default_top_margin(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	gdouble height = (gdouble)parameters[1];
+  gdouble ret = gtk_paper_size_get_default_top_margin(instance, unit);
 
-	int int_unit = (int)parameters[2];
-	GtkUnit unit = (GtkUnit)int_unit;
-
-	gtk_paper_size_set_size (instance, width, height, unit);
-
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_default_top_margin(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value
+GtkPaperSize_::get_default_bottom_margin(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	gdouble ret = gtk_paper_size_get_default_top_margin (instance, unit);
+  gdouble ret = gtk_paper_size_get_default_bottom_margin(instance, unit);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_default_bottom_margin(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value
+GtkPaperSize_::get_default_left_margin(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	gdouble ret = gtk_paper_size_get_default_bottom_margin (instance, unit);
+  gdouble ret = gtk_paper_size_get_default_left_margin(instance, unit);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_default_left_margin(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value
+GtkPaperSize_::get_default_right_margin(Php::Parameters &parameters) const {
+  int int_unit = (int)parameters[0];
+  GtkUnit unit = (GtkUnit)int_unit;
 
-	gdouble ret = gtk_paper_size_get_default_left_margin (instance, unit);
+  gdouble ret = gtk_paper_size_get_default_right_margin(instance, unit);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_default_right_margin(Php::Parameters &parameters)
-{
-	int int_unit = (int)parameters[0];
-	GtkUnit unit = (GtkUnit)int_unit;
+Php::Value GtkPaperSize_::get_default() {
+  std::string ret = gtk_paper_size_get_default();
 
-	gdouble ret = gtk_paper_size_get_default_right_margin (instance, unit);
-
-	return ret;
+  return ret;
 }
 
-Php::Value GtkPaperSize_::get_default()
-{
-	std::string ret = gtk_paper_size_get_default ();
+Php::Value GtkPaperSize_::new_from_key_file(Php::Parameters &parameters) {
+  // std::string s_group_name = parameters[0];
+  // gchar *group_name = (gchar *)s_group_name.c_str();
 
-	return ret;
+  // GtkPaperSize *ret = gtk_paper_size_new_from_key_file (instance, group_name,
+  // error);
+
+  // GtkPaperSize_ *return_parsed = new GtkPaperSize_();
+  // return_parsed->set_instance(ret);
+  // return Php::Object("GtkPaperSize", return_parsed);
+
+  throw Php::Exception("GtkPaperSize_::new_from_key_file not implemented");
+  return 1;
 }
 
-Php::Value GtkPaperSize_::new_from_key_file(Php::Parameters &parameters)
-{
-	// std::string s_group_name = parameters[0];
-	// gchar *group_name = (gchar *)s_group_name.c_str();
+void GtkPaperSize_::to_key_file(Php::Parameters &parameters) {
 
+  // std::string s_group_name = parameters[1];
+  // gchar *group_name = (gchar *)s_group_name.c_str();
 
-	// GtkPaperSize *ret = gtk_paper_size_new_from_key_file (instance, group_name, error);
-
-	// GtkPaperSize_ *return_parsed = new GtkPaperSize_();
-	// return_parsed->set_instance(ret);
-	// return Php::Object("GtkPaperSize", return_parsed);
-
-	throw Php::Exception("GtkPaperSize_::new_from_key_file not implemented");
-	return 1;
+  // gtk_paper_size_to_key_file (instance, key_file, group_name);
+  throw Php::Exception("GtkPaperSize_::to_key_file not implemented");
 }
-
-void GtkPaperSize_::to_key_file(Php::Parameters &parameters)
-{
-
-	// std::string s_group_name = parameters[1];
-	// gchar *group_name = (gchar *)s_group_name.c_str();
-
-	// gtk_paper_size_to_key_file (instance, key_file, group_name);
-	throw Php::Exception("GtkPaperSize_::to_key_file not implemented");
-}
-

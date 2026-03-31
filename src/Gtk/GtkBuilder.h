@@ -44,11 +44,11 @@
 
             static Php::Value new_from_string(Php::Parameters &parameters);
 
-            void add_callback_symbol(Php::Parameters &parameters);
+            static void add_callback_symbol(Php::Parameters &parameters);
 
-            void add_callback_symbols(Php::Parameters &parameters);
+            static void add_callback_symbols(Php::Parameters &parameters);
 
-            void lookup_callback_symbol(Php::Parameters &parameters);
+            static void lookup_callback_symbol(Php::Parameters &parameters);
 
             Php::Value add_from_file(Php::Parameters &parameters);
 
@@ -56,39 +56,39 @@
 
             Php::Value add_from_string(Php::Parameters &parameters);
 
-            Php::Value add_objects_from_file(Php::Parameters &parameters);
+            static Php::Value add_objects_from_file(Php::Parameters &parameters);
 
-            Php::Value add_objects_from_string(Php::Parameters &parameters);
+            static Php::Value add_objects_from_string(Php::Parameters &parameters);
 
-            Php::Value add_objects_from_resource(Php::Parameters &parameters);
+            static Php::Value add_objects_from_resource(Php::Parameters &parameters);
 
-            Php::Value extend_with_template(Php::Parameters &parameters);
+            static Php::Value extend_with_template(Php::Parameters &parameters);
 
             Php::Value get_object(Php::Parameters &parameters);
 
-            Php::Value get_objects();
+            static Php::Value get_objects();
 
-            void expose_object(Php::Parameters &parameters);
+            static void expose_object(Php::Parameters &parameters);
 
-            void connect_signals(Php::Parameters &parameters);
+            static void connect_signals(Php::Parameters &parameters);
 
             void connect_signals_full(Php::Parameters &parameters);
             static void connect_signals_full_callback(GtkBuilder *builder, GObject *object, const gchar *signal_name, const char *handler_name, GObject *connect_object, GConnectFlags flags, gpointer data);
             static void connect_signals_full_callback1(gpointer user_data, ...);
 
-            void set_translation_domain(Php::Parameters &parameters);
+            static void set_translation_domain(Php::Parameters &parameters);
 
-            Php::Value get_translation_domain();
+            static Php::Value get_translation_domain();
 
-            Php::Value get_application();
+            static Php::Value get_application();
 
-            void set_application(Php::Parameters &parameters);
+            static void set_application(Php::Parameters &parameters);
 
             Php::Value get_type_from_name(Php::Parameters &parameters);
 
-            Php::Value value_from_string(Php::Parameters &parameters);
+            static Php::Value value_from_string(Php::Parameters &parameters);
 
-            Php::Value value_from_string_type(Php::Parameters &parameters);
+            static Php::Value value_from_string_type(Php::Parameters &parameters);
     };
 
 #endif

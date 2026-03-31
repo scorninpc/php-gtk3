@@ -21,7 +21,7 @@
 
             void __construct();
 
-            Php::Value get_attributes();
+            static Php::Value get_attributes();
     };
 
 #endif

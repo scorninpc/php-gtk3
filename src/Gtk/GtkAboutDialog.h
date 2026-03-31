@@ -90,7 +90,7 @@
 
             void add_credit_section(Php::Parameters &parameters);
 
-            void gtk_show_about_dialog(Php::Parameters &parameters);
+            static void gtk_show_about_dialog(Php::Parameters &parameters);
     };
 
 #endif

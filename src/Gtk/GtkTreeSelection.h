@@ -32,11 +32,11 @@
 
             Php::Value get_mode();
 
-            void set_select_function(Php::Parameters &parameters);
+            static void set_select_function(Php::Parameters &parameters);
 
-            void get_select_function(Php::Parameters &parameters);
+            static void get_select_function(Php::Parameters &parameters);
 
-            Php::Value get_user_data(Php::Parameters &parameters);
+            static Php::Value get_user_data(Php::Parameters &parameters);
 
             Php::Value get_tree_view();
 

@@ -36,7 +36,7 @@
 
             void remove_widget(Php::Parameters &parameters);
 
-            Php::Value get_widgets();
+            static Php::Value get_widgets();
     };
 
 #endif

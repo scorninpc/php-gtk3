@@ -41,11 +41,11 @@
             void set_dock_icon_resource(Php::Parameters &parameters);
             void attention_request(Php::Parameters &parameters);
             void cancel_attention_request(Php::Parameters &parameters);
-            Php::Value get_bundle_path();
-            Php::Value get_resource_path();
-            Php::Value get_executable_path();
-            Php::Value get_bundle_id();
-            Php::Value get_bundle_info(Php::Parameters &parameters);
+            static Php::Value get_bundle_path();
+            static Php::Value get_resource_path();
+            static Php::Value get_executable_path();
+            static Php::Value get_bundle_id();
+            static Php::Value get_bundle_info(Php::Parameters &parameters);
     };
 
 #endif  

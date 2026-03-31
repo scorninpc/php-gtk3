@@ -22,8 +22,8 @@
 
             Php::Value __get(const Php::Value &name);
 
-            GdkRGBA instance;
-            GdkRGBA get_instance();
+            GdkRGBA instance{};
+            GdkRGBA get_instance() const;
             void set_instance(GdkRGBA event);
 
 

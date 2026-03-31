@@ -28,7 +28,7 @@
 
             void __construct(Php::Parameters &parameters);
 
-            void set_column_types(Php::Parameters &parameters);
+            static void set_column_types(Php::Parameters &parameters);
 
             void set_value(Php::Parameters &parameters);
 
@@ -40,7 +40,7 @@
 
             Php::Value insert_after(Php::Parameters &parameters);
 
-            Php::Value insert_with_values(Php::Parameters &parameters);
+            static Php::Value insert_with_values(Php::Parameters &parameters);
 
             Php::Value prepend(Php::Parameters &parameters);
 
@@ -52,7 +52,7 @@
 
             void clear();
 
-            void reorder(Php::Parameters &parameters);
+            static void reorder(Php::Parameters &parameters);
 
             void swap(Php::Parameters &parameters);
 

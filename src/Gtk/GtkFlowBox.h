@@ -62,9 +62,9 @@
 
             Php::Value get_activate_on_single_click();
 
-            void selected_foreach(Php::Parameters &parameters);
+            static void selected_foreach(Php::Parameters &parameters);
 
-            Php::Value get_selected_children();
+            static Php::Value get_selected_children();
 
             void select_child(Php::Parameters &parameters);
 
@@ -78,15 +78,15 @@
 
             Php::Value get_selection_mode();
 
-            void set_filter_func(Php::Parameters &parameters);
+            static void set_filter_func(Php::Parameters &parameters);
 
             void invalidate_filter();
 
-            void set_sort_func(Php::Parameters &parameters);
+            static void set_sort_func(Php::Parameters &parameters);
 
             void invalidate_sort();
 
-            void bind_model(Php::Parameters &parameters);
+            static void bind_model(Php::Parameters &parameters);
     };
 
 #endif

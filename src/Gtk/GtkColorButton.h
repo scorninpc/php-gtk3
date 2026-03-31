@@ -30,16 +30,16 @@
 
             void __construct();
 
-            Php::Value new_with_color();
+            static Php::Value new_with_color();
 
             static Php::Value new_with_rgba(Php::Parameters &parameters);
 
-            void set_color(Php::Parameters &parameters);
+            static void set_color(Php::Parameters &parameters);
 
-            void get_color(Php::Parameters &parameters);
+            static void get_color(Php::Parameters &parameters);
 
-            void set_alpha(Php::Parameters &parameters);
-            void get_alpha(Php::Parameters &parameters);
+            static void set_alpha(Php::Parameters &parameters);
+            static void get_alpha(Php::Parameters &parameters);
 
             void set_rgba(Php::Parameters &parameters);
 

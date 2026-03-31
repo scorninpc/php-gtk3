@@ -18,7 +18,7 @@
          */
         public:
 
-            GdkPixbufFormat *instance;
+            GdkPixbufFormat *instance{};
 
             /**
              *  C++ constructor and destructor
@@ -29,7 +29,7 @@
             /**
              * Return original GtkWidget
              */
-            GdkPixbufFormat *get_instance();
+            GdkPixbufFormat *get_instance() const;
 
             /**
              * Set the original GdkPixbufFormat

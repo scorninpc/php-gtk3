@@ -44,7 +44,7 @@
 
             Php::Value get_visual_type();
 
-            Php::Value get_screen();
+            static Php::Value get_screen();
     };
 
 #endif

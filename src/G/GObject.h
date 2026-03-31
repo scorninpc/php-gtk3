@@ -24,12 +24,12 @@
          * Publics
          */
         public:
-            gpointer *instance;
+            gpointer *instance{};
 
             /**
              * Set/Get original gpoint
              */
-            gpointer *get_instance();
+            gpointer *get_instance() const;
             void set_instance(gpointer *pased_instance);
 
             /**
@@ -56,19 +56,19 @@
              *
              * https://developer.gnome.org/gobject/unstable/gobject-Signals.html#g-signal-handler-disconnect
              */
-            void handler_disconnect(Php::Parameters &parameters);
+            void handler_disconnect(Php::Parameters &parameters) const;
 
-            Php::Value is_connected(Php::Parameters& parameters);
+            Php::Value is_connected(Php::Parameters& parameters) const;
 
-            Php::Value get_property(Php::Parameters &parameters);
-            void set_property(Php::Parameters &parameters);
-            void signal_handler_block(Php::Parameters &parameters);
-            void signal_handler_unblock(Php::Parameters &parameters);
+            Php::Value get_property(Php::Parameters &parameters) const;
+            void set_property(Php::Parameters &parameters) const;
+            void signal_handler_block(Php::Parameters &parameters) const;
+            void signal_handler_unblock(Php::Parameters &parameters) const;
 
-            Php::Value get_data(Php::Parameters& parameters);
-            void set_data(Php::Parameters& parameters);
+            Php::Value get_data(Php::Parameters& parameters) const;
+            void set_data(Php::Parameters& parameters) const;
 
-            void __clone();
+            void __clone() const;
     };
 
 #endif

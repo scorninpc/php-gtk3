@@ -24,7 +24,7 @@
 			/**
 			 * 
 			 */
-			GtkWidget *widget;
+			GtkWidget *widget{};
 
             struct st_timeout_add;
 

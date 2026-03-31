@@ -32,15 +32,15 @@
 
             void __construct(Php::Parameters &parameters);
 
-            void set_column_types(Php::Parameters &parameters);
+            static void set_column_types(Php::Parameters &parameters);
 
-            void set(Php::Parameters &parameters);
+            static void set(Php::Parameters &parameters);
 
-            void set_valist(Php::Parameters &parameters);
+            static void set_valist(Php::Parameters &parameters);
 
             void set_value(Php::Parameters &parameters);
 
-            void set_valuesv(Php::Parameters &parameters);
+            static void set_valuesv(Php::Parameters &parameters);
 
             Php::Value remove(Php::Parameters &parameters);
 
@@ -50,9 +50,9 @@
 
             Php::Value insert_after(Php::Parameters &parameters);
 
-            void insert_with_values(Php::Parameters &parameters);
+            static void insert_with_values(Php::Parameters &parameters);
 
-            void insert_with_valuesv(Php::Parameters &parameters);
+            static void insert_with_valuesv(Php::Parameters &parameters);
 
             Php::Value prepend(Php::Parameters &parameters);
 
@@ -62,7 +62,7 @@
 
             Php::Value iter_is_valid(Php::Parameters &parameters);
 
-            void reorder(Php::Parameters &parameters);
+            static void reorder(Php::Parameters &parameters);
 
             void swap(Php::Parameters &parameters);
 

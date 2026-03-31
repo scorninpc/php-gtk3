@@ -66,13 +66,13 @@
 
             void run_javascript(Php::Parameters &parameters);
 
-            void register_script_message_handler(Php::Parameters &parameters);
+            static void register_script_message_handler(Php::Parameters &parameters);
 
-            void enable_developer_extras();
+            static void enable_developer_extras();
 
-            Php::Value get_settings();
+            static Php::Value get_settings();
             
-            void set_user_data_folder(Php::Parameters &parameters);
+            static void set_user_data_folder(Php::Parameters &parameters);
 
         /**
          * Private members
@@ -80,8 +80,8 @@
         private:
             #ifndef _WIN32
                 // Unix/Linux/macOS: WebKit2GTK specific members
-                WebKitUserContentManager *user_content_manager;
-                std::vector<gulong> signal_handler_ids;
+                WebKitUserContentManager *user_content_manager{};
+                std::vector<gulong> signal_handler_ids{};
             #else
                 // Windows: WebView2 specific members
                 // Note: WebView2 state (controller, environment, etc.) is managed 

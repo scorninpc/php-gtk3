@@ -21,9 +21,9 @@
          */
         public:
 
-            GtkTextTag *tag;
+            GtkTextTag *tag{};
 
-            GtkTextTag *get_tag();
+            GtkTextTag *get_tag() const;
             void set_tag(GtkTextTag *passed_tag);
 
             /**
@@ -34,13 +34,13 @@
 
             void __construct(Php::Parameters &parameters);
 
-            Php::Value get_priority();
+            Php::Value get_priority() const;
 
-            void set_priority(Php::Parameters &parameters);
+            void set_priority(Php::Parameters &parameters) const;
 
-            Php::Value event(Php::Parameters &parameters);
+            static Php::Value event(Php::Parameters &parameters);
 
-            void tag_changed(Php::Parameters &parameters);
+            void tag_changed(Php::Parameters &parameters) const;
     };
 
 #endif

@@ -39,7 +39,7 @@
 
             Php::Value get_needed();
 
-            Php::Value filter(Php::Parameters &parameters);
+            static Php::Value filter(Php::Parameters &parameters);
     };
 
 #endif

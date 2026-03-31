@@ -31,9 +31,9 @@
 
             void add_provider(Php::Parameters &parameters);
 
-            void add_provider_for_screen(Php::Parameters &parameters);
+            static void add_provider_for_screen(Php::Parameters &parameters);
 
-            void get(Php::Parameters &parameters);
+            static void get(Php::Parameters &parameters);
 
             Php::Value get_direction();
 
@@ -43,23 +43,23 @@
 
             Php::Value get_path();
 
-            void get_property(Php::Parameters &parameters);
+            static void get_property(Php::Parameters &parameters);
 
             Php::Value get_screen();
 
-            Php::Value get_frame_clock();
+            static Php::Value get_frame_clock();
 
             Php::Value get_state();
 
-            void get_style(Php::Parameters &parameters);
+            static void get_style(Php::Parameters &parameters);
 
-            void get_style_property(Php::Parameters &parameters);
+            static void get_style_property(Php::Parameters &parameters);
 
-            void get_style_valist(Php::Parameters &parameters);
+            static void get_style_valist(Php::Parameters &parameters);
 
-            void get_valist(Php::Parameters &parameters);
+            static void get_valist(Php::Parameters &parameters);
 
-            Php::Value get_section(Php::Parameters &parameters);
+            static Php::Value get_section(Php::Parameters &parameters);
 
             Php::Value get_color(Php::Parameters &parameters);
 
@@ -67,13 +67,13 @@
 
             Php::Value get_border_color(Php::Parameters &parameters);
 
-            void get_border(Php::Parameters &parameters);
+            static void get_border(Php::Parameters &parameters);
 
-            void get_padding(Php::Parameters &parameters);
+            static void get_padding(Php::Parameters &parameters);
 
-            void get_margin(Php::Parameters &parameters);
+            static void get_margin(Php::Parameters &parameters);
 
-            Php::Value get_font(Php::Parameters &parameters);
+            static Php::Value get_font(Php::Parameters &parameters);
 
             void invalidate();
 
@@ -95,7 +95,7 @@
 
             void remove_provider(Php::Parameters &parameters);
 
-            void remove_provider_for_screen(Php::Parameters &parameters);
+            static void remove_provider_for_screen(Php::Parameters &parameters);
 
             void reset_widgets();
 
@@ -131,7 +131,7 @@
 
             void set_screen(Php::Parameters &parameters);
 
-            void set_frame_clock(Php::Parameters &parameters);
+            static void set_frame_clock(Php::Parameters &parameters);
 
             void set_state(Php::Parameters &parameters);
 
@@ -141,17 +141,17 @@
 
             Php::Value to_string(Php::Parameters &parameters);
 
-            Php::Value gtk_border_new();
+            static Php::Value gtk_border_new();
 
-            Php::Value gtk_border_copy();
+            static Php::Value gtk_border_copy();
 
-            void gtk_border_free();
+            static void gtk_border_free();
 
             void gtk_render_arrow(Php::Parameters &parameters);
 
             void gtk_render_background(Php::Parameters &parameters);
 
-            void gtk_render_background_get_clip(Php::Parameters &parameters);
+            static void gtk_render_background_get_clip(Php::Parameters &parameters);
 
             void gtk_render_check(Php::Parameters &parameters);
 
@@ -167,7 +167,7 @@
 
             void gtk_render_handle(Php::Parameters &parameters);
 
-            void gtk_render_layout(Php::Parameters &parameters);
+            static void gtk_render_layout(Php::Parameters &parameters);
 
             void gtk_render_line(Php::Parameters &parameters);
 
@@ -179,11 +179,11 @@
 
             Php::Value gtk_render_icon_pixbuf(Php::Parameters &parameters);
 
-            void gtk_render_icon_surface(Php::Parameters &parameters);
+            static void gtk_render_icon_surface(Php::Parameters &parameters);
 
             void gtk_render_icon(Php::Parameters &parameters);
 
-            void gtk_render_insertion_cursor(Php::Parameters &parameters);
+            static void gtk_render_insertion_cursor(Php::Parameters &parameters);
     };
 
 #endif

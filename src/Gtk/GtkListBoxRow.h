@@ -19,12 +19,12 @@
          */
         public:
 
-            GtkListBoxRow *row;
+            GtkListBoxRow *row{};
 
             /**
              * Set/Get original row
              */
-            GtkListBoxRow *get_row();
+            GtkListBoxRow *get_row() const;
             void set_row(GtkListBoxRow *pased_row);
 
             /**

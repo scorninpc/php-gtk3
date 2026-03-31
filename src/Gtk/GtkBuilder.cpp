@@ -11,501 +11,480 @@ GtkBuilder_::GtkBuilder_() = default;
  */
 GtkBuilder_::~GtkBuilder_() = default;
 
-void GtkBuilder_::__construct()
-{
-	instance = (gpointer *)gtk_builder_new ();
+void GtkBuilder_::__construct() { instance = (gpointer *)gtk_builder_new(); }
 
+Php::Value GtkBuilder_::new_from_file(Php::Parameters &parameters) {
+  std::string s_filename = parameters[0];
+  gchar *filename = (gchar *)s_filename.c_str();
+
+  GtkBuilder *builder = gtk_builder_new_from_file(filename);
+
+  GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
+  phpgtk_builder->set_instance((gpointer *)builder);
+  return Php::Object("GtkBuilder", phpgtk_builder);
 }
 
-Php::Value GtkBuilder_::new_from_file(Php::Parameters &parameters)
-{
-	std::string s_filename = parameters[0];
-	gchar *filename = (gchar *)s_filename.c_str();
+Php::Value GtkBuilder_::new_from_resource(Php::Parameters &parameters) {
+  std::string s_resource_path = parameters[0];
+  gchar *resource_path = (gchar *)s_resource_path.c_str();
 
-	GtkBuilder *builder = gtk_builder_new_from_file (filename);
+  GtkBuilder *builder = gtk_builder_new_from_resource(resource_path);
 
-	GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
-	phpgtk_builder->set_instance((gpointer *)builder);
-	return Php::Object("GtkBuilder", phpgtk_builder);
-
+  GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
+  phpgtk_builder->set_instance((gpointer *)builder);
+  return Php::Object("GtkBuilder", phpgtk_builder);
 }
 
-Php::Value GtkBuilder_::new_from_resource(Php::Parameters &parameters)
-{
-	std::string s_resource_path = parameters[0];
-	gchar *resource_path = (gchar *)s_resource_path.c_str();
+Php::Value GtkBuilder_::new_from_string(Php::Parameters &parameters) {
+  std::string s_string = parameters[0];
+  gchar *string = (gchar *)s_string.c_str();
 
-	GtkBuilder *builder = gtk_builder_new_from_resource (resource_path);
+  GtkBuilder *builder = gtk_builder_new_from_string(string, s_string.length());
 
-	GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
-	phpgtk_builder->set_instance((gpointer *)builder);
-	return Php::Object("GtkBuilder", phpgtk_builder);
+  GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
+  phpgtk_builder->set_instance((gpointer *)builder);
+  return Php::Object("GtkBuilder", phpgtk_builder);
 }
 
-Php::Value GtkBuilder_::new_from_string(Php::Parameters &parameters)
-{
-	std::string s_string = parameters[0];
-	gchar *string = (gchar *)s_string.c_str();
+void GtkBuilder_::add_callback_symbol(Php::Parameters &parameters) {
+  // std::string s_callback_name = parameters[0];
+  // gchar *callback_name = (gchar *)s_callback_name.c_str();
 
-	GtkBuilder *builder = gtk_builder_new_from_string (string, s_string.length());
+  // std::string s_add_callback_symbol = parameters[1];
+  // gchar *add_callback_symbol = (gchar *)s_add_callback_symbol.c_str();
 
-	GtkBuilder_ *phpgtk_builder = new GtkBuilder_();
-	phpgtk_builder->set_instance((gpointer *)builder);
-	return Php::Object("GtkBuilder", phpgtk_builder);
+  // gtk_builder_add_callback_symbol ((instance), callback_name,
+  // add_callback_symbol);
+
+  throw Php::Exception("GtkBuilder_::add_callback_symbol not implemented");
 }
 
-void GtkBuilder_::add_callback_symbol(Php::Parameters &parameters)
-{
-	// std::string s_callback_name = parameters[0];
-	// gchar *callback_name = (gchar *)s_callback_name.c_str();
+void GtkBuilder_::add_callback_symbols(Php::Parameters &parameters) {
+  // std::string s_callback_name = parameters[0];
+  // gchar *callback_name = (gchar *)s_callback_name.c_str();
 
-	// std::string s_add_callback_symbol = parameters[1];
-	// gchar *add_callback_symbol = (gchar *)s_add_callback_symbol.c_str();
+  // std::string s_add_callback_symbol = parameters[1];
+  // gchar *add_callback_symbol = (gchar *)s_add_callback_symbol.c_str();
 
-	// gtk_builder_add_callback_symbol ((instance), callback_name, add_callback_symbol);
+  // gtk_builder_add_callback_symbols ((instance), callback_name,
+  // add_callback_symbol);
 
-	throw Php::Exception("GtkBuilder_::add_callback_symbol not implemented");
+  throw Php::Exception("GtkBuilder_::add_callback_symbols not implemented");
 }
 
-void GtkBuilder_::add_callback_symbols(Php::Parameters &parameters)
-{
-	// std::string s_callback_name = parameters[0];
-	// gchar *callback_name = (gchar *)s_callback_name.c_str();
+void GtkBuilder_::lookup_callback_symbol(Php::Parameters &parameters) {
+  // std::string s_callback_name = parameters[0];
+  // gchar *callback_name = (gchar *)s_callback_name.c_str();
 
-	// std::string s_add_callback_symbol = parameters[1];
-	// gchar *add_callback_symbol = (gchar *)s_add_callback_symbol.c_str();
+  // gtk_builder_lookup_callback_symbol ((instance), callback_name);
 
-	// gtk_builder_add_callback_symbols ((instance), callback_name, add_callback_symbol);
-
-	throw Php::Exception("GtkBuilder_::add_callback_symbols not implemented");
+  throw Php::Exception("GtkBuilder_::lookup_callback_symbol not implemented");
 }
 
-void GtkBuilder_::lookup_callback_symbol(Php::Parameters &parameters)
-{
-	// std::string s_callback_name = parameters[0];
-	// gchar *callback_name = (gchar *)s_callback_name.c_str();
+Php::Value GtkBuilder_::add_from_file(Php::Parameters &parameters) {
+  std::string s_filename = parameters[0];
+  gchar *filename = (gchar *)s_filename.c_str();
 
-	// gtk_builder_lookup_callback_symbol ((instance), callback_name);
+  GError *err = nullptr;
 
-	throw Php::Exception("GtkBuilder_::lookup_callback_symbol not implemented");
+  int ret = gtk_builder_add_from_file(GTK_BUILDER(instance), filename, &err);
+
+  return ret;
 }
 
-Php::Value GtkBuilder_::add_from_file(Php::Parameters &parameters)
-{
-	std::string s_filename = parameters[0];
-	gchar *filename = (gchar *)s_filename.c_str();
+Php::Value GtkBuilder_::add_from_resource(Php::Parameters &parameters) {
+  std::string s_resource_path = parameters[0];
+  gchar *resource_path = (gchar *)s_resource_path.c_str();
 
-	GError *err = NULL;
+  GError *err = nullptr;
 
-	int ret = gtk_builder_add_from_file (GTK_BUILDER(instance), filename, &err);
+  int ret =
+      gtk_builder_add_from_resource(GTK_BUILDER(instance), resource_path, &err);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkBuilder_::add_from_resource(Php::Parameters &parameters)
-{
-	std::string s_resource_path = parameters[0];
-	gchar *resource_path = (gchar *)s_resource_path.c_str();
+Php::Value GtkBuilder_::add_from_string(Php::Parameters &parameters) {
+  std::string s_buffer = parameters[0];
+  gchar *buffer = (gchar *)s_buffer.c_str();
 
-	GError *err = NULL;
+  GError *err = nullptr;
 
-	int ret = gtk_builder_add_from_resource (GTK_BUILDER(instance), resource_path, &err);
+  int ret = gtk_builder_add_from_string(GTK_BUILDER(instance), buffer,
+                                        s_buffer.length(), &err);
 
-	return ret;
+  return ret;
 }
 
-Php::Value GtkBuilder_::add_from_string(Php::Parameters &parameters)
-{
-	std::string s_buffer = parameters[0];
-	gchar *buffer = (gchar *)s_buffer.c_str();
+Php::Value GtkBuilder_::add_objects_from_file(Php::Parameters &parameters) {
+  // std::string s_buffer = parameters[0];
+  // gchar *buffer = (gchar *)s_buffer.c_str();
 
-	GError *err = NULL;
+  // GError *err = NULL;
 
-	int ret = gtk_builder_add_from_string (GTK_BUILDER(instance), buffer, s_buffer.length(), &err);
+  // int ret = gtk_builder_add_objects_from_file ((instance), buffer, &err);
 
-	return ret;
+  // return ret;
+
+  throw Php::Exception("GtkBuilder_::add_objects_from_file not implemented");
 }
 
-Php::Value GtkBuilder_::add_objects_from_file(Php::Parameters &parameters)
-{
-	// std::string s_buffer = parameters[0];
-	// gchar *buffer = (gchar *)s_buffer.c_str();
+Php::Value GtkBuilder_::add_objects_from_string(Php::Parameters &parameters) {
+  // std::string s_buffer = parameters[0];
+  // gchar *buffer = (gchar *)s_buffer.c_str();
 
-	// GError *err = NULL;
+  // GError *err = NULL;
 
-	// int ret = gtk_builder_add_objects_from_file ((instance), buffer, &err);
+  // int ret = gtk_builder_add_objects_from_string ((instance), buffer, &err);
 
-	// return ret;
+  // return ret;
 
-	throw Php::Exception("GtkBuilder_::add_objects_from_file not implemented");
+  throw Php::Exception("GtkBuilder_::add_objects_from_string not implemented");
 }
 
-Php::Value GtkBuilder_::add_objects_from_string(Php::Parameters &parameters)
-{
-	// std::string s_buffer = parameters[0];
-	// gchar *buffer = (gchar *)s_buffer.c_str();
+Php::Value GtkBuilder_::add_objects_from_resource(Php::Parameters &parameters) {
+  // std::string s_buffer = parameters[0];
+  // gchar *buffer = (gchar *)s_buffer.c_str();
 
-	// GError *err = NULL;
+  // GError *err = NULL;
 
-	// int ret = gtk_builder_add_objects_from_string ((instance), buffer, &err);
+  // int ret = gtk_builder_add_objects_from_resource ((instance), buffer, &err);
 
-	// return ret;
+  // return ret;
 
-	throw Php::Exception("GtkBuilder_::add_objects_from_string not implemented");
+  throw Php::Exception(
+      "GtkBuilder_::add_objects_from_resource not implemented");
 }
 
-Php::Value GtkBuilder_::add_objects_from_resource(Php::Parameters &parameters)
-{
-	// std::string s_buffer = parameters[0];
-	// gchar *buffer = (gchar *)s_buffer.c_str();
+Php::Value GtkBuilder_::extend_with_template(Php::Parameters &parameters) {
+  // GtkWidget *widget;
+  // if(parameters.size() > 0) {
+  // 	Php::Value object_widget = parameters[0];
+  // 	GtkWidget_ *phpgtk_widget = (GtkWidget_
+  // *)object_widget.implementation(); 	widget =
+  // GTK_WIDGET(phpgtk_widget->get_instance());
+  // }
 
-	// GError *err = NULL;
+  // GError *err = NULL;
 
-	// int ret = gtk_builder_add_objects_from_resource ((instance), buffer, &err);
+  // std::string s_buffer = parameters[2];
+  // gchar *buffer = (gchar *)s_buffer.c_str();
 
-	// return ret;
+  // int ret = gtk_builder_extend_with_template ((instance), widget,
+  // template_type, buffer, &err);
 
-	throw Php::Exception("GtkBuilder_::add_objects_from_resource not implemented");
+  // return ret;
+
+  throw Php::Exception("GtkBuilder_::extend_with_template not implemented");
 }
 
-Php::Value GtkBuilder_::extend_with_template(Php::Parameters &parameters)
-{
-	// GtkWidget *widget;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_widget = parameters[0];
-	// 	GtkWidget_ *phpgtk_widget = (GtkWidget_ *)object_widget.implementation();
-	// 	widget = GTK_WIDGET(phpgtk_widget->get_instance());
-	// }
+Php::Value GtkBuilder_::get_object(Php::Parameters &parameters) {
+  std::string s_name = parameters[0];
+  gchar *name = (gchar *)s_name.c_str();
 
-	// GError *err = NULL;
+  GObject *object = gtk_builder_get_object(GTK_BUILDER(instance), name);
 
+  // Get name of gType
+  std::string gtype_name = g_type_name(G_TYPE_FROM_INSTANCE(object));
 
-	// std::string s_buffer = parameters[2];
-	// gchar *buffer = (gchar *)s_buffer.c_str();
-
-	// int ret = gtk_builder_extend_with_template ((instance), widget, template_type, buffer, &err);
-
-	// return ret;
-
-	throw Php::Exception("GtkBuilder_::extend_with_template not implemented");
+  // Return PHPGTK Object
+  GObject_ *phpgtk_widget = new GObject_();
+  phpgtk_widget->set_instance((gpointer *)object);
+  return Php::Object(gtype_name.c_str(), phpgtk_widget);
 }
 
-Php::Value GtkBuilder_::get_object(Php::Parameters &parameters)
-{
-	std::string s_name = parameters[0];
-	gchar *name = (gchar *)s_name.c_str();
+Php::Value GtkBuilder_::get_objects() {
+  // GObject ret = gtk_builder_get_objects (GTK_BUILDER(instance));
 
-	GObject *object = gtk_builder_get_object (GTK_BUILDER(instance), name);
+  // return ret;
 
-	// Get name of gType
-	std::string gtype_name = g_type_name(G_TYPE_FROM_INSTANCE(object));
-
-	// Return PHPGTK Object
-	GObject_ *phpgtk_widget = new GObject_();
-	phpgtk_widget->set_instance((gpointer *)object);
-	return Php::Object(gtype_name.c_str(), phpgtk_widget);
+  throw Php::Exception("GtkBuilder_::get_objects not implemented");
 }
 
-Php::Value GtkBuilder_::get_objects()
-{
-	// GObject ret = gtk_builder_get_objects (GTK_BUILDER(instance));
+void GtkBuilder_::expose_object(Php::Parameters &parameters) {
+  // std::string s_name = parameters[0];
+  // gchar *name = (gchar *)s_name.c_str();
 
-	// return ret;
+  // gtk_builder_expose_object (GTK_BUILDER(instance), name, object);
 
-	throw Php::Exception("GtkBuilder_::get_objects not implemented");
+  throw Php::Exception("GtkBuilder_::expose_object not implemented");
 }
 
-void GtkBuilder_::expose_object(Php::Parameters &parameters)
-{
-	// std::string s_name = parameters[0];
-	// gchar *name = (gchar *)s_name.c_str();
+void GtkBuilder_::connect_signals(Php::Parameters &parameters) {
+  // gpointer user_data = (gpointer)parameters[0];
 
+  // gtk_builder_connect_signals (GTK_BUILDER(instance), user_data);
 
-	// gtk_builder_expose_object (GTK_BUILDER(instance), name, object);
-
-	throw Php::Exception("GtkBuilder_::expose_object not implemented");
-
+  throw Php::Exception("GtkBuilder_::connect_signals not implemented");
 }
 
-void GtkBuilder_::connect_signals(Php::Parameters &parameters)
-{
-	// gpointer user_data = (gpointer)parameters[0];
+void GtkBuilder_::connect_signals_full(Php::Parameters &parameters) {
 
-	// gtk_builder_connect_signals (GTK_BUILDER(instance), user_data);
+  gtk_builder_connect_signals_full(GTK_BUILDER(instance),
+                                   connect_signals_full_callback, nullptr);
 
-	throw Php::Exception("GtkBuilder_::connect_signals not implemented");
+  // std::string s_func = parameters[0];
+  // gchar *func = (gchar *)s_func.c_str();
 
+  // gpointer user_data = (gpointer)parameters[1];
+
+  // gtk_builder_connect_signals_full (GTK_BUILDER(instance), func, user_data);
+
+  // throw Php::Exception("GtkBuilder_::connect_signals_full not implemented");
 }
-
-void GtkBuilder_::connect_signals_full(Php::Parameters &parameters)
-{
-
-	gtk_builder_connect_signals_full (GTK_BUILDER(instance), connect_signals_full_callback, NULL);
-
-	// std::string s_func = parameters[0];
-	// gchar *func = (gchar *)s_func.c_str();
-
-	// gpointer user_data = (gpointer)parameters[1];
-
-	// gtk_builder_connect_signals_full (GTK_BUILDER(instance), func, user_data);
-
-	// throw Php::Exception("GtkBuilder_::connect_signals_full not implemented");
-
-}
-
 
 /**
  * Struct for callback gpointer
  */
 struct GtkBuilder_::st_callback {
-	Php::Value callback_name;
-    Php::Array callback_params;
-    Php::Object self_widget;
-    Php::Parameters parameters;
+  Php::Value callback_name;
+  Php::Array callback_params;
+  Php::Object self_widget;
+  Php::Parameters parameters;
 
-
-    guint signal_id;
-    const gchar *signal_name;
-    GType itype;
-    GSignalFlags signal_flags;
-    GType return_type;
-    guint n_params;
-    const GType *param_types;
+  guint signal_id;
+  const gchar *signal_name;
+  GType itype;
+  GSignalFlags signal_flags;
+  GType return_type;
+  guint n_params;
+  const GType *param_types;
 };
 
-void GtkBuilder_::connect_signals_full_callback(GtkBuilder *builder, GObject *instance, const gchar *signal_name, const char *handler_name, GObject *object, GConnectFlags flags, gpointer data)
-{
+void GtkBuilder_::connect_signals_full_callback(
+    GtkBuilder *builder, GObject *instance, const gchar *signal_name,
+    const char *handler_name, GObject *object, GConnectFlags flags,
+    gpointer data) {
 
-	
-	// Create gpoint param
-    struct st_callback *callback_object = (struct st_callback *)malloc(sizeof(struct st_callback));
-    memset(callback_object, 0, sizeof(struct st_callback));
+  // Create gpoint param
+  struct st_callback *callback_object =
+      (struct st_callback *)malloc(sizeof(struct st_callback));
+  memset(callback_object, 0, sizeof(struct st_callback));
 
+  // Add my internal parameters
+  callback_object->callback_name = handler_name;
+  // callback_object->callback_params = callback_params;
+  callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
+  // callback_object->parameters = parameters;
 
-	// Add my internal parameters
-    callback_object->callback_name = handler_name;
-    // callback_object->callback_params = callback_params;
-    callback_object->self_widget = cobject_to_phpobject((gpointer *)instance);
-    // callback_object->parameters = parameters;
-	
-	// Retriave and store signal query parameters , to be used on callback
-    GSignalQuery signal_info;
+  // Retriave and store signal query parameters , to be used on callback
+  GSignalQuery signal_info;
 
-    if(G_IS_OBJECT(instance)) {
-        g_signal_query(g_signal_lookup (signal_name, G_OBJECT_TYPE (instance)), &signal_info);
-    }
+  if (G_IS_OBJECT(instance)) {
+    g_signal_query(g_signal_lookup(signal_name, G_OBJECT_TYPE(instance)),
+                   &signal_info);
+  }
 
-    if(G_IS_OBJECT_CLASS(instance)) {
-        g_signal_query(g_signal_lookup (signal_name, G_OBJECT_CLASS_TYPE (instance)), &signal_info);
-    }
-	
-    callback_object->signal_id = signal_info.signal_id;
-    callback_object->signal_name = signal_info.signal_name;
-    callback_object->itype = signal_info.itype;
-    callback_object->signal_flags = signal_info.signal_flags;
-    callback_object->return_type = signal_info.return_type;
-    callback_object->n_params = signal_info.n_params;
-    callback_object->param_types = signal_info.param_types;
+  if (G_IS_OBJECT_CLASS(instance)) {
+    g_signal_query(g_signal_lookup(signal_name, G_OBJECT_CLASS_TYPE(instance)),
+                   &signal_info);
+  }
 
-    // Connect
-    GClosure  *closure;
-    closure = g_cclosure_new_swap (G_CALLBACK (connect_signals_full_callback1), callback_object, NULL);
-    g_signal_connect_closure (instance, signal_name, closure, TRUE);
+  callback_object->signal_id = signal_info.signal_id;
+  callback_object->signal_name = signal_info.signal_name;
+  callback_object->itype = signal_info.itype;
+  callback_object->signal_flags = signal_info.signal_flags;
+  callback_object->return_type = signal_info.return_type;
+  callback_object->n_params = signal_info.n_params;
+  callback_object->param_types = signal_info.param_types;
+
+  // Connect
+  GClosure *closure = nullptr;
+  closure = g_cclosure_new_swap(G_CALLBACK(connect_signals_full_callback1),
+                                callback_object, nullptr);
+  g_signal_connect_closure(instance, signal_name, closure, TRUE);
 }
 
 /**
  * Class to abstract php callback for connect method, to call PHP function
- * @fix Fatal error: Uncaught Error: Using $this when not in object context in Unknown:1
- *		when use $this->method on callback on glade, this method is out of context. Works only with static method
+ * @fix Fatal error: Uncaught Error: Using $this when not in object context in
+ *Unknown:1 when use $this->method on callback on glade, this method is out of
+ *context. Works only with static method
  */
-void GtkBuilder_::connect_signals_full_callback1(gpointer user_data, ...)
-{
-	// Return to st_callback
-    struct st_callback *callback_object = (struct st_callback *) user_data;
+void GtkBuilder_::connect_signals_full_callback1(gpointer user_data, ...) {
+  // Return to st_callback
+  struct st_callback *callback_object = (struct st_callback *)user_data;
 
-    // Create internal params, GtkWidget + GdkEvent
-    Php::Value internal_parameters;
-    internal_parameters[0] = callback_object->self_widget;
+  // Create internal params, GtkWidget + GdkEvent
+  Php::Value internal_parameters;
+  internal_parameters[0] = callback_object->self_widget;
 
-    // Get param counter from g_signal_query, to loop casting types and store into internal_parameters
-    int param_count = callback_object->n_params;
-    va_list ap;
-    va_start(ap, user_data);
+  // Get param counter from g_signal_query, to loop casting types and store into
+  // internal_parameters
+  int param_count = callback_object->n_params;
+  va_list ap;
+  va_start(ap, user_data);
 
-    // Loop into param_types of GSignalQuery from g_signal_query
-    for (int i=0; i<param_count; i++) {
+  // Loop into param_types of GSignalQuery from g_signal_query
+  for (int i = 0; i < param_count; i++) {
 
-        // Php::call("var_dump", g_type_name(callback_object->param_types[i]));
+    // Php::call("var_dump", g_type_name(callback_object->param_types[i]));
 
-        switch (G_TYPE_FUNDAMENTAL(callback_object->param_types[i])) {
-            case G_TYPE_CHAR:
-                // Php::call("var_dump", "char");
-                break;
-                
-            case G_TYPE_UCHAR:
-                // Php::call("var_dump", "uchar");
-                break;
+    switch (G_TYPE_FUNDAMENTAL(callback_object->param_types[i])) {
+    case G_TYPE_CHAR:
+      // Php::call("var_dump", "char");
+      break;
 
-            case G_TYPE_STRING:
-            // Php::call("var_dump", "string");
-                internal_parameters[i+1] = va_arg(ap, char *);
-                break;
+    case G_TYPE_UCHAR:
+      // Php::call("var_dump", "uchar");
+      break;
 
-            case G_TYPE_BOOLEAN:
-            // Php::call("var_dump", "boolean");
-                internal_parameters[i+1] = va_arg(ap, gboolean);
-                break;
+    case G_TYPE_STRING:
+      // Php::call("var_dump", "string");
+      internal_parameters[i + 1] = va_arg(ap, char *);
+      break;
 
-            case G_TYPE_INT:
-                // Php::call("var_dump", "int");
-                internal_parameters[i+1] = va_arg(ap, gint);
-                break;
+    case G_TYPE_BOOLEAN:
+      // Php::call("var_dump", "boolean");
+      internal_parameters[i + 1] = va_arg(ap, gboolean);
+      break;
 
-            case G_TYPE_UINT:
-                // Php::call("var_dump", "int");
-                internal_parameters[i+1] = (int)va_arg(ap, guint);
-                break;
-                
-            case G_TYPE_OBJECT:
-            {
-                // Php::call("var_dump", "object");
-                gpointer *e = va_arg(ap, gpointer *);
+    case G_TYPE_INT:
+      // Php::call("var_dump", "int");
+      internal_parameters[i + 1] = va_arg(ap, gint);
+      break;
 
-                // Create event from callback
-                GObject_ *event_ = new GObject_();
-                event_->set_instance(e);
-                Php::Value gobject_ = Php::Object(g_type_name(callback_object->param_types[i]), event_);
-                internal_parameters[i+1] = gobject_;
-                
-                break;
-            }
-            case G_TYPE_POINTER:
-                // Php::call("var_dump", "pointer");
-                break;
-            case G_TYPE_INTERFACE: 
-                // Php::call("var_dump", "interface");
-                break;
-            case G_TYPE_PARAM:
-                // Php::call("var_dump", "param");
-                break;
-            case G_TYPE_BOXED:
-            {
-                // Php::call("var_dump", "boxed");
+    case G_TYPE_UINT:
+      // Php::call("var_dump", "int");
+      internal_parameters[i + 1] = (int)va_arg(ap, guint);
+      break;
 
-                GdkEvent *e = va_arg(ap, GdkEvent *);
+    case G_TYPE_OBJECT: {
+      // Php::call("var_dump", "object");
+      gpointer *e = va_arg(ap, gpointer *);
 
-                // Create event from callback
-                GdkEvent_ *event_ = new GdkEvent_();
-                Php::Value gdkevent = Php::Object("GdkEvent", event_);
-                event_->populate(e);
+      // Create event from callback
+      GObject_ *event_ = new GObject_();
+      event_->set_instance(e);
+      Php::Value gobject_ =
+          Php::Object(g_type_name(callback_object->param_types[i]), event_);
+      internal_parameters[i + 1] = gobject_;
 
-                internal_parameters[i+1] = gdkevent;
+      break;
+    }
+    case G_TYPE_POINTER:
+      // Php::call("var_dump", "pointer");
+      break;
+    case G_TYPE_INTERFACE:
+      // Php::call("var_dump", "interface");
+      break;
+    case G_TYPE_PARAM:
+      // Php::call("var_dump", "param");
+      break;
+    case G_TYPE_BOXED: {
+      // Php::call("var_dump", "boxed");
 
-                break;
-            }
+      GdkEvent *e = va_arg(ap, GdkEvent *);
 
-            default:
-                std::string error ("[GObject_::connect_callback] Internal error: unsupported type ");
-                throw Php::Exception(error + g_type_name(callback_object->param_types[i]));
-        }
-        
+      // Create event from callback
+      GdkEvent_ *event_ = new GdkEvent_();
+      Php::Value gdkevent = Php::Object("GdkEvent", event_);
+      event_->populate(e);
+
+      internal_parameters[i + 1] = gdkevent;
+
+      break;
     }
 
-    va_end(ap);
-
-    // Add user extra param
-    int parameters_count = callback_object->parameters.size();
-    for(int i=2; i<parameters_count; i++) {
-        internal_parameters[internal_parameters.size()+i-1] = callback_object->parameters[i];
+    default:
+      std::string error(
+          "[GObject_::connect_callback] Internal error: unsupported type ");
+      throw Php::Exception(error +
+                           g_type_name(callback_object->param_types[i]));
     }
+  }
 
+  va_end(ap);
 
-    // Call php function with parameters
-    // Wrap in try-catch to properly handle exceptions from PHP callbacks
-    try {
-        Php::call("call_user_func_array", callback_object->callback_name, internal_parameters);
-    } catch (Php::Exception &exception) {
-        // Re-throw to let PHP-CPP handle the exception properly
-        throw;
-    }
+  // Add user extra param
+  int parameters_count = callback_object->parameters.size();
+  for (int i = 2; i < parameters_count; i++) {
+    internal_parameters[internal_parameters.size() + i - 1] =
+        callback_object->parameters[i];
+  }
+
+  // Call php function with parameters
+  // Wrap in try-catch to properly handle exceptions from PHP callbacks
+  try {
+    Php::call("call_user_func_array", callback_object->callback_name,
+              internal_parameters);
+  } catch (Php::Exception &exception) {
+    // Re-throw to let PHP-CPP handle the exception properly
+    throw;
+  }
 }
 
-void GtkBuilder_::set_translation_domain(Php::Parameters &parameters)
-{
-	// std::string s_domain = parameters[0];
-	// gchar *domain = (gchar *)s_domain.c_str();
+void GtkBuilder_::set_translation_domain(Php::Parameters &parameters) {
+  // std::string s_domain = parameters[0];
+  // gchar *domain = (gchar *)s_domain.c_str();
 
-	// gtk_builder_set_translation_domain (GTK_BUILDER(instance), domain);
+  // gtk_builder_set_translation_domain (GTK_BUILDER(instance), domain);
 
-	throw Php::Exception("GtkBuilder_::set_translation_domain not implemented");
+  throw Php::Exception("GtkBuilder_::set_translation_domain not implemented");
 }
 
-Php::Value GtkBuilder_::get_translation_domain()
-{
-	// std::string ret = gtk_builder_get_translation_domain (GTK_BUILDER(instance));
+Php::Value GtkBuilder_::get_translation_domain() {
+  // std::string ret = gtk_builder_get_translation_domain
+  // (GTK_BUILDER(instance));
 
-	// return ret;
+  // return ret;
 
-	throw Php::Exception("GtkBuilder_::get_translation_domain not implemented");
+  throw Php::Exception("GtkBuilder_::get_translation_domain not implemented");
 }
 
-Php::Value GtkBuilder_::get_application()
-{
-	// GtkApplication *ret = gtk_builder_get_application ((instance));
+Php::Value GtkBuilder_::get_application() {
+  // GtkApplication *ret = gtk_builder_get_application ((instance));
 
-	// GtkApplication_ *return_parsed = new GtkApplication_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkApplication", return_parsed);
+  // GtkApplication_ *return_parsed = new GtkApplication_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkApplication", return_parsed);
 
-	throw Php::Exception("GtkBuilder_::get_application not implemented");
+  throw Php::Exception("GtkBuilder_::get_application not implemented");
 }
 
-void GtkBuilder_::set_application(Php::Parameters &parameters)
-{
-	// GtkApplication *application;
-	// if(parameters.size() > 0) {
-	// 	Php::Value object_application = parameters[0];
-	// 	GtkApplication_ *phpgtk_application = (GtkApplication_ *)object_application.implementation();
-	// 	application = GTK_WIDGET(phpgtk_application->get_instance());
-	// }
+void GtkBuilder_::set_application(Php::Parameters &parameters) {
+  // GtkApplication *application;
+  // if(parameters.size() > 0) {
+  // 	Php::Value object_application = parameters[0];
+  // 	GtkApplication_ *phpgtk_application = (GtkApplication_
+  // *)object_application.implementation(); 	application =
+  // GTK_WIDGET(phpgtk_application->get_instance());
+  // }
 
-	// gtk_builder_set_application ((instance), application);
+  // gtk_builder_set_application ((instance), application);
 
-	throw Php::Exception("GtkBuilder_::set_application not implemented");
-
+  throw Php::Exception("GtkBuilder_::set_application not implemented");
 }
 
-Php::Value GtkBuilder_::get_type_from_name(Php::Parameters &parameters)
-{
-	std::string s_type_name = parameters[0];
-	gchar *type_name = (gchar *)s_type_name.c_str();
+Php::Value GtkBuilder_::get_type_from_name(Php::Parameters &parameters) {
+  std::string s_type_name = parameters[0];
+  gchar *type_name = (gchar *)s_type_name.c_str();
 
-	GType ret = gtk_builder_get_type_from_name (GTK_BUILDER(instance), type_name);
+  GType ret = gtk_builder_get_type_from_name(GTK_BUILDER(instance), type_name);
 
-	return (int)ret;
+  return (int)ret;
 }
 
-Php::Value GtkBuilder_::value_from_string(Php::Parameters &parameters)
-{
-	// std::string s_type_name = parameters[0];
-	// gchar *type_name = (gchar *)s_type_name.c_str();
+Php::Value GtkBuilder_::value_from_string(Php::Parameters &parameters) {
+  // std::string s_type_name = parameters[0];
+  // gchar *type_name = (gchar *)s_type_name.c_str();
 
-	// gboolean ret = gtk_builder_value_from_string (GTK_BUILDER(instance), type_name);
+  // gboolean ret = gtk_builder_value_from_string (GTK_BUILDER(instance),
+  // type_name);
 
-	// return ret;
+  // return ret;
 
-	throw Php::Exception("GtkBuilder_::value_from_string not implemented");
+  throw Php::Exception("GtkBuilder_::value_from_string not implemented");
 }
 
-Php::Value GtkBuilder_::value_from_string_type(Php::Parameters &parameters)
-{
-	// std::string s_type_name = parameters[0];
-	// gchar *type_name = (gchar *)s_type_name.c_str();
+Php::Value GtkBuilder_::value_from_string_type(Php::Parameters &parameters) {
+  // std::string s_type_name = parameters[0];
+  // gchar *type_name = (gchar *)s_type_name.c_str();
 
-	// gboolean ret = gtk_builder_value_from_string_type (GTK_BUILDER(instance), type_name);
+  // gboolean ret = gtk_builder_value_from_string_type (GTK_BUILDER(instance),
+  // type_name);
 
-	// return ret;
+  // return ret;
 
-	throw Php::Exception("GtkBuilder_::value_from_string_type not implemented");
+  throw Php::Exception("GtkBuilder_::value_from_string_type not implemented");
 }
-

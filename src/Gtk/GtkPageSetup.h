@@ -70,11 +70,11 @@
 
             Php::Value load_file(Php::Parameters &parameters);
 
-            Php::Value load_key_file(Php::Parameters &parameters);
+            static Php::Value load_key_file(Php::Parameters &parameters);
 
             Php::Value to_file(Php::Parameters &parameters);
 
-            void to_key_file(Php::Parameters &parameters);
+            static void to_key_file(Php::Parameters &parameters);
     };
 
 #endif

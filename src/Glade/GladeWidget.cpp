@@ -11,8 +11,5 @@ GladeWidget_::GladeWidget_() = default;
  */
 GladeWidget_::~GladeWidget_() = default;
 
-void GladeWidget_::__construct()
-{
-	
-}
+void GladeWidget_::__construct() {}
 #endif

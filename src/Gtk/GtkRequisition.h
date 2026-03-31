@@ -17,8 +17,8 @@
          */
         public:
 
-            int width;
-            int height;
+            int width{};
+            int height{};
 
             /**
              *  C++ constructor and destructor

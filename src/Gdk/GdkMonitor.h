@@ -17,7 +17,7 @@
          */
         public:
 
-            GdkMonitor *instance;
+            GdkMonitor *instance{};
 
             /**
              *  C++ constructor and destructor
@@ -28,13 +28,13 @@
             /**
              * Return original GdkMonitor
              */
-            GdkMonitor *get_instance();
+            GdkMonitor *get_instance() const;
             void set_instance(GdkMonitor *monitor);
 
-            Php::Value get_width_mm();
-            Php::Value get_height_mm();
-            Php::Value get_workarea();
-            Php::Value get_geometry();
+            Php::Value get_width_mm() const;
+            Php::Value get_height_mm() const;
+            Php::Value get_workarea() const;
+            Php::Value get_geometry() const;
 
 
     };

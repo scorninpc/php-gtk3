@@ -45,9 +45,9 @@
 
             Php::Value get_text();
 
-            void set_ellipsize(Php::Parameters &parameters);
+            static void set_ellipsize(Php::Parameters &parameters);
 
-            Php::Value get_ellipsize();
+            static Php::Value get_ellipsize();
 
             void set_pulse_step(Php::Parameters &parameters);
 
