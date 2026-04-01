@@ -28,7 +28,7 @@
             GtkAppChooserDialog_();
             ~GtkAppChooserDialog_();
 
-            void __construc(Php::Parameters &parameters);
+            void __construct(Php::Parameters &parameters);
 
             static Php::Value new_for_content_type(Php::Parameters &parameters);
 

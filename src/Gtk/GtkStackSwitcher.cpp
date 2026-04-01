@@ -17,14 +17,13 @@ void GtkStackSwitcher_::__construct()
 
 }
 
-void GtkStackSwitcher_::set_stack(Php::Parameters &parameters)
-{
-	GtkStack *stack;
-	if(parameters.size() > 0) {
-		Php::Value object_stack = parameters[0];
-		GtkStack_ *phpgtk_stack = (GtkStack_ *)object_stack.implementation();
-		stack = GTK_STACK(phpgtk_stack->get_instance());
-	}
+void GtkStackSwitcher_::set_stack(Php::Parameters &parameters) {
+  GtkStack *stack = nullptr;
+  if (!parameters.empty()) {
+    Php::Value object_stack = parameters[0];
+    GtkStack_ *phpgtk_stack = (GtkStack_ *)object_stack.implementation();
+    stack = GTK_STACK(phpgtk_stack->get_instance());
+  }
 
 	gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER(instance), stack);
 

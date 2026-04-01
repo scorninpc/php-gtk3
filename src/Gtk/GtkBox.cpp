@@ -122,17 +122,15 @@ void GtkBox_::set_homogeneous(Php::Parameters &parameters)
 
 }
 
-Php::Value GtkBox_::get_spacing()
-{
-	bool ret = gtk_box_get_spacing (GTK_BOX(instance));
+Php::Value GtkBox_::get_spacing() {
+  gint ret = gtk_box_get_spacing(GTK_BOX(instance));
 
-	return ret;
+  return (int)ret;
 }
 
-void GtkBox_::set_spacing(Php::Parameters &parameters)
-{
-	phpgtk_check_parameter(parameters, 1, Php::Type::Numeric, TRUE, NULL);
-	gboolean spacing = (gboolean)parameters[0];
+void GtkBox_::set_spacing(Php::Parameters &parameters) {
+  phpgtk_check_parameter(parameters, 1, Php::Type::Numeric, TRUE, NULL);
+  gint spacing = (gint)parameters[0];
 
 	gtk_box_set_spacing (GTK_BOX(instance), spacing);
 
@@ -149,8 +147,8 @@ void GtkBox_::reorder_child(Php::Parameters &parameters)
 		child = GTK_WIDGET(phpgtk_child->get_instance());
 	}
 
-	phpgtk_check_parameter(parameters, 2, Php::Type::Numeric, TRUE, NULL);
-	gboolean position = (gboolean)parameters[1];
+  phpgtk_check_parameter(parameters, 2, Php::Type::Numeric, TRUE, nullptr);
+  gint position = (gint)parameters[1];
 
 	gtk_box_reorder_child (GTK_BOX(instance), child, position);
 

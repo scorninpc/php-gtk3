@@ -50,9 +50,8 @@ void GtkMenuBar_::set_child_pack_direction(Php::Parameters &parameters)
 
 }
 
-void GtkMenuBar_::child_pack_direction()
-{
-	gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR(instance));
+Php::Value GtkMenuBar_::get_child_pack_direction() {
+  GtkPackDirection ret = gtk_menu_bar_get_child_pack_direction(GTK_MENU_BAR(instance));
 
+  return ret;
 }
-

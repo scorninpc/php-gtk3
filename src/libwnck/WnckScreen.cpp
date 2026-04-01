@@ -30,15 +30,14 @@ Php::Value WnckScreen_::get_active_window()
 {
 	WnckWindow *ret = wnck_screen_get_active_window(WNCK_SCREEN(instance));
 
-	// 
-	if (ret) {
-		WnckWindow_ *widget_ = new WnckWindow_();
-		widget_->set_instance((gpointer *)ret);
-		return Php::Object("WnckWindow", widget_);
-	}
-	else {
-		return NULL;
-	}
+  //
+  if (ret) {
+    WnckWindow_ *widget_ = new WnckWindow_();
+    widget_->set_instance((gpointer *)ret);
+    return Php::Object("WnckWindow", widget_);
+  } else {
+    return Php::Value();
+  }
 }
 
 
