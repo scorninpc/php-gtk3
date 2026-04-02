@@ -9,19 +9,17 @@
 /**
  *
  */
-class GdkThreads_ : public Php::Base
-{
-    /**
-     * Publics
-     */
-public:
+class GdkThreads_ : public Php::Base {
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GdkThreads_() = default;
 
-    /**
-     *  C++ constructor and destructor
-     */
-    GdkThreads_() = default;
-
-    void add_idle(Php::Parameters &parameters);
+  void add_idle(Php::Parameters &parameters);
 };
 
 #endif

@@ -10,7 +10,6 @@ PangoContext_::PangoContext_() = default;
  */
 PangoContext_::~PangoContext_() = default;
 
-void PangoContext_::__construct()
-{
-	instance = (gpointer *)pango_context_new ();
+void PangoContext_::__construct() {
+  instance = (gpointer *)pango_context_new();
 }

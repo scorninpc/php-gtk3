@@ -4,9 +4,9 @@
 // implementations of the same class methods without requiring separate compilation units.
 
 #ifdef _WIN32
-    // Windows: Use Microsoft Edge WebView2
-    #include "WebKitWebView_Windows.cpp"
+// Windows: Use Microsoft Edge WebView2
+#include "WebKitWebView_Windows.cpp"
 #else
-    // Unix/Linux/macOS: Use WebKit2GTK
-    #include "WebKitWebView_Unix.cpp"
+// Unix/Linux/macOS: Use WebKit2GTK
+#include "WebKitWebView_Unix.cpp"
 #endif

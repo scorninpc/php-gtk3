@@ -11,118 +11,109 @@ GtkMessageDialog_::GtkMessageDialog_() = default;
  */
 GtkMessageDialog_::~GtkMessageDialog_() = default;
 
-void GtkMessageDialog_::__construct(Php::Parameters &parameters)
-{
-	Php::Value object_parent = parameters[0];
-	GtkWindow *parent = NULL;
-	if (object_parent.instanceOf("GtkWindow")) {
-		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
-		parent = GTK_WINDOW(phpgtk_parent->get_instance());
-	}
+void GtkMessageDialog_::__construct(Php::Parameters &parameters) {
+  Php::Value object_parent = parameters[0];
+  GtkWindow *parent = NULL;
+  if (object_parent.instanceOf("GtkWindow")) {
+    GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
+    parent = GTK_WINDOW(phpgtk_parent->get_instance());
+  }
 
-	int int_flags = (int)parameters[1];
-	GtkDialogFlags flags = (GtkDialogFlags)int_flags;
+  int int_flags = (int)parameters[1];
+  GtkDialogFlags flags = (GtkDialogFlags)int_flags;
 
-	int int_type = (int)parameters[2];
-	GtkMessageType type = (GtkMessageType)int_type;
+  int int_type = (int)parameters[2];
+  GtkMessageType type = (GtkMessageType)int_type;
 
-	int int_buttons = (int)parameters[3];
-	GtkButtonsType buttons = (GtkButtonsType)int_buttons;
+  int int_buttons = (int)parameters[3];
+  GtkButtonsType buttons = (GtkButtonsType)int_buttons;
 
-	std::string s_message_format = parameters[4];
-	gchar *message_format = (gchar *)s_message_format.c_str();
+  std::string s_message_format = parameters[4];
+  gchar *message_format = (gchar *)s_message_format.c_str();
 
+  std::string s_text = "";
+  if (parameters.size() > 1) {
+    std::string a_text = parameters[1];
+    s_text = a_text;
+  }
 
-	std::string s_text = "";
-	if(parameters.size() > 1) {
-		std::string a_text = parameters[1];
-		s_text = a_text;
-	}
-	
-	instance = (gpointer *)gtk_message_dialog_new (parent, flags, type, buttons, message_format, s_text.c_str());
-
+  instance = (gpointer *)gtk_message_dialog_new(parent, flags, type, buttons, message_format,
+                                                s_text.c_str());
 }
 
-Php::Value GtkMessageDialog_::new_with_markup(Php::Parameters &parameters)
-{
-	GtkMessageDialog_ *messagedialog = new GtkMessageDialog_();
+Php::Value GtkMessageDialog_::new_with_markup(Php::Parameters &parameters) {
+  GtkMessageDialog_ *messagedialog = new GtkMessageDialog_();
 
-	Php::Value object_parent = parameters[0];
-	GtkWindow *parent = NULL;
-	if (object_parent.instanceOf("GtkWindow")) {
-		GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
-		parent = GTK_WINDOW(phpgtk_parent->get_instance());
-	}
+  Php::Value object_parent = parameters[0];
+  GtkWindow *parent = NULL;
+  if (object_parent.instanceOf("GtkWindow")) {
+    GtkWindow_ *phpgtk_parent = (GtkWindow_ *)object_parent.implementation();
+    parent = GTK_WINDOW(phpgtk_parent->get_instance());
+  }
 
-	int int_flags = (int)parameters[1];
-	GtkDialogFlags flags = (GtkDialogFlags)int_flags;
+  int int_flags = (int)parameters[1];
+  GtkDialogFlags flags = (GtkDialogFlags)int_flags;
 
-	int int_type = (int)parameters[2];
-	GtkMessageType type = (GtkMessageType)int_type;
+  int int_type = (int)parameters[2];
+  GtkMessageType type = (GtkMessageType)int_type;
 
-	int int_buttons = (int)parameters[3];
-	GtkButtonsType buttons = (GtkButtonsType)int_buttons;
+  int int_buttons = (int)parameters[3];
+  GtkButtonsType buttons = (GtkButtonsType)int_buttons;
 
-	std::string s_message_format = parameters[4];
-	gchar *message_format = (gchar *)s_message_format.c_str();
+  std::string s_message_format = parameters[4];
+  gchar *message_format = (gchar *)s_message_format.c_str();
 
-	std::string s_text = "";
-	if(parameters.size() > 1) {
-		std::string a_text = parameters[1];
-		s_text = a_text;
-	}
+  std::string s_text = "";
+  if (parameters.size() > 1) {
+    std::string a_text = parameters[1];
+    s_text = a_text;
+  }
 
-	gpointer *l_instance = (gpointer *)gtk_message_dialog_new_with_markup (parent, flags, type, buttons, message_format, s_text.c_str());
+  gpointer *l_instance = (gpointer *)gtk_message_dialog_new_with_markup(
+      parent, flags, type, buttons, message_format, s_text.c_str());
 
-	messagedialog->set_instance(l_instance);
-	return Php::Object("GtkMessageDialog", messagedialog);
-
+  messagedialog->set_instance(l_instance);
+  return Php::Object("GtkMessageDialog", messagedialog);
 }
 
-void GtkMessageDialog_::set_markup(Php::Parameters &parameters)
-{
-	std::string s_str = parameters[0];
-	gchar *str = (gchar *)s_str.c_str();
+void GtkMessageDialog_::set_markup(Php::Parameters &parameters) {
+  std::string s_str = parameters[0];
+  gchar *str = (gchar *)s_str.c_str();
 
-	gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG(instance), str);
-
+  gtk_message_dialog_set_markup(GTK_MESSAGE_DIALOG(instance), str);
 }
 
-void GtkMessageDialog_::format_secondary_text(Php::Parameters &parameters)
-{
-	std::string s_message_format = parameters[0];
+void GtkMessageDialog_::format_secondary_text(Php::Parameters &parameters) {
+  std::string s_message_format = parameters[0];
 
-	std::string s_text = "";
-	if(parameters.size() > 1) {
-		std::string a_text = parameters[1];
-		s_text = a_text;
-	}
+  std::string s_text = "";
+  if (parameters.size() > 1) {
+    std::string a_text = parameters[1];
+    s_text = a_text;
+  }
 
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(instance), s_message_format.c_str(), s_text.c_str());
-
+  gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(instance), s_message_format.c_str(),
+                                           s_text.c_str());
 }
 
-void GtkMessageDialog_::format_secondary_markup(Php::Parameters &parameters)
-{
-	std::string s_message_format = parameters[0];
+void GtkMessageDialog_::format_secondary_markup(Php::Parameters &parameters) {
+  std::string s_message_format = parameters[0];
 
-	std::string s_text = "";
-	if(parameters.size() > 1) {
-		std::string a_text = parameters[1];
-		s_text = a_text;
-	}
+  std::string s_text = "";
+  if (parameters.size() > 1) {
+    std::string a_text = parameters[1];
+    s_text = a_text;
+  }
 
-	gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG(instance), s_message_format.c_str(), s_text.c_str());
-
+  gtk_message_dialog_format_secondary_markup(GTK_MESSAGE_DIALOG(instance), s_message_format.c_str(),
+                                             s_text.c_str());
 }
 
-Php::Value GtkMessageDialog_::get_message_area()
-{
-	gpointer *ret = (gpointer *)gtk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG(instance));
+Php::Value GtkMessageDialog_::get_message_area() {
+  gpointer *ret = (gpointer *)gtk_message_dialog_get_message_area(GTK_MESSAGE_DIALOG(instance));
 
-	// GtkWidget_ *return_parsed = new GtkWidget_();
-	// return_parsed->set_instance((gpointer *)ret);
-	// return Php::Object("GtkWidget", return_parsed);
-	return cobject_to_phpobject(ret);
+  // GtkWidget_ *return_parsed = new GtkWidget_();
+  // return_parsed->set_instance((gpointer *)ret);
+  // return Php::Object("GtkWidget", return_parsed);
+  return cobject_to_phpobject(ret);
 }
-

@@ -2,41 +2,36 @@
 #ifndef _PHPGTK_GDKPIXBUFFORMAT_H_
 #define _PHPGTK_GDKPIXBUFFORMAT_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
+/**
+ * GdkPixbufFormat_
+ *
+ * https://developer.gnome.org/gtk3/stable/GdkPixbufFormat.html
+ */
+class GdkPixbufFormat_ : public Php::Base {
+  /**
+   * Publics
+   */
+ public:
+  GdkPixbufFormat *instance;
 
-    /**
-     * GdkPixbufFormat_
-     * 
-     * https://developer.gnome.org/gtk3/stable/GdkPixbufFormat.html
-     */
-    class GdkPixbufFormat_ : public Php::Base
-    {
-        /**
-         * Publics
-         */
-        public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GdkPixbufFormat_();
+  ~GdkPixbufFormat_();
 
-            GdkPixbufFormat *instance;
+  /**
+   * Return original GtkWidget
+   */
+  GdkPixbufFormat *get_instance();
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GdkPixbufFormat_();
-            ~GdkPixbufFormat_();
-
-            /**
-             * Return original GtkWidget
-             */
-            GdkPixbufFormat *get_instance();
-
-            /**
-             * Set the original GdkPixbufFormat
-             */
-            void set_instance(GdkPixbufFormat *pixbuf_format);
-
-
-    };
+  /**
+   * Set the original GdkPixbufFormat
+   */
+  void set_instance(GdkPixbufFormat *pixbuf_format);
+};
 
 #endif

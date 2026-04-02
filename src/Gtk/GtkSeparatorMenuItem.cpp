@@ -11,9 +11,6 @@ GtkSeparatorMenuItem_::GtkSeparatorMenuItem_() = default;
  */
 GtkSeparatorMenuItem_::~GtkSeparatorMenuItem_() = default;
 
-void GtkSeparatorMenuItem_::__construct()
-{
-	instance = (gpointer *)gtk_separator_menu_item_new ();
-
+void GtkSeparatorMenuItem_::__construct() {
+  instance = (gpointer *)gtk_separator_menu_item_new();
 }
-

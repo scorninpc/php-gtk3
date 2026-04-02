@@ -2,30 +2,28 @@
 #ifndef _PHPGTK_GTKBIN_H_
 #define _PHPGTK_GTKBIN_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
-    #include "GtkContainer.h"
+#include "GtkContainer.h"
 
-    /**
-     * 
-     */
-    class GtkBin_ : public GtkContainer_
-    {
-        /**
-         * Publics
-         */
-        public:
+/**
+ *
+ */
+class GtkBin_ : public GtkContainer_ {
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GtkBin_();
+  virtual ~GtkBin_();
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GtkBin_();
-            virtual ~GtkBin_();
+  void test3();
 
-            void test3();
-
-            Php::Value get_child();
-    };
+  Php::Value get_child();
+};
 
 #endif

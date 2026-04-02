@@ -2,91 +2,90 @@
 #ifndef _PHPGTK_GTKMENU_H_
 #define _PHPGTK_GTKMENU_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
-	#include "GtkMenuShell.h"
-	#include "GtkWidget.h"
-    
-	#include "../../php-gtk.h"
+#include "GtkMenuShell.h"
+#include "GtkWidget.h"
 
-    /**
-     * GtkMenu_
-     * 
-     * https://developer.gnome.org/gtk3/stable/GtkMenu.html
-     */
-    class GtkMenu_ : public GtkMenuShell_
-    {
-        /**
-         * Privates
-         */
-        private:
-            struct st_popup_callback;
-            static void popup_position_callback(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
-            static void popup_callback_destroy(gpointer data);
+#include "../../php-gtk.h"
 
-        /**
-         * Publics
-         */
-        public:
+/**
+ * GtkMenu_
+ *
+ * https://developer.gnome.org/gtk3/stable/GtkMenu.html
+ */
+class GtkMenu_ : public GtkMenuShell_ {
+  /**
+   * Privates
+   */
+ private:
+  struct st_popup_callback;
+  static void popup_position_callback(GtkMenu *menu, gint *x, gint *y, gboolean *push_in,
+                                      gpointer user_data);
+  static void popup_callback_destroy(gpointer data);
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GtkMenu_();
-            ~GtkMenu_();
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GtkMenu_();
+  ~GtkMenu_();
 
-            void __construct();
+  void __construct();
 
-            static void new_from_model(Php::Parameters &parameters);
+  static void new_from_model(Php::Parameters &parameters);
 
-            void set_screen(Php::Parameters &parameters);
+  void set_screen(Php::Parameters &parameters);
 
-            void reorder_child(Php::Parameters &parameters);
+  void reorder_child(Php::Parameters &parameters);
 
-            void attach(Php::Parameters &parameters);
+  void attach(Php::Parameters &parameters);
 
-            void popup_at_rect(Php::Parameters &parameters);
+  void popup_at_rect(Php::Parameters &parameters);
 
-            void popup_at_widget(Php::Parameters &parameters);
+  void popup_at_widget(Php::Parameters &parameters);
 
-            void popup_at_pointer (Php::Parameters &parameters);
+  void popup_at_pointer(Php::Parameters &parameters);
 
-            void popup(Php::Parameters &parameters);
+  void popup(Php::Parameters &parameters);
 
-            void set_accel_group(Php::Parameters &parameters);
+  void set_accel_group(Php::Parameters &parameters);
 
-            Php::Value get_accel_group();
+  Php::Value get_accel_group();
 
-            void set_accel_path(Php::Parameters &parameters);
+  void set_accel_path(Php::Parameters &parameters);
 
-            Php::Value get_accel_path();
+  Php::Value get_accel_path();
 
-            void set_monitor(Php::Parameters &parameters);
+  void set_monitor(Php::Parameters &parameters);
 
-            Php::Value get_monitor();
+  Php::Value get_monitor();
 
-            void place_on_monitor(Php::Parameters &parameters);
+  void place_on_monitor(Php::Parameters &parameters);
 
-            void set_reserve_toggle_size(Php::Parameters &parameters);
+  void set_reserve_toggle_size(Php::Parameters &parameters);
 
-            Php::Value get_reserve_toggle_size();
+  Php::Value get_reserve_toggle_size();
 
-            void popdown();
+  void popdown();
 
-            void reposition();
+  void reposition();
 
-            Php::Value get_active();
+  Php::Value get_active();
 
-            void set_active(Php::Parameters &parameters);
+  void set_active(Php::Parameters &parameters);
 
-            void attach_to_widget(Php::Parameters &parameters);
+  void attach_to_widget(Php::Parameters &parameters);
 
-            void detach();
+  void detach();
 
-            Php::Value get_attach_widget();
+  Php::Value get_attach_widget();
 
-            Php::Value get_for_attach_widget();
-    };
+  Php::Value get_for_attach_widget();
+};
 
 #endif

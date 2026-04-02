@@ -14,73 +14,67 @@ GdkDisplay_::~GdkDisplay_() = default;
 /**
  * Return original GtkWidget
  */
-GdkDisplay *GdkDisplay_::get_instance()
-{
-    return instance;
+GdkDisplay *GdkDisplay_::get_instance() {
+  return instance;
 }
 
 /**
  * Set the original GdkDisplay
  */
-void GdkDisplay_::set_instance(GdkDisplay *screen)
-{
-    instance = screen;
+void GdkDisplay_::set_instance(GdkDisplay *screen) {
+  instance = screen;
 }
 
 /**
  * https://developer.gnome.org/gdk3/stable/GdkDisplay.html#gdk-display-get-default
  */
-Php::Value GdkDisplay_::get_default()
-{
-    GdkDisplay *returndedValue = gdk_display_get_default();
+Php::Value GdkDisplay_::get_default() {
+  GdkDisplay *returndedValue = gdk_display_get_default();
 
-    GdkDisplay_ *returnValue = new GdkDisplay_();
-    returnValue->set_instance(returndedValue);
+  GdkDisplay_ *returnValue = new GdkDisplay_();
+  returnValue->set_instance(returndedValue);
 
-    return Php::Object("GdkDisplay", returnValue);
+  return Php::Object("GdkDisplay", returnValue);
 }
 
 /**
  * https://developer.gnome.org/gdk3/stable/GdkDisplay.html#gdk-display-get-primary-monitor
  */
-Php::Value GdkDisplay_::get_primary_monitor()
-{
-    GdkMonitor *returndedValue = gdk_display_get_primary_monitor(GDK_DISPLAY(instance));
+Php::Value GdkDisplay_::get_primary_monitor() {
+  GdkMonitor *returndedValue = gdk_display_get_primary_monitor(GDK_DISPLAY(instance));
 
-    GdkMonitor_ *returnValue = new GdkMonitor_();
-    returnValue->set_instance(returndedValue);
+  GdkMonitor_ *returnValue = new GdkMonitor_();
+  returnValue->set_instance(returndedValue);
 
-    return Php::Object("GdkMonitor", returnValue);
+  return Php::Object("GdkMonitor", returnValue);
 }
 
-Php::Value GdkDisplay_::get_default_screen()
-{
-   GdkScreen* ret = gdk_display_get_default_screen(GDK_DISPLAY(instance));
+Php::Value GdkDisplay_::get_default_screen() {
+  GdkScreen *ret = gdk_display_get_default_screen(GDK_DISPLAY(instance));
 
-    GdkScreen_ *returnValue = new GdkScreen_();
-    returnValue->set_instance(ret);
+  GdkScreen_ *returnValue = new GdkScreen_();
+  returnValue->set_instance(ret);
 
-    return Php::Object("GdkScreen", returnValue);
+  return Php::Object("GdkScreen", returnValue);
 }
 
-Php::Value GdkDisplay_::get_monitor(Php::Parameters &parameters)
-{
-	if(parameters.size() < 1) {
-		throw Php::Exception("parameter monitor_num is required");
-	}
+Php::Value GdkDisplay_::get_monitor(Php::Parameters &parameters) {
+  if (parameters.size() < 1) {
+    throw Php::Exception("parameter monitor_num is required");
+  }
 
-	// unpack monitor number
-	int monitor_num = (int)parameters[0];
+  // unpack monitor number
+  int monitor_num = (int)parameters[0];
 
-	// call gtk function
-	GdkMonitor *ret = gdk_display_get_monitor(GDK_DISPLAY(instance),monitor_num);
+  // call gtk function
+  GdkMonitor *ret = gdk_display_get_monitor(GDK_DISPLAY(instance), monitor_num);
 
-	if(ret == nullptr) {
-		return Php::Value();
-	}
+  if (ret == nullptr) {
+    return Php::Value();
+  }
 
-	// pack and return object
-	GdkMonitor_ *return_parsed = new GdkMonitor_();
-	return_parsed->set_instance(ret);
-	return Php::Object("GdkMonitor", return_parsed);
+  // pack and return object
+  GdkMonitor_ *return_parsed = new GdkMonitor_();
+  return_parsed->set_instance(ret);
+  return Php::Object("GdkMonitor", return_parsed);
 }

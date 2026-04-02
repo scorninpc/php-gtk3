@@ -10,8 +10,7 @@ GtkRequisition_::~GtkRequisition_() = default;
 /**
  *  PHP Constructor
  */
-void GtkRequisition_::__construct(Php::Parameters &parameters)
-{
-    width = parameters[0];
-    height = parameters[1];
+void GtkRequisition_::__construct(Php::Parameters &parameters) {
+  width = parameters[0];
+  height = parameters[1];
 }

@@ -14,7 +14,6 @@ GtkAccelGroup_::~GtkAccelGroup_() = default;
 /**
  *  PHP Constructor
  */
-void GtkAccelGroup_::__construct()
-{
-	instance = (gpointer *)gtk_accel_group_new();
+void GtkAccelGroup_::__construct() {
+  instance = (gpointer *)gtk_accel_group_new();
 }

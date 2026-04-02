@@ -11,10 +11,8 @@ GtkStackSwitcher_::GtkStackSwitcher_() = default;
  */
 GtkStackSwitcher_::~GtkStackSwitcher_() = default;
 
-void GtkStackSwitcher_::__construct()
-{
-	instance = (gpointer *)gtk_stack_switcher_new ();
-
+void GtkStackSwitcher_::__construct() {
+  instance = (gpointer *)gtk_stack_switcher_new();
 }
 
 void GtkStackSwitcher_::set_stack(Php::Parameters &parameters) {
@@ -25,30 +23,25 @@ void GtkStackSwitcher_::set_stack(Php::Parameters &parameters) {
     stack = GTK_STACK(phpgtk_stack->get_instance());
   }
 
-	gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER(instance), stack);
-
+  gtk_stack_switcher_set_stack(GTK_STACK_SWITCHER(instance), stack);
 }
 
-Php::Value GtkStackSwitcher_::get_stack()
-{
-	GtkStack *ret = gtk_stack_switcher_get_stack (GTK_STACK_SWITCHER(instance));
+Php::Value GtkStackSwitcher_::get_stack() {
+  GtkStack *ret = gtk_stack_switcher_get_stack(GTK_STACK_SWITCHER(instance));
 
-	GtkStack_ *return_parsed = new GtkStack_();
-	return_parsed->set_instance((gpointer *)ret);
-	return Php::Object("GtkStack", return_parsed);
+  GtkStack_ *return_parsed = new GtkStack_();
+  return_parsed->set_instance((gpointer *)ret);
+  return Php::Object("GtkStack", return_parsed);
 }
 
+void GtkStackSwitcher_::set_orientation(Php::Parameters &parameters) {
+  // Cast GtkOrientation param
+  int php_orientation = parameters[0];
+  GtkOrientation orientation = (GtkOrientation)php_orientation;
 
-void GtkStackSwitcher_::set_orientation(Php::Parameters &parameters)
-{
-	// Cast GtkOrientation param
-    int php_orientation = parameters[0];
-    GtkOrientation orientation = (GtkOrientation)php_orientation;
-
-	gtk_orientable_set_orientation(GTK_ORIENTABLE(instance), orientation);
+  gtk_orientable_set_orientation(GTK_ORIENTABLE(instance), orientation);
 }
 
-Php::Value GtkStackSwitcher_::get_orientation() 
-{
-	return gtk_orientable_get_orientation(GTK_ORIENTABLE(instance));
+Php::Value GtkStackSwitcher_::get_orientation() {
+  return gtk_orientable_get_orientation(GTK_ORIENTABLE(instance));
 }

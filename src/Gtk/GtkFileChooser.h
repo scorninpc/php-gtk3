@@ -2,30 +2,28 @@
 #ifndef _PHPGTK_GTKFILECHOOSER_H_
 #define _PHPGTK_GTKFILECHOOSER_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
-	#include "../G/GObject.h"
+#include "../G/GObject.h"
 
-    /**
-     * GtkFileChooser_
-     * 
-     * https://developer.gnome.org/gtk3/stable/GtkFileChooser.html
-     */
-    class GtkFileChooser_ : public GObject_
-    {
-        /**
-         * Publics
-         */
-        public:
+/**
+ * GtkFileChooser_
+ *
+ * https://developer.gnome.org/gtk3/stable/GtkFileChooser.html
+ */
+class GtkFileChooser_ : public GObject_ {
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GtkFileChooser_();
+  ~GtkFileChooser_();
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GtkFileChooser_();
-            ~GtkFileChooser_();
-
-            Php::Value get_filename();
-    };
+  Php::Value get_filename();
+};
 
 #endif

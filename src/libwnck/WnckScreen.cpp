@@ -2,7 +2,7 @@
 #include "WnckScreen.h"
 
 /**
- *  
+ *
  */
 /**
  * Constructor
@@ -13,22 +13,20 @@ WnckScreen_::~WnckScreen_() = default;
 /**
  * https://developer.gnome.org/gdk3/stable/gdk3-Testing.html#gdk-test-simulate-button
  */
-Php::Value WnckScreen_::get_default()
-{
-	WnckScreen *ret = wnck_screen_get_default();
+Php::Value WnckScreen_::get_default() {
+  WnckScreen *ret = wnck_screen_get_default();
 
-	// 
-	WnckScreen_ *widget_ = new WnckScreen_();
-	widget_->set_instance((gpointer *)ret);
-	return Php::Object("WnckScreen", widget_);
+  //
+  WnckScreen_ *widget_ = new WnckScreen_();
+  widget_->set_instance((gpointer *)ret);
+  return Php::Object("WnckScreen", widget_);
 }
 
 /**
  * https://developer.gnome.org/libwnck/stable/WnckScreen.html#wnck-screen-get-active-window
  */
-Php::Value WnckScreen_::get_active_window()
-{
-	WnckWindow *ret = wnck_screen_get_active_window(WNCK_SCREEN(instance));
+Php::Value WnckScreen_::get_active_window() {
+  WnckWindow *ret = wnck_screen_get_active_window(WNCK_SCREEN(instance));
 
   //
   if (ret) {
@@ -40,15 +38,11 @@ Php::Value WnckScreen_::get_active_window()
   }
 }
 
-
-
-Php::Value WnckScreen_::get_width()
-{
-	return wnck_screen_get_width(WNCK_SCREEN(instance));
+Php::Value WnckScreen_::get_width() {
+  return wnck_screen_get_width(WNCK_SCREEN(instance));
 }
 
-Php::Value WnckScreen_::get_height()
-{
-	return wnck_screen_get_height(WNCK_SCREEN(instance));
+Php::Value WnckScreen_::get_height() {
+  return wnck_screen_get_height(WNCK_SCREEN(instance));
 }
 #endif
