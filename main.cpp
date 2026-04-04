@@ -1805,7 +1805,7 @@ extern "C"
         // GtkAppChooserDialog
         Php::Class<GtkAppChooserDialog_> gtkappchooserdialog("GtkAppChooserDialog");
         gtkappchooserdialog.extends(gtkdialog);
-        gtkappchooserdialog.method<&GtkAppChooserDialog_::__construc>("__construc");
+        gtkappchooserdialog.method<&GtkAppChooserDialog_::__construct>("__construct");
         gtkappchooserdialog.method<&GtkAppChooserDialog_::new_for_content_type>("new_for_content_type");
         gtkappchooserdialog.method<&GtkAppChooserDialog_::get_widget>("get_widget");
         gtkappchooserdialog.method<&GtkAppChooserDialog_::set_heading>("set_heading");
@@ -3327,15 +3327,15 @@ extern "C"
         gtkpackdirection.constant("TTB", GTK_PACK_DIRECTION_TTB);
         gtkpackdirection.constant("BTT", GTK_PACK_DIRECTION_BTT);
 
-        // GtkMenuBar
-        Php::Class<GtkMenuBar_> gtkmenubar("GtkMenuBar");
-        gtkmenubar.extends(gtkmenushell);
-        gtkmenubar.method<&GtkMenuBar_::__construct>("__construct");
-        gtkmenubar.method<&GtkMenuBar_::new_from_model>("new_from_model");
-        gtkmenubar.method<&GtkMenuBar_::set_pack_direction>("set_pack_direction");
-        gtkmenubar.method<&GtkMenuBar_::get_pack_direction>("get_pack_direction");
-        gtkmenubar.method<&GtkMenuBar_::set_child_pack_direction>("set_child_pack_direction");
-        gtkmenubar.method<&GtkMenuBar_::child_pack_direction>("child_pack_direction");
+  // GtkMenuBar
+  Php::Class<GtkMenuBar_> gtkmenubar("GtkMenuBar");
+  gtkmenubar.extends(gtkmenushell);
+  gtkmenubar.method<&GtkMenuBar_::__construct>("__construct");
+  gtkmenubar.method<&GtkMenuBar_::new_from_model>("new_from_model");
+  gtkmenubar.method<&GtkMenuBar_::set_pack_direction>("set_pack_direction");
+  gtkmenubar.method<&GtkMenuBar_::get_pack_direction>("get_pack_direction");
+  gtkmenubar.method<&GtkMenuBar_::set_child_pack_direction>("set_child_pack_direction");
+  gtkmenubar.method<&GtkMenuBar_::get_child_pack_direction>("get_child_pack_direction");
 
         // GtkMenu
         Php::Class<GtkMenu_> gtkmenu("GtkMenu");

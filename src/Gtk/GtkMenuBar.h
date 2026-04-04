@@ -36,7 +36,7 @@
 
             void set_child_pack_direction(Php::Parameters &parameters);
 
-            void child_pack_direction();
-    };
+  Php::Value get_child_pack_direction();
+};
 
 #endif

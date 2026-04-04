@@ -22,14 +22,7 @@ jobs:
             main.cpp
             php-gtk.cpp
             src/**/*.cpp
-          # Run clang-tidy with a focused set of checks; this keeps noise manageable
-          clang_tidy_checks: >
-            -*,
-            bugprone-*,
-            performance-*,
-            readability-*,
-            modernize-*,
-            cppcoreguidelines-*
+          # Checks are read from .clang-tidy at the repo root
           # Only fail the check on more serious issues
           fail_on: error
           # Do not try to auto-fix code; just report

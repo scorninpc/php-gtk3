@@ -150,20 +150,15 @@ Php::Value GtkTable_::get_homogeneous()
 	return ret;
 }
 
-Php::Value GtkTable_::get_size(Php::Parameters &parameters)
-{
-	
-	guint* rows;
-	guint* columns;
+Php::Value GtkTable_::get_size(Php::Parameters &parameters) {
+  guint rows = 0;
+  guint columns = 0;
 
-	gtk_table_get_size(GTK_TABLE(instance), rows, columns);
+  gtk_table_get_size(GTK_TABLE(instance), &rows, &columns);
 
-	int64_t urows = (int64_t)&rows;
-	int64_t ucolumns = (int64_t)&columns;
-
-	Php::Value arr;
-	arr["rows"] = urows;
-	arr["columns"] = ucolumns;
+  Php::Value arr;
+  arr["rows"] = (int64_t)rows;
+  arr["columns"] = (int64_t)columns;
 
 	return arr;
 }

@@ -92,11 +92,10 @@ Php::Value Gtk_::source_remove(Php::Parameters &parameters)
     return ret;
 }
 
-Php::Value Gtk_::is_destroyed(Php::Parameters& parameters)
-{
-    if (parameters.size() < 1) {
-        throw Php::Exception("is_destroyed requires exactly 1 argument.");
-    }
+Php::Value Gtk_::is_destroyed(Php::Parameters &parameters) {
+  if (parameters.size() != 1) {
+    throw Php::Exception("is_destroyed requires exactly 1 argument.");
+  }
 
     guint tag = (guint)parameters[0].numericValue(); // Get the source ID (tag)
 

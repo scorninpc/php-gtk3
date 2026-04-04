@@ -1,0 +1,23 @@
+Checks: >-
+  -*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  -modernize-use-auto,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-pro-type-cstyle-cast,
+  -readability-convert-member-functions-to-static,
+  -readability-make-member-function-const,
+  -cppcoreguidelines-noexcept-swap,
+  -performance-noexcept-swap,
+  -modernize-use-default-member-init,
+  -modernize-loop-convert,
+  -modernize-use-equals-default,
+  -cppcoreguidelines-init-variables,
+  -readability-implicit-bool-conversion
+
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+FormatStyle: file
