@@ -2,40 +2,38 @@
 #ifndef _PHPGTK_GTKCHECKBUTTON_H_
 #define _PHPGTK_GTKCHECKBUTTON_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
-	#include "GtkToggleButton.h"
+#include "GtkToggleButton.h"
 
-    /**
-     * GtkCheckButton_
-     * 
-     * https://developer.gnome.org/gtk3/stable/GtkCheckButton.html
-     */
-    class GtkCheckButton_ : public GtkToggleButton_
-    {
-        /**
-         * Publics
-         */
-        public:
+/**
+ * GtkCheckButton_
+ *
+ * https://developer.gnome.org/gtk3/stable/GtkCheckButton.html
+ */
+class GtkCheckButton_ : public GtkToggleButton_ {
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GtkCheckButton_();
+  ~GtkCheckButton_();
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GtkCheckButton_();
-            ~GtkCheckButton_();
+  void __construct();
 
-            void __construct();
+  static Php::Value new_with_label(Php::Parameters &parameters);
 
-            static Php::Value new_with_label(Php::Parameters &parameters);
+  static Php::Value new_with_mnemonic(Php::Parameters &parameters);
 
-            static Php::Value new_with_mnemonic(Php::Parameters &parameters);
+  Php::Value get_active();
 
-            Php::Value get_active();
+  void set_active(Php::Parameters &parameters);
 
-            void set_active(Php::Parameters& parameters);
-
-            void toggled();
-    };
+  void toggled();
+};
 
 #endif

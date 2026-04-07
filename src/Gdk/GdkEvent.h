@@ -2,47 +2,46 @@
 #ifndef _PHPGTK_GDKEVENT_H_
 #define _PHPGTK_GDKEVENT_H_
 
-    #include <phpcpp.h>
-    #include <gtk/gtk.h>
+#include <phpcpp.h>
+#include <gtk/gtk.h>
 
-    #include "GdkEventButton.h"
-    #include "GdkEventKey.h"
-    #include "GdkEventFocus.h"
-    #include "GdkEventConfigure.h"
-    #include "GdkEventScroll.h"
-    #include "GdkEventMotion.h"
-    #include "GdkEventCrossing.h"
-    #include "GdkEventTouch.h"
+#include "GdkEventButton.h"
+#include "GdkEventKey.h"
+#include "GdkEventFocus.h"
+#include "GdkEventConfigure.h"
+#include "GdkEventScroll.h"
+#include "GdkEventMotion.h"
+#include "GdkEventCrossing.h"
+#include "GdkEventTouch.h"
 
-    /**
-     *
-     */
-    class GdkEvent_ : public Php::Base
-    {
-        /**
-         * Publics
-         */
-        public:
-            GdkEvent *instance;
+/**
+ *
+ */
+class GdkEvent_ : public Php::Base {
+  /**
+   * Publics
+   */
+ public:
+  GdkEvent *instance;
 
-            /**
-             *  C++ constructor and destructor
-             */
-            GdkEvent_() = default;
-            virtual ~GdkEvent_() = default;
-            //
-            GdkEvent *get_instance();
-            void set_instance(GdkEvent *event);
+  /**
+   *  C++ constructor and destructor
+   */
+  GdkEvent_() = default;
+  virtual ~GdkEvent_() = default;
+  //
+  GdkEvent *get_instance();
+  void set_instance(GdkEvent *event);
 
-            /**
-             * PHP Construct
-             */
-            void __construct(Php::Parameters &parameters);
+  /**
+   * PHP Construct
+   */
+  void __construct(Php::Parameters &parameters);
 
-            /**
-             * Populate GdkEvent to PHPGTK::GDKEVENT
-             */
-            void populate(GdkEvent *event);
-    };
+  /**
+   * Populate GdkEvent to PHPGTK::GDKEVENT
+   */
+  void populate(GdkEvent *event);
+};
 
 #endif

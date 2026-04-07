@@ -14,98 +14,89 @@ GtkEntryBuffer_::~GtkEntryBuffer_() = default;
 /**
  * Return original GtkEntryBuffer
  */
-GtkEntryBuffer *GtkEntryBuffer_::get_buffer()
-{
-    return buffer;
+GtkEntryBuffer *GtkEntryBuffer_::get_buffer() {
+  return buffer;
 }
 
 /**
  * Set the original GtkEntryBuffer
  */
-void GtkEntryBuffer_::set_buffer(GtkEntryBuffer *pased_buffer)
-{
-    buffer = pased_buffer;
+void GtkEntryBuffer_::set_buffer(GtkEntryBuffer *pased_buffer) {
+  buffer = pased_buffer;
 }
 
 /**
  *  PHP Constructor
  */
-void GtkEntryBuffer_::__construct(Php::Parameters &parameters)
-{
-	// Cast the param
-	std::string passed_text = parameters[0];
-	gchar *text = (gchar *)passed_text.c_str();
+void GtkEntryBuffer_::__construct(Php::Parameters &parameters) {
+  // Cast the param
+  std::string passed_text = parameters[0];
+  gchar *text = (gchar *)passed_text.c_str();
 
-	// Create the buffer
-	instance = (gpointer *)gtk_entry_buffer_new(text, -1);
+  // Create the buffer
+  instance = (gpointer *)gtk_entry_buffer_new(text, -1);
 }
 
 /**
  * Retrieves the contents of the buffer.
  */
-Php::Value GtkEntryBuffer_::get_text()
-{
-	return gtk_entry_buffer_get_text(GTK_ENTRY_BUFFER(instance));
+Php::Value GtkEntryBuffer_::get_text() {
+  return gtk_entry_buffer_get_text(GTK_ENTRY_BUFFER(instance));
 }
 
 /**
  * Sets the text in the buffer.
  */
-void GtkEntryBuffer_::set_text(Php::Parameters &parameters)
-{
-	// Cast the param
-	std::string passed_text = parameters[0];
-	gchar *text = (gchar *)passed_text.c_str();
+void GtkEntryBuffer_::set_text(Php::Parameters &parameters) {
+  // Cast the param
+  std::string passed_text = parameters[0];
+  gchar *text = (gchar *)passed_text.c_str();
 
-	// Create the buffer
-	instance = (gpointer *)gtk_entry_buffer_new(text, -1);
+  // Create the buffer
+  instance = (gpointer *)gtk_entry_buffer_new(text, -1);
 }
 
 /**
  * Retrieves the length in bytes of the buffer
  */
-Php::Value GtkEntryBuffer_::get_bytes()
-{
-	int bytes = (int)gtk_entry_buffer_get_bytes(GTK_ENTRY_BUFFER(instance));
-	return bytes;
+Php::Value GtkEntryBuffer_::get_bytes() {
+  int bytes = (int)gtk_entry_buffer_get_bytes(GTK_ENTRY_BUFFER(instance));
+  return bytes;
 }
 
 /**
  * Retrieves the length in characters of the buffer.
  */
-Php::Value GtkEntryBuffer_::get_length()
-{
-	int length = (int)gtk_entry_buffer_get_length(GTK_ENTRY_BUFFER(instance));
-	return length;
+Php::Value GtkEntryBuffer_::get_length() {
+  int length = (int)gtk_entry_buffer_get_length(GTK_ENTRY_BUFFER(instance));
+  return length;
 }
 
 /**
  * Retrieves the maximum allowed length of the text in buffer.
  */
-Php::Value GtkEntryBuffer_::get_max_length()
-{
-	int length = (int)gtk_entry_buffer_get_max_length(GTK_ENTRY_BUFFER(instance));
-	return length;
+Php::Value GtkEntryBuffer_::get_max_length() {
+  int length = (int)gtk_entry_buffer_get_max_length(GTK_ENTRY_BUFFER(instance));
+  return length;
 }
 
 /**
  * Inserts n_chars characters of chars into the contents of the buffer, at position position.
  */
-Php::Value GtkEntryBuffer_::insert_text(Php::Parameters &parameters)
-{
-	int position = (int) parameters[0];
+Php::Value GtkEntryBuffer_::insert_text(Php::Parameters &parameters) {
+  int position = (int)parameters[0];
 
-	int length = (int) gtk_entry_buffer_insert_text (GTK_ENTRY_BUFFER(instance), position, parameters[1], -1);
-	return length;
+  int length =
+      (int)gtk_entry_buffer_insert_text(GTK_ENTRY_BUFFER(instance), position, parameters[1], -1);
+  return length;
 }
 
 /**
  * Deletes a sequence of characters from the buffer.
  */
-void GtkEntryBuffer_::delete_text(Php::Parameters &parameters)
-{
-	int position = (int) parameters[0];
-	int n_chars = (int) parameters[1];
+void GtkEntryBuffer_::delete_text(Php::Parameters &parameters) {
+  int position = (int)parameters[0];
+  int n_chars = (int)parameters[1];
 
-	gtk_entry_buffer_delete_text (GTK_ENTRY_BUFFER(instance), position, n_chars);
+  gtk_entry_buffer_delete_text(GTK_ENTRY_BUFFER(instance), position, n_chars);
 }

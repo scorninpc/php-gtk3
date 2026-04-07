@@ -12,47 +12,46 @@
  *
  * https://developer.gnome.org/gtk3/stable/GtkScrolledWindow.html
  */
-class GtkScrolledWindow_ : public GtkContainer_
-{
-    /**
-     * Publics
-     */
-public:
-    /**
-     *  C++ constructor and destructor
-     */
-    GtkScrolledWindow_();
-    ~GtkScrolledWindow_();
+class GtkScrolledWindow_ : public GtkContainer_ {
+  /**
+   * Publics
+   */
+ public:
+  /**
+   *  C++ constructor and destructor
+   */
+  GtkScrolledWindow_();
+  ~GtkScrolledWindow_();
 
-    /**
-     * PHP Construct
-     */
-    void __construct(Php::Parameters &parameters);
+  /**
+   * PHP Construct
+   */
+  void __construct(Php::Parameters &parameters);
 
-    void set_overlay_scrolling(Php::Parameters &parameters);
+  void set_overlay_scrolling(Php::Parameters &parameters);
 
-    /**
-     * Sets the scrollbar policy for the horizontal and vertical scrollbars.
-     *
-     * https://developer.gnome.org/gtk3/stable/GtkScrolledWindow.html#gtk-scrolled-window-set-policy
-     */
-    void set_policy(Php::Parameters &parameters);
+  /**
+   * Sets the scrollbar policy for the horizontal and vertical scrollbars.
+   *
+   * https://developer.gnome.org/gtk3/stable/GtkScrolledWindow.html#gtk-scrolled-window-set-policy
+   */
+  void set_policy(Php::Parameters &parameters);
 
-    void set_shadow_type(Php::Parameters &parameters);
+  void set_shadow_type(Php::Parameters &parameters);
 
-    void set_propagate_natural_height(Php::Parameters &parameters);
+  void set_propagate_natural_height(Php::Parameters &parameters);
 
-    void set_propagate_natural_width(Php::Parameters &parameters);
+  void set_propagate_natural_width(Php::Parameters &parameters);
 
-    void set_max_content_height(Php::Parameters &parameters);
-    void set_min_content_height(Php::Parameters &parameters);
+  void set_max_content_height(Php::Parameters &parameters);
+  void set_min_content_height(Php::Parameters &parameters);
 
-    Php::Value get_hadjustment();
+  Php::Value get_hadjustment();
 
-    Php::Value get_vadjustment();
+  Php::Value get_vadjustment();
 
-    void set_max_content_width(Php::Parameters &parameters);
-    void set_min_content_width(Php::Parameters &parameters);
+  void set_max_content_width(Php::Parameters &parameters);
+  void set_min_content_width(Php::Parameters &parameters);
 };
 
 #endif

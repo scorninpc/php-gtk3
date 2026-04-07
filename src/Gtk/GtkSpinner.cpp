@@ -11,21 +11,14 @@ GtkSpinner_::GtkSpinner_() = default;
  */
 GtkSpinner_::~GtkSpinner_() = default;
 
-void GtkSpinner_::__construct()
-{
-	instance = (gpointer *)gtk_spinner_new ();
-
+void GtkSpinner_::__construct() {
+  instance = (gpointer *)gtk_spinner_new();
 }
 
-void GtkSpinner_::start()
-{
-	gtk_spinner_start (GTK_SPINNER(instance));
-
+void GtkSpinner_::start() {
+  gtk_spinner_start(GTK_SPINNER(instance));
 }
 
-void GtkSpinner_::stop()
-{
-	gtk_spinner_stop (GTK_SPINNER(instance));
-
+void GtkSpinner_::stop() {
+  gtk_spinner_stop(GTK_SPINNER(instance));
 }
-
