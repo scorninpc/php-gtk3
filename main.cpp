@@ -12,6 +12,54 @@
 // https://www.sitepoint.com/developing-php-extensions-c-php-cpp-advanced/
 
 /**
+ * on linux, the dlopen of php does not load webkit with php process. so we need to preload the webkit before usage
+ * that was the way i found to do that without add LD_PRELOAD=PATHS before command line to run .php file
+ * 
+ * the logic here is to replace process with the new LD_PRELOAD
+ * for real, i dont know if this is a nice way, but i dont see performance or any problem
+ * maybe we can just force user to export/add LD_PRELOAD var before start php
+ */
+#ifndef _WIN32
+  #ifdef WITH_WEBKIT
+    #include <cstdlib>
+    #include <cstring>
+    #include <unistd.h>
+    #include <fstream>
+    #include <vector>
+
+    __attribute__((constructor)) void auto_reload_with_tls() {
+      // if has the env, does nothing, i put that after do the load
+      if (getenv("PHP_WEBKIT_RESTARTED")) return;
+      
+      // paths
+      const char* webkit_libs = "/usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.1.so.0:/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so.0";
+      const char* current = getenv("LD_PRELOAD");
+      
+      // if was loaded, does nothing
+      if (current && strstr(current, "libjavascriptcoregtk-4.1.so.0")) return;
+      
+      // ok, here we add the env to prevent load again and set the new env
+      setenv("PHP_WEBKIT_RESTARTED", "1", 1);
+      setenv("LD_PRELOAD", current ? (std::string(current) + ":" + webkit_libs).c_str() : webkit_libs, 1);
+      
+      // that was the trash code that dont make me confortable
+      // here we get this process, change the args adding the preload, and replace the process
+      std::ifstream f("/proc/self/cmdline", std::ios::binary);
+      std::string cmd((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+      if (cmd.empty()) return;
+      
+      std::vector<char*> args;
+      for (size_t i = 0; i < cmd.size(); i += strlen(&cmd[i]) + 1) {
+          args.push_back(&cmd[i]);
+      }
+      args.push_back(nullptr);
+      
+      execvp(args[0], args.data());
+    }
+  #endif
+#endif
+
+/**
  *  tell the compiler that the get_module is a pure C function
  */
 extern "C" {
